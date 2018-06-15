@@ -168,4 +168,10 @@
   <data name="TOBII_GAMING_LONG" xml:space="preserve">
     <value>Tobii Gaming eye tracker (e.g. EyeX, 4C, 5C, Alienware, Steel Series Sentry, ...)</value>
   </data>
+  <data name="OKAY_CONTINUE_CANCEL_CHANGE" xml:space="preserve">
+    <value>Please press OK to continue with your choice, or cancel to go back to Settings.</value>
+  </data>
+  <data name="WARNING" xml:space="preserve">
+    <value>WARNING</value>
+  </data>
 </root>

@@ -77,7 +77,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         
         #region Methods
 
-        private void CoerceValues()
+        protected void CoerceValues()
         {
             CoercePersianSettings();
             CoerceUrduSettings();

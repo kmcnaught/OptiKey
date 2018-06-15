@@ -1,6 +1,9 @@
 // Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+
+using System;
 using System.Linq;
 using JuliusSweetland.OptiKey.Properties;
+using EyeMineResources = JuliusSweetland.OptiKey.EyeMine.Properties.Resources;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using log4net;
@@ -77,6 +80,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         #endregion
 
         #region Methods
+
+
+        public string WarningBeforeExit
+        {
+            get
+            {
+                string allWarnings = "";
+                
+                if (!string.IsNullOrEmpty(PointingAndSelectingViewModel.WarningBeforeExit))
+                {
+                    allWarnings += PointingAndSelectingViewModel.WarningBeforeExit + "\n";
+                }
+                
+                return allWarnings;
+            }
+        }
+
 
         private void CoerceValues()
         {
@@ -193,33 +213,68 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             WordsViewModel.ApplyChanges();
         }
 
+        private void RestartRequest()
+        {
+            //Warn if restart required and prompt for Confirmation before restarting
+            ConfirmationRequest.Raise(
+                new Confirmation
+                {
+                    Title = Resources.VERIFY_RESTART,
+                    Content = Resources.RESTART_MESSAGE
+                }, confirmation =>
+                {
+                    if (confirmation.Confirmed)
+                    {
+                        Log.Info("Applying management changes and attempting to restart OptiKey");
+                        ApplyChanges();
+                        Settings.Default.Save();
+                        try
+                        {
+                            OptiKeyApp.RestartApp();
+                        }
+                        catch { } //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.
+                        Application.Current.Shutdown();
+                    }
+                });
+        }
+
         private void Ok(Window window)
         {
-            CoerceValues();
-
-            if (ChangesRequireRestart)
+            if (!string.IsNullOrEmpty(WarningBeforeExit))
             {
-                //Warn if restart required and prompt for Confirmation before restarting
+                Log.Info("WARNING BEFORE EXIT");
+                Log.Info(WarningBeforeExit);
+
+                string message = WarningBeforeExit;
+                message += "\n";
+                message += EyeMineResources.OKAY_CONTINUE_CANCEL_CHANGE;
+
+                // Warnings from any changes/selections
                 ConfirmationRequest.Raise(
                     new Confirmation
                     {
-                        Title = Resources.VERIFY_RESTART,
-                        Content = Resources.RESTART_MESSAGE
+                        Title = EyeMineResources.WARNING,
+                        Content = message
                     }, confirmation =>
                     {
                         if (confirmation.Confirmed)
                         {
-                            Log.Info("Applying management changes and attempting to restart OptiKey");
-                            ApplyChanges();
-                            Settings.Default.Save();
-                            try
+                            if (ChangesRequireRestart)
                             {
-                                OptiKeyApp.RestartApp();
+                                RestartRequest();
                             }
-                            catch { } //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.
-                            Application.Current.Shutdown();
+                            else
+                            {
+                                Log.Info("Applying management changes");
+                                ApplyChanges();
+                                window.Close();
+                            }
                         }
                     });
+            }
+            else if (ChangesRequireRestart)
+            {
+                RestartRequest();
             }
             else
             {
@@ -227,9 +282,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 ApplyChanges();
                 window.Close();
             }
-        }
+            }
 
-        private static void Cancel(Window window)
+            private static void Cancel(Window window)
         {
             window.Close();
         }

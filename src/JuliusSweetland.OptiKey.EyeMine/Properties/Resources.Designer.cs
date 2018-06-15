@@ -133,6 +133,15 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please press OK to continue with your choice, or cancel to go back to Settings..
+        /// </summary>
+        public static string OKAY_CONTINUE_CANCEL_CHANGE {
+            get {
+                return ResourceManager.GetString("OKAY_CONTINUE_CANCEL_CHANGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overall sound effect volume.
         /// </summary>
         public static string OVERALL_VOLUME {
@@ -210,6 +219,15 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         public static string VOLUME {
             get {
                 return ResourceManager.GetString("VOLUME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WARNING.
+        /// </summary>
+        public static string WARNING {
+            get {
+                return ResourceManager.GetString("WARNING", resourceCulture);
             }
         }
     }

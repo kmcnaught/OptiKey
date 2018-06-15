@@ -39,16 +39,17 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, PointsSources>>
                 {
-                    new KeyValuePair<string, PointsSources>(PointSourceLongDescription(CoreEnums.PointsSources.GazeTracker), CoreEnums.PointsSources.GazeTracker),
-                    new KeyValuePair<string, PointsSources>(PointSourceLongDescription(CoreEnums.PointsSources.MousePosition), CoreEnums.PointsSources.MousePosition),
-                    new KeyValuePair<string, PointsSources>(PointSourceLongDescription(CoreEnums.PointsSources.TheEyeTribe), CoreEnums.PointsSources.TheEyeTribe),
-                    new KeyValuePair<string, PointsSources>(PointSourceLongDescription(CoreEnums.PointsSources.TobiiEyeX), CoreEnums.PointsSources.TobiiEyeX),
-                    new KeyValuePair<string, PointsSources>(PointSourceLongDescription(CoreEnums.PointsSources.TobiiPcEyeGo), CoreEnums.PointsSources.TobiiPcEyeGo),
+                    new KeyValuePair<string, PointsSources>(FriendlyDescription(CoreEnums.PointsSources.MousePosition), CoreEnums.PointsSources.MousePosition),
+                    new KeyValuePair<string, PointsSources>(FriendlyDescription(CoreEnums.PointsSources.TobiiEyeX), CoreEnums.PointsSources.TobiiEyeX),
+                    new KeyValuePair<string, PointsSources>(FriendlyDescription(CoreEnums.PointsSources.TobiiPcEyeGo), CoreEnums.PointsSources.TobiiPcEyeGo),
+                    new KeyValuePair<string, PointsSources>(FriendlyDescription(CoreEnums.PointsSources.GazeTracker), CoreEnums.PointsSources.GazeTracker),
+                    new KeyValuePair<string, PointsSources>(FriendlyDescription(CoreEnums.PointsSources.IrisbondDuo), CoreEnums.PointsSources.IrisbondDuo),
+                    new KeyValuePair<string, PointsSources>(FriendlyDescription(CoreEnums.PointsSources.TheEyeTribe), CoreEnums.PointsSources.TheEyeTribe),
                 };
             }
         }
 
-        private static string PointSourceLongDescription(CoreEnums.PointsSources pointsSource)
+        private static string FriendlyDescription(CoreEnums.PointsSources pointsSource)
         {
             // Optional longer description, for management console
             switch (pointsSource)
@@ -56,6 +57,23 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
                 case CoreEnums.PointsSources.TobiiPcEyeGo: return Resources.TOBII_DYNAVOX_LONG;
                 case CoreEnums.PointsSources.TobiiEyeX: return Resources.TOBII_GAMING_LONG;
                 default: return pointsSource.ToDescription();
+            }
+        }
+
+        public string WarningBeforeExit
+        {
+            get
+            {
+                if (Settings.Default.PointsSource != PointsSource &&
+                    PointsSource == CoreEnums.PointsSources.TobiiPcEyeGo)
+                {
+                    return "WARNING: Some Tobii Dynavox eye trackers aren't compatible with EyeMine. \n\nIf EyeMine doesn't manage to connect to your eye tracker, "+
+                           "please use mouse emulation to control EyeMine instead.";
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
