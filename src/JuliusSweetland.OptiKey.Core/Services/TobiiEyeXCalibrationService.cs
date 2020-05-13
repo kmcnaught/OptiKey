@@ -23,8 +23,9 @@ namespace JuliusSweetland.OptiKey.Services
 
             if(EyeXHost != null)
             {
-                EyeXHost.LaunchRecalibration();
-
+                //EyeXHost.LaunchRecalibration();
+                EyeXHost.LaunchGuestCalibration();
+                
                 EventHandler<EngineStateValue<EyeTrackingDeviceStatus>> handler = null;
                 handler = (s, e) =>
                 {
