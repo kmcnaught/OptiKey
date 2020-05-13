@@ -742,38 +742,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {
                         Log.Info("Calibrate requested.");
 
-                        var question = CalibrationService.CanBeCompletedWithoutManualIntervention
-                            ? Resources.CALIBRATION_CONFIRMATION_MESSAGE
-                            : Resources.CALIBRATION_REQUIRES_MANUAL_INTERACTION;
+                
+                        inputService.RequestSuspend();
+                        CalibrateRequest.Raise(new NotificationWithCalibrationResult(), calibrationResult =>
+                        {
+                            if (calibrationResult.Success)
+                            {
+                                audioService.PlaySound(Settings.Default.InfoSoundFile,
+                                    Settings.Default.InfoSoundVolume);
+                                inputService.RequestResume();
+                            }
+                            else
+                            {
+                                audioService.PlaySound(Settings.Default.ErrorSoundFile,
+                                    Settings.Default.ErrorSoundVolume);
+                                inputService.RequestResume();
+                            }
+                        });
 
-                        Keyboard = new YesNoQuestion(
-                            question,
-                            () =>
-                            {
-                                inputService.RequestSuspend();
-                                CalibrateRequest.Raise(new NotificationWithCalibrationResult(), calibrationResult =>
-                                {
-                                    if (calibrationResult.Success)
-                                    {
-                                        audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                                        RaiseToastNotification(Resources.SUCCESS, calibrationResult.Message, NotificationTypes.Normal, () => inputService.RequestResume());
-                                    }
-                                    else
-                                    {
-                                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                                        RaiseToastNotification(Resources.CRASH_TITLE, calibrationResult.Exception != null
-                                                ? calibrationResult.Exception.Message
-                                                : calibrationResult.Message ?? Resources.UNKNOWN_CALIBRATION_ERROR,
-                                            NotificationTypes.Error,
-                                            () => inputService.RequestResume());
-                                    }
-                                });
-                                Keyboard = currentKeyboard;
-                            },
-                            () =>
-                            {
-                                Keyboard = currentKeyboard;
-                            });
                     }
                     break;
 
