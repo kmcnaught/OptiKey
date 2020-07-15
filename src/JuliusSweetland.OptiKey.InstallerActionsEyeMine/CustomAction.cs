@@ -150,10 +150,6 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         {
             //session.Log("Begin CheckForForgeInstallation");
 
-            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string minecraftPath = Path.Combine(appDataPath, ".minecraft");
-            string forgePath = Path.Combine(minecraftPath, "versions", forgeVersion);
-
             if (Directory.Exists(forgePath))
                 return ActionResult.Success;
             else
@@ -164,10 +160,6 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         public static ActionResult CheckForMinecraftInstallation(Session session)
         {
             //session.Log("Begin CheckForMinecraftInstallation");
-
-            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string minecraftPath = Path.Combine(appDataPath, ".minecraft");
-
             if (Directory.Exists(minecraftPath))
                 return ActionResult.Success;
             else
