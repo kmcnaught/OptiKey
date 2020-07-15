@@ -197,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\StartupKeyboardOptions.cs" />
+    <Compile Include="UI\Controls\WizardItem.xaml.cs">
+      <DependentUpon>WizardItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\ValueConverters\StringOrEmptyLabel.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModelEyeMine.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModelEyeMine.cs" />
@@ -235,6 +238,10 @@
     <Page Include="Resources\Icons\KeySymbolsEyeMine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Controls\WizardItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\ManagementView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -362,6 +369,18 @@
     <Content Include="Resources\EyeMineKeyboards\Mouse\3_MC_MainKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Icons\status_comingup.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\status_complete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\status_current.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\EyeMine_Logo_Trans.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <SplashScreen Include="Resources\Icons\EyeMineSplash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>

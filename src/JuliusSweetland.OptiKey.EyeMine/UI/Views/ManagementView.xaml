@@ -11,49 +11,78 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:triggerActions="clr-namespace:JuliusSweetland.OptiKey.UI.TriggerActions;assembly=OptiKey"
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties;assembly=OptiKey"
              xmlns:management="clr-namespace:JuliusSweetland.OptiKey.EyeMine.UI.Views.Management"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters;assembly=OptiKey"
+             xmlns:valueConverters1="clr-namespace:JuliusSweetland.OptiKey.EyeMine.UI.ValueConverters"
+             xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.EyeMine.UI.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="500" d:DesignWidth="500">
 
     <i:Interaction.Triggers>
         <interactionRequest:InteractionRequestTrigger SourceObject="{Binding ConfirmationRequest, Mode=OneWay}">
             <triggerActions:ConfirmationWindowAction />
         </interactionRequest:InteractionRequestTrigger>
     </i:Interaction.Triggers>
-    
+
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
              <RowDefinition Height="*"/>
              <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TabControl Grid.IsSharedSizeScope="True">
-            <TabItem Header="{x:Static resx:Resources.VISUALS}">
-                <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
-            </TabItem>
-            <TabItem Header="{x:Static resx:Resources.SOUNDS}">
-                <management:SoundsView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
-            </TabItem>
-            <TabItem Header="{x:Static resx:Resources.POINT_AND_SELECTING}">
-                <management:PointingAndSelectingView DataContext="{Binding PointingAndSelectingViewModel, Mode=OneWay}" />
-            </TabItem>
-            <TabItem Header="{x:Static resx:Resources.DICTIONARY}">
-                <management:DictionaryView DataContext="{Binding DictionaryViewModel, Mode=OneWay}" />
-            </TabItem>
-            <TabItem Header="{x:Static resx:Resources.OTHER}">
-                <management:OtherView DataContext="{Binding OtherViewModel, Mode=OneWay}" />
-            </TabItem>
-            <!-- FIXME Resources.ABOUT -->
-            <TabItem Header="About">
-                <management:AboutView DataContext="{Binding AboutViewModel, Mode=OneWay}" />
-            </TabItem>
-        </TabControl>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left hand panel for page list -->
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="DarkOrange" />
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" >
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="Margin" Value="0,10,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <Image  Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Source="/EyeMineV2;component/Resources/Icons/EyeMine_Logo_Trans.png" Width="175" Height="68" Margin="0,0,0,50"/>
+            
+            <controls:WizardItem Label="Welcome" State="Complete"></controls:WizardItem>
+            <controls:WizardItem Label="Input source" State="Current"></controls:WizardItem>
+            <controls:WizardItem Label="Click method" State="ComingUp"></controls:WizardItem>
+            <controls:WizardItem Label="Sounds" State="ComingUp"></controls:WizardItem>
+            <controls:WizardItem Label="Finish" State="ComingUp"></controls:WizardItem>
+        </StackPanel>
+
+        <!-- Bottom panel for buttons -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Command="{Binding OkCommand}" 
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
-                    MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
-                <x:Static Member="resx:Resources.OK"/></Button>
+                    MinWidth="50" Margin="0,5,5,5" VerticalAlignment="Center">
+                <x:Static Member="resx:Resources.PREV"/></Button>
+            <Button Command="{Binding OkCommand}" 
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                    MinWidth="50" Margin="0,5,5,5" VerticalAlignment="Center">
+                <x:Static Member="resx:Resources.NEXT"/>
+            </Button>
+            <Button Command="{Binding OkCommand}" 
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                    MinWidth="50" Margin="0,5,5,5" VerticalAlignment="Center" Visibility="Collapsed">
+                <x:Static Member="resx:Resources.OK"/>
+            </Button>
             <Button Command="{Binding CancelCommand}" 
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
-                    MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
+                    MinWidth="50" Margin="0,5,5,5" VerticalAlignment="Center">
                 <x:Static Member="resx:Resources.CANCEL"/>
             </Button>
         </StackPanel>
