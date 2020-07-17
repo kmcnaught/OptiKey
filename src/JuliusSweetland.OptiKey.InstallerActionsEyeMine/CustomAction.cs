@@ -6,12 +6,18 @@ using System.Dynamic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using Microsoft.Deployment.WindowsInstaller;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using EyeXFramework;
+using Microsoft.Win32;
+using Tobii.EyeX.Client;
+using Environment = System.Environment;
+
 
 namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 {
@@ -57,6 +63,52 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
             string newFile = String.Format("{0}_{1}{2}", file, datetime, extension);
             return Path.Combine(path, newFile);
+        }
+
+        public static bool IsProgramInstalled(string programDisplayName)
+        {
+            bool b = false;
+            string regKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
+
+            foreach (var item in Registry.LocalMachine.OpenSubKey(regKey).GetSubKeyNames())
+            {
+                object programName = Registry.LocalMachine.OpenSubKey(regKey + "\\" + item).GetValue("DisplayName");
+
+                if (string.Equals(programName, programDisplayName))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool IsTobiiSupported()
+        {
+            switch (EyeXHost.EyeXAvailability)
+            {
+                case EyeXAvailability.NotAvailable:
+                    return false;
+                default:
+                    return true;
+            }
+        }
+
+        [CustomAction]
+        public static ActionResult QueryTobiiSupported(Session session)
+        {
+            bool supported = false;
+            try
+            {
+                supported = IsTobiiSupported();
+            }
+            catch
+            {
+                return ActionResult.Failure;
+            }
+
+            session["TOBII_SUPPORTED"] = supported.ToString();
+
+            return ActionResult.Success;
         }
 
         [CustomAction]
@@ -156,8 +208,19 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 return ActionResult.Failure;
         }
 
+
         [CustomAction]
         public static ActionResult CheckForMinecraftInstallation(Session session)
+        {
+            //session.Log("Begin CheckForMinecraftInstallation");
+            if (IsProgramInstalled("Minecraft Launcher"))
+                return ActionResult.Success;
+            else
+                return ActionResult.Failure;
+        }
+
+        [CustomAction]
+        public static ActionResult CheckForMinecraftHasBeenLaunched(Session session)
         {
             //session.Log("Begin CheckForMinecraftInstallation");
             if (Directory.Exists(minecraftPath))

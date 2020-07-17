@@ -97,7 +97,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_LABEL}" 
-                               VerticalAlignment="Center" Margin="5">
+                               VerticalAlignment="Center" Margin="5" Opacity="0.5">
                     </TextBlock>
                     
                     <ComboBox Grid.Row="0" Grid.Column="1" 

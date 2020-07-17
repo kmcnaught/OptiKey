@@ -19,6 +19,20 @@ namespace JuliusSweetland.OptiKey.UnitTests
     {
 
         [Test]
+        public void TestTobiiSupported()
+        {
+            bool b = CustomActionsEyeMine.IsTobiiSupported();
+            Assert.True(b);
+        }
+
+        [Test]
+        public void TestMinecraftLaunched()
+        {
+            ActionResult res = CustomActionsEyeMine.CheckForMinecraftHasBeenLaunched(null);
+            Assert.AreEqual(res, ActionResult.Success);
+        }
+
+        [Test]
         public void TestMinecraftInstalled()
         {
             ActionResult res = CustomActionsEyeMine.CheckForMinecraftInstallation(null);
