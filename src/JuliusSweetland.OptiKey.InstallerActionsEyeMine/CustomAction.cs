@@ -99,16 +99,20 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         {
             // Run all the other actions and set installer properties
             ActionResult success = ActionResult.Success;
-            if (QueryTobiiSupported(session) != success)
-            {
-                return ActionResult.Failure;
-            }
+            
             if (CheckForMinecraftInstallation(session) != success)
             {
+                session.Log("Error checking for Minecraft install");
                 return ActionResult.Failure;
             }
             if (CheckForForgeInstallation(session) != success)
             {
+                session.Log("Error checking for Forge install");
+                return ActionResult.Failure;
+            }
+            if (QueryTobiiSupported(session) != success)
+            {
+                session.Log("Error checking for Tobii support");
                 return ActionResult.Failure;
             }
 
@@ -120,6 +124,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         public static ActionResult QueryTobiiSupported(Session session)
         {
             bool supported = false;
+            session["TOBII_SUPPORTED"] = "unknown";
             try
             {
                 supported = IsTobiiSupported();
@@ -225,6 +230,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         {
             //session.Log("Begin CheckForForgeInstallation");
             session["FORGE_VERSION_REQUIRED"] = forgeVersion;
+            session["FORGE_INSTALLED"] = "unknown";
 
             if (Directory.Exists(forgePath))
             {
@@ -242,6 +248,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         public static ActionResult CheckForMinecraftInstallation(Session session)
         {
             //session.Log("Begin CheckForMinecraftInstallation");
+            session["MINECRAFT_INSTALLED"] = "unknown";
             if (IsProgramInstalled("Minecraft Launcher"))
             {
                 session["MINECRAFT_INSTALLED"] = true.ToString().ToLower();
