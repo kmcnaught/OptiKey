@@ -58,8 +58,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance.Wpf", "src\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.EyeMine", "src\JuliusSweetland.OptiKey.EyeMine\JuliusSweetland.OptiKey.EyeMine.csproj", "{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartupWizard", "src\JuliusSweetland.OptiKey.StartupWizard\StartupWizard\StartupWizard.csproj", "{1EE9469E-D753-4A25-BB9A-0E4C017527BB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -248,22 +246,6 @@ Global
 		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.Release|x86.ActiveCfg = Release|Any CPU
 		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.Release|x86.Build.0 = Release|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.All|Any CPU.ActiveCfg = Release|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.All|Any CPU.Build.0 = Release|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.All|x86.ActiveCfg = Release|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.All|x86.Build.0 = Release|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.Debug|x86.Build.0 = Debug|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.DefaultBuild|x86.ActiveCfg = Debug|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.DefaultBuild|x86.Build.0 = Debug|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.Release|x86.ActiveCfg = Release|Any CPU
-		{1EE9469E-D753-4A25-BB9A-0E4C017527BB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
