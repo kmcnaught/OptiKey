@@ -9,6 +9,8 @@
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="ARPPRODUCTICON" Value="EyeMineV2.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
+    <ROW Property="FORGE_INSTALLED" Value="false"/>
+    <ROW Property="MINECRAFT_INSTALLED" Value="false"/>
     <ROW Property="Manufacturer" Value="SpecialEffect"/>
     <ROW Property="ProductCode" Value="1033:{7A4C7F90-D130-4DFC-9A8A-EF4102EF3144} 2057:{7A4C7F90-D130-4DFC-9A8A-EF4102EF3144} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
@@ -16,6 +18,7 @@
     <ROW Property="ProductVersion" Value="2.1.3" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
+    <ROW Property="TOBII_SUPPORTED" Value="false"/>
     <ROW Property="UpgradeCode" Value="{4414256E-3642-4B1E-92A8-45D78F752687}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
     <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -46,6 +49,7 @@
     <ROW Directory="Mouse_3_Dir" Directory_Parent="Keyboards_Dir" DefaultDir="Mouse"/>
     <ROW Directory="Mouse_Dir" Directory_Parent="DynamicKeyboards_Dir" DefaultDir="Mouse"/>
     <ROW Directory="Optikey_Dir" Directory_Parent="ProgramMenuFolder" DefaultDir="Optikey"/>
+    <ROW Directory="Plugins_Dir" Directory_Parent="Resources_Dir" DefaultDir="Plugins"/>
     <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="PROGRA~1|ProgramMenuFolder" IsPseudoRoot="1"/>
     <ROW Directory="Release_Dir" Directory_Parent="APPDIR" DefaultDir=".:Release"/>
     <ROW Directory="Resources_Dir" Directory_Parent="Release_Dir" DefaultDir="RESOUR~1|Resources"/>
@@ -85,14 +89,12 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="AI_ExePath" ComponentId="{5061419A-3586-409D-8A46-E4FF90C13318}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
     <ROW Component="APPDIR" ComponentId="{504E43A7-B6B2-4807-878E-DEF3F848D58B}" Directory_="APPDIR" Attributes="0"/>
-    <ROW Component="AltAlphaHorizontalKeyboard.xml" ComponentId="{AE666FF8-0B9E-4777-8C1D-E10C704E7EEA}" Directory_="DynamicKeyboards_Dir" Attributes="0" KeyPath="AltAlphaHorizontalKeyboard.xml" Type="0"/>
     <ROW Component="Attention.wav" ComponentId="{B0B931CD-570A-495E-BD45-11CCDC8AC8D2}" Directory_="Sounds_Dir" Attributes="0" KeyPath="Attention.wav" Type="0"/>
     <ROW Component="B612licenceeplv10.html" ComponentId="{D43A4429-F3B9-400B-989D-60FB220299DF}" Directory_="Fonts_Dir" Attributes="0" KeyPath="B612licenceeplv10.html" Type="0"/>
     <ROW Component="Bass.Net.dll" ComponentId="{442AF4C1-86E4-46EA-B1EC-6011BD5071DD}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.dll"/>
     <ROW Component="CREDITS.md" ComponentId="{336E7D7F-CB61-490E-B859-51FF46DFC4D6}" Directory_="Release_Dir" Attributes="0" KeyPath="CREDITS.md" Type="0"/>
     <ROW Component="CatalanSpain.dic" ComponentId="{961645C4-EFF4-4F16-9EE2-D7ED66F15D0C}" Directory_="Dictionaries_Dir" Attributes="0" KeyPath="CatalanSpain.dic" Type="0"/>
     <ROW Component="ControlzEx.dll" ComponentId="{5BB1B2AA-A129-4B96-B7EA-0D4063E9F0FA}" Directory_="Release_Dir" Attributes="0" KeyPath="ControlzEx.dll"/>
-    <ROW Component="Demo_Bottom.xml" ComponentId="{5D84C2BC-33DA-4391-A83F-50ED3203C224}" Directory_="Samples_Dir" Attributes="0" KeyPath="Demo_Bottom.xml" Type="0"/>
     <ROW Component="EyeMineV2.exe" ComponentId="{57E5A4F0-5D8E-4357-A65F-B470A08753F4}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeMineV2.exe"/>
     <ROW Component="EyeTracker" ComponentId="{891E6A38-950E-4146-98D6-1EB60E421E19}" Directory_="EyeTracker_Dir" Attributes="0"/>
     <ROW Component="EyeXFramework.dll" ComponentId="{BE694CD1-6A50-4656-BC1D-E23CDEE34123}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeXFramework.dll"/>
@@ -106,6 +108,7 @@
     <ROW Component="Mouse" ComponentId="{B9865D1E-A5F3-48D9-A596-BDEECD4E1FB8}" Directory_="Mouse_Dir" Attributes="0"/>
     <ROW Component="MouseKeyboardActivityMonitor.dll" ComponentId="{447D7440-EC5F-4E85-956C-D17993B61C05}" Directory_="Release_Dir" Attributes="0" KeyPath="MouseKeyboardActivityMonitor.dll"/>
     <ROW Component="NBug.dll" ComponentId="{B26848A5-2EFA-437C-988A-85BECF57790C}" Directory_="Release_Dir" Attributes="0" KeyPath="NBug.dll"/>
+    <ROW Component="Nefarius.ViGEm.Client.dll" ComponentId="{442C6013-E171-4425-8D77-5D8EECB95F76}" Directory_="Release_Dir" Attributes="0" KeyPath="Nefarius.ViGEm.Client.dll"/>
     <ROW Component="Newtonsoft.Json.dll" ComponentId="{D41861D9-54D1-456A-A065-05986FA8D503}" Directory_="Release_Dir" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
     <ROW Component="Octokit.dll" ComponentId="{7FACA3C7-18F7-4051-B35C-6F90FDE41E4F}" Directory_="Release_Dir" Attributes="0" KeyPath="Octokit.dll"/>
     <ROW Component="OptiKey.dll" ComponentId="{1E10CBFD-197E-4F9E-8A21-EB014A17763A}" Directory_="Release_Dir" Attributes="0" KeyPath="OptiKey.dll"/>
@@ -137,12 +140,14 @@
     <ROW Component="OptiKey.resources.dll_8" ComponentId="{A21B07B7-B7F7-4A17-AD1D-980B6A45FC8E}" Directory_="fiFI_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_8"/>
     <ROW Component="OptiKey.resources.dll_9" ComponentId="{A4DACAF0-25D2-4AAD-A4D3-AC668966215D}" Directory_="fr_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_9"/>
     <ROW Component="OptiKeyStandardPlugins.dll" ComponentId="{717AFA5E-2296-44E9-8AC0-6E10A1DFE71E}" Directory_="Release_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll"/>
+    <ROW Component="OptiKeyStandardPlugins.dll_1" ComponentId="{34B0E812-E26C-4EF7-A199-C070B95C0B83}" Directory_="Plugins_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll_1"/>
     <ROW Component="Optikey" ComponentId="{E7578126-FD95-4ECC-B74B-CE6A8DCAA90E}" Directory_="Optikey_Dir" Attributes="0"/>
     <ROW Component="PGRFlyCapture.dll" ComponentId="{DAE58D8B-F3C0-4834-A0F1-B15894CA2234}" Directory_="Release_Dir" Attributes="0" KeyPath="PGRFlyCapture.dll"/>
     <ROW Component="Prism.Wpf.dll" ComponentId="{C45FE3F8-99F0-44C3-BAAD-EBE5B5DC7950}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.Wpf.dll"/>
     <ROW Component="Prism.dll" ComponentId="{B236C978-F82B-4B5C-A639-F2EFBD768007}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.dll"/>
     <ROW Component="ProductInformation" ComponentId="{751C19C3-7407-415C-B213-89105D7CEFC3}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{448D40BC-1BF7-4751-90E9-B485100588CB}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="Samples" ComponentId="{95D91DAE-FEA4-4F3A-B5F2-66817CDFB3A7}" Directory_="Samples_Dir" Attributes="0"/>
     <ROW Component="SharpVectors.Converters.dll" ComponentId="{640E326A-9B2A-48B3-BF66-B0A3A2D585C9}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Converters.dll"/>
     <ROW Component="SharpVectors.Core.dll" ComponentId="{8B3AD327-E6A3-4729-AC01-B93AE45FB4E5}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Core.dll"/>
     <ROW Component="SharpVectors.Css.dll" ComponentId="{F9706C68-3E24-44CE-A136-62D4CC64C2F5}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Css.dll"/>
@@ -355,14 +360,6 @@
     <ROW File="OptiKey.exe.config" Component_="CREDITS.md" FileName="OPTIKE~2.CON|OptiKey.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\OptiKey.exe.config" SelfReg="false"/>
     <ROW File="Prism.Wpf.xml" Component_="CREDITS.md" FileName="PRISMW~1.XML|Prism.Wpf.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Prism.Wpf.xml" SelfReg="false"/>
     <ROW File="Prism.xml" Component_="CREDITS.md" FileName="Prism.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Prism.xml" SelfReg="false"/>
-    <ROW File="AltAlphaHorizontalKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="ALTALP~1.XML|AltAlphaHorizontalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml" SelfReg="false"/>
-    <ROW File="AltAlphaVerticalKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="ALTALP~2.XML|AltAlphaVerticalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml" SelfReg="false"/>
-    <ROW File="BigHackerKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="BIGHAC~1.XML|BigHackerKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\BigHackerKeyboard.xml" SelfReg="false"/>
-    <ROW File="Demo_Bottom.xml" Component_="Demo_Bottom.xml" FileName="DEMO_B~1.XML|Demo_Bottom.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml" SelfReg="false"/>
-    <ROW File="Demo_Left.xml" Component_="Demo_Bottom.xml" FileName="DEMO_L~1.XML|Demo_Left.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Left.xml" SelfReg="false"/>
-    <ROW File="Demo_Minecraft.xml" Component_="Demo_Bottom.xml" FileName="DEMO_M~1.XML|Demo_Minecraft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml" SelfReg="false"/>
-    <ROW File="FullQwerty.xml" Component_="Demo_Bottom.xml" FileName="FULLQW~1.XML|FullQwerty.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\Samples\FullQwerty.xml" SelfReg="false"/>
-    <ROW File="FullSymbol.xml" Component_="Demo_Bottom.xml" FileName="FULLSY~1.XML|FullSymbol.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\Samples\FullSymbol.xml" SelfReg="false"/>
     <ROW File="System.Reactive.Core.xml" Component_="CREDITS.md" FileName="SYSTEM~1.XML|System.Reactive.Core.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\System.Reactive.Core.xml" SelfReg="false"/>
     <ROW File="System.Reactive.Interfaces.xml" Component_="CREDITS.md" FileName="SYSTEM~2.XML|System.Reactive.Interfaces.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\System.Reactive.Interfaces.xml" SelfReg="false"/>
     <ROW File="System.Reactive.Linq.xml" Component_="CREDITS.md" FileName="SYSTEM~3.XML|System.Reactive.Linq.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\System.Reactive.Linq.xml" SelfReg="false"/>
@@ -428,6 +425,8 @@
     <ROW File="_MC_ChatKeyboard.xml_4" Component_="_MC_5_1_1_intro.xml_4" FileName="3_MC_C~1.XML|3_MC_ChatKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\3_MC_ChatKeyboard.xml" SelfReg="false"/>
     <ROW File="_MC_InventoryKeyboard.xml_4" Component_="_MC_5_1_1_intro.xml_4" FileName="3_MC_I~1.XML|3_MC_InventoryKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\3_MC_InventoryKeyboard.xml" SelfReg="false"/>
     <ROW File="_MC_MainKeyboard.xml_4" Component_="_MC_5_1_1_intro.xml_4" FileName="3_MC_M~1.XML|3_MC_MainKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\3_MC_MainKeyboard.xml" SelfReg="false"/>
+    <ROW File="Nefarius.ViGEm.Client.dll" Component_="Nefarius.ViGEm.Client.dll" FileName="NEFARI~1.DLL|Nefarius.ViGEm.Client.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Nefarius.ViGEm.Client.dll" SelfReg="false"/>
+    <ROW File="OptiKeyStandardPlugins.dll_1" Component_="OptiKeyStandardPlugins.dll_1" FileName="OPTIKE~1.DLL|OptiKeyStandardPlugins.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\Plugins\OptiKeyStandardPlugins.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -475,13 +474,37 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
     <ROW Name="JuliusSweetland.OptiKey.InstallerActions.CA.dll" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActions\bin\Release\JuliusSweetland.OptiKey.InstallerActions.CA.dll"/>
+    <ROW Name="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Debug\JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll"/>
     <ROW Name="PopulateComboboxes.vbs" SourcePath="scripts\PopulateComboboxes.vbs"/>
     <ROW Name="Prereq.dll" SourcePath="&lt;AI_CUSTACTS&gt;Prereq.dll"/>
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+    <ROW Name="defaultbitmap.jpg" SourcePath="&lt;AI_RES&gt;binary\default-bitmap.jpg"/>
     <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ROW Dialog_="ForgeInstallationRequired" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Next]" Order="100"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Checking for Forge installation" Order="700"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Minecraft Forge installation" TextStyle="[DlgTitleFont]" Order="900"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control="Text_1" Type="Text" X="153" Y="80" Width="138" Height="95" Attributes="65539" Property="TEXT_1_PROP_1" Text="EyeMine requires Minecraft forge (version [FORGE_VERSION_REQUIRED]) to be installed. This allows EyeMine to use custom mods to improve the eye-gaze compatibility. " Order="1000"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control="Bitmap_1" Type="Bitmap" X="25" Y="80" Width="113" Height="45" Attributes="1" Text="defaultbitmap.jpg" Order="1100"/>
     <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="resources\LICENSE.rtf" Order="400" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Next]" Order="100" Options="1"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Checking for Minecraft installation" Order="700"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Minecraft installation" TextStyle="[DlgTitleFont]" Order="900"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="Text_1" Type="Text" X="153" Y="80" Width="138" Height="95" Attributes="65539" Property="TEXT_1_PROP" Text="EyeMine requires Minecraft Java Edition to be installed first. You do not appear to have Minecraft Java Edition installed. " Order="1000"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="Bitmap_1" Type="Bitmap" X="25" Y="80" Width="113" Height="45" Attributes="1" Text="defaultbitmap.jpg" Order="1100"/>
     <ROW Dialog_="NewDialog" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="NewDialog" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
     <ROW Dialog_="NewDialog" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
@@ -533,6 +556,16 @@
     <ROW Dialog_="FolderDlg" Control_="Next" Event="SetTargetPath" Argument="APPDIR" Condition="1" Ordering="200" MsiKey="FolderDlg#Next#SetTargetPath#APPDIR#1"/>
     <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="201"/>
     <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="MinecraftInstallationRequired" Condition="AI_INSTALL AND MINECRAFT_INSTALLED=&quot;false&quot;" Ordering="3"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="ForgeInstallationRequired" Condition="FORGE_INSTALLED=&quot;false&quot; AND AI_INSTALL" Ordering="2"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationRequired" Condition="FORGE_INSTALLED=&quot;false&quot; AND AI_INSTALL" Ordering="2"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND FORGE_INSTALLED=&quot;false&quot;" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationRequired" Condition="AI_INSTALL AND MINECRAFT_INSTALLED=&quot;false&quot;" Ordering="3"/>
+    <ROW Dialog_="ForgeInstallationRequired" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL AND FORGE_INSTALLED=&quot;false&quot;" Ordering="1"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND MINECRAFT_INSTALLED=&quot;false&quot;" Ordering="1"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL AND MINECRAFT_INSTALLED=&quot;false&quot;" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
@@ -540,6 +573,7 @@
     <ROW Directory_="Optikey_Dir" Component_="Optikey" ManualDelete="false"/>
     <ROW Directory_="EyeTracker_Dir" Component_="EyeTracker" ManualDelete="false"/>
     <ROW Directory_="Mouse_Dir" Component_="Mouse" ManualDelete="false"/>
+    <ROW Directory_="Samples_Dir" Component_="Samples" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
@@ -565,6 +599,7 @@
     <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="EyeMineProperties" Type="1" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" Target="EyeMineProperties"/>
     <ROW Action="EyeTrackerComboSelected" Type="6" Source="PopulateComboboxes.vbs" Target="EyeTrackerSelected" WithoutSeq="true"/>
     <ROW Action="LanguageSelected" Type="6" Source="PopulateComboboxes.vbs" Target="LanguageSelected" WithoutSeq="true"/>
     <ROW Action="OptiKeyProperties" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="LoadOptikeyProperties"/>
@@ -582,6 +617,8 @@
     <ROW Action="UninstallPreviousVersions" Type="1" Source="aicustact.dll" Target="UninstallPreviousVersions" Options="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
+    <ROW Dialog="ForgeInstallationRequired" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="MinecraftInstallationRequired" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="NewDialog" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="NewSeqDialog" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
   </COMPONENT>
@@ -668,9 +705,7 @@
     <ROW Feature_="MainFeature" Component_="WindowsInput.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
-    <ROW Feature_="MainFeature" Component_="AltAlphaHorizontalKeyboard.xml"/>
     <ROW Feature_="MainFeature" Component_="Mouse"/>
-    <ROW Feature_="MainFeature" Component_="Demo_Bottom.xml"/>
     <ROW Feature_="MainFeature" Component_="EyeTracker"/>
     <ROW Feature_="MainFeature" Component_="_MC_5_1_1_intro.xml"/>
     <ROW Feature_="MainFeature" Component_="MinecraftBuild.xml"/>
@@ -678,6 +713,9 @@
     <ROW Feature_="MainFeature" Component_="_MC_5_1_1_intro.xml_4"/>
     <ROW Feature_="MainFeature" Component_="_MC_5_1_1_intro.xml_3"/>
     <ROW Feature_="MainFeature" Component_="MinecraftBuild.xml_2"/>
+    <ROW Feature_="MainFeature" Component_="Nefarius.ViGEm.Client.dll"/>
+    <ROW Feature_="MainFeature" Component_="Samples"/>
+    <ROW Feature_="MainFeature" Component_="OptiKeyStandardPlugins.dll_1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="EyeMineV2.exe" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\EyeMineV2.ico" Index="0"/>
@@ -705,19 +743,20 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="58"/>
-    <ROW Action="AI_DpiContentScale" Sequence="57"/>
-    <ROW Action="AI_EnableDebugLog" Sequence="56"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="59"/>
+    <ROW Action="AI_DpiContentScale" Sequence="58"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="57"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
     <ROW Action="SetPropertyLanguageSelected" Sequence="201"/>
-    <ROW Action="SetPropertyEyeTrackerSelected" Sequence="55"/>
+    <ROW Action="SetPropertyEyeTrackerSelected" Sequence="56"/>
     <ROW Action="SetPropertyFontFamily" Sequence="52"/>
     <ROW Action="SetPropertyFontWeight" Sequence="53"/>
-    <ROW Action="SetPropertyFontStretch" Sequence="54"/>
+    <ROW Action="SetPropertyFontStretch" Sequence="55"/>
     <ROW Action="OptiKeyProperties" Sequence="51"/>
     <ROW Action="UninstallPreviousVersions" Condition="( NOT Installed )" Sequence="202"/>
+    <ROW Action="EyeMineProperties" Sequence="54"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>

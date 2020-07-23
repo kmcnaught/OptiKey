@@ -93,6 +93,29 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             }
         }
 
+
+        [CustomAction]
+        public static ActionResult EyeMineProperties(Session session)
+        {
+            // Run all the other actions and set installer properties
+            ActionResult success = ActionResult.Success;
+            if (QueryTobiiSupported(session) != success)
+            {
+                return ActionResult.Failure;
+            }
+            if (CheckForMinecraftInstallation(session) != success)
+            {
+                return ActionResult.Failure;
+            }
+            if (CheckForForgeInstallation(session) != success)
+            {
+                return ActionResult.Failure;
+            }
+
+            return ActionResult.Success;
+
+        }
+
         [CustomAction]
         public static ActionResult QueryTobiiSupported(Session session)
         {
@@ -106,7 +129,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 return ActionResult.Failure;
             }
 
-            session["TOBII_SUPPORTED"] = supported.ToString();
+            session["TOBII_SUPPORTED"] = supported.ToString().ToLower();
 
             return ActionResult.Success;
         }
@@ -201,22 +224,34 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         public static ActionResult CheckForForgeInstallation(Session session)
         {
             //session.Log("Begin CheckForForgeInstallation");
+            session["FORGE_VERSION_REQUIRED"] = forgeVersion;
 
             if (Directory.Exists(forgePath))
+            {
+                session["FORGE_INSTALLED"] = true.ToString().ToLower();
                 return ActionResult.Success;
+            }
             else
+            {
+                session["FORGE_INSTALLED"] = false.ToString().ToLower();
                 return ActionResult.Failure;
+            }
         }
-
 
         [CustomAction]
         public static ActionResult CheckForMinecraftInstallation(Session session)
         {
             //session.Log("Begin CheckForMinecraftInstallation");
             if (IsProgramInstalled("Minecraft Launcher"))
+            {
+                session["MINECRAFT_INSTALLED"] = true.ToString().ToLower();
                 return ActionResult.Success;
+            }
             else
+            {
+                session["MINECRAFT_INSTALLED"] = false.ToString().ToLower();
                 return ActionResult.Failure;
+            }
         }
 
         [CustomAction]
