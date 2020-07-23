@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CustomAction.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
