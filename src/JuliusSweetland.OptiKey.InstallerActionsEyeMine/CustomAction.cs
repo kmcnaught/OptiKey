@@ -140,9 +140,69 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         }
 
         [CustomAction]
+        public static ActionResult InstallMod(Session session)
+        {
+            session.Log("Installing mod");
+
+            var actionData = session["CustomActionData"];
+            bool tobiiSupport = false;
+            Boolean.TryParse(actionData, out tobiiSupport);
+            session.Log(String.Format("actionData: {0} {1}", actionData, tobiiSupport));
+            
+            // First time we'll do some forge config-poking
+            // This will also ensure all paths have been created
+            UpdateForgeConfig(session);
+
+            session.Log("Begin InstallMod");
+            
+            // Note that when AI runs this DLL from the installed (Program Files) directory, it 
+            // actually runs it in a temporary subdir, so all local paths need one level of redirection up
+            string rootDir = "..";
+            string modFile = "eyemine2.0.12.jar";
+            string configFileSrc = "eyemine-client-mouse.toml";
+            if (tobiiSupport)
+            {
+                configFileSrc = "eyemine-client-tobii.toml";
+            }
+            string configFileDst = "eyemine-client.toml";
+
+            if (!File.Exists(Path.Combine(rootDir, modFile)))
+            {
+                session.Log("Cannot find mod file to install");
+                return ActionResult.Failure;
+            }
+            if (!File.Exists(Path.Combine(rootDir, configFileSrc)))
+            {
+                session.Log("Cannot find config file to install");
+                return ActionResult.Failure;
+            }
+
+            string eyemineGameDir = Path.Combine(minecraftPath, "EyeMineV2");
+            string modDir = Path.Combine(eyemineGameDir, "mods");
+            string configDir = Path.Combine(eyemineGameDir, "config");
+
+            try
+            {
+                session.Log("copying from:" + modFile);
+                session.Log("to:" + Path.Combine(modDir, modFile));
+                File.Copy(Path.Combine(rootDir, modFile), Path.Combine(modDir, modFile));
+                File.Copy(Path.Combine(rootDir, configFileSrc), Path.Combine(configDir, configFileDst));
+            }
+            catch (Exception e)
+            {
+                session.Log("Error copying files");
+                session.Log(e.ToString());
+                return ActionResult.Failure;
+            }
+
+            return ActionResult.Success;
+
+        }
+
+        [CustomAction]
         public static ActionResult UpdateForgeConfig(Session session)
         {
-            //session.Log("Begin UpdateForgeConfig");
+            session.Log("Begin UpdateForgeConfig");
              
             // Check launcher_profiles file exists
             if (!File.Exists(launcherProfiles))
@@ -173,6 +233,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                     Directory.CreateDirectory(eyemineGameDir);
                     Directory.CreateDirectory(Path.Combine(eyemineGameDir, "mods"));
                     Directory.CreateDirectory(Path.Combine(eyemineGameDir, "saves"));
+                    Directory.CreateDirectory(Path.Combine(eyemineGameDir, "config"));
 
                     // Add new profile for EyeMineV2
                     string eyeMineUuid = System.Guid.NewGuid().ToString("N");
