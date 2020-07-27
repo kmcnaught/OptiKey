@@ -417,7 +417,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.POINT_SELECTION_DESCRIPTION, pointSelectionSb));
                 
                 inputService.RequestSuspend();
-                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                //audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 mainViewModel.RaiseToastNotification(
                           title,
                     message.ToString(),
