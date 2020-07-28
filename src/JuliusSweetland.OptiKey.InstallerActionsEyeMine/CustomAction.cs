@@ -331,5 +331,128 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             else
                 return ActionResult.Failure;
         }
+
+        private static string AppendItemToListData(string combodata, string item)
+        {
+            //# The AI_LISTBOX_DATA must be set like this: CHECKLIST_1_PROP|Value 1|Value 2| Value 3|...
+            const string sep1 = "|";
+            combodata += sep1 + item;
+            return combodata;
+        }
+
+        public static string SanitisePropName(string prop_name)
+        {
+            prop_name = prop_name.Replace(" ", "");
+            prop_name = prop_name.Replace(")", "");
+            prop_name = prop_name.Replace("(", "");
+            return prop_name;
+        }
+
+        private static string ForceAscii(string inputString)
+        {
+            return Encoding.ASCII.GetString(
+                Encoding.Convert(
+                    Encoding.UTF8,
+                    Encoding.GetEncoding(
+                        Encoding.ASCII.EncodingName,
+                        new EncoderReplacementFallback(string.Empty),
+                        new DecoderExceptionFallback()
+                    ),
+                    Encoding.UTF8.GetBytes(inputString)
+                )
+            );
+        }
+
+        [CustomAction]
+        public static ActionResult GetMinecraftSaves(Session session)
+        {
+            //session.Log("Begin CheckForMinecraftInstallation");
+
+            //string savesPath = Path.Combine(minecraftPath, "saves")
+            string savesRoot = Path.Combine(appDataPath, ".minecraft250620", "saves");
+
+            string checkListData = ""; // we'll append to this as we go
+
+            List<KeyValuePair<string, DateTime>> saves = new List<KeyValuePair<string, DateTime>>();
+
+            if (Directory.Exists(savesRoot))
+            {
+                string[] saveDirs = Directory.GetDirectories(savesRoot);
+                Console.WriteLine("Directories:");
+                foreach (var saveDir in saveDirs)
+                {
+                    Console.WriteLine(saveDir);
+                    string file = Path.Combine(saveDir, "level.dat");
+                    if (File.Exists(file))
+                    {
+                        DateTime latestTime = File.GetLastWriteTime(file);
+                        Console.WriteLine(latestTime);
+
+                        string dirName = new DirectoryInfo(saveDir).Name;
+                        if (latestTime > DateTime.MinValue)
+                        {
+                            saves.Add(new KeyValuePair<string, DateTime>(dirName, latestTime));
+                        }
+                    }
+                }
+            }
+
+            // Set combobox data
+            saves.Sort((x, y) => y.Value.CompareTo(x.Value)); // order by date
+            foreach (var save in saves)
+            {
+                string filenameAndDate = String.Format("{0} (last played {1})", save.Key, GetPrettyDate(save.Value));
+                checkListData = AppendItemToListData(checkListData, ForceAscii(filenameAndDate));
+            }
+            session["SAVES_CHECKLIST_DATA"] = checkListData;
+
+            return ActionResult.Success;
+        }
+
+        public static string GetPrettyDate(DateTime d)
+        {
+            DateTime now = DateTime.Now;
+            if (d > now)
+            { // future date
+                return null;
+            }
+
+            TimeSpan s = now.Subtract(d);
+
+            int dayDiff = (int)s.TotalDays;
+            int secDiff = (int)s.TotalSeconds;
+            int weekDiff = (int) dayDiff / 7;
+            int monthDiff = (int) dayDiff / 30; // APPROXIMATE ONLY
+            int yearDiff = (int) monthDiff / 12;
+
+            if (dayDiff == 0)
+            {
+                return "today";
+            }
+            if (dayDiff == 1)
+            {
+                return "yesterday";
+            }
+            if (dayDiff < 7)
+            {
+                return $"{dayDiff} days ago";
+            }
+            if (monthDiff < 1)
+            {
+                if (weekDiff == 1)
+                    return $"{weekDiff} week ago";
+                else
+                    return $"{weekDiff} weeks ago";
+            }
+            if (yearDiff < 1)
+            {
+                if (monthDiff == 1)
+                    return $"{monthDiff} month ago";
+                else
+                    return $"{monthDiff} months ago";
+            }
+            
+            return "more than a year ago";
+        }
     }
 }
