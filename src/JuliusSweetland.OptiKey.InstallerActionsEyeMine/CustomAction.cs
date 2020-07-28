@@ -458,6 +458,30 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             }
             session["SAVES_CHECKLIST_DATA"] = checkListData;
 
+            // Set defaults: any from the last month, or most recent one. 
+            DateTime now = DateTime.Now;
+            String defaultData = "";
+            foreach (var save in saves)
+            {
+                TimeSpan age = now.Subtract(save.Value);
+
+                if (age < TimeSpan.FromDays(31))
+                {
+                    if (!String.IsNullOrEmpty(defaultData))
+                        defaultData += ",";
+                    string filenameAndDate = String.Format("{0} (last played {1})", save.Key, GetPrettyDate(save.Value));
+                    defaultData += filenameAndDate;
+                }
+            }
+            // default first in list
+            if (String.IsNullOrEmpty(defaultData))
+            {
+                var firstElement = saves.ElementAt(0);
+                string filenameAndDate = String.Format("{0} (last played {1})", firstElement.Key, GetPrettyDate(firstElement.Value));
+                defaultData = filenameAndDate;
+            }
+            session["SAVES_CHECKLIST_DEFAULT"] = defaultData;
+
             return ActionResult.Success;
         }
 

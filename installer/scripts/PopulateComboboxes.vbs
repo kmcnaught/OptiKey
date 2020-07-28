@@ -17,10 +17,11 @@ Function PopulateSavesChecklist()
   ' This is specified in the combo element in the AIP dialog
   Const comboProp = "CHECKLIST_SAVES" 
 
-  ' This property has been populated earlier via the Optikey DLL
+  ' These properties have been populated earlier via the Optikey DLL
   Const comboDataProp = "SAVES_CHECKLIST_DATA"  
+  Const comboDefaultProp = "SAVES_CHECKLIST_DEFAULT"  
 
-  PopulateChecklistFromProperties(comboProp), comboDataProp
+  PopulateChecklistFromProperties(comboProp), comboDataProp, comboDefaultProp  
 
 End  Function
 
@@ -66,8 +67,8 @@ End  Function
 
 
 ' Helper to populate a checklist from existing property and default value
-Function PopulateChecklistFromProperties(listboxProp, listDataProp)   
-  
+Function PopulateChecklistFromProperties(listboxProp, listDataProp, listDefaultProp)   
+
   ' Don't repopulate if this has already been run
   If Len(Session.Property(listboxProp)) > 0 Then
     Exit Function
@@ -77,6 +78,9 @@ Function PopulateChecklistFromProperties(listboxProp, listDataProp)
 
   ' This property will be used by the PopulateListBox action
   Session.Property("AI_LISTBOX_DATA") = AIListData
+
+  ' Directly set the current selection (= CSV list of any that are selected)
+  Session.Property(listboxProp) = Session.Property(listDefaultProp)
   
   ' Invoke the action to populate the combo box with cached data
   Session.DoAction("PopulateListBox")  
