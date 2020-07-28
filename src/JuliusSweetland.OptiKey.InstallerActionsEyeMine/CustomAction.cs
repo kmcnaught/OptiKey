@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.Remoting.Messaging;
+using System.Runtime.Serialization.Formatters;
 using System.Text;
 using Microsoft.Deployment.WindowsInstaller;
 using Newtonsoft.Json;
@@ -140,8 +141,52 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         }
 
         [CustomAction]
+        public static ActionResult CopySaves(Session session)
+        {
+            session.Log("Start CopySaves action");
+
+            // This CustomAction happens after main install has happened. At this point you cannot
+            // access installer properties, so any data must be passed via CustomActionData.
+            var actionData = session["CustomActionData"];
+            session.Log("actionData: "+actionData);
+            if (String.IsNullOrEmpty(actionData))
+            {
+                session.Log("No world files to be copied");
+                return ActionResult.Success;
+            }
+
+            string eyemineGameDir = Path.Combine(minecraftPath, "EyeMineV2");
+            string newSavesDir = Path.Combine(eyemineGameDir, "saves");
+            string oldSavesDir = Path.Combine(minecraftPath, "saves");
+
+            var worlds = actionData.Split(',');
+            foreach (var world in worlds)
+            {
+                // world string is currently, e.g.:
+                // My World Name (last played 3 days ago)
+                
+                // Split folder name from recency text
+                var i = world.LastIndexOf(" (");
+                var worldName = world.Substring(0, i);
+                session.Log($"Copying everything from {Path.Combine(oldSavesDir, worldName)} to {Path.Combine(newSavesDir, worldName)}");
+                // Copy folder to new location
+                DirectoryCopy(Path.Combine(oldSavesDir, worldName), 
+                                Path.Combine(newSavesDir, worldName), 
+                                true);
+
+                // TODO: split path and creation date, copy it.
+                session.Log(worldName);
+            }
+            session.Log("End CopySaves action");
+
+            return ActionResult.Success;
+        }
+
+        [CustomAction]
         public static ActionResult InstallMod(Session session)
         {
+            // This CustomAction happens after main install has happened. At this point you cannot
+            // access installer properties, so any data must be passed via CustomActionData.
             session.Log("Installing mod");
 
             var actionData = session["CustomActionData"];
@@ -460,6 +505,44 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             }
             
             return "more than a year ago";
+        }
+
+        private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
+        {
+            // Get the subdirectories for the specified directory.
+            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
+
+            if (!dir.Exists)
+            {
+                throw new DirectoryNotFoundException(
+                    "Source directory does not exist or could not be found: "
+                    + sourceDirName);
+            }
+
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            // If the destination directory doesn't exist, create it.
+            if (!Directory.Exists(destDirName))
+            {
+                Directory.CreateDirectory(destDirName);
+            }
+
+            // Get the files in the directory and copy them to the new location.
+            FileInfo[] files = dir.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                string temppath = Path.Combine(destDirName, file.Name);
+                file.CopyTo(temppath, false);
+            }
+
+            // If copying subdirectories, copy them and their contents to new location.
+            if (copySubDirs)
+            {
+                foreach (DirectoryInfo subdir in dirs)
+                {
+                    string temppath = Path.Combine(destDirName, subdir.Name);
+                    DirectoryCopy(subdir.FullName, temppath, copySubDirs);
+                }
+            }
         }
     }
 }
