@@ -68,7 +68,6 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
         public static bool IsProgramInstalled(string programDisplayName)
         {
-            bool b = false;
             string regKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
 
             foreach (var item in Registry.LocalMachine.OpenSubKey(regKey).GetSubKeyNames())
