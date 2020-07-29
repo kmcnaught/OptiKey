@@ -564,7 +564,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             return "more than a year ago";
         }
 
-        private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
+        private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs, bool allowOverwrite=false)
         {
             // Get the subdirectories for the specified directory.
             DirectoryInfo dir = new DirectoryInfo(sourceDirName);
@@ -588,7 +588,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             foreach (FileInfo file in files)
             {
                 string temppath = Path.Combine(destDirName, file.Name);
-                file.CopyTo(temppath, true);
+                file.CopyTo(temppath, allowOverwrite);
             }
 
             // If copying subdirectories, copy them and their contents to new location.
