@@ -140,6 +140,12 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             }
 
             session["TOBII_SUPPORTED"] = supported.ToString().ToLower();
+            
+            // This property gets used to set the value in the EyeMine config XML file
+            if (supported)
+                session["EYETRACKER_SELECTED"] = "TobiiEyeX";
+            else
+                session["EYETRACKER_SELECTED"] = "MousePosition";
 
             return ActionResult.Success;
         }

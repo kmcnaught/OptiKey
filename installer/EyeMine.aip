@@ -352,7 +352,6 @@
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" FileName="WINDOW~3.DLL|WindowsRecipes.TaskbarSingleInstance.Wpf.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.dll" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" FileName="WINDOW~3.PDB|WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" SelfReg="false"/>
     <ROW File="Bass.Net.xml" Component_="CREDITS.md" FileName="BASSNE~1.XML|Bass.Net.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Bass.Net.xml" SelfReg="false"/>
-    <ROW File="EyeMineV2.exe.config" Component_="CREDITS.md" FileName="EYEMIN~1.CON|EyeMineV2.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\EyeMineV2.exe.config" SelfReg="false"/>
     <ROW File="EyeXFramework.xml" Component_="CREDITS.md" FileName="EYEXFR~1.XML|EyeXFramework.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\EyeXFramework.xml" SelfReg="false"/>
     <ROW File="log4net.config" Component_="CREDITS.md" FileName="LOG4NE~1.CON|log4net.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\log4net.config" SelfReg="false"/>
     <ROW File="log4net.xml" Component_="CREDITS.md" FileName="log4net.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\log4net.xml" SelfReg="false"/>
@@ -455,6 +454,7 @@
     <ROW File="Microsoft.Deployment.WindowsInstaller.xml" Component_="EyeXFramework.xml" FileName="MICROS~1.XML|Microsoft.Deployment.WindowsInstaller.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Microsoft.Deployment.WindowsInstaller.xml" SelfReg="false"/>
     <ROW File="Newtonsoft.Json.xml_1" Component_="EyeXFramework.xml" FileName="NEWTON~1.XML|Newtonsoft.Json.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Newtonsoft.Json.xml" SelfReg="false"/>
     <ROW File="Tobii.EyeX.Client.Net20.xml_1" Component_="EyeXFramework.xml" FileName="TOBIIE~1.XML|Tobii.EyeX.Client.Net20.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Tobii.EyeX.Client.Net20.xml" SelfReg="false"/>
+    <ROW File="EyeMineV2.exe.config" Component_="CREDITS.md" FileName="EYEMIN~1.CON|EyeMineV2.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\EyeMineV2.exe.config" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -495,6 +495,12 @@
     <ROW Action="AI_DeleteRLzma" Description="Deleting files extracted from archive" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
     <ROW Action="AI_ExtractFiles" Description="Extracting files from archive" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
     <ROW Action="AI_ExtractLzma" Description="Extracting files from archive" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
+    <ROW Action="AI_XmlCommit" Description="Committing XML file configurations." DescriptionLocId="ActionText.Description.AI_XmlCommit" Template="Committing XML file configurations." TemplateLocId="ActionText.Template.AI_XmlCommit"/>
+    <ROW Action="AI_XmlConfig" Description="Executing XML file configurations" DescriptionLocId="ActionText.Description.AI_XmlConfig" Template="Configuring XML file: &quot;[1]&quot;" TemplateLocId="ActionText.Template.AI_XmlConfig"/>
+    <ROW Action="AI_XmlInstall" Description="Generating actions to configure XML files" DescriptionLocId="ActionText.Description.AI_XmlInstall"/>
+    <ROW Action="AI_XmlRemove" Description="Executing XML file configurations" DescriptionLocId="ActionText.Description.AI_XmlRemove" Template="Configuring XML file: &quot;[1]&quot;" TemplateLocId="ActionText.Template.AI_XmlRemove"/>
+    <ROW Action="AI_XmlRollback" Description="Rolling back XML file configurations." DescriptionLocId="ActionText.Description.AI_XmlRollback" Template="Rolling back XML file configurations." TemplateLocId="ActionText.Template.AI_XmlRollback"/>
+    <ROW Action="AI_XmlUninstall" Description="Generating actions to configure XML files" DescriptionLocId="ActionText.Description.AI_XmlUninstall"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiAppSearchComponent">
     <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_LM" Builds="DefaultBuild"/>
@@ -508,6 +514,7 @@
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
     <ROW Name="defaultbitmap.jpg" SourcePath="&lt;AI_RES&gt;binary\default-bitmap.jpg"/>
     <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
+    <ROW Name="xmlCfg.dll" SourcePath="&lt;AI_CUSTACTS&gt;xmlCfg.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="ForgeInstallationRequired" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Next]" Order="100"/>
@@ -635,6 +642,8 @@
     <ROW Action="AI_DATA_SETTER" Type="51" Source="AI_ExtractFiles" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DATA_SETTER_1" Type="51" Source="InstallMod" Target="[TOBII_SUPPORTED]"/>
     <ROW Action="AI_DATA_SETTER_2" Type="51" Source="CopySaves" Target="[CHECKLIST_SAVES]"/>
+    <ROW Action="AI_DATA_SETTER_3" Type="51" Source="CustomActionData" Target="[~]"/>
+    <ROW Action="AI_DATA_SETTER_4" Type="51" Source="CustomActionData" Target="[~]"/>
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
     <ROW Action="AI_DeleteCadLzma" Type="51" Source="AI_DeleteLzma" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DeleteLzma" Type="1025" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
@@ -655,6 +664,12 @@
     <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="AI_XmlCommit" Type="11777" Source="xmlCfg.dll" Target="OnXmlCommit" WithoutSeq="true"/>
+    <ROW Action="AI_XmlConfig" Type="11265" Source="xmlCfg.dll" Target="OnXmlConfig" WithoutSeq="true"/>
+    <ROW Action="AI_XmlInstall" Type="1" Source="xmlCfg.dll" Target="OnXmlInstall" AdditionalSeq="AI_DATA_SETTER_3"/>
+    <ROW Action="AI_XmlRemove" Type="11265" Source="xmlCfg.dll" Target="OnXmlRemove" WithoutSeq="true"/>
+    <ROW Action="AI_XmlRollback" Type="11521" Source="xmlCfg.dll" Target="OnXmlRollback" WithoutSeq="true"/>
+    <ROW Action="AI_XmlUninstall" Type="1" Source="xmlCfg.dll" Target="OnXmlUninstall" AdditionalSeq="AI_DATA_SETTER_4"/>
     <ROW Action="CopySaves" Type="1553" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" Target="CopySaves" AdditionalSeq="AI_DATA_SETTER_2"/>
     <ROW Action="EyeMineProperties" Type="1" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dl_1" Target="EyeMineProperties"/>
     <ROW Action="EyeTrackerComboSelected" Type="6" Source="PopulateComboboxes.vbs" Target="EyeTrackerSelected" WithoutSeq="true"/>
@@ -813,24 +828,28 @@
     <ROW Action="AI_ExtractFiles" Sequence="3998" Builds="DefaultBuild"/>
     <ROW Action="AI_DATA_SETTER" Sequence="3997"/>
     <ROW Action="AI_EstimateExtractFiles" Sequence="3999" Builds="DefaultBuild"/>
+    <ROW Action="AI_XmlInstall" Condition="(REMOVE &lt;&gt; &quot;ALL&quot;)" Sequence="5102"/>
+    <ROW Action="AI_DATA_SETTER_3" Condition="(REMOVE &lt;&gt; &quot;ALL&quot;)" Sequence="5101"/>
+    <ROW Action="AI_XmlUninstall" Condition="(REMOVE)" Sequence="3102"/>
+    <ROW Action="AI_DATA_SETTER_4" Condition="(REMOVE)" Sequence="3101"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="60"/>
-    <ROW Action="AI_DpiContentScale" Sequence="59"/>
-    <ROW Action="AI_EnableDebugLog" Sequence="58"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="61"/>
+    <ROW Action="AI_DpiContentScale" Sequence="60"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="59"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
-    <ROW Action="SetPropertyLanguageSelected" Sequence="201"/>
-    <ROW Action="SetPropertyEyeTrackerSelected" Sequence="57"/>
-    <ROW Action="SetPropertyFontFamily" Sequence="52"/>
-    <ROW Action="SetPropertyFontWeight" Sequence="53"/>
-    <ROW Action="SetPropertyFontStretch" Sequence="56"/>
-    <ROW Action="OptiKeyProperties" Sequence="51"/>
-    <ROW Action="UninstallPreviousVersions" Condition="( NOT Installed )" Sequence="202"/>
-    <ROW Action="EyeMineProperties" Sequence="55"/>
-    <ROW Action="GetMinecraftSaves" Condition="( NOT Installed )" Sequence="54"/>
+    <ROW Action="OptiKeyProperties" Sequence="56"/>
+    <ROW Action="UninstallPreviousVersions" Condition="( NOT Installed )" Sequence="201"/>
+    <ROW Action="EyeMineProperties" Sequence="58"/>
+    <ROW Action="GetMinecraftSaves" Condition="( NOT Installed )" Sequence="57"/>
+    <ROW Action="SetPropertyEyeTrackerSelected" Sequence="51"/>
+    <ROW Action="SetPropertyFontStretch" Sequence="52"/>
+    <ROW Action="SetPropertyLanguageSelected" Sequence="53"/>
+    <ROW Action="SetPropertyFontFamily" Sequence="55"/>
+    <ROW Action="SetPropertyFontWeight" Sequence="54"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
@@ -872,5 +891,28 @@
     <ROW Directory_="EyeTracker_4_Dir" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker" Feature="MainFeature" ExcludePattern="*~|#*#|%*%|._|CVS|.cvsignore|SCCS|vssver.scc|mssccprj.scc|vssver2.scc|.svn|.DS_Store" ExcludeFlags="6" FileAddOptions="4"/>
     <ROW Directory_="Mouse_3_Dir" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse" Feature="MainFeature" ExcludePattern="*~|#*#|%*%|._|CVS|.cvsignore|SCCS|vssver.scc|mssccprj.scc|vssver2.scc|.svn|.DS_Store" ExcludeFlags="6" FileAddOptions="4"/>
     <ROW Directory_="Release_1_Dir" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release" Feature="MainFeature" ExcludePattern="*~|#*#|%*%|._|CVS|.cvsignore|SCCS|vssver.scc|mssccprj.scc|vssver2.scc|.svn|.DS_Store" ExcludeFlags="6" FileAddOptions="4"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.XmlAttributeComponent">
+    <ROW XmlAttribute="allowExeDefinition" XmlElement="section" Name="allowExeDefinition" Flags="14" Order="2" Value="MachineToLocalUser"/>
+    <ROW XmlAttribute="name" XmlElement="sectionGroup" Name="name" Flags="15" Order="0" Value="userSettings"/>
+    <ROW XmlAttribute="name_1" XmlElement="section" Name="name" Flags="15" Order="0" Value="JuliusSweetland.OptiKey.EyeMine.Properties.Settings"/>
+    <ROW XmlAttribute="name_2" XmlElement="setting" Name="name" Flags="14" Order="0" Value="PointsSource"/>
+    <ROW XmlAttribute="requirePermission" XmlElement="section" Name="requirePermission" Flags="14" Order="3" Value="false"/>
+    <ROW XmlAttribute="serializeAs" XmlElement="setting" Name="serializeAs" Flags="14" Order="1" Value="String"/>
+    <ROW XmlAttribute="type" XmlElement="sectionGroup" Name="type" Flags="14" Order="1" Value="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+    <ROW XmlAttribute="type_1" XmlElement="section" Name="type" Flags="14" Order="1" Value="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.XmlElementComponent">
+    <ROW XmlElement="JuliusSweetland.OptiKey.EyeMine.Pro" ParentElement="userSettings" Name="JuliusSweetland.OptiKey.EyeMine.Properties.Settings" Condition="1" Order="0" Flags="14"/>
+    <ROW XmlElement="configSections" ParentElement="configuration" Name="configSections" Condition="1" Order="0" Flags="14"/>
+    <ROW XmlElement="configuration" Name="configuration" Condition="1" Order="0" Flags="30"/>
+    <ROW XmlElement="section" ParentElement="sectionGroup" Name="section" Condition="1" Order="0" Flags="14"/>
+    <ROW XmlElement="sectionGroup" ParentElement="configSections" Name="sectionGroup" Condition="1" Order="0" Flags="14"/>
+    <ROW XmlElement="setting" ParentElement="JuliusSweetland.OptiKey.EyeMine.Pro" Name="setting" Condition="1" Order="0" Flags="30"/>
+    <ROW XmlElement="userSettings" ParentElement="configuration" Name="userSettings" Condition="1" Order="1" Flags="14"/>
+    <ROW XmlElement="value" ParentElement="setting" Name="value" Condition="1" Order="0" Flags="30" Text="[EYETRACKER_SELECTED]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.XmlFileComponent">
+    <ROW XmlFile="EyeMineV2.exe.config" FileName="EYEMIN~1.CON|EyeMineV2.exe.config" DirProperty="Release_Dir" Component="CREDITS.md" RootElement="configuration" Flags="89" Version="1.0" Encoding="UTF-8" IndentUnits="2"/>
   </COMPONENT>
 </DOCUMENT>
