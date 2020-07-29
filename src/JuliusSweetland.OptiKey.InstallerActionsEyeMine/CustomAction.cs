@@ -163,21 +163,51 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             {
                 // world string is currently, e.g.:
                 // My World Name (last played 3 days ago)
-                
+
                 // Split folder name from recency text
                 var i = world.LastIndexOf(" (");
                 var worldName = world.Substring(0, i);
-                session.Log($"Copying everything from {Path.Combine(oldSavesDir, worldName)} to {Path.Combine(newSavesDir, worldName)}");
+                session.Log(
+                    $"Copying everything from {Path.Combine(oldSavesDir, worldName)} to {Path.Combine(newSavesDir, worldName)}");
                 // Copy folder to new location
-                DirectoryCopy(Path.Combine(oldSavesDir, worldName), 
-                                Path.Combine(newSavesDir, worldName), 
-                                true);
+                DirectoryCopy(Path.Combine(oldSavesDir, worldName),
+                    Path.Combine(newSavesDir, worldName),
+                    true);
 
                 // TODO: split path and creation date, copy it.
                 session.Log(worldName);
             }
+
             session.Log("End CopySaves action");
 
+            return ActionResult.Success;
+        }
+
+        private static string FindModFile(string baseDir)
+        {
+            string[] files = Directory.GetFiles(baseDir, "eyemine*.jar");
+            if (files.Length > 0)
+            {
+                return files.First();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static bool EyeMineDirAlreadyExists()
+        {
+            string eyemineGameDir = Path.Combine(minecraftPath, "EyeMineV2");
+            bool alreadyExists = Directory.Exists(eyemineGameDir);
+            return alreadyExists;
+        }
+
+        [CustomAction]
+        public static ActionResult CheckIfEyeMineModAlreadyInstalled(Session session)
+        {
+            bool alreadyExists = EyeMineDirAlreadyExists();
+            session["FIRST_MOD_INSTALL"] = (!alreadyExists).ToString().ToLowerInvariant();
             return ActionResult.Success;
         }
 
@@ -198,7 +228,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             bool alreadyInstalled = false;
             try
             {
-                alreadyInstalled = UpdateForgeConfig();
+                alreadyInstalled = UpdateForgeConfig(session);
             }
             catch (Exception e)
             {
@@ -206,16 +236,44 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 return ActionResult.Failure;
             }
             session.Log("alreadyInstalled? "+ alreadyInstalled);
-            
-            // Extra copying of files first time
-            // TODO: On upgrades we'll want mod *replacing* but no config copying
-            if (!alreadyInstalled)
-            {
 
-                // Note that when AI runs this DLL from the installed (Program Files) directory, it 
-                // actually runs it in a temporary subdir, so all local paths need one level of redirection up
-                string rootDir = "..";
-                string modFile = "eyemine2.0.12.jar";
+            // Copy files for mod install
+
+            string eyemineGameDir = Path.Combine(minecraftPath, "EyeMineV2");
+            string modDir = Path.Combine(eyemineGameDir, "mods");
+            string configDir = Path.Combine(eyemineGameDir, "config");
+            string rootDir = ".."; // AI runs this from a temporary subdir in the Program Files directory. 
+            string modFile = FindModFile(rootDir);
+            session.Log($"Found mod file: {modFile}");
+
+            if (String.IsNullOrEmpty(modFile))
+            {
+                session.Log("Cannot find mod file to install");
+                return ActionResult.Failure;
+            }
+
+            if (alreadyInstalled)
+            {
+                // On upgrades we only need to replace mod file
+                string oldModFile = FindModFile(modDir);
+
+                try
+                {
+                    // Backup old file
+                    File.Copy(oldModFile, oldModFile + ".backup", true);
+                    // Install new file
+                    File.Copy(modFile, Path.Combine(modDir, Path.GetFileName(modFile)), true);
+                }
+                catch (Exception e)
+                {
+                    session.Log("Error copying files");
+                    session.Log(e.ToString());
+                    return ActionResult.Failure;
+                }
+            }
+            else 
+            {
+                // First time install we need to set up config also
                 string configFileSrc = "eyemine-client-mouse.toml";
                 if (tobiiSupport)
                 {
@@ -224,28 +282,16 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
                 string configFileDst = "eyemine-client.toml";
 
-                if (!File.Exists(Path.Combine(rootDir, modFile)))
-                {
-                    session.Log("Cannot find mod file to install");
-                    return ActionResult.Failure;
-                }
-
                 if (!File.Exists(Path.Combine(rootDir, configFileSrc)))
                 {
                     session.Log("Cannot find config file to install");
                     return ActionResult.Failure;
                 }
 
-                string eyemineGameDir = Path.Combine(minecraftPath, "EyeMineV2");
-                string modDir = Path.Combine(eyemineGameDir, "mods");
-                string configDir = Path.Combine(eyemineGameDir, "config");
-
                 try
                 {
-                    session.Log("copying from:" + modFile);
-                    session.Log("to:" + Path.Combine(modDir, modFile));
-                    File.Copy(Path.Combine(rootDir, modFile), Path.Combine(modDir, modFile));
-                    File.Copy(Path.Combine(rootDir, configFileSrc), Path.Combine(configDir, configFileDst));
+                    File.Copy( modFile, Path.Combine(modDir, Path.GetFileName(modFile)), true);
+                    File.Copy(Path.Combine(rootDir, configFileSrc), Path.Combine(configDir, configFileDst), true);
                 }
                 catch (Exception e)
                 {
@@ -259,8 +305,9 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
         }
 
-        public static bool UpdateForgeConfig()
+        public static bool UpdateForgeConfig(Session session)
         {
+            session.Log("UpdateForgeConfig");
 
             // Check launcher_profiles file exists
             if (!File.Exists(launcherProfiles))
@@ -270,7 +317,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
             // Backup current file
             string launcherProfilesBackup = GetBackupName(launcherProfiles);
-            File.Copy(launcherProfiles, launcherProfilesBackup);
+            File.Copy(launcherProfiles, launcherProfilesBackup, true);
 
             // Read JSON
             string json = File.ReadAllText(launcherProfiles);
@@ -285,6 +332,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             bool alreadyInstalled = Directory.Exists(eyemineGameDir);
             if (!alreadyInstalled)
             {
+                session.Log("Creating directories, fixing up profile");
+
                 // Create directories (our installer needs it to exist so it can copy mod over)
                 Directory.CreateDirectory(eyemineGameDir);
                 Directory.CreateDirectory(Path.Combine(eyemineGameDir, "mods"));
@@ -554,7 +603,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             foreach (FileInfo file in files)
             {
                 string temppath = Path.Combine(destDirName, file.Name);
-                file.CopyTo(temppath, false);
+                file.CopyTo(temppath, true);
             }
 
             // If copying subdirectories, copy them and their contents to new location.
