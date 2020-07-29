@@ -652,7 +652,7 @@
     <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
-    <ROW Action="CopySaves" Type="1041" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" Target="CopySaves" AdditionalSeq="AI_DATA_SETTER_2"/>
+    <ROW Action="CopySaves" Type="1553" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" Target="CopySaves" AdditionalSeq="AI_DATA_SETTER_2"/>
     <ROW Action="EyeMineProperties" Type="1" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dl_1" Target="EyeMineProperties"/>
     <ROW Action="EyeTrackerComboSelected" Type="6" Source="PopulateComboboxes.vbs" Target="EyeTrackerSelected" WithoutSeq="true"/>
     <ROW Action="GetMinecraftSaves" Type="1" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dl_1" Target="GetMinecraftSaves"/>
