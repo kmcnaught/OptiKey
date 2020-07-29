@@ -115,6 +115,11 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 session.Log("Error checking for Tobii support");
                 return ActionResult.Failure;
             }
+            if (CheckIfEyeMineModAlreadyInstalled(session) != success)
+            {
+                session.Log("Error checking for existing mod installation");
+                return ActionResult.Failure;
+            }
 
             return ActionResult.Success;
 
