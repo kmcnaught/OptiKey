@@ -448,21 +448,6 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             return prop_name;
         }
 
-        private static string ForceAscii(string inputString)
-        {
-            return Encoding.ASCII.GetString(
-                Encoding.Convert(
-                    Encoding.UTF8,
-                    Encoding.GetEncoding(
-                        Encoding.ASCII.EncodingName,
-                        new EncoderReplacementFallback(string.Empty),
-                        new DecoderExceptionFallback()
-                    ),
-                    Encoding.UTF8.GetBytes(inputString)
-                )
-            );
-        }
-
         [CustomAction]
         public static ActionResult GetMinecraftSaves(Session session)
         {
@@ -502,7 +487,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             foreach (var save in saves)
             {
                 string filenameAndDate = String.Format("{0} (last played {1})", save.Key, GetPrettyDate(save.Value));
-                checkListData = AppendItemToListData(checkListData, ForceAscii(filenameAndDate));
+                checkListData = AppendItemToListData(checkListData, filenameAndDate);
             }
             session["SAVES_CHECKLIST_DATA"] = checkListData;
 
