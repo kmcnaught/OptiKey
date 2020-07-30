@@ -626,10 +626,10 @@
     <ROW Dialog_="MinecraftSavesDlg" Control_="MinecraftSavesDlgDialogInitializer" Event="DoAction" Argument="PopulateSavesListBox" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationRequired" Condition="AI_INSTALL AND MINECRAFT_INSTALLED=&quot;false&quot;" Ordering="4"/>
     <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationRequired" Condition="AI_INSTALL AND FORGE_INSTALLED=&quot;false&quot;" Ordering="3"/>
-    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND FIRST_MOD_INSTALL=&quot;true&quot;" Ordering="2"/>
-    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND FIRST_MOD_INSTALL=&quot;true&quot;" Ordering="2"/>
-    <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND FIRST_MOD_INSTALL=&quot;true&quot;" Ordering="1"/>
-    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL AND FIRST_MOD_INSTALL=&quot;true&quot;" Ordering="1"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND FIRST_MOD_INSTALL=&quot;true&quot; AND NUMBER_OF_SAVES &lt;&gt; &quot;0&quot;" Ordering="2"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND FIRST_MOD_INSTALL=&quot;true&quot; AND NUMBER_OF_SAVES &lt;&gt; &quot;0&quot;" Ordering="2"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND FIRST_MOD_INSTALL=&quot;true&quot; AND NUMBER_OF_SAVES &lt;&gt; &quot;0&quot;" Ordering="1"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL AND FIRST_MOD_INSTALL=&quot;true&quot; AND NUMBER_OF_SAVES &lt;&gt; &quot;0&quot;" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>

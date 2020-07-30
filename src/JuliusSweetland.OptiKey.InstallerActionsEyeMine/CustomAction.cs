@@ -19,7 +19,6 @@ using Microsoft.Win32;
 using Tobii.EyeX.Client;
 using Environment = System.Environment;
 
-
 namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 {
     public class CustomActionsEyeMine
@@ -465,7 +464,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             //session.Log("Begin CheckForMinecraftInstallation");
 
             //string savesPath = Path.Combine(minecraftPath, "saves")
-            string savesRoot = Path.Combine(appDataPath, ".minecraft250620", "saves");
+            string savesRoot = Path.Combine(appDataPath, ".minecraft", "saves");
 
             string checkListData = ""; // we'll append to this as we go
 
@@ -501,6 +500,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 checkListData = AppendItemToListData(checkListData, filenameAndDate);
             }
             session["SAVES_CHECKLIST_DATA"] = checkListData;
+            session["NUMBER_OF_SAVES"] = saves.Count.ToString();
 
             // Set defaults: any from the last month, or most recent one. 
             DateTime now = DateTime.Now;
@@ -518,7 +518,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 }
             }
             // default first in list
-            if (String.IsNullOrEmpty(defaultData))
+            if (saves.Count > 0 && String.IsNullOrEmpty(defaultData))
             {
                 var firstElement = saves.ElementAt(0);
                 string filenameAndDate = String.Format("{0} (last played {1})", firstElement.Key, GetPrettyDate(firstElement.Value));
