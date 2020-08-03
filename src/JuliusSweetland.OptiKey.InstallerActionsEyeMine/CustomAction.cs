@@ -359,7 +359,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 Directory.CreateDirectory(Path.Combine(eyemineGameDir, "config"));
 
                 // Add new profile for EyeMineV2
-                string eyeMineUuid = System.Guid.NewGuid().ToString("N");
+                // We hardcode a UUID (ugh) to get alphabetical-order-priority
+                string eyeMineUuid = "00000000055c4050a3461d644eca8b8f"; ;
 
                 newProfiles[eyeMineUuid] = new JObject(
                     new JProperty("gameDir", eyemineGameDir),
