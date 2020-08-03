@@ -403,16 +403,10 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             session["FORGE_VERSION_REQUIRED"] = forgeVersion;
             session["FORGE_INSTALLED"] = "unknown";
 
-            if (Directory.Exists(forgePath))
-            {
-                session["FORGE_INSTALLED"] = true.ToString().ToLower();
-                return ActionResult.Success;
-            }
-            else
-            {
-                session["FORGE_INSTALLED"] = false.ToString().ToLower();
-                return ActionResult.Failure;
-            }
+            bool installed = Directory.Exists(forgePath);
+            session["FORGE_INSTALLED"] = installed.ToString().ToLower();
+            
+            return ActionResult.Success;
         }
 
         [CustomAction]
@@ -420,16 +414,11 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         {
             //session.Log("Begin CheckForMinecraftInstallation");
             session["MINECRAFT_INSTALLED"] = "unknown";
-            if (IsProgramInstalled("Minecraft Launcher"))
-            {
-                session["MINECRAFT_INSTALLED"] = true.ToString().ToLower();
-                return ActionResult.Success;
-            }
-            else
-            {
-                session["MINECRAFT_INSTALLED"] = false.ToString().ToLower();
-                return ActionResult.Failure;
-            }
+
+            bool installed = IsProgramInstalled("Minecraft Launcher");
+            session["MINECRAFT_INSTALLED"] = installed.ToString().ToLower();
+            
+            return ActionResult.Success;
         }
 
         [CustomAction]
