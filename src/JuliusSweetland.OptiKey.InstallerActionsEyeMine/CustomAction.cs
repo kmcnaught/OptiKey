@@ -298,9 +298,17 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                     return ActionResult.Failure;
                 }
 
+                string optionsFile = "options.txt";
+                if (!File.Exists(Path.Combine(rootDir, optionsFile)))
+                {
+                    session.Log("Cannot find options.txt to install");
+                    return ActionResult.Failure;
+                }
+
                 try
                 {
                     File.Copy( modFile, Path.Combine(modDir, Path.GetFileName(modFile)), true);
+                    File.Copy(Path.Combine(rootDir, optionsFile), Path.Combine(eyemineGameDir, Path.GetFileName(optionsFile)), true);
                     File.Copy(Path.Combine(rootDir, configFileSrc), Path.Combine(configDir, configFileDst), true);
                 }
                 catch (Exception e)
