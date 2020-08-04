@@ -540,7 +540,7 @@
     <ROW Dialog_="InputInfoDialogMouse" Control="Description" Type="Text" X="25" Y="20" Width="284" Height="23" Attributes="196611" Text="EyeMine doesn&apos;t have native support for your eye-tracker, but you can access it using mouse emulation" Order="700"/>
     <ROW Dialog_="InputInfoDialogMouse" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="InputInfoDialogMouse" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine V2 Input Source - Mouse cursor" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="Text_1" Type="Text" X="25" Y="72" Width="250" Height="128" Attributes="65539" Property="TEXT_1_PROP_3_1" Text="Please use your mouse cursor to control EyeMine. [NEWLINE][NEWLINE]You should be able to do this using the software that came with your eye-tracker - for instance, Tobii Windows Control or myGaze EyeMousePlay. Alternatively, you may use other solutions such as a head-mouse to control the cursor.[NEWLINE][NEWLINE]Once you&apos;ve launched Minecraft your cursor will be hidden, but the cursor control will allow you to use any eye tracker or alternate input to play Minecraft. " Order="1000"/>
+    <ROW Dialog_="InputInfoDialogMouse" Control="Text_1" Type="Text" X="25" Y="72" Width="299" Height="128" Attributes="65539" Property="TEXT_1_PROP_3_1" Text="Please use your mouse cursor to control EyeMine. [NEWLINE][NEWLINE]You should be able to do this using the software that came with your eye-tracker - for instance, Windows Control for a Tobii tracker, EyeMousePlay for a myGaze tracker, or QuickACCESS mouse control for an EyeTech tracker. [NEWLINE][NEWLINE]Alternatively, you may use other solutions such as a head-mouse to control the cursor.[NEWLINE][NEWLINE]Once you&apos;ve launched Minecraft your cursor will be hidden and won&apos;t distract you, but the cursor control will allow you to use any eye tracker or alternate input to play Minecraft." Order="1000"/>
     <ROW Dialog_="InputInfoDialogTobii" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="InputInfoDialogTobii" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
     <ROW Dialog_="InputInfoDialogTobii" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
@@ -550,7 +550,7 @@
     <ROW Dialog_="InputInfoDialogTobii" Control="Description" Type="Text" X="25" Y="20" Width="280" Height="23" Attributes="196611" Text="The installer has detected that you have a compatible Tobii eye tracker installed" Order="700"/>
     <ROW Dialog_="InputInfoDialogTobii" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="InputInfoDialogTobii" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine V2 Input Source - Tobii" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="Text_1" Type="Text" X="25" Y="72" Width="250" Height="128" Attributes="65539" Property="TEXT_1_PROP_3" Text="EyeMine will automatically use your Tobii eye tracker as input. [NEWLINE] [NEWLINE]Please make sure your eye tracker is connected and Tobii Eye Tracking is switched on before launching EyeMine. [NEWLINE][NEWLINE]If you want to use an alternative input source (for instance a headmouse) then you can change this in the Settings by right clicking on the EyeMine keyboard" Order="1000"/>
+    <ROW Dialog_="InputInfoDialogTobii" Control="Text_1" Type="Text" X="25" Y="72" Width="279" Height="128" Attributes="65539" Property="TEXT_1_PROP_3" Text="EyeMine will automatically use your Tobii eye tracker as input. [NEWLINE] [NEWLINE]Please make sure your eye tracker is connected and Tobii Eye Tracking is switched on before launching EyeMine. [NEWLINE][NEWLINE]If you want to use an alternative input source (for instance a headmouse) then you can change this in the Settings by right clicking on the EyeMine keyboard" Order="1000"/>
     <ROW Dialog_="InstallForge" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="InstallForge" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
     <ROW Dialog_="InstallForge" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
@@ -604,6 +604,15 @@
     <ROW Dialog_="NewDialog" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="New Dialog Description..." Order="700"/>
     <ROW Dialog_="NewDialog" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="NewDialog" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="New Dialog" TextStyle="[DlgTitleFont]" Order="900"/>
+    <ROW Dialog_="NewDialog_1" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
+    <ROW Dialog_="NewDialog_1" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
+    <ROW Dialog_="NewDialog_1" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
+    <ROW Dialog_="NewDialog_1" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
+    <ROW Dialog_="NewDialog_1" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
+    <ROW Dialog_="NewDialog_1" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
+    <ROW Dialog_="NewDialog_1" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="New Dialog Description..." Order="700"/>
+    <ROW Dialog_="NewDialog_1" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
+    <ROW Dialog_="NewDialog_1" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="New Dialog" TextStyle="[DlgTitleFont]" Order="900"/>
     <ROW Dialog_="NewSeqDialog" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="NewSeqDialog" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
     <ROW Dialog_="NewSeqDialog" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" Attributes="1048577" Text="[DialogBitmap]" Order="300"/>
@@ -655,10 +664,10 @@
     <ROW Dialog_="InputInfoDialogMouse" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
     <ROW Dialog_="MinecraftRunningDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="9"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="1"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="2"/>
     <ROW Dialog_="MinecraftRunningDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="1"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="StopProcessMinecraft" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="3"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="AI_DATA_SETTER_6" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="2"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="StopProcessMinecraft" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="4"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="AI_DATA_SETTER_6" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="3"/>
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="ForgeInstallationRequired" Condition="FORGE_INSTALLED=&quot;false&quot; AND AI_INSTALL" Ordering="7"/>
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="MinecraftInstallationRequired" Condition="AI_INSTALL AND MINECRAFT_INSTALLED=&quot;false&quot;" Ordering="8"/>
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="[MinecraftSavesDlg_Cond]" Argument="1" Condition="(FIRST_MOD_INSTALL = &quot;true&quot;) AND (NUMBER_OF_SAVES &lt;&gt; &quot;0&quot;)" Ordering="2"/>
@@ -682,6 +691,7 @@
     <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationRequired" Condition="AI_INSTALL AND FORGE_INSTALLED=&quot;false&quot;" Ordering="5"/>
     <ROW Dialog_="InputInfoDialogMouse" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND TOBII_SUPPORTED=&quot;false&quot;" Ordering="1"/>
     <ROW Dialog_="InputInfoDialogMouse" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL AND TOBII_SUPPORTED=&quot;false&quot;" Ordering="1"/>
+    <ROW Dialog_="NewDialog_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
@@ -759,6 +769,7 @@
     <ROW Dialog="MinecraftRunningDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="MinecraftSavesDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="NewDialog" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="NewDialog_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="NewSeqDialog" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
