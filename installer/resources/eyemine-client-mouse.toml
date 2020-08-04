@@ -1,0 +1,79 @@
+
+#Expert options
+[expert]
+	#How much to reduce field of view (degrees) when using ironsights
+	#Range: 0 ~ 40
+	ironsightsFovReduction = 20
+	#Fraction of screen in which mouse movements are ignored. Increase this if you find your view being dragged toward your eyegaze keyboard.
+	#Range: 0.0 ~ 0.25
+	deadBorder = 0.1
+	#How many ticks to take into account for slowing down while looking around / turning corners.
+	#(smaller number = faster)
+	#Range: 1 ~ 200
+	walkingSlowdownFilter = 30
+	#How long (seconds) to keep bow drawn for when firing with 'Use Item'
+	#Range: 0.5 ~ 5.0
+	ironsightsSensitivityReduction = 1.0
+
+#Advanced options
+[advanced]
+	#Slow down auto-walk when going round a corner
+	#You may want to turn this off for survival
+	slowdownOnCorners = true
+	#How high to fly (up/down) in manual mode
+	#Range: 1 ~ 20
+	flyHeightManual = 2
+	#How high to fly in auto mode
+	#Range: 1 ~ 10
+	flyHeightAuto = 6
+	#Continue walking forward when the mouse is stationary?
+	#Recommended to be turned off for eye gaze control, or turned on for joysticks.
+	moveWhenMouseStationary = false
+	#How far away a player needs to be from a door to automatically open/close.
+	#Set to zero to turn off automatic door-opening
+	#Range: 0 ~ 10
+	radiusDoors = 2
+	#Slow down auto-walk when attacking an entity
+	#This only applies when your crosshair is over an entity, and makes
+	#it easier to chase mobs
+	slowdownOnAttack = true
+	#How far away a player needs to be from a chest/table to be able to open it
+	#Range: 1 ~ 6
+	radiusChests = 5
+	#How many ticks to wait before mining again
+	#Only affects creative mode
+	#Range: 0 ~ 50
+	ticksBetweenMining = 15
+
+#Dwelling options
+[dwelling]
+	#Time for dwell to lock on (seconds)
+	# Must be lower than dwellTimeSeconds
+	#Range: 0.0 ~ 1.0
+	dwellLockonTimeSeconds = 0.2
+	#Show dwell by changing transparency instead of growing/shrinking
+	#This option overrides dwellShowExpanding
+	dwellShowWithTransparency = false
+	#Show dwell expanding instead of shrinking
+	dwellShowExpanding = false
+	#Time for dwell to complete (seconds)
+	#Range: 0.2 ~ 5.0
+	dwellTimeSeconds = 1.2
+
+#Basic options
+[basic]
+	#When mining, do you want pickaxe selected automatically?
+	#This only applies in Creative Mode.
+	autoSelectTool = true
+	#Walking speed for walk-with-gaze
+	#Range: 0.25 ~ 2.0
+	walkingSpeed = 0.800000011920929
+	#Enable mouse-emulation compatibility mode?.
+	#Turn this on if you're using mouse position as an input to EyeMine
+	usingMouseEmulation = true
+	#When attacking, do you want a sword selected automatically?
+	#This only applies in Creative Mode.
+	autoSelectSword = true
+	#Auto-jump switched on by default?
+	defaultDoAutoJump = true
+
