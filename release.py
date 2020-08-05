@@ -42,19 +42,11 @@ if not safeProcess('git diff-index --quiet HEAD --'):
     print( "Cannot build, git working copy dirty")
     safeExit()
     
-# Build main project
-# FYI if you're running this directly in git bash, you need to escape the forward slashes in the options (e.g. //Project)
-eyemine = 'src/JuliusSweetland.OptiKey.EyeMine/JuliusSweetland.OptiKey.EyeMine.csproj'
-build = 'devenv.com OptiKey.sln /Project {} /Rebuild "Release"'.format(eyemine)
+# Build all projects
+# FYI if you're running this directly in git bash, you need to escape the forward slashes in the options (e.g. //Rebuild)
+build = 'devenv.com OptiKeyDeployment.sln /Rebuild "Release|x86"'
 if not safeProcess(build):
     print("Error building project")
-    safeExit()
-
-# Build installer
-installer_file = "installer/EyeMine.aip"
-buildInstall = "AdvancedInstaller.com /rebuild {}".format(installer_file)
-if not safeProcess(buildInstall):
-    print("Error building installer")
     safeExit()
 
 # Discard local changes to InstallerStrings (these are a build artefact)
