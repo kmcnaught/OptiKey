@@ -527,6 +527,7 @@
     <ROW Name="xmlCfg.dll" SourcePath="&lt;AI_CUSTACTS&gt;xmlCfg.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ROW Dialog_="FolderDlg" Control="FolderDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
     <ROW Dialog_="ForgeInstallationRequired" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Next]" Order="100"/>
     <ROW Dialog_="ForgeInstallationRequired" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200"/>
     <ROW Dialog_="ForgeInstallationRequired" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300"/>
@@ -704,6 +705,7 @@
     <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogTobii" Condition="AI_INSTALL AND TOBII_SUPPORTED=&quot;true&quot;" Ordering="202"/>
     <ROW Dialog_="InputInfoDialogTobii" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL AND TOBII_SUPPORTED=&quot;true&quot;" Ordering="1"/>
     <ROW Dialog_="InputInfoDialogTobii" Control_="Back" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL AND TOBII_SUPPORTED=&quot;true&quot;" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="FolderDlgDialogInitializer" Event="DoAction" Argument="OverrideMinecraftInstalled" Condition="AI_INSTALL" Ordering="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
