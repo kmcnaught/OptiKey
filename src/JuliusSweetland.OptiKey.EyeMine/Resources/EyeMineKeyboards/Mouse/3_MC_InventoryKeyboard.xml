@@ -41,10 +41,7 @@
 			<Symbol>MinecraftTabLadder</Symbol>
 			<Action>NumPad3</Action>
 			</DynamicKey>
-		<DynamicKey Col="5" Height="1" Row="0" Width="1">
-			<Label>Misc</Label>
-			<Symbol>MinecraftTabBucket</Symbol>
-			<Action>NumPad4</Action>
+		<DynamicKey Col="5" Height="1" Row="0" Width="1">			
 			</DynamicKey>
 
 		<DynamicKey Col="7" Height="1" Row="0" Width="1">
@@ -62,28 +59,28 @@
 			<Text>q</Text>
 			</DynamicKey>
 		<DynamicKey Col="1" Height="1" Row="1" Width="1">
-			<Label>Foodstuffs</Label>
-			<Symbol>MinecraftTabApple</Symbol>
+			<Label>Misc</Label>
+			<Symbol>MinecraftTabBucket</Symbol>
 			<Action>NumPad5</Action>
 			</DynamicKey>
 		<DynamicKey Col="2" Height="1" Row="1" Width="1">
-			<Label>Tools</Label>
-			<Symbol>MinecraftTabAxe</Symbol>
+			<Label>Foodstuffs</Label>
+			<Symbol>MinecraftTabApple</Symbol>
 			<Action>NumPad6</Action>
 			</DynamicKey>
 		<DynamicKey Col="3" Height="1" Row="1" Width="1">
-			<Label>Combat</Label>
-			<Symbol>MinecraftTabSword</Symbol>
+			<Label>Tools</Label>
+			<Symbol>MinecraftTabAxe</Symbol>
 			<Action>NumPad7</Action>
 			</DynamicKey>
 		<DynamicKey Col="4" Height="1" Row="1" Width="1">
-			<Label>Brewing</Label>
-			<Symbol>MinecraftTabPotion</Symbol>
+			<Label>Combat</Label>
+			<Symbol>MinecraftTabSword</Symbol>
 			<Action>NumPad8</Action>
 			</DynamicKey>
 		<DynamicKey Col="5" Height="1" Row="1" Width="1">
-			<Label>Materials</Label>
-			<Symbol>MinecraftTabStick</Symbol>
+			<Label>Brewing</Label>
+			<Symbol>MinecraftTabPotion</Symbol>
 			<Action>NumPad9</Action>
 			</DynamicKey>
         
