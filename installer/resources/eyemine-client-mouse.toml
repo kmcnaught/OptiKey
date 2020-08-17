@@ -67,7 +67,7 @@
 	autoSelectTool = true
 	#Walking speed for walk-with-gaze
 	#Range: 0.25 ~ 2.0
-	walkingSpeed = 0.800000011920929
+	walkingSpeed = 0.7
 	#Enable mouse-emulation compatibility mode?.
 	#Turn this on if you're using mouse position as an input to EyeMine
 	usingMouseEmulation = true
