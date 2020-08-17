@@ -29,50 +29,50 @@ namespace JuliusSweetland.OptiKey.UnitTests
         public void TestPrettyDates()
         {
             // Test "future" date
-            Assert.IsNull(CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddSeconds(90)));
+            Assert.IsNull(InstallerUtils.GetPrettyDate(DateTime.Now.AddSeconds(90)));
 
             // Test 90 seconds ago.
-            Assert.AreEqual("today", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddSeconds(-90)));
+            Assert.AreEqual("today", InstallerUtils.GetPrettyDate(DateTime.Now.AddSeconds(-90)));
 
             // Test 25 minutes ago.
-            Assert.AreEqual("today", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddMinutes(-25)));
+            Assert.AreEqual("today", InstallerUtils.GetPrettyDate(DateTime.Now.AddMinutes(-25)));
 
             // Test 45 minutes ago.
-            Assert.AreEqual("today", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddMinutes(-45)));
+            Assert.AreEqual("today", InstallerUtils.GetPrettyDate(DateTime.Now.AddMinutes(-45)));
 
             // Test 4 hours ago.
-            Assert.AreEqual("today", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddHours(-4)));
+            Assert.AreEqual("today", InstallerUtils.GetPrettyDate(DateTime.Now.AddHours(-4)));
 
             // Test 1 days ago.
-            Assert.AreEqual("yesterday", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddHours(-25)));
+            Assert.AreEqual("yesterday", InstallerUtils.GetPrettyDate(DateTime.Now.AddHours(-25)));
 
             // Test 3 days ago.
-            Assert.AreEqual("3 days ago", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddDays(-3)));
+            Assert.AreEqual("3 days ago", InstallerUtils.GetPrettyDate(DateTime.Now.AddDays(-3)));
 
             // Test 8 days ago.
-            Assert.AreEqual("1 week ago", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddDays(-8)));
+            Assert.AreEqual("1 week ago", InstallerUtils.GetPrettyDate(DateTime.Now.AddDays(-8)));
 
             // Test 15 days ago.
-            Assert.AreEqual("2 weeks ago", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddDays(-15)));
+            Assert.AreEqual("2 weeks ago", InstallerUtils.GetPrettyDate(DateTime.Now.AddDays(-15)));
 
             // Test 40 days ago
-            Assert.AreEqual("1 month ago", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddDays(-40)));
+            Assert.AreEqual("1 month ago", InstallerUtils.GetPrettyDate(DateTime.Now.AddDays(-40)));
 
             // Test 70 days ago (2 months)
-            Assert.AreEqual("2 months ago", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddDays(-70)));
+            Assert.AreEqual("2 months ago", InstallerUtils.GetPrettyDate(DateTime.Now.AddDays(-70)));
 
             // Test 370 days ago
-            Assert.AreEqual("more than a year ago", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddDays(-370)));
+            Assert.AreEqual("more than a year ago", InstallerUtils.GetPrettyDate(DateTime.Now.AddDays(-370)));
             
             // Test 1000 days ago
-            Assert.AreEqual("more than a year ago", CustomActionsEyeMine.GetPrettyDate(DateTime.Now.AddDays(-1000)));
+            Assert.AreEqual("more than a year ago", InstallerUtils.GetPrettyDate(DateTime.Now.AddDays(-1000)));
         }
 
 
         [Test]
         public void TestTobiiSupported()
         {
-            bool b = CustomActionsEyeMine.IsTobiiSupported();
+            bool b = InstallerUtils.IsTobiiSupported();
             Assert.True(b);
         }
 

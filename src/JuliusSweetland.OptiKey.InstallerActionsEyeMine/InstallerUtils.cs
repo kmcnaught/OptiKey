@@ -11,7 +11,7 @@ using Tobii.EyeX.Client;
 
 namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 {
-    class InstallerUtils
+    public class InstallerUtils
     {
         public static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs, bool allowOverwrite = false)
         {
