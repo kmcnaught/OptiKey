@@ -1,22 +1,10 @@
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Dynamic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.Remoting.Messaging;
-using System.Runtime.Serialization.Formatters;
-using System.Text;
 using Microsoft.Deployment.WindowsInstaller;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using EyeXFramework;
-using Microsoft.Win32;
-using Tobii.EyeX.Client;
+using utils = JuliusSweetland.OptiKey.InstallerActionsEyeMine.InstallerUtils;
 using Environment = System.Environment;
 
 namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
@@ -41,57 +29,6 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             launcherProfiles = Path.Combine(minecraftPath, launcherProfiles);
 
         }
-
-        private static bool HasProperty(dynamic obj, string name)
-        {
-            if (obj == null) return false;
-            if (obj is IDictionary<string, object> dict)
-            {
-                return dict.ContainsKey(name);
-            }
-            return obj.GetType().GetProperty(name) != null;
-        }
-
-        private static string GetBackupName(string filename)
-        {
-            // The following will produce 2011-10-24-13-10
-            string datetime = DateTime.Now.ToString("yyyy-MM-dd-HHmm", CultureInfo.InvariantCulture);
-
-            string path = Path.GetDirectoryName(filename);
-            string file = Path.GetFileNameWithoutExtension(filename);
-            string extension = Path.GetExtension(filename);
-
-            string newFile = String.Format("{0}_{1}{2}", file, datetime, extension);
-            return Path.Combine(path, newFile);
-        }
-
-        public static bool IsProgramInstalled(string programDisplayName)
-        {
-            string regKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
-
-            foreach (var item in Registry.LocalMachine.OpenSubKey(regKey).GetSubKeyNames())
-            {
-                object programName = Registry.LocalMachine.OpenSubKey(regKey + "\\" + item).GetValue("DisplayName");
-
-                if (string.Equals(programName, programDisplayName))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public static bool IsTobiiSupported()
-        {
-            switch (EyeXHost.EyeXAvailability)
-            {
-                case EyeXAvailability.NotAvailable:
-                    return false;
-                default:
-                    return true;
-            }
-        }
-
 
         [CustomAction]
         public static ActionResult EyeMineProperties(Session session)
@@ -131,7 +68,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             session["TOBII_SUPPORTED"] = "unknown";
             try
             {
-                supported = IsTobiiSupported();
+                supported = utils.IsTobiiSupported();
             }
             catch
             {
@@ -180,7 +117,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 session.Log(
                     $"Copying everything from {Path.Combine(oldSavesDir, worldName)} to {Path.Combine(newSavesDir, worldName)}");
                 // Copy folder to new location
-                DirectoryCopy(Path.Combine(oldSavesDir, worldName),
+                utils.DirectoryCopy(Path.Combine(oldSavesDir, worldName),
                     Path.Combine(newSavesDir, worldName),
                     true);
 
@@ -334,7 +271,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             }
 
             // Backup current file
-            string launcherProfilesBackup = GetBackupName(launcherProfiles);
+            string launcherProfilesBackup = utils.GetBackupName(launcherProfiles);
             File.Copy(launcherProfiles, launcherProfilesBackup, true);
 
             // Read JSON
@@ -424,7 +361,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             //session.Log("Begin CheckForMinecraftInstallation");
             session["MINECRAFT_INSTALLED"] = "unknown";
 
-            bool installed = IsProgramInstalled("Minecraft Launcher");
+            bool installed = utils.IsProgramInstalled("Minecraft Launcher");
             session["MINECRAFT_INSTALLED"] = installed.ToString().ToLower();
             
             return ActionResult.Success;
@@ -438,22 +375,6 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 return ActionResult.Success;
             else
                 return ActionResult.Failure;
-        }
-
-        private static string AppendItemToListData(string combodata, string item)
-        {
-            //# The AI_LISTBOX_DATA must be set like this: CHECKLIST_1_PROP|Value 1|Value 2| Value 3|...
-            const string sep1 = "|";
-            combodata += sep1 + item;
-            return combodata;
-        }
-
-        public static string SanitisePropName(string prop_name)
-        {
-            prop_name = prop_name.Replace(" ", "");
-            prop_name = prop_name.Replace(")", "");
-            prop_name = prop_name.Replace("(", "");
-            return prop_name;
         }
 
         [CustomAction]
@@ -494,8 +415,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             saves.Sort((x, y) => y.Value.CompareTo(x.Value)); // order by date
             foreach (var save in saves)
             {
-                string filenameAndDate = String.Format("{0} (last played {1})", save.Key, GetPrettyDate(save.Value));
-                checkListData = AppendItemToListData(checkListData, filenameAndDate);
+                string filenameAndDate = String.Format("{0} (last played {1})", save.Key, utils.GetPrettyDate(save.Value));
+                checkListData = utils.AppendItemToListData(checkListData, filenameAndDate);
             }
             session["SAVES_CHECKLIST_DATA"] = checkListData;
             session["NUMBER_OF_SAVES"] = saves.Count.ToString();
@@ -511,7 +432,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 {
                     if (!String.IsNullOrEmpty(defaultData))
                         defaultData += ",";
-                    string filenameAndDate = String.Format("{0} (last played {1})", save.Key, GetPrettyDate(save.Value));
+                    string filenameAndDate = String.Format("{0} (last played {1})", save.Key, utils.GetPrettyDate(save.Value));
                     defaultData += filenameAndDate;
                 }
             }
@@ -519,7 +440,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             if (saves.Count > 0 && String.IsNullOrEmpty(defaultData))
             {
                 var firstElement = saves.ElementAt(0);
-                string filenameAndDate = String.Format("{0} (last played {1})", firstElement.Key, GetPrettyDate(firstElement.Value));
+                string filenameAndDate = String.Format("{0} (last played {1})", firstElement.Key, utils.GetPrettyDate(firstElement.Value));
                 defaultData = filenameAndDate;
             }
             session["SAVES_CHECKLIST_DEFAULT"] = defaultData;
@@ -527,88 +448,5 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             return ActionResult.Success;
         }
 
-        public static string GetPrettyDate(DateTime d)
-        {
-            DateTime now = DateTime.Now;
-            if (d > now)
-            { // future date
-                return null;
-            }
-
-            TimeSpan s = now.Subtract(d);
-
-            int dayDiff = (int)s.TotalDays;
-            int secDiff = (int)s.TotalSeconds;
-            int weekDiff = (int) dayDiff / 7;
-            int monthDiff = (int) dayDiff / 30; // APPROXIMATE ONLY
-            int yearDiff = (int) monthDiff / 12;
-
-            if (dayDiff == 0)
-            {
-                return "today";
-            }
-            if (dayDiff == 1)
-            {
-                return "yesterday";
-            }
-            if (dayDiff < 7)
-            {
-                return $"{dayDiff} days ago";
-            }
-            if (monthDiff < 1)
-            {
-                if (weekDiff == 1)
-                    return $"{weekDiff} week ago";
-                else
-                    return $"{weekDiff} weeks ago";
-            }
-            if (yearDiff < 1)
-            {
-                if (monthDiff == 1)
-                    return $"{monthDiff} month ago";
-                else
-                    return $"{monthDiff} months ago";
-            }
-            
-            return "more than a year ago";
-        }
-
-        private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs, bool allowOverwrite=false)
-        {
-            // Get the subdirectories for the specified directory.
-            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
-
-            if (!dir.Exists)
-            {
-                throw new DirectoryNotFoundException(
-                    "Source directory does not exist or could not be found: "
-                    + sourceDirName);
-            }
-
-            DirectoryInfo[] dirs = dir.GetDirectories();
-            // If the destination directory doesn't exist, create it.
-            if (!Directory.Exists(destDirName))
-            {
-                Directory.CreateDirectory(destDirName);
-            }
-
-            // Get the files in the directory and copy them to the new location.
-            FileInfo[] files = dir.GetFiles();
-            foreach (FileInfo file in files)
-            {
-                string temppath = Path.Combine(destDirName, file.Name);
-                file.CopyTo(temppath, allowOverwrite);
-            }
-
-            // If copying subdirectories, copy them and their contents to new location.
-            if (copySubDirs)
-            {
-                foreach (DirectoryInfo subdir in dirs)
-                {
-                    string temppath = Path.Combine(destDirName, subdir.Name);
-                    DirectoryCopy(subdir.FullName, temppath, copySubDirs);
-                }
-            }
-        }
     }
 }
