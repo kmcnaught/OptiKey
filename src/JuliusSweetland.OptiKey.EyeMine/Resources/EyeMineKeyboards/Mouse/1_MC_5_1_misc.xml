@@ -10,26 +10,26 @@
 		<DynamicKey>
 			<Label>Ride/\nDismount</Label>
 			<Action>F15</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Auto\nPillar</Label>
 			<Symbol>MinecraftPlaceBlock</Symbol>
 			<Text>0</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Night\nVision</Label>
 			<Symbol>MinecraftNightVision</Symbol>
 			<Action>F12</Action>
-			</DynamicKey>
-        <DynamicKey>
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Swap mine\nand place</Label>
 			<Symbol>MinecraftSwapMinePlace</Symbol>
 			<Action>F10</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Back</Label>
 			<Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
-			</DynamicKey>
+		</DynamicKey>
 	</Content>
 </Keyboard>

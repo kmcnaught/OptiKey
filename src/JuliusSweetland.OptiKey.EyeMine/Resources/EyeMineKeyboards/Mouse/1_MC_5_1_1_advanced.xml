@@ -7,29 +7,29 @@
       <Cols>5</Cols>
    </Grid>
    <Content>
-       <DynamicKey>
+      <DynamicKey>
          <Symbol>MinecraftAutoFly</Symbol>
          <Label>Fly</Label>
          <Text>g</Text>
-         </DynamicKey>
-	   <DynamicKey>
+      </DynamicKey>
+      <DynamicKey>
          <Label>Walk</Label>
-		 <Symbol>MinecraftWalk</Symbol>
+         <Symbol>MinecraftWalk</Symbol>
          <Text>h</Text>
-         </DynamicKey>
-	  <DynamicKey>
-		 <Symbol>MinecraftLookWithCursor</Symbol>	 
-		 <Text>y</Text>
+      </DynamicKey>
+      <DynamicKey>
+         <Symbol>MinecraftLookWithCursor</Symbol>
+         <Text>y</Text>
          <Label>Look\nwith\nGaze</Label>
-         </DynamicKey>
-	  <DynamicKey>
-		 <Text>r</Text>
-		 <Label>Attack</Label>
-		 <Symbol>MinecraftAttackContinuous</Symbol>
-         </DynamicKey>	
-	  <DynamicKey>
-		<Symbol>ArrowPointingToRightIcon</Symbol>
-		<ChangeKeyboard BackReturnsHere="False">1_MC_5_1_2_advanced.xml</ChangeKeyboard>
-		 </DynamicKey>	  
+      </DynamicKey>
+      <DynamicKey>
+         <Text>r</Text>
+         <Label>Attack</Label>
+         <Symbol>MinecraftAttackContinuous</Symbol>
+      </DynamicKey>
+      <DynamicKey>
+         <Symbol>ArrowPointingToRightIcon</Symbol>
+         <ChangeKeyboard BackReturnsHere="False">1_MC_5_1_2_advanced.xml</ChangeKeyboard>
+      </DynamicKey>
    </Content>
 </Keyboard>

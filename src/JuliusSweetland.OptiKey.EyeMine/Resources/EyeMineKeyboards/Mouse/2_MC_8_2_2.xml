@@ -13,45 +13,37 @@
             <Action>NumPad2</Action>
             <Label>Pick\nBlock</Label>
         </DynamicKey>
-        
         <DynamicKey>
             <Action>NumPad4</Action>
             <Label>Prev\nitem</Label>
             <Symbol>MinecraftPrev</Symbol>
         </DynamicKey>
-        
         <DynamicKey>
             <Action>NumPad5</Action>
             <Label>Next\nitem</Label>
             <Symbol>MinecraftNext</Symbol>
         </DynamicKey>
-        
         <DynamicKey Width="2">
             <Symbol>MinecraftLookWithCursor</Symbol>
             <Text>y</Text>
             <Label>Look\nwith\nGaze</Label>
             <SharedSizeGroup>Look</SharedSizeGroup>
         </DynamicKey>
-        
         <DynamicKey>
             <Label>Careful\nwalk</Label>
             <Symbol>MinecraftMoveLegacy</Symbol>
             <Text>b</Text>
         </DynamicKey>
-        
         <DynamicKey>
             <Label>Mine x1</Label>
             <Symbol>MinecraftMineOnce</Symbol>
             <Text>n</Text>
         </DynamicKey>
-        
         <DynamicKey>
             <Label>Auto\nPillar</Label>
             <Symbol>MinecraftPlaceBlock</Symbol>
             <Text>0</Text>
         </DynamicKey>
-
-
         <!-- Second row -->
         <DynamicKey>
             <Symbol>ArrowPointingToLeftIcon</Symbol>

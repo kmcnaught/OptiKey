@@ -8,29 +8,29 @@
 	</Grid>
 	<Content>
 		<DynamicKey>
-			<Label />
+			<Label/>
 			<Symbol>ArrowPointingToLeftIcon</Symbol>
 			<ChangeKeyboard BackReturnsHere="False">1_MC_5_1_build1.xml</ChangeKeyboard>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Sneak</Label>
 			<Symbol>MinecraftSneak</Symbol>
 			<Text>z</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Pick\nBlock</Label>
 			<Symbol>MinecraftPickBlock</Symbol>
 			<Action>NumPad2</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Mine\nonce</Label>
 			<Symbol>MinecraftMineOnce</Symbol>
 			<Text>n</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Back</Label>
 			<Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
-			</DynamicKey>
+		</DynamicKey>
 	</Content>
 </Keyboard>
