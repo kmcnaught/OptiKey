@@ -369,6 +369,12 @@
     <Content Include="Resources\EyeMineKeyboards\Mouse\3_MC_MainKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MinecraftBuild.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MinecraftDebug.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Icons\status_comingup.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
