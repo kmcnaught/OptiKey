@@ -85,10 +85,11 @@ namespace JuliusSweetland.OptiKey
         }
 
         // Previously in core OptiKey ctr, now called by derived classes after setting up Settings class
-        protected void Initialise()
+        protected void Initialise(bool useNBug=true)
         {
             //Setup unhandled exception handling and NBug
-            AttachUnhandledExceptionHandlers();
+            if (useNBug)
+                AttachUnhandledExceptionHandlers();
 
             //Log startup diagnostic info
             Log.Info("STARTING UP.");

@@ -94,7 +94,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
         public App()
         {
             // Core setup for all OptiKey apps
-            Initialise();
+            Initialise(false);
         }
 
         #endregion
