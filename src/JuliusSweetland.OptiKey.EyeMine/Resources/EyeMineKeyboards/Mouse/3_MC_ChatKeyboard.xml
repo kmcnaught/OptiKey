@@ -10,7 +10,7 @@
    </InitialKeyStates>
    <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
 
-	<Keys>
+	<Content>
 		<DynamicKey Col="0" Height="1" Row="0" Width="2">
 			<Label>q</Label>
 			<Text>q</Text>
@@ -150,5 +150,5 @@
 			<Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
 		</DynamicKey>
-	</Keys>
+	</Content>
 </Keyboard>

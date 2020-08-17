@@ -6,28 +6,28 @@
       <Rows>1</Rows>
       <Cols>5</Cols>
    </Grid>
-   <Keys>
-    <DynamicKey Col="0" Row="0">
+   <Content>
+    <DynamicKey>
 		 <Symbol>ArrowPointingToLeftIcon</Symbol>
 		 <ChangeKeyboard BackReturnsHere="False">1_MC_5_1_1_advanced.xml</ChangeKeyboard>
          </DynamicKey>
-      <DynamicKey Col="1" Row="0">
+      <DynamicKey>
          <Label>Building\nthings</Label>
          <ChangeKeyboard BackReturnsHere="True">1_MC_5_1_build1.xml</ChangeKeyboard>
          </DynamicKey>	
-      <DynamicKey Col="2" Row="0">
+      <DynamicKey>
          <Label>Misc</Label>
          <ChangeKeyboard BackReturnsHere="True">1_MC_5_1_misc.xml</ChangeKeyboard>
          </DynamicKey>    	  	          
-      <DynamicKey Col="3" Row="0">
+      <DynamicKey>
        <Text>m</Text>
        <Label>Toggle 
   mining</Label>
        <Symbol>MinecraftMineContinuous</Symbol>
            </DynamicKey>  
-	  <DynamicKey Col="4" Row="0">
+	  <DynamicKey>
         <Symbol>BackIcon</Symbol>
         <Action>BackFromKeyboard</Action>
     		</DynamicKey>	 
-    </Keys>
+    </Content>
 </Keyboard>

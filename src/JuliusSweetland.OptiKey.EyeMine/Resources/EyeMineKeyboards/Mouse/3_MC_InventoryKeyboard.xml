@@ -10,104 +10,110 @@
      <KeyUp>MouseMagneticCursor</KeyUp>
      <KeyLockedDown>MouseMagnifier</KeyLockedDown>   
    </InitialKeyStates>
-	<Keys>
+	<Content>
 		
-		<DynamicKey Col="9" Height="1" Row="0" Width="1">
-			<Label>Esc</Label>
-			<Symbol>MinecraftEscButton</Symbol>
-			<Action>Escape</Action>
-			</DynamicKey>
-		<DynamicKey Col="0" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>Open\nInventory</Label>
 			<Text>e</Text>
 			</DynamicKey>
-		<DynamicKey Col="1" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>Building</Label>
 			<Symbol>MinecraftTabBlocks</Symbol>
 			<Action>NumPad0</Action>
 			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>Decoration</Label>
 			<Symbol>MinecraftTabFlower</Symbol>
 			<Action>NumPad1</Action>
 			</DynamicKey>
-		<DynamicKey Col="3" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>Redstone</Label>
 			<Symbol>MinecraftTabGem</Symbol>
 			<Action>NumPad2</Action>
 			</DynamicKey>
-		<DynamicKey Col="4" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>Transport</Label>
 			<Symbol>MinecraftTabLadder</Symbol>
 			<Action>NumPad3</Action>
 			</DynamicKey>
-		<DynamicKey Col="5" Height="1" Row="0" Width="1">			
+		<DynamicKey>			
 			</DynamicKey>
 
-		<DynamicKey Col="7" Height="1" Row="0" Width="1">
+        <DynamicKey>
+			<Label>Scroll\nUp</Label>
+			<Symbol>MouseScrollToTopIcon</Symbol>
+			<Action>F9</Action>
+			</DynamicKey>
+		<DynamicKey>
 			<Label>Search</Label>
             <Symbol>MinecraftTabSearch</Symbol>            
 			<Action>ArrowDown</Action>
 			</DynamicKey>
-		<DynamicKey Col="7" Height="1" Row="1" Width="1">
-			<Label>ABC</Label>
-			<Symbol>AlphaIcon</Symbol>
-            <ChangeKeyboard BackReturnsHere="True">3_MC_ChatKeyboard</ChangeKeyboard>
-            </DynamicKey>
-		<DynamicKey Col="0" Height="1" Row="1" Width="1">
+
+		<DynamicKey>
+			<Label>Left\nclick</Label>
+			<Symbol>MouseLeftClickWithMouseIcon</Symbol>
+			<Action>MouseMoveAndLeftClick</Action>
+			</DynamicKey>
+
+<DynamicKey>
+			<Label>Esc</Label>
+			<Symbol>MinecraftEscButton</Symbol>
+			<Action>Escape</Action>
+			</DynamicKey>
+
+
+		<DynamicKey>
 			<Label>Throw\nitem</Label>
 			<Text>q</Text>
 			</DynamicKey>
-		<DynamicKey Col="1" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Misc</Label>
 			<Symbol>MinecraftTabBucket</Symbol>
 			<Action>NumPad5</Action>
 			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Foodstuffs</Label>
 			<Symbol>MinecraftTabApple</Symbol>
 			<Action>NumPad6</Action>
 			</DynamicKey>
-		<DynamicKey Col="3" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Tools</Label>
 			<Symbol>MinecraftTabAxe</Symbol>
 			<Action>NumPad7</Action>
 			</DynamicKey>
-		<DynamicKey Col="4" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Combat</Label>
 			<Symbol>MinecraftTabSword</Symbol>
 			<Action>NumPad8</Action>
 			</DynamicKey>
-		<DynamicKey Col="5" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Brewing</Label>
 			<Symbol>MinecraftTabPotion</Symbol>
 			<Action>NumPad9</Action>
 			</DynamicKey>
         
-		<DynamicKey Col="8" Height="1" Row="0" Width="1">
-			<Label>Left\nclick</Label>
-			<Symbol>MouseLeftClickWithMouseIcon</Symbol>
-			<Action>MouseMoveAndLeftClick</Action>
-			</DynamicKey>
-        <DynamicKey Col="8" Height="1" Row="1" Width="1">
-			<Label>Discard</Label>			
-			<Action>Home</Action>
-			</DynamicKey>
-        
-        <DynamicKey Col="6" Height="1" Row="0" Width="1">
-			<Label>Scroll\nUp</Label>
-			<Symbol>MouseScrollToTopIcon</Symbol>
-			<Action>F9</Action>
-			</DynamicKey>
-		<DynamicKey Col="6" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Scroll\nDown</Label>
 			<Symbol>MouseScrollToBottomIcon</Symbol>
 			<Action>F8</Action>
 			</DynamicKey>
-		<DynamicKey Col="9" Height="1" Row="1" Width="1">
+			
+		<DynamicKey>
+			<Label>ABC</Label>
+			<Symbol>AlphaIcon</Symbol>
+            <ChangeKeyboard BackReturnsHere="True">3_MC_ChatKeyboard</ChangeKeyboard>
+            </DynamicKey>
+
+        <DynamicKey>
+			<Label>Discard</Label>			
+			<Action>Home</Action>
+			</DynamicKey>
+        
+		<DynamicKey>
 			<Label>Back</Label>
 			<Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
 			</DynamicKey>
-	</Keys>
+	</Content>
 </Keyboard>

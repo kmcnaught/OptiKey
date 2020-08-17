@@ -10,82 +10,82 @@
     <Rows>2</Rows>
     <Cols>8</Cols>
     </Grid>
-	<Keys>
-		<DynamicKey Col="0" Height="1" Row="0" Width="1">
+	<Content>
+		<DynamicKey>
 			<Label>1</Label>
 			<Text>1</Text>
 			</DynamicKey>
-		<DynamicKey Col="1" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>2</Label>
 			<Text>2</Text>
 			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>3</Label>
 			<Text>3</Text>
 			</DynamicKey>
-		<DynamicKey Col="3" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>4</Label>
 			<Text>4</Text>
 			</DynamicKey>
-		<DynamicKey Col="4" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>5</Label>
 			<Text>5</Text>
 			</DynamicKey>
-		<DynamicKey Col="5" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>6</Label>
 			<Text>6</Text>
 			</DynamicKey>
-		<DynamicKey Col="6" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>7</Label>
 			<Text>7</Text>
 			</DynamicKey>
-		<DynamicKey Col="7" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>Esc</Label>
             <Symbol>MinecraftEscButton</Symbol>
 			<Action>Escape</Action>
 			</DynamicKey>
-		<DynamicKey Col="0" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label />
 			<Symbol>ArrowPointingToLeftIcon</Symbol>
 			<ChangeKeyboard BackReturnsHere="False">2_MC_8_2_2.xml</ChangeKeyboard>
 			</DynamicKey>
-		<DynamicKey Col="1" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Open\ninventory</Label>
 			<Text>e</Text>
 			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Prev\ntab</Label>
 			<Symbol>MinecraftTabPrev</Symbol>
 			<Action>ArrowLeft</Action>
 			</DynamicKey>
-		<DynamicKey Col="3" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Next\ntab</Label>
 			<Symbol>MinecraftTabNext</Symbol>
 			<Action>ArrowRight</Action>
 			</DynamicKey>
         
         
-		<DynamicKey Col="4" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Scroll\ndown</Label>
       <Symbol>MouseScrollToBottomIcon</Symbol>
 			<Action>F9</Action>
 			</DynamicKey>
         
-    <DynamicKey Col="5" Height="1" Row="1" Width="1">
+    <DynamicKey>
 			<Label>Left\nclick</Label>
 			<Symbol>MouseLeftClickWithMouseIcon</Symbol>
 			<Action>MouseMoveAndLeftClick</Action>
 			</DynamicKey>
         
-        <DynamicKey Col="6" Height="1" Row="1" Width="1">
+        <DynamicKey>
 			<Label>Discard</Label>			
 			<Action>Home</Action>
 			</DynamicKey>       
         
         
-        <DynamicKey Col="7" Row="1">
+        <DynamicKey>
             <Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
             </DynamicKey>
-	</Keys>
+	</Content>
 </Keyboard>
