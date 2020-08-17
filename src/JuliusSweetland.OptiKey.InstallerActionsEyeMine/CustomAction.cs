@@ -130,9 +130,14 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             return ActionResult.Success;
         }
 
+        private static string[] FindAllModFiles(string baseDir)
+        {
+            return Directory.GetFiles(baseDir, "eyemine*.jar");
+        }
+
         private static string FindModFile(string baseDir)
         {
-            string[] files = Directory.GetFiles(baseDir, "eyemine*.jar");
+            string[] files = FindAllModFiles(baseDir);
             if (files.Length > 0)
             {
                 return files.First();
@@ -202,12 +207,16 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             if (alreadyInstalled)
             {
                 // On upgrades we only need to replace mod file
-                string oldModFile = FindModFile(modDir);
+                string[] oldModFiles = FindAllModFiles(modDir);
 
                 try
                 {
-                    // Backup old file
-                    File.Copy(oldModFile, oldModFile + ".backup", true);
+                    // Backup old file(s)
+                    foreach (string oldFile in oldModFiles)
+                    {
+                        File.Move(oldFile, oldFile + ".backup");
+                    }
+
                     // Install new file
                     File.Copy(modFile, Path.Combine(modDir, Path.GetFileName(modFile)), true);
                 }
