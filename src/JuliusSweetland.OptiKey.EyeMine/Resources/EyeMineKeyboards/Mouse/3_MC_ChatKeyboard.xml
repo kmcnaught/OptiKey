@@ -135,7 +135,7 @@
 		<DynamicKey Width="2">
 			<Label>space</Label>
 			<Symbol>SpaceIcon</Symbol>
-			<Text> </Text>
+      <Text>&#032;</Text>
 		</DynamicKey>
 		<DynamicKey Width="3">
 			<Label>Enter</Label>
