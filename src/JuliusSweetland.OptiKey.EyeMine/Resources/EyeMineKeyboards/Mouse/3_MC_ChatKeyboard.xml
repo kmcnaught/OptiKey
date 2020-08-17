@@ -136,17 +136,19 @@
 		<DynamicKey Col="15" Height="1" Row="2" Width="2">
 			<Label>space</Label>
 			<Symbol>SpaceIcon</Symbol>
-			<Text> </Text>
-			</DynamicKey>
+			<Text>&#032;</Text>
+		</DynamicKey>
 		<DynamicKey Col="17" Height="1" Row="2" Width="3">
 			<Label>Enter</Label>
-			<Text>
-</Text>
-			</DynamicKey>
+			<KeyDown>Return</KeyDown>
+            <Wait>100</Wait>
+            <KeyUp>Return</KeyUp>
+            <Action>ClearScratchpad</Action>
+		</DynamicKey>
 		<DynamicKey Col="20" Height="1" Row="2" Width="2">
 			<Label>Back</Label>
 			<Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
-			</DynamicKey>
+		</DynamicKey>
 	</Keys>
 </Keyboard>
