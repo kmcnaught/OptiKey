@@ -107,15 +107,15 @@
     <ROW Component="EyeMineV2" ComponentId="{6662F25A-52DE-4AAA-BFA2-C5D2903E8B7F}" Directory_="EyeMineV2_Dir" Attributes="0"/>
     <ROW Component="EyeMineV2.exe" ComponentId="{57E5A4F0-5D8E-4357-A65F-B470A08753F4}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeMineV2.exe"/>
     <ROW Component="EyeXFramework.dll" ComponentId="{BE694CD1-6A50-4656-BC1D-E23CDEE34123}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeXFramework.dll"/>
-    <ROW Component="EyeXFramework.dll_1" ComponentId="{6C7FD87F-9BD6-4499-BFEA-1EDDAFAF0CEE}" Directory_="Release_1_Dir" Attributes="0" KeyPath="EyeXFramework.dll_1"/>
-    <ROW Component="EyeXFramework.xml" ComponentId="{013D33CD-EC5F-4E83-89F7-06DF8CD2086A}" Directory_="Release_1_Dir" Attributes="0" KeyPath="EyeXFramework.xml_1" Type="0"/>
+    <ROW Component="EyeXFramework.dll_1" ComponentId="{A774D225-BDD8-4969-894A-63830A6F81E1}" Directory_="Release_1_Dir" Attributes="0" KeyPath="EyeXFramework.dll_1"/>
+    <ROW Component="EyeXFramework.xml" ComponentId="{A33E88C4-06F4-4524-BDAD-D03C78E09087}" Directory_="Release_1_Dir" Attributes="0" KeyPath="EyeXFramework.xml_1" Type="0"/>
     <ROW Component="Interop.SpeechLib.dll" ComponentId="{01D54F40-CD3D-4D86-879F-331094F5005E}" Directory_="Release_Dir" Attributes="0" KeyPath="Interop.SpeechLib.dll"/>
     <ROW Component="IrisbondAPI.dll" ComponentId="{962B6B80-CA04-4057-A440-ED4EC922F1DD}" Directory_="Release_Dir" Attributes="0" KeyPath="IrisbondAPI.dll"/>
     <ROW Component="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" ComponentId="{55D55BA6-2A8E-431D-B06F-0942EFA23057}" Directory_="Release_1_Dir" Attributes="0" KeyPath="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll"/>
-    <ROW Component="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" ComponentId="{0A2AFF38-2CF4-425C-83C8-88B59AC61982}" Directory_="Release_1_Dir" Attributes="0" KeyPath="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll"/>
+    <ROW Component="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" ComponentId="{BFBB05B1-E4D8-40F8-AE12-B35F472B6700}" Directory_="Release_1_Dir" Attributes="0" KeyPath="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll"/>
     <ROW Component="Keyboards" ComponentId="{48A9C547-AFBB-499C-AF46-BEC81F384D96}" Directory_="EyeMineKeyboards_1_Dir" Attributes="0"/>
     <ROW Component="MahApps.Metro.dll" ComponentId="{8D11A2F0-A091-45FA-BA53-8EE4030E6B32}" Directory_="Release_Dir" Attributes="0" KeyPath="MahApps.Metro.dll"/>
-    <ROW Component="Microsoft.Deployment.WindowsInstaller.dll" ComponentId="{8635B719-A78C-47C5-B8C5-8E9EEE0644DD}" Directory_="Release_1_Dir" Attributes="0" KeyPath="Microsoft.Deployment.WindowsInstaller.dll"/>
+    <ROW Component="Microsoft.Deployment.WindowsInstaller.dll" ComponentId="{97BB7F93-BE4C-4A41-ADCB-16E6B11B7705}" Directory_="Release_1_Dir" Attributes="0" KeyPath="Microsoft.Deployment.WindowsInstaller.dll"/>
     <ROW Component="Microsoft.Expression.Interactions.dll" ComponentId="{AB8C0A86-9E4F-44AB-AE15-8C23111CDF3A}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Expression.Interactions.dll"/>
     <ROW Component="Microsoft.Practices.ServiceLocation.dll" ComponentId="{DA625F08-9D1D-4FC5-B8F1-3087C0117C65}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Practices.ServiceLocation.dll"/>
     <ROW Component="MinecraftBuild.xml" ComponentId="{99DDEEF7-F76A-49A3-8792-5BB138348E92}" Directory_="BonusKeyboards_Dir" Attributes="0" KeyPath="MinecraftBuild.xml" Type="0"/>
@@ -125,7 +125,7 @@
     <ROW Component="MouseKeyboardActivityMonitor.dll" ComponentId="{447D7440-EC5F-4E85-956C-D17993B61C05}" Directory_="Release_Dir" Attributes="0" KeyPath="MouseKeyboardActivityMonitor.dll"/>
     <ROW Component="NBug.dll" ComponentId="{B26848A5-2EFA-437C-988A-85BECF57790C}" Directory_="Release_Dir" Attributes="0" KeyPath="NBug.dll"/>
     <ROW Component="Newtonsoft.Json.dll" ComponentId="{D41861D9-54D1-456A-A065-05986FA8D503}" Directory_="Release_Dir" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
-    <ROW Component="Newtonsoft.Json.dll_1" ComponentId="{8971A703-3E3A-4837-9931-613A0868FFFB}" Directory_="Release_1_Dir" Attributes="0" KeyPath="Newtonsoft.Json.dll_1"/>
+    <ROW Component="Newtonsoft.Json.dll_1" ComponentId="{580A0BB6-8CCE-4D0C-9BEB-059E76D29835}" Directory_="Release_1_Dir" Attributes="0" KeyPath="Newtonsoft.Json.dll_1"/>
     <ROW Component="Octokit.dll" ComponentId="{7FACA3C7-18F7-4051-B35C-6F90FDE41E4F}" Directory_="Release_Dir" Attributes="0" KeyPath="Octokit.dll"/>
     <ROW Component="OptiKey.dll" ComponentId="{1E10CBFD-197E-4F9E-8A21-EB014A17763A}" Directory_="Release_Dir" Attributes="0" KeyPath="OptiKey.dll"/>
     <ROW Component="OptiKey.resources.dll" ComponentId="{08E31E00-452E-4A09-AA73-79968678FD99}" Directory_="caES_Dir" Attributes="0" KeyPath="OptiKey.resources.dll"/>
@@ -180,9 +180,9 @@
     <ROW Component="TETCSharpClient.dll" ComponentId="{9C499056-A0A0-4FB6-BCBC-70CE055A3DED}" Directory_="Release_Dir" Attributes="0" KeyPath="TETCSharpClient.dll"/>
     <ROW Component="TETControls.dll" ComponentId="{0211F967-13E8-4407-862E-7593557BCC22}" Directory_="Release_Dir" Attributes="0" KeyPath="TETControls.dll"/>
     <ROW Component="Tobii.EyeX.Client.Net20.dll" ComponentId="{0C33BD88-DC11-4950-AE2C-3B788216DB58}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.Net20.dll"/>
-    <ROW Component="Tobii.EyeX.Client.Net20.dll_1" ComponentId="{5E121C15-638B-4C14-A4FB-DB23342BD752}" Directory_="Release_1_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.Net20.dll_1"/>
+    <ROW Component="Tobii.EyeX.Client.Net20.dll_1" ComponentId="{91080A35-48B9-47C4-A6D5-D6CA7DE438CC}" Directory_="Release_1_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.Net20.dll_1"/>
     <ROW Component="Tobii.EyeX.Client.dll" ComponentId="{E712D230-413C-4D57-AC6D-92E1BD6600BA}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.dll"/>
-    <ROW Component="Tobii.EyeX.Client.dll_1" ComponentId="{005F49EB-754C-49CC-BDA4-ECB9A4E4557A}" Directory_="Release_1_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.dll_1"/>
+    <ROW Component="Tobii.EyeX.Client.dll_1" ComponentId="{39E35070-E75D-4AAD-97E4-61FD3CDA3E6C}" Directory_="Release_1_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.dll_1"/>
     <ROW Component="WindowsInput.dll" ComponentId="{34987714-9BF8-42AB-BAA5-640C2D11092B}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsInput.dll"/>
     <ROW Component="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" ComponentId="{36F96219-BCC4-4A67-BBB9-277842EE5EF3}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
     <ROW Component="WindowsRecipes.TaskbarSingleInstance.dll" ComponentId="{5282974C-C5E3-466D-8A42-9180D543F38D}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsRecipes.TaskbarSingleInstance.dll"/>
@@ -192,7 +192,7 @@
     <ROW Component="_MC_5_1_1_intro.xml_5" ComponentId="{EC740ECF-068C-48C4-9571-4A0DC81838D3}" Directory_="Mouse_Dir" Attributes="0" KeyPath="_MC_5_1_1_intro.xml_5" Type="0"/>
     <ROW Component="back.png" ComponentId="{5248959E-89E5-410B-AE5D-E0C3C57B4812}" Directory_="CommuniKate_Dir" Attributes="0" KeyPath="back.png" Type="0"/>
     <ROW Component="bass.dll" ComponentId="{517090D2-7E2F-45EC-8523-0C0D5767B826}" Directory_="Release_Dir" Attributes="0" KeyPath="bass.dll"/>
-    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemine2.1.8.jar" Type="0"/>
+    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemine2.1.5.jar" Type="0"/>
     <ROW Component="eyemine2.0.12.jar" ComponentId="{B42179B6-D266-4B7F-ACB5-A2D839801563}" Directory_="ModInstaller_Dir" Attributes="0" KeyPath="eyemineclientmouse.toml" Type="0"/>
     <ROW Component="log4net.dll" ComponentId="{A7F133B7-2488-4FB2-AE4E-FF821FA4666F}" Directory_="Release_Dir" Attributes="0" KeyPath="log4net.dll"/>
     <ROW Component="myGazeAPI.dll" ComponentId="{3ADA73ED-7267-40C1-9EB2-E6A21DBC6C55}" Directory_="Release_Dir" Attributes="0" KeyPath="myGazeAPI.dll"/>
@@ -416,18 +416,7 @@
     <ROW File="_MC_MainKeyboard.xml_1" Component_="_MC_5_1_1_intro.xml_1" FileName="3_MC_M~1.XML|3_MC_MainKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\3_MC_MainKeyboard.xml" SelfReg="false"/>
     <ROW File="eyemineclientmouse.toml" Component_="eyemine2.0.12.jar" FileName="EYEMIN~1.TOM|eyemine-client-mouse.toml" Attributes="0" SourcePath="resources\eyemine-client-mouse.toml" SelfReg="false"/>
     <ROW File="eyemineclienttobii.toml" Component_="eyemine2.0.12.jar" FileName="EYEMIN~2.TOM|eyemine-client-tobii.toml" Attributes="0" SourcePath="resources\eyemine-client-tobii.toml" SelfReg="false"/>
-    <ROW File="EyeXFramework.dll_1" Component_="EyeXFramework.dll_1" FileName="EYEXFR~1.DLL|EyeXFramework.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\EyeXFramework.dll" SelfReg="false"/>
     <ROW File="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" Component_="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" FileName="JULIUS~1.DLL|JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" SelfReg="false"/>
-    <ROW File="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" Component_="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" FileName="JULIUS~2.DLL|JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" SelfReg="false"/>
-    <ROW File="JuliusSweetland.OptiKey.InstallerActionsEyeMine.pdb" Component_="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" FileName="JULIUS~1.PDB|JuliusSweetland.OptiKey.InstallerActionsEyeMine.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\JuliusSweetland.OptiKey.InstallerActionsEyeMine.pdb" SelfReg="false"/>
-    <ROW File="Microsoft.Deployment.WindowsInstaller.dll" Component_="Microsoft.Deployment.WindowsInstaller.dll" FileName="MICROS~1.DLL|Microsoft.Deployment.WindowsInstaller.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" SelfReg="false"/>
-    <ROW File="Newtonsoft.Json.dll_1" Component_="Newtonsoft.Json.dll_1" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Newtonsoft.Json.dll" SelfReg="false"/>
-    <ROW File="Tobii.EyeX.Client.dll_1" Component_="Tobii.EyeX.Client.dll_1" FileName="TOBIIE~1.DLL|Tobii.EyeX.Client.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Tobii.EyeX.Client.dll" SelfReg="false"/>
-    <ROW File="Tobii.EyeX.Client.Net20.dll_1" Component_="Tobii.EyeX.Client.Net20.dll_1" FileName="TOBIIE~2.DLL|Tobii.EyeX.Client.Net20.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Tobii.EyeX.Client.Net20.dll" SelfReg="false"/>
-    <ROW File="EyeXFramework.xml_1" Component_="EyeXFramework.xml" FileName="EYEXFR~1.XML|EyeXFramework.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\EyeXFramework.xml" SelfReg="false"/>
-    <ROW File="Microsoft.Deployment.WindowsInstaller.xml" Component_="EyeXFramework.xml" FileName="MICROS~1.XML|Microsoft.Deployment.WindowsInstaller.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Microsoft.Deployment.WindowsInstaller.xml" SelfReg="false"/>
-    <ROW File="Newtonsoft.Json.xml_1" Component_="EyeXFramework.xml" FileName="NEWTON~1.XML|Newtonsoft.Json.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Newtonsoft.Json.xml" SelfReg="false"/>
-    <ROW File="Tobii.EyeX.Client.Net20.xml_1" Component_="EyeXFramework.xml" FileName="TOBIIE~1.XML|Tobii.EyeX.Client.Net20.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Tobii.EyeX.Client.Net20.xml" SelfReg="false"/>
     <ROW File="EyeMineV2.exe.config" Component_="CREDITS.md" FileName="EYEMIN~1.CON|EyeMineV2.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\EyeMineV2.exe.config" SelfReg="false"/>
     <ROW File="AltAlphaHorizontalKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="ALTALP~1.XML|AltAlphaHorizontalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml" SelfReg="false"/>
     <ROW File="AltAlphaVerticalKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="ALTALP~2.XML|AltAlphaVerticalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml" SelfReg="false"/>
@@ -471,6 +460,17 @@
     <ROW File="MinecraftDebug.xml_5" Component_="MinecraftBuild.xml_5" FileName="MINECR~2.XML|MinecraftDebug.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MinecraftDebug.xml" SelfReg="false"/>
     <ROW File="MinecraftBuild.xml_6" Component_="MinecraftBuild.xml_6" FileName="MINECR~1.XML|MinecraftBuild.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MinecraftBuild.xml" SelfReg="false"/>
     <ROW File="MinecraftDebug.xml_6" Component_="MinecraftBuild.xml_6" FileName="MINECR~2.XML|MinecraftDebug.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MinecraftDebug.xml" SelfReg="false"/>
+    <ROW File="EyeXFramework.dll_1" Component_="EyeXFramework.dll_1" FileName="EYEXFR~1.DLL|EyeXFramework.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\EyeXFramework.dll" SelfReg="false"/>
+    <ROW File="EyeXFramework.xml_1" Component_="EyeXFramework.xml" FileName="EYEXFR~1.XML|EyeXFramework.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\EyeXFramework.xml" SelfReg="false"/>
+    <ROW File="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" Component_="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" FileName="JULIUS~2.DLL|JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" SelfReg="false"/>
+    <ROW File="JuliusSweetland.OptiKey.InstallerActionsEyeMine.pdb" Component_="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll" FileName="JULIUS~1.PDB|JuliusSweetland.OptiKey.InstallerActionsEyeMine.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\JuliusSweetland.OptiKey.InstallerActionsEyeMine.pdb" SelfReg="false"/>
+    <ROW File="Microsoft.Deployment.WindowsInstaller.dll" Component_="Microsoft.Deployment.WindowsInstaller.dll" FileName="MICROS~1.DLL|Microsoft.Deployment.WindowsInstaller.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Deployment.WindowsInstaller.xml" Component_="EyeXFramework.xml" FileName="MICROS~1.XML|Microsoft.Deployment.WindowsInstaller.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Microsoft.Deployment.WindowsInstaller.xml" SelfReg="false"/>
+    <ROW File="Newtonsoft.Json.dll_1" Component_="Newtonsoft.Json.dll_1" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Newtonsoft.Json.dll" SelfReg="false"/>
+    <ROW File="Newtonsoft.Json.xml_1" Component_="EyeXFramework.xml" FileName="NEWTON~1.XML|Newtonsoft.Json.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Newtonsoft.Json.xml" SelfReg="false"/>
+    <ROW File="Tobii.EyeX.Client.dll_1" Component_="Tobii.EyeX.Client.dll_1" FileName="TOBIIE~1.DLL|Tobii.EyeX.Client.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Tobii.EyeX.Client.dll" SelfReg="false"/>
+    <ROW File="Tobii.EyeX.Client.Net20.dll_1" Component_="Tobii.EyeX.Client.Net20.dll_1" FileName="TOBIIE~2.DLL|Tobii.EyeX.Client.Net20.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Tobii.EyeX.Client.Net20.dll" SelfReg="false"/>
+    <ROW File="Tobii.EyeX.Client.Net20.xml_1" Component_="EyeXFramework.xml" FileName="TOBIIE~1.XML|Tobii.EyeX.Client.Net20.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActionsEyeMine\bin\Release\Tobii.EyeX.Client.Net20.xml" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -882,14 +882,7 @@
     <ROW Feature_="MainFeature" Component_="MinecraftBuild.xml"/>
     <ROW Feature_="MainFeature" Component_="_MC_5_1_1_intro.xml_1"/>
     <ROW Feature_="MainFeature" Component_="eyemine2.0.12.jar"/>
-    <ROW Feature_="MainFeature" Component_="EyeXFramework.dll_1"/>
     <ROW Feature_="MainFeature" Component_="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll"/>
-    <ROW Feature_="MainFeature" Component_="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll"/>
-    <ROW Feature_="MainFeature" Component_="Microsoft.Deployment.WindowsInstaller.dll"/>
-    <ROW Feature_="MainFeature" Component_="Newtonsoft.Json.dll_1"/>
-    <ROW Feature_="MainFeature" Component_="Tobii.EyeX.Client.dll_1"/>
-    <ROW Feature_="MainFeature" Component_="Tobii.EyeX.Client.Net20.dll_1"/>
-    <ROW Feature_="MainFeature" Component_="EyeXFramework.xml"/>
     <ROW Feature_="MainFeature" Component_="AI_ExePath"/>
     <ROW Feature_="MainFeature" Component_="AltAlphaHorizontalKeyboard.xml"/>
     <ROW Feature_="MainFeature" Component_="Demo_Bottom.xml"/>
@@ -901,6 +894,13 @@
     <ROW Feature_="MainFeature" Component_="Keyboards"/>
     <ROW Feature_="MainFeature" Component_="MinecraftBuild.xml_5"/>
     <ROW Feature_="MainFeature" Component_="MinecraftBuild.xml_6"/>
+    <ROW Feature_="MainFeature" Component_="EyeXFramework.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="EyeXFramework.xml"/>
+    <ROW Feature_="MainFeature" Component_="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Deployment.WindowsInstaller.dll"/>
+    <ROW Feature_="MainFeature" Component_="Newtonsoft.Json.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Tobii.EyeX.Client.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Tobii.EyeX.Client.Net20.dll_1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="EyeMineV2.exe" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\EyeMineV2.ico" Index="0"/>
