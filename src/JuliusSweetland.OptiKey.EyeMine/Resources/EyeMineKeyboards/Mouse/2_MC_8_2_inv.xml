@@ -68,7 +68,7 @@
 		<DynamicKey>
 			<Label>Scroll\ndown</Label>
       <Symbol>MouseScrollToBottomIcon</Symbol>
-			<Action>F9</Action>
+			<Action>F8</Action>
 			</DynamicKey>
         
     <DynamicKey>
