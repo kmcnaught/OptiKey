@@ -149,18 +149,52 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
         public static bool IsProgramInstalled(string programDisplayName)
         {
-            string regKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
-
-            foreach (var item in Registry.LocalMachine.OpenSubKey(regKey).GetSubKeyNames())
+            List<string> installs = new List<string>();
+            List<string> keys = new List<string>()
             {
-                object programName = Registry.LocalMachine.OpenSubKey(regKey + "\\" + item).GetValue("DisplayName");
+                @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
+                @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall" // 32 bit apps on 64 bit OS
+            };
 
-                if (string.Equals(programName, programDisplayName))
+            // The RegistryView.Registry64 forces the application to open the registry as x64 even if the application is compiled as x86 
+            FindInstalls(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64), keys,
+                installs);
+            FindInstalls(RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64), keys,
+                installs);
+            FindInstalls(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32), keys,
+                installs);
+            FindInstalls(RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32), keys,
+                installs);
+
+            installs = installs.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+            installs = installs.Where(s => s.ToLowerInvariant().Contains(programDisplayName)).ToList();
+            return (installs.Count > 0);
+        }
+
+        private static void FindInstalls(RegistryKey regKey, List<string> keys, List<string> installed)
+        {
+            foreach (string key in keys)
+            {
+                using (RegistryKey rk = regKey.OpenSubKey(key))
                 {
-                    return true;
+                    if (rk == null)
+                    {
+                        continue;
+                    }
+                    foreach (string skName in rk.GetSubKeyNames())
+                    {
+                        using (RegistryKey sk = rk.OpenSubKey(skName))
+                        {
+                            try
+                            {
+                                installed.Add(Convert.ToString(sk.GetValue("DisplayName") + "\t:\t" + sk.Name));
+                            }
+                            catch (Exception ex)
+                            { }
+                        }
+                    }
                 }
             }
-            return false;
         }
 
     }
