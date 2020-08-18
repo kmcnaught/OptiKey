@@ -325,12 +325,28 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 string oldForgeDir = Path.Combine(versionsPath, forgeVersionOld);
                 if (Directory.Exists(oldForgeDir))
                 {
-                    string forgeUuid = System.Guid.NewGuid().ToString("N");
+                    // Check if there's already an entry for this version
+                    bool forgeProfileAlready = false;
+                    foreach (var profile in origProfiles.Values)
+                    {
+                        if (utils.HasProperty(profile, "lastVersionId") &&
+                            profile["lastVersionId"] == forgeVersionOld)
+                        {
+                            session.Log("Found existing Forge 1.11.2 profile");
+                            forgeProfileAlready = true;
+                        }
+                    }
 
-                    newProfiles[forgeUuid] = new JObject(
-                        new JProperty("name", "forge-1.11.2"),
-                        new JProperty("lastVersionId", forgeVersionOld),
-                        new JProperty("type", ""));
+                    if (!forgeProfileAlready)
+                    {
+                        session.Log("Adding Forge 1.11.2 profile");
+                        string forgeUuid = System.Guid.NewGuid().ToString("N");
+
+                        newProfiles[forgeUuid] = new JObject(
+                            new JProperty("name", "forge-1.11.2"),
+                            new JProperty("lastVersionId", forgeVersionOld),
+                            new JProperty("type", ""));
+                    }
                 }
             }
 

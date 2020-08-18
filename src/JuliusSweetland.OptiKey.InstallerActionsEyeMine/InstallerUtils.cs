@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using EyeXFramework;
@@ -131,6 +132,13 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             {
                 return dict.ContainsKey(name);
             }
+            try
+            {
+                var dict2 = obj.ToObject < Dictionary<string, dynamic>>();
+                return dict2.ContainsKey(name);
+            }
+            catch (Exception e) { }
+            
             return obj.GetType().GetProperty(name) != null;
         }
 
