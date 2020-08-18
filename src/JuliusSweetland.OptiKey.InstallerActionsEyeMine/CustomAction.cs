@@ -214,7 +214,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                     // Backup old file(s)
                     foreach (string oldFile in oldModFiles)
                     {
-                        File.Move(oldFile, oldFile + ".backup");
+                        File.Copy(oldFile, oldFile + ".backup", true);
+                        File.Delete(oldFile);
                     }
 
                     // Install new file
