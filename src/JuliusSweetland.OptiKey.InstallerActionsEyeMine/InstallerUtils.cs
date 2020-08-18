@@ -152,7 +152,12 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             string extension = Path.GetExtension(filename);
 
             string newFile = String.Format("{0}_{1}{2}", file, datetime, extension);
-            return Path.Combine(path, newFile);
+            string newDirectory = Path.Combine(path, "backups");
+            if (!Directory.Exists(newDirectory))
+            {
+                Directory.CreateDirectory(newDirectory);
+            }
+            return Path.Combine(path, newDirectory, newFile);
         }
 
         public static bool IsProgramInstalled(string programDisplayName)
