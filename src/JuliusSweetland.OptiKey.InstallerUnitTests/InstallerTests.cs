@@ -86,8 +86,8 @@ namespace JuliusSweetland.OptiKey.UnitTests
         [Test]
         public void TestMinecraftInstalled()
         {
-            ActionResult res = CustomActionsEyeMine.CheckForMinecraftInstallation(null);
-            Assert.AreEqual(res, ActionResult.Success);
+            bool installed = InstallerUtils.IsProgramInstalled("Minecraft Launcher");
+            Assert.True(installed);
         }
 
         [Test]

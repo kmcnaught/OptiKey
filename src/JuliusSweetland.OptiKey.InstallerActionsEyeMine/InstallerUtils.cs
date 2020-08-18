@@ -180,7 +180,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 installs);
 
             installs = installs.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
-            installs = installs.Where(s => s.ToLowerInvariant().Contains(programDisplayName)).ToList();
+            installs = installs.Where(s => s.ToLowerInvariant().Contains(programDisplayName.ToLowerInvariant())).ToList();
             return (installs.Count > 0);
         }
 
