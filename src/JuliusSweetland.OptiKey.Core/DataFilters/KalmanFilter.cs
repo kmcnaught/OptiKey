@@ -6,11 +6,11 @@ namespace JuliusSweetland.OptiKey.DataFilters
 {
     public class KalmanFilter
     {
-        double ProcessNoise; //Standard deviation - Q
-        double MeasurementNoise; // R
-        double EstimationConfidence; //P
-        double? EstimatedValue; // X 
-        double Gain; // K
+        private readonly double ProcessNoise; // Q
+        private readonly double MeasurementNoise; // R
+        private double EstimationConfidence; //P
+        private double? EstimatedValue; // X 
+        private double Gain; // K
 
         // We'll discard our model when saccades exceed this: this is the point at which our plant model is very non-gaussian
         private double MaxMicroSaccade; 
