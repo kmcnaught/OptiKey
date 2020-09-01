@@ -1240,6 +1240,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseDrag:
                     Log.Info("Mouse drag selected.");
                     resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupKalmanFilterForMouseAction();
                     SetupFinalClickAction(firstFinalPoint =>
                     {
                         if (firstFinalPoint != null)
@@ -1510,6 +1511,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveAndLeftClick:
                     Log.Info("Mouse move and left click selected.");
                     resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupKalmanFilterForMouseAction();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1540,6 +1542,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveAndLeftDoubleClick:
                     Log.Info("Mouse move and left double click selected.");
                     resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupKalmanFilterForMouseAction();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1570,6 +1573,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveAndMiddleClick:
                     Log.Info("Mouse move and middle click selected.");
                     resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupKalmanFilterForMouseAction();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1600,6 +1604,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveAndRightClick:
                     Log.Info("Mouse move and right click selected.");
                     resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupKalmanFilterForMouseAction();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1660,6 +1665,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveAndScrollToBottom:
                     Log.Info("Mouse move and scroll to bottom selected.");
                     resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupKalmanFilterForMouseAction();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1690,6 +1696,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveAndScrollToLeft:
                     Log.Info("Mouse move and scroll to left selected.");
                     resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupKalmanFilterForMouseAction();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1720,6 +1727,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveAndScrollToRight:
                     Log.Info("Mouse move and scroll to right selected.");
                     resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupKalmanFilterForMouseAction();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1750,6 +1758,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveAndScrollToTop:
                     Log.Info("Mouse move and scroll to top selected.");
                     resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupKalmanFilterForMouseAction();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1826,6 +1835,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveTo:
                     Log.Info("Mouse move to selected.");
                     resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupKalmanFilterForMouseAction();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -2367,6 +2377,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ShowCursor = true;
         }
 
+        private void SetupKalmanFilterForMouseAction()
+        {
+            if (Settings.Default.KalmanFilterEnabled)
+            {
+                Settings.Default.KalmanFilterInUse = true;
+                Settings.Default.KalmanFilterMeasurementNoise = 500;
+            }
+        }
+
+        private void SetupKalmanFilterForKeySelection()
+        {
+            Settings.Default.KalmanFilterInUse = true;
+            Settings.Default.KalmanFilterMeasurementNoise = 250;
+        }
+
         private void ResetAndCleanupAfterMouseAction()
         {
             SelectionMode = SelectionModes.Key;
@@ -2374,6 +2399,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ShowCursor = false;
             MagnifyAtPoint = null;
             MagnifiedPointSelectionAction = null;
+            SetupKalmanFilterForKeySelection();
 
             if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value == KeyDownStates.Down)
             {
