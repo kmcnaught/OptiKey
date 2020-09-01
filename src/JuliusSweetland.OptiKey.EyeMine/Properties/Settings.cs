@@ -22,37 +22,6 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         public new static Settings Default => (Settings)OptiKey.Properties.Settings.Default;
 
 
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public new bool KalmanFilterEnabled
-        {
-            get
-            {
-                return ((bool)(this["KalmanFilterEnabled"]));
-            }
-            set
-            {
-                this["KalmanFilterEnabled"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("500")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public new double KalmanFilterMeasurementNoise
-        {
-            get
-            {
-                return ((double)(this["KalmanFilterMeasurementNoise"]));
-            }
-            set
-            {
-                this["KalmanFilterMeasurementNoise"] = value;
-            }
-        }
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

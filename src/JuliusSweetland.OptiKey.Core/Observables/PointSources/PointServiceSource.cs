@@ -58,7 +58,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                             eh => pointGeneratingService.Point += eh,
                             eh => pointGeneratingService.Point -= eh)
                         .Where(_ => State == RunningStates.Running)
-                        .Select(ep => Settings.Default.KalmanFilterInUse && pointGeneratingService.KalmanFilterSupported
+                        .Select(ep => Settings.Default.KalmanFilterEnabled && pointGeneratingService.KalmanFilterSupported
                             ? new Timestamped<Point>(new Point((int)kalmanFilterX.Update(ep.EventArgs.Value.X), (int)kalmanFilterY.Update(ep.EventArgs.Value.Y)), ep.EventArgs.Timestamp)
                             : ep.EventArgs
                         )
