@@ -77,7 +77,8 @@
 			<Action>NumPad3</Action>
 		</DynamicKey>
 		<DynamicKey>
-			<!-- empty padding-->
+			<Label>Saved\nToolbars</Label>
+			<ChangeKeyboard BackReturnsHere="True">Bonus Keyboards/SavedHotbars.xml</ChangeKeyboard>
 		</DynamicKey>
 		<DynamicKey>
 			<Label>Hover\nright</Label>

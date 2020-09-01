@@ -35,7 +35,10 @@
          <Symbol>MinecraftTabLadder</Symbol>
          <Action>NumPad3</Action>
       </DynamicKey>
-      <DynamicKey/>
+      <DynamicKey>
+         <Label>Saved\nToolbars</Label>
+         <ChangeKeyboard BackReturnsHere="True">Bonus Keyboards/SavedToolbars.xml</ChangeKeyboard>
+      </DynamicKey>
       <DynamicKey>
          <Label>Scroll\nUp</Label>
          <Symbol>MouseScrollToTopIcon</Symbol>
