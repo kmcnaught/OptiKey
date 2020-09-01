@@ -34,8 +34,15 @@ namespace JuliusSweetland.OptiKey.DataFilters
                 EstimationConfidence = MeasurementNoise;
             }
 
-            Gain = (EstimationConfidence + ProcessNoise) / (EstimationConfidence + ProcessNoise + MeasurementNoise);
-            EstimationConfidence = MeasurementNoise * (EstimationConfidence + ProcessNoise) / (MeasurementNoise + EstimationConfidence + ProcessNoise);
+            // This is a combined "prediction + update" step
+            // Ideally we'd have some timings to allow estimate uncertainty to grow when data missing, in which case we'd separate the two
+
+            // Prediction - process model is "we haven't moved" but with some uncertainty
+            EstimationConfidence = EstimationConfidence + ProcessNoise;
+
+            // Update
+            Gain = (EstimationConfidence) / (EstimationConfidence + MeasurementNoise);
+            EstimationConfidence = (1.0 - Gain) * EstimationConfidence;
             double result = EstimatedValue.Value + (measurement - EstimatedValue.Value) * Gain;
             EstimatedValue = result;
 
