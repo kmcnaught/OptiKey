@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.DataFilters
             this.MeasurementNoise = measurementNoise;
             this.EstimationConfidence = 0.1f;
             this.EstimatedValue = null; 
-            this.MaxMicroSaccade = 20; // pixels? default to % of screen?
+            this.MaxMicroSaccade = 50; // pixels? default to % of screen?
         }
 
         public double Update(double measurement)
