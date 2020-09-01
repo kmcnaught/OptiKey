@@ -6,9 +6,9 @@ namespace JuliusSweetland.OptiKey.DataFilters
 {
     public class KalmanFilter
     {
-        private readonly double ProcessNoise; // Q
-        private readonly double MeasurementNoise; // R
-        private double EstimationConfidence; //P
+        private readonly double ProcessNoise; // Q (1/variance)
+        private readonly double MeasurementNoise; // R (1/variance)
+        private double EstimationNoise; //P (1/variance)
         private double? EstimatedValue; // X 
         private double Gain; // K
 
@@ -20,7 +20,7 @@ namespace JuliusSweetland.OptiKey.DataFilters
             // TODO: remove "initial value" settings
             this.ProcessNoise = processNoise;
             this.MeasurementNoise = measurementNoise;
-            this.EstimationConfidence = 0.1f;
+            this.EstimationNoise = 0f;
             this.EstimatedValue = null; 
             this.MaxMicroSaccade = 50; // pixels? default to % of screen?
         }
@@ -31,18 +31,18 @@ namespace JuliusSweetland.OptiKey.DataFilters
             if (!EstimatedValue.HasValue || Math.Abs(EstimatedValue.Value - measurement) > MaxMicroSaccade)
             {
                 EstimatedValue = measurement;
-                EstimationConfidence = MeasurementNoise;
+                EstimationNoise = MeasurementNoise;
             }
 
             // This is a combined "prediction + update" step
             // Ideally we'd have some timings to allow estimate uncertainty to grow when data missing, in which case we'd separate the two
 
             // Prediction - process model is "we haven't moved" but with some uncertainty
-            EstimationConfidence = EstimationConfidence + ProcessNoise;
+            EstimationNoise = EstimationNoise + ProcessNoise;
 
             // Update
-            Gain = (EstimationConfidence) / (EstimationConfidence + MeasurementNoise);
-            EstimationConfidence = (1.0 - Gain) * EstimationConfidence;
+            Gain = (EstimationNoise) / (EstimationNoise + MeasurementNoise);
+            EstimationNoise = (1.0 - Gain) * EstimationNoise;
             double result = EstimatedValue.Value + (measurement - EstimatedValue.Value) * Gain;
             EstimatedValue = result;
 
