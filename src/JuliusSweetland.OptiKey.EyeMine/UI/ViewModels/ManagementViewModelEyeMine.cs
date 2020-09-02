@@ -3,6 +3,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Configuration;
 using JuliusSweetland.OptiKey.Properties;
 using EyeMineResources = JuliusSweetland.OptiKey.EyeMine.Properties.Resources;
 using JuliusSweetland.OptiKey.Services;
@@ -15,6 +16,8 @@ using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management;
+using JuliusSweetland.OptiKey.InstallerActionsEyeMine;
+using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -256,16 +259,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 });
         }
 
+        private void UpdateMinecraftConfig()
+        {
+            bool useMouseEmulation = Settings.Default.PointsSource == PointsSources.MousePosition;
+            bool success = CustomActionsEyeMine.UpdateModConfig(useMouseEmulation);
+        }
+
         private void SaveAndRestart()
         {
+            // Cache RequireMinecraftUpdate before saving settings
+            bool requireMinecraftUpdate = PointingAndSelectingViewModel.RequireMinecraftUpdate;
+
             Log.Info("Applying management changes and attempting to restart OptiKey");
             ApplyChanges();
             Settings.Default.Save();
 
             // Update Minecraft config if required
-            if (PointingAndSelectingViewModel.RequireMinecraftUpdate)
+            if (requireMinecraftUpdate)
             {
-                // FIXME: implement
+                UpdateMinecraftConfig();
             }
 
             try

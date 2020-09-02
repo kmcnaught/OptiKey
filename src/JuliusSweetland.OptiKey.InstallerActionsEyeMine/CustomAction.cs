@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Microsoft.Deployment.WindowsInstaller;
 using Newtonsoft.Json.Linq;
 using utils = JuliusSweetland.OptiKey.InstallerActionsEyeMine.InstallerUtils;
@@ -161,6 +162,38 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             bool alreadyExists = EyeMineDirAlreadyExists();
             session["FIRST_MOD_INSTALL"] = (!alreadyExists).ToString().ToLowerInvariant();
             return ActionResult.Success;
+        }
+
+        public static bool UpdateModConfig(bool useMouseEmulation)
+        {
+            string eyemineGameDir = Path.Combine(minecraftPath, "EyeMineV2");
+            string configDir = Path.Combine(eyemineGameDir, "config");
+            string configFile = Path.Combine(configDir, "eyemine-client.toml");
+
+            if (!File.Exists(configFile))
+            {
+                return false;
+            }
+
+            // Backup old file
+            string configBackup = utils.GetBackupName(configFile);
+            File.Copy(configFile, configBackup, true);
+
+            // Modify main file in-place
+            string[] arrLines = File.ReadAllLines(configFile);
+            bool updated = false;
+            for (int i = 0; i < arrLines.Length; i++) { 
+                if (arrLines[i].Contains("usingMouseEmulation"))
+                {
+                    string pattern = @"usingMouseEmulation\s*=\s*(?:false|true)";
+                    string replacement = "usingMouseEmulation = " + (useMouseEmulation ? "true" : "false");
+
+                    arrLines[i] = Regex.Replace(arrLines[i], pattern, replacement);
+                    updated = true;
+                }
+            }
+            File.WriteAllLines(configFile, arrLines);
+            return updated;
         }
 
         [CustomAction]

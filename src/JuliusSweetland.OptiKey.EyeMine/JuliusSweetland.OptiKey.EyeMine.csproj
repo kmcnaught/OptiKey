@@ -1095,6 +1095,10 @@
       <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
       <Name>JuliusSweetland.OptiKey.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.InstallerActionsEyeMine\JuliusSweetland.OptiKey.InstallerActionsEyeMine.csproj">
+      <Project>{b3b91e5b-10e1-47df-a636-050c025c2833}</Project>
+      <Name>JuliusSweetland.OptiKey.InstallerActionsEyeMine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JuliusSweetland.OptiKey.StandardPlugins\JuliusSweetland.OptiKey.StandardPlugins.csproj">
       <Project>{0c8f0372-2d55-41bc-9730-4ace3ed67452}</Project>
       <Name>JuliusSweetland.OptiKey.StandardPlugins</Name>
