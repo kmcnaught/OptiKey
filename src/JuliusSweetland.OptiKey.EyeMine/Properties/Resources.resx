@@ -162,4 +162,10 @@
   <data name="VOLUME" xml:space="preserve">
     <value>Volume</value>
   </data>
+  <data name="TOBII_DYNAVOX_LONG" xml:space="preserve">
+    <value>Tobii Dynavox eye tracker (e.g. PCEye Go, PCEye Mini, PCEye Explore, PCEye Plus, ...)</value>
+  </data>
+  <data name="TOBII_GAMING_LONG" xml:space="preserve">
+    <value>Tobii Gaming eye tracker (e.g. EyeX, 4C, 5C, Alienware, Steel Series Sentry, ...)</value>
+  </data>
 </root>

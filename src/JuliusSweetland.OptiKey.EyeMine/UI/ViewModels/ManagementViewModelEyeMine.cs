@@ -32,7 +32,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             //Instantiate child VMs
             DictionaryViewModel = new DictionaryViewModel(dictionaryService);
             OtherViewModel = new OtherViewModel();
-            PointingAndSelectingViewModel = new PointingAndSelectingViewModel();
+            PointingAndSelectingViewModel = new PointingAndSelectingViewModelEyeMine();
             SoundsViewModel = new SoundsViewModel(audioService);
             VisualsViewModel = new VisualsViewModelEyeMine(windowManipulationService);
             FeaturesViewModel = new FeaturesViewModel();
@@ -64,7 +64,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public DictionaryViewModel DictionaryViewModel { get; private set; }
         public OtherViewModel OtherViewModel { get; private set; }
-        public PointingAndSelectingViewModel PointingAndSelectingViewModel { get; private set; }
+        public PointingAndSelectingViewModelEyeMine PointingAndSelectingViewModel { get; private set; }
         public SoundsViewModel SoundsViewModel { get; private set; }
         public VisualsViewModelEyeMine VisualsViewModel { get; protected set; }
         public FeaturesViewModel FeaturesViewModel { get; private set; }

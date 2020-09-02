@@ -187,6 +187,24 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tobii Dynavox eye tracker (e.g. PCEye Go, PCEye Mini, PCEye Explore, PCEye Plus, ...).
+        /// </summary>
+        public static string TOBII_DYNAVOX_LONG {
+            get {
+                return ResourceManager.GetString("TOBII_DYNAVOX_LONG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tobii Gaming eye tracker (e.g. EyeX, 4C, 5C, Alienware, Steel Series Sentry, ...).
+        /// </summary>
+        public static string TOBII_GAMING_LONG {
+            get {
+                return ResourceManager.GetString("TOBII_GAMING_LONG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Volume.
         /// </summary>
         public static string VOLUME {
