@@ -47,6 +47,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             CancelCommand = new DelegateCommand<Window>(Cancel); //Can always click Cancel
         }
 
+        private bool IsMinecraftRunning()
+        {
+            foreach (Process process in Process.GetProcesses())
+            {
+                // We don't have a "minecraft" process, we have a "java" process which we can interrogate for minecraft keywords
+                if (process.ProcessName.Contains("java"))
+                {
+                    try
+                    {
+                        string commandLine = process.GetCommandLine();
+                        if (commandLine.ToLower().Contains("minecraft"))
+                            return true;
+                    }
+                    // Catch and ignore exceptions, e.g. "Access denied" or "Cannot process request"
+                    catch (Exception ex)
+                    {
+                        Log.Error("Exception querying java process", ex);
+                    }
+                }
+            }
+
+            return false;
+        }
+
         #endregion
 
         #region Properties
