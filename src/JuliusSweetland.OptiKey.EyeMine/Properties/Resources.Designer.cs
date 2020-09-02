@@ -160,6 +160,15 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EyeMine needs to restart to apply your changes.
+        /// </summary>
+        public static string RESTART_MESSAGE {
+            get {
+                return ResourceManager.GetString("RESTART_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select folder containing own dynamic XML keyboards.
         /// </summary>
         public static string SELECT_DYNAMIC_FOLDER_INSTRUCTIONS {
@@ -210,6 +219,15 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         public static string TOBII_GAMING_LONG {
             get {
                 return ResourceManager.GetString("TOBII_GAMING_LONG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to May I restart EyeMine?.
+        /// </summary>
+        public static string VERIFY_RESTART {
+            get {
+                return ResourceManager.GetString("VERIFY_RESTART", resourceCulture);
             }
         }
         

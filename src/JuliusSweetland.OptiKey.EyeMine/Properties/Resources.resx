@@ -174,4 +174,10 @@
   <data name="WARNING" xml:space="preserve">
     <value>WARNING</value>
   </data>
+  <data name="RESTART_MESSAGE" xml:space="preserve">
+    <value>EyeMine needs to restart to apply your changes</value>
+  </data>
+  <data name="VERIFY_RESTART" xml:space="preserve">
+    <value>May I restart EyeMine?</value>
+  </data>
 </root>

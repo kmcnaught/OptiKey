@@ -77,6 +77,18 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
             }
         }
 
+        public bool RequireMinecraftUpdate
+        {
+            get
+            {
+                // If points source has changed between (any eyetracker) and (mouse)
+                // we require changes to mod's mouse emulation setting
+                return Settings.Default.PointsSource != PointsSource &&
+                       (PointsSource == CoreEnums.PointsSources.MousePosition ||
+                        Settings.Default.PointsSource == CoreEnums.PointsSources.MousePosition);
+            }
+        }
+
 
         public new bool ChangesRequireRestart
         {

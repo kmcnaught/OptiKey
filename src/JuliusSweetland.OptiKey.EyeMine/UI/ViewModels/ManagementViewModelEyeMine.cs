@@ -1,6 +1,7 @@
 // Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
 using System;
+using System.Diagnostics;
 using System.Linq;
 using JuliusSweetland.OptiKey.Properties;
 using EyeMineResources = JuliusSweetland.OptiKey.EyeMine.Properties.Resources;
@@ -12,6 +13,7 @@ using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
@@ -243,58 +245,61 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ConfirmationRequest.Raise(
                 new Confirmation
                 {
-                    Title = Resources.VERIFY_RESTART,
-                    Content = Resources.RESTART_MESSAGE
+                    Title = EyeMineResources.VERIFY_RESTART,
+                    Content = EyeMineResources.RESTART_MESSAGE
                 }, confirmation =>
                 {
                     if (confirmation.Confirmed)
                     {
-                        Log.Info("Applying management changes and attempting to restart OptiKey");
-                        ApplyChanges();
-                        Settings.Default.Save();
-                        try
-                        {
-                            OptiKeyApp.RestartApp();
-                        }
-                        catch { } //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.
-                        Application.Current.Shutdown();
+                        SaveAndRestart();
+                    }
+                });
+        }
+
+        private void SaveAndRestart()
+        {
+            Log.Info("Applying management changes and attempting to restart OptiKey");
+            ApplyChanges();
+            Settings.Default.Save();
+
+            // Update Minecraft config if required
+            if (PointingAndSelectingViewModel.RequireMinecraftUpdate)
+            {
+                // FIXME: implement
+            }
+
+            try
+            {
+                OptiKeyApp.RestartApp();
+            }
+            catch { } //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.
+            Application.Current.Shutdown();
+        }
+
+        private void RestartMinecraftRequest()
+        {
+            //Warn if restart required and prompt for Confirmation before restarting
+            ConfirmationRequest.Raise(
+                new Confirmation
+                {
+                    Title = EyeMineResources.VERIFY_RESTART,
+                    Content = EyeMineResources.RESTART_MESSAGE + "\n\nWARNING! Please close Minecraft and restart to load the new EyeMine mod settings."
+                }, confirmation =>
+                {
+                    if (confirmation.Confirmed)
+                    {
+                        SaveAndRestart();
                     }
                 });
         }
 
         private void Ok(Window window)
         {
-            if (!string.IsNullOrEmpty(WarningBeforeExit))
+            if (PointingAndSelectingViewModel.RequireMinecraftUpdate &&
+                IsMinecraftRunning())
             {
-                Log.Info("WARNING BEFORE EXIT");
-                Log.Info(WarningBeforeExit);
-
-                string message = WarningBeforeExit;
-                message += "\n";
-                message += EyeMineResources.OKAY_CONTINUE_CANCEL_CHANGE;
-
                 // Warnings from any changes/selections
-                ConfirmationRequest.Raise(
-                    new Confirmation
-                    {
-                        Title = EyeMineResources.WARNING,
-                        Content = message
-                    }, confirmation =>
-                    {
-                        if (confirmation.Confirmed)
-                        {
-                            if (ChangesRequireRestart)
-                            {
-                                RestartRequest();
-                            }
-                            else
-                            {
-                                Log.Info("Applying management changes");
-                                ApplyChanges();
-                                window.Close();
-                            }
-                        }
-                    });
+                RestartMinecraftRequest();
             }
             else if (ChangesRequireRestart)
             {
@@ -306,9 +311,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 ApplyChanges();
                 window.Close();
             }
-            }
 
-            private static void Cancel(Window window)
+        }
+
+        private static void Cancel(Window window)
         {
             window.Close();
         }
