@@ -100,7 +100,7 @@
       </DynamicKey>
       <DynamicKey>
          <Label>Discard</Label>
-         <Action>Home</Action>
+         <Text>-</Text>
       </DynamicKey>
       <DynamicKey>
          <Label>Back</Label>
