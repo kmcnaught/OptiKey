@@ -213,7 +213,8 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
                     inputService.RequestResume(); //Start the input service
 
-                    await CheckForUpdates(inputService, audioService, mainViewModel);
+                    //FIXME: Reinstate an update check for the EyeMine repo. (need to think about V2 vs classic)
+                    //await CheckForUpdates(inputService, audioService, mainViewModel);
                 };
 
                 if (mainWindowManipulationService.SizeAndPositionIsInitialised)
