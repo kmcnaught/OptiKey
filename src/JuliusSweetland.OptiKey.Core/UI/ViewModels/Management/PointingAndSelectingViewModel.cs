@@ -129,6 +129,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        public List<Tuple<string, int>> GazeSmoothingLevels
+        {
+            get
+            {
+                return new List<Tuple<string, int>>
+                {
+                    new Tuple<string, int>("0 - " + Resources.NONE, 0),
+                    new Tuple<string, int>("1 - " + Resources.LOW, 1),
+                    new Tuple<string, int>("2 - " + Resources.MEDIUM, 10),
+                    new Tuple<string, int>("3 - " + Resources.HIGH, 30),
+                    new Tuple<string, int>("4 - " + Resources.ULTRA, 60),
+                    new Tuple<string, int>("5 - " + Resources.EXTREME, 97),
+                };
+            }
+        }
+
         public List<Keys> Keys
         {
             get { return Enum.GetValues(typeof(Enums.Keys)).Cast<Enums.Keys>().OrderBy(k => k.ToString()).ToList(); }
@@ -183,6 +199,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return irisBondProcessingLevel; }
             set { SetProperty(ref irisBondProcessingLevel, value); }
+        }
+
+        private int gazeSmoothingLevel;
+        public int GazeSmoothingLevel
+        {
+            get { return gazeSmoothingLevel; }
+            set { SetProperty(ref gazeSmoothingLevel, value); }
         }
 
         private bool kalmanFilterEnabled;
@@ -415,6 +438,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             PointsSource = Settings.Default.PointsSource;
             TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
             IrisbondProcessingLevel = Settings.Default.IrisbondProcessingLevel;
+            GazeSmoothingLevel = Settings.Default.GazeSmoothingLevel;
             KalmanFilterEnabled = Settings.Default.KalmanFilterEnabled;
             PointsMousePositionSampleIntervalInMs = Settings.Default.PointsMousePositionSampleInterval.TotalMilliseconds;
             PointsMousePositionHideCursor = Settings.Default.PointsMousePositionHideCursor;
@@ -448,6 +472,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.PointsSource = PointsSource;
             Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
             Settings.Default.IrisbondProcessingLevel = IrisbondProcessingLevel;
+            Settings.Default.GazeSmoothingLevel = GazeSmoothingLevel;
             Settings.Default.KalmanFilterEnabled = KalmanFilterEnabled;
             Settings.Default.PointsMousePositionSampleInterval = TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs);
             Settings.Default.PointsMousePositionHideCursor = PointsMousePositionHideCursor;

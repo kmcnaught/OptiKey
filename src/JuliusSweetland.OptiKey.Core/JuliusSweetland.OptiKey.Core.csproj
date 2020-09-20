@@ -211,7 +211,7 @@
     <Compile Include="Enums\LookToScrollSpeeds.cs" />
     <Compile Include="Enums\SimplifiedKeyboardContexts.cs" />
     <Compile Include="Enums\UnicodeCodePointRanges.cs" />
-    <Compile Include="DataFilters\KalmanFilter.cs" />
+    <Compile Include="DataFilters\SmoothingEffect.cs" />
     <Compile Include="Enums\Case.cs" />
     <Compile Include="Enums\CursorPointPositions.cs" />
     <Compile Include="Enums\DataStreamProcessingLevels.cs" />
@@ -258,7 +258,6 @@
     <Compile Include="Extensions\SvgViewboxAttachedProperties.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
-    <Compile Include="GazeFilter.cs" />
     <Compile Include="Models\DynamicKeyboardFolder.cs" />
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
