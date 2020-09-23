@@ -1,58 +1,73 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
-using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using System;
 using System.Windows;
 
 namespace JuliusSweetland.OptiKey.DataFilters
 {
     public class SmoothingEffect
     {
-        double ProcessNoise; //Standard deviation - Q
-        double MeasurementNoise; // R
-        double EstimationConfidence; //P
-        double Gain; // K
-        private Point lastPoint; // X 
-        private KeyValue lastKeyValue;
-        private bool newTarget;
+        private double innerLimit;
+        private double outerLimit;
+        private double smoothingLevel;
+        private DateTime anchorTime;
+        private KeyValue keyValue;
+        private Point smoothedPoint;
+        private bool unAnchored;
 
         public SmoothingEffect()
         {
-            this.ProcessNoise = .01d;
-            this.MeasurementNoise = .01d;
-            this.EstimationConfidence = 1;
-            this.lastPoint = new Point();
-            this.lastKeyValue = null;
+            LoadSettings();
+            keyValue = null;
+            smoothedPoint = new Point();
         }
 
-        public Point Update(Point point, KeyValue keyValue)
+        private void LoadSettings()
         {
             var lockRadius = Settings.Default.PointSelectionTriggerLockOnRadiusInPixels;
             var fixationRadius = Settings.Default.PointSelectionTriggerFixationRadiusInPixels;
-            var innerLimit = System.Math.Min(lockRadius, fixationRadius);
-            var outerlimit = System.Math.Max(lockRadius, fixationRadius);
-            double smoothingLevel = Settings.Default.GazeSmoothingLevel;
-            double distanceMoved = (point - lastPoint).Length;
-            newTarget = distanceMoved > outerlimit || (distanceMoved > innerLimit / 2 && newTarget);
+            innerLimit = Math.Min(lockRadius, fixationRadius);
+            outerLimit = Math.Max(lockRadius, fixationRadius);
+            smoothingLevel = Settings.Default.GazeSmoothingLevel;
+        }
 
-            if (keyValue != null && keyValue == lastKeyValue) //minimal movement if on same key
-                Gain = 0.03;
-            else if (keyValue != null) //instant movement if on a new key
-                Gain = 1;
-            else if (distanceMoved > innerLimit || newTarget)
+        public Point Update(Point nextPoint, KeyValue nextKeyValue)
+        {
+            double distanceMoved = (nextPoint - smoothedPoint).Length;
+            double gain = (distanceMoved / ((innerLimit + outerLimit) / 2)) 
+                        / (distanceMoved / ((innerLimit + outerLimit) / 2) + smoothingLevel);
+
+            if (nextKeyValue != null && nextKeyValue == keyValue) //minimal movement if on same key
             {
-                MeasurementNoise = smoothingLevel * outerlimit / distanceMoved;
-                Gain = newTarget 
-                    ? System.Math.Max(Gain, (EstimationConfidence + ProcessNoise) / (EstimationConfidence + ProcessNoise + MeasurementNoise))
-                    : (EstimationConfidence + ProcessNoise) / (EstimationConfidence + ProcessNoise + MeasurementNoise);
-                EstimationConfidence = MeasurementNoise * (EstimationConfidence + ProcessNoise) / (EstimationConfidence + ProcessNoise + MeasurementNoise);
+                gain = 0.06;
             }
-            else //no movement if within the inner limit
-                point = lastPoint;
+            else if (nextKeyValue != null) //instant movement if on a new key
+            {
+                gain = 1;
+            }
+            else if (unAnchored) //faster movement if we have gone outside the outer limit
+            {
+                anchorTime = DateTime.Now;
+                if (distanceMoved < innerLimit)
+                    unAnchored = false;
+            }
+            else if (distanceMoved > innerLimit) //slower movement if we have not gone outside of the outer limit
+            {
+                gain = (distanceMoved / outerLimit) / (distanceMoved / outerLimit + smoothingLevel);
+                anchorTime = DateTime.Now;
+                if (distanceMoved > outerLimit)
+                    unAnchored = true;
+            }
+            else if (anchorTime < DateTime.Now - TimeSpan.FromMilliseconds(200)) //no movement after 200ms within the inner limit
+            {
+                LoadSettings();
+                nextPoint = smoothedPoint;
+            }
 
-            Point result = lastPoint + (point - lastPoint) * Gain;
-            lastKeyValue = keyValue;
-            lastPoint = result;
+            Point result = smoothedPoint + (nextPoint - smoothedPoint) * gain;
+            keyValue = nextKeyValue;
+            smoothedPoint = result;
             return result;
         }
     }
