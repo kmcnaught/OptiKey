@@ -27,39 +27,46 @@ namespace JuliusSweetland.OptiKey.DataFilters
 
         public Point Update(Point measuredPoint, KeyValue measuredKeyValue)
         {
-            Log.InfoFormat("{0} Measurement: {1}", this.GetHashCode(), nextPoint.X);
-            
-            double distanceMoved = (measuredPoint - EstimatedPoint).Length;
+            if (Settings.Default.KalmanFilterEnabled)
+            {
+                Log.InfoFormat("{0} Measurement: {1}", this.GetHashCode(), measuredPoint.X);
 
-            if (measuredKeyValue != null && measuredKeyValue == PreviousKeyValue)
-            {
-                Gain = 0.06; //minimal movement if on same key
-            }
-            else if (measuredKeyValue != null)
-            {
-                Gain = 1; //instant movement if on a new key
-            }
-            else if (distanceMoved < 20 + SmoothingLevel)
-            {
-                SmoothingLevel = Settings.Default.GazeSmoothingLevel;
-                measuredPoint = EstimatedPoint;
+                double distanceMoved = (measuredPoint - EstimatedPoint).Length;
+
+                if (measuredKeyValue != null && measuredKeyValue == PreviousKeyValue)
+                {
+                    Gain = 0.06; //minimal movement if on same key
+                }
+                else if (measuredKeyValue != null)
+                {
+                    Gain = 1; //instant movement if on a new key
+                }
+                else if (distanceMoved < 20 + SmoothingLevel)
+                {
+                    SmoothingLevel = Settings.Default.GazeSmoothingLevel;
+                    measuredPoint = EstimatedPoint;
+                }
+                else
+                {
+                    var currentProcessNoise = Math.Exp(distanceMoved / 100);
+                    EstimationNoise = EstimationNoise + currentProcessNoise;
+                    Gain = (EstimationNoise) / (EstimationNoise + (2000 * SmoothingLevel));
+                    EstimationNoise = (1.0 - Gain) * EstimationNoise;
+                }
+
+                Point result = EstimatedPoint + (measuredPoint - EstimatedPoint) * Gain;
+                PreviousKeyValue = measuredKeyValue;
+                EstimatedPoint = result;
+
+                Log.InfoFormat("{0} Prediction: {1}", this.GetHashCode(), result.X);
+                Log.InfoFormat("{0} Gain: {1}", this.GetHashCode(), Gain);
+
+                return result;
             }
             else
             {
-                var currentProcessNoise = Math.Exp(distanceMoved / 100);
-                EstimationNoise = EstimationNoise + currentProcessNoise;
-                Gain = (EstimationNoise) / (EstimationNoise + (2000 * SmoothingLevel));
-                EstimationNoise = (1.0 - Gain) * EstimationNoise;
+                return measuredPoint;
             }
-
-            Point result = EstimatedPoint + (measuredPoint - EstimatedPoint) * Gain;
-            PreviousKeyValue = measuredKeyValue;
-            EstimatedPoint = result;
-
-            Log.InfoFormat("{0} Prediction: {1}", this.GetHashCode(), result.X);
-            Log.InfoFormat("{0} Gain: {1}", this.GetHashCode(), gain);
-
-            return result;
         }
     }
 }
