@@ -3,6 +3,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using System;
 using System.Windows;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.DataFilters
 {
@@ -15,6 +16,9 @@ namespace JuliusSweetland.OptiKey.DataFilters
         private KeyValue keyValue;
         private Point smoothedPoint;
         private bool unAnchored;
+
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 
         public SmoothingEffect()
         {
@@ -34,6 +38,8 @@ namespace JuliusSweetland.OptiKey.DataFilters
 
         public Point Update(Point nextPoint, KeyValue nextKeyValue)
         {
+            Log.InfoFormat("{0} Measurement: {1}", this.GetHashCode(), nextPoint.X);
+
             double distanceMoved = (nextPoint - smoothedPoint).Length;
             double gain = (distanceMoved / ((innerLimit + outerLimit) / 2)) 
                         / (distanceMoved / ((innerLimit + outerLimit) / 2) + smoothingLevel);
@@ -68,6 +74,10 @@ namespace JuliusSweetland.OptiKey.DataFilters
             Point result = smoothedPoint + (nextPoint - smoothedPoint) * gain;
             keyValue = nextKeyValue;
             smoothedPoint = result;
+
+            Log.InfoFormat("{0} Prediction: {1}", this.GetHashCode(), result.X);
+            Log.InfoFormat("{0} Gain: {1}", this.GetHashCode(), gain);
+
             return result;
         }
     }
