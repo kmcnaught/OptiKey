@@ -43,33 +43,9 @@ namespace JuliusSweetland.OptiKey.DataFilters
 
         public double Update(double measurement)
         {
-            // This is a combined "prediction + update" step
-            // Ideally we'd have some timings to allow estimate uncertainty to grow when data missing, in which case we'd separate the two
-
-            if (!EstimatedValue.HasValue)
-                Init(measurement);
-
-            // Prediction - process model is "we haven't moved" but with some uncertainty
-            // The uncertainty increases with distance of new data from current estimate - if within a fixations-distance
-            // we have a narrow prior to enforce smoothness. If far away, we want a uniform prior over all positions. 
-            // The exponential process noise captures this smoothly
-            var delta = Math.Abs(measurement - EstimatedValue.Value);
-            var currentProcessNoise = Math.Exp(delta/10);
-
-            EstimationNoise = EstimationNoise + currentProcessNoise;
-            
-            // Update
-            Gain = (EstimationNoise) / (EstimationNoise + MeasurementNoise);
-            EstimationNoise = (1.0 - Gain) * EstimationNoise;
-
             Log.InfoFormat("{0} Measurement: {1}", this.GetHashCode(), measurement);
-            Log.InfoFormat("{0} Prediction: {1}", this.GetHashCode(), EstimatedValue.Value);
-            Log.InfoFormat("{0} Uncertainty: {1}", this.GetHashCode(), EstimationNoise);
-            Log.InfoFormat("{0} Gain: {1}", this.GetHashCode(), Gain);
 
-            EstimatedValue = EstimatedValue.Value + (measurement - EstimatedValue.Value) * Gain;
-
-            return EstimatedValue.Value;
+            return measurement;
         }
     }
 }
