@@ -38,47 +38,54 @@ namespace JuliusSweetland.OptiKey.DataFilters
 
         public Point Update(Point nextPoint, KeyValue nextKeyValue)
         {
-            Log.InfoFormat("{0} Measurement: {1}", this.GetHashCode(), nextPoint.X);
-
-            double distanceMoved = (nextPoint - smoothedPoint).Length;
-            double gain = (distanceMoved / ((innerLimit + outerLimit) / 2)) 
-                        / (distanceMoved / ((innerLimit + outerLimit) / 2) + smoothingLevel);
-
-            if (nextKeyValue != null && nextKeyValue == keyValue) //minimal movement if on same key
+            if (Settings.Default.KalmanFilterEnabled)
             {
-                gain = 0.06;
-            }
-            else if (nextKeyValue != null) //instant movement if on a new key
-            {
-                gain = 1;
-            }
-            else if (unAnchored) //faster movement if we have gone outside the outer limit
-            {
-                anchorTime = DateTime.Now;
-                if (distanceMoved < innerLimit)
-                    unAnchored = false;
-            }
-            else if (distanceMoved > innerLimit) //slower movement if we have not gone outside of the outer limit
-            {
-                gain = (distanceMoved / outerLimit) / (distanceMoved / outerLimit + smoothingLevel);
-                anchorTime = DateTime.Now;
-                if (distanceMoved > outerLimit)
-                    unAnchored = true;
-            }
-            else if (anchorTime < DateTime.Now - TimeSpan.FromMilliseconds(200)) //no movement after 200ms within the inner limit
-            {
-                LoadSettings();
-                nextPoint = smoothedPoint;
-            }
+                Log.InfoFormat("{0} Measurement: {1}", this.GetHashCode(), nextPoint.X);
 
-            Point result = smoothedPoint + (nextPoint - smoothedPoint) * gain;
-            keyValue = nextKeyValue;
-            smoothedPoint = result;
+                double distanceMoved = (nextPoint - smoothedPoint).Length;
+                double gain = (distanceMoved / ((innerLimit + outerLimit) / 2))
+                              / (distanceMoved / ((innerLimit + outerLimit) / 2) + smoothingLevel);
 
-            Log.InfoFormat("{0} Prediction: {1}", this.GetHashCode(), result.X);
-            Log.InfoFormat("{0} Gain: {1}", this.GetHashCode(), gain);
+                if (nextKeyValue != null && nextKeyValue == keyValue) //minimal movement if on same key
+                {
+                    gain = 0.06;
+                }
+                else if (nextKeyValue != null) //instant movement if on a new key
+                {
+                    gain = 1;
+                }
+                else if (unAnchored) //faster movement if we have gone outside the outer limit
+                {
+                    anchorTime = DateTime.Now;
+                    if (distanceMoved < innerLimit)
+                        unAnchored = false;
+                }
+                else if (distanceMoved > innerLimit) //slower movement if we have not gone outside of the outer limit
+                {
+                    gain = (distanceMoved / outerLimit) / (distanceMoved / outerLimit + smoothingLevel);
+                    anchorTime = DateTime.Now;
+                    if (distanceMoved > outerLimit)
+                        unAnchored = true;
+                }
+                else if (anchorTime < DateTime.Now - TimeSpan.FromMilliseconds(200)
+                ) //no movement after 200ms within the inner limit
+                {
+                    LoadSettings();
+                    nextPoint = smoothedPoint;
+                }
 
-            return result;
+                Point result = smoothedPoint + (nextPoint - smoothedPoint) * gain;
+                keyValue = nextKeyValue;
+                smoothedPoint = result;
+
+                Log.InfoFormat("{0} Prediction: {1}", this.GetHashCode(), result.X);
+                Log.InfoFormat("{0} Gain: {1}", this.GetHashCode(), gain);
+                return result;
+            }
+            else
+            {
+                return nextPoint;
+            }
         }
     }
 }
