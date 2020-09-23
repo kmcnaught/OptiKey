@@ -37,6 +37,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private readonly ICommand backCommand;
         private readonly ICommand quitCommand;
         private readonly ICommand restartCommand;
+        private readonly ICommand kfOnCommand;
+        private readonly ICommand kfOffCommand;
 
         public MainWindow(
             IAudioService audioService,
@@ -65,6 +67,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             quitCommand = new DelegateCommand(Quit);
             backCommand = new DelegateCommand(Back);
             restartCommand = new DelegateCommand(Restart);
+            kfOnCommand = new DelegateCommand(TurnOnKalmanFilter);
+            kfOffCommand = new DelegateCommand(TurnOffKalmanFilter);
 
             //Setup key binding (Alt+M and Shift+Alt+M) to open settings
             InputBindings.Add(new KeyBinding
@@ -78,6 +82,20 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 Command = managementWindowRequestCommand,
                 Modifiers = ModifierKeys.Shift | ModifierKeys.Alt,
                 Key = Key.M
+            });
+
+            InputBindings.Add(new KeyBinding
+            {
+                Command = kfOnCommand,
+                Modifiers = ModifierKeys.Control,
+                Key = Key.K
+            });
+
+            InputBindings.Add(new KeyBinding
+            {
+                Command = kfOffCommand,
+                Modifiers = ModifierKeys.Control | ModifierKeys.Shift,
+                Key = Key.K
             });
 
             //Setup key binding (Alt+Enter and Shift+Alt+Enter) to open settings
@@ -243,6 +261,18 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             }
 
             Log.Info("ToggleManualMode complete.");
+        }
+
+        private void TurnOnKalmanFilter()
+        {
+            Log.Info("TurnOnKalmanFilter called.");
+            Settings.Default.KalmanFilterEnabled = true;
+        }
+
+        private void TurnOffKalmanFilter()
+        {
+            Log.Info("TurnOffKalmanFilter called.");
+            Settings.Default.KalmanFilterEnabled = false;
         }
 
         private void Quit()
