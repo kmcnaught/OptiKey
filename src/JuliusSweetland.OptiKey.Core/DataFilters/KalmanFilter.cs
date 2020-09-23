@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
 using System;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.DataFilters
 {
@@ -11,6 +12,8 @@ namespace JuliusSweetland.OptiKey.DataFilters
         double EstimationConfidence; //P
         double? EstimatedValue; // X 
         double Gain; // K
+
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         // We'll discard our model when saccades exceed this: this is the point at which our plant model is very non-gaussian
         private double MaxMicroSaccade; 
@@ -38,6 +41,11 @@ namespace JuliusSweetland.OptiKey.DataFilters
             EstimationConfidence = MeasurementNoise * (EstimationConfidence + ProcessNoise) / (MeasurementNoise + EstimationConfidence + ProcessNoise);
             double result = EstimatedValue.Value + (measurement - EstimatedValue.Value) * Gain;
             EstimatedValue = result;
+
+            Log.InfoFormat("{0} Measurement: {1}", this.GetHashCode(), measurement);
+            Log.InfoFormat("{0} Prediction: {1}", this.GetHashCode(), EstimatedValue.Value);
+            Log.InfoFormat("{0} Uncertainty: {1}", this.GetHashCode(), EstimationConfidence);
+            Log.InfoFormat("{0} Gain: {1}", this.GetHashCode(), Gain);
 
             return result;
         }
