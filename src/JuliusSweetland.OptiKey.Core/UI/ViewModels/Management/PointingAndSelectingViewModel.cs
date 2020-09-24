@@ -140,7 +140,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new Tuple<string, int>("2 - " + Resources.MEDIUM, 10),
                     new Tuple<string, int>("3 - " + Resources.HIGH, 30),
                     new Tuple<string, int>("4 - " + Resources.ULTRA, 60),
-                    new Tuple<string, int>("5 - " + Resources.EXTREME, 97),
+                    new Tuple<string, int>("5 - " + Resources.EXTREME, 100),
                 };
             }
         }

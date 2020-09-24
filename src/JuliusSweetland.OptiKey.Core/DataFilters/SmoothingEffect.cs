@@ -1,58 +1,54 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
-using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using System;
 using System.Windows;
 
 namespace JuliusSweetland.OptiKey.DataFilters
 {
     public class SmoothingEffect
     {
-        double ProcessNoise; //Standard deviation - Q
-        double MeasurementNoise; // R
-        double EstimationConfidence; //P
-        double Gain; // K
-        private Point lastPoint; // X 
-        private KeyValue lastKeyValue;
-        private bool newTarget;
+        private double EstimationNoise;
+        private double Gain;
+        private double SmoothingLevel;
+        private KeyValue PreviousKeyValue;
+        private Point EstimatedPoint;
 
         public SmoothingEffect()
         {
-            this.ProcessNoise = .01d;
-            this.MeasurementNoise = .01d;
-            this.EstimationConfidence = 1;
-            this.lastPoint = new Point();
-            this.lastKeyValue = null;
+            PreviousKeyValue = null;
+            EstimatedPoint = new Point();
+            SmoothingLevel = Settings.Default.GazeSmoothingLevel;
         }
 
-        public Point Update(Point point, KeyValue keyValue)
+        public Point Update(Point measuredPoint, KeyValue measuredKeyValue)
         {
-            var lockRadius = Settings.Default.PointSelectionTriggerLockOnRadiusInPixels;
-            var fixationRadius = Settings.Default.PointSelectionTriggerFixationRadiusInPixels;
-            var innerLimit = System.Math.Min(lockRadius, fixationRadius);
-            var outerlimit = System.Math.Max(lockRadius, fixationRadius);
-            double smoothingLevel = Settings.Default.GazeSmoothingLevel;
-            double distanceMoved = (point - lastPoint).Length;
-            newTarget = distanceMoved > outerlimit || (distanceMoved > innerLimit / 2 && newTarget);
+            double distanceMoved = (measuredPoint - EstimatedPoint).Length;
 
-            if (keyValue != null && keyValue == lastKeyValue) //minimal movement if on same key
-                Gain = 0.03;
-            else if (keyValue != null) //instant movement if on a new key
-                Gain = 1;
-            else if (distanceMoved > innerLimit || newTarget)
+            if (measuredKeyValue != null && measuredKeyValue == PreviousKeyValue)
             {
-                MeasurementNoise = smoothingLevel * outerlimit / distanceMoved;
-                Gain = newTarget 
-                    ? System.Math.Max(Gain, (EstimationConfidence + ProcessNoise) / (EstimationConfidence + ProcessNoise + MeasurementNoise))
-                    : (EstimationConfidence + ProcessNoise) / (EstimationConfidence + ProcessNoise + MeasurementNoise);
-                EstimationConfidence = MeasurementNoise * (EstimationConfidence + ProcessNoise) / (EstimationConfidence + ProcessNoise + MeasurementNoise);
+                Gain = 0.06; //minimal movement if on same key
             }
-            else //no movement if within the inner limit
-                point = lastPoint;
+            else if (measuredKeyValue != null)
+            {
+                Gain = 1; //instant movement if on a new key
+            }
+            else if (distanceMoved < 20 + SmoothingLevel)
+            {
+                SmoothingLevel = Settings.Default.GazeSmoothingLevel;
+                measuredPoint = EstimatedPoint;
+            }
+            else
+            {
+                var currentProcessNoise = Math.Exp(distanceMoved / 100);
+                EstimationNoise = EstimationNoise + currentProcessNoise;
+                Gain = (EstimationNoise) / (EstimationNoise + (2000 * SmoothingLevel));
+                EstimationNoise = (1.0 - Gain) * EstimationNoise;
+            }
 
-            Point result = lastPoint + (point - lastPoint) * Gain;
-            lastKeyValue = keyValue;
-            lastPoint = result;
+            Point result = EstimatedPoint + (measuredPoint - EstimatedPoint) * Gain;
+            PreviousKeyValue = measuredKeyValue;
+            EstimatedPoint = result;
             return result;
         }
     }
