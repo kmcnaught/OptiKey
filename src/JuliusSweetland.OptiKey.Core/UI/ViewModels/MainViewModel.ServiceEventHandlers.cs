@@ -43,8 +43,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 CurrentPositionPoint = tuple.Item1;
                 CurrentPositionKey = tuple.Item2;
 
-                if (keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value.IsDownOrLockedDown()
-                    && !keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown())
+               if (MagneticCursor || (keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value.IsDownOrLockedDown()
+                    && !keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()))
                 {
                     mouseOutputService.MoveTo(CurrentPositionPoint);
                 }
@@ -2329,6 +2329,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             };
 
             SelectionMode = SelectionModes.Point;
+            MagneticCursor = true;
             ShowCursor = true;
         }
 
@@ -2336,6 +2337,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             SelectionMode = SelectionModes.Key;
             nextPointSelectionAction = null;
+            MagneticCursor = false;
             ShowCursor = false;
             MagnifyAtPoint = null;
             MagnifiedPointSelectionAction = null;

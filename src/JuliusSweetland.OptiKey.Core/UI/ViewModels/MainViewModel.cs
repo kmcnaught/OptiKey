@@ -53,6 +53,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private KeyValue currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
+        private bool magneticCursor;
         private bool showCursor;
         private bool manualModeEnabled;
         private Action<Point> nextPointSelectionAction;
@@ -202,6 +203,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             get { return manualModeEnabled; }
             set { SetProperty(ref manualModeEnabled, value); }
+        }
+
+        public bool MagneticCursor
+        {
+            get { return magneticCursor; }
+            set { SetProperty(ref magneticCursor, value); }
         }
 
         public bool ShowCursor
