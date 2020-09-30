@@ -2,112 +2,63 @@
 using JuliusSweetland.OptiKey.Properties;
 using System;
 using System.Windows;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.DataFilters
 {
     public class GazeSmoothingFilter
     {
+        // FIXME: only required for development
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        // Current estimate
         private Point EstimatedPoint;   //The point used after applying the filter.
         private double EstimationNoise; //This value fluctuates to balance each new measurment with the previous estimate.
-        private Point Measurement1;
-        private Point Measurement2;
-        private Point Measurement3;
-        private Point Measurement4;
-        private Point Measurement5;
-        private Point Measurement6;
-        private Point Measurement7;
-        private Point Measurement8;
+
+        // Model parameters
+        //FIXME: remove? private readonly double ProcessNoise; // Q (variance)
+        private readonly double MeasurementNoise; // R (variance)
+        private double Gain; // K
 
         public GazeSmoothingFilter()
         {
             EstimatedPoint = new Point(0, 0);
             EstimationNoise = 10000;
+
+            // FIXME: these will be set according to tuning and smoothing level
+            //ProcessNoise = 5;
+            MeasurementNoise = 1000;
         }
 
         public Point Update(Point measuredPoint)
         {
-            //We want process smoothness to dominate within the range of microsaccades, but to converge
-            //towards a uniform prior for larger jumps. An exponential mapping lets this happen smoothly.
+            // This is a combined "prediction + update" step
+            // Ideally we'd have some timings to allow estimate uncertainty to grow when data missing, in which case we'd separate the two
 
-            //User setting that affects the number of points used to calculate the center.
-            //Higher levels use more points, are more forgiving, and are less responsive to input.
-            var smoothingLevel = Settings.Default.GazeSmoothingLevel;
+            // Prediction - process model is "we haven't moved" but with some uncertainty
+            // The uncertainty increases with distance of new data from current estimate - if within a fixations-distance
+            // we have a narrow prior to enforce smoothness. If far away, we want a uniform prior over all positions. 
+            // The exponential process noise captures this smoothly
+            var delta = (measuredPoint - EstimatedPoint).Length;
+            var currentProcessNoise = Math.Exp(delta / 10);
+            currentProcessNoise = 5;
 
-            //Use a weighted average of 3 points. Using only a single point would be susceptible to micro jumps
-            if (smoothingLevel==Enums.DataStreamProcessingLevels.Low)
-            {
-                var mX = measuredPoint.X * 0.467 + Measurement1.X * 0.333 + Measurement2.X * 0.2;
-                var mY = measuredPoint.Y * 0.467 + Measurement1.Y * 0.333 + Measurement2.Y * 0.2;
-                Measurement2 = Measurement1;
-                Measurement1 = new Point(mX, mY);
-            }
-            //Use the weighted average of the last few measurements to steady the cursor
-            else if (smoothingLevel == Enums.DataStreamProcessingLevels.Medium)
-            {
-                var mX = measuredPoint.X * 0.30
-                        + Measurement1.X * 0.30
-                        + Measurement2.X * 0.175
-                        + Measurement3.X * 0.125
-                        + Measurement4.X * 0.10;
+            EstimationNoise = EstimationNoise + currentProcessNoise;
 
-                var mY = measuredPoint.Y * 0.30
-                        + Measurement1.Y * 0.30
-                        + Measurement2.Y * 0.175
-                        + Measurement3.Y * 0.125
-                        + Measurement4.Y * 0.10;
+            // Update
+            Gain = (EstimationNoise) / (EstimationNoise + MeasurementNoise);
+            EstimationNoise = (1.0 - Gain) * EstimationNoise;
 
-                Measurement4 = Measurement3;
-                Measurement3 = Measurement2;
-                Measurement2 = Measurement1;
-                Measurement1 = new Point(mX, mY);
-            }
-            //Use the weighted average of the last 9 measurements to steady and slow the cursor
-            else if (smoothingLevel == Enums.DataStreamProcessingLevels.High)
-            {
-                var mX = measuredPoint.X * 0.301
-                        + Measurement1.X * 0.176
-                        + Measurement2.X * 0.125
-                        + Measurement3.X * 0.097
-                        + Measurement4.X * 0.079
-                        + Measurement5.X * 0.067
-                        + Measurement6.X * 0.058
-                        + Measurement7.X * 0.051
-                        + Measurement8.X * 0.046;
+            Log.InfoFormat("{0} Measurement: {1}", this.GetHashCode(), measuredPoint);
+            Log.InfoFormat("{0} Prediction: {1}", this.GetHashCode(), EstimatedPoint);
+            Log.InfoFormat("{0} Uncertainty: {1}", this.GetHashCode(), EstimationNoise);
+            Log.InfoFormat("{0} Process Noise: {1}", this.GetHashCode(), currentProcessNoise);
+            Log.InfoFormat("{0} Gain: {1}", this.GetHashCode(), Gain);
 
-                var mY = measuredPoint.Y * 0.301
-                        + Measurement1.Y * 0.176
-                        + Measurement2.Y * 0.125
-                        + Measurement3.Y * 0.097
-                        + Measurement4.Y * 0.079
-                        + Measurement5.Y * 0.067
-                        + Measurement6.Y * 0.058
-                        + Measurement7.Y * 0.051
-                        + Measurement8.Y * 0.046;
+            EstimatedPoint = EstimatedPoint + (measuredPoint - EstimatedPoint) * Gain;
 
-                Measurement8 = Measurement7;
-                Measurement7 = Measurement6;
-                Measurement6 = Measurement5;
-                Measurement5 = Measurement4;
-                Measurement4 = Measurement3;
-                Measurement3 = Measurement2;
-                Measurement2 = Measurement1;
-                Measurement1 = new Point(mX, mY);
-            }
-            
-            var delta = Measurement1 - EstimatedPoint;
-            //To avoid a jumpy cursor the lowest level works best with a value of 1
-            var noiseCoefficient = smoothingLevel == Enums.DataStreamProcessingLevels.Low ? 1 : 50;
-            //This formula is used to create a highly stable cursor
-            var processNoise = 1000 / (1 + delta.Length);
-            //This formula is used to dampen small movements without affecting large movements
-            var currentNoise = noiseCoefficient * Math.Pow(processNoise, 3) / (1 + delta.Length);
-
-            //Scale from 0% to 100% that will be applied to the movement delta when updating the EstimatedPoint
-            var gain = EstimationNoise / (EstimationNoise + currentNoise);
-            //Update EstimationNoise in preparation for the next iteration
-            EstimationNoise = (1.0 - gain) * (EstimationNoise + processNoise);
-            EstimatedPoint = EstimatedPoint + delta * gain;
             return EstimatedPoint;
+
         }
     }
 }
