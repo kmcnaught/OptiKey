@@ -27,7 +27,7 @@ namespace JuliusSweetland.OptiKey.DataFilters
 
             // FIXME: these will be set according to tuning and smoothing level
             //ProcessNoise = 5;
-            MeasurementNoise = 1000;
+            MeasurementNoise = 2000;
         }
 
         public Point Update(Point measuredPoint)
@@ -41,7 +41,9 @@ namespace JuliusSweetland.OptiKey.DataFilters
             // The exponential process noise captures this smoothly
             var delta = (measuredPoint - EstimatedPoint).Length;
             var currentProcessNoise = Math.Exp(delta / 10);
-            currentProcessNoise = 5;
+            currentProcessNoise = 0.2;
+
+            // process noise is very low since data comes in v fast
 
             EstimationNoise = EstimationNoise + currentProcessNoise;
 
