@@ -39,11 +39,38 @@ namespace JuliusSweetland.OptiKey.DataFilters
             // The uncertainty increases with distance of new data from current estimate - if within a fixations-distance
             // we have a narrow prior to enforce smoothness. If far away, we want a uniform prior over all positions. 
             // The exponential process noise captures this smoothly
-            var delta = (measuredPoint - EstimatedPoint).Length;
-            var currentProcessNoise = Math.Exp(delta / 10);
-            currentProcessNoise = 0.2;
 
-            // process noise is very low since data comes in v fast
+
+            // ========================================================//
+            // SOME VARIABLES TO PLAY WITH PROCESS NOISE MAPPING
+
+            // dictates scale across all deltas
+            // lower = more smoothness (mainly noticeable at fixation)
+            var processScale = 0.01d;
+
+            // dictates how quickly PN scales up with delta
+            // higher = extends smoothness for longer saccades
+            var processIncreaseScaleFactor = 10.0d; 
+
+            // extends the "fixation zone" for extra smoothness without affecting later ramp-up (this keeps PN > 0.0)
+            var processDeadzoneOffset = 20.0;
+
+            // alternatively extends the "fixation zone" with a subtraction - this supports a region of zero process noise, i.e. a hard deadzone
+            var processDeadzone = 0.0;
+
+            // ======================================================== //
+
+            var delta = (measuredPoint - EstimatedPoint).Length;
+            //var currentProcessNoise = Math.Exp(delta/processIncreaseScaleFactor);
+            var currentProcessNoise = processScale * Math.Exp((delta - processDeadzoneOffset) / processIncreaseScaleFactor) - processDeadzone;
+
+            if (processDeadzone > 0.0)
+            {
+                currentProcessNoise -= Math.Log(processDeadzone);
+                currentProcessNoise = Math.Max(0.0, currentProcessNoise); // force non-negative
+            }
+            
+            // process noise can be very low when fixating since data comes in v fast
 
             EstimationNoise = EstimationNoise + currentProcessNoise;
 
