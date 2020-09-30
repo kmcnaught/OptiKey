@@ -5,10 +5,10 @@ namespace JuliusSweetland.OptiKey.Enums
 {
     public enum DataStreamProcessingLevels
     {
-        None,
-        Low,
-        Medium,
-        High
+        None=0,
+        Low=1,
+        Medium=2,
+        High=3
     }
 
     public static partial class EnumExtensions
