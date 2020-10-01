@@ -14,7 +14,7 @@ This is a fork of [OptiKey](https://github.com/OptiKey/OptiKey/wiki) which adds 
 
 The original version of EyeMine is available on the branch [eyemineClassic](https://github.com/SpecialEffect/EyeMine/tree/eyemineClassic). This is still maintained and will receive bug-fixes as appropriate. It is based on an earlier version of OptiKey, and supports Minecraft Forge v1.11.2 using the mod at [eyemineClassic_mc1_11_2](https://github.com/SpecialEffect/EyeMineMods/tree/eyemineClassic_mc1_11_2)
 
-A newer version of EyeMine is available on the branch [eyemineV2](https://github.com/SpecialEffect/EyeMine/tree/eyemineV2). This includes some new functionality from OptiKey (in particular some excellent new support for users to customise their keyboards). The accompanying mod supports Minecraft Forge 1.14.4 and includes some new features such as building and mining with dwell. This can be found at [eyemineClassic_mc1_14_4](https://github.com/SpecialEffect/EyeMineMods/tree/eyemineV2_mc1_14_4)
+A newer version of EyeMine is available on the branch [eyemineV2](https://github.com/SpecialEffect/EyeMine/tree/eyemineV2). This includes some new functionality from OptiKey (in particular some excellent new support for users to customise their keyboards). The accompanying mod supports Minecraft Forge 1.14.4 and includes some new features such as building and mining with dwell. This can be found at [eyemineClassic_mc1_14_4](https://github.com/SpecialEffect/EyeMineMods/tree/eyemineV2_mc1_14_4).
 
 If you're a mod developer and would like to port to a different version, please check out contributing information at the [EyeMineMods](https://github.com/SpecialEffect/EyeMineMods) repo.
 
