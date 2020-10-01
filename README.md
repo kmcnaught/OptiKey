@@ -1,6 +1,6 @@
 # EyeMine
 
-Want to play Minecraft with your eyes?? EyeMine combines a modified version of Minecraft with a bespoke eye-gaze interface to enable people with disabilities to explore, craft and build in Minecraft. 
+Want to play Minecraft with your eyes?? [EyeMine](https://github.com/SpecialEffect/EyeMine) combines a modified version of Minecraft with a bespoke eye-gaze interface to enable people with disabilities to explore, craft and build in Minecraft. 
 
 ## Information for users
 
