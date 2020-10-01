@@ -18,7 +18,7 @@ A newer version of EyeMine is available on the branch [eyemineV2](https://github
 
 If you're a mod developer and would like to port to a different version, please check out contributing information at the [EyeMineMods](https://github.com/SpecialEffect/EyeMineMods) repo.
 
-All the code comprising EyeMine is GPL3 licensed and contributes are welcome.
+All the code comprising EyeMine is GPL3 licensed and contributions are welcome.
 
 # License
 
