@@ -420,7 +420,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             //session.Log("Begin CheckForMinecraftInstallation");
             session["MINECRAFT_INSTALLED"] = "unknown";
 
-            bool installed = utils.IsProgramInstalled("Minecraft Launcher");
+            bool installed = utils.IsProgramInstalled("Minecraft");
             session["MINECRAFT_INSTALLED"] = installed.ToString().ToLower();
             
             return ActionResult.Success;
