@@ -325,12 +325,15 @@
     <Content Include="Resources\EyeMineKeyboards\EyeTracker\3_MC_MainKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\SavedToolbars.xml" />
+    <Resource Include="Resources\EyeMineKeyboards\EyeTracker\9_Settings.xml" />
     <Content Include="Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MinecraftBuild.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MinecraftDebug.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\SavedToolbars.xml" />
     <Content Include="Resources\EyeMineKeyboards\Mouse\0_MC_5_1_1_intro.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -370,6 +373,7 @@
     <Content Include="Resources\EyeMineKeyboards\Mouse\3_MC_MainKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\EyeMineKeyboards\Mouse\9_Settings.xml" />
     <Content Include="Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MinecraftBuild.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
