@@ -264,7 +264,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.FLOATING_POSITION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfFloatingProperties}"/>
                     <TextBox Grid.Row="16" Grid.Column="1" Text="{Binding FloatingSizeAndPosition, Mode=TwoWay}" 
-                             VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfFloatingProperties}"/>
+                             VerticalAlignment="Center" Style="{StaticResource VisibilityOfFloatingProperties}"/>
 
                     <!-- FIXME: resource -->
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Dock position" 

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="17.0" Modules="enterprise" RootPath="." Language="en" Id="{78D22808-9442-4164-B7A6-4F0DCAD1BC17}">
-  <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
-    <ROW Name="HiddenItems" Value="AppXAppDetailsComponent;FixupComponent;AppXCapabilitiesComponent;AppXDependenciesComponent;AppXProductDetailsComponent;AppXVisualAssetsComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;MsiXDiffComponent;MsixManifestEditorComponent"/>
-  </COMPONENT>
+<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="17.4" Modules="enterprise" RootPath="." Language="en" Id="{78D22808-9442-4164-B7A6-4F0DCAD1BC17}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
@@ -13,10 +10,10 @@
     <ROW Property="ARPPRODUCTICON" Value="Mouse.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Optikey"/>
-    <ROW Property="ProductCode" Value="1025:{E2DC09F1-72EC-49DA-B322-026B4BC31362} 1026:{5D3D1E74-5090-4660-9C05-1C98B380C760} 1027:{CD31CA84-C86E-4B02-9927-B8E4D09CD7C4} 1028:{D30118EE-AEC6-4BC7-8F76-14E4D58952DC} 1029:{3ACD4F5E-A66D-4DA3-A804-CC31AA97EE6A} 1030:{186A359E-0054-4BD9-8D28-D6AB6C27C9B1} 1031:{01021D33-C5E2-4497-86BC-193F95D30816} 1032:{2195B1B0-F0CF-4E33-A9CC-727AC4DF06B5} 1033:{88799C5D-962E-4BF7-A38B-594833CBFC3D} 1035:{30156CE3-4D35-494E-B197-C2D988DCB47B} 1036:{65DFFF83-61F1-4AFB-A45A-06F456E790B6} 1037:{0D76DF88-AD71-4C62-B2BA-D096B93B1C71} 1038:{12395EC6-DC80-4334-A306-A08D1E2D35CB} 1039:{8FD8BF60-8FBF-4570-894A-35B7D54A757E} 1040:{285D130C-5B19-48C2-93D1-CA923BBEF8CC} 1041:{C6D88803-8F0F-4334-917A-63521B41162F} 1042:{180F3E56-5CB6-4EDC-BFA7-AF5BC9926B9B} 1043:{177322BF-8143-4042-9BD5-0C3C7694BB80} 1044:{3E12022B-8532-4B62-AD96-0DC70A1F471B} 1045:{0944FF2B-54D6-4A06-B949-9FA46B411A0A} 1046:{02B4F654-5783-4208-AC19-E23324BFE5DE} 1049:{4A56C542-F5AC-48A5-B4B7-1A3CF5703AAE} 1050:{31912693-BDE5-48BC-858F-367596EE53D6} 1051:{40278B35-CBDC-401A-84C6-ADA579845D07} 1052:{9153EB63-BDAC-4808-9CE1-026A114EEB32} 1053:{DFC70FD9-4852-4AF3-B8C6-17267BF4E001} 1055:{08138465-57AC-4F1C-8337-892D42257DFC} 1057:{3285AA53-8D9D-4FFD-9177-DB305756DFCA} 1058:{3098E531-C809-4104-8079-F7FC6E28B4BE} 1060:{82D5F434-10B8-4F83-A638-CACCB1E8BC35} 1065:{11C7E79E-572E-41D4-8C7C-8F8D969D571B} 1087:{F6AEEBF8-6681-486E-9B4F-D206BC247834} 2052:{54AFB798-7387-4303-85CA-0A7362E73192} 2057:{58F13EA4-10C0-4530-BFD3-29A42CD75948} 2068:{83AC7648-87A1-4FE1-84E8-D0765EE309D4} 2070:{E83E5C1B-938E-41AB-ACA9-25167FFE4C25} 2074:{61059E35-B2A9-4D31-B441-6D54C0EE9555} 3082:{2702C3AC-A53B-4F14-95B0-1515A4F224F7} 3098:{0E9F5EE2-7396-4193-936E-10D10BD06553} " Type="16"/>
+    <ROW Property="ProductCode" Value="1025:{8C822C43-D6FC-4A45-9408-78D90849182B} 1026:{CEC7F656-C91E-40CC-828F-23BF75232FF8} 1027:{FAA9818B-2155-426A-AD34-EDE7BEB1E14A} 1028:{87700A78-347F-4B22-80A9-35808FDD944B} 1029:{50BB1435-778A-4675-A24C-7AA3A7395BE3} 1030:{316E649D-6AFE-4476-B8E3-666FA15192E7} 1031:{58F3765E-DC9F-4D35-8CD2-7AD719E19D96} 1032:{1ADD2250-41D0-4CAF-BC38-12847F16B924} 1033:{CFACDCEE-6882-42E2-B8C2-FF3FE49A9A6B} 1035:{519CB060-2EFF-4A06-89A4-3467A35B1E27} 1036:{E7AEA59B-3824-48AD-BAC3-5E357DE72B49} 1037:{0FFB8242-C671-4C15-B9BF-5673A4C43CA3} 1038:{EC85C91E-94CF-45F4-8AF6-38695BDD1F9E} 1039:{42263322-EFC7-4535-B3A8-5ED1582A6BFD} 1040:{06DFC65E-B665-41C0-A722-62019C6E793A} 1041:{11E30298-2831-4D3C-AA26-91194E0D126E} 1042:{928320F6-417F-4955-B7C5-CA7AFDA62C65} 1043:{FDE537B3-899B-48C2-9870-6A80D6D75AEB} 1044:{D51DA274-2240-4785-AAA3-027C18B57C02} 1045:{678F374E-3576-43C0-9B10-20C7E9DE99B1} 1046:{486C892E-D8A5-4393-ACAD-C8B936C9D09F} 1049:{16C39E30-1DD2-43F9-93C4-BB08E902EF15} 1050:{5A58C466-4286-45D9-8EC1-FF195425B19C} 1051:{0409B13C-EB98-48A4-8093-610C6230141B} 1052:{09CDA37C-8E60-49F1-9F4A-2A8E1DB1B384} 1053:{2726CD51-63DF-4B71-8348-E16D4D4F0BDE} 1055:{A767964E-AE33-4FC4-8D97-978EEDE7A300} 1057:{B73048E8-8046-4EBB-8DA2-917852CA0E0F} 1058:{3D814F5B-B910-401D-988B-1F303C17749A} 1060:{AE6C794E-B94A-4162-997D-3E3610FF8735} 1065:{79BFD166-AE3E-483C-85C2-68677B30BB84} 1087:{3D3C572F-6FFC-47F5-9C41-50BABCA1885F} 2052:{986DC4E0-B023-4D08-8115-576F3028D0D3} 2057:{B30C8F5C-05B8-4B73-80E3-EFD4FF17FD62} 2068:{9833F7E0-52F6-495F-AC67-EB96EFA55BC4} 2070:{A80AA63E-4D1C-45ED-81B2-8F4AB9CD83E3} 2074:{A0734851-C582-470F-A30A-34369CC0AB39} 3082:{BCB02131-90C5-426E-B169-5779D1F010C0} 3098:{CF027980-9CE3-48A9-8FD9-A253630F9A94} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Optikey Mouse"/>
-    <ROW Property="ProductVersion" Value="3.0.6" Type="32"/>
+    <ROW Property="ProductVersion" Value="3.1.0" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{929305B5-DA16-4E8E-B2A2-470A58C6CF5E}"/>
@@ -57,6 +54,7 @@
     <ROW Directory="fiFI_Dir" Directory_Parent="Release_Dir" DefaultDir="fi-FI"/>
     <ROW Directory="fr_Dir" Directory_Parent="Release_Dir" DefaultDir="fr"/>
     <ROW Directory="heIL_Dir" Directory_Parent="Release_Dir" DefaultDir="he-IL"/>
+    <ROW Directory="hiIN_Dir" Directory_Parent="Release_Dir" DefaultDir="hi-IN"/>
     <ROW Directory="hrHR_Dir" Directory_Parent="Release_Dir" DefaultDir="hr-HR"/>
     <ROW Directory="huHU_Dir" Directory_Parent="Release_Dir" DefaultDir="hu-HU"/>
     <ROW Directory="itIT_Dir" Directory_Parent="Release_Dir" DefaultDir="it-IT"/>
@@ -116,6 +114,7 @@
     <ROW Component="OptiKey.resources.dll_24" ComponentId="{33946F73-82A5-4472-8C38-BB643DBE9A30}" Directory_="trTR_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_24"/>
     <ROW Component="OptiKey.resources.dll_25" ComponentId="{E9D98E04-DED3-4A5C-B642-07B23E5A24D1}" Directory_="ukUA_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_25"/>
     <ROW Component="OptiKey.resources.dll_26" ComponentId="{5065FF5B-EB65-4B22-8AEC-8ACE56CAB960}" Directory_="urPK_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_26"/>
+    <ROW Component="OptiKey.resources.dll_27" ComponentId="{1A7FA299-CD6C-4EB7-8EBE-8D485DE82F19}" Directory_="hiIN_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_27"/>
     <ROW Component="OptiKey.resources.dll_3" ComponentId="{3A4A0555-A925-44C1-83EF-88B5FB255F83}" Directory_="deDE_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_3"/>
     <ROW Component="OptiKey.resources.dll_4" ComponentId="{26B08318-975B-4A94-9C39-7326A0555D5D}" Directory_="elGR_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_4"/>
     <ROW Component="OptiKey.resources.dll_5" ComponentId="{99A2CD1F-E75F-4324-84F1-7AFCEE9CC26D}" Directory_="enUS_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_5"/>
@@ -358,6 +357,8 @@
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Component_="Bass.Net.xml" FileName="WINDOW~2.XML|WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.xml" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.xml" Component_="Bass.Net.xml" FileName="WINDOW~3.XML|WindowsRecipes.TaskbarSingleInstance.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\WindowsRecipes.TaskbarSingleInstance.xml" SelfReg="false"/>
     <ROW File="Demo_Minecraft.xml" Component_="Demo_Bottom.xml" FileName="DEMO_M~1.XML|Demo_Minecraft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml" SelfReg="false"/>
+    <ROW File="HindiIndia.dic" Component_="CatalanSpain.dic" FileName="HINDII~1.DIC|HindiIndia.dic" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\Dictionaries\HindiIndia.dic" SelfReg="false"/>
+    <ROW File="OptiKey.resources.dll_27" Component_="OptiKey.resources.dll_27" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\hi-IN\OptiKey.resources.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -741,6 +742,7 @@
     <ROW Feature_="MainFeature" Component_="WindowsInput.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
+    <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_27"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="Mouse.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\Mouse.ico" Index="0"/>
@@ -821,7 +823,7 @@
     <ROW SearchKey="EEDF697C58FF44AEA12537BBFB266D19Rel" Prereq="EEDF697C58FF44AEA12537BBFB266D19" SearchType="9" SearchString="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\Release" RefContent="G393296" Order="1" Property="PreReqSearch_EEDF697C58FF44AEA12537"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.SynchronizedFolderComponent">
-    <ROW Directory_="Release_Dir" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release" Feature="MainFeature" ExcludePattern="*~|#*#|%*%|._|CVS|.cvsignore|SCCS|vssver.scc|mssccprj.scc|vssver2.scc|.svn|.DS_Store" ExcludeFlags="6"/>
+    <ROW Directory_="Release_Dir" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release" Feature="MainFeature" ExcludePattern="*~|#*#|%*%|._|CVS|.cvsignore|SCCS|vssver.scc|mssccprj.scc|vssver2.scc|.svn|.DS_Store" ExcludeFlags="6" FileAddOptions="4"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.XmlAttributeComponent">
     <ROW XmlAttribute="allowExeDefinition" XmlElement="section" Name="allowExeDefinition" Flags="14" Order="2" Value="MachineToLocalUser"/>
