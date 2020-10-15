@@ -64,7 +64,7 @@ if not safeProcess("git checkout src/JuliusSweetland.OptiKey.InstallerActions/In
 # Tag code by version
 version_file = 'src/JuliusSweetland.OptiKey.EyeMine/Properties/AssemblyInfo.cs'
 version = get_version(version_file)
-safeProcess("git tag release/{}".format(version))
+safeProcess("git tag release/eyemine_{}".format(version))
 
 
 
