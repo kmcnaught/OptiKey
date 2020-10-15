@@ -78,7 +78,7 @@
 		</DynamicKey>
 		<DynamicKey>
 			<Label>Saved\nToolbars</Label>
-			<ChangeKeyboard BackReturnsHere="True">Bonus Keyboards/SavedHotbars.xml</ChangeKeyboard>
+			<ChangeKeyboard BackReturnsHere="True">Bonus Keyboards/SavedToolbars.xml</ChangeKeyboard>
 		</DynamicKey>
 		<DynamicKey>
 			<Label>Hover\nright</Label>
