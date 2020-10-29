@@ -417,6 +417,7 @@
     <Content Include="Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MinecraftDebug.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="version.txt" />
     <Resource Include="Resources\Icons\status_comingup.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -1169,5 +1170,9 @@
   <PropertyGroup>
     <PostBuildEvent>rd /s /q $(TargetDir)\Resources\Plugins\
 rd /s /q $(TargetDir)\Resources\Presage\</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>"C:\Program Files\Git\bin\git.exe" rev-parse --short HEAD &gt; "$(ProjectDir)\version.txt"
+</PreBuildEvent>
   </PropertyGroup>
 </Project>
