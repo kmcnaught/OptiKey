@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="17.2" Modules="enterprise" RootPath="." Language="en" Id="{1E2C8DE8-977A-46EE-B696-F34D94C1ADEC}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="17.6" Modules="enterprise" RootPath="." Language="en" Id="{1E2C8DE8-977A-46EE-B696-F34D94C1ADEC}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
@@ -64,6 +64,7 @@
     <ROW Directory="Sounds_Dir" Directory_Parent="Resources_Dir" DefaultDir="Sounds"/>
     <ROW Directory="SpecialEffect_Dir" Directory_Parent="AppDataFolder" DefaultDir="SPECIA~1|SpecialEffect"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="ThirdPartyLicenses_Dir" Directory_Parent="Release_Dir" DefaultDir="THIRDP~1|ThirdPartyLicenses"/>
     <ROW Directory="caES_Dir" Directory_Parent="Release_Dir" DefaultDir="ca-ES"/>
     <ROW Directory="csCZ_Dir" Directory_Parent="Release_Dir" DefaultDir="cs-CZ"/>
     <ROW Directory="daDK_Dir" Directory_Parent="Release_Dir" DefaultDir="da-DK"/>
@@ -98,6 +99,7 @@
     <ROW Component="AI_ExePath" ComponentId="{7671E42A-8559-445F-9A1B-C94149466D2A}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
     <ROW Component="APPDIR" ComponentId="{504E43A7-B6B2-4807-878E-DEF3F848D58B}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="AltAlphaHorizontalKeyboard.xml" ComponentId="{42C74718-5042-4052-8A5E-D760042FA8AE}" Directory_="DynamicKeyboards_Dir" Attributes="0" KeyPath="AltAlphaHorizontalKeyboard.xml" Type="0"/>
+    <ROW Component="ApacheLicenseVersion2.0" ComponentId="{3936B72F-328F-451E-A1AD-E79BFBF98892}" Directory_="ThirdPartyLicenses_Dir" Attributes="0" KeyPath="ApacheLicenseVersion2.0" Type="0"/>
     <ROW Component="Attention.wav" ComponentId="{B0B931CD-570A-495E-BD45-11CCDC8AC8D2}" Directory_="Sounds_Dir" Attributes="0" KeyPath="Attention.wav" Type="0"/>
     <ROW Component="B612licenceeplv10.html" ComponentId="{D43A4429-F3B9-400B-989D-60FB220299DF}" Directory_="Fonts_Dir" Attributes="0" KeyPath="B612licenceeplv10.html" Type="0"/>
     <ROW Component="Bass.Net.dll" ComponentId="{442AF4C1-86E4-46EA-B1EC-6011BD5071DD}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.dll"/>
@@ -489,6 +491,16 @@
     <ROW File="_Settings.xml_3" Component_="_MC_5_1_1_intro.xml_5" FileName="9_SETT~1.XML|9_Settings.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\9_Settings.xml" SelfReg="false"/>
     <ROW File="SavedToolbars.xml_3" Component_="MinecraftBuild.xml_6" FileName="SAVEDT~1.XML|SavedToolbars.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\SavedToolbars.xml" SelfReg="false"/>
     <ROW File="eyemine2.1.7.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~1.JAR|eyemine-2.1.7.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-2.1.7.jar" SelfReg="false"/>
+    <ROW File="ApacheLicenseVersion2.0" Component_="ApacheLicenseVersion2.0" FileName="APACHE~1.0|Apache License, Version 2.0" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses\Apache License, Version 2.0" SelfReg="false"/>
+    <ROW File="BSD3ClauseLicense.txt" Component_="ApacheLicenseVersion2.0" FileName="BSD3-C~1.TXT|BSD 3-Clause License.txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses\BSD 3-Clause License.txt" SelfReg="false"/>
+    <ROW File="MICROSOFT.NETLIBRARYLICENSE.txt" Component_="ApacheLicenseVersion2.0" FileName="MICROS~1.TXT|MICROSOFT .NET LIBRARY LICENSE.txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses\MICROSOFT .NET LIBRARY LICENSE.txt" SelfReg="false"/>
+    <ROW File="MICROSOFTEXPRESSIONSDKLICENSE.txt" Component_="ApacheLicenseVersion2.0" FileName="MICROS~2.TXT|MICROSOFT EXPRESSION SDK LICENSE.txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses\MICROSOFT EXPRESSION SDK LICENSE.txt" SelfReg="false"/>
+    <ROW File="MicrosoftPublicLicenseMSPL.txt" Component_="ApacheLicenseVersion2.0" FileName="MICROS~3.TXT|Microsoft Public License (MS-PL).txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses\Microsoft Public License (MS-PL).txt" SelfReg="false"/>
+    <ROW File="NewBSD.txt" Component_="ApacheLicenseVersion2.0" FileName="NEWBSD~1.TXT|New BSD.txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses\New BSD.txt" SelfReg="false"/>
+    <ROW File="NUnitLicense.text" Component_="ApacheLicenseVersion2.0" FileName="NUNITL~1.TEX|NUnit License.text" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses\NUnit License.text" SelfReg="false"/>
+    <ROW File="TheMITLicenseMIT.txt" Component_="ApacheLicenseVersion2.0" FileName="THEMIT~1.TXT|The MIT License (MIT).txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses\The MIT License (MIT).txt" SelfReg="false"/>
+    <ROW File="ThirdPartyLicenses.txt" Component_="ApacheLicenseVersion2.0" FileName="THIRDP~1.TXT|ThirdPartyLicenses.txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses\ThirdPartyLicenses.txt" SelfReg="false"/>
+    <ROW File="ThirdPartyLicenses.md" Component_="CREDITS.md" FileName="THIRDP~1.MD|ThirdPartyLicenses.md" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses.md" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -581,7 +593,7 @@
     <ROW Dialog_="InputInfoDialogTobii" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
     <ROW Dialog_="InputInfoDialogTobii" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
     <ROW Dialog_="InputInfoDialogTobii" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="Description" Type="Text" X="25" Y="20" Width="280" Height="23" Attributes="196611" Text="The installer has detected that you have a compatible Tobii eye tracker installed" Order="700"/>
+    <ROW Dialog_="InputInfoDialogTobii" Control="Description" Type="Text" X="25" Y="20" Width="280" Height="23" Attributes="196611" Text="The installer has detected that your PC has Tobii Eye Tracking integration installed" Order="700"/>
     <ROW Dialog_="InputInfoDialogTobii" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="InputInfoDialogTobii" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine V2 Input Source - Tobii" TextStyle="[DlgTitleFont]" Order="900"/>
     <ROW Dialog_="InputInfoDialogTobii" Control="Text_1" Type="Text" X="49" Y="107" Width="279" Height="128" Attributes="65539" Property="TEXT_1_PROP_3" Text="EyeMine will automatically use your Tobii eye tracker as input. [NEWLINE] [NEWLINE]Please make sure your eye tracker is connected and Tobii Eye Tracking is switched on when you want to play EyeMine. [NEWLINE][NEWLINE]If you want to use an alternative input source (for instance a headmouse) then you can change this in the Settings by right clicking on the EyeMine keyboard." Order="1000"/>
@@ -607,9 +619,10 @@
     <ROW Dialog_="MinecraftInstallationRequired" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Checking for Minecraft installation..." Order="700"/>
     <ROW Dialog_="MinecraftInstallationRequired" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="MinecraftInstallationRequired" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Minecraft installation" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Text_1" Type="Text" X="127" Y="78" Width="224" Height="98" Attributes="65539" Property="TEXT_1_PROP" Text="EyeMine requires Minecraft Java Edition to be installed first.[NEWLINE][NEWLINE]You do not appear to have Minecraft Java Edition installed. [NEWLINE][NEWLINE]Please note that EyeMine is *not* compatible with Minecraft Windows 10 Edition from the Microsoft Store. Instead you need to download and install Minecraft Java Edition from the link below.[NEWLINE][NEWLINE][NEWLINE]Please restart the EyeMine installer once you have installed Minecraft." Order="1000"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="Text_1" Type="Text" X="127" Y="68" Width="224" Height="98" Attributes="65539" Property="TEXT_1_PROP" Text="EyeMine requires Minecraft Java Edition to be installed first.[NEWLINE][NEWLINE]You do not appear to have Minecraft Java Edition installed. [NEWLINE][NEWLINE]Please note that EyeMine will not let you play Minecraft Windows 10 Edition from the Microsoft Store. You need to download and install Minecraft Java Edition from one of the links below. You can demo Minecraft for a limited time before purchasing, but you will need to create a Mojang account. [NEWLINE][NEWLINE][NEWLINE]Please restart the EyeMine installer once you have installed Minecraft." Order="1000"/>
     <ROW Dialog_="MinecraftInstallationRequired" Control="Bitmap_1" Type="Bitmap" X="39" Y="88" Width="56" Height="50" Attributes="1" Text="error.png" Order="1100"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Hyperlink_1" Type="Hyperlink" X="127" Y="176" Width="224" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;https://www.minecraft.net/en-us/store/minecraft-java-edition&quot;&gt;Get Minecraft from minecraft.net&lt;/a&gt;" Order="1200"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="Hyperlink_1" Type="Hyperlink" X="127" Y="195" Width="224" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;https://www.minecraft.net/en-us/store/minecraft-java-edition&quot;&gt;Buy Minecraft from minecraft.net&lt;/a&gt;" Order="1200"/>
+    <ROW Dialog_="MinecraftInstallationRequired" Control="Hyperlink_2" Type="Hyperlink" X="127" Y="215" Width="224" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP_1" Text="&lt;a href=&quot;https://www.minecraft.net/en-us/download&quot;&gt;Download Minecraft for demo usage&lt;/a&gt;" Order="1300"/>
     <ROW Dialog_="MinecraftRunningDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="MinecraftRunningDlg" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
     <ROW Dialog_="MinecraftRunningDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
@@ -745,7 +758,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
-    <ROW Action="AI_DATA_SETTER" Type="51" Source="AI_ExtractFiles" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DATA_SETTER" Type="51" Source="CustomActionData" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DATA_SETTER_1" Type="51" Source="InstallMod" Target="[TOBII_SUPPORTED]"/>
     <ROW Action="AI_DATA_SETTER_2" Type="51" Source="CopySaves" Target="[CHECKLIST_SAVES]"/>
     <ROW Action="AI_DATA_SETTER_3" Type="51" Source="CustomActionData" Target="[~]"/>
@@ -759,9 +772,8 @@
     <ROW Action="AI_DeleteRLzma" Type="1281" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
     <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
     <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
-    <ROW Action="AI_EstimateExtractFiles" Type="1" Source="Prereq.dll" Target="EstimateExtractFiles"/>
     <ROW Action="AI_ExtractCadLzma" Type="51" Source="AI_ExtractLzma" Target="[AI_SETUPEXEPATH]"/>
-    <ROW Action="AI_ExtractFiles" Type="1025" Source="Prereq.dll" Target="ExtractSourceFiles" AdditionalSeq="AI_DATA_SETTER"/>
+    <ROW Action="AI_ExtractFiles" Type="1" Source="Prereq.dll" Target="ExtractSourceFiles" AdditionalSeq="AI_DATA_SETTER"/>
     <ROW Action="AI_ExtractLzma" Type="1025" Source="lzmaextractor.dll" Target="ExtractLZMAFiles"/>
     <ROW Action="AI_FindExeLzma" Type="1" Source="lzmaextractor.dll" Target="FindEXE"/>
     <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
@@ -925,6 +937,7 @@
     <ROW Feature_="MainFeature" Component_="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll_1"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.Deployment.WindowsInstaller.dll_1"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_27"/>
+    <ROW Feature_="MainFeature" Component_="ApacheLicenseVersion2.0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="EyeMineV2.exe" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\EyeMineV2.ico" Index="0"/>
@@ -932,7 +945,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
     <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
-    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1397"/>
     <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
     <ROW Action="AI_EnableDebugLog" Sequence="51"/>
     <ROW Action="AI_AppSearchEx" Sequence="102"/>
@@ -950,9 +963,6 @@
     <ROW Action="AI_ExtractLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1549" Builds="DefaultBuild"/>
     <ROW Action="AI_DeleteRLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1548" Builds="DefaultBuild"/>
     <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6599" Builds="DefaultBuild"/>
-    <ROW Action="AI_ExtractFiles" Sequence="3998" Builds="DefaultBuild"/>
-    <ROW Action="AI_DATA_SETTER" Sequence="3997"/>
-    <ROW Action="AI_EstimateExtractFiles" Sequence="3999" Builds="DefaultBuild"/>
     <ROW Action="AI_XmlInstall" Condition="(REMOVE &lt;&gt; &quot;ALL&quot;)" Sequence="5102"/>
     <ROW Action="AI_DATA_SETTER_3" Condition="(REMOVE &lt;&gt; &quot;ALL&quot;)" Sequence="5101"/>
     <ROW Action="AI_XmlUninstall" Condition="(REMOVE)" Sequence="3102"/>
@@ -960,6 +970,8 @@
     <ROW Action="ExecuteScriptCode" Sequence="6401"/>
     <ROW Action="DetectProcessMinecraft" Condition="( NOT Installed )" Sequence="202"/>
     <ROW Action="AI_DATA_SETTER_5" Condition="( NOT Installed )" Sequence="201"/>
+    <ROW Action="AI_ExtractFiles" Sequence="1399" Builds="DefaultBuild"/>
+    <ROW Action="AI_DATA_SETTER" Sequence="1398"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
@@ -1038,14 +1050,14 @@
     <ROW XmlAttribute="type_1" XmlElement="section" Name="type" Flags="14" Order="1" Value="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.XmlElementComponent">
-    <ROW XmlElement="JuliusSweetland.OptiKey.EyeMine.Pro" ParentElement="userSettings" Name="JuliusSweetland.OptiKey.EyeMine.Properties.Settings" Condition="1" Order="0" Flags="14"/>
-    <ROW XmlElement="configSections" ParentElement="configuration" Name="configSections" Condition="1" Order="0" Flags="14"/>
-    <ROW XmlElement="configuration" Name="configuration" Condition="1" Order="0" Flags="30"/>
-    <ROW XmlElement="section" ParentElement="sectionGroup" Name="section" Condition="1" Order="0" Flags="14"/>
-    <ROW XmlElement="sectionGroup" ParentElement="configSections" Name="sectionGroup" Condition="1" Order="0" Flags="14"/>
-    <ROW XmlElement="setting" ParentElement="JuliusSweetland.OptiKey.EyeMine.Pro" Name="setting" Condition="1" Order="0" Flags="30"/>
-    <ROW XmlElement="userSettings" ParentElement="configuration" Name="userSettings" Condition="1" Order="1" Flags="14"/>
-    <ROW XmlElement="value" ParentElement="setting" Name="value" Condition="1" Order="0" Flags="30" Text="[EYETRACKER_SELECTED]"/>
+    <ROW XmlElement="JuliusSweetland.OptiKey.EyeMine.Pro" ParentElement="userSettings" Name="JuliusSweetland.OptiKey.EyeMine.Properties.Settings" Condition="1" Order="0" Flags="14" UpdateIndexInParent="0"/>
+    <ROW XmlElement="configSections" ParentElement="configuration" Name="configSections" Condition="1" Order="0" Flags="14" UpdateIndexInParent="0"/>
+    <ROW XmlElement="configuration" Name="configuration" Condition="1" Order="0" Flags="30" UpdateIndexInParent="0"/>
+    <ROW XmlElement="section" ParentElement="sectionGroup" Name="section" Condition="1" Order="0" Flags="14" UpdateIndexInParent="0"/>
+    <ROW XmlElement="sectionGroup" ParentElement="configSections" Name="sectionGroup" Condition="1" Order="0" Flags="14" UpdateIndexInParent="0"/>
+    <ROW XmlElement="setting" ParentElement="JuliusSweetland.OptiKey.EyeMine.Pro" Name="setting" Condition="1" Order="0" Flags="30" UpdateIndexInParent="0"/>
+    <ROW XmlElement="userSettings" ParentElement="configuration" Name="userSettings" Condition="1" Order="1" Flags="14" UpdateIndexInParent="0"/>
+    <ROW XmlElement="value" ParentElement="setting" Name="value" Condition="1" Order="0" Flags="30" Text="[EYETRACKER_SELECTED]" UpdateIndexInParent="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.XmlFileComponent">
     <ROW XmlFile="EyeMineV2.exe.config" FileName="EYEMIN~1.CON|EyeMineV2.exe.config" DirProperty="Release_Dir" Component="CREDITS.md" RootElement="configuration" Flags="89" Version="1.0" Encoding="UTF-8" IndentUnits="2"/>
