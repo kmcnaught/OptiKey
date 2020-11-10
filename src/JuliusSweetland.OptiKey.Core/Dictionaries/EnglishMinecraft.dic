@@ -25,8 +25,10 @@ azure
 back
 baked
 bale
+ball
 bamboo
 banner
+bark
 barrel
 barrier
 bars
@@ -55,6 +57,7 @@ boat
 bone
 book
 bookshelf
+boost
 boots
 bottle
 bow
@@ -79,6 +82,7 @@ bye
 cactus
 cake
 campfire
+campire
 can
 cane
 canes
@@ -138,6 +142,7 @@ cube
 cut
 cyan
 daisy
+damage
 damaged
 dandelion
 dark
@@ -145,6 +150,7 @@ day
 daylight
 dead
 debug
+description
 detector
 diamond
 diorite
@@ -177,6 +183,7 @@ enderman
 endermite
 even
 evoker
+experience
 eye
 falling
 fan
@@ -186,6 +193,7 @@ feather
 fence
 fermented
 fern
+filled
 fire
 firework
 first
@@ -214,6 +222,7 @@ give
 glass
 glazed
 glistering
+globe
 glowing
 glowstone
 go
@@ -236,6 +245,7 @@ hay
 he
 head
 healing
+health
 heart
 heavy
 hello
@@ -253,15 +263,14 @@ horse
 how
 human
 husk
-i
 ice
 if
-ii
 in
 inactive
 infested
 ingot
 ink
+instant
 into
 inverted
 invisibility
@@ -269,9 +278,11 @@ iron
 it
 item
 its
+iv
 jack
 jigsaw
 jukebox
+jump
 jungle
 just
 kelp
@@ -289,6 +300,7 @@ leaping
 leather
 leaves
 lectern
+lecturn
 leggings
 lever
 light
@@ -298,8 +310,10 @@ lily
 lime
 lingering
 llama
+log
 look
 loom
+luck
 magenta
 magma
 make
@@ -314,6 +328,7 @@ membrane
 milk
 mine
 minecart
+minecraft
 mob
 monster
 mooshroom
@@ -324,6 +339,7 @@ moving
 mule
 mundane
 mushroom
+music
 mutton
 my
 mycelium
@@ -339,6 +355,7 @@ note
 now
 nugget
 o'
+o'enchanting
 o'lantern
 oak
 observer
@@ -371,16 +388,20 @@ pattern
 pearl
 peony
 people
+petrified
 phantom
 pickaxe
+pickle
 pie
 pig
+piglin
 pigman
 pillager
 pillar
 pink
 piston
 plank
+planks
 plant
 plate
 player
@@ -411,6 +432,7 @@ quill
 rabbit
 rabbit's
 rail
+rails
 ravager
 raw
 red
@@ -453,6 +475,7 @@ skeleton
 skull
 slab
 slice
+slightly
 slime
 slimeball
 slow
@@ -470,9 +493,11 @@ soup
 spawn
 spawner
 spectral
+speed
 spider
 splash
 sponge
+spots
 spruce
 squid
 stained
@@ -484,6 +509,7 @@ star
 steak
 steel
 stem
+steve
 stew
 stick
 sticky
@@ -494,6 +520,7 @@ strad
 stray
 strength
 string
+stripped
 structure
 sugar
 sunflower
@@ -518,6 +545,7 @@ there
 these
 they
 thick
+thing
 think
 this
 time
@@ -543,9 +571,12 @@ up
 us
 use
 valley
+very
 vex
+vi
 villager
 vindicator
+vine
 vines
 vision
 void
@@ -580,9 +611,11 @@ wooden
 wool
 work
 would
+writable
 written
 year
 yellow
 you
 your
 zombie
+zombified
