@@ -575,41 +575,41 @@
     <ROW Dialog_="EyeTrackerDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine eye tracker settings" TextStyle="[DlgTitleFont]" Order="900"/>
     <ROW Dialog_="EyeTrackerDlg" Control="EyeTrackerRadioGroup" Type="RadioButtonGroup" X="20" Y="59" Width="332" Height="166" Attributes="131075" Property="EYETRACKERRADIOGROUP_PROP" Text="Supported inputs" Order="1000"/>
     <ROW Dialog_="EyeTrackerDlg" Control="Text_1" Type="Text" X="29" Y="88" Width="312" Height="29" Attributes="65539" Property="TEXT_1_PROP_5" Text="This includes gaming eye trackers such as Tobii EyeX, 4C, Eye Tracker 5 or Tobii Dynavox trackers such as the PCEyeGo, PCEyeMini and other integrated trackers" Order="1100"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Checking for Forge installation..." Order="700"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Minecraft Forge installation" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control="Text_1" Type="Text" X="137" Y="78" Width="215" Height="137" Attributes="65539" Property="TEXT_1_PROP_1" Text="EyeMine requires Minecraft forge (version [FORGE_VERSION_REQUIRED]) to be installed. [NEWLINE][NEWLINE]This allows EyeMine to use custom mods to improve the eye-gaze compatibility. [NEWLINE][NEWLINE]You can find the forge installer in the ZIP file you downloaded, alongside the EyeMine installer. [NEWLINE]You need to run the file, select &quot;Install client&quot; and &quot;OK&quot;. Once this is complete, please restart the EyeMine installer. " Order="1000"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control="Bitmap_1" Type="Bitmap" X="39" Y="88" Width="56" Height="50" Attributes="1" Text="error.png" Order="1100"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="Description" Type="Text" X="25" Y="20" Width="284" Height="23" Attributes="196611" Text="EyeMine doesn&apos;t have native support for your eye-tracker, but you can access it using mouse emulation with your eye tracker" Order="700"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine V2 Input Source - Mouse cursor" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="Text_1" Type="Text" X="49" Y="107" Width="273" Height="92" Attributes="65539" Property="TEXT_1_PROP_3_1" Text="Please use your mouse cursor to control EyeMine with your eye tracker. [NEWLINE][NEWLINE]You should be able to do this using the software that came with your eye tracker - for instance, Windows Control for a Tobii tracker, EyeMousePlay for a myGaze tracker, or QuickACCESS mouse control for an EyeTech tracker. [NEWLINE][NEWLINE]If you prefer to control the cursor with another solution such as a head-mouse, this will also work to control EyeMine. " Order="1000"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="Bitmap_1" Type="Bitmap" X="59" Y="59" Width="30" Height="30" Attributes="1" Text="info.png" Order="1100"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control="Text_2" Type="Text" X="98" Y="68" Width="205" Height="20" Attributes="65539" Property="TEXT_2_PROP" Text="Using mouse cursor to control EyeMine" TextStyle="DlgFontBold10" Order="1200"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="Description" Type="Text" X="25" Y="20" Width="280" Height="23" Attributes="196611" Text="The installer has detected that your PC has Tobii Eye Tracking integration installed" Order="700"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine V2 Input Source - Tobii" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="Text_1" Type="Text" X="49" Y="107" Width="279" Height="128" Attributes="65539" Property="TEXT_1_PROP_3" Text="EyeMine will automatically use your Tobii eye tracker as input. [NEWLINE] [NEWLINE]Please make sure your eye tracker is connected and Tobii Eye Tracking is switched on when you want to play EyeMine. [NEWLINE][NEWLINE]If you want to use an alternative input source (for instance a headmouse) then you can change this in the Settings by right clicking on the EyeMine keyboard." Order="1000"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="Text_2" Type="Text" X="98" Y="68" Width="244" Height="20" Attributes="65539" Property="TEXT_2_PROP_1" Text="Using Tobii tracker to control EyeMine" TextStyle="DlgFontBold10" Order="1100"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control="Bitmap_1" Type="Bitmap" X="59" Y="59" Width="30" Height="30" Attributes="1" Text="info.png" Order="1200"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Checking for Forge installation..." Order="700"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Minecraft Forge installation" TextStyle="[DlgTitleFont]" Order="900"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="Text_1" Type="Text" X="137" Y="78" Width="215" Height="137" Attributes="65539" Property="TEXT_1_PROP_1" Text="EyeMine requires Minecraft forge (version [FORGE_VERSION_REQUIRED]) to be installed. [NEWLINE][NEWLINE]This allows EyeMine to use custom mods to improve the eye-gaze compatibility. [NEWLINE][NEWLINE]You can find the forge installer in the ZIP file you downloaded, alongside the EyeMine installer. [NEWLINE]You need to run the file, select &quot;Install client&quot; and &quot;OK&quot;. Once this is complete, please restart the EyeMine installer. " Order="1000"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="Bitmap_1" Type="Bitmap" X="39" Y="88" Width="56" Height="50" Attributes="1" Text="error.png" Order="1100"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Description" Type="Text" X="25" Y="20" Width="284" Height="23" Attributes="196611" Text="EyeMine doesn&apos;t have native support for your eye-tracker, but you can access it using mouse emulation with your eye tracker" Order="700"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine V2 Input Source - Mouse cursor" TextStyle="[DlgTitleFont]" Order="900"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Text_1" Type="Text" X="49" Y="107" Width="273" Height="92" Attributes="65539" Property="TEXT_1_PROP_3_1" Text="Please use your mouse cursor to control EyeMine with your eye tracker. [NEWLINE][NEWLINE]You should be able to do this using the software that came with your eye tracker - for instance, Windows Control for a Tobii tracker, EyeMousePlay for a myGaze tracker, or QuickACCESS mouse control for an EyeTech tracker. [NEWLINE][NEWLINE]If you prefer to control the cursor with another solution such as a head-mouse, this will also work to control EyeMine. " Order="1000"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Bitmap_1" Type="Bitmap" X="59" Y="59" Width="30" Height="30" Attributes="1" Text="info.png" Order="1100"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Text_2" Type="Text" X="98" Y="68" Width="205" Height="20" Attributes="65539" Property="TEXT_2_PROP" Text="Using mouse cursor to control EyeMine" TextStyle="DlgFontBold10" Order="1200"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Description" Type="Text" X="25" Y="20" Width="280" Height="23" Attributes="196611" Text="The installer has detected that your PC has Tobii Eye Tracking integration installed" Order="700"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine V2 Input Source - Tobii" TextStyle="[DlgTitleFont]" Order="900"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Text_1" Type="Text" X="49" Y="107" Width="279" Height="128" Attributes="65539" Property="TEXT_1_PROP_3" Text="EyeMine will automatically use your Tobii eye tracker as input. [NEWLINE] [NEWLINE]Please make sure your eye tracker is connected and Tobii Eye Tracking is switched on when you want to play EyeMine. [NEWLINE][NEWLINE]If you want to use an alternative input source (for instance a headmouse) then you can change this in the Settings by right clicking on the EyeMine keyboard." Order="1000"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Text_2" Type="Text" X="98" Y="68" Width="244" Height="20" Attributes="65539" Property="TEXT_2_PROP_1" Text="Using Tobii tracker to control EyeMine" TextStyle="DlgFontBold10" Order="1100"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Bitmap_1" Type="Bitmap" X="59" Y="59" Width="30" Height="30" Attributes="1" Text="info.png" Order="1200"/>
     <ROW Dialog_="InstallForge" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="InstallForge" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
     <ROW Dialog_="InstallForge" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
@@ -621,19 +621,19 @@
     <ROW Dialog_="InstallForge" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Minecraft Forge Installation" TextStyle="[DlgTitleFont]" Order="900"/>
     <ROW Dialog_="InstallForge" Control="PushButton_1" Type="PushButton" X="115" Y="95" Width="142" Height="17" Attributes="3" Text="Install Minecraft Forge" Order="1000"/>
     <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="resources\LICENSE.rtf" Order="400" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Checking for Minecraft installation..." Order="700"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Minecraft installation" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Text_1" Type="Text" X="127" Y="68" Width="224" Height="98" Attributes="65539" Property="TEXT_1_PROP" Text="EyeMine requires Minecraft Java Edition to be installed first.[NEWLINE][NEWLINE]You do not appear to have Minecraft Java Edition installed. [NEWLINE][NEWLINE]Please note that EyeMine will not let you play Minecraft Windows 10 Edition from the Microsoft Store. You need to download and install Minecraft Java Edition from one of the links below. You can demo Minecraft for a limited time before purchasing, but you will need to create a Mojang account. [NEWLINE][NEWLINE][NEWLINE]Please restart the EyeMine installer once you have installed Minecraft." Order="1000"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Bitmap_1" Type="Bitmap" X="39" Y="88" Width="56" Height="50" Attributes="1" Text="error.png" Order="1100"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Hyperlink_1" Type="Hyperlink" X="127" Y="195" Width="224" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;https://www.minecraft.net/en-us/store/minecraft-java-edition&quot;&gt;Buy Minecraft from minecraft.net&lt;/a&gt;" Order="1200"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control="Hyperlink_2" Type="Hyperlink" X="127" Y="215" Width="224" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP_1" Text="&lt;a href=&quot;https://www.minecraft.net/en-us/download&quot;&gt;Download Minecraft for demo usage&lt;/a&gt;" Order="1300"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Checking for Minecraft installation..." Order="700"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Minecraft installation" TextStyle="[DlgTitleFont]" Order="900"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Text_1" Type="Text" X="127" Y="68" Width="224" Height="98" Attributes="65539" Property="TEXT_1_PROP" Text="EyeMine requires Minecraft Java Edition to be installed first.[NEWLINE][NEWLINE]You do not appear to have Minecraft Java Edition installed. [NEWLINE][NEWLINE]Please note that EyeMine will not let you play Minecraft Windows 10 Edition from the Microsoft Store. You need to download and install Minecraft Java Edition from one of the links below. You can demo Minecraft for a limited time before purchasing, but you will need to create a Mojang account. [NEWLINE][NEWLINE][NEWLINE]Please restart the EyeMine installer once you have installed Minecraft." Order="1000"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Bitmap_1" Type="Bitmap" X="39" Y="88" Width="56" Height="50" Attributes="1" Text="error.png" Order="1100"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Hyperlink_1" Type="Hyperlink" X="127" Y="185" Width="224" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;https://www.minecraft.net/en-us/store/minecraft-java-edition&quot;&gt;Buy Minecraft from minecraft.net&lt;/a&gt;" Order="1200"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Hyperlink_2" Type="Hyperlink" X="127" Y="205" Width="224" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP_1" Text="&lt;a href=&quot;https://www.minecraft.net/en-us/download&quot;&gt;Download Minecraft for demo usage&lt;/a&gt;" Order="1300"/>
     <ROW Dialog_="MinecraftRunningDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="MinecraftRunningDlg" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
     <ROW Dialog_="MinecraftRunningDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
@@ -683,12 +683,31 @@
     <ROW Dialog_="NewSeqDialog" Control="Description" Type="Text" X="135" Y="86" Width="220" Height="60" Attributes="196611" Text="Which eye tracker will you use with Optikey?" Order="600"/>
     <ROW Dialog_="NewSeqDialog" Control="BottomLine" Type="Line" X="0" Y="234" Width="372" Height="0" Attributes="1" Order="700"/>
     <ROW Dialog_="NewSeqDialog" Control="ComboBox_eyetracker" Type="ComboBox" X="135" Y="105" Width="56" Height="12" Attributes="3" Property="COMBOBOX_1_PROP" Text="wibble" Order="800"/>
+    <ROW Dialog_="Temp_Logic" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
+    <ROW Dialog_="Temp_Logic" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
+    <ROW Dialog_="Temp_Logic" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
+    <ROW Dialog_="Temp_Logic" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
+    <ROW Dialog_="Temp_Logic" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
+    <ROW Dialog_="Temp_Logic" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
+    <ROW Dialog_="Temp_Logic" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="New Dialog Description..." Order="700"/>
+    <ROW Dialog_="Temp_Logic" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
+    <ROW Dialog_="Temp_Logic" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="New Dialog" TextStyle="[DlgTitleFont]" Order="900"/>
+    <ROW Dialog_="Temp_Logic" Control="FIRST_MOD_INSTALL" Type="PushButton" X="166" Y="59" Width="95" Height="17" Attributes="3" Text="FIRST_MOD_INSTALL" Order="1000"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_1" Type="PushButton" X="29" Y="59" Width="117" Height="17" Attributes="3" Text="NOT FIRST_MOD_INSTALL" Order="1100"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_2" Type="PushButton" X="167" Y="117" Width="95" Height="17" Attributes="3" Text="FIRST_MOD_INSTALL" Order="1200"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_3" Type="PushButton" X="29" Y="117" Width="117" Height="17" Attributes="3" Text="NOT FIRST_MOD_INSTALL" Order="1300"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_4" Type="PushButton" X="167" Y="88" Width="95" Height="17" Attributes="3" Text="FIRST_MOD_INSTALL" Order="1400"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_5" Type="PushButton" X="29" Y="88" Width="117" Height="17" Attributes="3" Text="NOT FIRST_MOD_INSTALL" Order="1500"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_6" Type="PushButton" X="167" Y="146" Width="95" Height="17" Attributes="3" Text="FIRST_MOD_INSTALL" Order="1600"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_7" Type="PushButton" X="29" Y="146" Width="117" Height="17" Attributes="3" Text="NOT FIRST_MOD_INSTALL" Order="1700"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_8" Type="PushButton" X="167" Y="176" Width="95" Height="17" Attributes="3" Text="FIRST_MOD_INSTALL" Order="1800"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_9" Type="PushButton" X="29" Y="176" Width="117" Height="17" Attributes="3" Text="NOT FIRST_MOD_INSTALL" Order="1900"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlConditionComponent">
     <ROW Dialog_="EyeTrackerDlg" Control_="Next" Action="Enable" Condition="EYETRACKERRADIOGROUP_PROP"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
-    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="Temp_Logic" Condition="AI_INSTALL" Ordering="3"/>
     <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
     <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
     <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="204"/>
@@ -707,7 +726,6 @@
     <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
     <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
     <ROW Dialog_="LicenseAgreementDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="5"/>
-    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
     <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="205"/>
     <ROW Dialog_="WelcomePrereqDlg" Control_="Next" Event="NewDialog" Argument="PrerequisitesDlg" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
@@ -717,35 +735,106 @@
     <ROW Dialog_="PrepareDlg" Control_="Next" Event="DoAction" Argument="PopulateComboBox" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="NewDialog" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="FolderDlg" Control_="Browse" Event="[_BrowseProperty]" Argument="APPDIR" Condition="1" Ordering="100" MsiKey="FolderDlg#Browse#[_BrowseProperty]#APPDIR#1"/>
-    <ROW Dialog_="FolderDlg" Control_="Next" Event="SetTargetPath" Argument="APPDIR" Condition="1" Ordering="197" MsiKey="FolderDlg#Next#SetTargetPath#APPDIR#1"/>
-    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="MinecraftInstallationRequired" Condition="AI_INSTALL" Ordering="198"/>
-    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="SetTargetPath" Argument="APPDIR" Condition="1" Ordering="190" MsiKey="FolderDlg#Next#SetTargetPath#APPDIR#1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL" Ordering="203"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="Temp_Logic" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
     <ROW Dialog_="InstallForge" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="MinecraftSavesDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="MinecraftSavesDlg" Control_="MinecraftSavesDlgDialogInitializer" Event="DoAction" Argument="PopulateSavesListBox" Condition="AI_INSTALL" Ordering="0"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
     <ROW Dialog_="MinecraftRunningDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="StopProcessMinecraft" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="4"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="AI_DATA_SETTER_6" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="3"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="StopProcessMinecraft" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="2"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="AI_DATA_SETTER_6" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="1"/>
     <ROW Dialog_="NewDialog_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="EyeTrackerDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouse" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control_="Next" Event="NewDialog" Argument="ForgeInstallationRequired" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="InputInfoDialogTobii" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="MinecraftInstallationRequired" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control_="Next" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="InputInfoDialogMouse" Control_="Back" Event="NewDialog" Argument="InputInfoDialogTobii" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobii" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="ForgeInstallationRequired" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationRequired" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL" Ordering="5"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationRequired" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogMouse" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL" Ordering="18"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL" Ordering="13"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="2"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL" Ordering="11"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL" Ordering="13"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="8"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL" Ordering="5"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL" Ordering="11"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="Temp_Logic" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
+    <ROW Dialog_="Temp_Logic" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="Temp_Logic" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="Temp_Logic" Control_="FIRST_MOD_INSTALL" Event="[FIRST_MOD_INSTALL]" Argument="1" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="Temp_Logic" Control_="PushButton_1" Event="[FIRST_MOD_INSTALL]" Argument="0" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="Temp_Logic" Control_="PushButton_2" Event="[FIRST_MOD_INSTALL]" Argument="1" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="Temp_Logic" Control_="PushButton_3" Event="[FIRST_MOD_INSTALL]" Argument="0" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="Temp_Logic" Control_="PushButton_4" Event="[FIRST_MOD_INSTALL]" Argument="1" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="Temp_Logic" Control_="PushButton_5" Event="[FIRST_MOD_INSTALL]" Argument="0" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="Temp_Logic" Control_="PushButton_6" Event="[FIRST_MOD_INSTALL]" Argument="1" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="Temp_Logic" Control_="PushButton_7" Event="[FIRST_MOD_INSTALL]" Argument="0" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="Temp_Logic" Control_="PushButton_8" Event="[FIRST_MOD_INSTALL]" Argument="1" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="Temp_Logic" Control_="PushButton_9" Event="[FIRST_MOD_INSTALL]" Argument="0" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="4"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL" Ordering="2"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="7"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL" Ordering="196"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL" Ordering="194"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL" Ordering="193"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="191"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL" Ordering="9"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL" Ordering="11"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="4"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL" Ordering="200"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="11"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL" Ordering="199"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL" Ordering="6"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL" Ordering="8"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL" Ordering="12"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="4"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL" Ordering="8"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL" Ordering="10"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL" Ordering="11"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL" Ordering="13"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="5"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL" Ordering="6"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL" Ordering="8"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL" Ordering="10"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL" Ordering="12"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND 1" Ordering="7"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL" Ordering="8"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND 1" Ordering="12"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="6"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL" Ordering="8"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND 1" Ordering="5"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL" Ordering="6"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND 1" Ordering="7"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="4"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND 1" Ordering="10"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL" Ordering="11"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND 1" Ordering="17"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND 1" Ordering="16"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND 1" Ordering="13"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND 1" Ordering="14"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND 1" Ordering="15"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND 1" Ordering="4"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL" Ordering="5"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND 1" Ordering="6"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL" Ordering="15"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL" Ordering="14"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="( AI_INSTALL )" Ordering="14"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="8"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL" Ordering="16"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL" Ordering="15"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND 1 AND 1" Ordering="13"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND 1" Ordering="12"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND 1" Ordering="11"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND 1" Ordering="10"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND 1" Ordering="9"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND 1" Ordering="2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
@@ -818,16 +907,17 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
     <ROW Dialog="EyeTrackerDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
-    <ROW Dialog="ForgeInstallationRequired" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
-    <ROW Dialog="InputInfoDialogMouse" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
-    <ROW Dialog="InputInfoDialogTobii" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="ForgeInstallationReqdDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="InputInfoDialogMouseDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="InputInfoDialogTobiiDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="InstallForge" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
-    <ROW Dialog="MinecraftInstallationRequired" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="MinecraftInstallationReqdDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="MinecraftRunningDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="MinecraftSavesDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="NewDialog" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="NewDialog_1" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="NewSeqDialog" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="Temp_Logic" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
     <ROW Feature_="MainFeature" Component_="ProductInformation"/>
