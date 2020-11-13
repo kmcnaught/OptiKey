@@ -692,16 +692,22 @@
     <ROW Dialog_="Temp_Logic" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="New Dialog Description..." Order="700"/>
     <ROW Dialog_="Temp_Logic" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="Temp_Logic" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="New Dialog" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="Temp_Logic" Control="FIRST_MOD_INSTALL" Type="PushButton" X="166" Y="59" Width="95" Height="17" Attributes="3" Text="FIRST_MOD_INSTALL" Order="1000"/>
-    <ROW Dialog_="Temp_Logic" Control="PushButton_1" Type="PushButton" X="29" Y="59" Width="117" Height="17" Attributes="3" Text="NOT FIRST_MOD_INSTALL" Order="1100"/>
-    <ROW Dialog_="Temp_Logic" Control="PushButton_2" Type="PushButton" X="167" Y="117" Width="95" Height="17" Attributes="3" Text="FIRST_MOD_INSTALL" Order="1200"/>
-    <ROW Dialog_="Temp_Logic" Control="PushButton_3" Type="PushButton" X="29" Y="117" Width="117" Height="17" Attributes="3" Text="NOT FIRST_MOD_INSTALL" Order="1300"/>
-    <ROW Dialog_="Temp_Logic" Control="PushButton_4" Type="PushButton" X="167" Y="88" Width="95" Height="17" Attributes="3" Text="FIRST_MOD_INSTALL" Order="1400"/>
-    <ROW Dialog_="Temp_Logic" Control="PushButton_5" Type="PushButton" X="29" Y="88" Width="117" Height="17" Attributes="3" Text="NOT FIRST_MOD_INSTALL" Order="1500"/>
-    <ROW Dialog_="Temp_Logic" Control="PushButton_6" Type="PushButton" X="167" Y="146" Width="95" Height="17" Attributes="3" Text="FIRST_MOD_INSTALL" Order="1600"/>
-    <ROW Dialog_="Temp_Logic" Control="PushButton_7" Type="PushButton" X="29" Y="146" Width="117" Height="17" Attributes="3" Text="NOT FIRST_MOD_INSTALL" Order="1700"/>
-    <ROW Dialog_="Temp_Logic" Control="PushButton_8" Type="PushButton" X="167" Y="176" Width="95" Height="17" Attributes="3" Text="FIRST_MOD_INSTALL" Order="1800"/>
-    <ROW Dialog_="Temp_Logic" Control="PushButton_9" Type="PushButton" X="29" Y="176" Width="117" Height="17" Attributes="3" Text="NOT FIRST_MOD_INSTALL" Order="1900"/>
+    <ROW Dialog_="Temp_Logic" Control="FIRST_MOD_INSTALL" Type="PushButton" X="205" Y="59" Width="146" Height="17" Attributes="3" Text="SHOW_MC_INST_REQUIRED_DLG" Order="1000"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_1" Type="PushButton" X="29" Y="59" Width="147" Height="17" Attributes="3" Text="SHOW_MC_INST_REQUIRED_DLG" Order="1100"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_2" Type="PushButton" X="205" Y="98" Width="146" Height="17" Attributes="3" Text="SHOW_MC_RUNNING_DLG" Order="1200"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_3" Type="PushButton" X="29" Y="98" Width="146" Height="17" Attributes="3" Text="SHOW_MC_RUNNING_DLG" Order="1300"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_4" Type="PushButton" X="205" Y="78" Width="146" Height="17" Attributes="3" Text="SHOW_FORGE_INST_REQD_DLG" Order="1400"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_5" Type="PushButton" X="29" Y="78" Width="146" Height="17" Attributes="3" Text="SHOW_FORGE_INST_REQD_DLG" Order="1500"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_6" Type="PushButton" X="205" Y="117" Width="146" Height="17" Attributes="3" Text="SHOW_EYETRACKER_DLG" Order="1600"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_7" Type="PushButton" X="29" Y="117" Width="146" Height="17" Attributes="3" Text="SHOW_EYETRACKER_DLG" Order="1700"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_8" Type="PushButton" X="205" Y="137" Width="146" Height="17" Attributes="3" Text="SHOW_MC_SAVES_DLG" Order="1800"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_9" Type="PushButton" X="29" Y="137" Width="146" Height="17" Attributes="3" Text="SHOW_MC_SAVES_DLG" Order="1900"/>
+    <ROW Dialog_="Temp_Logic" Control="Text_1" Type="Text" X="215" Y="49" Width="75" Height="11" Attributes="65539" Property="TEXT_1_PROP_6" Text="ON" Order="2000"/>
+    <ROW Dialog_="Temp_Logic" Control="Text_2" Type="Text" X="49" Y="49" Width="75" Height="11" Attributes="65539" Property="TEXT_1_PROP_6_1" Text="OFF" Order="2100"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_10" Type="PushButton" X="205" Y="156" Width="146" Height="17" Attributes="3" Text="SHOW_CURSORINFO_TOBII_DLG" Order="2200"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_11" Type="PushButton" X="29" Y="156" Width="146" Height="17" Attributes="3" Text="SHOW_CURSORINFO_TOBII_DLG" Order="2300"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_12" Type="PushButton" X="205" Y="176" Width="146" Height="17" Attributes="3" Text="SHOW_CURSORINFO_OTHER_DLG" Order="2400"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_13" Type="PushButton" X="29" Y="176" Width="146" Height="17" Attributes="3" Text="SHOW_CURSORINFO_OTHER_DLG" Order="2500"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlConditionComponent">
     <ROW Dialog_="EyeTrackerDlg" Control_="Next" Action="Enable" Condition="EYETRACKERRADIOGROUP_PROP"/>
