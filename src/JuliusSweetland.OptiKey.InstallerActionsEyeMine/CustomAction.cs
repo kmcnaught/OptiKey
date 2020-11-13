@@ -36,7 +36,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         {
             // Run all the other actions and set installer properties
             ActionResult success = ActionResult.Success;
-            
+
             if (CheckForMinecraftInstallation(session) != success)
             {
                 session.Log("Error checking for Minecraft install");
@@ -58,8 +58,34 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 return ActionResult.Failure;
             }
 
+            // Set up show_.._dialog properties based on everything else we've computed so far
+            SetupDialogVisibility(session);
+
             return ActionResult.Success;
 
+        }
+
+        private static string bool_to_number_string(bool b)
+        {
+            return b ? "1" : "0";
+        }        
+
+        public static ActionResult SetupDialogVisibility(Session session)
+        {
+            // Set up show_.._dialog properties based on everything else we've computed so far
+            session["SHOW_MC_INST_REQD_DLG"] = bool_to_number_string(session["MINECRAFT_INSTALLED"] == "true");
+            session["SHOW_MC_RUNNING_DLG"] = bool_to_number_string(session["AI_PROCESS_STATE"] == "Running");
+            session["SHOW_FORGE_INST_REQD_DLG"] = bool_to_number_string(session["FORGE_INSTALLED"] == "false");
+            session["SHOW_EYETRACKER_DLG"] = bool_to_number_string(session["FIRST_MOD_INSTALL"] == "true");
+
+            session["SHOW_MC_SAVES_DLG"] = bool_to_number_string(session["FIRST_MOD_INSTALL"] == "true" &&
+                                                                 session["NUMBER_OF_SAVES"] != "0");
+
+            // start off false now, may be switched on by "ParseEyeTrackerSelection" action after radio button selection
+            session["SHOW_CURSORINFO_TOBII_DLG"] = bool_to_number_string(false);
+            session["SHOW_CURSORINFO_OTHER_DLG"] = bool_to_number_string(false);
+
+            return ActionResult.Success;
         }
 
         [CustomAction]

@@ -808,10 +808,10 @@
     <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="12"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="3"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="7"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="8"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="12"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="6"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="12"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="13"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="14"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="11"/>
     <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="8"/>
     <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="5"/>
@@ -845,6 +845,7 @@
     <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG = &quot;1&quot; )" Ordering="10"/>
     <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG = &quot;1&quot; )" Ordering="9"/>
     <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND 1" Ordering="2"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="DoAction" Argument="ParseEyeTrackerSelection" Condition="1" Ordering="10"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
@@ -890,7 +891,6 @@
     <ROW Action="AI_XmlUninstall" Type="1" Source="xmlCfg.dll" Target="OnXmlUninstall" AdditionalSeq="AI_DATA_SETTER_4"/>
     <ROW Action="CopySaves" Type="1553" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" Target="CopySaves" AdditionalSeq="AI_DATA_SETTER_2"/>
     <ROW Action="DetectProcessMinecraft" Type="1" Source="aicustact.dll" Target="DetectProcess" Options="3" AdditionalSeq="AI_DATA_SETTER_5"/>
-    <ROW Action="ExecuteScriptCode" Type="38" Target="Script Text" TargetUnformatted="Session.Property(&quot;NEWLINE&quot;) = vbLf"/>
     <ROW Action="EyeMineProperties" Type="1" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dl_1" Target="EyeMineProperties"/>
     <ROW Action="EyeTrackerComboSelected" Type="6" Source="PopulateComboboxes.vbs" Target="EyeTrackerSelected" WithoutSeq="true"/>
     <ROW Action="GetMinecraftSaves" Type="1" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dl_1" Target="GetMinecraftSaves"/>
@@ -898,6 +898,7 @@
     <ROW Action="LanguageSelected" Type="6" Source="PopulateComboboxes.vbs" Target="LanguageSelected" WithoutSeq="true"/>
     <ROW Action="OptiKeyProperties" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="LoadOptikeyProperties"/>
     <ROW Action="OverrideMinecraftInstalled" Type="51" Source="MINECRAFT_INSTALLED" Target="true" WithoutSeq="true"/>
+    <ROW Action="ParseEyeTrackerSelection" Type="38" Target="Session.Property(&quot;NEWLINE&quot;) = vbLf" TargetUnformatted="&#13;&#10;&#13;&#10;eyeTrackerSelected = Session.Property(&quot;EYETRACKERRADIOGROUP_PROP&quot;) &#13;&#10;&#13;&#10;&apos; Update logic for showing optional dialogs based on eye tracker selection&#13;&#10;If ( StrComp(eyeTrackerSelected, &quot;MousePosition&quot;)=0 Or _&#13;&#10;     StrComp(eyeTrackerSelected, &quot;MouseOther&quot;)=0) Then&#13;&#10;    Session.Property(&quot;SHOW_CURSORINFO_OTHER_DLG&quot;) = &quot;1&quot;&#13;&#10;Else &#13;&#10;    Session.Property(&quot;SHOW_CURSORINFO_OTHER_DLG&quot;) = &quot;0&quot;&#13;&#10;End If&#13;&#10;&#13;&#10;If ( StrComp(eyeTrackerSelected, &quot;TobiiEyeX&quot;)=0 And _&#13;&#10;     StrComp(Session.Property(&quot;TOBII_SUPPORTED&quot;), &quot;false&quot;)=0 ) Then &#13;&#10;&apos; Default to mouse position if Tobii requested, but no Tobii service available&#13;&#10;    Session.Property(&quot;SHOW_CURSORINFO_TOBII_DLG&quot;) = &quot;1&quot;&#13;&#10;    eyeTrackerSelected = &quot;MousePosition&quot; &#13;&#10;Else &#13;&#10;    Session.Property(&quot;SHOW_CURSORINFO_TOBII_DLG&quot;) = &quot;0&quot;&#13;&#10;End If&#13;&#10;&#13;&#10;&apos; Merge the two user-facing options for &quot;use cursor&quot;&#13;&#10;If (StrComp(eyeTrackerSelected, &quot;MouseOther&quot;)=0) Then&#13;&#10;    eyeTrackerSelected = &quot;MousePosition&quot;&#13;&#10;End If&#13;&#10;&#13;&#10;&#13;&#10;&apos; Save back to property&#13;&#10;Session.Property(&quot;EYETRACKER_SELECTED&quot;) = eyeTrackerSelected&#13;&#10;&#13;&#10;" WithoutSeq="true"/>
     <ROW Action="PopulateComboBox" Type="1" Source="aicustact.dll" Target="PopulateComboBox" WithoutSeq="true" Options="1"/>
     <ROW Action="PopulateEyeTrackerCombo.vbs" Type="6" Source="PopulateComboboxes.vbs" Target="PopulateEyeTrackerCombo" WithoutSeq="true"/>
     <ROW Action="PopulateLanguagesCombo" Type="6" Source="PopulateComboboxes.vbs" Target="PopulateLanguagesCombo" WithoutSeq="true"/>
@@ -1049,11 +1050,11 @@
     <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
     <ROW Action="AI_EnableDebugLog" Sequence="51"/>
     <ROW Action="AI_AppSearchEx" Sequence="102"/>
-    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="203"/>
-    <ROW Action="InstallMod" Condition="( NOT Installed )" Sequence="6403"/>
-    <ROW Action="CopySaves" Condition="( NOT Installed ) AND ( FIRST_MOD_INSTALL = &quot;true&quot; )" Sequence="6405"/>
-    <ROW Action="AI_DATA_SETTER_2" Condition="( NOT Installed ) AND ( FIRST_MOD_INSTALL = &quot;true&quot; )" Sequence="6404"/>
-    <ROW Action="AI_DATA_SETTER_1" Condition="( NOT Installed )" Sequence="6402"/>
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="201"/>
+    <ROW Action="InstallMod" Condition="( NOT Installed )" Sequence="6402"/>
+    <ROW Action="CopySaves" Condition="( NOT Installed ) AND ( FIRST_MOD_INSTALL = &quot;true&quot; )" Sequence="6404"/>
+    <ROW Action="AI_DATA_SETTER_2" Condition="( NOT Installed ) AND ( FIRST_MOD_INSTALL = &quot;true&quot; )" Sequence="6403"/>
+    <ROW Action="AI_DATA_SETTER_1" Condition="( NOT Installed )" Sequence="6401"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99" Builds="DefaultBuild"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101" Builds="DefaultBuild"/>
     <ROW Action="AI_DeleteCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="199" Builds="DefaultBuild"/>
@@ -1067,23 +1068,20 @@
     <ROW Action="AI_DATA_SETTER_3" Condition="(REMOVE &lt;&gt; &quot;ALL&quot;)" Sequence="5101"/>
     <ROW Action="AI_XmlUninstall" Condition="(REMOVE)" Sequence="3102"/>
     <ROW Action="AI_DATA_SETTER_4" Condition="(REMOVE)" Sequence="3101"/>
-    <ROW Action="ExecuteScriptCode" Sequence="6401"/>
-    <ROW Action="DetectProcessMinecraft" Condition="( NOT Installed )" Sequence="202"/>
-    <ROW Action="AI_DATA_SETTER_5" Condition="( NOT Installed )" Sequence="201"/>
     <ROW Action="AI_ExtractFiles" Sequence="1399" Builds="DefaultBuild"/>
     <ROW Action="AI_DATA_SETTER" Sequence="1398"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="62"/>
-    <ROW Action="AI_DpiContentScale" Sequence="61"/>
-    <ROW Action="AI_EnableDebugLog" Sequence="60"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="64"/>
+    <ROW Action="AI_DpiContentScale" Sequence="63"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="62"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
     <ROW Action="OptiKeyProperties" Sequence="57"/>
-    <ROW Action="UninstallPreviousVersions" Condition="( NOT Installed )" Sequence="203"/>
-    <ROW Action="EyeMineProperties" Sequence="59"/>
+    <ROW Action="UninstallPreviousVersions" Condition="( NOT Installed )" Sequence="201"/>
+    <ROW Action="EyeMineProperties" Sequence="61"/>
     <ROW Action="GetMinecraftSaves" Condition="( NOT Installed )" Sequence="58"/>
     <ROW Action="SetPropertyEyeTrackerSelected" Sequence="52"/>
     <ROW Action="SetPropertyFontStretch" Sequence="53"/>
@@ -1091,8 +1089,8 @@
     <ROW Action="SetPropertyFontFamily" Sequence="56"/>
     <ROW Action="SetPropertyFontWeight" Sequence="55"/>
     <ROW Action="SetUpNewLine" Sequence="51"/>
-    <ROW Action="DetectProcessMinecraft" Sequence="202"/>
-    <ROW Action="AI_DATA_SETTER_5" Sequence="201"/>
+    <ROW Action="DetectProcessMinecraft" Sequence="60"/>
+    <ROW Action="AI_DATA_SETTER_5" Sequence="59"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
@@ -1102,11 +1100,11 @@
     <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRadioButtonComponent">
-    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="1" Value="RadioTobii" X="20" Y="9" Width="75" Height="10" Text="Tobii eye tracker"/>
-    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="2" Value="RadiRadioIrisbond" X="20" Y="59" Width="88" Height="10" Text="Irisbond eye tracker"/>
-    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="4" Value="RadioEyeTribe" X="20" Y="78" Width="75" Height="10" Text="The EyeTribe eye tracker"/>
-    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="5" Value="RadioCursor" X="20" Y="98" Width="117" Height="10" Text="Cursor / headmouse"/>
-    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="6" Value="RadioOther" X="20" Y="117" Width="75" Height="10" Text="Other"/>
+    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="1" Value="TobiiEyeX" X="20" Y="9" Width="75" Height="10" Text="Tobii eye tracker"/>
+    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="2" Value="IrisbondDuo" X="20" Y="59" Width="88" Height="10" Text="Irisbond eye tracker"/>
+    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="4" Value="TheEyeTribe" X="20" Y="78" Width="75" Height="10" Text="The EyeTribe eye tracker"/>
+    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="5" Value="MousePosition" X="20" Y="98" Width="117" Height="10" Text="Cursor / headmouse"/>
+    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="6" Value="MouseOther" X="20" Y="117" Width="75" Height="10" Text="Other"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegLocatorComponent">
     <ROW Signature_="AI_EXE_PATH_CU" Root="1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
