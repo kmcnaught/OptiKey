@@ -692,8 +692,8 @@
     <ROW Dialog_="Temp_Logic" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="New Dialog Description..." Order="700"/>
     <ROW Dialog_="Temp_Logic" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="Temp_Logic" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="New Dialog" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="Temp_Logic" Control="FIRST_MOD_INSTALL" Type="PushButton" X="205" Y="59" Width="146" Height="17" Attributes="3" Text="SHOW_MC_INST_REQUIRED_DLG" Order="1000"/>
-    <ROW Dialog_="Temp_Logic" Control="PushButton_1" Type="PushButton" X="29" Y="59" Width="147" Height="17" Attributes="3" Text="SHOW_MC_INST_REQUIRED_DLG" Order="1100"/>
+    <ROW Dialog_="Temp_Logic" Control="FIRST_MOD_INSTALL" Type="PushButton" X="205" Y="59" Width="146" Height="17" Attributes="3" Text="SHOW_MC_INST_REQD_DLG" Order="1000"/>
+    <ROW Dialog_="Temp_Logic" Control="PushButton_1" Type="PushButton" X="29" Y="59" Width="147" Height="17" Attributes="3" Text="SHOW_MC_INST_REQD_DLG" Order="1100"/>
     <ROW Dialog_="Temp_Logic" Control="PushButton_2" Type="PushButton" X="205" Y="98" Width="146" Height="17" Attributes="3" Text="SHOW_MC_RUNNING_DLG" Order="1200"/>
     <ROW Dialog_="Temp_Logic" Control="PushButton_3" Type="PushButton" X="29" Y="98" Width="146" Height="17" Attributes="3" Text="SHOW_MC_RUNNING_DLG" Order="1300"/>
     <ROW Dialog_="Temp_Logic" Control="PushButton_4" Type="PushButton" X="205" Y="78" Width="146" Height="17" Attributes="3" Text="SHOW_FORGE_INST_REQD_DLG" Order="1400"/>
