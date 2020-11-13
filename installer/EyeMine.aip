@@ -742,7 +742,7 @@
     <ROW Dialog_="NewDialog" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="FolderDlg" Control_="Browse" Event="[_BrowseProperty]" Argument="APPDIR" Condition="1" Ordering="100" MsiKey="FolderDlg#Browse#[_BrowseProperty]#APPDIR#1"/>
     <ROW Dialog_="FolderDlg" Control_="Next" Event="SetTargetPath" Argument="APPDIR" Condition="1" Ordering="190" MsiKey="FolderDlg#Next#SetTargetPath#APPDIR#1"/>
-    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG )" Ordering="203"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG = &quot;1&quot; )" Ordering="203"/>
     <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="Temp_Logic" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
@@ -756,15 +756,15 @@
     <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="AI_DATA_SETTER_6" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="1"/>
     <ROW Dialog_="NewDialog_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="EyeTrackerDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_FORGE_INST_REQD_DLG" Ordering="18"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND SHOW_EYETRACKER_DLG" Ordering="13"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG = &quot;1&quot; )" Ordering="18"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="13"/>
     <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="2"/>
-    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND SHOW_MC_RUNNING_DLG" Ordering="11"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND SHOW_MC_RUNNING_DLG" Ordering="13"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND ( SHOW_MC_RUNNING_DLG = &quot;1&quot; )" Ordering="11"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND ( SHOW_MC_RUNNING_DLG = &quot;1&quot; )" Ordering="13"/>
     <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="8"/>
-    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_MC_INST_REQD_DLG" Ordering="5"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND SHOW_EYETRACKER_DLG" Ordering="11"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_FORGE_INST_REQD_DLG" Ordering="3"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG = &quot;1&quot; )" Ordering="5"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="11"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG = &quot;1&quot; )" Ordering="3"/>
     <ROW Dialog_="Temp_Logic" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="Temp_Logic" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="Temp_Logic" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
@@ -779,71 +779,71 @@
     <ROW Dialog_="Temp_Logic" Control_="PushButton_8" Event="[SHOW_MC_SAVES_DLG]" Argument="1" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="Temp_Logic" Control_="PushButton_9" Event="[SHOW_MC_SAVES_DLG]" Argument="0" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="4"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_MC_INST_REQD_DLG" Ordering="2"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG = &quot;1&quot; )" Ordering="2"/>
     <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="7"/>
-    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG )" Ordering="197"/>
-    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG )" Ordering="196"/>
-    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG )" Ordering="194"/>
-    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG )" Ordering="193"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="197"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="196"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="194"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="193"/>
     <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="191"/>
     <ROW Dialog_="MinecraftRunningDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_MC_INST_REQD_DLG" Ordering="9"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_FORGE_INST_REQD_DLG" Ordering="11"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG = &quot;1&quot; )" Ordering="9"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG = &quot;1&quot; )" Ordering="11"/>
     <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="4"/>
-    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG )" Ordering="200"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG = &quot;1&quot; )" Ordering="200"/>
     <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="11"/>
-    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND ( SHOW_MC_RUNNING_DLG )" Ordering="199"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_MC_INST_REQD_DLG" Ordering="6"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_FORGE_INST_REQD_DLG" Ordering="8"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND SHOW_MC_RUNNING_DLG" Ordering="12"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND ( SHOW_MC_RUNNING_DLG = &quot;1&quot; )" Ordering="199"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG = &quot;1&quot; )" Ordering="6"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG = &quot;1&quot; )" Ordering="8"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND ( SHOW_MC_RUNNING_DLG = &quot;1&quot; )" Ordering="12"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="4"/>
-    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_MC_INST_REQD_DLG" Ordering="8"/>
-    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_FORGE_INST_REQD_DLG" Ordering="10"/>
-    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND SHOW_MC_RUNNING_DLG" Ordering="11"/>
-    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND SHOW_EYETRACKER_DLG" Ordering="13"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG = &quot;1&quot; )" Ordering="8"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG = &quot;1&quot; )" Ordering="10"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND ( SHOW_MC_RUNNING_DLG = &quot;1&quot; )" Ordering="11"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="13"/>
     <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="5"/>
-    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_MC_INST_REQD_DLG" Ordering="6"/>
-    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND SHOW_FORGE_INST_REQD_DLG" Ordering="8"/>
-    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND SHOW_MC_RUNNING_DLG" Ordering="10"/>
-    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND SHOW_EYETRACKER_DLG" Ordering="12"/>
-    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_TOBII_DLG" Ordering="3"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG = &quot;1&quot; )" Ordering="6"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG = &quot;1&quot; )" Ordering="8"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND ( SHOW_MC_RUNNING_DLG = &quot;1&quot; )" Ordering="10"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="12"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="3"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_TOBII_DLG" Ordering="7"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_OTHER_DLG" Ordering="8"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND SHOW_MC_SAVES_DLG" Ordering="12"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="7"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="8"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="12"/>
     <ROW Dialog_="EyeTrackerDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="6"/>
     <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND SHOW_EYETRACKER_DLG" Ordering="8"/>
-    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_TOBII_DLG" Ordering="5"/>
-    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_OTHER_DLG" Ordering="6"/>
-    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND SHOW_MC_SAVES_DLG" Ordering="7"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="8"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="5"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="6"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="7"/>
     <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="4"/>
-    <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_TOBII_DLG" Ordering="10"/>
-    <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_OTHER_DLG" Ordering="11"/>
-    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND SHOW_MC_RUNNING_DLG" Ordering="17"/>
-    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND SHOW_EYETRACKER_DLG" Ordering="16"/>
-    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_TOBII_DLG" Ordering="13"/>
-    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_OTHER_DLG" Ordering="14"/>
-    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND SHOW_MC_SAVES_DLG" Ordering="15"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_TOBII_DLG" Ordering="4"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_OTHER_DLG" Ordering="5"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND SHOW_MC_SAVES_DLG" Ordering="6"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="10"/>
+    <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="11"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND ( SHOW_MC_RUNNING_DLG = &quot;1&quot; )" Ordering="17"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="16"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="13"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="14"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="15"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="4"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="5"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="6"/>
     <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="3"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND SHOW_CURSORINFO_OTHER_DLG" Ordering="15"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND SHOW_MC_SAVES_DLG" Ordering="14"/>
-    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND SHOW_MC_SAVES_DLG " Ordering="14"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="15"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="14"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot;)" Ordering="14"/>
     <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="8"/>
-    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG )" Ordering="16"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="16"/>
     <ROW Dialog_="Temp_Logic" Control_="PushButton_10" Event="[SHOW_CURSORINFO_TOBII_DLG]" Argument="1" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="Temp_Logic" Control_="PushButton_11" Event="[SHOW_CURSORINFO_TOBII_DLG]" Argument="0" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="Temp_Logic" Control_="PushButton_12" Event="[SHOW_CURSORINFO_OTHER_DLG]" Argument="1" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="Temp_Logic" Control_="PushButton_13" Event="[SHOW_CURSORINFO_OTHER_DLG]" Argument="0" Condition="AI_INSTALL" Ordering="0"/>
-    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG )" Ordering="15"/>
-    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG )" Ordering="13"/>
-    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG )" Ordering="12"/>
-    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND ( SHOW_MC_RUNNING_DLG )" Ordering="11"/>
-    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG )" Ordering="10"/>
-    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG )" Ordering="9"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="15"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="13"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="12"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND ( SHOW_MC_RUNNING_DLG = &quot;1&quot; )" Ordering="11"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG = &quot;1&quot; )" Ordering="10"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG = &quot;1&quot; )" Ordering="9"/>
     <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND 1" Ordering="2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
