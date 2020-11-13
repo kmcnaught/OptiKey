@@ -592,10 +592,10 @@
     <ROW Dialog_="InputInfoDialogMouseDlg" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
-    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Description" Type="Text" X="25" Y="20" Width="284" Height="23" Attributes="196611" Text="EyeMine doesn&apos;t have native support for your eye-tracker, but you can access it using mouse emulation with your eye tracker" Order="700"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Description" Type="Text" X="25" Y="20" Width="284" Height="23" Attributes="196611" Text="If EyeMine doesn&apos;t have native support for your eye-tracker, you can access it using mouse emulation" Order="700"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine V2 Input Source - Mouse cursor" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Text_1" Type="Text" X="49" Y="107" Width="273" Height="92" Attributes="65539" Property="TEXT_1_PROP_3_1" Text="Please use your mouse cursor to control EyeMine with your eye tracker. [NEWLINE][NEWLINE]You should be able to do this using the software that came with your eye tracker - for instance, Windows Control for a Tobii tracker, EyeMousePlay for a myGaze tracker, or QuickACCESS mouse control for an EyeTech tracker. [NEWLINE][NEWLINE]If you prefer to control the cursor with another solution such as a head-mouse, this will also work to control EyeMine. " Order="1000"/>
+    <ROW Dialog_="InputInfoDialogMouseDlg" Control="Text_1" Type="Text" X="49" Y="107" Width="273" Height="92" Attributes="65539" Property="TEXT_1_PROP_3_1" Text="Please use your mouse cursor to control EyeMine with your eye tracker. [NEWLINE][NEWLINE]You should be able to do this using the software that came with your eye tracker - for instance, Windows Control for a Tobii tracker, EyeMousePlay for a myGaze tracker, or QuickACCESS mouse control for an EyeTech tracker. [NEWLINE][NEWLINE]This option will work with any eye tracker that allows you to move the cursor to follow your gaze." Order="1000"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control="Bitmap_1" Type="Bitmap" X="59" Y="59" Width="30" Height="30" Attributes="1" Text="info.png" Order="1100"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control="Text_2" Type="Text" X="98" Y="68" Width="205" Height="20" Attributes="65539" Property="TEXT_2_PROP" Text="Using mouse cursor to control EyeMine" TextStyle="DlgFontBold10" Order="1200"/>
     <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
@@ -604,12 +604,11 @@
     <ROW Dialog_="InputInfoDialogTobiiDlg" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
     <ROW Dialog_="InputInfoDialogTobiiDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
     <ROW Dialog_="InputInfoDialogTobiiDlg" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Description" Type="Text" X="25" Y="20" Width="280" Height="23" Attributes="196611" Text="The installer has detected that your PC has Tobii Eye Tracking integration installed" Order="700"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine V2 Input Source - Tobii" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Text_1" Type="Text" X="49" Y="107" Width="279" Height="128" Attributes="65539" Property="TEXT_1_PROP_3" Text="EyeMine will automatically use your Tobii eye tracker as input. [NEWLINE] [NEWLINE]Please make sure your eye tracker is connected and Tobii Eye Tracking is switched on when you want to play EyeMine. [NEWLINE][NEWLINE]If you want to use an alternative input source (for instance a headmouse) then you can change this in the Settings by right clicking on the EyeMine keyboard." Order="1000"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Text_2" Type="Text" X="98" Y="68" Width="244" Height="20" Attributes="65539" Property="TEXT_2_PROP_1" Text="Using Tobii tracker to control EyeMine" TextStyle="DlgFontBold10" Order="1100"/>
-    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Bitmap_1" Type="Bitmap" X="59" Y="59" Width="30" Height="30" Attributes="1" Text="info.png" Order="1200"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="700"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine V2 Input Source - Tobii" TextStyle="[DlgTitleFont]" Order="800"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Text_1" Type="Text" X="49" Y="107" Width="279" Height="128" Attributes="65539" Property="TEXT_1_PROP_3" Text="The installer has detected that your system is running an older version of the Tobii software which isn&apos;t compatible with EyeMine. [NEWLINE][NEWLINE]You can still play EyeMine but you will need to first control the cursor using Tobii Windows Control. EyeMine will then use the mouse as an input method. The cursor will be hidden from your sight within Minecraft and the EyeMine keyboard." Order="900"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Text_2" Type="Text" X="98" Y="68" Width="244" Height="20" Attributes="65539" Property="TEXT_2_PROP_1" Text="Use Tobii cursor control for EyeMine" TextStyle="DlgFontBold10" Order="1000"/>
+    <ROW Dialog_="InputInfoDialogTobiiDlg" Control="Bitmap_1" Type="Bitmap" X="59" Y="59" Width="30" Height="30" Attributes="1" Text="info.png" Order="1100"/>
     <ROW Dialog_="InstallForge" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="InstallForge" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
     <ROW Dialog_="InstallForge" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
@@ -1103,8 +1102,8 @@
     <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="1" Value="TobiiEyeX" X="20" Y="9" Width="75" Height="10" Text="Tobii eye tracker"/>
     <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="2" Value="IrisbondDuo" X="20" Y="59" Width="88" Height="10" Text="Irisbond eye tracker"/>
     <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="4" Value="TheEyeTribe" X="20" Y="78" Width="75" Height="10" Text="The EyeTribe eye tracker"/>
-    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="5" Value="MousePosition" X="20" Y="98" Width="117" Height="10" Text="Cursor / headmouse"/>
-    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="6" Value="MouseOther" X="20" Y="117" Width="75" Height="10" Text="Other"/>
+    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="5" Value="MousePosition" X="20" Y="117" Width="117" Height="10" Text="Cursor / headmouse"/>
+    <ROW Property="EYETRACKERRADIOGROUP_PROP" Order="6" Value="MouseOther" X="20" Y="98" Width="137" Height="10" Text="Another eye tracker"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegLocatorComponent">
     <ROW Signature_="AI_EXE_PATH_CU" Root="1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
