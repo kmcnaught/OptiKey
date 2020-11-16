@@ -1217,7 +1217,7 @@ ARROW</value>
 You can turn off update checks from the Management Console (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>May I restart Optikey?</value>
+    <value>May I restart EyeMine?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Version: {0}</value>
@@ -2279,10 +2279,10 @@ Française
     <value>Restart</value>
   </data>
   <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Are you absolutely sure that you'd like to restart Optikey?</value>
+    <value>Are you absolutely sure that you'd like to restart EyeMine?</value>
   </data>
   <data name="REFRESH_MESSAGE" xml:space="preserve">
-    <value>Are you sure you'd like to restart Optikey?</value>
+    <value>Are you sure you'd like to restart EyeMine?</value>
   </data>
   <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
     <value>DYNAMIC KEYBOARD</value>

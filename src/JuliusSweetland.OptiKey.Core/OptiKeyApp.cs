@@ -740,7 +740,7 @@ namespace JuliusSweetland.OptiKey
                     break;
 
                 default:
-                    throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart OptiKey.");
+                    throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart EyeMine.");
             }
 
             //Instantiate key trigger source
@@ -773,7 +773,7 @@ namespace JuliusSweetland.OptiKey
 
                 default:
                     throw new ArgumentException(
-                        "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart OptiKey.");
+                        "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart EyeMine.");
             }
 
             //Instantiate point trigger source
@@ -804,7 +804,7 @@ namespace JuliusSweetland.OptiKey
                 default:
                     throw new ArgumentException(
                         "'PointSelectionTriggerSource' setting is missing or not recognised! "
-                        + "Please correct and restart OptiKey.");
+                        + "Please correct and restart EyeMine.");
             }
 
             var inputService = new InputService(keyStateService, dictionaryService, audioService, capturingStateManager,
