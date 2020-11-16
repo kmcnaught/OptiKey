@@ -208,7 +208,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {
                         if (confirmation.Confirmed)
                         {
-                            Log.Info("Applying management changes and attempting to restart OptiKey");
+                            Log.Info("Applying management changes and attempting to restart EyeMine");
                             ApplyChanges();
                             Settings.Default.Save();
                             try

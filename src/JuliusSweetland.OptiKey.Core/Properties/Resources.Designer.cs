@@ -5101,7 +5101,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you absolutely sure that you&apos;d like to restart Optikey?.
+        ///   Looks up a localized string similar to Are you absolutely sure that you&apos;d like to restart EyeMine?.
         /// </summary>
         public static string REFRESH_CONFIRMATION_MESSAGE {
             get {
@@ -5110,7 +5110,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you&apos;d like to restart Optikey?.
+        ///   Looks up a localized string similar to Are you sure you&apos;d like to restart EyeMine?.
         /// </summary>
         public static string REFRESH_MESSAGE {
             get {
@@ -6615,7 +6615,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to May I restart Optikey?.
+        ///   Looks up a localized string similar to May I restart EyeMine?.
         /// </summary>
         public static string VERIFY_RESTART {
             get {

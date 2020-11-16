@@ -273,7 +273,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             // Cache RequireMinecraftUpdate before saving settings
             bool requireMinecraftUpdate = PointingAndSelectingViewModel.RequireMinecraftUpdate;
 
-            Log.Info("Applying management changes and attempting to restart OptiKey");
+            Log.Info("Applying management changes and attempting to restart EyeMine");
             ApplyChanges();
             Settings.Default.Save();
 
