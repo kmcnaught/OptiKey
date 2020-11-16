@@ -47,9 +47,9 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 session.Log("Error checking for Forge install");
                 return ActionResult.Failure;
             }
-            if (QueryTobiiSupported(session) != success)
+            if (QueryEyeTrackerSupport(session) != success)
             {
-                session.Log("Error checking for Tobii support");
+                session.Log("Error checking for eyetracker support");
                 return ActionResult.Failure;
             }
             if (CheckIfEyeMineModAlreadyInstalled(session) != success)
@@ -89,8 +89,15 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         }
 
         [CustomAction]
-        public static ActionResult QueryTobiiSupported(Session session)
+        public static ActionResult QueryEyeTrackerSupport(Session session)
         {
+            // We should already know which eye tracker to default to, based on LoadOptikeyProperties
+            session["EYETRACKER_SELECTED"] = session["EYETRACKER_SELECTED"];
+
+            // We *also* want to know if Tobii is supported so we can add extra guidance - in particular
+            // if a user selects Tobii but _doesn't_ have the Eye Tracking Engine available - this is the
+            // case with some older Dynavox setups
+
             bool supported = false;
             session["TOBII_SUPPORTED"] = "unknown";
             try
@@ -104,12 +111,6 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
             session["TOBII_SUPPORTED"] = supported.ToString().ToLower();
             
-            // This property gets used to set the value in the EyeMine config XML file
-            if (supported)
-                session["EYETRACKER_SELECTED"] = "TobiiEyeX";
-            else
-                session["EYETRACKER_SELECTED"] = "MousePosition";
-
             return ActionResult.Success;
         }
 
