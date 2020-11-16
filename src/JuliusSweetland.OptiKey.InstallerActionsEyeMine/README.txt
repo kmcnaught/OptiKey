@@ -1,0 +1,1 @@
+This is for standalone actions that don't require loading the whole Optikey DLL
