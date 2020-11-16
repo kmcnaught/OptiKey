@@ -35,6 +35,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         public bool KalmanFilterSupported {get; private set; }
 
+        public static bool TrackerConnected {
+            get { return PInvoke.trackerIsPresent(); }
+            private set {}
+        }
+
         #endregion
 
         #region Events

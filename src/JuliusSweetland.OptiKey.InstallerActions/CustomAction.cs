@@ -7,6 +7,9 @@ using System.Text;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using Microsoft.Deployment.WindowsInstaller;
+using JuliusSweetland.OptiKey.Services;
+using Tobii.EyeX.Client;
+using EyeXFramework;
 
 namespace JuliusSweetland.OptiKey.InstallerActions
 {
@@ -31,6 +34,7 @@ namespace JuliusSweetland.OptiKey.InstallerActions
 
             session.Log("Begin LoadOptikeyProperties");
 
+            DetectEyetracker(session);
             PopulateEyetrackersCombo(session);
             PopulateLanguagesCombo(session);
 
@@ -216,9 +220,42 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 case PointsSources.VisualInteractionMyGaze: return InstallerStrings.VI_MYGAZE_INFO[culture];
                 default: return "";
             }
-
         }
 
+        public static void DetectEyetracker(Session session)
+        {
+            // We attempt to query the system for supported / connected eyetrackers
+            // This is a soft check, since the support for querying this varies according to 
+            // eye tracker API, and we won't attempt to actually make a connection.
 
+            // It still lets us pick a good default when the conditions are right. 
+            // If we can see a particular eye tracker *is* available, then we default to this in the installer
+
+            // This tells us if the Tobii eye tracking engine is installed, regardless of whether
+            // it is turned on or an eye tracker is connected
+            bool tobiiSupported = (EyeXHost.EyeXAvailability != EyeXAvailability.NotAvailable);
+            // This tells us if the Tobii eye tracking engine is running (regardless of eye tracker connection state)
+            bool tobiiRunning = (EyeXHost.EyeXAvailability == EyeXAvailability.Running);
+
+            // This tells us whether an Irisbond eye tracker is actually connected, regardless of 
+            // whether the Irisbond Primma software is running
+            bool irisbondConnected = IrisbondDuoPointService.TrackerConnected;
+
+            // Add other tracker checks in here as appropriate
+
+            // Some pragmatic logic to pick the most obvious one
+            PointsSources defaultPointsSource = PointsSources.MousePosition;
+            if (irisbondConnected)
+            {
+                defaultPointsSource = PointsSources.IrisbondDuo;
+            }
+            else if (tobiiSupported)
+            {             
+                // For EyeMine we don't distinguish between different Tobiis...
+                defaultPointsSource = PointsSources.TobiiEyeX;
+            }
+
+            session["EYETRACKER_DEFAULT"] = defaultPointsSource.ToString();
+        }
     }
 }
