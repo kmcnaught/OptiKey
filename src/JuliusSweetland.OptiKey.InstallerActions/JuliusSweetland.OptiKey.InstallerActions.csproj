@@ -53,6 +53,8 @@
     <Compile Include="InstallerStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="CustomAction.config" />
+    <Content Include="IrisbondAPI.dll" />
+    <Content Include="PGRFlyCapture.dll" />
     <Content Include="Tobii.EyeX.Client.dll" />
   </ItemGroup>
   <ItemGroup>

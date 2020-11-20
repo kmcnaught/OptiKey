@@ -92,7 +92,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         public static ActionResult QueryEyeTrackerSupport(Session session)
         {
             // We should already know which eye tracker to default to, based on LoadOptikeyProperties
-            session["EYETRACKER_SELECTED"] = session["EYETRACKER_SELECTED"];
+            session["EYETRACKER_SELECTED"] = session["EYETRACKER_DEFAULT"];
 
             // We *also* want to know if Tobii is supported so we can add extra guidance - in particular
             // if a user selects Tobii but _doesn't_ have the Eye Tracking Engine available - this is the
