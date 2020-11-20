@@ -60,6 +60,16 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
             }
         }
 
+        public bool HasChangedToTobii
+        {
+            get
+            {
+                return (Settings.Default.PointsSource != PointsSource &&
+                       (PointsSource == CoreEnums.PointsSources.TobiiPcEyeGo ||
+                        PointsSource == CoreEnums.PointsSources.TobiiEyeX));
+            }
+        }
+
         public string WarningBeforeExit
         {
             get

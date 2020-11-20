@@ -18,6 +18,8 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management;
 using JuliusSweetland.OptiKey.InstallerActionsEyeMine;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
+using EyeXFramework;
+using Tobii.EyeX.Client;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -310,23 +312,53 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void Ok(Window window)
         {
-            if (PointingAndSelectingViewModel.RequireMinecraftUpdate &&
+            Action OkImpl = () =>
+            {
+                if (PointingAndSelectingViewModel.RequireMinecraftUpdate &&
                 IsMinecraftRunning())
-            {
-                // Warnings from any changes/selections
-                RestartMinecraftRequest();
-            }
-            else if (ChangesRequireRestart)
-            {
-                RestartRequest();
-            }
-            else
-            {
-                Log.Info("Applying management changes");
-                ApplyChanges();
-                window.Close();
-            }
+                {
+                    // Warnings from any changes/selections
+                    RestartMinecraftRequest();
+                }
+                else if (ChangesRequireRestart)
+                {
+                    RestartRequest();
+                }
+                else
+                {
+                    Log.Info("Applying management changes");
+                    ApplyChanges();
+                    window.Close();
+                }
+            };
 
+            // Special warning (chance to back out) 
+            // if Tobii has been selected but isn't supported           
+            if (PointingAndSelectingViewModel.HasChangedToTobii)
+            {
+                // This tells us if the Tobii eye tracking engine is installed, regardless of whether
+                // it is turned on or an eye tracker is connected                
+                bool tobiiSupported = (EyeXHost.EyeXAvailability != EyeXAvailability.NotAvailable);
+                tobiiSupported = false;
+                if (!tobiiSupported)
+                {
+                    ConfirmationRequest.Raise(
+                        new Confirmation
+                        {
+                            Title = "Tobii support not found",
+                            Content = "EyeMine cannot detect the Tobii engine.\n\n" +
+                                      "If you are using an older Tobii Dynavox setup with Windows Control V1 installed you may not be able to use Tobii directly and would be advised to use mouse control instead.\n\n" +
+                                      "Are you sure you want to continue with Tobii selected?"
+                        }, confirmation =>
+                        {
+                            if (confirmation.Confirmed)
+                                OkImpl();
+                        });
+                }                    
+            }    
+            else {
+                OkImpl();
+            }
         }
 
         private static void Cancel(Window window)
