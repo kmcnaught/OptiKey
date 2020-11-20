@@ -925,7 +925,7 @@
     <ROW Dialog_="Temp_Logic" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL AND false" Ordering="1"/>
     <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_RemoveTempFiles" Condition="1" Ordering="102"/>
     <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_RemoveTempFiles" Condition="1" Ordering="101"/>
-    <ROW Dialog_="EyeTrackerDlg" Control_="EyeTrackerDlgDialogInitializer" Event="[EYETRACKERRADIOGROUP_PROP]" Argument="[EYETRACKER_SELECTED]" Condition="1" Ordering="0"/>
+    <ROW Dialog_="EyeTrackerDlg" Control_="EyeTrackerDlgDialogInitializer" Event="[EYETRACKERRADIOGROUP_PROP]" Argument="[EYETRACKER_SELECTED]" Condition="0" Ordering="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
