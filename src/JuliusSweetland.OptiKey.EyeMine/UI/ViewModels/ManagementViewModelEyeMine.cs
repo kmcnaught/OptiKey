@@ -3,7 +3,6 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Net.Configuration;
 using JuliusSweetland.OptiKey.Properties;
 using EyeMineResources = JuliusSweetland.OptiKey.EyeMine.Properties.Resources;
 using JuliusSweetland.OptiKey.Services;
@@ -11,13 +10,11 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using log4net;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
-using Prism.Mvvm;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management;
 using JuliusSweetland.OptiKey.InstallerActionsEyeMine;
-using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using EyeXFramework;
 using Tobii.EyeX.Client;
 
@@ -114,24 +111,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         #endregion
 
         #region Methods
-
-
-        public string WarningBeforeExit
-        {
-            get
-            {
-                string allWarnings = "";
-                
-                if (!string.IsNullOrEmpty(PointingAndSelectingViewModel.WarningBeforeExit))
-                {
-                    allWarnings += PointingAndSelectingViewModel.WarningBeforeExit + "\n";
-                }
-                
-                return allWarnings;
-            }
-        }
-
-
+        
         private void CoerceValues()
         {
             CoercePersianSettings();

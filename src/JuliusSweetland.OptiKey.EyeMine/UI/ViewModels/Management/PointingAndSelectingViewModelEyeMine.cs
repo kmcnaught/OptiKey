@@ -68,24 +68,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
                        (PointsSource == CoreEnums.PointsSources.TobiiPcEyeGo ||
                         PointsSource == CoreEnums.PointsSources.TobiiEyeX));
             }
-        }
-
-        public string WarningBeforeExit
-        {
-            get
-            {
-                if (Settings.Default.PointsSource != PointsSource &&
-                    PointsSource == CoreEnums.PointsSources.TobiiPcEyeGo)
-                {
-                    return "WARNING: Some Tobii Dynavox eye trackers aren't compatible with EyeMine. \n\nIf EyeMine doesn't manage to connect to your eye tracker, "+
-                           "please use mouse emulation to control EyeMine instead.";
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
+        }        
 
         public bool RequireMinecraftUpdate
         {
