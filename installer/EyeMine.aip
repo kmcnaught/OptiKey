@@ -59,7 +59,6 @@
     <ROW Directory="Mouse_1_Dir" Directory_Parent="EyeMineKeyboards_Dir" DefaultDir="Mouse"/>
     <ROW Directory="Mouse_Dir" Directory_Parent="EyeMineKeyboards_1_Dir" DefaultDir="Mouse"/>
     <ROW Directory="Optikey_Dir" Directory_Parent="ProgramMenuFolder" DefaultDir="Optikey"/>
-    <ROW Directory="Plugins_Dir" Directory_Parent="Resources_Dir" DefaultDir="Plugins"/>
     <ROW Directory="Presage_Dir" Directory_Parent="Resources_1_Dir" DefaultDir="Presage"/>
     <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="PROGRA~1|ProgramMenuFolder" IsPseudoRoot="1"/>
     <ROW Directory="Release_1_Dir" Directory_Parent="ModInstaller_Dir" DefaultDir=".:Release"/>
@@ -203,7 +202,6 @@
     <ROW Component="OptiKey.resources.dll_8" ComponentId="{A21B07B7-B7F7-4A17-AD1D-980B6A45FC8E}" Directory_="fiFI_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_8"/>
     <ROW Component="OptiKey.resources.dll_9" ComponentId="{A4DACAF0-25D2-4AAD-A4D3-AC668966215D}" Directory_="fr_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_9"/>
     <ROW Component="OptiKeyStandardPlugins.dll" ComponentId="{717AFA5E-2296-44E9-8AC0-6E10A1DFE71E}" Directory_="Release_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll"/>
-    <ROW Component="OptiKeyStandardPlugins.dll_1" ComponentId="{B4DABE98-2E5B-41D5-8D98-379956728D95}" Directory_="Plugins_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll_1"/>
     <ROW Component="Optikey" ComponentId="{E7578126-FD95-4ECC-B74B-CE6A8DCAA90E}" Directory_="Optikey_Dir" Attributes="0"/>
     <ROW Component="PGRFlyCapture.dll" ComponentId="{DAE58D8B-F3C0-4834-A0F1-B15894CA2234}" Directory_="Release_Dir" Attributes="0" KeyPath="PGRFlyCapture.dll"/>
     <ROW Component="Presage" ComponentId="{E0E6FAA2-52F1-43BE-960F-D938E49DA6FF}" Directory_="Presage_Dir" Attributes="0"/>
@@ -574,7 +572,10 @@
     <ROW File="TheMITLicenseMIT.txt" Component_="ApacheLicenseVersion2.0" FileName="THEMIT~1.TXT|The MIT License (MIT).txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses\The MIT License (MIT).txt" SelfReg="false"/>
     <ROW File="ThirdPartyLicenses.txt" Component_="ApacheLicenseVersion2.0" FileName="THIRDP~1.TXT|ThirdPartyLicenses.txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses\ThirdPartyLicenses.txt" SelfReg="false"/>
     <ROW File="ThirdPartyLicenses.md" Component_="CREDITS.md" FileName="THIRDP~1.MD|ThirdPartyLicenses.md" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ThirdPartyLicenses.md" SelfReg="false"/>
-    <ROW File="OptiKeyStandardPlugins.dll_1" Component_="OptiKeyStandardPlugins.dll_1" FileName="OPTIKE~1.DLL|OptiKeyStandardPlugins.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\Plugins\OptiKeyStandardPlugins.dll" SelfReg="false"/>
+    <ROW File="MenuNav.xml" Component_="MinecraftBuild.xml" FileName="MenuNav.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MenuNav.xml" SelfReg="false"/>
+    <ROW File="MenuNav.xml_1" Component_="MinecraftBuild.xml_5" FileName="MenuNav.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MenuNav.xml" SelfReg="false"/>
+    <ROW File="MenuNav.xml_2" Component_="MinecraftBuild.xml_3" FileName="MenuNav.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MenuNav.xml" SelfReg="false"/>
+    <ROW File="MenuNav.xml_3" Component_="MinecraftBuild.xml_6" FileName="MenuNav.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MenuNav.xml" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -1157,7 +1158,6 @@
     <ROW Feature_="MainFeature" Component_="Microsoft.Deployment.WindowsInstaller.dll_1"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_27"/>
     <ROW Feature_="MainFeature" Component_="ApacheLicenseVersion2.0"/>
-    <ROW Feature_="MainFeature" Component_="OptiKeyStandardPlugins.dll_1"/>
     <ROW Feature_="MainFeature" Component_="caES"/>
     <ROW Feature_="MainFeature" Component_="csCZ"/>
     <ROW Feature_="MainFeature" Component_="daDK"/>
