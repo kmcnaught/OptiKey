@@ -230,10 +230,10 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             // access installer properties, so any data must be passed via CustomActionData.
             session.Log("Installing mod");
 
-            var actionData = session["CustomActionData"];
-            bool tobiiSupport = false;
-            Boolean.TryParse(actionData, out tobiiSupport);
-            session.Log(String.Format("actionData: {0} {1}", actionData, tobiiSupport));
+            // This should match a "PointsSource" enum, but we don't have an Optikey dependency here so 
+            // we just do a string match 
+            var eyeTrackerSelected = session["CustomActionData"];
+            bool mouseEmulation = eyeTrackerSelected.Equals("MousePosition");            
             
             // First time we'll do some forge config-poking
             // This will also ensure all paths have been created
@@ -291,12 +291,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             else 
             {
                 // First time install we need to set up config also
-                string configFileSrc = "eyemine-client-mouse.toml";
-                if (tobiiSupport)
-                {
-                    configFileSrc = "eyemine-client-tobii.toml";
-                }
-
+                string configFileSrc = mouseEmulation ? "eyemine-client-mouse.toml" : "eyemine-client-tobii.toml";                
                 string configFileDst = "eyemine-client.toml";
 
                 if (!File.Exists(Path.Combine(rootDir, configFileSrc)))

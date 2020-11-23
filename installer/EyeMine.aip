@@ -973,7 +973,7 @@
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DATA_SETTER" Type="51" Source="CustomActionData" Target="[AI_SETUPEXEPATH]"/>
-    <ROW Action="AI_DATA_SETTER_1" Type="51" Source="InstallMod" Target="[TOBII_SUPPORTED]"/>
+    <ROW Action="AI_DATA_SETTER_1" Type="51" Source="InstallMod" Target="[EYETRACKER_SELECTED]"/>
     <ROW Action="AI_DATA_SETTER_2" Type="51" Source="CopySaves" Target="[CHECKLIST_SAVES]"/>
     <ROW Action="AI_DATA_SETTER_3" Type="51" Source="CustomActionData" Target="[~]"/>
     <ROW Action="AI_DATA_SETTER_4" Type="51" Source="CustomActionData" Target="[~]"/>
