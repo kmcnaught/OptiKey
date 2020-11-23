@@ -354,6 +354,12 @@
     <Content Include="Resources\EyeMineKeyboards\EyeTracker\3_MC_MainKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MenuNav.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MenuNav.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\SavedToolbars.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
