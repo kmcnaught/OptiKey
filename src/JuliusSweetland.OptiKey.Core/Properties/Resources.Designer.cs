@@ -2200,7 +2200,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gaze Tracker.
+        ///   Looks up a localized string similar to ITU Gaze Tracker (DIY).
         /// </summary>
         public static string GAZE_TRACKER {
             get {
