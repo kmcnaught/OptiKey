@@ -1463,7 +1463,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable Resizing with Mouse:.
+        ///   Looks up a localized string similar to Enable resizing with mouse:.
         /// </summary>
         public static string ENABLE_RESIZE_WITH_MOUSE {
             get {
@@ -1472,7 +1472,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable translation key? (translation auto copied).
+        ///   Looks up a localized string similar to Enable translation key: (translation auto copied).
         /// </summary>
         public static string ENABLE_TRANSLATION_KEY_LABEL {
             get {
@@ -2064,7 +2064,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Floating position (left, top, width, height):.
+        ///   Looks up a localized string similar to Floating position (left, top, width, height).
         /// </summary>
         public static string FLOATING_POSITION_LABEL {
             get {
@@ -2191,7 +2191,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adaptive smoothing level:.
+        ///   Looks up a localized string similar to Application smoothing level:.
         /// </summary>
         public static string GAZE_SMOOTHING_LEVEL {
             get {
