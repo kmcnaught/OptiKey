@@ -59,7 +59,18 @@ namespace JuliusSweetland.OptiKey.Properties {
                 resourceCulture = value;
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string ABOUT
+        {
+            get
+            {
+                return ResourceManager.GetString("ABOUT", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>

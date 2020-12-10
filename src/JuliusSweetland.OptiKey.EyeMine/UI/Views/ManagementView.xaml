@@ -41,8 +41,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <TabItem Header="{x:Static resx:Resources.OTHER}">
                 <management:OtherView DataContext="{Binding OtherViewModel, Mode=OneWay}" />
             </TabItem>
-            <!-- FIXME Resources.ABOUT -->
-            <TabItem Header="About">
+            <TabItem Header="{x:Static resx:Resources.ABOUT}">
                 <management:AboutView DataContext="{Binding AboutViewModel, Mode=OneWay}" />
             </TabItem>
         </TabControl>

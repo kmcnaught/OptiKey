@@ -61,6 +61,15 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Content.
+        /// </summary>
+        public static string CONTENT_LABEL {
+            get {
+                return ResourceManager.GetString("CONTENT_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create copy of built-in keyboards.
         /// </summary>
         public static string COPY_KEYBOARDS {

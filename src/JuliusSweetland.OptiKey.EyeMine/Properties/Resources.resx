@@ -180,4 +180,7 @@
   <data name="VERIFY_RESTART" xml:space="preserve">
     <value>May I restart EyeMine?</value>
   </data>
+  <data name="CONTENT_LABEL" xml:space="preserve">
+    <value>Content</value>
+  </data>
 </root>

@@ -80,8 +80,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <!-- FIXME resource -->
-            <GroupBox Grid.Row="0" Header="Content">
+            <GroupBox Grid.Row="0" Header="{x:Static resxEm:Resources.CONTENT_LABEL}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -266,8 +265,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <TextBox Grid.Row="16" Grid.Column="1" Text="{Binding FloatingSizeAndPosition, Mode=TwoWay}" 
                              VerticalAlignment="Center" Style="{StaticResource VisibilityOfFloatingProperties}"/>
 
-                    <!-- FIXME: resource -->
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Dock position" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.DOCK_POSITION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
