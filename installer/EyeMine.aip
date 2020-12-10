@@ -650,8 +650,8 @@
     <ROW Dialog_="EyeTrackerDlg" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Please select the eye tracker you plan to use with EyeMineV2" Order="700"/>
     <ROW Dialog_="EyeTrackerDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="EyeTrackerDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="EyeMine eye tracker settings" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="EyeTrackerDlg" Control="EyeTrackerRadioGroup" Type="RadioButtonGroup" X="20" Y="59" Width="332" Height="166" Attributes="131075" Property="EYETRACKERRADIOGROUP_PROP" Text="Supported inputs" Order="1000"/>
-    <ROW Dialog_="EyeTrackerDlg" Control="Text_1" Type="Text" X="29" Y="88" Width="312" Height="29" Attributes="65539" Property="TEXT_1_PROP_5" Text="This includes gaming eye trackers such as Tobii EyeX, 4C, Eye Tracker 5 or Tobii Dynavox trackers such as the PCEyeGo, PCEyeMini and other integrated trackers" Order="1100"/>
+    <ROW Dialog_="EyeTrackerDlg" Control="EyeTrackerRadioGroup" Type="RadioButtonGroup" X="20" Y="59" Width="341" Height="166" Attributes="131075" Property="EYETRACKERRADIOGROUP_PROP" Text="Supported inputs" Order="1000"/>
+    <ROW Dialog_="EyeTrackerDlg" Control="Text_1" Type="Text" X="49" Y="83" Width="302" Height="29" Attributes="65539" Property="TEXT_1_PROP_5" Text="(This includes gaming eye trackers such as Tobii EyeX, 4C, Eye Tracker 5 or Tobii Dynavox trackers such as the PCEyeGo, PCEyeMini and other integrated trackers)" Order="1100"/>
     <ROW Dialog_="ForgeInstallationReqdDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Next]" Order="100"/>
     <ROW Dialog_="ForgeInstallationReqdDlg" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200"/>
     <ROW Dialog_="ForgeInstallationReqdDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300"/>
