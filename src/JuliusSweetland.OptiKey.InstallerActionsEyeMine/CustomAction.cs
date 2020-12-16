@@ -133,6 +133,9 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             string newSavesDir = Path.Combine(eyemineGameDir, "saves");
             string oldSavesDir = Path.Combine(minecraftPath, "saves");
 
+            // Check existing worlds already in new saves dir - this should just be the bundled world(s)
+            var existingSaves = Directory.EnumerateDirectories(newSavesDir, "*", SearchOption.TopDirectoryOnly).Select(Path.GetFileName);                        
+
             var worlds = actionData.Split(',');
             foreach (var world in worlds)
             {
@@ -142,11 +145,20 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 // Split folder name from recency text
                 var i = world.LastIndexOf(" (");
                 var worldName = world.Substring(0, i);
+                
+                // Ensure name doesn't clash with bundled world
+                string newWorldName = worldName;
+                if (existingSaves.Contains(worldName))
+                {
+                    newWorldName += "-Own";
+                }
+
                 session.Log(
-                    $"Copying everything from {Path.Combine(oldSavesDir, worldName)} to {Path.Combine(newSavesDir, worldName)}");
+                    $"Copying everything from {Path.Combine(oldSavesDir, worldName)} to {Path.Combine(newSavesDir, newWorldName)}");
+
                 // Copy folder to new location
                 utils.DirectoryCopy(Path.Combine(oldSavesDir, worldName),
-                    Path.Combine(newSavesDir, worldName),
+                    Path.Combine(newSavesDir, newWorldName),
                     true);
 
                 // TODO: split path and creation date, copy it.
@@ -307,6 +319,25 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                     return ActionResult.Failure;
                 }
 
+                // And any bundled saves files
+                string installedSavesDir = Path.Combine(rootDir, "saves");
+                string minecraftSavesDir = Path.Combine(eyemineGameDir, "saves");                
+                if (Directory.Exists(installedSavesDir))
+                {
+                    session.Log("Copying bundled saves dir");
+
+                    // Copy folder to new location
+                    try
+                    {
+                        utils.DirectoryCopy(installedSavesDir, minecraftSavesDir, true);
+                    }
+                    catch (Exception e)
+                    {
+                        session.Log("Error copying files");
+                        session.Log(e.ToString());
+                        return ActionResult.Failure;
+                    }
+                }
                 try
                 {
                     File.Copy( modFile, Path.Combine(modDir, Path.GetFileName(modFile)), true);
