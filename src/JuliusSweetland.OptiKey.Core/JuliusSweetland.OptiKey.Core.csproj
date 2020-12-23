@@ -956,32 +956,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Properties\Resources.ur-PK.resx" />
-    <Content Include="Dictionaries\UrduPakistan.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\FinnishFinland.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="Properties\Resources.he-IL.resx" />
-    <Content Include="Dictionaries\HebrewIsrael.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\PersianIran.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="Properties\Resources.hu-HU.resx" />
     <EmbeddedResource Include="Services\Translation\TranslationResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TranslationResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <Content Include="Dictionaries\HungarianHungary.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Dictionaries\EnglishMinecraft.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\HindiIndia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="NOTES AND DISCLAIMER.txt">
@@ -1038,75 +1020,6 @@
     <Content Include="..\..\ext\myGaze\myGazeAPI.dll">
       <Link>myGazeAPI.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\FrenchFrance.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\GermanGermany.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\RussianRussia.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\GreekGreece.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\DutchBelgium.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\DutchNetherlands.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\CatalanSpain.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\SpanishSpain.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\TurkishTurkey.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\CroatianCroatia.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\ItalianItaly.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\DanishDenmark.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\SlovenianSlovenia.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\PortuguesePortugal.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\SlovakSlovakia.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\KoreanKorea.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\CzechCzechRepublic.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\FrenchCanada.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\JapaneseJapan.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\PolishPoland.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\UkrainianUkraine.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\SerbianSerbia.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\GeorgianGeorgia.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1387,9 +1300,6 @@
     <None Include="Resources\Icons\SVG Source Files\Shift.svg" />
     <None Include="Resources\Icons\SVG Source Files\Tab.svg" />
     <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
-    <Content Include="Dictionaries\EnglishUK.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
     <Content Include="Resources\Fonts\Roboto Font - Apache License.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1399,12 +1309,6 @@
       <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <Content Include="Dictionaries\EnglishUS.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\EnglishCanada.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
