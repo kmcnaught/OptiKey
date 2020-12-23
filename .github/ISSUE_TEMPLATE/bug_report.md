@@ -7,27 +7,24 @@ assignees: ''
 
 ---
 
-# How OptiKey was being used
-
+# What version of EyeMine are you using?
 [Please complete this section]
 
-# What the user expected to happen
-
+# What eye tracker are you using?
 [Please complete this section]
 
-# What the user actually experienced
+# What were you doing in EyeMine?
+[Please complete this section]
 
-# Version
- - Operating system and version: [e.g. Windows 10]
- - OptiKey version [e.g. v2.17.0]
+# What went wrong? What did you expect to happen?
+[Please complete this section]
 
 # Steps to reproduce the issue
-
+e.g. 
 1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
+2. Turn on '....'
+3. Press '....'
 4. See error
-
 
 # Any other information that helps to describe and/or reproduce the problem
 
