@@ -918,10 +918,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\CommuniKate\pageset.obz">
-      <Link>Resources\CommuniKate\pageset.obz</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\B612 Mono-Bold.ttf">
       <Link>Resources\Fonts\B612 Mono-Bold.ttf</Link>
     </Resource>
@@ -1028,12 +1024,6 @@
       <Link>Resources\Presage\database.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\CommuniKate\back.png">
-      <Link>Resources\CommuniKate\back.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Page Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\KeySymbols.xaml">

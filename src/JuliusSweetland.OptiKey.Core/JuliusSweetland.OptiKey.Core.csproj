@@ -1032,9 +1032,6 @@
     <Content Include="Resources\CommuniKate\back.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\CommuniKate\pageset.obz">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Resources\Fonts\Mandatory.ttf" />
     <Resource Include="Resources\Fonts\B612 Mono-Bold.ttf" />
     <Resource Include="Resources\Fonts\B612 Mono-BoldItalic.ttf" />

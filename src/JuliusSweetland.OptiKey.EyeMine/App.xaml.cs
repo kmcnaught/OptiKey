@@ -150,8 +150,6 @@ namespace JuliusSweetland.OptiKey.EyeMine
                     }
                 };
 
-                CleanupAndPrepareCommuniKateInitialState();
-
                 ValidateDynamicKeyboardLocationEyeMine();
 
                 //Create services
