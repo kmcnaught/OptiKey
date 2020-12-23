@@ -135,7 +135,14 @@ namespace JuliusSweetland.OptiKey.Services
         private void LoadDictionaryFromLanguageFile()
         {
              //Load the original dictionary
-             var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardAndDictionaryLanguage, DictionaryFileType));
+            var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardAndDictionaryLanguage, DictionaryFileType));            
+
+            // Fall back to english if no language-specific file
+            if (!File.Exists(originalDictionaryPath))
+            {
+                var DefaultLanguage = Languages.EnglishMinecraft;
+                originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, DefaultLanguage, DictionaryFileType));
+            }
 
             if (File.Exists(originalDictionaryPath))
             {
