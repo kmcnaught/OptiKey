@@ -120,13 +120,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
             try
             {
                 DiagnosticInfo.AppDataDirectoryName = @"SpecialEffect\EyeMineV2";
-
-                // Swap out the AppData directory being used
-                /*typeof(DiagnosticInfo)
-                    .GetProperty("AppDataDirectoryName")
-                    .SetValue(null, @"SpecialEffect\EyeMine");
-                    */
-
+                
                 // Grab the autogen commit SHA for About view model
                 UI.ViewModels.Management.AboutViewModel.ReleaseSHA = GetStringFromResource("JuliusSweetland.OptiKey.EyeMine." + "version.txt");
 
