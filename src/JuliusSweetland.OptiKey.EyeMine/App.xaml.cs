@@ -224,7 +224,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
                     inputService.RequestResume(); //Start the input service
 
                     //FIXME: Reinstate an update check for the EyeMine repo. (need to think about V2 vs classic)
-                    //await CheckForUpdates(inputService, audioService, mainViewModel);
+                    await CheckForUpdatesEyeMine(inputService, audioService, mainViewModel);
                 };
 
                 if (mainWindowManipulationService.SizeAndPositionIsInitialised)
@@ -290,7 +290,87 @@ namespace JuliusSweetland.OptiKey.EyeMine
                     break;
             }
         }
-    
+
+        protected static async Task<bool> CheckForUpdatesEyeMine(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        {
+            //FIXME: extract common code here - base class currently has hardcoded repo info, and versioning conventions are subtly different
+
+            var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
+            try
+            {
+                if (Settings.Default.CheckForUpdates)
+                {
+                    const string gitHubRepoOwnerLocal = "SpecialEffect";
+                    const string gitHubRepoNameLocal = "EyeMine";
+
+                    Log.InfoFormat("Checking GitHub for updates (repo owner:'{0}', repo name:'{1}').", gitHubRepoOwnerLocal, gitHubRepoNameLocal);
+
+                    var github = new GitHubClient(new ProductHeaderValue("SpecialEffect"));
+                    var releases = await github.Repository.Release.GetAll(gitHubRepoOwnerLocal, gitHubRepoNameLocal);
+                    var latestRelease = releases.FirstOrDefault(release => !release.Prerelease);
+                    if (latestRelease != null)
+                    {
+                        var currentVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;                                                
+
+                        //Discard revision (4th number) as our GitHub releases are tagged with "vMAJOR.MINOR.PATCH"
+                        currentVersion = new Version(currentVersion.Major, currentVersion.Minor, currentVersion.Build);
+
+                        if (!string.IsNullOrEmpty(latestRelease.TagName))
+                        {
+                            var tagNameWithoutLetters =
+                                new string(latestRelease.TagName.ToCharArray().Where(c => char.IsDigit(c) || c.Equals('.')).ToArray());                            
+                            var latestAvailableVersion = new Version(tagNameWithoutLetters);
+
+                            if (latestAvailableVersion > currentVersion)
+                            {
+                                Log.InfoFormat(
+                                    "An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
+                                    currentVersion, latestAvailableVersion);
+
+                                inputService.RequestSuspend();
+                                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
+                                    string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, latestAvailableVersion),
+                                    NotificationTypes.Normal,
+                                     () =>
+                                     {
+                                         inputService.RequestResume();
+                                         taskCompletionSource.SetResult(true);
+                                     });
+                            }
+                            else
+                            {
+                                Log.Info("No update found.");
+                                taskCompletionSource.SetResult(false);
+                            }
+                        }
+                        else
+                        {
+                            Log.Info("Unable to determine if an update is available as the latest release lacks a tag.");
+                            taskCompletionSource.SetResult(false);
+                        }
+                    }
+                    else
+                    {
+                        Log.Info("No releases found.");
+                        taskCompletionSource.SetResult(false);
+                    }
+                }
+                else
+                {
+                    Log.Info("Check for update is disabled - skipping check.");
+                    taskCompletionSource.SetResult(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.ErrorFormat("Error when checking for updates. Exception message:{0}\nStackTrace:{1}", ex.Message, ex.StackTrace);
+                taskCompletionSource.SetResult(false);
+            }
+
+            return await taskCompletionSource.Task;
+        }
 
         private static string GetRelativePath(string filename, string folder)
         {
