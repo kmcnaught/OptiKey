@@ -1213,7 +1213,7 @@ ARROW</value>
     <value>All in upper case</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
-    <value>Please visit www.optikey.org to download latest version ({0})
+    <value>Please visit www.specialeffect.org.uk/eyemine to download latest version ({0})
 You can turn off update checks from the Settings (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">

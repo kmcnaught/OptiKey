@@ -1185,7 +1185,7 @@ OPtiKey再起動完了</value>
     <value>すべて大文字</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
-    <value>www.optikey.orgにアクセスして最新版をダウンロードしてください。 ({0})
+    <value>www.specialeffect.org.uk/eyemine にアクセスして最新版をダウンロードしてください。 ({0})
 アップデートの確認通知は設定画面からオフにできます。(ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">

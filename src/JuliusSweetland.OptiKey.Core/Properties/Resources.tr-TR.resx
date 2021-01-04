@@ -1137,7 +1137,7 @@ OK</value>
     <value>Tamamı büyük harfle</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
-    <value>En son versiyonu ({0}) indirmek için, lütfen www.optikey.org  adresini ziyaret ediniz. Otomatik güncellemeleri kapatmak için Yönetim panelini kullanınız (ALT +M).</value>
+    <value>En son versiyonu ({0}) indirmek için, lütfen www.specialeffect.org.uk/eyemine  adresini ziyaret ediniz. Otomatik güncellemeleri kapatmak için Yönetim panelini kullanınız (ALT +M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
     <value>Optikey'i yeniden başlatabilir miyim ?</value>

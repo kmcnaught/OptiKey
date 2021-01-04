@@ -7947,7 +7947,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Please visit www.optikey.org to download latest version ({0})
+        ///   Looks up a localized string similar to Please visit www.specialeffect.org.uk/eyemine to download latest version ({0})
         ///You can turn off update checks from the Settings (ALT + M)..
         /// </summary>
         public static string URL_DOWNLOAD_PROMPT
