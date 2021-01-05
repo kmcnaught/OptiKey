@@ -319,7 +319,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 // This tells us if the Tobii eye tracking engine is installed, regardless of whether
                 // it is turned on or an eye tracker is connected                
                 bool tobiiSupported = (EyeXHost.EyeXAvailability != EyeXAvailability.NotAvailable);
-                if (!tobiiSupported)
+                if (tobiiSupported)
+                { 
+                    OkImpl();
+                }
+                else 
                 {
                     ConfirmationRequest.Raise(
                         new Confirmation
