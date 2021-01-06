@@ -473,8 +473,15 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             //session.Log("Begin CheckForMinecraftInstallation");
             session["MINECRAFT_INSTALLED"] = "unknown";
 
-            bool installed = utils.IsProgramInstalled("Minecraft");
-            session["MINECRAFT_INSTALLED"] = installed.ToString().ToLower();
+            bool installationFound = utils.IsProgramInstalled("Minecraft");
+            bool minecraftDirFound = Directory.Exists(minecraftPath);
+
+            // If Windows installation check has failed, fall back to check for APPDATA folders
+            // (Minecraft Launcher may change name etc). This is only for warning users, it's ok to
+            // be overly generous
+            bool minecraftAvailable = installationFound | minecraftDirFound;
+
+            session["MINECRAFT_INSTALLED"] = minecraftAvailable.ToString().ToLower();
             
             return ActionResult.Success;
         }
