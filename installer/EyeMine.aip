@@ -649,6 +649,10 @@
     <ROW Name="tempFiles.dll" SourcePath="&lt;AI_CUSTACTS&gt;tempFiles.dll"/>
     <ROW Name="xmlCfg.dll" SourcePath="&lt;AI_CUSTACTS&gt;xmlCfg.dll"/>
   </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCheckBoxComponent">
+    <ROW Property="CHK_IGNORE_MINECRAFT" Value="1"/>
+    <ROW Property="CHK_IGNORE_FORGE" Value="1"/>
+  </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="EyeTrackerDlg" Control="EyeTrackerDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
     <ROW Dialog_="EyeTrackerDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Next]" Order="100" Options="1"/>
@@ -673,6 +677,7 @@
     <ROW Dialog_="ForgeInstallationReqdDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Minecraft Forge installation" TextStyle="[DlgTitleFont]" Order="900"/>
     <ROW Dialog_="ForgeInstallationReqdDlg" Control="Text_1" Type="Text" X="137" Y="78" Width="215" Height="137" Attributes="65539" Property="TEXT_1_PROP_1" Text="EyeMine requires Minecraft forge (version [FORGE_VERSION_REQUIRED]) to be installed. [NEWLINE][NEWLINE]This allows EyeMine to use custom mods to improve the eye-gaze compatibility. [NEWLINE][NEWLINE]You can find the forge installer in the ZIP file you downloaded, alongside the EyeMine installer. [NEWLINE]You need to run the file, select &quot;Install client&quot; and &quot;OK&quot;. Once this is complete, please restart the EyeMine installer. " Order="1000"/>
     <ROW Dialog_="ForgeInstallationReqdDlg" Control="Bitmap_1" Type="Bitmap" X="39" Y="88" Width="56" Height="50" Attributes="1" Text="error.png" Order="1100"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control="CheckBox_1" Type="CheckBox" X="20" Y="237" Width="137" Height="29" Attributes="3" Property="CHK_IGNORE_FORGE" Text="Ignore warning (if you&apos;re sure!)" Order="1200"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300"/>
@@ -720,6 +725,7 @@
     <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Bitmap_1" Type="Bitmap" X="39" Y="88" Width="56" Height="50" Attributes="1" Text="error.png" Order="1100"/>
     <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Hyperlink_1" Type="Hyperlink" X="127" Y="185" Width="224" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;https://www.minecraft.net/en-us/store/minecraft-java-edition&quot;&gt;Buy Minecraft from minecraft.net&lt;/a&gt;" Order="1200"/>
     <ROW Dialog_="MinecraftInstallationReqdDlg" Control="Hyperlink_2" Type="Hyperlink" X="127" Y="205" Width="224" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP_1" Text="&lt;a href=&quot;https://www.minecraft.net/en-us/download&quot;&gt;Download Minecraft for demo usage&lt;/a&gt;" Order="1300"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control="chkMinecraftIgnoreWarning" Type="CheckBox" X="20" Y="237" Width="146" Height="29" Attributes="3" Property="CHK_IGNORE_MINECRAFT" Text="Ignore warning (if you&apos;re sure!)" Order="1400"/>
     <ROW Dialog_="MinecraftRunningDlg" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="MinecraftRunningDlg" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
     <ROW Dialog_="MinecraftRunningDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" Options="1"/>
@@ -797,6 +803,10 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlConditionComponent">
     <ROW Dialog_="EyeTrackerDlg" Control_="Next" Action="Enable" Condition="EYETRACKERRADIOGROUP_PROP"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Action="Enable" Condition="CHK_IGNORE_MINECRAFT = 1"/>
+    <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Action="Disable" Condition="CHK_IGNORE_MINECRAFT = &quot;&quot;"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Action="Enable" Condition="CHK_IGNORE_FORGE = 1"/>
+    <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Next" Action="Disable" Condition="CHK_IGNORE_FORGE = &quot;&quot;"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="3"/>
