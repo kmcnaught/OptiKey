@@ -1,6 +1,9 @@
 <Keyboard>
   <Name>Mouse\n+ menus</Name>
   <BorderThickness>0,0,0,0</BorderThickness>
+  <InitialKeyStates>
+    <KeyUp>MouseMagneticCursor</KeyUp>
+  </InitialKeyStates>
   <Grid>
     <Rows>1</Rows>
     <Cols>9</Cols>

@@ -1,5 +1,8 @@
 <Keyboard>
   <Name>Saved\nToolbars</Name>
+  <InitialKeyStates>
+    <KeyUp>MouseMagneticCursor</KeyUp>
+  </InitialKeyStates>
   <BorderThickness>0,0,0,0</BorderThickness>
   <Grid>
     <Rows>5</Rows>

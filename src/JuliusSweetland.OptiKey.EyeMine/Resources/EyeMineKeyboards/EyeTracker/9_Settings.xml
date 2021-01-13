@@ -2,6 +2,9 @@
   <Name>Settings</Name>
   <SymbolMargin>15</SymbolMargin>
   <BorderThickness>1,1,1,1</BorderThickness>
+  <InitialKeyStates>
+    <KeyLockedDown>MouseMagneticCursor</KeyLockedDown>
+  </InitialKeyStates>
   <Grid>
     <Rows>5</Rows>
     <Cols>6</Cols>
