@@ -94,6 +94,23 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new bool SmoothWhenChangingGazeTarget
+        {
+            get
+            {
+                return ((bool)(this["SmoothWhenChangingGazeTarget"]));
+            }
+            set
+            {
+                this["SmoothWhenChangingGazeTarget"] = value;
+            }
+        }
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public new bool PointsMousePositionHideCursor
         {
             get
