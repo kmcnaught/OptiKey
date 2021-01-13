@@ -17,10 +17,10 @@
     <ROW Property="Manufacturer" Value="SpecialEffect"/>
     <ROW Property="MsiLogging" MultiBuildValue="DefaultBuild:vp"/>
     <ROW Property="NUMBER_OF_SAVES" Value="0"/>
-    <ROW Property="ProductCode" Value="1033:{92D2A7BB-0559-44E8-BF84-0B444EBD3B35} 2057:{92D2A7BB-0559-44E8-BF84-0B444EBD3B35} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{5EFD7A7F-32B0-4EF9-ADE1-D4D35842E67A} 2057:{5EFD7A7F-32B0-4EF9-ADE1-D4D35842E67A} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="EyeMineV2"/>
-    <ROW Property="ProductVersion" Value="2.1.11" Type="32"/>
+    <ROW Property="ProductVersion" Value="2.1.12" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="TOBII_SUPPORTED" Value="false"/>
@@ -269,7 +269,7 @@
     <ROW Component="elGR" ComponentId="{B2DAF8FC-C046-4B60-B034-3F595E62A431}" Directory_="elGR_1_Dir" Attributes="0"/>
     <ROW Component="enUS" ComponentId="{C4C72ECC-976B-4AA9-8974-259E4E9A9D52}" Directory_="enUS_1_Dir" Attributes="0"/>
     <ROW Component="esES" ComponentId="{5BEB8F98-F31E-4482-9C65-18D12EC49F86}" Directory_="esES_1_Dir" Attributes="0"/>
-    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemine2.1.11.jar" Type="0"/>
+    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemine2.1.12.jar" Type="0"/>
     <ROW Component="eyemine2.0.12.jar" ComponentId="{B42179B6-D266-4B7F-ACB5-A2D839801563}" Directory_="ModInstaller_Dir" Attributes="0" KeyPath="eyemineclientmouse.toml" Type="0"/>
     <ROW Component="fa" ComponentId="{8B818915-D3F6-4C6A-A87D-BCED118EC532}" Directory_="fa_1_Dir" Attributes="0"/>
     <ROW Component="fiFI" ComponentId="{DC2AB178-C08B-4C90-A331-D5202FFED1A0}" Directory_="fiFI_1_Dir" Attributes="0"/>
@@ -583,9 +583,9 @@
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" FileName="WINDOW~3.PDB|WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Component_="Bass.Net.xml" FileName="WINDOW~2.XML|WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.xml" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.xml" Component_="Bass.Net.xml" FileName="WINDOW~3.XML|WindowsRecipes.TaskbarSingleInstance.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\WindowsRecipes.TaskbarSingleInstance.xml" SelfReg="false"/>
-    <ROW File="eyemine2.1.11.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~1.JAR|eyemine-2.1.11.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-2.1.11.jar" SelfReg="false"/>
     <ROW File="edbd23475bd5466f8a3e5fceb85cd13b.json_1" Component_="edbd23475bd5466f8a3e5fceb85cd13b.json_1" FileName="EDBD23~1.JSO|edbd2347-5bd5-466f-8a3e-5fceb85cd13b.json" Attributes="0" SourcePath="resources\saves\Starter World\advancements\edbd2347-5bd5-466f-8a3e-5fceb85cd13b.json" SelfReg="false"/>
     <ROW File="edbd23475bd5466f8a3e5fceb85cd13b.dat" Component_="edbd23475bd5466f8a3e5fceb85cd13b.dat" FileName="EDBD23~1.DAT|edbd2347-5bd5-466f-8a3e-5fceb85cd13b.dat" Attributes="0" SourcePath="resources\saves\Starter World\playerdata\edbd2347-5bd5-466f-8a3e-5fceb85cd13b.dat" SelfReg="false"/>
+    <ROW File="eyemine2.1.12.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~2.JAR|eyemine-2.1.12.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-2.1.12.jar" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
