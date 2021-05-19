@@ -7,6 +7,7 @@ using Microsoft.Deployment.WindowsInstaller;
 using Newtonsoft.Json.Linq;
 using utils = JuliusSweetland.OptiKey.InstallerActionsEyeMine.InstallerUtils;
 using Environment = System.Environment;
+using Microsoft.Win32;
 
 namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 {
@@ -235,6 +236,21 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             return updated;
         }
 
+        private const string HKEY_USER = "HKEY_CURRENT_USER";
+        private const string KEY_PATH = "SOFTWARE\\SpecialEffect\\EyeMineV2\\";        
+
+        public static bool GetRegistryBool(string keyName)
+        {                        
+            int regInt = (int)Registry.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, -1);
+            return (regInt > 0);             
+        }
+
+        public static void SetRegistryBool(string keyName)
+        {            
+            string keyPath = $"{HKEY_USER}\\{KEY_PATH}";            
+            Registry.SetValue(keyPath, keyName, 1);            
+        }
+
         [CustomAction]
         public static ActionResult InstallMod(Session session)
         {
@@ -269,6 +285,12 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             string rootDir = ".."; // AI runs this from a temporary subdir in the Program Files directory. 
             string modFile = FindModFile(rootDir);
             session.Log($"Found mod file: {modFile}");
+            
+            // bonus saves get copied *once* even on an upgrade - there may be new ones since last install
+            var bonusSaves = new List<string>
+            {
+                "by Alex for SpecialEffect",
+            };
 
             if (String.IsNullOrEmpty(modFile))
             {
@@ -298,6 +320,48 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                     session.Log("Error copying files");
                     session.Log(e.ToString());
                     return ActionResult.Failure;
+                }
+
+                // Add any new bundled saves (might have been added since last version)
+                string installedSavesDir = Path.Combine(rootDir, "saves");
+                string minecraftSavesDir = Path.Combine(eyemineGameDir, "saves");
+                if (Directory.Exists(installedSavesDir))
+                {
+                    session.Log($"Looking for any new bundled saves in {installedSavesDir}");
+
+                    foreach (string dir in Directory.GetDirectories(installedSavesDir))
+                    {
+                        string folderName = Path.GetFileName(dir);
+                        session.Log($"dir: {folderName}");
+                        if (bonusSaves.Contains(folderName)) {
+
+                            string regKey = $"installed:{folderName}";
+
+                            if (GetRegistryBool(regKey)) // already installed
+                            {
+                                session.Log("already installed previously");
+                            }
+                            else
+                            {
+                                // Copy folder to new location
+                                try
+                                {
+                                    session.Log($"Copying {dir} to saves dir");
+
+                                    utils.DirectoryCopy(Path.Combine(installedSavesDir, dir),
+                                                        Path.Combine(minecraftSavesDir, dir), 
+                                                        true);
+                                    SetRegistryBool(regKey); // mark as installed
+                                }
+                                catch (Exception e)
+                                {
+                                    session.Log("Error copying files");
+                                    session.Log(e.ToString());
+                                    return ActionResult.Failure;
+                                }
+                            }
+                        }
+                    }
                 }
             }
             else 
@@ -338,6 +402,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                         return ActionResult.Failure;
                     }
                 }
+
+                // Minecraft mod and other files
                 try
                 {
                     File.Copy( modFile, Path.Combine(modDir, Path.GetFileName(modFile)), true);
