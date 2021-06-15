@@ -93,13 +93,6 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                // Key is pause key but registry doesn't allow
-                if (keyValue == KeyValues.SleepKey &&
-                    GetRegistryBool("SleepDisabled"))
-                {
-                    return false;
-                }
-
                 //Key is publish only, but we are not publishing (simulating key strokes)
                 if (!keyStateService.SimulateKeyStrokes
                     && KeyValues.PublishOnlyKeys.Contains(keyValue))
@@ -1399,27 +1392,6 @@ namespace JuliusSweetland.OptiKey.Models
 
         private const string HKEY_USER = "HKEY_CURRENT_USER";
         private const string KEY_PATH = "SOFTWARE\\SpecialEffect\\EyeMineV2\\";
-
-        public static bool GetRegistryBool(string keyName)
-        {
-            /*RegistryKey localKey;
-            if (Environment.Is64BitOperatingSystem)
-                localKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
-            else
-                localKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
-            //localKey.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, -1);
-            string value = localKey.OpenSubKey(KEY_PATH, false).GetValue("keyName").ToString();
-            */
-            System.Byte[] b = (System.Byte[])Registry.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, -1);
-            object o = Registry.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, 0);
-            //var d = o[0];
-            //var t = o.GetType();
-            //var a = o.GetType();
-            //var c = b[0];
-            //bool b = [0]>0;
-            //int regInt = (int)Registry.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, -1);
-            return (b[0] > 0);
-        }
 
         public static void SetRegistryBool(string keyName)
         {
