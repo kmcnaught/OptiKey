@@ -299,8 +299,11 @@ namespace JuliusSweetland.OptiKey
                 Log.Debug(config.FilePath);
 
                 // We read into a single string so we can print without log4net preamble on each line.
-                string configText = File.ReadAllText(config.FilePath);
-                Log.DebugFormat("\r\n{0}", configText);
+                if (File.Exists(config.FilePath))
+                {
+                    string configText = File.ReadAllText(config.FilePath);
+                    Log.DebugFormat("\r\n{0}", configText);
+                }
             }
             // Otherwise just key: value pairs into log
             else
