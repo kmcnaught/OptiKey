@@ -7,7 +7,7 @@
     <ProjectGuid>{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>JuliusSweetland.OptiKey.EyeMine</RootNamespace>
-    <AssemblyName>EyeMineV2</AssemblyName>
+    <AssemblyName>EyeMineExhibition</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -38,7 +38,7 @@
     <StartupObject>JuliusSweetland.OptiKey.EyeMine.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>EyeMineV2.ico</ApplicationIcon>
+    <ApplicationIcon>EyeMineV2exhibit.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -315,6 +315,7 @@
       <Link>ThirdPartyLicenses\ThirdPartyLicenses.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="EyeMineV2exhibit.ico" />
     <Content Include="Resources\EyeMineKeyboards\EyeTracker\museum.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
