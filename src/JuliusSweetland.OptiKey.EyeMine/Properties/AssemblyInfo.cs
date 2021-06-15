@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EyeMineV2")]
+[assembly: AssemblyTitle("EyeMine Exhibit")]
 [assembly: AssemblyDescription("Play Minecraft with your eyes")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SpecialEffect")]
-[assembly: AssemblyProduct("EyeMineV2")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyProduct("EyeMine Exhibit")]
+[assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -60,4 +60,4 @@ using System.Windows;
 //MAJOR version when you make incompatible API changes,
 //MINOR version when you add functionality in a backwards-compatible manner, and
 //PATCH version when you make backwards-compatible bug fixes (in the Version class this is the Build number).
-[assembly: AssemblyVersion("2.2.0")]
+[assembly: AssemblyVersion("1.0.0")]

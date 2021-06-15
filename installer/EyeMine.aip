@@ -8,7 +8,7 @@
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
-    <ROW Property="ARPPRODUCTICON" Value="EyeMineV2.exe" Type="8"/>
+    <ROW Property="ARPPRODUCTICON" Value="EyeMineV2exhibit.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="FIRST_MOD_INSTALL" Value="false"/>
     <ROW Property="FORGE_INSTALLED" Value="false"/>
@@ -17,10 +17,10 @@
     <ROW Property="Manufacturer" Value="SpecialEffect"/>
     <ROW Property="MsiLogging" MultiBuildValue="DefaultBuild:vp"/>
     <ROW Property="NUMBER_OF_SAVES" Value="0"/>
-    <ROW Property="ProductCode" Value="1033:{1C07B852-D227-4A8A-B6DD-D0581549843D} 2057:{1C07B852-D227-4A8A-B6DD-D0581549843D} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{00481832-5F42-4A69-8255-43C30FC163FF} 2057:{00481832-5F42-4A69-8255-43C30FC163FF} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
-    <ROW Property="ProductName" Value="EyeMineV2"/>
-    <ROW Property="ProductVersion" Value="2.2.0" Type="32"/>
+    <ROW Property="ProductName" Value="EyeMine Exhibit"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="TOBII_SUPPORTED" Value="false"/>
@@ -2062,7 +2062,7 @@
     <ROW Feature_="MainFeature" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
-    <ROW Name="EyeMineV2.exe" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\EyeMineV2.ico" Index="0"/>
+    <ROW Name="EyeMineV2exhibit.exe" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\EyeMineV2exhibit.ico" Index="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
