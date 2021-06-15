@@ -3,6 +3,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
+using Microsoft.Win32;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -88,6 +89,13 @@ namespace JuliusSweetland.OptiKey.Models
                 if (keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()
                     && keyValue != KeyValues.SleepKey
                     && !keyFamily.Exists(x => x.Item1 == keyValue && x.Item2 == KeyValues.SleepKey))
+                {
+                    return false;
+                }
+
+                // Key is pause key but registry doesn't allow
+                if (keyValue == KeyValues.SleepKey &&
+                    GetRegistryBool("SleepDisabled"))
                 {
                     return false;
                 }
@@ -1389,11 +1397,42 @@ namespace JuliusSweetland.OptiKey.Models
                 && suggestionService.Suggestions.Count > (suggestionService.SuggestionsPage * suggestionService.SuggestionsPerPage + index);
         }
 
+        private const string HKEY_USER = "HKEY_CURRENT_USER";
+        private const string KEY_PATH = "SOFTWARE\\SpecialEffect\\EyeMineV2\\";
+
+        public static bool GetRegistryBool(string keyName)
+        {
+            /*RegistryKey localKey;
+            if (Environment.Is64BitOperatingSystem)
+                localKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+            else
+                localKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
+            //localKey.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, -1);
+            string value = localKey.OpenSubKey(KEY_PATH, false).GetValue("keyName").ToString();
+            */
+            System.Byte[] b = (System.Byte[])Registry.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, -1);
+            object o = Registry.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, 0);
+            //var d = o[0];
+            //var t = o.GetType();
+            //var a = o.GetType();
+            //var c = b[0];
+            //bool b = [0]>0;
+            //int regInt = (int)Registry.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, -1);
+            return (b[0] > 0);
+        }
+
+        public static void SetRegistryBool(string keyName)
+        {
+            string keyPath = $"{HKEY_USER}\\{KEY_PATH}";
+            Registry.SetValue(keyPath, keyName, 1);
+        }
+
+
         #endregion
 
         #region Notify State Changed
 
-        private void NotifyStateChanged()
+        public void NotifyStateChanged()
         {
             OnPropertyChanged(Binding.IndexerName);
         }
