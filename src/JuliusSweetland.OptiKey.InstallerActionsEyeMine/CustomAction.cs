@@ -240,9 +240,9 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         private const string KEY_PATH = "SOFTWARE\\SpecialEffect\\EyeMineV2\\";        
 
         public static bool GetRegistryBool(string keyName)
-        {                        
-            int regInt = (int)Registry.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, -1);
-            return (regInt > 0);             
+        {
+            System.Byte[] b = (System.Byte[])Registry.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, 0);            
+            return (b[0] > 0);
         }
 
         public static void SetRegistryBool(string keyName)
