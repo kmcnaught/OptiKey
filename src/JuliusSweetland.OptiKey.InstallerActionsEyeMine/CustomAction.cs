@@ -239,7 +239,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         private const string HKEY_USER = "HKEY_CURRENT_USER";
         private const string KEY_PATH = "SOFTWARE\\SpecialEffect\\EyeMineV2\\";        
 
-        public static bool GetRegistryBool(string keyName)
+        /*public static bool GetRegistryBool(string keyName)
         {
             System.Byte[] b = (System.Byte[])Registry.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, 0);            
             return (b[0] > 0);
@@ -249,7 +249,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         {            
             string keyPath = $"{HKEY_USER}\\{KEY_PATH}";            
             Registry.SetValue(keyPath, keyName, 1);            
-        }
+        }*/
 
         [CustomAction]
         public static ActionResult InstallMod(Session session)
@@ -320,49 +320,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                     session.Log("Error copying files");
                     session.Log(e.ToString());
                     return ActionResult.Failure;
-                }
-
-                // Add any new bundled saves (might have been added since last version)
-                string installedSavesDir = Path.Combine(rootDir, "saves");
-                string minecraftSavesDir = Path.Combine(eyemineGameDir, "saves");
-                if (Directory.Exists(installedSavesDir))
-                {
-                    session.Log($"Looking for any new bundled saves in {installedSavesDir}");
-
-                    foreach (string dir in Directory.GetDirectories(installedSavesDir))
-                    {
-                        string folderName = Path.GetFileName(dir);
-                        session.Log($"dir: {folderName}");
-                        if (bonusSaves.Contains(folderName)) {
-
-                            string regKey = $"installed:{folderName}";
-
-                            if (GetRegistryBool(regKey)) // already installed
-                            {
-                                session.Log("already installed previously");
-                            }
-                            else
-                            {
-                                // Copy folder to new location
-                                try
-                                {
-                                    session.Log($"Copying {dir} to saves dir");
-
-                                    utils.DirectoryCopy(Path.Combine(installedSavesDir, dir),
-                                                        Path.Combine(minecraftSavesDir, dir), 
-                                                        true);
-                                    SetRegistryBool(regKey); // mark as installed
-                                }
-                                catch (Exception e)
-                                {
-                                    session.Log("Error copying files");
-                                    session.Log(e.ToString());
-                                    return ActionResult.Failure;
-                                }
-                            }
-                        }
-                    }
-                }
+                }               
             }
             else 
             {
