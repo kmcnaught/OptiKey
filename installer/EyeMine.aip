@@ -17,14 +17,14 @@
     <ROW Property="Manufacturer" Value="SpecialEffect"/>
     <ROW Property="MsiLogging" MultiBuildValue="DefaultBuild:vp"/>
     <ROW Property="NUMBER_OF_SAVES" Value="0"/>
-    <ROW Property="ProductCode" Value="1033:{5F980037-DDE0-4528-88E4-F48D99D0AB0E} 2057:{5F980037-DDE0-4528-88E4-F48D99D0AB0E} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{00481832-5F42-4A69-8255-43C30FC163FF} 2057:{00481832-5F42-4A69-8255-43C30FC163FF} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="EyeMine Exhibit"/>
-    <ROW Property="ProductVersion" Value="1.0.1" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="TOBII_SUPPORTED" Value="false"/>
-    <ROW Property="UpgradeCode" Value="{4414256E-3642-4B1E-92A8-45D78F752687}"/>
+    <ROW Property="UpgradeCode" Value="{C8BBFF0F-259E-4C6F-AF07-D49175424142}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
     <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
