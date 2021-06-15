@@ -1,35 +1,40 @@
 <Keyboard>
-   <Name>Minecraft\nIntro++</Name>
-   <SymbolMargin>15</SymbolMargin>
+   <Name>Minecraft\nIntro</Name>
    <BorderThickness>1,30,1,1</BorderThickness>
    <Grid>
       <Rows>1</Rows>
       <Cols>5</Cols>
    </Grid>
+   <InitialKeyStates>
+     <KeyLockedDown>MouseMagneticCursor</KeyLockedDown>
+   </InitialKeyStates>
    <Content>
+     <KeyGroup Name="Debounce" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" CompletionTimes="1000, 5000" />   
       <DynamicKey>
+         <KeyGroup>Debounce</KeyGroup>
          <Symbol>MinecraftAutoFly</Symbol>
          <Label>Fly</Label>
          <Text>g</Text>
       </DynamicKey>
       <DynamicKey>
+      <Text>m</Text>
+      <Label>Mine</Label>
+      <Symbol>MinecraftMineContinuous</Symbol>
+    </DynamicKey>
+      <DynamicKey>
          <Label>Walk</Label>
          <Symbol>MinecraftWalk</Symbol>
          <Text>h</Text>
-      </DynamicKey>
-      <DynamicKey>
-         <Symbol>MinecraftLookWithCursor</Symbol>
-         <Action>MouseMagneticCursor</Action>
-         <Label>Look\nwith\nGaze</Label>
-      </DynamicKey>
+      </DynamicKey>      
       <DynamicKey>
          <Text>r</Text>
          <Label>Attack</Label>
          <Symbol>MinecraftAttackContinuous</Symbol>
       </DynamicKey>
       <DynamicKey>
-         <Symbol>ArrowPointingToRightIcon</Symbol>
-         <ChangeKeyboard BackReturnsHere="False">1_MC_5_1_2_advanced.xml</ChangeKeyboard>
+         <Label>Place\nblock</Label>
+         <Symbol>DwellBuild</Symbol>
+         <Action>NumPad3</Action>
       </DynamicKey>
    </Content>
 </Keyboard>

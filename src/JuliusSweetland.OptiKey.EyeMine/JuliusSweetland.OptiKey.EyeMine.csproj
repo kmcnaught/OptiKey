@@ -315,64 +315,13 @@
       <Link>ThirdPartyLicenses\ThirdPartyLicenses.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\0_MC_5_1_1_intro.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\0_MC_5_1_2_intro.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_1_advanced.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_2_advanced.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_build1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_build2.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_misc.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\2_MC_8_2_1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\2_MC_8_2_2.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\2_MC_8_2_inv.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\3_MC_ChatKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\3_MC_InventoryKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\3_MC_MainKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MenuNav.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\museum.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MenuNav.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\SavedToolbars.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\9_Settings.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MinecraftBuild.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MinecraftDebug.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\SavedToolbars.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\EyeMineKeyboards\Mouse\0_MC_5_1_1_intro.xml">
