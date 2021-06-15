@@ -17,10 +17,10 @@
     <ROW Property="Manufacturer" Value="SpecialEffect"/>
     <ROW Property="MsiLogging" MultiBuildValue="DefaultBuild:vp"/>
     <ROW Property="NUMBER_OF_SAVES" Value="0"/>
-    <ROW Property="ProductCode" Value="1033:{00481832-5F42-4A69-8255-43C30FC163FF} 2057:{00481832-5F42-4A69-8255-43C30FC163FF} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{7D8BEA75-FD46-4682-AD12-C553ACC32C88} 2057:{7D8BEA75-FD46-4682-AD12-C553ACC32C88} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="EyeMine Exhibit"/>
-    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.2" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="TOBII_SUPPORTED" Value="false"/>
@@ -38,6 +38,8 @@
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
     <ROW Directory="AppDataFolder" Directory_Parent="TARGETDIR" DefaultDir="APPDAT~1|AppDataFolder" IsPseudoRoot="1"/>
     <ROW Directory="BonusKeyboards_1_Dir" Directory_Parent="Mouse_1_Dir" DefaultDir="BONUSK~1|Bonus Keyboards"/>
+    <ROW Directory="BonusKeyboards_2_Dir" Directory_Parent="EyeTracker_Dir" DefaultDir="BONUSK~1|Bonus Keyboards"/>
+    <ROW Directory="BonusKeyboards_3_Dir" Directory_Parent="Mouse_Dir" DefaultDir="BONUSK~1|Bonus Keyboards"/>
     <ROW Directory="BonusKeyboards_Dir" Directory_Parent="EyeTracker_1_Dir" DefaultDir="BONUSK~1|Bonus Keyboards"/>
     <ROW Directory="CommuniKate_1_Dir" Directory_Parent="Resources_1_Dir" DefaultDir="COMMUN~1|CommuniKate"/>
     <ROW Directory="CommuniKate_Dir" Directory_Parent="Resources_Dir" DefaultDir="COMMUN~1|CommuniKate"/>
@@ -59,6 +61,7 @@
     <ROW Directory="Fonts_Dir" Directory_Parent="Resources_Dir" DefaultDir="Fonts"/>
     <ROW Directory="ModInstaller_Dir" Directory_Parent="APPDIR" DefaultDir="MODINS~1|ModInstaller"/>
     <ROW Directory="Mouse_1_Dir" Directory_Parent="EyeMineKeyboards_Dir" DefaultDir="Mouse"/>
+    <ROW Directory="Mouse_Dir" Directory_Parent="EyeMineKeyboards_1_Dir" DefaultDir="Mouse"/>
     <ROW Directory="Optikey_Dir" Directory_Parent="ProgramMenuFolder" DefaultDir="Optikey"/>
     <ROW Directory="Presage_Dir" Directory_Parent="Resources_1_Dir" DefaultDir="Presage"/>
     <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="PROGRA~1|ProgramMenuFolder" IsPseudoRoot="1"/>
@@ -170,6 +173,8 @@
     <ROW Component="B612licenceeplv10.html" ComponentId="{14F18BAC-EF93-4F26-9622-49A86CA3D76F}" Directory_="Fonts_Dir" Attributes="0" KeyPath="B612licenceeplv10.html" Type="0"/>
     <ROW Component="Bass.Net.dll" ComponentId="{125F4BD8-CC09-4998-85C8-06B94FB51BDE}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.dll"/>
     <ROW Component="Bass.Net.xml" ComponentId="{7BE6413E-B2B2-427E-86E1-9C9E725E97E4}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.xml" Type="0"/>
+    <ROW Component="BonusKeyboards" ComponentId="{FE78F44A-6358-44F0-BAC8-BA43C89AF819}" Directory_="BonusKeyboards_Dir" Attributes="0"/>
+    <ROW Component="BonusKeyboards_1" ComponentId="{662E5412-9700-47E6-A6DC-74362B1B7B24}" Directory_="BonusKeyboards_2_Dir" Attributes="0"/>
     <ROW Component="CommuniKate" ComponentId="{9ACA569F-1B26-4A52-9218-074A34061715}" Directory_="CommuniKate_1_Dir" Attributes="0"/>
     <ROW Component="ControlzEx.dll" ComponentId="{03C9F1CE-8366-4C6D-8631-84A828BA4698}" Directory_="Release_Dir" Attributes="0" KeyPath="ControlzEx.dll"/>
     <ROW Component="Demo_Bottom.xml" ComponentId="{C87A4208-E005-42CE-93FF-2DEAF092DC1F}" Directory_="Samples_Dir" Attributes="0" KeyPath="Demo_Bottom.xml" Type="0"/>
@@ -188,7 +193,7 @@
     <ROW Component="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll_1" ComponentId="{2DBB7B75-301C-4C71-BD03-0096155ABFE0}" Directory_="Release_Dir" Attributes="0" KeyPath="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll_1"/>
     <ROW Component="Keyboards" ComponentId="{48A9C547-AFBB-499C-AF46-BEC81F384D96}" Directory_="EyeMineKeyboards_1_Dir" Attributes="0"/>
     <ROW Component="MahApps.Metro.dll" ComponentId="{EE70130E-998A-4E5A-8C60-F741317620D6}" Directory_="Release_Dir" Attributes="0" KeyPath="MahApps.Metro.dll"/>
-    <ROW Component="MenuNav.xml" ComponentId="{8E0627CB-91DB-4108-983B-A7BFDABDC458}" Directory_="BonusKeyboards_Dir" Attributes="0" KeyPath="MenuNav.xml" Type="0"/>
+    <ROW Component="MenuNav.xml" ComponentId="{B70322FF-85D0-48E5-92DC-149BD4C8DC1F}" Directory_="BonusKeyboards_3_Dir" Attributes="0" KeyPath="MenuNav.xml" Type="0"/>
     <ROW Component="MenuNav.xml_1" ComponentId="{E629F64E-5C9B-4304-97F4-010FAACA8ECB}" Directory_="BonusKeyboards_1_Dir" Attributes="0" KeyPath="MenuNav.xml_1" Type="0"/>
     <ROW Component="Microsoft.Deployment.WindowsInstaller.dll" ComponentId="{29EA63EE-2EDE-484A-9776-52D5745F097F}" Directory_="Release_1_Dir" Attributes="0" KeyPath="Microsoft.Deployment.WindowsInstaller.dll"/>
     <ROW Component="Microsoft.Deployment.WindowsInstaller.dll_1" ComponentId="{278DE34E-DE93-41E9-86CB-ED5D6057D872}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Deployment.WindowsInstaller.dll_1"/>
@@ -262,8 +267,9 @@
     <ROW Component="WindowsInput.dll" ComponentId="{D275C071-F74A-411E-8F4D-38E5375B7852}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsInput.dll"/>
     <ROW Component="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" ComponentId="{C793920C-FA65-4680-8DD9-CA4F395EE6CC}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
     <ROW Component="WindowsRecipes.TaskbarSingleInstance.dll" ComponentId="{59470F61-31F5-4F7E-9296-12A0E2A961BB}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsRecipes.TaskbarSingleInstance.dll"/>
-    <ROW Component="_MC_5_1_1_intro.xml" ComponentId="{7EE76354-7E90-4F81-94CC-E1DEC798A981}" Directory_="EyeTracker_1_Dir" Attributes="0" KeyPath="_MC_5_1_1_intro.xml" Type="0"/>
+    <ROW Component="_MC_5_1_1_intro.xml" ComponentId="{7EE76354-7E90-4F81-94CC-E1DEC798A981}" Directory_="EyeTracker_1_Dir" Attributes="0" KeyPath="museum.xml_1" Type="0"/>
     <ROW Component="_MC_5_1_1_intro.xml_1" ComponentId="{0DD19D32-F009-4A63-A55A-061F0EBADEB9}" Directory_="Mouse_1_Dir" Attributes="0" KeyPath="_MC_5_1_1_intro.xml_1" Type="0"/>
+    <ROW Component="_MC_5_1_1_intro.xml_2" ComponentId="{BC7718C6-0E73-4EF6-B053-89A05EDAD47B}" Directory_="Mouse_Dir" Attributes="0" KeyPath="_MC_5_1_1_intro.xml" Type="0"/>
     <ROW Component="b2f0b00ae75446b983d0548bb33b2ed.json" ComponentId="{1FD6A660-F8C8-46F7-B213-F1457D26B034}" Directory_="advancements_1_Dir" Attributes="0" KeyPath="b2f0b00ae75446b983d0548bb33b2ed.json" Type="0"/>
     <ROW Component="b2f0b00ae75446b983d0548bb33b2ed.json_1" ComponentId="{28090C15-2BAB-41E6-BCA3-E8D1FF0DD2A0}" Directory_="stats_1_Dir" Attributes="0" KeyPath="b2f0b00ae75446b983d0548bb33b2ed.json_1" Type="0"/>
     <ROW Component="back.png" ComponentId="{2808E485-EE1B-47AC-AE74-074C86958392}" Directory_="CommuniKate_Dir" Attributes="0" KeyPath="back.png" Type="0"/>
@@ -285,7 +291,7 @@
     <ROW Component="elGR" ComponentId="{B2DAF8FC-C046-4B60-B034-3F595E62A431}" Directory_="elGR_1_Dir" Attributes="0"/>
     <ROW Component="enUS" ComponentId="{C4C72ECC-976B-4AA9-8974-259E4E9A9D52}" Directory_="enUS_1_Dir" Attributes="0"/>
     <ROW Component="esES" ComponentId="{5BEB8F98-F31E-4482-9C65-18D12EC49F86}" Directory_="esES_1_Dir" Attributes="0"/>
-    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemine2.2.1.jar" Type="0"/>
+    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemineexhibit1.0.2.jar" Type="0"/>
     <ROW Component="eyemine2.0.12.jar" ComponentId="{B42179B6-D266-4B7F-ACB5-A2D839801563}" Directory_="ModInstaller_Dir" Attributes="0" KeyPath="eyemineclientmouse.toml" Type="0"/>
     <ROW Component="fa" ComponentId="{8B818915-D3F6-4C6A-A87D-BCED118EC532}" Directory_="fa_1_Dir" Attributes="0"/>
     <ROW Component="fiFI" ComponentId="{DC2AB178-C08B-4C90-A331-D5202FFED1A0}" Directory_="fiFI_1_Dir" Attributes="0"/>
@@ -445,24 +451,6 @@
     <ROW File="Demo_Minecraft.xml" Component_="Demo_Bottom.xml" FileName="DEMO_M~1.XML|Demo_Minecraft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml" SelfReg="false"/>
     <ROW File="FullQwerty.xml" Component_="Demo_Bottom.xml" FileName="FULLQW~1.XML|FullQwerty.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\Samples\FullQwerty.xml" SelfReg="false"/>
     <ROW File="FullSymbol.xml" Component_="Demo_Bottom.xml" FileName="FULLSY~1.XML|FullSymbol.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\DynamicKeyboards\Samples\FullSymbol.xml" SelfReg="false"/>
-    <ROW File="_MC_5_1_1_intro.xml" Component_="_MC_5_1_1_intro.xml" FileName="0_MC_5~1.XML|0_MC_5_1_1_intro.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\0_MC_5_1_1_intro.xml" SelfReg="false"/>
-    <ROW File="_MC_5_1_2_intro.xml" Component_="_MC_5_1_1_intro.xml" FileName="0_MC_5~2.XML|0_MC_5_1_2_intro.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\0_MC_5_1_2_intro.xml" SelfReg="false"/>
-    <ROW File="_MC_5_1_1_advanced.xml" Component_="_MC_5_1_1_intro.xml" FileName="1_MC_5~1.XML|1_MC_5_1_1_advanced.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_1_advanced.xml" SelfReg="false"/>
-    <ROW File="_MC_5_1_2_advanced.xml" Component_="_MC_5_1_1_intro.xml" FileName="1_MC_5~2.XML|1_MC_5_1_2_advanced.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_2_advanced.xml" SelfReg="false"/>
-    <ROW File="_MC_5_1_build1.xml" Component_="_MC_5_1_1_intro.xml" FileName="1_MC_5~3.XML|1_MC_5_1_build1.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_build1.xml" SelfReg="false"/>
-    <ROW File="_MC_5_1_build2.xml" Component_="_MC_5_1_1_intro.xml" FileName="1_MC_5~4.XML|1_MC_5_1_build2.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_build2.xml" SelfReg="false"/>
-    <ROW File="_MC_5_1_misc.xml" Component_="_MC_5_1_1_intro.xml" FileName="1_MC_5~5.XML|1_MC_5_1_misc.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_misc.xml" SelfReg="false"/>
-    <ROW File="_MC_8_2_1.xml" Component_="_MC_5_1_1_intro.xml" FileName="2_MC_8~1.XML|2_MC_8_2_1.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\2_MC_8_2_1.xml" SelfReg="false"/>
-    <ROW File="_MC_8_2_2.xml" Component_="_MC_5_1_1_intro.xml" FileName="2_MC_8~2.XML|2_MC_8_2_2.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\2_MC_8_2_2.xml" SelfReg="false"/>
-    <ROW File="_MC_8_2_inv.xml" Component_="_MC_5_1_1_intro.xml" FileName="2_MC_8~3.XML|2_MC_8_2_inv.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\2_MC_8_2_inv.xml" SelfReg="false"/>
-    <ROW File="_MC_ChatKeyboard.xml" Component_="_MC_5_1_1_intro.xml" FileName="3_MC_C~1.XML|3_MC_ChatKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\3_MC_ChatKeyboard.xml" SelfReg="false"/>
-    <ROW File="_MC_InventoryKeyboard.xml" Component_="_MC_5_1_1_intro.xml" FileName="3_MC_I~1.XML|3_MC_InventoryKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\3_MC_InventoryKeyboard.xml" SelfReg="false"/>
-    <ROW File="_MC_MainKeyboard.xml" Component_="_MC_5_1_1_intro.xml" FileName="3_MC_M~1.XML|3_MC_MainKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\3_MC_MainKeyboard.xml" SelfReg="false"/>
-    <ROW File="_Settings.xml" Component_="_MC_5_1_1_intro.xml" FileName="9_SETT~1.XML|9_Settings.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\9_Settings.xml" SelfReg="false"/>
-    <ROW File="MenuNav.xml" Component_="MenuNav.xml" FileName="MenuNav.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MenuNav.xml" SelfReg="false"/>
-    <ROW File="MinecraftBuild.xml" Component_="MenuNav.xml" FileName="MINECR~1.XML|MinecraftBuild.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MinecraftBuild.xml" SelfReg="false"/>
-    <ROW File="MinecraftDebug.xml" Component_="MenuNav.xml" FileName="MINECR~2.XML|MinecraftDebug.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MinecraftDebug.xml" SelfReg="false"/>
-    <ROW File="SavedToolbars.xml" Component_="MenuNav.xml" FileName="SAVEDT~1.XML|SavedToolbars.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\SavedToolbars.xml" SelfReg="false"/>
     <ROW File="_MC_5_1_1_intro.xml_1" Component_="_MC_5_1_1_intro.xml_1" FileName="0_MC_5~1.XML|0_MC_5_1_1_intro.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\0_MC_5_1_1_intro.xml" SelfReg="false"/>
     <ROW File="_MC_5_1_2_intro.xml_1" Component_="_MC_5_1_1_intro.xml_1" FileName="0_MC_5~2.XML|0_MC_5_1_2_intro.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\0_MC_5_1_2_intro.xml" SelfReg="false"/>
     <ROW File="_MC_5_1_1_advanced.xml_1" Component_="_MC_5_1_1_intro.xml_1" FileName="1_MC_5~1.XML|1_MC_5_1_1_advanced.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\1_MC_5_1_1_advanced.xml" SelfReg="false"/>
@@ -1362,10 +1350,27 @@
     <ROW File="session.lock_1" Component_="icon.png_1" FileName="SESSIO~1.LOC|session.lock" Attributes="0" SourcePath="resources\saves\by Alex for SpecialEffect\session.lock" SelfReg="false"/>
     <ROW File="b2f0b00ae75446b983d0548bb33b2ed.json_1" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_1" FileName="1B2F0B~1.JSO|1b2f0b00-ae75-446b-983d-0548bb33b2ed.json" Attributes="0" SourcePath="resources\saves\by Alex for SpecialEffect\stats\1b2f0b00-ae75-446b-983d-0548bb33b2ed.json" SelfReg="false"/>
     <ROW File="df991f603344ca090369bad2a924a.json_1" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_1" FileName="380DF9~1.JSO|380df991-f603-344c-a090-369bad2a924a.json" Attributes="0" SourcePath="resources\saves\by Alex for SpecialEffect\stats\380df991-f603-344c-a090-369bad2a924a.json" SelfReg="false"/>
-    <ROW File="eyemine2.2.1.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~1.JAR|eyemine-2.2.1.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-2.2.1.jar" SelfReg="false"/>
-    <ROW File="eyemine1.0.0.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~2.JAR|eyemine-1.0.0.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-1.0.0.jar" SelfReg="false"/>
-    <ROW File="eyemineexhibit1.0.0.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~3.JAR|eyemine-exhibit-1.0.0.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-exhibit-1.0.0.jar" SelfReg="false"/>
-    <ROW File="museum.xml" Component_="museum.xml" FileName="museum.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\Resources\EyeMineKeyboards\EyeTracker\museum.xml" SelfReg="false"/>
+    <ROW File="museum.xml" Component_="museum.xml" FileName="museum.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\museum.xml" SelfReg="false"/>
+    <ROW File="museum.xml_1" Component_="_MC_5_1_1_intro.xml" FileName="museum.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\EyeTracker\museum.xml" SelfReg="false"/>
+    <ROW File="eyemineexhibit1.0.2.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~4.JAR|eyemine-exhibit-1.0.2.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-exhibit-1.0.2.jar" SelfReg="false"/>
+    <ROW File="_MC_5_1_1_intro.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="0_MC_5~1.XML|0_MC_5_1_1_intro.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\0_MC_5_1_1_intro.xml" SelfReg="false"/>
+    <ROW File="_MC_5_1_2_intro.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="0_MC_5~2.XML|0_MC_5_1_2_intro.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\0_MC_5_1_2_intro.xml" SelfReg="false"/>
+    <ROW File="_MC_5_1_1_advanced.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="1_MC_5~1.XML|1_MC_5_1_1_advanced.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\1_MC_5_1_1_advanced.xml" SelfReg="false"/>
+    <ROW File="_MC_5_1_2_advanced.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="1_MC_5~2.XML|1_MC_5_1_2_advanced.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\1_MC_5_1_2_advanced.xml" SelfReg="false"/>
+    <ROW File="_MC_5_1_build1.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="1_MC_5~3.XML|1_MC_5_1_build1.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\1_MC_5_1_build1.xml" SelfReg="false"/>
+    <ROW File="_MC_5_1_build2.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="1_MC_5~4.XML|1_MC_5_1_build2.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\1_MC_5_1_build2.xml" SelfReg="false"/>
+    <ROW File="_MC_5_1_misc.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="1_MC_5~5.XML|1_MC_5_1_misc.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\1_MC_5_1_misc.xml" SelfReg="false"/>
+    <ROW File="_MC_8_2_1.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="2_MC_8~1.XML|2_MC_8_2_1.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\2_MC_8_2_1.xml" SelfReg="false"/>
+    <ROW File="_MC_8_2_2.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="2_MC_8~2.XML|2_MC_8_2_2.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\2_MC_8_2_2.xml" SelfReg="false"/>
+    <ROW File="_MC_8_2_inv.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="2_MC_8~3.XML|2_MC_8_2_inv.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\2_MC_8_2_inv.xml" SelfReg="false"/>
+    <ROW File="_MC_ChatKeyboard.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="3_MC_C~1.XML|3_MC_ChatKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\3_MC_ChatKeyboard.xml" SelfReg="false"/>
+    <ROW File="_MC_InventoryKeyboard.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="3_MC_I~1.XML|3_MC_InventoryKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\3_MC_InventoryKeyboard.xml" SelfReg="false"/>
+    <ROW File="_MC_MainKeyboard.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="3_MC_M~1.XML|3_MC_MainKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\3_MC_MainKeyboard.xml" SelfReg="false"/>
+    <ROW File="_Settings.xml" Component_="_MC_5_1_1_intro.xml_2" FileName="9_SETT~1.XML|9_Settings.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\9_Settings.xml" SelfReg="false"/>
+    <ROW File="MenuNav.xml" Component_="MenuNav.xml" FileName="MenuNav.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MenuNav.xml" SelfReg="false"/>
+    <ROW File="MinecraftBuild.xml" Component_="MenuNav.xml" FileName="MINECR~1.XML|MinecraftBuild.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MinecraftBuild.xml" SelfReg="false"/>
+    <ROW File="MinecraftDebug.xml" Component_="MenuNav.xml" FileName="MINECR~2.XML|MinecraftDebug.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MinecraftDebug.xml" SelfReg="false"/>
+    <ROW File="SavedToolbars.xml" Component_="MenuNav.xml" FileName="SAVEDT~1.XML|SavedToolbars.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\SavedToolbars.xml" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -1772,6 +1777,8 @@
     <ROW Directory_="data_2_Dir" Component_="data_1" ManualDelete="false"/>
     <ROW Directory_="datapacks_1_Dir" Component_="datapacks_1" ManualDelete="false"/>
     <ROW Directory_="playerdata_1_Dir" Component_="playerdata" ManualDelete="false"/>
+    <ROW Directory_="BonusKeyboards_Dir" Component_="BonusKeyboards" ManualDelete="false"/>
+    <ROW Directory_="BonusKeyboards_2_Dir" Component_="BonusKeyboards_1" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
@@ -1967,7 +1974,6 @@
     <ROW Feature_="MainFeature" Component_="AltAlphaHorizontalKeyboard.xml"/>
     <ROW Feature_="MainFeature" Component_="Demo_Bottom.xml"/>
     <ROW Feature_="MainFeature" Component_="_MC_5_1_1_intro.xml"/>
-    <ROW Feature_="MainFeature" Component_="MenuNav.xml"/>
     <ROW Feature_="MainFeature" Component_="_MC_5_1_1_intro.xml_1"/>
     <ROW Feature_="MainFeature" Component_="MenuNav.xml_1"/>
     <ROW Feature_="MainFeature" Component_="B612licenceeplv10.html"/>
@@ -2018,6 +2024,10 @@
     <ROW Feature_="MainFeature" Component_="forgeserver.toml_1"/>
     <ROW Feature_="MainFeature" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_1"/>
     <ROW Feature_="MainFeature" Component_="museum.xml"/>
+    <ROW Feature_="MainFeature" Component_="BonusKeyboards"/>
+    <ROW Feature_="MainFeature" Component_="BonusKeyboards_1"/>
+    <ROW Feature_="MainFeature" Component_="_MC_5_1_1_intro.xml_2"/>
+    <ROW Feature_="MainFeature" Component_="MenuNav.xml"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="EyeMineV2exhibit.exe" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\EyeMineV2exhibit.ico" Index="0"/>
