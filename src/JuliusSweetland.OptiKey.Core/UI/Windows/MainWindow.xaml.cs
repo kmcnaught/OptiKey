@@ -37,6 +37,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private readonly ICommand backCommand;
         private readonly ICommand quitCommand;
         private readonly ICommand restartCommand;
+        private readonly List<ICommand> demoCommands;
 
         public MainWindow(
             IAudioService audioService,
@@ -56,6 +57,21 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             this.dictionaryService = dictionaryService;
             this.inputService = inputService;
             this.keyStateService = keyStateService;
+
+            demoCommands = new List<ICommand>();
+            List<Key> numKeys = new List<Key> () { Key.D0, Key.D1, Key.D2, Key.D3, Key.D4, Key.D5, Key.D6, Key.D7, Key.D8, Key.D9 };            
+
+            for (int i = 0; i < 10; i++) {
+                int iCaptured = i;
+                demoCommands.Add(new DelegateCommand(() => { DemoShortcut(iCaptured); }));
+
+                InputBindings.Add(new KeyBinding
+                {
+                    Command = demoCommands[iCaptured],
+                    Modifiers = ModifierKeys.Control,
+                    Key = numKeys[iCaptured]
+                });
+            }
 
             defaultPointSource = inputService.PointSource;
             manualModePointSource = new MousePositionSource(Settings.Default.PointTtl) { State = RunningStates.Paused };
@@ -91,8 +107,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             InputBindings.Add(new KeyBinding
             {
                 Command = toggleManualModeCommand,
-                Modifiers = ModifierKeys.Shift | ModifierKeys.Alt,
-                Key = Key.Enter
+                Modifiers = ModifierKeys.Control | ModifierKeys.Shift,
+                Key = Key.D1
             });
 
             // Enable mouse drag on keyboard
@@ -216,6 +232,51 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                     MainView.Loaded -= loadedHandler; //Ensure this handler only triggers once
                 };
                 MainView.Loaded += loadedHandler;
+            }
+        }
+
+        private void DemoShortcut(int i)
+        {
+            String msg = $"Demo shortcut {i}";
+            MessageBox.Show(msg);
+
+            if (i == 1)
+            {
+                // Launch Minecraft
+            }
+            else if (i == 2)
+            {
+                // Focus Minecraft
+            }
+            else if (i == 3)
+            {
+                // Maximise Minecraft
+            }
+            else if (i == 4)
+            {
+                // Reset Minecraft demo (inc unzipping files)
+            }
+            else if (i == 5)
+            {
+                // Launch guest calibration
+            }
+            else if (i == 6)
+            {
+                // Turn on ghost overlay
+            }
+            else if (i == 7)
+            {
+                // Change Optikey window to not be topmost?
+            }
+            else if (i == 8)
+            {
+                // Launch another app, maximise
+            }
+            else if (i == 9)
+            {
+            }
+            else if (i == 0)
+            {
             }
         }
 
