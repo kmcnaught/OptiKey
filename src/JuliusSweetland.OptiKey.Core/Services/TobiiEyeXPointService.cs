@@ -17,6 +17,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        private EyePositionDataStream eyePositionDataStream;
         private GazePointDataStream gazeDataStream;
         private FixationDataStream fixationDataStream;
 
@@ -48,7 +49,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Properties
 
         public bool KalmanFilterSupported {get; private set; }
-        public EyeXHost EyeXHost { get; private set; }
+        public static EyeXHost EyeXHost { get; private set; }
 
         #endregion
 

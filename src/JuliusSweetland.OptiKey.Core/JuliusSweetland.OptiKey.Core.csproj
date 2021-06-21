@@ -16,6 +16,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -31,8 +33,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -521,8 +521,16 @@
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
+    <Compile Include="UI\Views\Exhibit\ColorConversions.cs" />
+    <Compile Include="UI\Views\Exhibit\Commands.cs" />
+    <Compile Include="UI\Views\Exhibit\EyeStatus.cs" />
     <Compile Include="UI\Views\Exhibit\FaceWindow.xaml.cs">
       <DependentUpon>FaceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\FollowExample.cs" />
+    <Compile Include="UI\Views\Exhibit\TobiiViewModel.cs" />
+    <Compile Include="UI\Views\Exhibit\EyeGauge.xaml.cs">
+      <DependentUpon>EyeGauge.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Catalan\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
@@ -1360,6 +1368,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Exhibit\FaceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Exhibit\FollowExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\EyeGauge.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,8 +16,10 @@ using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
+using JuliusSweetland.OptiKey.UI.Views;
 using JuliusSweetland.OptiKey.UI.Views.Exhibit;
 using log4net;
+using PerFrameAnimation;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 
@@ -241,7 +243,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         }
 
         private FaceWindow faceWindow;
-
+        private EyeGauge eyeStatusWindow;
 
         private void DemoShortcut(int i)
         {
@@ -307,6 +309,19 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                     faceWindow.Close();
                     faceWindow = null;
                 }
+            }
+            else if (i == 8)
+            {
+                eyeStatusWindow = new EyeGauge();
+                eyeStatusWindow.Show();
+            }
+            else if (i == 9)
+            {
+                if (eyeStatusWindow != null)
+                {
+                    eyeStatusWindow.Close();
+                    eyeStatusWindow = null;
+                } 
             }
             //if (i == 1)
             //{

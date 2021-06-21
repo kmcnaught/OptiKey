@@ -726,7 +726,7 @@ namespace JuliusSweetland.OptiKey
                     var tobiiEyeXCalibrationService = calibrationService as TobiiEyeXCalibrationService;
                     if (tobiiEyeXCalibrationService != null)
                     {
-                        tobiiEyeXCalibrationService.EyeXHost = tobiiEyeXPointService.EyeXHost;
+                        tobiiEyeXCalibrationService.EyeXHost = TobiiEyeXPointService.EyeXHost;
                     }
                     errorNotifyingServices.Add(tobiiEyeXPointService);
                     pointSource = new PointServiceSource(
