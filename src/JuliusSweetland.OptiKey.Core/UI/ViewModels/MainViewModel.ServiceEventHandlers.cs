@@ -678,7 +678,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private async void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
+        public async void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
         {
             var currentKeyboard = Keyboard;
             Action resumeLookToScroll;
@@ -2317,6 +2317,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Settings.Default.SpeechRate,
                         Settings.Default.SpeechVoice);
                     KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
+                    break;
+
+                case FunctionKeys.ToggleGhostOverlay:
+                    KeyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value = KeyDownStates.LockedDown;
+                    KeyStateService.KeyDownStates[KeyValues.LeftAltKey].Value = KeyDownStates.LockedDown;
+                    keyboardOutputService.ProcessSingleKeyText("g");
+                    KeyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value = KeyDownStates.Up;
+                    KeyStateService.KeyDownStates[KeyValues.LeftAltKey].Value = KeyDownStates.Up;
+
                     break;
 
                 case FunctionKeys.Translation:

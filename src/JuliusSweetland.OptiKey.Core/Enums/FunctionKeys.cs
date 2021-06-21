@@ -240,6 +240,7 @@ namespace JuliusSweetland.OptiKey.Enums
         Suggestion5,
         Suggestion6,
         ToggleCaseOfPreviousCharacter,
+        ToggleGhostOverlay,
         Translation,
         TurkishTurkey,
         UkrainianUkraine,
