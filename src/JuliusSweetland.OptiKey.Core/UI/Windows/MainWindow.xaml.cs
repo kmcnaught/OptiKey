@@ -16,6 +16,7 @@ using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
+using JuliusSweetland.OptiKey.UI.Views.Exhibit;
 using log4net;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
@@ -239,6 +240,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             }
         }
 
+        private FaceWindow faceWindow;
+
+
         private void DemoShortcut(int i)
         {
             String msg = $"Demo shortcut {i}";
@@ -291,7 +295,19 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             {                                
                 FocusWindow(paintProcess);
             }
-
+            else if (i == 6)
+            {
+                faceWindow = new FaceWindow();
+                faceWindow.Show();
+            }
+            else if (i == 7)
+            {
+                if (faceWindow != null)
+                {
+                    faceWindow.Close();
+                    faceWindow = null;
+                }
+            }
             //if (i == 1)
             //{
             //    // Launch Minecraft
