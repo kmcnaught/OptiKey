@@ -363,6 +363,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
         public static void ShowWindow(Process process, int SHOW_INT)
         {
+            if (process == null) { return; }
+
             IDictionary<IntPtr, string> windows = List_Windows_By_PID(process.Id);
             foreach (KeyValuePair<IntPtr, string> pair in windows)
             {
@@ -373,6 +375,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
         public static void FocusWindow(Process process)
         {
+            if (process == null) { return;  }
+
             IDictionary<IntPtr, string> windows = List_Windows_By_PID(process.Id);
             // FIXME: which one? the parent? are there ever more than one?
             foreach (KeyValuePair<IntPtr, string> pair in windows)
@@ -382,7 +386,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         }
 
         public static void CloseWindow(Process process)
-        {            
+        {
+            if (process == null) { return; }
+
             IDictionary<IntPtr, string> windows = List_Windows_By_PID(process.Id);
             foreach (KeyValuePair<IntPtr, string> pair in windows)
             {
