@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
         mc:Ignorable="d"
+        Background="Black"
         Title="EyeGauge" Height="450" Width="800">
 
     <!--<Window.CommandBindings>
@@ -29,7 +30,14 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-
+        <TextBlock Grid.Column="1" Grid.Row="0"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"  
+                   Text="These are your eyes. Make sure both are visible before continuing." 
+                   FontSize="16" FontFamily="Verdana" 
+                   Foreground="AntiqueWhite"
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
+            
+        </TextBlock>
         <Viewbox Grid.Column="1" Grid.Row="1" >
             <Canvas Background="DarkGray" Width="300" Height="200" x:Name="trackBox">
                 <Border x:Name="trackBorder"  Width="300" Height="200" Background="Transparent" BorderBrush="Green" BorderThickness="5"></Border>

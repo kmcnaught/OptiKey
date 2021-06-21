@@ -19,7 +19,6 @@ using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Views;
 using JuliusSweetland.OptiKey.UI.Views.Exhibit;
 using log4net;
-using PerFrameAnimation;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 
