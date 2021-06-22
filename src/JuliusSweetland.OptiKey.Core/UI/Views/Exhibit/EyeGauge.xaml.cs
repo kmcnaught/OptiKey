@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JuliusSweetland.OptiKey.UI.Utilities;
+using JuliusSweetland.OptiKey.UI.ViewModels;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -24,20 +26,6 @@ namespace JuliusSweetland.OptiKey.UI.Views
             //FIXME: Disconnect from tobii on exit!!
 
         }
-
-
-        public void Executed_Calibrate(object sender, ExecutedRoutedEventArgs e)
-        {
-            TobiiViewModel vm = (TobiiViewModel)this.DataContext;
-            vm?.GuestCalibration();
-        }
-
-        public void CanExecute_Calibrate(object sender, CanExecuteRoutedEventArgs e)
-        {
-            //TODO: only if eyes are good
-            e.CanExecute = true;
-        }
-
 
         private void UpdateRectangle(object sender, EventArgs e)
         {

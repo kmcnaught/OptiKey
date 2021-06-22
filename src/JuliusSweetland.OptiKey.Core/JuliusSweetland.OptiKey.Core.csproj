@@ -521,13 +521,19 @@
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
-    <Compile Include="UI\Views\Exhibit\ColorConversions.cs" />
+    <Compile Include="UI\Utilities\ColorConversions.cs" />
     <Compile Include="UI\Views\Exhibit\Commands.cs" />
-    <Compile Include="UI\Views\Exhibit\EyeStatus.cs" />
+    <Compile Include="UI\Views\Exhibit\PostCalib.xaml.cs">
+      <DependentUpon>PostCalib.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\IntroScreen.xaml.cs">
+      <DependentUpon>IntroScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ViewModels\Exhibit\EyeStatus.cs" />
     <Compile Include="UI\Views\Exhibit\FaceWindow.xaml.cs">
       <DependentUpon>FaceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Exhibit\TobiiViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\TobiiViewModel.cs" />
     <Compile Include="UI\Views\Exhibit\EyeGauge.xaml.cs">
       <DependentUpon>EyeGauge.xaml</DependentUpon>
     </Compile>
@@ -934,6 +940,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
+    <Resource Include="UI\Views\Exhibit\Resources\Becky EyeMine Front.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\Becky EyeMine GamesRoom.JPG" />
+    <Resource Include="UI\Views\Exhibit\Resources\Gabey EyeMine Back.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\Gabey EyeMine Front.png" />
     <Resource Include="UI\Views\Exhibit\facemask.png" />
     <EmbeddedResource Include="Properties\Resources.ca-ES.resx">
       <SubType>Designer</SubType>
@@ -1016,6 +1026,7 @@
     <Content Include="Resources\Fonts\Nafees Web Naskh License Agreement.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="UI\Views\Exhibit\Resources\EyeMine_Logo_Trans.png" />
     <Content Include="Resources\Presage\database.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1363,6 +1374,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Controls\CK20Page.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\PostCalib.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\IntroScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1972,12 +1991,12 @@
   <ItemGroup>
     <PublishFile Include="External Libraries\Newtonsoft.Json.xml">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>

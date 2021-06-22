@@ -7,7 +7,7 @@ using Prism.Mvvm;
 using Tobii.EyeX.Client;
 using Tobii.EyeX.Framework;
 
-namespace Per_FrameAnimation
+namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
     public class TobiiViewModel : BindableBase
     {
@@ -15,14 +15,12 @@ namespace Per_FrameAnimation
         public static EyeXHost EyeXHost { get; private set; }
         private static EyePositionDataStream _eyePositionDataStream;
 
-
         // Read/write to float variable are atomic so we don't need to worry about mutexes
         public EyeStatus leftEye = new EyeStatus();
         public EyeStatus rightEye = new EyeStatus();
 
         public TobiiViewModel()
         {
-
             TobiiLabel = "wibble";
 
 
@@ -127,15 +125,9 @@ namespace Per_FrameAnimation
 
         #region Tobii handling
         private static void InitializeHost()
-        {
-            // Everything starts with initializing Host, which manages connection to the 
-            // Tobii Engine and provides all the Tobii Core SDK functionality.
-            // NOTE: Make sure that Tobii.EyeX.exe is running
-            EyeXHost = TobiiEyeXPointService.EyeXHost;
-            
-            //EyeXHost.Context.ConnectionStateChanged += OnConnectionStateChanged;
-
-            //stateObserver = EyeXHost.States.CreateEyeTrackingDeviceStatusObserver();
+        {            
+            // This will already have been initialised by Optikey 
+            EyeXHost = TobiiEyeXPointService.EyeXHost;            
         }
 
         private static void StateObserver_Changed(object sender, EngineStateValue<EyeTrackingDeviceStatus> e)
@@ -145,9 +137,7 @@ namespace Per_FrameAnimation
             if (status == EyeTrackingDeviceStatus.Tracking)
             {
                 //stateObserver.Changed -= StateObserver_Changed;
-            }
-
-            int a = 1;
+            }            
         }
 
         private static void DisableConnectionWithTobiiEngine()
@@ -160,23 +150,7 @@ namespace Per_FrameAnimation
                 EyeXHost = null;
             }
         }
-
-        public void GuestCalibration()
-        {
-
-            //var state2 = EyeXHost.EyeTrackingDeviceStatusChanged;
-
-            //states = new List<EyeTrackingDeviceStatus>();
-            //stateObserver.Changed += StateObserver_Changed;
-            EyeXHost.LaunchGuestCalibration();            
-
-        }
-
-        //private static void OnConnectionStateChanged(object sender, Tobii.Interaction.Client.ConnectionStateChangedEventArgs e)
-        //{
-        //    var state = e.State;
-        //}
-
+        
         #endregion
     }
 }

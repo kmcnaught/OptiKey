@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Per_FrameAnimation
+namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
     public class EyeStatus
     {

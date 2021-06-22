@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Media;
 
-namespace Per_FrameAnimation
+namespace JuliusSweetland.OptiKey.UI.Utilities
 {
     class ColorConversions
     {
