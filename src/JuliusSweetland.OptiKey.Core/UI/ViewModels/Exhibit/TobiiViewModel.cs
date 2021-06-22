@@ -66,8 +66,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public override void TearDown()
         {
-            EyeXHost = null;
-            _eyePositionDataStream = null;
+            EyeXHost.LaunchGuestCalibration();            
         }
 
         private bool IsGoodEnough()
