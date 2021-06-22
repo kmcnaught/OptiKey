@@ -1,25 +1,25 @@
 ﻿using JuliusSweetland.OptiKey.UI.Utilities;
-using JuliusSweetland.OptiKey.UI.ViewModels;
+using JuliusSweetland.OptiKey.UI.ViewModels.Exhibit;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace JuliusSweetland.OptiKey.UI.Views
+namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
 {
     /// <summary>
     /// Interaction logic for EyeGauge.xaml
     /// </summary>
-    public partial class EyeGauge : Window
+    public partial class EyeGauge : UserControl
     {
         public EyeGauge()
         {
             InitializeComponent();
 
             // Set up ViewModel
-            TobiiViewModel viewModel = new TobiiViewModel();
-            this.DataContext = viewModel;
+            //TobiiViewModel viewModel = new TobiiViewModel();
+            //this.DataContext = viewModel;
 
             CompositionTarget.Rendering += UpdateRectangle;
 
@@ -32,6 +32,7 @@ namespace JuliusSweetland.OptiKey.UI.Views
 
             // TODO: Avoid reaching into VM!!
             TobiiViewModel viewModel = (TobiiViewModel)this.DataContext;
+            if (viewModel == null) { return;  }
 
             float scaleX = (float)trackBox.Width;
             float scaleY = (float)trackBox.Height;

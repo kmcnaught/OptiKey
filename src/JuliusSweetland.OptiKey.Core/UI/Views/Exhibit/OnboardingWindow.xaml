@@ -1,0 +1,31 @@
+﻿<Window x:Class="JuliusSweetland.OptiKey.UI.Views.Exhibit.OnboardingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit"
+        xmlns:vms="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Exhibit"        
+        mc:Ignorable="d"
+        Title="OnboardingWindow" Height="450" Width="800">
+    <!-- This will display each page of the onboarding workflow -->
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vms:FaceViewModel}">
+            <local:FaceWindow />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:IntroViewModel}">
+            <local:IntroScreen />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:TobiiViewModel}">
+            <local:EyeGauge />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:PostCalibViewModel}">
+            <local:PostCalib />
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <ContentControl Content="{Binding CurrentPageViewModel}" Margin="-10,0,10,0" />
+        <Button  Click="Prev_Clicked" Width="50" Height="25" VerticalAlignment="Top" Margin="-100, 10, 10, 10">Prev</Button>
+        <Button  Click="Next_Clicked" Width="50" Height="25" VerticalAlignment="Top" Margin="100, 10, 10, 10">Next</Button>
+    </Grid>
+</Window>

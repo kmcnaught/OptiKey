@@ -16,6 +16,7 @@ using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
+using JuliusSweetland.OptiKey.UI.ViewModels.Exhibit;
 using JuliusSweetland.OptiKey.UI.Views;
 using JuliusSweetland.OptiKey.UI.Views.Exhibit;
 using log4net;
@@ -243,6 +244,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
         private FaceWindow faceWindow;
         private EyeGauge eyeStatusWindow;
+        private IntroScreen introWindow;
+        private OnboardingWindow onboardWindow;
 
         private void DemoShortcut(int i)
         {
@@ -298,28 +301,31 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             }
             else if (i == 6)
             {
-                faceWindow = new FaceWindow();
-                faceWindow.Show();
+                onboardWindow = new OnboardingWindow();
+                onboardWindow.DataContext = new OnboardingViewModel();
+                onboardWindow.Show();
             }
             else if (i == 7)
             {
-                if (faceWindow != null)
+                if (onboardWindow != null)
                 {
-                    faceWindow.Close();
-                    faceWindow = null;
+                    onboardWindow.Close();
+                    onboardWindow = null;
                 }
             }
             else if (i == 8)
             {
-                eyeStatusWindow = new EyeGauge();
-                eyeStatusWindow.Show();
+                //eyeStatusWindow = new EyeGauge();
+                //eyeStatusWindow.Show();
+                //introWindow = new IntroScreen();
+                //introWindow.Show();
             }
             else if (i == 9)
             {
                 if (eyeStatusWindow != null)
                 {
-                    eyeStatusWindow.Close();
-                    eyeStatusWindow = null;
+                    //eyeStatusWindow.Close();
+                    //eyeStatusWindow = null;
                 } 
             }
             //if (i == 1)

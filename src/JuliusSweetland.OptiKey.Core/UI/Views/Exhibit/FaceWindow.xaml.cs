@@ -18,7 +18,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
     /// <summary>
     /// Interaction logic for FaceWindow.xaml
     /// </summary>
-    public partial class FaceWindow : Window
+    public partial class FaceWindow : UserControl
     {
         public FaceWindow()
         {

@@ -7,9 +7,10 @@ using Prism.Mvvm;
 using Tobii.EyeX.Client;
 using Tobii.EyeX.Framework;
 
-namespace JuliusSweetland.OptiKey.UI.ViewModels
+namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
+
 {
-    public class TobiiViewModel : BindableBase
+    public class TobiiViewModel : BindableBase, IPageViewModel
     {
         //private static EngineStateObserver<EyeTrackingDeviceStatus> stateObserver;
         public static EyeXHost EyeXHost { get; private set; }

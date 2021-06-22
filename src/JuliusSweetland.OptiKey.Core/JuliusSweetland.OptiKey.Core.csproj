@@ -430,6 +430,10 @@
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\FaceViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\IntroViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\IPageViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\OnboardingViewModel.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\DynamicKeyboard.cs" />
@@ -522,7 +526,11 @@
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
     <Compile Include="UI\Utilities\ColorConversions.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\PostCalibViewModel.cs" />
     <Compile Include="UI\Views\Exhibit\Commands.cs" />
+    <Compile Include="UI\Views\Exhibit\OnboardingWindow.xaml.cs">
+      <DependentUpon>OnboardingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Exhibit\PostCalib.xaml.cs">
       <DependentUpon>PostCalib.xaml</DependentUpon>
     </Compile>
@@ -1376,6 +1384,10 @@
     <Page Include="UI\Controls\CK20Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\OnboardingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Exhibit\PostCalib.xaml">
       <Generator>MSBuild:Compile</Generator>
