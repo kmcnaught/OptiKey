@@ -21,7 +21,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -29,7 +30,7 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="0"
+        <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
                    VerticalAlignment="Center" HorizontalAlignment="Center"  
                    Text="These are your eyes. Make sure both are visible before continuing." 
                    FontSize="16" FontFamily="Verdana" 
@@ -37,7 +38,7 @@
                    TextWrapping="Wrap" TextAlignment="Center" Padding="2">
             
         </TextBlock>
-        <Viewbox Grid.Column="1" Grid.Row="1" >
+        <Viewbox Grid.Column="1" Grid.Row="1"  Grid.ColumnSpan="2" >
             <Canvas Background="DarkGray" Width="300" Height="200" x:Name="trackBox">
                 <Border x:Name="trackBorder"  Width="300" Height="200" Background="Transparent" BorderBrush="Green" BorderThickness="5"></Border>
                 <!--<Label HorizontalAlignment="Center">These are your eyes</Label> -->
@@ -61,15 +62,51 @@
                 </Rectangle>
             </Canvas>
         </Viewbox>
+        <Grid Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+              Visibility="{Binding CanGoForward, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="51*"/>
+                <RowDefinition Height="49*"/>
+            </Grid.RowDefinitions>
 
-        <Viewbox Grid.Column="1" Grid.Row="0">
+            <Rectangle x:Name="rectangle"
+                Fill="DarkCyan" Stroke="Black" RadiusX="20" RadiusY="20"
+                Width="350" Height="60" Margin="25,20" Grid.RowSpan="2"/>
+            <TextBlock                 
+                   VerticalAlignment="Center" HorizontalAlignment="Center"  
+                   Text="Press the green button to continue!" 
+                                Width="250"
+
+                   FontSize="20" FontFamily="Verdana" 
+                   Foreground="AntiqueWhite"                                      
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="2" Margin="75,24,75,23" Grid.RowSpan="2">
+            </TextBlock>
+        </Grid>
+
+        <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+              Visibility="{Binding CanGoBackward, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
+            <Rectangle x:Name="rectangle2"
+                Fill="DarkGoldenrod" Stroke="Black" RadiusX="20" RadiusY="20"
+                Width="350" Height="60"/>
+            <TextBlock                 
+                   VerticalAlignment="Center" HorizontalAlignment="Center"  
+                   Text="Press the yellow button to go back"
+                Width="250"
+                   FontSize="20" FontFamily="Verdana" 
+                   Foreground="AntiqueWhite"                                      
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
+            </TextBlock>
+        </Grid>
+
+
+        <Viewbox Grid.Column="1" Grid.Row="0"  Grid.ColumnSpan="2">
             <Canvas x:Name="arrowCloser" Background="Transparent" Width="300" Height="200" Visibility="Hidden">
                 <Polygon Points="75, 175 125, 100 100, 100 150, 50 200, 100 175, 100 225, 175" Stroke="Black" StrokeThickness="4" Fill="Yellow" />
                 <Label FontWeight="Bold" Canvas.Top="140" Canvas.Left="91" FontSize="16">Move forward</Label>
             </Canvas>
         </Viewbox>
 
-        <Viewbox Grid.Column="1" Grid.Row="2">
+        <Viewbox Grid.Column="1" Grid.Row="2"  Grid.ColumnSpan="2">
             <Canvas x:Name="arrowFurther" Background="Transparent" Width="300" Height="200" Visibility="Hidden">
                 <Polygon Points="150, 150 75, 100 110, 100 135, 25 165, 25 190, 100 225,100" Stroke="Black" StrokeThickness="4" Fill="Yellow" />
                 <Label FontWeight="Bold" Canvas.Top="95" Canvas.Left="104" FontSize="16">Move back</Label>

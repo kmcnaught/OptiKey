@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
-    class PostCalibViewModel : IPageViewModel
+    class PostCalibViewModel : PageViewModel
     {
+        public PostCalibViewModel()
+        {
+            CanGoBackward = true;
+            CanGoForward = true;
+        }
+
+        public override void SetUp()
+        {
+        }
+
+        public override void TearDown()
+        {
+        }
     }
 }

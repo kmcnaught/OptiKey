@@ -10,8 +10,13 @@ using Tobii.EyeX.Framework;
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
 {
-    public class TobiiViewModel : BindableBase, IPageViewModel
+    public class TobiiViewModel : PageViewModel
     {
+        public TobiiViewModel()
+        {
+            
+        }
+
         //private static EngineStateObserver<EyeTrackingDeviceStatus> stateObserver;
         public static EyeXHost EyeXHost { get; private set; }
         private static EyePositionDataStream _eyePositionDataStream;
@@ -20,35 +25,83 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         public EyeStatus leftEye = new EyeStatus();
         public EyeStatus rightEye = new EyeStatus();
 
-        public TobiiViewModel()
+        public override void SetUp()
         {
-            TobiiLabel = "wibble";
+            CanGoBackward = true;
+            CanGoForward = false;
 
+            if (null == EyeXHost)
+            {
+                EyeXHost = TobiiEyeXPointService.EyeXHost;
 
-            // Connect to Tobii
-            InitializeHost();
+                // Set up streams
+                _eyePositionDataStream = EyeXHost.CreateEyePositionDataStream();
+                _eyePositionDataStream.Next += (s, eyePosition) => {
+                    leftEye.Update(eyePosition.LeftEyeNormalized.IsValid,
+                                    1.0f - (float)eyePosition.LeftEyeNormalized.X,
+                                    (float)eyePosition.LeftEyeNormalized.Y,
+                                    (float)eyePosition.LeftEyeNormalized.Z);
 
-            // Set up streams
-            _eyePositionDataStream = EyeXHost.CreateEyePositionDataStream();    
-            _eyePositionDataStream.Next +=(s, eyePosition) => {
-                leftEye.Update(eyePosition.LeftEyeNormalized.IsValid,
-                                1.0f - (float)eyePosition.LeftEyeNormalized.X,
-                                (float)eyePosition.LeftEyeNormalized.Y,
-                                (float)eyePosition.LeftEyeNormalized.Z);
+                    rightEye.Update(eyePosition.RightEyeNormalized.IsValid,
+                                    1.0f - (float)eyePosition.RightEyeNormalized.X,
+                                    (float)eyePosition.RightEyeNormalized.Y,
+                                    (float)eyePosition.RightEyeNormalized.Z);
 
-                rightEye.Update(eyePosition.RightEyeNormalized.IsValid,
-                                1.0f - (float)eyePosition.RightEyeNormalized.X,
-                                (float)eyePosition.RightEyeNormalized.Y,
-                                (float)eyePosition.RightEyeNormalized.Z);
-                                
-                this.UpdateVisibility();
+                    canGoForward = IsGoodEnough();
 
-                // Update eye sizes, which are relative to UI scale and z distance
-                this.UpdateSize();
+                    // TODO: some filtering!
+                    //FIXME: this might only gets updated if there's an eye visible?? 
+                    RaisePropertyChanged("CanGoForward");
 
-                // Update traffic-light colours of eyes and border
-                this.UpdateColour();
-            };
+                    this.UpdateVisibility();
+
+                    // Update eye sizes, which are relative to UI scale and z distance
+                    this.UpdateSize();
+
+                    // Update traffic-light colours of eyes and border
+                    this.UpdateColour();
+                };
+            }
+        }
+
+        public override void TearDown()
+        {
+            EyeXHost = null;
+            _eyePositionDataStream = null;
+        }
+
+        private bool IsGoodEnough()
+        {
+            // allow user to progress if either:
+            // (a) both eyes are visible, and 'okay'
+            // (b) one eye is visible, and 'good'
+
+            // ideally we want a timer which reduces in strictness over time
+            // and maybe a "are you there? I'm struggling to see you" hint after
+            // ages.
+            
+            if (!leftEyeVisible && !rightEyeVisible)
+            {
+                return false;
+            }
+
+            double absLeftEyeZdiff = Math.Abs(leftEye.zPos - 0.5);
+            double absRightEyeZdiff = Math.Abs(rightEye.zPos - 0.5);
+
+            if (leftEyeVisible && rightEyeVisible &&
+                (absLeftEyeZdiff < 0.4 || absRightEyeZdiff < 0.4))
+            {
+                return true;
+            }
+
+            if ((leftEyeVisible && absLeftEyeZdiff < 0.2) ||
+                (rightEyeVisible && absRightEyeZdiff < 0.2))
+            {
+                return true;
+            }
+
+            return false;
+
         }
 
         private void UpdateSize()
@@ -125,11 +178,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private static List<EyeTrackingDeviceStatus> states;
 
         #region Tobii handling
-        private static void InitializeHost()
-        {            
-            // This will already have been initialised by Optikey 
-            EyeXHost = TobiiEyeXPointService.EyeXHost;            
-        }
+       
 
         private static void StateObserver_Changed(object sender, EngineStateValue<EyeTrackingDeviceStatus> e)
         {
@@ -151,7 +200,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 EyeXHost = null;
             }
         }
-        
+
         #endregion
     }
 }

@@ -7,7 +7,20 @@ using System.Threading.Tasks;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
-    class IntroViewModel : BindableBase, IPageViewModel
+    class IntroViewModel : PageViewModel
     {
+        public IntroViewModel()
+        {
+            CanGoBackward = false;
+            CanGoForward = true;
+        }
+
+        public override void SetUp()
+        {
+        }
+
+        public override void TearDown()
+        {
+        }
     }
 }

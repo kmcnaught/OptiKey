@@ -13,8 +13,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         #region Fields
 
-        //private IPageViewModel _currentPageViewModel;
-        private List<IPageViewModel> _pageViewModels;
+        //private PageViewModel _currentPageViewModel;
+        private List<PageViewModel> _pageViewModels;
         private int _pageNumber;
         
         #endregion
@@ -28,24 +28,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             PageViewModels.Add(new PostCalibViewModel());
 
             // Set starting page
-            SetProperty(ref _pageNumber, 0);
+            SetPage(0);
             //CurrentPageViewModel = PageViewModels[_pageNumber];
         }
 
         #region Properties         
 
-        public List<IPageViewModel> PageViewModels
+        public List<PageViewModel> PageViewModels
         {
             get
             {
                 if (_pageViewModels == null)
-                    _pageViewModels = new List<IPageViewModel>();
+                    _pageViewModels = new List<PageViewModel>();
 
                 return _pageViewModels;
             }
         }
 
-        public IPageViewModel CurrentPageViewModel
+        public PageViewModel CurrentPageViewModel
         {
             get
             {
@@ -73,7 +73,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {            
             _pageNumber++;
             _pageNumber %= PageViewModels.Count;
-            RaisePropertyChanged("CurrentPageViewModel");
+            SetPage(_pageNumber);
         }
 
         public void PrevPage()
@@ -81,7 +81,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             _pageNumber--;
             _pageNumber += PageViewModels.Count;
             _pageNumber %= PageViewModels.Count;
-            RaisePropertyChanged("CurrentPageViewModel");
+            SetPage(_pageNumber);
+        }
+
+        private void SetPage(int i)
+        {
+            PageViewModels[_pageNumber].TearDown();
+            RaisePropertyChanged("CurrentPageViewModel");            
+            PageViewModels[_pageNumber].SetUp();
         }
 
         /*private void ChangeViewModel(IPageViewModel viewModel)

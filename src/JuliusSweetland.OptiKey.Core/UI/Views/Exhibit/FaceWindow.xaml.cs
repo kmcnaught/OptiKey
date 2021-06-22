@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WPFMediaKit.DirectShow.Controls;
@@ -24,7 +25,23 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
         {
             InitializeComponent();
             // Use first video source
-            videoCapElement.VideoCaptureDevice = MultimediaUtil.VideoInputDevices[0];
+            videoCapElement.VideoCaptureDevice = MultimediaUtil.VideoInputDevices[0];                        
+
+            var fadeInOutAnimation = new DoubleAnimation
+            {
+                From = 0.25,
+                To = 0.5,
+                Duration = TimeSpan.FromSeconds(0.25),
+                AutoReverse = true,
+                RepeatBehavior = RepeatBehavior.Forever,
+            };
+
+            rectangle.BeginAnimation(OpacityProperty, fadeInOutAnimation);
+            //rectangle2.BeginAnimation(OpacityProperty, fadeInOutAnimation);
         }
+
+        #region Properties
+        
+        #endregion
     }
 }
