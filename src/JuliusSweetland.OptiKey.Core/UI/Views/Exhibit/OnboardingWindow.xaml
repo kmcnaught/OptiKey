@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit"
         xmlns:vms="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Exhibit"        
+        WindowStartupLocation="CenterOwner"
+        WindowState="Maximized"
         mc:Ignorable="d"
-        Title="OnboardingWindow" Height="450" Width="800">
+        Title="OnboardingWindow">
     <!-- This will display each page of the onboarding workflow -->
     <Window.Resources>
         <DataTemplate DataType="{x:Type vms:FaceViewModel}">
