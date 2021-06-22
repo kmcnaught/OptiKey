@@ -25,11 +25,25 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
             InitializeComponent();
 
             //Instantiate ViewModel and set as DataContext 
-            //var onboardingVM = new OnboardingViewModel();
-            //this.DataContext = onboardingVM;
+            var onboardingVM = new OnboardingViewModel();
+            this.DataContext = onboardingVM;
         }
 
+        public bool IsClosed { get; private set; }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            IsClosed = true;
+        }
+
+        // FIXME route these as commands without grabbing VM
         public void Prev_Clicked(object sender, RoutedEventArgs e)
+        {
+            this.Previous();
+        }
+
+        public void Previous()
         {
             OnboardingViewModel vm = (OnboardingViewModel)
                 (this.DataContext);
@@ -38,6 +52,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
         }
 
         public void Next_Clicked(object sender, RoutedEventArgs e)
+        {
+            this.Next();
+        }
+
+        public void Next()
         {
             OnboardingViewModel vm = (OnboardingViewModel)
                 (this.DataContext);

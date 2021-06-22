@@ -20,6 +20,7 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Exhibit;
 using JuliusSweetland.OptiKey.UI.Views;
 using JuliusSweetland.OptiKey.UI.Views.Exhibit;
 using log4net;
+using NHotkey.Wpf;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 
@@ -133,6 +134,34 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 Log.Info("Main window closing event detected. In some circumstances, such as closing OptiKey from the taskbar when a background thread is running, OptiKey will not close and instead become a background process. Forcing a full shutdown.");
                 Application.Current.Shutdown();
             };
+
+            HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.None, OnBack);
+            HotkeyManager.Current.AddOrReplace("Forward", Key.Right, ModifierKeys.None, OnForward);
+
+        }
+
+        private void OnForward(object sender, NHotkey.HotkeyEventArgs e)
+        {
+            if (onboardWindow == null || onboardWindow.IsClosed)
+            {
+                onboardWindow = new OnboardingWindow();
+                onboardWindow.Show();                
+                onboardWindow.Focus();
+            }
+            else
+            {
+                onboardWindow.Focus();
+                onboardWindow.Next();                
+            }
+        }
+
+        private void OnBack(object sender, NHotkey.HotkeyEventArgs e)
+        {
+            if (onboardWindow != null)
+            {
+                onboardWindow.Focus();
+                onboardWindow.Previous();
+            }
         }
 
         public IList<Tuple<KeyValue, KeyValue>> KeyFamily { get { return keyStateService.KeyFamily; } }
