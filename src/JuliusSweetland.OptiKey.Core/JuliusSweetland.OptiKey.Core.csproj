@@ -106,6 +106,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ext\TheEyeTribe\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NHotkey, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a76ffb086700b11c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NHotkey.2.1.0\lib\net45\NHotkey.dll</HintPath>
+    </Reference>
+    <Reference Include="NHotkey.Wpf, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a76ffb086700b11c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NHotkey.Wpf.2.1.0\lib\net45\NHotkey.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -2003,12 +2009,12 @@
   <ItemGroup>
     <PublishFile Include="External Libraries\Newtonsoft.Json.xml">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
