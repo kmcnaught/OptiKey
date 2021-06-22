@@ -6,28 +6,80 @@
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit"
         xmlns:WPFMediaKit="clr-namespace:WPFMediaKit.DirectShow.Controls;assembly=WPFMediaKit"
         mc:Ignorable="d"
+        Background="Black"
         Title="FaceWindow" Height="450" Width="800">
+    
     <Grid>
-        <WPFMediaKit:VideoCaptureElement
-            x:Name="videoCapElement"
-            LoadedBehavior="Play"
-            DesiredPixelWidth="320"
-            DesiredPixelHeight="240"
-            Stretch="UniformToFill"
-            FPS="30"         
-            RenderTransformOrigin="0.5,0.5"
-        >
-            <!-- Flip video horizontally  -->
-            <WPFMediaKit:VideoCaptureElement.RenderTransform>
-                <ScaleTransform ScaleX="-1" />
-            </WPFMediaKit:VideoCaptureElement.RenderTransform> 
-        </WPFMediaKit:VideoCaptureElement>
-        <Image x:Name="imgOverlay"  
-               Source="facemask.png"
-               HorizontalAlignment="Stretch" 
-               VerticalAlignment="Stretch"
-               Width="Auto"
-               Height="Auto"
-               Opacity="0.5" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Image Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
+               Margin="5"
+               Source="Resources/EyeMine_Logo_Trans.png"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
+                   VerticalAlignment="Bottom" HorizontalAlignment="Center"  
+                   Text="Play Minecraft with your eyes!" 
+                   FontSize="16" FontFamily="Verdana" 
+                   Foreground="AntiqueWhite"
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
+        </TextBlock>
+        
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
+            <WPFMediaKit:VideoCaptureElement
+            
+                x:Name="videoCapElement"
+                LoadedBehavior="Play"
+                DesiredPixelWidth="320"
+                DesiredPixelHeight="240"
+                Stretch="Uniform"
+                FPS="30"         
+                RenderTransformOrigin="0.5,0.5"
+            >
+                <!-- Flip video horizontally  -->
+                <WPFMediaKit:VideoCaptureElement.RenderTransform>
+                    <ScaleTransform ScaleX="-1" />
+                </WPFMediaKit:VideoCaptureElement.RenderTransform> 
+            </WPFMediaKit:VideoCaptureElement>
+            <Image x:Name="imgOverlay"  
+                   Source="facemask.png"
+                   HorizontalAlignment="Stretch" 
+                   VerticalAlignment="Stretch"
+                   Width="Auto"
+                   Height="Auto"
+                   Opacity="0.5" />
+        </Grid>
+
+
+
+        <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"
+                   VerticalAlignment="top" HorizontalAlignment="Center"  
+                   Text="Adjust the screen to line yourself up" 
+                   FontSize="20" FontFamily="Verdana" 
+                   Foreground="AntiqueWhite"                                      
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
+            
+        </TextBlock>
+        
+        <Rectangle x:Name="rectangle" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"
+                Fill="DarkCyan" Stroke="Black" RadiusX="10" RadiusY="10"
+                Width="350" Height="35"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"  
+                   Text="Press the green button to start!" 
+                   FontSize="20" FontFamily="Verdana" 
+                   Foreground="AntiqueWhite"                                      
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="2"/>
+
+
     </Grid>
 </Window>
