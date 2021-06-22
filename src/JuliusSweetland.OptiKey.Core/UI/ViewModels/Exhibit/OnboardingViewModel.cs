@@ -86,7 +86,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void SetPage(int i)
         {
-            PageViewModels[_pageNumber].TearDown();
+            if (_pageNumber > 0) 
+                PageViewModels[_pageNumber-1].TearDown();
             RaisePropertyChanged("CurrentPageViewModel");            
             PageViewModels[_pageNumber].SetUp();
         }
