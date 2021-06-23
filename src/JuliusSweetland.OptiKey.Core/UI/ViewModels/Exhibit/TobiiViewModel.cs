@@ -16,9 +16,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             
         }
-
-        //private static EngineStateObserver<EyeTrackingDeviceStatus> stateObserver;
-        public static EyeXHost EyeXHost { get; private set; }
+                
         private static EyePositionDataStream _eyePositionDataStream;
 
         // Read/write to float variable are atomic so we don't need to worry about mutexes
@@ -32,12 +30,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             CanGoBackward = true;
             CanGoForward = false;
 
-            if (null == EyeXHost)
+            if (null == _eyePositionDataStream)
             {
-                EyeXHost = TobiiEyeXPointService.EyeXHost;
-
                 // Set up streams
-                _eyePositionDataStream = EyeXHost.CreateEyePositionDataStream();
+                _eyePositionDataStream = TobiiEyeXPointService.EyeXHost.CreateEyePositionDataStream();
                 _eyePositionDataStream.Next += (s, eyePosition) => {
                     leftEye.Update(eyePosition.LeftEyeNormalized.IsValid,
                                     1.0f - (float)eyePosition.LeftEyeNormalized.X,
@@ -69,7 +65,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public override void TearDown()
         {
-            EyeXHost.LaunchGuestCalibration();            
+            TobiiEyeXPointService.EyeXHost.LaunchGuestCalibration();            
         }
 
         private bool IsGoodEnough()
@@ -175,34 +171,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             set { SetProperty(ref label, value); }
         }
         #endregion
-
-
-        private static List<EyeTrackingDeviceStatus> states;
-
-        #region Tobii handling
-       
-
-        private static void StateObserver_Changed(object sender, EngineStateValue<EyeTrackingDeviceStatus> e)
-        {
-            EyeTrackingDeviceStatus status = e.Value;
-            states.Add(status);
-            if (status == EyeTrackingDeviceStatus.Tracking)
-            {
-                //stateObserver.Changed -= StateObserver_Changed;
-            }            
-        }
-
-        private static void DisableConnectionWithTobiiEngine()
-        {
-            // We should disable connection with TobiiEngine before exit the application.
-            if (EyeXHost != null)
-            {
-                Console.WriteLine("Disposing of the EyeXHost.");
-                EyeXHost.Dispose();
-                EyeXHost = null;
-            }
-        }
-
-        #endregion
+        
     }
 }
