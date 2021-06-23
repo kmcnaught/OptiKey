@@ -50,7 +50,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                     (float)eyePosition.RightEyeNormalized.Z);
 
                     TimeSpan timeSpan = DateTime.Now - initTime;
-                    canGoForward = IsGoodEnough() && timeSpan.TotalSeconds > 10;
+                    canGoForward = IsGoodEnough();
 
                     // TODO: some filtering!
                     //FIXME: this might only gets updated if there's an eye visible?? 
