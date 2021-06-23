@@ -47,7 +47,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 foreach (DirectoryInfo subdir in dirs)
                 {
                     string temppath = Path.Combine(destDirName, subdir.Name);
-                    DirectoryCopy(subdir.FullName, temppath, copySubDirs);
+                    DirectoryCopy(subdir.FullName, temppath, copySubDirs, allowOverwrite);
                 }
             }
         }
