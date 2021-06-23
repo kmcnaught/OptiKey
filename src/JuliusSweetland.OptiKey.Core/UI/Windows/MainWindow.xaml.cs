@@ -288,7 +288,12 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             if (i == 0)
             {
-                
+                var mainViewModel = MainView.DataContext as MainViewModel;
+                if (mainViewModel != null)
+                {
+                    String keyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museumDisabled.xml";
+                    mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(keyboard));
+                }
             }
             else if (i == 1)
             {
@@ -332,7 +337,10 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             if (minecraftProcess != null)
             {
                 ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
-                FocusWindow(minecraftProcess);                
+                FocusWindow(minecraftProcess);
+                var mainViewModel = MainView.DataContext as MainViewModel;
+                string enabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
+                mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(enabledKeyboard));
             }
         }
 

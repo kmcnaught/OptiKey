@@ -196,7 +196,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.Info("DetachInputServiceEventHandlers complete.");
         }
 
-        private void ProcessChangeKeyboardKeyValue(ChangeKeyboardKeyValue keyValue)
+        public void ProcessChangeKeyboardKeyValue(ChangeKeyboardKeyValue keyValue)
         {
             var currentKeyboard = Keyboard;
 
