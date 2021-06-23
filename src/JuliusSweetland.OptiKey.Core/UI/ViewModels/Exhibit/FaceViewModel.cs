@@ -16,6 +16,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         }
         public override void SetUp()
         {
+            SetInitTime();
         }
 
         public override void TearDown()

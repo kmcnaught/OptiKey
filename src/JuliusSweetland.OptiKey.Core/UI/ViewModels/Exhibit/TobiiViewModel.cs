@@ -27,6 +27,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public override void SetUp()
         {
+            SetInitTime();
+
             CanGoBackward = true;
             CanGoForward = false;
 

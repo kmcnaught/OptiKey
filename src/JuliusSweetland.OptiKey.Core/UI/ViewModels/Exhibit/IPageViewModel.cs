@@ -1,5 +1,5 @@
 ﻿using Prism.Mvvm;
-
+using System;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
@@ -7,6 +7,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
     {
         abstract public void SetUp();
         abstract public void TearDown();
+
+        protected DateTime initTime;
+
+        protected void SetInitTime()
+        {
+            initTime = DateTime.Now;
+        }
 
         protected bool canGoForward = false;
         public bool CanGoForward
