@@ -300,7 +300,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
             if (alreadyInstalled)
             {
-                // On upgrades we only need to replace mod file
+                // On upgrades we back up old stuff
                 string[] oldModFiles = FindAllModFiles(modDir);
 
                 try
@@ -311,9 +311,6 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                         File.Copy(oldFile, oldFile + ".backup", true);
                         File.Delete(oldFile);
                     }
-
-                    // Install new file
-                    File.Copy(modFile, Path.Combine(modDir, Path.GetFileName(modFile)), true);
                 }
                 catch (Exception e)
                 {
@@ -322,10 +319,11 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                     return ActionResult.Failure;
                 }               
             }
-            else 
+            
+            // All installs get frsesh everything
             {
-                // First time install we need to set up config also
-                string configFileSrc = mouseEmulation ? "eyemine-client-mouse.toml" : "eyemine-client-tobii.toml";                
+
+                string configFileSrc = mouseEmulation ? "eyemine-client-mouse.toml" : "eyemine-client-tobii.toml";
                 string configFileDst = "eyemine-client.toml";
 
                 if (!File.Exists(Path.Combine(rootDir, configFileSrc)))
@@ -343,7 +341,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
                 // And any bundled saves files
                 string installedSavesDir = Path.Combine(rootDir, "saves");
-                string minecraftSavesDir = Path.Combine(eyemineGameDir, "saves");                
+                string minecraftSavesDir = Path.Combine(eyemineGameDir, "saves");
                 if (Directory.Exists(installedSavesDir))
                 {
                     session.Log("Copying bundled saves dir");
