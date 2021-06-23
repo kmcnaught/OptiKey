@@ -160,7 +160,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 // Copy folder to new location
                 utils.DirectoryCopy(Path.Combine(oldSavesDir, worldName),
                     Path.Combine(newSavesDir, newWorldName),
-                    true);
+                    true, true);
 
                 // TODO: split path and creation date, copy it.
                 session.Log(worldName);
@@ -349,7 +349,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                     // Copy folder to new location
                     try
                     {
-                        utils.DirectoryCopy(installedSavesDir, minecraftSavesDir, true);
+                        utils.DirectoryCopy(installedSavesDir, minecraftSavesDir, true, true);
                     }
                     catch (Exception e)
                     {
