@@ -74,7 +74,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             int i = _pageNumber+1;
             if (i < PageViewModels.Count)
             {
-                SetPage(i);
+                SetPage(i, true);
                 return true;
             }
             else
@@ -97,13 +97,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }            
         }
 
-        private void SetPage(int i)
+        private void SetPage(int i, bool teardownCurrent=false)
         {
+            if (teardownCurrent) //TOO: distinguish between "stuff to do on finishing page" and "stuff to do whenever closed" e.g. prev vs next
+            {
+                // cleanly leave current page
+                PageViewModels[_pageNumber].TearDown();
+            }
+
+            // set up new page
             _pageNumber = i;
-            if (_pageNumber > 0) 
-                PageViewModels[_pageNumber-1].TearDown();
-            RaisePropertyChanged("CurrentPageViewModel");            
             PageViewModels[_pageNumber].SetUp();
+
+            RaisePropertyChanged("CurrentPageViewModel");                        
         }
 
         /*private void ChangeViewModel(IPageViewModel viewModel)
