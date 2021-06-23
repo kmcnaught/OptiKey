@@ -135,8 +135,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 Application.Current.Shutdown();
             };
 
-            HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.None, OnBack);
-            HotkeyManager.Current.AddOrReplace("Forward", Key.Right, ModifierKeys.None, OnForward);
+            HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.Control, OnBack);
+            HotkeyManager.Current.AddOrReplace("Forward", Key.Right, ModifierKeys.Control, OnForward);
 
         }
 
