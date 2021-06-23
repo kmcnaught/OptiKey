@@ -144,9 +144,13 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             if (onboardWindow == null || onboardWindow.IsClosed)
             {
+                if (minecraftProcess != null)
+                {
+                    ShowWindow(minecraftProcess, PInvoke.SW_MINIMIZE);
+                }
                 onboardWindow = new OnboardingWindow();
                 onboardWindow.Show();                
-                onboardWindow.Focus();
+                onboardWindow.Focus();                
             }
             else
             {
@@ -278,61 +282,39 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
         private void DemoShortcut(int i)
         {
-            String msg = $"Demo shortcut {i}";
-            //MessageBox.Show(msg);
             if (i == 0)
             {
-                // paint
-                string javapath = @"C:\Program Files (x86)\Minecraft Launcher\runtime\jre-legacy\windows-x64\jre-legacy\bin\javaw.exe";                
-                string args = @"-XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump "" - Dos.name = Windows 10"" -Dos.version=10.0 -Xss1M -Djava.library.path=C:\Users\Kirsty\AppData\Roaming\.minecraft\bin\EyeMineExhibit -Dminecraft.launcher.brand=minecraft-launcher -Dminecraft.launcher.version=2.2.3125 -cp C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\forge\1.14.4-28.2.0\forge-1.14.4-28.2.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm\6.2\asm-6.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-commons\6.2\asm-commons-6.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-tree\6.2\asm-tree-6.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\cpw\mods\modlauncher\4.1.0\modlauncher-4.1.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\cpw\mods\grossjava9hacks\1.1.0\grossjava9hacks-1.1.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\accesstransformers\1.0.1-milestone.0.1+94458e7-shadowed\accesstransformers-1.0.1-milestone.0.1+94458e7-shadowed.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\eventbus\1.0.0-service\eventbus-1.0.0-service.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\forgespi\1.5.0\forgespi-1.5.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\coremods\1.0.0\coremods-1.0.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\unsafe\0.2.0\unsafe-0.2.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\electronwill\night-config\core\3.6.0\core-3.6.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\electronwill\night-config\toml\3.6.0\toml-3.6.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\jline\jline\3.12.1\jline-3.12.1.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\maven\maven-artifact\3.6.0\maven-artifact-3.6.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\jodah\typetools\0.6.0\typetools-0.6.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\java3d\vecmath\1.5.2\vecmath-1.5.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-api\2.11.2\log4j-api-2.11.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-core\2.11.2\log4j-core-2.11.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecrell\terminalconsoleappender\1.2.0\terminalconsoleappender-1.2.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\sf\jopt-simple\jopt-simple\5.0.4\jopt-simple-5.0.4.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\patchy\1.1\patchy-1.1.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\oshi-project\oshi-core\1.1\oshi-core-1.1.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\jna\4.4.0\jna-4.4.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\platform\3.4.0\platform-3.4.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\ibm\icu\icu4j-core-mojang\51.2\icu4j-core-mojang-51.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\javabridge\1.0.22\javabridge-1.0.22.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\io\netty\netty-all\4.1.25.Final\netty-all-4.1.25.Final.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\google\guava\guava\21.0\guava-21.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-lang3\3.5\commons-lang3-3.5.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\commons-io\commons-io\2.5\commons-io-2.5.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\commons-codec\commons-codec\1.10\commons-codec-1.10.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\java\jinput\jinput\2.0.5\jinput-2.0.5.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\java\jutils\jutils\1.0.0\jutils-1.0.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\brigadier\1.0.17\brigadier-1.0.17.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\datafixerupper\2.0.24\datafixerupper-2.0.24.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\authlib\1.5.25\authlib-1.5.25.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-compress\1.8.1\commons-compress-1.8.1.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpclient\4.3.3\httpclient-4.3.3.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\commons-logging\commons-logging\1.1.3\commons-logging-1.1.3.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpcore\4.3.2\httpcore-4.3.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\it\unimi\dsi\fastutil\8.2.1\fastutil-8.2.1.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.2.2\lwjgl-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.2.2\lwjgl-jemalloc-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.2.2\lwjgl-openal-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.2.2\lwjgl-opengl-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.2.2\lwjgl-glfw-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.2.2\lwjgl-stb-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\text2speech\1.11.3\text2speech-1.11.3.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\versions\1.14.4-forge-28.2.0\1.14.4-forge-28.2.0.jar -Xmx2G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M cpw.mods.modlauncher.Launcher --username kirstym --version 1.14.4-forge-28.2.0 --gameDir C:\Users\Kirsty\AppData\Roaming\.minecraft\EyeMineExhibition --assetsDir C:\Users\Kirsty\AppData\Roaming\.minecraft\assets --assetIndex 1.14 --uuid edbd23475bd5466f8a3e5fceb85cd13b --accessToken ACCESS_TOKEN_HERE --userType mojang --versionType release --launchTarget fmlclient --fml.forgeVersion 28.2.0 --fml.mcVersion 1.14.4 --fml.forgeGroup net.minecraftforge --fml.mcpVersion 20190829.143755";
-
-                /*var processStartInfo = new ProcessStartInfo(javapath, args);
-                minecraftProcess = Process.Start(processStartInfo);
-                minecraftProcess.WaitForInputIdle();*/
-
-                int exitCode;
-                ProcessStartInfo processInfo;
-                Process process;
-
-                processInfo = new ProcessStartInfo("cmd.exe", "/c " + javapath + " " + args);
-                processInfo.CreateNoWindow = true;
-                processInfo.UseShellExecute = false;
-                // *** Redirect the output ***
-                processInfo.RedirectStandardError = true;
-                processInfo.RedirectStandardOutput = true;
-
-                process = Process.Start(processInfo);
+                string javapath = @"C:\Program Files (x86)\Minecraft Launcher\runtime\jre-legacy\windows-x64\jre-legacy\bin\javaw.exe";
+                string args = @"-XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump ""-Dos.name\ =\ Windows\ 10"" -Dos.version=10.0 -Xss1M -Djava.library.path=C:\Users\Kirsty\AppData\Roaming\.minecraft\bin\EyeMineExhibit -Dminecraft.launcher.brand=minecraft-launcher -Dminecraft.launcher.version=2.2.3125 -cp C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\forge\1.14.4-28.2.0\forge-1.14.4-28.2.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm\6.2\asm-6.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-commons\6.2\asm-commons-6.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-tree\6.2\asm-tree-6.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\cpw\mods\modlauncher\4.1.0\modlauncher-4.1.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\cpw\mods\grossjava9hacks\1.1.0\grossjava9hacks-1.1.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\accesstransformers\1.0.1-milestone.0.1+94458e7-shadowed\accesstransformers-1.0.1-milestone.0.1+94458e7-shadowed.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\eventbus\1.0.0-service\eventbus-1.0.0-service.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\forgespi\1.5.0\forgespi-1.5.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\coremods\1.0.0\coremods-1.0.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecraftforge\unsafe\0.2.0\unsafe-0.2.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\electronwill\night-config\core\3.6.0\core-3.6.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\electronwill\night-config\toml\3.6.0\toml-3.6.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\jline\jline\3.12.1\jline-3.12.1.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\maven\maven-artifact\3.6.0\maven-artifact-3.6.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\jodah\typetools\0.6.0\typetools-0.6.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\java3d\vecmath\1.5.2\vecmath-1.5.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-api\2.11.2\log4j-api-2.11.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-core\2.11.2\log4j-core-2.11.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\minecrell\terminalconsoleappender\1.2.0\terminalconsoleappender-1.2.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\sf\jopt-simple\jopt-simple\5.0.4\jopt-simple-5.0.4.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\patchy\1.1\patchy-1.1.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\oshi-project\oshi-core\1.1\oshi-core-1.1.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\jna\4.4.0\jna-4.4.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\platform\3.4.0\platform-3.4.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\ibm\icu\icu4j-core-mojang\51.2\icu4j-core-mojang-51.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\javabridge\1.0.22\javabridge-1.0.22.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\io\netty\netty-all\4.1.25.Final\netty-all-4.1.25.Final.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\google\guava\guava\21.0\guava-21.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-lang3\3.5\commons-lang3-3.5.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\commons-io\commons-io\2.5\commons-io-2.5.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\commons-codec\commons-codec\1.10\commons-codec-1.10.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\java\jinput\jinput\2.0.5\jinput-2.0.5.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\net\java\jutils\jutils\1.0.0\jutils-1.0.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\brigadier\1.0.17\brigadier-1.0.17.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\datafixerupper\2.0.24\datafixerupper-2.0.24.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\authlib\1.5.25\authlib-1.5.25.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-compress\1.8.1\commons-compress-1.8.1.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpclient\4.3.3\httpclient-4.3.3.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\commons-logging\commons-logging\1.1.3\commons-logging-1.1.3.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpcore\4.3.2\httpcore-4.3.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\it\unimi\dsi\fastutil\8.2.1\fastutil-8.2.1.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.2.2\lwjgl-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.2.2\lwjgl-jemalloc-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.2.2\lwjgl-openal-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.2.2\lwjgl-opengl-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.2.2\lwjgl-glfw-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.2.2\lwjgl-stb-3.2.2.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\libraries\com\mojang\text2speech\1.11.3\text2speech-1.11.3.jar;C:\Users\Kirsty\AppData\Roaming\.minecraft\versions\1.14.4-forge-28.2.0\1.14.4-forge-28.2.0.jar -Xmx2G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M cpw.mods.modlauncher.Launcher --username kirstym --version 1.14.4-forge-28.2.0 --gameDir C:\Users\Kirsty\AppData\Roaming\.minecraft\EyeMineExhibition --assetsDir C:\Users\Kirsty\AppData\Roaming\.minecraft\assets --assetIndex 1.14 --uuid edbd23475bd5466f8a3e5fceb85cd13b --accessToken ACCESS_TOKEN_HERE --userType mojang --versionType release --launchTarget fmlclient --fml.forgeVersion 28.2.0 --fml.mcVersion 1.14.4 --fml.forgeGroup net.minecraftforge --fml.mcpVersion 20190829.143755";
+                
+                minecraftProcess = Process.Start(new ProcessStartInfo(javapath, args));
             }
             else if (i == 1)
             {
-                // paint
-                string PaintPath = @"C:\Windows\System32\notepad.exe";
-
-                var processStartInfo = new ProcessStartInfo(PaintPath);
-                paintProcess = Process.Start(processStartInfo);
-                paintProcess.WaitForInputIdle();                
+                 
             }
             else if (i == 2)
             {
-                ShowWindow(paintProcess, PInvoke.SW_SHOWMAXIMIZED);
+                ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
             }
             else if (i == 3)
             {
-                ShowWindow(paintProcess, PInvoke.SW_MINIMIZE);
+                ShowWindow(minecraftProcess, PInvoke.SW_MINIMIZE);
             }
             else if (i == 4)
             {
-                ShowWindow(paintProcess, PInvoke.SW_SHOWMINNOACTIVE);
+                ShowWindow(minecraftProcess, PInvoke.SW_SHOWMINNOACTIVE);
             }
             else if (i == 5)
             {                                
-                FocusWindow(paintProcess);
+                FocusWindow(minecraftProcess);
             }
             else if (i == 6)
             {
                 onboardWindow = new OnboardingWindow();
                 onboardWindow.DataContext = new OnboardingViewModel();
                 onboardWindow.Show();
+                onboardWindow.Focus();
             }
             else if (i == 7)
             {
