@@ -61,7 +61,10 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
             OnboardingViewModel vm = (OnboardingViewModel)
                 (this.DataContext);
 
-            if (vm != null) { vm.NextPage(); }
+            if (vm != null) {
+                bool success = vm.NextPage();
+                if (!success) { this.Close();  }
+            }
         }
     }
 }

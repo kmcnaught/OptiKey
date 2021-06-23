@@ -69,23 +69,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         #region Methods
         
-        public void NextPage()
-        {            
-            _pageNumber++;
-            _pageNumber %= PageViewModels.Count;
-            SetPage(_pageNumber);
+        public bool NextPage()
+        {
+            int i = _pageNumber+1;
+            if (i < PageViewModels.Count)
+            {
+                SetPage(i);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public void PrevPage()
+        public bool PrevPage()
         {
-            _pageNumber--;
-            _pageNumber += PageViewModels.Count;
-            _pageNumber %= PageViewModels.Count;
-            SetPage(_pageNumber);
+            int i = _pageNumber-1;
+            if (i >= 0)
+            {
+                SetPage(i);
+                return true;
+            }
+            else
+            {
+                return false;
+            }            
         }
 
         private void SetPage(int i)
         {
+            _pageNumber = i;
             if (_pageNumber > 0) 
                 PageViewModels[_pageNumber-1].TearDown();
             RaisePropertyChanged("CurrentPageViewModel");            
