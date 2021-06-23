@@ -30,6 +30,7 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
+        
         <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"
                    VerticalAlignment="Center" HorizontalAlignment="Center"  
                    Text="These are your eyes. Make sure both are visible before continuing." 
@@ -113,8 +114,7 @@
             </Canvas>
         </Viewbox>
 
-        <Label Content="{Binding TobiiLabel}" />
-
+        
     </Grid>
 
 </UserControl>
