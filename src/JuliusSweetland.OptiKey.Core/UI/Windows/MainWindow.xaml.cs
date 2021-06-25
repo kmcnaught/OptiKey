@@ -153,7 +153,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             {
                 if (minecraftProcess != null)
                 {
-                    ShowWindow(minecraftProcess, PInvoke.SW_MINIMIZE);
+                    ShowWindow(minecraftProcess, PInvoke.SW_SHOWMINNOACTIVE);
                 }
                 onboardWindow = new OnboardingWindow();
                 onboardWindow.Show();                
