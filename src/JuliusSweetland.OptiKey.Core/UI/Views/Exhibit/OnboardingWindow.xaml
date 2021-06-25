@@ -28,7 +28,5 @@
     <Grid>
         <ContentControl Content="{Binding CurrentPageViewModel}" Margin="-10,0,10,0" />
         <!--<Rectangle x:Name="foregroundFade" Fill="Black"></Rectangle>-->
-        <Button  Click="Prev_Clicked" Width="50" Height="25" VerticalAlignment="Top" Margin="-100, 10, 10, 10">Prev</Button>
-        <Button  Click="Next_Clicked" Width="50" Height="25" VerticalAlignment="Top" Margin="100, 10, 10, 10">Next</Button>
     </Grid>
 </Window>

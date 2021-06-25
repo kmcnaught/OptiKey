@@ -24,6 +24,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private OnboardingWindow onboardWindow;
         private Process minecraftProcess;
         private MainViewModel mainViewModel;
+        private OnboardingViewModel onboardVM;
 
         private readonly String enabledKeyboard  = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
         private readonly String disabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museumDisabled.xml";
@@ -41,9 +42,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         public DemoState(MainViewModel mainViewModel)
         {
             this.mainViewModel = mainViewModel;
-            onboardWindow = new OnboardingWindow();
-            onboardWindow.Show();
-            onboardWindow.Closed += OnboardWindowClosed;
+
+            LaunchOnboarding();
 
             bool noRepeat = true;
             HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.None, noRepeat, OnBack);
@@ -84,18 +84,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
+        void LaunchOnboarding()
+        {
+            onboardVM = new OnboardingViewModel();
+            onboardWindow = new OnboardingWindow();
+            onboardWindow.DataContext = onboardVM;
+            onboardWindow.Show();            
+        }
+
         void UpdateOptiKeyFocusForState(Stage stage)
         {
-            // Make sure window is present (should always be)
-            if (onboardWindow == null || onboardWindow.IsClosed)
-            {
-                onboardWindow = new OnboardingWindow();
-                onboardWindow.Show();
-            }
-
             if (stage != Stage.IN_MINECRAFT)
             {
-                onboardWindow.Focus();
+                onboardWindow.Activate();
+                //mainWindow.Focus();
             }
         }
 
@@ -129,51 +131,40 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void OnForward(object sender, NHotkey.HotkeyEventArgs e)
         {
-            stage = Stage.ONBOARDING_NO_KEYBOARD;
-            UpdateForState(stage);
-            
-            if (onboardWindow == null || onboardWindow.IsClosed)
+            if (stage != Stage.IN_MINECRAFT)
             {
-                if (minecraftProcess != null)
+                bool stillOnboarding = onboardVM.NextPage();
+                if (!stillOnboarding)
                 {
-                    ShowWindow(minecraftProcess, PInvoke.SW_SHOWMINNOACTIVE);
+                    stage = Stage.IN_MINECRAFT;
+                    onboardVM.Reset();
                 }
-                onboardWindow = new OnboardingWindow();
-                onboardWindow.Show();
-                onboardWindow.Focus();
-                onboardWindow.Closed += OnboardWindowClosed;
             }
-            else
-            {
-                onboardWindow.Focus();
-                onboardWindow.Next();
-            }
-            
+
+            UpdateForState(stage);                    
         }
 
         private void OnBack(object sender, NHotkey.HotkeyEventArgs e)
         {
-            if (onboardWindow != null)
+            if (stage != Stage.IN_MINECRAFT)
             {
-                onboardWindow.Focus();
-                onboardWindow.Previous();
+                onboardVM.PrevPage();
             }
-                        
-        }
-
-
-        private void OnboardWindowClosed(object sender, EventArgs e)
-        {
-            if (minecraftProcess != null)
-            {
-                ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
-                FocusWindow(minecraftProcess);
-                string enabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
-                mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(enabledKeyboard));
-            }
-            stage = Stage.ONBOARDING_WITH_KEYBOARD;
             UpdateForState(stage);
         }
+
+        //private void OnboardWindowClosed(object sender, EventArgs e)
+        //{
+        //    if (minecraftProcess != null)
+        //    {
+        //        ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
+        //        FocusWindow(minecraftProcess);
+        //        string enabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
+        //        mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(enabledKeyboard));
+        //    }
+        //    stage = Stage.ONBOARDING_WITH_KEYBOARD;
+        //    UpdateForState(stage);
+        //}
 
 
         public static void ShowWindow(Process process, int SHOW_INT)

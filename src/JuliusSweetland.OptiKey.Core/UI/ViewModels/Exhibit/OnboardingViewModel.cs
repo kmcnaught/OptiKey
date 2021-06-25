@@ -65,10 +65,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
+        public int NumPages
+        {
+            get
+            {
+                return PageViewModels.Count;
+            }
+        }
+
         #endregion
 
         #region Methods
-        
+
+        public void Reset()
+        {
+            SetPage(0);
+        }
+
         public bool NextPage()
         {
             int i = _pageNumber+1;
