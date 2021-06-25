@@ -136,8 +136,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 Application.Current.Shutdown();
             };
 
-            HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.Control, OnBack);
-            HotkeyManager.Current.AddOrReplace("Forward", Key.Right, ModifierKeys.Control, OnForward);
+            bool noRepeat = true;
+            HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.None, noRepeat, OnBack);
+            HotkeyManager.Current.AddOrReplace("Forward", Key.Right, ModifierKeys.None, noRepeat, OnForward);
 
             // Launch Minecraft
             string javapath = @"C:\Program Files (x86)\Minecraft Launcher\runtime\jre-legacy\windows-x64\jre-legacy\bin\javaw.exe";
