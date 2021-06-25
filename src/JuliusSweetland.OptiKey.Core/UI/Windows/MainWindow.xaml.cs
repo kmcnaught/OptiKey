@@ -349,6 +349,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             }
             else if (i == 2)
             {
+                TobiiEyeXPointService.EyeXHost.LaunchGuestCalibration();
             }
             else if (i == 3)
             {
