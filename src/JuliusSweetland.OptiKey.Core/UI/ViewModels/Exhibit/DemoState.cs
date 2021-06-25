@@ -3,6 +3,8 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
+using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using JuliusSweetland.OptiKey.UI.Views.Exhibit;
 using log4net;
 using NHotkey.Wpf;
@@ -23,6 +25,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private Process minecraftProcess;
         private MainViewModel mainViewModel;
 
+        private readonly String enabledKeyboard  = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
+        private readonly String disabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museumDisabled.xml";
+
         enum Stage
         {
             IDLE,
@@ -31,11 +36,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             IN_MINECRAFT
         }
 
+        private Stage stage;
+
         public DemoState(MainViewModel mainViewModel)
         {
             this.mainViewModel = mainViewModel;
             onboardWindow = new OnboardingWindow();
             onboardWindow.Show();
+            onboardWindow.Closed += OnboardWindowClosed;
 
             bool noRepeat = true;
             HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.None, noRepeat, OnBack);
@@ -50,22 +58,80 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
             minecraftProcess = Process.Start(new ProcessStartInfo(javapath, minecraftArgs));
             minecraftProcess.CloseOnApplicationExit(Log, "Minecraft");
+
+            stage = Stage.IDLE;
+            UpdateForState(stage);
         }        
 
         void UpdateForState(Stage stage)
         {
-
+            UpdateMinecraftFocusForState(stage);
+            UpdateOptiKeyFocusForState(stage);
+            UpdateKeyboardForState(stage);
         }
 
-
-        private void OnForward(object sender, NHotkey.HotkeyEventArgs e)
+        void UpdateMinecraftFocusForState(Stage stage)
         {
+            if (minecraftProcess == null) { return; }
+
+            if (stage == Stage.IN_MINECRAFT)
+            {
+                ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
+                FocusWindow(minecraftProcess);
+            }
+            else {
+                ShowWindow(minecraftProcess, PInvoke.SW_SHOWMINNOACTIVE);
+            }
+        }
+
+        void UpdateOptiKeyFocusForState(Stage stage)
+        {
+            // Make sure window is present (should always be)
             if (onboardWindow == null || onboardWindow.IsClosed)
             {
                 onboardWindow = new OnboardingWindow();
                 onboardWindow.Show();
             }
 
+            if (stage != Stage.IN_MINECRAFT)
+            {
+                onboardWindow.Focus();
+            }
+        }
+
+        void UpdateKeyboardForState(Stage stage)
+        {
+            if (stage == Stage.IDLE ||
+                stage == Stage.ONBOARDING_NO_KEYBOARD)
+
+            {
+                ChangeKeyboardIfRequired(disabledKeyboard);
+            }
+            else
+            {
+                ChangeKeyboardIfRequired(enabledKeyboard);
+            }
+        }
+
+        private void ChangeKeyboardIfRequired(string keyboardFileName)
+        {
+            IKeyboard currentKeyboard = mainViewModel.Keyboard;
+            if (mainViewModel.Keyboard is DynamicKeyboard)
+            {
+                DynamicKeyboard dynamicKeyboard = (DynamicKeyboard)mainViewModel.Keyboard;
+                if (dynamicKeyboard.Link == keyboardFileName)
+                {
+                    return;
+                }
+            }
+            mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(keyboardFileName));
+        }
+
+        private void OnForward(object sender, NHotkey.HotkeyEventArgs e)
+        {
+            stage = Stage.ONBOARDING_NO_KEYBOARD;
+            UpdateForState(stage);
+            
             if (onboardWindow == null || onboardWindow.IsClosed)
             {
                 if (minecraftProcess != null)
@@ -82,6 +148,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 onboardWindow.Focus();
                 onboardWindow.Next();
             }
+            
         }
 
         private void OnBack(object sender, NHotkey.HotkeyEventArgs e)
@@ -91,6 +158,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 onboardWindow.Focus();
                 onboardWindow.Previous();
             }
+                        
         }
 
 
@@ -103,6 +171,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 string enabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
                 mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(enabledKeyboard));
             }
+            stage = Stage.ONBOARDING_WITH_KEYBOARD;
+            UpdateForState(stage);
         }
 
 
@@ -267,6 +337,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
             }
         }
+
+
         //FIXME: dupe code
         public static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs, bool allowOverwrite = false)
         {
