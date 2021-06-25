@@ -337,6 +337,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             }
             else if (i == 1)
             {
+                // RESET DEMO
+
                 // Copy world file 
                 //fixme: delete first?
                 string installedSavesDir = @"C:\Program Files (x86)\SpecialEffect\EyeMineExhibit\ModInstaller\saves";
@@ -346,6 +348,11 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                     Path.Combine(minecraftSavesDir, worldName),
                     true,
                     true);
+
+                // back keyboard to disabled 
+                var mainViewModel = MainView.DataContext as MainViewModel;
+                string enabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
+                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.BackFromKeyboard));
             }
             else if (i == 2)
             {
