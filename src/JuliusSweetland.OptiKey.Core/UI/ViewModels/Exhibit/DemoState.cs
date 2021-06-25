@@ -48,6 +48,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             bool noRepeat = true;
             HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.None, noRepeat, OnBack);
             HotkeyManager.Current.AddOrReplace("Forward", Key.Right, ModifierKeys.None, noRepeat, OnForward);
+            HotkeyManager.Current.AddOrReplace("Reset", Key.Down, ModifierKeys.None, noRepeat, OnReset);
+            HotkeyManager.Current.AddOrReplace("Info", Key.Up, ModifierKeys.None, noRepeat, OnInfo);
 
             // Launch Minecraft
             string javapath = @"C:\Program Files (x86)\Minecraft Launcher\runtime\jre-legacy\windows-x64\jre-legacy\bin\javaw.exe";
@@ -127,6 +129,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 }
             }
             mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(keyboardFileName));
+        }
+
+        private void OnInfo(object sender, NHotkey.HotkeyEventArgs e)
+        {
+            MessageBox.Show("An info screen would appear!");
+        }
+
+        private void OnReset(object sender, NHotkey.HotkeyEventArgs e)
+        {
+            onboardVM.Reset();
+            stage = Stage.IDLE;
+            UpdateForState(stage);
         }
 
         private void OnForward(object sender, NHotkey.HotkeyEventArgs e)
