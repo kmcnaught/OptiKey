@@ -438,6 +438,8 @@
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ViewModels\Exhibit\DemoState.cs" />
     <Compile Include="UI\ViewModels\Exhibit\FaceViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\ResetViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\InfoViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\IntroViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\IPageViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\OnboardingViewModel.cs" />
@@ -535,6 +537,12 @@
     <Compile Include="UI\Utilities\ColorConversions.cs" />
     <Compile Include="UI\ViewModels\Exhibit\PostCalibViewModel.cs" />
     <Compile Include="UI\Views\Exhibit\Commands.cs" />
+    <Compile Include="UI\Views\Exhibit\InfoScreen.xaml.cs">
+      <DependentUpon>InfoScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\ResetScreen.xaml.cs">
+      <DependentUpon>ResetScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Exhibit\OnboardingWindow.xaml.cs">
       <DependentUpon>OnboardingWindow.xaml</DependentUpon>
     </Compile>
@@ -1392,6 +1400,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Controls\CK20Page.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\InfoScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\ResetScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

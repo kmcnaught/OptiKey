@@ -23,6 +23,12 @@
         <DataTemplate DataType="{x:Type vms:PostCalibViewModel}">
             <local:PostCalib />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:InfoViewModel}">
+            <local:InfoScreen />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:ResetViewModel}">
+            <local:ResetScreen />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
