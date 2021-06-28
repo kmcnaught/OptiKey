@@ -65,7 +65,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public override void TearDown()
         {
-            TobiiEyeXPointService.EyeXHost.LaunchGuestCalibration();            
+            
         }
 
         private bool IsGoodEnough()

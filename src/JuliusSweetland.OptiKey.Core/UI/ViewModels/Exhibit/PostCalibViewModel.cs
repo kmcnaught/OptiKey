@@ -24,6 +24,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             // Sign up for "tracking status changed" event - this is triggered at end of calibration 
             // (regardless of success or failure..)            
             TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
+
+            TobiiEyeXPointService.EyeXHost.LaunchGuestCalibration();
         }
 
         private void handleTobiiChange(object sender, EngineStateValue<EyeTrackingDeviceStatus> status)
