@@ -3,6 +3,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using JuliusSweetland.OptiKey.UI.Views.Exhibit;
@@ -179,9 +180,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             keyDebounceTimer.Start();
             if (onboardVM.CurrentPageViewModel is ResetViewModel)
             {
+                //bool needResetMinecraft = stage == Stage.IN_MINECRAFT;
+                if (stage == Stage.IN_MINECRAFT)
+                {
+                    // Send shortcut to M/C to unload world
+                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F13));
+
+                    // Reset world files
+                    ResetMinecraftWorldFile();
+
+                    // Send shortcut to M/C to reload
+                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F14));
+                }
+
                 onboardVM.Reset();
                 stage = Stage.IDLE;
                 UpdateForState(stage);
+                
             }
             else {
                 onboardVM.ShowOneOffPage(new ResetViewModel());
@@ -337,6 +352,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             return dictWindows;
         }
 
+        private void ResetMinecraftWorldFile()
+        {
+            //fixme: delete first?
+            string applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string installedPath = AppContext.BaseDirectory;
+
+            string installedSavesDir = Path.Combine(installedPath, @"ModInstaller\saves");
+            string minecraftSavesDir = Path.Combine(applicationDataPath, @".minecraft\EyeMineExhibition\saves");
+            string worldName = "Tutorial";
+            DirectoryCopy(Path.Combine(installedSavesDir, worldName),
+                Path.Combine(minecraftSavesDir, worldName),
+                true,
+                true);
+
+        }
+
         public void DebugShortcut(int i)
         {
             if (i == 0)
@@ -351,15 +382,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 // RESET DEMO
 
-                // Copy world file 
-                //fixme: delete first?
-                string installedSavesDir = @"C:\Program Files (x86)\SpecialEffect\EyeMineExhibit\ModInstaller\saves";
-                string minecraftSavesDir = @"C:\Users\Kirsty\AppData\Roaming\.minecraft\EyeMineExhibition\saves";
-                string worldName = "Tutorial";
-                DirectoryCopy(Path.Combine(installedSavesDir, worldName),
-                    Path.Combine(minecraftSavesDir, worldName),
-                    true,
-                    true);
+                ResetMinecraftWorldFile();
 
                 // back keyboard to disabled 
                 string enabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
