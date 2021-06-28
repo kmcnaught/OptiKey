@@ -25,7 +25,14 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
         {
             InitializeComponent();
             // Use first video source
-            videoCapElement.VideoCaptureDevice = MultimediaUtil.VideoInputDevices[0];                        
+            if (MultimediaUtil.VideoInputDevices.Length == 0)
+            {
+                errorText.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                videoCapElement.VideoCaptureDevice = MultimediaUtil.VideoInputDevices[0];
+            }
 
             var fadeInOutAnimation = new DoubleAnimation
             {

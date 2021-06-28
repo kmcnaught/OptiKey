@@ -48,6 +48,7 @@
                     <ScaleTransform ScaleX="-1" />
                 </WPFMediaKit:VideoCaptureElement.RenderTransform> 
             </WPFMediaKit:VideoCaptureElement>
+            <TextBlock x:Name="errorText" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" Visibility="Hidden">no webcam found</TextBlock>
             <Image x:Name="imgOverlay"  
                    Source="facemask.png"
                    HorizontalAlignment="Stretch" 
