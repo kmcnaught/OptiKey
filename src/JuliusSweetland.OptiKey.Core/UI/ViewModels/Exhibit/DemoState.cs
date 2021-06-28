@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -38,10 +39,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             IDLE,
             ONBOARDING_NO_KEYBOARD,
             ONBOARDING_WITH_KEYBOARD,
+            TEMP_SCREEN,
             IN_MINECRAFT
         }
 
         private Stage stage;
+        private Stage prevStage;
 
         public DemoState(MainViewModel mainViewModel)
         {
@@ -85,7 +88,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void TimerTick(object sender, EventArgs e)
         {
-            UpdateOptiKeyFocusForState(stage);           
+            if (stage != Stage.TEMP_SCREEN)
+            {
+                UpdateOptiKeyFocusForState(stage);
+            }
         }
 
         private void AllowKeyPress(object sender, EventArgs e)
@@ -95,6 +101,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         void UpdateForState(Stage stage)
         {
+            prevStage = this.stage;
+            this.stage = stage;
             UpdateMinecraftFocusForState(stage);
             UpdateOptiKeyFocusForState(stage);
             UpdateKeyboardForState(stage);
@@ -166,11 +174,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
             if (onboardVM.CurrentPageViewModel is InfoViewModel)
             {
-                onboardVM.Resume();                
+                onboardVM.Resume();
+                UpdateForState(prevStage);
             }
             else
             {
                 onboardVM.ShowOneOffPage(new InfoViewModel());
+                UpdateForState(Stage.TEMP_SCREEN);
             }
         }
 
@@ -181,25 +191,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (onboardVM.CurrentPageViewModel is ResetViewModel)
             {
                 //bool needResetMinecraft = stage == Stage.IN_MINECRAFT;
-                if (stage == Stage.IN_MINECRAFT)
+                if (stage == Stage.IN_MINECRAFT || 
+                    (stage == Stage.TEMP_SCREEN && prevStage == Stage.IN_MINECRAFT) )
                 {
+                    ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
+                    FocusWindow(minecraftProcess);
+                    Thread.Sleep(50);
                     // Send shortcut to M/C to unload world
-                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F13));
-
+                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F8));
+                    Thread.Sleep(50);
                     // Reset world files
                     ResetMinecraftWorldFile();
-
+                    Thread.Sleep(50);
                     // Send shortcut to M/C to reload
-                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F14));
+                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F9));
+                    Thread.Sleep(50);
                 }
 
                 onboardVM.Reset();
                 stage = Stage.IDLE;
-                UpdateForState(stage);
-                
+                UpdateForState(stage);                
             }
             else {
                 onboardVM.ShowOneOffPage(new ResetViewModel());
+                UpdateForState(Stage.TEMP_SCREEN);
             }
         }
 
@@ -226,7 +241,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (keyDebounceTimer.IsEnabled) { return; }
             keyDebounceTimer.Start();
 
-            if (stage != Stage.IN_MINECRAFT)
+            if (stage == Stage.TEMP_SCREEN)
+            {
+                onboardVM.Resume();
+                UpdateForState(prevStage);
+            }
+            else if (stage != Stage.IN_MINECRAFT)
             {
                 onboardVM.PrevPage();
             }
