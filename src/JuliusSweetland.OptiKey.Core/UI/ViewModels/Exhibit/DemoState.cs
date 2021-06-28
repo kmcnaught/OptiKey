@@ -133,14 +133,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void OnInfo(object sender, NHotkey.HotkeyEventArgs e)
         {
-            MessageBox.Show("An info screen would appear!");
+            if (onboardVM.CurrentPageViewModel is InfoViewModel)
+            {
+                onboardVM.Resume();                
+            }
+            else
+            {
+                onboardVM.ShowOneOffPage(new InfoViewModel());
+            }
         }
 
         private void OnReset(object sender, NHotkey.HotkeyEventArgs e)
         {
-            onboardVM.Reset();
-            stage = Stage.IDLE;
-            UpdateForState(stage);
+            if (onboardVM.CurrentPageViewModel is ResetViewModel)
+            {
+                onboardVM.Reset();
+                stage = Stage.IDLE;
+                UpdateForState(stage);
+            }
+            else {
+                onboardVM.ShowOneOffPage(new ResetViewModel());
+            }
         }
 
         private void OnForward(object sender, NHotkey.HotkeyEventArgs e)

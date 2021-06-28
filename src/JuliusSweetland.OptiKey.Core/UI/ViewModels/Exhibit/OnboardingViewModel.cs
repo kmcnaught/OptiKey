@@ -16,7 +16,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         //private PageViewModel _currentPageViewModel;
         private List<PageViewModel> _pageViewModels;
         private int _pageNumber;
-        
+
+        private PageViewModel tempPageViewModel;
+
         #endregion
 
         public OnboardingViewModel()
@@ -49,7 +51,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             get
             {
-                return PageViewModels[_pageNumber];
+                if (tempPageViewModel!=null)
+                {
+                    return tempPageViewModel;
+                }
+                else
+                {
+                    return PageViewModels[_pageNumber];
+                }                
             }            
         }
 
@@ -112,6 +121,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void SetPage(int i, bool teardownCurrent=false)
         {
+            tempPageViewModel = null;
+
             if (teardownCurrent) //TOO: distinguish between "stuff to do on finishing page" and "stuff to do whenever closed" e.g. prev vs next
             {
                 // cleanly leave current page
@@ -123,6 +134,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             PageViewModels[_pageNumber].SetUp();
 
             RaisePropertyChanged("CurrentPageViewModel");                        
+        }
+
+        public void ShowOneOffPage(PageViewModel viewModel)
+        {
+            tempPageViewModel = viewModel;
+            RaisePropertyChanged("CurrentPageViewModel");
+        }
+
+        public void Resume()
+        {
+            tempPageViewModel = null;
+            RaisePropertyChanged("CurrentPageViewModel");
         }
 
         /*private void ChangeViewModel(IPageViewModel viewModel)
