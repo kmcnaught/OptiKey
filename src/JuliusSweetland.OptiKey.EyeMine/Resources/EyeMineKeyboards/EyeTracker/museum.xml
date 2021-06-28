@@ -5,6 +5,7 @@
       <Rows>1</Rows>
       <Cols>5</Cols>
    </Grid>
+  <WindowState>Docked</WindowState>
    <InitialKeyStates>
      <KeyLockedDown>MouseMagneticCursor</KeyLockedDown>
    </InitialKeyStates>
