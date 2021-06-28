@@ -27,6 +27,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private Process minecraftProcess;
         private MainViewModel mainViewModel;
         private OnboardingViewModel onboardVM;
+        private DispatcherTimer keyDebounceTimer;
 
         private readonly String enabledKeyboard  = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
         private readonly String disabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museumDisabled.xml";
@@ -74,13 +75,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
             dispatcherTimer.Start();
 
-        }
+            int debounceMs = 500;
+            keyDebounceTimer = new DispatcherTimer();
+            keyDebounceTimer.Tick += AllowKeyPress;
+            keyDebounceTimer.Interval = new TimeSpan(0, 0, 0, 0, debounceMs);           
+            
+        }        
 
         private void TimerTick(object sender, EventArgs e)
         {
             UpdateOptiKeyFocusForState(stage);           
         }
 
+        private void AllowKeyPress(object sender, EventArgs e)
+        {
+            keyDebounceTimer.Stop();
+        }
 
         void UpdateForState(Stage stage)
         {
@@ -150,6 +160,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void OnInfo(object sender, NHotkey.HotkeyEventArgs e)
         {
+            if (keyDebounceTimer.IsEnabled) { return; }
+            keyDebounceTimer.Start();
+
             if (onboardVM.CurrentPageViewModel is InfoViewModel)
             {
                 onboardVM.Resume();                
@@ -162,6 +175,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void OnReset(object sender, NHotkey.HotkeyEventArgs e)
         {
+            if (keyDebounceTimer.IsEnabled) { return;  }
+            keyDebounceTimer.Start();
             if (onboardVM.CurrentPageViewModel is ResetViewModel)
             {
                 onboardVM.Reset();
@@ -175,6 +190,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void OnForward(object sender, NHotkey.HotkeyEventArgs e)
         {
+            if (keyDebounceTimer.IsEnabled) { return; }
+            keyDebounceTimer.Start();
+
             if (stage != Stage.IN_MINECRAFT)
             {
                 bool stillOnboarding = onboardVM.NextPage();
@@ -190,6 +208,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void OnBack(object sender, NHotkey.HotkeyEventArgs e)
         {
+            if (keyDebounceTimer.IsEnabled) { return; }
+            keyDebounceTimer.Start();
+
             if (stage != Stage.IN_MINECRAFT)
             {
                 onboardVM.PrevPage();
