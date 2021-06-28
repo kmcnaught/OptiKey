@@ -319,6 +319,9 @@
     <Content Include="Resources\EyeMineKeyboards\EyeTracker\museum.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\museumDisabled.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\EyeMineKeyboards\Mouse\Bonus Keyboards\MenuNav.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
