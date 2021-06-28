@@ -13,7 +13,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
@@ -63,7 +65,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
             stage = Stage.IDLE;
             UpdateForState(stage);
-        }        
+
+
+            // Poll regularly to ensure Minecraft doesn't steal focus at inappropriate time
+            
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += TimerTick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+            dispatcherTimer.Start();
+
+        }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            UpdateOptiKeyFocusForState(stage);           
+        }
+
 
         void UpdateForState(Stage stage)
         {
