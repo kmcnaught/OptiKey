@@ -71,9 +71,15 @@
     <Compile Include="InstallerStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="CustomAction.config" />
-    <Content Include="IrisbondAPI.dll" />
-    <Content Include="PGRFlyCapture.dll" />
-    <Content Include="Tobii.EyeX.Client.dll" />
+    <Content Include="IrisbondAPI.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PGRFlyCapture.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tobii.EyeX.Client.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj">
