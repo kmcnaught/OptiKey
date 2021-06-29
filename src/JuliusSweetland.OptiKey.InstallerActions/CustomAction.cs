@@ -34,7 +34,6 @@ namespace JuliusSweetland.OptiKey.InstallerActions
 
             session.Log("Begin LoadOptikeyProperties");
 
-            DetectEyetracker(session);
             PopulateEyetrackersCombo(session);
             PopulateLanguagesCombo(session);
 
