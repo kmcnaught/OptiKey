@@ -236,19 +236,19 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             return updated;
         }
 
-        private const string HKEY_USER = "HKEY_CURRENT_USER";
         private const string KEY_PATH = "SOFTWARE\\SpecialEffect\\EyeMineV2\\";        
 
         public static bool GetRegistryBool(string keyName)
-        {                        
-            int regInt = (int)Registry.GetValue($"{HKEY_USER}\\{KEY_PATH}", keyName, -1);
-            return (regInt > 0);             
+        {
+            var key = Registry.CurrentUser.CreateSubKey(KEY_PATH);
+            int regInt = (int)key.GetValue(keyName, -1);
+            return (regInt > 0);            
         }
 
         public static void SetRegistryBool(string keyName)
         {            
-            string keyPath = $"{HKEY_USER}\\{KEY_PATH}";            
-            Registry.SetValue(keyPath, keyName, 1);            
+            var key = Registry.CurrentUser.CreateSubKey(KEY_PATH);
+            key.SetValue(keyName, 1);            
         }
 
         [CustomAction]

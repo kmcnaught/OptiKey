@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.InstallerActionsEyeMine;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using Microsoft.Deployment.WindowsInstaller;
 using NUnit.Framework;
+using Microsoft.Win32;
 
 namespace JuliusSweetland.OptiKey.UnitTests
 {
@@ -22,7 +23,21 @@ namespace JuliusSweetland.OptiKey.UnitTests
         [Test]
         public void TestMinecraftSaves()
         {
-            CustomActionsEyeMine.GetMinecraftSaves(null);
+            // Manual test that reading/writing registry items works
+
+            Console.WriteLine(System.DateTime.Now);
+
+            Console.WriteLine("");
+            Console.WriteLine(CustomActionsEyeMine.GetRegistryBool("a"));
+            Console.WriteLine(CustomActionsEyeMine.GetRegistryBool("b"));
+
+            CustomActionsEyeMine.SetRegistryBool("a");
+            CustomActionsEyeMine.SetRegistryBool("b");
+
+            Console.WriteLine("");
+            Console.WriteLine(CustomActionsEyeMine.GetRegistryBool("a"));
+            Console.WriteLine(CustomActionsEyeMine.GetRegistryBool("b"));            
+            
         }
 
         [Test]
