@@ -17,10 +17,10 @@
     <ROW Property="Manufacturer" Value="SpecialEffect"/>
     <ROW Property="MsiLogging" MultiBuildValue="DefaultBuild:vp"/>
     <ROW Property="NUMBER_OF_SAVES" Value="0"/>
-    <ROW Property="ProductCode" Value="1033:{1C07B852-D227-4A8A-B6DD-D0581549843D} 2057:{1C07B852-D227-4A8A-B6DD-D0581549843D} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{363222D6-CF8F-48C7-95D5-FA6F9695F376} 2057:{363222D6-CF8F-48C7-95D5-FA6F9695F376} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="EyeMineV2"/>
-    <ROW Property="ProductVersion" Value="2.2.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="2.2.1" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="TOBII_SUPPORTED" Value="false"/>
@@ -41,127 +41,102 @@
     <ROW Directory="BonusKeyboards_3_Dir" Directory_Parent="EyeTracker_Dir" DefaultDir="BONUSK~1|Bonus Keyboards"/>
     <ROW Directory="BonusKeyboards_6_Dir" Directory_Parent="Mouse_Dir" DefaultDir="BONUSK~1|Bonus Keyboards"/>
     <ROW Directory="BonusKeyboards_Dir" Directory_Parent="EyeTracker_1_Dir" DefaultDir="BONUSK~1|Bonus Keyboards"/>
-    <ROW Directory="CommuniKate_1_Dir" Directory_Parent="Resources_1_Dir" DefaultDir="COMMUN~1|CommuniKate"/>
     <ROW Directory="CommuniKate_Dir" Directory_Parent="Resources_Dir" DefaultDir="COMMUN~1|CommuniKate"/>
-    <ROW Directory="DIM1_1_Dir" Directory_Parent="StarterWorld_Dir" DefaultDir="DIM1"/>
     <ROW Directory="DIM1_2_Dir" Directory_Parent="byAlexforSpecialEffect_Dir" DefaultDir="DIM-1"/>
     <ROW Directory="DIM1_3_Dir" Directory_Parent="byAlexforSpecialEffect_Dir" DefaultDir="DIM1"/>
-    <ROW Directory="DIM1_Dir" Directory_Parent="StarterWorld_Dir" DefaultDir="DIM-1"/>
+    <ROW Directory="DIM1_4_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="DIM-1"/>
+    <ROW Directory="DIM1_5_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="DIM1"/>
     <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
-    <ROW Directory="Dictionaries_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="DICTIO~1|Dictionaries"/>
     <ROW Directory="Dictionaries_Dir" Directory_Parent="Release_Dir" DefaultDir="DICTIO~1|Dictionaries"/>
-    <ROW Directory="DynamicKeyboards_1_Dir" Directory_Parent="Resources_1_Dir" DefaultDir="DYNAMI~1|DynamicKeyboards"/>
     <ROW Directory="DynamicKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="DYNAMI~1|DynamicKeyboards"/>
     <ROW Directory="EyeMineKeyboards_1_Dir" Directory_Parent="EyeMineV2_Dir" DefaultDir="KEYBOA~1|Keyboards:EYEMIN~1|EyeMineKeyboards"/>
     <ROW Directory="EyeMineKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="EYEMIN~1|EyeMineKeyboards"/>
     <ROW Directory="EyeMineV2_Dir" Directory_Parent="SpecialEffect_Dir" DefaultDir="EYEMIN~1|EyeMineV2"/>
     <ROW Directory="EyeTracker_1_Dir" Directory_Parent="EyeMineKeyboards_Dir" DefaultDir="EYETRA~1|EyeTracker"/>
     <ROW Directory="EyeTracker_Dir" Directory_Parent="EyeMineKeyboards_1_Dir" DefaultDir="EYETRA~1|EyeTracker"/>
-    <ROW Directory="Fonts_1_Dir" Directory_Parent="Resources_1_Dir" DefaultDir="Fonts"/>
     <ROW Directory="Fonts_Dir" Directory_Parent="Resources_Dir" DefaultDir="Fonts"/>
+    <ROW Directory="ModInstaller_1_Dir" Directory_Parent="Release_Dir" DefaultDir="MODINS~1|ModInstaller"/>
     <ROW Directory="ModInstaller_Dir" Directory_Parent="APPDIR" DefaultDir="MODINS~1|ModInstaller"/>
     <ROW Directory="Mouse_1_Dir" Directory_Parent="EyeMineKeyboards_Dir" DefaultDir="Mouse"/>
     <ROW Directory="Mouse_Dir" Directory_Parent="EyeMineKeyboards_1_Dir" DefaultDir="Mouse"/>
     <ROW Directory="Optikey_Dir" Directory_Parent="ProgramMenuFolder" DefaultDir="Optikey"/>
-    <ROW Directory="Presage_Dir" Directory_Parent="Resources_1_Dir" DefaultDir="Presage"/>
     <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="PROGRA~1|ProgramMenuFolder" IsPseudoRoot="1"/>
     <ROW Directory="Release_1_Dir" Directory_Parent="ModInstaller_Dir" DefaultDir=".:Release"/>
     <ROW Directory="Release_Dir" Directory_Parent="APPDIR" DefaultDir=".:Release"/>
-    <ROW Directory="Resources_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="Resources_Dir" Directory_Parent="Release_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
-    <ROW Directory="Samples_1_Dir" Directory_Parent="DynamicKeyboards_1_Dir" DefaultDir="Samples"/>
     <ROW Directory="Samples_Dir" Directory_Parent="DynamicKeyboards_Dir" DefaultDir="Samples"/>
-    <ROW Directory="Sounds_1_Dir" Directory_Parent="Resources_1_Dir" DefaultDir="Sounds"/>
     <ROW Directory="Sounds_Dir" Directory_Parent="Resources_Dir" DefaultDir="Sounds"/>
     <ROW Directory="SpecialEffect_Dir" Directory_Parent="AppDataFolder" DefaultDir="SPECIA~1|SpecialEffect"/>
     <ROW Directory="StarterWorld_Dir" Directory_Parent="saves_Dir" DefaultDir="STARTE~1|Starter World"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
     <ROW Directory="TempFolder" Directory_Parent="TARGETDIR" DefaultDir="TEMPFO~1|TempFolder" IsPseudoRoot="1"/>
     <ROW Directory="ThirdPartyLicenses_Dir" Directory_Parent="Release_Dir" DefaultDir="THIRDP~1|ThirdPartyLicenses"/>
+    <ROW Directory="Tutorial_Dir" Directory_Parent="saves_1_Dir" DefaultDir="Tutorial"/>
     <ROW Directory="advancements_1_Dir" Directory_Parent="byAlexforSpecialEffect_Dir" DefaultDir="ADVANC~1|advancements"/>
+    <ROW Directory="advancements_2_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="ADVANC~1|advancements"/>
     <ROW Directory="advancements_Dir" Directory_Parent="StarterWorld_Dir" DefaultDir="ADVANC~1|advancements"/>
     <ROW Directory="byAlexforSpecialEffect_Dir" Directory_Parent="saves_Dir" DefaultDir="BYALEX~1|by Alex for SpecialEffect"/>
-    <ROW Directory="caES_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="ca-ES"/>
     <ROW Directory="caES_Dir" Directory_Parent="Release_Dir" DefaultDir="ca-ES"/>
-    <ROW Directory="csCZ_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="cs-CZ"/>
     <ROW Directory="csCZ_Dir" Directory_Parent="Release_Dir" DefaultDir="cs-CZ"/>
-    <ROW Directory="daDK_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="da-DK"/>
     <ROW Directory="daDK_Dir" Directory_Parent="Release_Dir" DefaultDir="da-DK"/>
-    <ROW Directory="data_1_Dir" Directory_Parent="DIM1_Dir" DefaultDir="data"/>
-    <ROW Directory="data_2_Dir" Directory_Parent="DIM1_1_Dir" DefaultDir="data"/>
     <ROW Directory="data_3_Dir" Directory_Parent="byAlexforSpecialEffect_Dir" DefaultDir="data"/>
     <ROW Directory="data_4_Dir" Directory_Parent="DIM1_2_Dir" DefaultDir="data"/>
     <ROW Directory="data_5_Dir" Directory_Parent="DIM1_3_Dir" DefaultDir="data"/>
+    <ROW Directory="data_6_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="data"/>
+    <ROW Directory="data_7_Dir" Directory_Parent="DIM1_4_Dir" DefaultDir="data"/>
+    <ROW Directory="data_8_Dir" Directory_Parent="DIM1_5_Dir" DefaultDir="data"/>
     <ROW Directory="data_Dir" Directory_Parent="StarterWorld_Dir" DefaultDir="data"/>
-    <ROW Directory="datapacks_1_Dir" Directory_Parent="byAlexforSpecialEffect_Dir" DefaultDir="DATAPA~1|datapacks"/>
-    <ROW Directory="datapacks_Dir" Directory_Parent="StarterWorld_Dir" DefaultDir="DATAPA~1|datapacks"/>
-    <ROW Directory="deDE_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="de-DE"/>
     <ROW Directory="deDE_Dir" Directory_Parent="Release_Dir" DefaultDir="de-DE"/>
-    <ROW Directory="elGR_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="el-GR"/>
     <ROW Directory="elGR_Dir" Directory_Parent="Release_Dir" DefaultDir="el-GR"/>
-    <ROW Directory="enUS_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="en-US"/>
     <ROW Directory="enUS_Dir" Directory_Parent="Release_Dir" DefaultDir="en-US"/>
-    <ROW Directory="esES_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="es-ES"/>
     <ROW Directory="esES_Dir" Directory_Parent="Release_Dir" DefaultDir="es-ES"/>
-    <ROW Directory="fa_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="fa"/>
     <ROW Directory="fa_Dir" Directory_Parent="Release_Dir" DefaultDir="fa"/>
-    <ROW Directory="fiFI_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="fi-FI"/>
     <ROW Directory="fiFI_Dir" Directory_Parent="Release_Dir" DefaultDir="fi-FI"/>
-    <ROW Directory="fr_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="fr"/>
     <ROW Directory="fr_Dir" Directory_Parent="Release_Dir" DefaultDir="fr"/>
+    <ROW Directory="generated_1_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="GENERA~1|generated"/>
     <ROW Directory="generated_Dir" Directory_Parent="byAlexforSpecialEffect_Dir" DefaultDir="GENERA~1|generated"/>
-    <ROW Directory="heIL_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="he-IL"/>
     <ROW Directory="heIL_Dir" Directory_Parent="Release_Dir" DefaultDir="he-IL"/>
-    <ROW Directory="hiIN_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="hi-IN"/>
     <ROW Directory="hiIN_Dir" Directory_Parent="Release_Dir" DefaultDir="hi-IN"/>
-    <ROW Directory="hrHR_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="hr-HR"/>
     <ROW Directory="hrHR_Dir" Directory_Parent="Release_Dir" DefaultDir="hr-HR"/>
-    <ROW Directory="huHU_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="hu-HU"/>
     <ROW Directory="huHU_Dir" Directory_Parent="Release_Dir" DefaultDir="hu-HU"/>
-    <ROW Directory="itIT_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="it-IT"/>
     <ROW Directory="itIT_Dir" Directory_Parent="Release_Dir" DefaultDir="it-IT"/>
-    <ROW Directory="jaJP_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="ja-JP"/>
     <ROW Directory="jaJP_Dir" Directory_Parent="Release_Dir" DefaultDir="ja-JP"/>
-    <ROW Directory="kaGE_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="ka-GE"/>
     <ROW Directory="kaGE_Dir" Directory_Parent="Release_Dir" DefaultDir="ka-GE"/>
-    <ROW Directory="koKR_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="ko-KR"/>
     <ROW Directory="koKR_Dir" Directory_Parent="Release_Dir" DefaultDir="ko-KR"/>
     <ROW Directory="libs_Dir" Directory_Parent="ModInstaller_Dir" DefaultDir=".:libs"/>
+    <ROW Directory="logs_Dir" Directory_Parent="Release_Dir" DefaultDir="logs"/>
+    <ROW Directory="minecraft_1_Dir" Directory_Parent="generated_1_Dir" DefaultDir="MINECR~1|minecraft"/>
     <ROW Directory="minecraft_Dir" Directory_Parent="generated_Dir" DefaultDir="MINECR~1|minecraft"/>
-    <ROW Directory="nl_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="nl"/>
     <ROW Directory="nl_Dir" Directory_Parent="Release_Dir" DefaultDir="nl"/>
-    <ROW Directory="plPL_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="pl-PL"/>
     <ROW Directory="plPL_Dir" Directory_Parent="Release_Dir" DefaultDir="pl-PL"/>
-    <ROW Directory="playerdata_1_Dir" Directory_Parent="byAlexforSpecialEffect_Dir" DefaultDir="PLAYER~1|playerdata"/>
+    <ROW Directory="playerdata_2_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="PLAYER~1|playerdata"/>
     <ROW Directory="playerdata_Dir" Directory_Parent="StarterWorld_Dir" DefaultDir="PLAYER~1|playerdata"/>
     <ROW Directory="poi_1_Dir" Directory_Parent="DIM1_2_Dir" DefaultDir="poi"/>
     <ROW Directory="poi_2_Dir" Directory_Parent="byAlexforSpecialEffect_Dir" DefaultDir="poi"/>
+    <ROW Directory="poi_3_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="poi"/>
     <ROW Directory="poi_Dir" Directory_Parent="StarterWorld_Dir" DefaultDir="poi"/>
-    <ROW Directory="ptPT_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="pt-PT"/>
     <ROW Directory="ptPT_Dir" Directory_Parent="Release_Dir" DefaultDir="pt-PT"/>
     <ROW Directory="region_1_Dir" Directory_Parent="DIM1_2_Dir" DefaultDir="region"/>
     <ROW Directory="region_2_Dir" Directory_Parent="byAlexforSpecialEffect_Dir" DefaultDir="region"/>
+    <ROW Directory="region_3_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="region"/>
     <ROW Directory="region_Dir" Directory_Parent="StarterWorld_Dir" DefaultDir="region"/>
-    <ROW Directory="ruRU_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="ru-RU"/>
     <ROW Directory="ruRU_Dir" Directory_Parent="Release_Dir" DefaultDir="ru-RU"/>
+    <ROW Directory="saves_1_Dir" Directory_Parent="ModInstaller_1_Dir" DefaultDir="saves"/>
     <ROW Directory="saves_Dir" Directory_Parent="ModInstaller_Dir" DefaultDir="saves"/>
     <ROW Directory="serverconfig_1_Dir" Directory_Parent="byAlexforSpecialEffect_Dir" DefaultDir="SERVER~1|serverconfig"/>
+    <ROW Directory="serverconfig_2_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="SERVER~1|serverconfig"/>
     <ROW Directory="serverconfig_Dir" Directory_Parent="StarterWorld_Dir" DefaultDir="SERVER~1|serverconfig"/>
-    <ROW Directory="skSK_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="sk-SK"/>
     <ROW Directory="skSK_Dir" Directory_Parent="Release_Dir" DefaultDir="sk-SK"/>
-    <ROW Directory="slSI_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="sl-SI"/>
     <ROW Directory="slSI_Dir" Directory_Parent="Release_Dir" DefaultDir="sl-SI"/>
-    <ROW Directory="srCyrlRS_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="SR-CYR~1|sr-Cyrl-RS"/>
     <ROW Directory="srCyrlRS_Dir" Directory_Parent="Release_Dir" DefaultDir="SR-CYR~1|sr-Cyrl-RS"/>
     <ROW Directory="stats_1_Dir" Directory_Parent="byAlexforSpecialEffect_Dir" DefaultDir="stats"/>
+    <ROW Directory="stats_2_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="stats"/>
     <ROW Directory="stats_Dir" Directory_Parent="StarterWorld_Dir" DefaultDir="stats"/>
+    <ROW Directory="structures_1_Dir" Directory_Parent="minecraft_1_Dir" DefaultDir="STRUCT~1|structures"/>
     <ROW Directory="structures_Dir" Directory_Parent="minecraft_Dir" DefaultDir="STRUCT~1|structures"/>
-    <ROW Directory="trTR_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="tr-TR"/>
     <ROW Directory="trTR_Dir" Directory_Parent="Release_Dir" DefaultDir="tr-TR"/>
-    <ROW Directory="ukUA_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="uk-UA"/>
     <ROW Directory="ukUA_Dir" Directory_Parent="Release_Dir" DefaultDir="uk-UA"/>
-    <ROW Directory="urPK_1_Dir" Directory_Parent="Release_1_Dir" DefaultDir="ur-PK"/>
     <ROW Directory="urPK_Dir" Directory_Parent="Release_Dir" DefaultDir="ur-PK"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
@@ -173,17 +148,14 @@
     <ROW Component="B612licenceeplv10.html" ComponentId="{14F18BAC-EF93-4F26-9622-49A86CA3D76F}" Directory_="Fonts_Dir" Attributes="0" KeyPath="B612licenceeplv10.html" Type="0"/>
     <ROW Component="Bass.Net.dll" ComponentId="{125F4BD8-CC09-4998-85C8-06B94FB51BDE}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.dll"/>
     <ROW Component="Bass.Net.xml" ComponentId="{7BE6413E-B2B2-427E-86E1-9C9E725E97E4}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.xml" Type="0"/>
-    <ROW Component="CommuniKate" ComponentId="{9ACA569F-1B26-4A52-9218-074A34061715}" Directory_="CommuniKate_1_Dir" Attributes="0"/>
     <ROW Component="ControlzEx.dll" ComponentId="{03C9F1CE-8366-4C6D-8631-84A828BA4698}" Directory_="Release_Dir" Attributes="0" KeyPath="ControlzEx.dll"/>
     <ROW Component="Demo_Bottom.xml" ComponentId="{C87A4208-E005-42CE-93FF-2DEAF092DC1F}" Directory_="Samples_Dir" Attributes="0" KeyPath="Demo_Bottom.xml" Type="0"/>
-    <ROW Component="Dictionaries" ComponentId="{B344734C-81F3-4BB0-9930-F44199AD3E31}" Directory_="Dictionaries_1_Dir" Attributes="0"/>
     <ROW Component="EnglishMinecraft.dic" ComponentId="{2B7AFA41-6533-4E0C-BCA6-AD9F076F0A06}" Directory_="Dictionaries_Dir" Attributes="0" KeyPath="EnglishMinecraft.dic" Type="0"/>
     <ROW Component="EyeMineV2" ComponentId="{6662F25A-52DE-4AAA-BFA2-C5D2903E8B7F}" Directory_="EyeMineV2_Dir" Attributes="0"/>
     <ROW Component="EyeMineV2.exe" ComponentId="{57E5A4F0-5D8E-4357-A65F-B470A08753F4}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeMineV2.exe"/>
     <ROW Component="EyeXFramework.dll" ComponentId="{2C6B4573-FFDE-45CD-B9D4-C4B3ABAC1A40}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeXFramework.dll"/>
     <ROW Component="EyeXFramework.dll_1" ComponentId="{AEC07151-010E-4261-A8AA-26EEDDFF688B}" Directory_="Release_1_Dir" Attributes="0" KeyPath="EyeXFramework.dll_1"/>
     <ROW Component="EyeXFramework.xml" ComponentId="{6C62EA6F-0583-432F-B1B8-1E2846AF9A46}" Directory_="Release_1_Dir" Attributes="0" KeyPath="EyeXFramework.xml_1" Type="0"/>
-    <ROW Component="Fonts" ComponentId="{7F92F33A-61B5-4167-BCAB-22468EE729F2}" Directory_="Fonts_1_Dir" Attributes="0"/>
     <ROW Component="Interop.SpeechLib.dll" ComponentId="{E94F0251-E5C3-4626-A7DF-2FFD0D1DABFF}" Directory_="Release_Dir" Attributes="0" KeyPath="Interop.SpeechLib.dll"/>
     <ROW Component="IrisbondAPI.dll" ComponentId="{92E5C841-F496-40D9-B0C4-D747B6CD46E3}" Directory_="Release_Dir" Attributes="0" KeyPath="IrisbondAPI.dll"/>
     <ROW Component="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" ComponentId="{55D55BA6-2A8E-431D-B06F-0942EFA23057}" Directory_="Release_1_Dir" Attributes="0" KeyPath="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll"/>
@@ -236,12 +208,10 @@
     <ROW Component="OptiKeyStandardPlugins.dll" ComponentId="{A86C8298-5B01-4076-B5CD-C8F470E6597B}" Directory_="Release_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll"/>
     <ROW Component="Optikey" ComponentId="{E7578126-FD95-4ECC-B74B-CE6A8DCAA90E}" Directory_="Optikey_Dir" Attributes="0"/>
     <ROW Component="PGRFlyCapture.dll" ComponentId="{1D073EAE-F12D-40B0-A240-C81A14E87544}" Directory_="Release_Dir" Attributes="0" KeyPath="PGRFlyCapture.dll"/>
-    <ROW Component="Presage" ComponentId="{E0E6FAA2-52F1-43BE-960F-D938E49DA6FF}" Directory_="Presage_Dir" Attributes="0"/>
     <ROW Component="Prism.Wpf.dll" ComponentId="{5037E42C-2D3D-41B4-85DC-6368A0873F81}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.Wpf.dll"/>
     <ROW Component="Prism.dll" ComponentId="{BED92B4B-E7E4-45DB-A687-53952E7E6A8C}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.dll"/>
     <ROW Component="ProductInformation" ComponentId="{751C19C3-7407-415C-B213-89105D7CEFC3}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{448D40BC-1BF7-4751-90E9-B485100588CB}" Directory_="SHORTCUTDIR" Attributes="0"/>
-    <ROW Component="Samples" ComponentId="{D06D0A31-EDAA-41D3-B488-3B4EC0E37DF4}" Directory_="Samples_1_Dir" Attributes="0"/>
     <ROW Component="SharpVectors.Converters.dll" ComponentId="{A2416D9A-A8E5-41D9-ADD7-1DCE5E41ADEB}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Converters.dll"/>
     <ROW Component="SharpVectors.Core.dll" ComponentId="{5E3EE3D4-BC8C-4DDA-A9EC-31C1B6F657C1}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Core.dll"/>
     <ROW Component="SharpVectors.Css.dll" ComponentId="{BF365AB3-FE41-4055-8F63-9638059FDF34}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Css.dll"/>
@@ -250,7 +220,6 @@
     <ROW Component="SharpVectors.Rendering.Gdi.dll" ComponentId="{1777EEDD-5594-4927-95AE-B457C21BEFCD}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Rendering.Gdi.dll"/>
     <ROW Component="SharpVectors.Rendering.Wpf.dll" ComponentId="{D7FDDDC0-DECB-42B6-A6A9-990F04756E5A}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Rendering.Wpf.dll"/>
     <ROW Component="SharpVectors.Runtime.dll" ComponentId="{F483B90B-5129-4598-A549-ACB2D7D0F50D}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Runtime.dll"/>
-    <ROW Component="Sounds" ComponentId="{52C59456-2B2B-4F0B-8ADD-BD429BB60590}" Directory_="Sounds_1_Dir" Attributes="0"/>
     <ROW Component="System.IO.Compression.dll" ComponentId="{54DB7D0F-7394-44CF-AF1C-3A395E079A9E}" Directory_="Release_Dir" Attributes="0" KeyPath="System.IO.Compression.dll"/>
     <ROW Component="System.Reactive.Core.dll" ComponentId="{3549CE97-9CE6-4C67-9757-0C24356EB7D6}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Core.dll"/>
     <ROW Component="System.Reactive.Interfaces.dll" ComponentId="{13F0C901-E109-478D-A2FC-5E9E22CF386A}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Interfaces.dll"/>
@@ -271,67 +240,47 @@
     <ROW Component="_MC_5_1_1_intro.xml_1" ComponentId="{0DD19D32-F009-4A63-A55A-061F0EBADEB9}" Directory_="Mouse_1_Dir" Attributes="0" KeyPath="_MC_5_1_1_intro.xml_1" Type="0"/>
     <ROW Component="_MC_5_1_1_intro.xml_4" ComponentId="{4DDA5CA5-CA62-46B6-9143-76FB35E0AE23}" Directory_="EyeTracker_Dir" Attributes="0" KeyPath="_MC_5_1_1_intro.xml_4" Type="0"/>
     <ROW Component="_MC_5_1_1_intro.xml_5" ComponentId="{EC740ECF-068C-48C4-9571-4A0DC81838D3}" Directory_="Mouse_Dir" Attributes="0" KeyPath="_MC_5_1_1_intro.xml_5" Type="0"/>
+    <ROW Component="b2f0b00ae75446b983d0548bb33b2ed.dat" ComponentId="{22A34DB3-27FF-4B18-95E9-C5AF87235A97}" Directory_="playerdata_2_Dir" Attributes="0" KeyPath="b2f0b00ae75446b983d0548bb33b2ed.dat" Type="0"/>
     <ROW Component="b2f0b00ae75446b983d0548bb33b2ed.json" ComponentId="{1FD6A660-F8C8-46F7-B213-F1457D26B034}" Directory_="advancements_1_Dir" Attributes="0" KeyPath="b2f0b00ae75446b983d0548bb33b2ed.json" Type="0"/>
     <ROW Component="b2f0b00ae75446b983d0548bb33b2ed.json_1" ComponentId="{28090C15-2BAB-41E6-BCA3-E8D1FF0DD2A0}" Directory_="stats_1_Dir" Attributes="0" KeyPath="b2f0b00ae75446b983d0548bb33b2ed.json_1" Type="0"/>
+    <ROW Component="b2f0b00ae75446b983d0548bb33b2ed.json_2" ComponentId="{A13BB769-88FB-4DBA-AC97-7DFEC36B9C57}" Directory_="advancements_2_Dir" Attributes="0" KeyPath="b2f0b00ae75446b983d0548bb33b2ed.json_2" Type="0"/>
+    <ROW Component="b2f0b00ae75446b983d0548bb33b2ed.json_3" ComponentId="{06378C5D-71C2-41B4-ACD9-4462E59F33C8}" Directory_="stats_2_Dir" Attributes="0" KeyPath="b2f0b00ae75446b983d0548bb33b2ed.json_3" Type="0"/>
     <ROW Component="back.png" ComponentId="{2808E485-EE1B-47AC-AE74-074C86958392}" Directory_="CommuniKate_Dir" Attributes="0" KeyPath="back.png" Type="0"/>
     <ROW Component="bass.dll" ComponentId="{B50E2E3B-50FB-4CB7-BC2C-8760904B4AE1}" Directory_="Release_Dir" Attributes="0" KeyPath="bass.dll"/>
-    <ROW Component="caES" ComponentId="{2D50146F-36BE-427A-B8A5-C3D88D6D7B51}" Directory_="caES_1_Dir" Attributes="0"/>
     <ROW Component="capabilities.dat" ComponentId="{BF73B3E2-4DA7-485F-B5E5-ABC76E6D1A77}" Directory_="data_Dir" Attributes="0" KeyPath="capabilities.dat" Type="0"/>
     <ROW Component="capabilities.dat_1" ComponentId="{D9E0EAEC-1F26-4FC7-B4AD-BB60CBB054C8}" Directory_="data_3_Dir" Attributes="0" KeyPath="capabilities.dat_1" Type="0"/>
     <ROW Component="capabilities.dat_2" ComponentId="{3CA2317F-112A-42C5-8A9F-AB9C4274E793}" Directory_="data_4_Dir" Attributes="0" KeyPath="capabilities.dat_2" Type="0"/>
-    <ROW Component="csCZ" ComponentId="{AA0364A1-C45A-4F88-8EE4-3BAD2216B7D9}" Directory_="csCZ_1_Dir" Attributes="0"/>
-    <ROW Component="daDK" ComponentId="{905EFAD5-E38C-4E59-9E9E-A9911AC3A817}" Directory_="daDK_1_Dir" Attributes="0"/>
-    <ROW Component="data" ComponentId="{979D3F6D-7EF4-47EB-A2E4-89F45DDE28C1}" Directory_="data_1_Dir" Attributes="0"/>
-    <ROW Component="data_1" ComponentId="{3D5510DF-E4E2-4FF6-AE5A-A67CE8FC5E65}" Directory_="data_2_Dir" Attributes="0"/>
-    <ROW Component="datapacks" ComponentId="{A8032840-27D8-4BBF-A0DC-3AC2F401756A}" Directory_="datapacks_Dir" Attributes="0"/>
-    <ROW Component="datapacks_1" ComponentId="{FE6596B5-97A6-4E5D-84DD-CD78F5BC6406}" Directory_="datapacks_1_Dir" Attributes="0"/>
-    <ROW Component="deDE" ComponentId="{CED5092A-6569-4B5C-9635-FDEE72EC214A}" Directory_="deDE_1_Dir" Attributes="0"/>
+    <ROW Component="capabilities.dat_3" ComponentId="{432C1852-4839-48FE-BD6D-CCD60CAA8D73}" Directory_="data_6_Dir" Attributes="0" KeyPath="capabilities.dat_3" Type="0"/>
+    <ROW Component="data_2" ComponentId="{8F1A8993-C970-4CFE-9024-AE4B0C7AFB91}" Directory_="data_7_Dir" Attributes="0"/>
+    <ROW Component="data_3" ComponentId="{4E3C5CCE-C4E5-4144-92E1-FF4DD96F3BDF}" Directory_="data_8_Dir" Attributes="0"/>
+    <ROW Component="drain.nbt" ComponentId="{27711922-5556-448E-B809-8C9083B420B6}" Directory_="structures_1_Dir" Attributes="0" KeyPath="drain.nbt" Type="0"/>
     <ROW Component="edbd23475bd5466f8a3e5fceb85cd13b.dat" ComponentId="{7213F8A4-6C63-4E20-BD9F-492A658E2FB5}" Directory_="playerdata_Dir" Attributes="0" KeyPath="edbd23475bd5466f8a3e5fceb85cd13b.dat" Type="0"/>
     <ROW Component="edbd23475bd5466f8a3e5fceb85cd13b.json" ComponentId="{B52A0319-BB22-474A-B299-191C368F48F7}" Directory_="stats_Dir" Attributes="0" KeyPath="edbd23475bd5466f8a3e5fceb85cd13b.json" Type="0"/>
     <ROW Component="edbd23475bd5466f8a3e5fceb85cd13b.json_1" ComponentId="{F749AF28-9718-467A-B49C-391EED676995}" Directory_="advancements_Dir" Attributes="0" KeyPath="edbd23475bd5466f8a3e5fceb85cd13b.json_1" Type="0"/>
-    <ROW Component="elGR" ComponentId="{B2DAF8FC-C046-4B60-B034-3F595E62A431}" Directory_="elGR_1_Dir" Attributes="0"/>
-    <ROW Component="enUS" ComponentId="{C4C72ECC-976B-4AA9-8974-259E4E9A9D52}" Directory_="enUS_1_Dir" Attributes="0"/>
-    <ROW Component="esES" ComponentId="{5BEB8F98-F31E-4482-9C65-18D12EC49F86}" Directory_="esES_1_Dir" Attributes="0"/>
-    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemine2.2.0.jar" Type="0"/>
+    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemine2.2.1.jar" Type="0"/>
     <ROW Component="eyemine2.0.12.jar" ComponentId="{B42179B6-D266-4B7F-ACB5-A2D839801563}" Directory_="ModInstaller_Dir" Attributes="0" KeyPath="eyemineclientmouse.toml" Type="0"/>
-    <ROW Component="fa" ComponentId="{8B818915-D3F6-4C6A-A87D-BCED118EC532}" Directory_="fa_1_Dir" Attributes="0"/>
-    <ROW Component="fiFI" ComponentId="{DC2AB178-C08B-4C90-A331-D5202FFED1A0}" Directory_="fiFI_1_Dir" Attributes="0"/>
     <ROW Component="forgeserver.toml" ComponentId="{4D73FC67-274C-46B7-B36C-3BD91E93D3C4}" Directory_="serverconfig_Dir" Attributes="0" KeyPath="forgeserver.toml" Type="0"/>
     <ROW Component="forgeserver.toml_1" ComponentId="{502D773A-B20D-461F-A436-0AABB8502B51}" Directory_="serverconfig_1_Dir" Attributes="0" KeyPath="forgeserver.toml_1" Type="0"/>
-    <ROW Component="fr" ComponentId="{92E56E46-7FB9-4DEE-B920-D309A489BF0B}" Directory_="fr_1_Dir" Attributes="0"/>
-    <ROW Component="heIL" ComponentId="{60B3565F-CB88-46D5-9BB6-CBBFE9D18C85}" Directory_="heIL_1_Dir" Attributes="0"/>
-    <ROW Component="hiIN" ComponentId="{AB153686-FEBD-42A8-8A7B-F2466A1D9033}" Directory_="hiIN_1_Dir" Attributes="0"/>
-    <ROW Component="hrHR" ComponentId="{55A9C509-49D9-4007-9BAF-B70B1EFE34C9}" Directory_="hrHR_1_Dir" Attributes="0"/>
-    <ROW Component="huHU" ComponentId="{EA3BCBF5-1758-487B-B7E9-FCD685F8E322}" Directory_="huHU_1_Dir" Attributes="0"/>
+    <ROW Component="forgeserver.toml_2" ComponentId="{3AF7490D-766A-4C15-9F17-E57DC90FF5B7}" Directory_="serverconfig_2_Dir" Attributes="0" KeyPath="forgeserver.toml_2" Type="0"/>
     <ROW Component="icon.png" ComponentId="{E9C07FD6-FA74-4B08-BED9-3ACED581E2FF}" Directory_="StarterWorld_Dir" Attributes="0" KeyPath="icon.png" Type="0"/>
     <ROW Component="icon.png_1" ComponentId="{2A53550F-1AE1-466A-B0DB-1F0CED9D7178}" Directory_="byAlexforSpecialEffect_Dir" Attributes="0" KeyPath="icon.png_1" Type="0"/>
-    <ROW Component="itIT" ComponentId="{34805AC1-1177-40CF-8C69-28FDFC25A9B8}" Directory_="itIT_1_Dir" Attributes="0"/>
-    <ROW Component="jaJP" ComponentId="{1DB40AA6-A0F1-41CD-BC21-118D0013FD5C}" Directory_="jaJP_1_Dir" Attributes="0"/>
-    <ROW Component="kaGE" ComponentId="{6915E511-5214-437A-8DC6-EAD16D62073C}" Directory_="kaGE_1_Dir" Attributes="0"/>
-    <ROW Component="koKR" ComponentId="{A8A4F40E-EC05-4360-8423-3FF21D719383}" Directory_="koKR_1_Dir" Attributes="0"/>
+    <ROW Component="icon.png_2" ComponentId="{105A8A4E-3908-44FC-BA44-E2BF435619F2}" Directory_="Tutorial_Dir" Attributes="0" KeyPath="icon.png_2" Type="0"/>
+    <ROW Component="log.gz" ComponentId="{06D56646-E23B-4793-906B-6D0D86EBB53F}" Directory_="logs_Dir" Attributes="0" KeyPath="log.gz" Type="0"/>
     <ROW Component="log4net.dll" ComponentId="{E52C8AD0-95EB-459F-AEF2-50B26F17DDEF}" Directory_="Release_Dir" Attributes="0" KeyPath="log4net.dll"/>
     <ROW Component="lowlowcircuit.nbt" ComponentId="{AEA11CFC-E232-459C-AE4E-9E7410B4805C}" Directory_="structures_Dir" Attributes="0" KeyPath="lowlowcircuit.nbt" Type="0"/>
     <ROW Component="myGazeAPI.dll" ComponentId="{A0D728C8-8180-449F-88AC-4FD1E98CC24A}" Directory_="Release_Dir" Attributes="0" KeyPath="myGazeAPI.dll"/>
-    <ROW Component="nl" ComponentId="{5ACE9031-84AE-4A1B-9DF2-148C33B0A19D}" Directory_="nl_1_Dir" Attributes="0"/>
     <ROW Component="nunit.framework.dll" ComponentId="{E8502CC0-2FBC-4B8F-B137-E3A0D0370ECC}" Directory_="Release_Dir" Attributes="0" KeyPath="nunit.framework.dll"/>
-    <ROW Component="plPL" ComponentId="{E9EE4FA7-5F06-4934-B4F7-847605DA636F}" Directory_="plPL_1_Dir" Attributes="0"/>
-    <ROW Component="playerdata" ComponentId="{CE51C2C6-AC7A-4D2B-989B-0C8687A7F8DB}" Directory_="playerdata_1_Dir" Attributes="0"/>
     <ROW Component="presage.net.dll" ComponentId="{AA631835-732C-4062-8172-CE4CCE33D410}" Directory_="Release_Dir" Attributes="0" KeyPath="presage.net.dll"/>
-    <ROW Component="ptPT" ComponentId="{21F4FE98-D0D3-43CF-9C4B-A98510EF905D}" Directory_="ptPT_1_Dir" Attributes="0"/>
     <ROW Component="r.1.1.mca" ComponentId="{0A6AF52E-6B1A-4D07-8EE8-A032225DA4AD}" Directory_="poi_Dir" Attributes="0" KeyPath="r.1.1.mca" Type="0"/>
     <ROW Component="r.1.1.mca_1" ComponentId="{1754021D-9156-496C-9E38-DED7C7E0EB4D}" Directory_="region_Dir" Attributes="0" KeyPath="r.1.1.mca_1" Type="0"/>
     <ROW Component="r.1.1.mca_2" ComponentId="{7140D5AE-C897-4FB3-8098-61384F8A81AC}" Directory_="poi_1_Dir" Attributes="0" KeyPath="r.1.1.mca_2" Type="0"/>
     <ROW Component="r.1.1.mca_3" ComponentId="{AD4CA5C2-D0AA-4A0B-B95B-C56794FDE253}" Directory_="region_1_Dir" Attributes="0" KeyPath="r.1.1.mca_6" Type="0"/>
     <ROW Component="r.1.1.mca_4" ComponentId="{C83EDFB2-C2B4-411C-B0EC-227642BD4327}" Directory_="poi_2_Dir" Attributes="0" KeyPath="r.1.1.mca_10" Type="0"/>
     <ROW Component="r.1.1.mca_5" ComponentId="{E0044918-8DA7-4C7C-8943-F48AD7E4801F}" Directory_="region_2_Dir" Attributes="0" KeyPath="r.1.1.mca_14" Type="0"/>
+    <ROW Component="r.1.1.mca_6" ComponentId="{36178404-B25D-4591-9131-4D70A4DFB680}" Directory_="poi_3_Dir" Attributes="0" KeyPath="r.1.1.mca_18" Type="0"/>
+    <ROW Component="r.1.1.mca_7" ComponentId="{C283F220-ED30-4EB2-A13F-B9FEC10A442B}" Directory_="region_3_Dir" Attributes="0" KeyPath="r.1.1.mca_20" Type="0"/>
     <ROW Component="raids_end.dat" ComponentId="{1426C493-71BD-47DB-9F1B-179A115C6E05}" Directory_="data_5_Dir" Attributes="0" KeyPath="raids_end.dat" Type="0"/>
-    <ROW Component="ruRU" ComponentId="{DE739211-AE77-47AE-BE0E-18643E85A379}" Directory_="ruRU_1_Dir" Attributes="0"/>
-    <ROW Component="skSK" ComponentId="{AB1C4AF5-4A49-4D39-BEBF-218EA0E95160}" Directory_="skSK_1_Dir" Attributes="0"/>
-    <ROW Component="slSI" ComponentId="{30A119DD-F470-48C0-8111-24E990C382CB}" Directory_="slSI_1_Dir" Attributes="0"/>
-    <ROW Component="srCyrlRS" ComponentId="{6388F159-B4E6-4449-A71A-225ABA57B3F8}" Directory_="srCyrlRS_1_Dir" Attributes="0"/>
-    <ROW Component="trTR" ComponentId="{2069FB3B-2DCB-4E47-9291-DA4BB6855F2C}" Directory_="trTR_1_Dir" Attributes="0"/>
-    <ROW Component="ukUA" ComponentId="{901AAE11-3E28-42F1-AE50-F83ABBF21E06}" Directory_="ukUA_1_Dir" Attributes="0"/>
-    <ROW Component="urPK" ComponentId="{5FEAF532-005B-4FE8-B8AD-CC2A128D54B5}" Directory_="urPK_1_Dir" Attributes="0"/>
+    <ROW Component="zip" ComponentId="{C13F9712-F99F-4B58-9ECD-D4010D17ACEB}" Directory_="saves_1_Dir" Attributes="0" KeyPath="zip" Type="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
@@ -1404,7 +1353,63 @@
     <ROW File="session.lock_1" Component_="icon.png_1" FileName="SESSIO~1.LOC|session.lock" Attributes="0" SourcePath="resources\saves\by Alex for SpecialEffect\session.lock" SelfReg="false"/>
     <ROW File="b2f0b00ae75446b983d0548bb33b2ed.json_1" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_1" FileName="1B2F0B~1.JSO|1b2f0b00-ae75-446b-983d-0548bb33b2ed.json" Attributes="0" SourcePath="resources\saves\by Alex for SpecialEffect\stats\1b2f0b00-ae75-446b-983d-0548bb33b2ed.json" SelfReg="false"/>
     <ROW File="df991f603344ca090369bad2a924a.json_1" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_1" FileName="380DF9~1.JSO|380df991-f603-344c-a090-369bad2a924a.json" Attributes="0" SourcePath="resources\saves\by Alex for SpecialEffect\stats\380df991-f603-344c-a090-369bad2a924a.json" SelfReg="false"/>
-    <ROW File="eyemine2.2.0.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~2.JAR|eyemine-2.2.0.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-2.2.0.jar" SelfReg="false"/>
+    <ROW File="log.gz" Component_="log.gz" FileName="2021-0~1.GZ|2021-06-28-2.log.gz" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\logs\2021-06-28-2.log.gz" SelfReg="false"/>
+    <ROW File="log.gz_1" Component_="log.gz" FileName="2021-0~2.GZ|2021-06-28-3.log.gz" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\logs\2021-06-28-3.log.gz" SelfReg="false"/>
+    <ROW File="log.gz_2" Component_="log.gz" FileName="2021-0~3.GZ|2021-06-29-1.log.gz" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\logs\2021-06-29-1.log.gz" SelfReg="false"/>
+    <ROW File="debug1.log.gz" Component_="log.gz" FileName="DEBUG-~1.GZ|debug-1.log.gz" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\logs\debug-1.log.gz" SelfReg="false"/>
+    <ROW File="debug2.log.gz" Component_="log.gz" FileName="DEBUG-~2.GZ|debug-2.log.gz" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\logs\debug-2.log.gz" SelfReg="false"/>
+    <ROW File="debug3.log.gz" Component_="log.gz" FileName="DEBUG-~3.GZ|debug-3.log.gz" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\logs\debug-3.log.gz" SelfReg="false"/>
+    <ROW File="debug.log" Component_="log.gz" FileName="debug.log" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\logs\debug.log" SelfReg="false"/>
+    <ROW File="latest.log" Component_="log.gz" FileName="latest.log" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\logs\latest.log" SelfReg="false"/>
+    <ROW File="zip" Component_="zip" FileName="1117.zip" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\1117.zip" SelfReg="false"/>
+    <ROW File="b2f0b00ae75446b983d0548bb33b2ed.json_2" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_2" FileName="1B2F0B~1.JSO|1b2f0b00-ae75-446b-983d-0548bb33b2ed.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\advancements\1b2f0b00-ae75-446b-983d-0548bb33b2ed.json" SelfReg="false"/>
+    <ROW File="df991f603344ca090369bad2a924a.json_2" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_2" FileName="380DF9~1.JSO|380df991-f603-344c-a090-369bad2a924a.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\advancements\380df991-f603-344c-a090-369bad2a924a.json" SelfReg="false"/>
+    <ROW File="edbd23475bd5466f8a3e5fceb85cd13b.json_2" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_2" FileName="EDBD23~1.JSO|edbd2347-5bd5-466f-8a3e-5fceb85cd13b.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\advancements\edbd2347-5bd5-466f-8a3e-5fceb85cd13b.json" SelfReg="false"/>
+    <ROW File="capabilities.dat_3" Component_="capabilities.dat_3" FileName="CAPABI~1.DAT|capabilities.dat" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\data\capabilities.dat" SelfReg="false"/>
+    <ROW File="raids.dat_2" Component_="capabilities.dat_3" FileName="raids.dat" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\data\raids.dat" SelfReg="false"/>
+    <ROW File="scoreboard.dat_1" Component_="capabilities.dat_3" FileName="SCOREB~1.DAT|scoreboard.dat" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\data\scoreboard.dat" SelfReg="false"/>
+    <ROW File="drain.nbt" Component_="drain.nbt" FileName="drain.nbt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\generated\minecraft\structures\drain.nbt" SelfReg="false"/>
+    <ROW File="new.nbt" Component_="drain.nbt" FileName="new.nbt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\generated\minecraft\structures\new.nbt" SelfReg="false"/>
+    <ROW File="please.nbt" Component_="drain.nbt" FileName="please.nbt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\generated\minecraft\structures\please.nbt" SelfReg="false"/>
+    <ROW File="toggle.nbt" Component_="drain.nbt" FileName="toggle.nbt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\generated\minecraft\structures\toggle.nbt" SelfReg="false"/>
+    <ROW File="icon.png_2" Component_="icon.png_2" FileName="icon.png" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\icon.png" SelfReg="false"/>
+    <ROW File="level.dat_2" Component_="icon.png_2" FileName="level.dat" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\level.dat" SelfReg="false"/>
+    <ROW File="level.dat_old_2" Component_="icon.png_2" FileName="LEVEL~1.DAT|level.dat_old" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\level.dat_old" SelfReg="false"/>
+    <ROW File="b2f0b00ae75446b983d0548bb33b2ed.dat" Component_="b2f0b00ae75446b983d0548bb33b2ed.dat" FileName="1B2F0B~1.DAT|1b2f0b00-ae75-446b-983d-0548bb33b2ed.dat" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\playerdata\1b2f0b00-ae75-446b-983d-0548bb33b2ed.dat" SelfReg="false"/>
+    <ROW File="df991f603344ca090369bad2a924a.dat" Component_="b2f0b00ae75446b983d0548bb33b2ed.dat" FileName="380DF9~1.DAT|380df991-f603-344c-a090-369bad2a924a.dat" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\playerdata\380df991-f603-344c-a090-369bad2a924a.dat" SelfReg="false"/>
+    <ROW File="edbd23475bd5466f8a3e5fceb85cd13b.dat_1" Component_="b2f0b00ae75446b983d0548bb33b2ed.dat" FileName="EDBD23~1.DAT|edbd2347-5bd5-466f-8a3e-5fceb85cd13b.dat" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\playerdata\edbd2347-5bd5-466f-8a3e-5fceb85cd13b.dat" SelfReg="false"/>
+    <ROW File="r.1.1.mca_18" Component_="r.1.1.mca_6" FileName="R-1-1~1.MCA|r.-1.-1.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\poi\r.-1.-1.mca" SelfReg="false"/>
+    <ROW File="r.1.2.mca_8" Component_="r.1.1.mca_6" FileName="R-1-2~1.MCA|r.-1.-2.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\poi\r.-1.-2.mca" SelfReg="false"/>
+    <ROW File="r.1.0.mca_10" Component_="r.1.1.mca_6" FileName="R-10~1.MCA|r.-1.0.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\poi\r.-1.0.mca" SelfReg="false"/>
+    <ROW File="r.2.2.mca_6" Component_="r.1.1.mca_6" FileName="R-2-2~1.MCA|r.-2.-2.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\poi\r.-2.-2.mca" SelfReg="false"/>
+    <ROW File="r.0.1.mca_10" Component_="r.1.1.mca_6" FileName="R0-1~1.MCA|r.0.-1.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\poi\r.0.-1.mca" SelfReg="false"/>
+    <ROW File="r.0.2.mca_5" Component_="r.1.1.mca_6" FileName="R0-2~1.MCA|r.0.-2.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\poi\r.0.-2.mca" SelfReg="false"/>
+    <ROW File="r.0.0.mca_6" Component_="r.1.1.mca_6" FileName="R00~1.MCA|r.0.0.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\poi\r.0.0.mca" SelfReg="false"/>
+    <ROW File="r.1.1.mca_19" Component_="r.1.1.mca_6" FileName="R1-1~1.MCA|r.1.-1.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\poi\r.1.-1.mca" SelfReg="false"/>
+    <ROW File="r.1.2.mca_9" Component_="r.1.1.mca_6" FileName="R1-2~1.MCA|r.1.-2.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\poi\r.1.-2.mca" SelfReg="false"/>
+    <ROW File="r.1.0.mca_11" Component_="r.1.1.mca_6" FileName="R10~1.MCA|r.1.0.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\poi\r.1.0.mca" SelfReg="false"/>
+    <ROW File="r.1.1.mca_20" Component_="r.1.1.mca_7" FileName="R-1-1~1.MCA|r.-1.-1.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.-1.-1.mca" SelfReg="false"/>
+    <ROW File="r.1.2.mca_10" Component_="r.1.1.mca_7" FileName="R-1-2~1.MCA|r.-1.-2.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.-1.-2.mca" SelfReg="false"/>
+    <ROW File="r.1.0.mca_12" Component_="r.1.1.mca_7" FileName="R-10~1.MCA|r.-1.0.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.-1.0.mca" SelfReg="false"/>
+    <ROW File="r.1.1.mca_21" Component_="r.1.1.mca_7" FileName="R-11~1.MCA|r.-1.1.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.-1.1.mca" SelfReg="false"/>
+    <ROW File="r.2.1.mca_11" Component_="r.1.1.mca_7" FileName="R-2-1~1.MCA|r.-2.-1.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.-2.-1.mca" SelfReg="false"/>
+    <ROW File="r.2.2.mca_7" Component_="r.1.1.mca_7" FileName="R-2-2~1.MCA|r.-2.-2.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.-2.-2.mca" SelfReg="false"/>
+    <ROW File="r.2.0.mca_5" Component_="r.1.1.mca_7" FileName="R-20~1.MCA|r.-2.0.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.-2.0.mca" SelfReg="false"/>
+    <ROW File="r.2.1.mca_12" Component_="r.1.1.mca_7" FileName="R-21~1.MCA|r.-2.1.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.-2.1.mca" SelfReg="false"/>
+    <ROW File="r.0.1.mca_11" Component_="r.1.1.mca_7" FileName="R0-1~1.MCA|r.0.-1.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.0.-1.mca" SelfReg="false"/>
+    <ROW File="r.0.2.mca_6" Component_="r.1.1.mca_7" FileName="R0-2~1.MCA|r.0.-2.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.0.-2.mca" SelfReg="false"/>
+    <ROW File="r.0.0.mca_7" Component_="r.1.1.mca_7" FileName="R00~1.MCA|r.0.0.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.0.0.mca" SelfReg="false"/>
+    <ROW File="r.0.1.mca_12" Component_="r.1.1.mca_7" FileName="R01~1.MCA|r.0.1.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.0.1.mca" SelfReg="false"/>
+    <ROW File="r.1.1.mca_22" Component_="r.1.1.mca_7" FileName="R1-1~1.MCA|r.1.-1.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.1.-1.mca" SelfReg="false"/>
+    <ROW File="r.1.2.mca_11" Component_="r.1.1.mca_7" FileName="R1-2~1.MCA|r.1.-2.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.1.-2.mca" SelfReg="false"/>
+    <ROW File="r.1.0.mca_13" Component_="r.1.1.mca_7" FileName="R10~1.MCA|r.1.0.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.1.0.mca" SelfReg="false"/>
+    <ROW File="r.1.1.mca_23" Component_="r.1.1.mca_7" FileName="R11~1.MCA|r.1.1.mca" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\region\r.1.1.mca" SelfReg="false"/>
+    <ROW File="forgeserver.toml_2" Component_="forgeserver.toml_2" FileName="FORGE-~1.TOM|forge-server.toml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\serverconfig\forge-server.toml" SelfReg="false"/>
+    <ROW File="session.lock_2" Component_="icon.png_2" FileName="SESSIO~1.LOC|session.lock" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\session.lock" SelfReg="false"/>
+    <ROW File="b2f0b00ae75446b983d0548bb33b2ed.json_3" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_3" FileName="1B2F0B~1.JSO|1b2f0b00-ae75-446b-983d-0548bb33b2ed.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\stats\1b2f0b00-ae75-446b-983d-0548bb33b2ed.json" SelfReg="false"/>
+    <ROW File="df991f603344ca090369bad2a924a.json_3" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_3" FileName="380DF9~1.JSO|380df991-f603-344c-a090-369bad2a924a.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\stats\380df991-f603-344c-a090-369bad2a924a.json" SelfReg="false"/>
+    <ROW File="edbd23475bd5466f8a3e5fceb85cd13b.json_3" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_3" FileName="EDBD23~1.JSO|edbd2347-5bd5-466f-8a3e-5fceb85cd13b.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\bin\Release\ModInstaller\saves\Tutorial\stats\edbd2347-5bd5-466f-8a3e-5fceb85cd13b.json" SelfReg="false"/>
+    <ROW File="eyemine2.2.1.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~1.JAR|eyemine-2.2.1.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-2.2.1.jar" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -1772,45 +1777,8 @@
     <ROW Directory_="Optikey_Dir" Component_="Optikey" ManualDelete="false"/>
     <ROW Directory_="EyeMineV2_Dir" Component_="EyeMineV2" ManualDelete="false"/>
     <ROW Directory_="EyeMineKeyboards_1_Dir" Component_="Keyboards" ManualDelete="true"/>
-    <ROW Directory_="caES_1_Dir" Component_="caES" ManualDelete="false"/>
-    <ROW Directory_="csCZ_1_Dir" Component_="csCZ" ManualDelete="false"/>
-    <ROW Directory_="daDK_1_Dir" Component_="daDK" ManualDelete="false"/>
-    <ROW Directory_="deDE_1_Dir" Component_="deDE" ManualDelete="false"/>
-    <ROW Directory_="Dictionaries_1_Dir" Component_="Dictionaries" ManualDelete="false"/>
-    <ROW Directory_="elGR_1_Dir" Component_="elGR" ManualDelete="false"/>
-    <ROW Directory_="enUS_1_Dir" Component_="enUS" ManualDelete="false"/>
-    <ROW Directory_="esES_1_Dir" Component_="esES" ManualDelete="false"/>
-    <ROW Directory_="fa_1_Dir" Component_="fa" ManualDelete="false"/>
-    <ROW Directory_="fiFI_1_Dir" Component_="fiFI" ManualDelete="false"/>
-    <ROW Directory_="fr_1_Dir" Component_="fr" ManualDelete="false"/>
-    <ROW Directory_="heIL_1_Dir" Component_="heIL" ManualDelete="false"/>
-    <ROW Directory_="hiIN_1_Dir" Component_="hiIN" ManualDelete="false"/>
-    <ROW Directory_="hrHR_1_Dir" Component_="hrHR" ManualDelete="false"/>
-    <ROW Directory_="huHU_1_Dir" Component_="huHU" ManualDelete="false"/>
-    <ROW Directory_="itIT_1_Dir" Component_="itIT" ManualDelete="false"/>
-    <ROW Directory_="jaJP_1_Dir" Component_="jaJP" ManualDelete="false"/>
-    <ROW Directory_="kaGE_1_Dir" Component_="kaGE" ManualDelete="false"/>
-    <ROW Directory_="koKR_1_Dir" Component_="koKR" ManualDelete="false"/>
-    <ROW Directory_="nl_1_Dir" Component_="nl" ManualDelete="false"/>
-    <ROW Directory_="plPL_1_Dir" Component_="plPL" ManualDelete="false"/>
-    <ROW Directory_="ptPT_1_Dir" Component_="ptPT" ManualDelete="false"/>
-    <ROW Directory_="CommuniKate_1_Dir" Component_="CommuniKate" ManualDelete="false"/>
-    <ROW Directory_="Samples_1_Dir" Component_="Samples" ManualDelete="false"/>
-    <ROW Directory_="Fonts_1_Dir" Component_="Fonts" ManualDelete="false"/>
-    <ROW Directory_="Presage_Dir" Component_="Presage" ManualDelete="false"/>
-    <ROW Directory_="Sounds_1_Dir" Component_="Sounds" ManualDelete="false"/>
-    <ROW Directory_="ruRU_1_Dir" Component_="ruRU" ManualDelete="false"/>
-    <ROW Directory_="skSK_1_Dir" Component_="skSK" ManualDelete="false"/>
-    <ROW Directory_="slSI_1_Dir" Component_="slSI" ManualDelete="false"/>
-    <ROW Directory_="srCyrlRS_1_Dir" Component_="srCyrlRS" ManualDelete="false"/>
-    <ROW Directory_="trTR_1_Dir" Component_="trTR" ManualDelete="false"/>
-    <ROW Directory_="ukUA_1_Dir" Component_="ukUA" ManualDelete="false"/>
-    <ROW Directory_="urPK_1_Dir" Component_="urPK" ManualDelete="false"/>
-    <ROW Directory_="datapacks_Dir" Component_="datapacks" ManualDelete="false"/>
-    <ROW Directory_="data_1_Dir" Component_="data" ManualDelete="false"/>
-    <ROW Directory_="data_2_Dir" Component_="data_1" ManualDelete="false"/>
-    <ROW Directory_="datapacks_1_Dir" Component_="datapacks_1" ManualDelete="false"/>
-    <ROW Directory_="playerdata_1_Dir" Component_="playerdata" ManualDelete="false"/>
+    <ROW Directory_="data_7_Dir" Component_="data_2" ManualDelete="false"/>
+    <ROW Directory_="data_8_Dir" Component_="data_3" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
@@ -1931,49 +1899,12 @@
     <ROW Feature_="MainFeature" Component_="Interop.SpeechLib.dll"/>
     <ROW Feature_="MainFeature" Component_="IrisbondAPI.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_14"/>
-    <ROW Feature_="MainFeature" Component_="caES"/>
-    <ROW Feature_="MainFeature" Component_="csCZ"/>
-    <ROW Feature_="MainFeature" Component_="daDK"/>
-    <ROW Feature_="MainFeature" Component_="deDE"/>
-    <ROW Feature_="MainFeature" Component_="Dictionaries"/>
-    <ROW Feature_="MainFeature" Component_="elGR"/>
-    <ROW Feature_="MainFeature" Component_="enUS"/>
-    <ROW Feature_="MainFeature" Component_="esES"/>
-    <ROW Feature_="MainFeature" Component_="fa"/>
-    <ROW Feature_="MainFeature" Component_="fiFI"/>
-    <ROW Feature_="MainFeature" Component_="fr"/>
-    <ROW Feature_="MainFeature" Component_="heIL"/>
-    <ROW Feature_="MainFeature" Component_="hiIN"/>
-    <ROW Feature_="MainFeature" Component_="hrHR"/>
-    <ROW Feature_="MainFeature" Component_="huHU"/>
-    <ROW Feature_="MainFeature" Component_="itIT"/>
-    <ROW Feature_="MainFeature" Component_="jaJP"/>
-    <ROW Feature_="MainFeature" Component_="kaGE"/>
-    <ROW Feature_="MainFeature" Component_="koKR"/>
-    <ROW Feature_="MainFeature" Component_="nl"/>
-    <ROW Feature_="MainFeature" Component_="plPL"/>
-    <ROW Feature_="MainFeature" Component_="ptPT"/>
-    <ROW Feature_="MainFeature" Component_="CommuniKate"/>
-    <ROW Feature_="MainFeature" Component_="Samples"/>
-    <ROW Feature_="MainFeature" Component_="Fonts"/>
-    <ROW Feature_="MainFeature" Component_="Presage"/>
-    <ROW Feature_="MainFeature" Component_="Sounds"/>
-    <ROW Feature_="MainFeature" Component_="ruRU"/>
-    <ROW Feature_="MainFeature" Component_="skSK"/>
-    <ROW Feature_="MainFeature" Component_="slSI"/>
-    <ROW Feature_="MainFeature" Component_="srCyrlRS"/>
-    <ROW Feature_="MainFeature" Component_="trTR"/>
-    <ROW Feature_="MainFeature" Component_="ukUA"/>
-    <ROW Feature_="MainFeature" Component_="urPK"/>
     <ROW Feature_="MainFeature" Component_="capabilities.dat"/>
     <ROW Feature_="MainFeature" Component_="icon.png"/>
     <ROW Feature_="MainFeature" Component_="r.1.1.mca"/>
     <ROW Feature_="MainFeature" Component_="r.1.1.mca_1"/>
     <ROW Feature_="MainFeature" Component_="forgeserver.toml"/>
     <ROW Feature_="MainFeature" Component_="edbd23475bd5466f8a3e5fceb85cd13b.json"/>
-    <ROW Feature_="MainFeature" Component_="datapacks"/>
-    <ROW Feature_="MainFeature" Component_="data"/>
-    <ROW Feature_="MainFeature" Component_="data_1"/>
     <ROW Feature_="MainFeature" Component_="EyeXFramework.dll_1"/>
     <ROW Feature_="MainFeature" Component_="EyeXFramework.xml"/>
     <ROW Feature_="MainFeature" Component_="JuliusSweetland.OptiKey.InstallerActionsEyeMine.dll"/>
@@ -2048,18 +1979,29 @@
     <ROW Feature_="MainFeature" Component_="edbd23475bd5466f8a3e5fceb85cd13b.dat"/>
     <ROW Feature_="MainFeature" Component_="b2f0b00ae75446b983d0548bb33b2ed.json"/>
     <ROW Feature_="MainFeature" Component_="capabilities.dat_1"/>
-    <ROW Feature_="MainFeature" Component_="datapacks_1"/>
     <ROW Feature_="MainFeature" Component_="capabilities.dat_2"/>
     <ROW Feature_="MainFeature" Component_="r.1.1.mca_2"/>
     <ROW Feature_="MainFeature" Component_="r.1.1.mca_3"/>
     <ROW Feature_="MainFeature" Component_="raids_end.dat"/>
     <ROW Feature_="MainFeature" Component_="lowlowcircuit.nbt"/>
     <ROW Feature_="MainFeature" Component_="icon.png_1"/>
-    <ROW Feature_="MainFeature" Component_="playerdata"/>
     <ROW Feature_="MainFeature" Component_="r.1.1.mca_4"/>
     <ROW Feature_="MainFeature" Component_="r.1.1.mca_5"/>
     <ROW Feature_="MainFeature" Component_="forgeserver.toml_1"/>
     <ROW Feature_="MainFeature" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_1"/>
+    <ROW Feature_="MainFeature" Component_="log.gz"/>
+    <ROW Feature_="MainFeature" Component_="zip"/>
+    <ROW Feature_="MainFeature" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_2"/>
+    <ROW Feature_="MainFeature" Component_="capabilities.dat_3"/>
+    <ROW Feature_="MainFeature" Component_="data_2"/>
+    <ROW Feature_="MainFeature" Component_="data_3"/>
+    <ROW Feature_="MainFeature" Component_="drain.nbt"/>
+    <ROW Feature_="MainFeature" Component_="icon.png_2"/>
+    <ROW Feature_="MainFeature" Component_="b2f0b00ae75446b983d0548bb33b2ed.dat"/>
+    <ROW Feature_="MainFeature" Component_="r.1.1.mca_6"/>
+    <ROW Feature_="MainFeature" Component_="r.1.1.mca_7"/>
+    <ROW Feature_="MainFeature" Component_="forgeserver.toml_2"/>
+    <ROW Feature_="MainFeature" Component_="b2f0b00ae75446b983d0548bb33b2ed.json_3"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="EyeMineV2.exe" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\EyeMineV2.ico" Index="0"/>
