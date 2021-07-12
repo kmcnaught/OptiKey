@@ -371,6 +371,17 @@ namespace JuliusSweetland.OptiKey.Extensions
 
             return s;
         }
+        
+        public static string[] SplitAtEndOfSubstring(this string fullString, string subString)
+        {
+            int i = fullString.IndexOf(subString);
+            int L = subString.Length;
+            return new string[] {
+                fullString.Substring(0,i+L),
+                fullString.Substring(i+L)
+            };
+        }
+
 
     }
 }

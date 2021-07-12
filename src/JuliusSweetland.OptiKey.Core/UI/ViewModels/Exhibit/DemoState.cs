@@ -2,6 +2,7 @@
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Native;
+using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
@@ -14,6 +15,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
@@ -59,15 +61,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             HotkeyManager.Current.AddOrReplace("Info", Key.Up, ModifierKeys.Control, noRepeat, OnInfo);
 
             // Launch Minecraft
-            string javapath = @"C:\Program Files (x86)\Minecraft Launcher\runtime\jre-legacy\windows-x64\jre-legacy\bin\javaw.exe";
-            
-            // args need to come from a previous run of Minecraft with valid credentials
-            String cmdTextFile = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\minecraftCommand.txt";
-            string minecraftArgs = File.ReadAllText(cmdTextFile);
-
-            minecraftProcess = Process.Start(new ProcessStartInfo(javapath, minecraftArgs));
-            minecraftProcess.CloseOnApplicationExit(Log, "Minecraft");
-
+            GetOrLaunchMinecraft();
             stage = Stage.IDLE;
             UpdateForState(stage);
 
@@ -84,7 +78,98 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             keyDebounceTimer.Tick += AllowKeyPress;
             keyDebounceTimer.Interval = new TimeSpan(0, 0, 0, 0, debounceMs);           
             
-        }        
+        }   
+        
+        private void GetOrLaunchMinecraft()
+        {
+            //Settings.Default.MinecraftCommand = "";
+            //Settings.Default.Save();
+
+            if (String.IsNullOrEmpty(Settings.Default.MinecraftCommand))
+            {
+                // Grab Minecraft command (first time)
+                foreach (Process p in Process.GetProcesses())
+                {
+                    if (p.ProcessName.ToLower().Contains("javaw"))
+                    {
+                        string cmd = p.GetCommandLine();
+                        if (cmd.Contains(".minecraft") && cmd.Contains("EyeMineExhibit"))
+                        {
+                            // Launcher creates temporary bin dir, we want to make a copy for reuse
+                            Regex regex = new Regex(@"-Djava.library.path=(.*.minecraft\\bin\\)([0-9a-f\-]*)");
+                            Match match = regex.Match(cmd);
+                            if (match.Groups.Count >= 3)
+                            {
+                                String tempDir = match.Groups[1].Value + match.Groups[2].Value;
+                                String newDir = match.Groups[1].Value + "EyeMineExhibit";
+                                DirectoryCopy(tempDir, newDir, true, true);
+
+                                cmd = cmd.Replace(tempDir, newDir);
+
+                                // Save command for next time
+                                minecraftProcess = p;
+                                Settings.Default.MinecraftCommand = cmd;
+                                Settings.Default.Save();
+                            }
+                            else
+                            {
+                                Log.ErrorFormat("Couldn't recognise bin directory in minecraft command: {0}", cmd);
+                            }
+
+                        }
+                    }
+                }
+
+                if (minecraftProcess == null)
+                {
+                    if (MessageBox.Show("No minecraft instance saved.\n\nEyeMine will quit now. \n\nPlease launch the correct Minecraft instance before restarting so EyeMine can learn to launch it automatically.",
+                         "No Minecraft instance found. ",
+                         MessageBoxButton.OK) == MessageBoxResult.OK)
+                    {
+                        Application.Current.Shutdown();
+                    }
+                }
+                else
+                {
+                    //minecraftProcess.Close();
+                    if (MessageBox.Show("Saving Minecraft instance...\n\n Please close Minecraft and then click OK for EyeMine to quit. Next time EyeMine will launch Minecraft itself",
+                     "Capturing Minecraft instance ... ",
+                     MessageBoxButton.OK) == MessageBoxResult.OK)
+                    {
+                        Application.Current.Shutdown();
+                    }
+                }
+            }
+            else
+            {
+
+                // Launch Minecraft
+
+                String fullCmd = Settings.Default.MinecraftCommand;
+                if (!String.IsNullOrEmpty(fullCmd))
+                {
+                    string javapath1 = @"C:\Program Files (x86)\Minecraft Launcher\runtime\jre-legacy\windows-x64\jre-legacy\bin\javaw.exe";
+
+                    // args need to come from a previous run of Minecraft with valid credentials
+                    String cmdTextFile = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\minecraftCommand.txt";
+                    string minecraftArgs1 = File.ReadAllText(cmdTextFile);
+
+
+                    string[] parts = fullCmd.SplitAtEndOfSubstring("javaw.exe\"");
+                    string javaPath = parts[0];
+                    string minecraftArgs = parts[1].TrimStart();
+
+                    // Fix mid-argument whitespace
+                    string find = "Windows 10";
+                    string replace = "Windows\\ 10";
+                    minecraftArgs = minecraftArgs.Replace(find, replace);
+
+                    minecraftProcess = Process.Start(new ProcessStartInfo(javaPath, minecraftArgs));
+                    minecraftProcess.CloseOnApplicationExit(Log, "Minecraft");
+                }
+            }
+
+        }
 
         private void TimerTick(object sender, EventArgs e)
         {

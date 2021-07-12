@@ -30,6 +30,24 @@ namespace JuliusSweetland.OptiKey.Properties {
             defaultInstance = instance;
         }
 
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string MinecraftCommand
+        {
+            get
+            {
+                return (string)(this["MinecraftCommand"]);
+            }
+            set
+            {
+                this["MinecraftCommand"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Insert")]
