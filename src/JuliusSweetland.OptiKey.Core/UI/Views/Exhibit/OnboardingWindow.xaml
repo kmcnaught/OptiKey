@@ -8,7 +8,8 @@
         WindowStartupLocation="CenterOwner"
         WindowState="Maximized"
         mc:Ignorable="d"
-        Title="OnboardingWindow">
+        Title=""
+        Background="Black">
     <!-- This will display each page of the onboarding workflow -->
     <Window.Resources>
         <DataTemplate DataType="{x:Type vms:FaceViewModel}">
