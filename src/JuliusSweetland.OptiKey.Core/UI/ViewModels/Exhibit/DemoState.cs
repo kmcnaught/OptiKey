@@ -9,10 +9,12 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using JuliusSweetland.OptiKey.UI.Views.Exhibit;
 using log4net;
+using Microsoft.Win32;
 using NHotkey.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.DirectoryServices;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -131,12 +133,28 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 }
                 else
                 {
-                    //minecraftProcess.Close();
-                    if (MessageBox.Show("Saving Minecraft instance...\n\n Please close Minecraft and then click OK for EyeMine to quit. Next time EyeMine will launch Minecraft itself",
-                     "Capturing Minecraft instance ... ",
-                     MessageBoxButton.OK) == MessageBoxResult.OK)
+                    // Set up shell launcher
+                    if (Environment.UserName.Contains("EyeMine"))
                     {
-                        Application.Current.Shutdown();
+                        RegistryKey Key = Registry.CurrentUser;
+                        Key = Key.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\System\", true);
+                        Key.SetValue("Shell", System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+
+                        if (MessageBox.Show("Saving Minecraft instance...\n\n EyeMine can now launch Minecraft itself. Please log out then back in again",
+                         "Capturing Minecraft instance ... ",
+                         MessageBoxButton.OK) == MessageBoxResult.OK)
+                        {
+                            Application.Current.Shutdown();
+                        }
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("Saving Minecraft instance...\n\n Please close Minecraft and then click OK for EyeMine to quit. Next time EyeMine will launch Minecraft itself",
+                         "Capturing Minecraft instance ... ",
+                         MessageBoxButton.OK) == MessageBoxResult.OK)
+                        {
+                            Application.Current.Shutdown();
+                        }
                     }
                 }
             }
