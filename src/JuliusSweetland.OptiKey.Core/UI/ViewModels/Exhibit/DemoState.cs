@@ -137,7 +137,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     if (Environment.UserName.Contains("EyeMine"))
                     {
                         RegistryKey Key = Registry.CurrentUser;
-                        Key = Key.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\System\", true);
+                        Key = Key.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\", true);
                         Key.SetValue("Shell", System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
 
                         if (MessageBox.Show("Saving Minecraft instance...\n\n EyeMine can now launch Minecraft itself. Please log out then back in again",
