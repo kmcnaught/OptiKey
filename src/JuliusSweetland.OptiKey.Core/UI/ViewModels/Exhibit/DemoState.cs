@@ -55,10 +55,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             LaunchOnboarding();
 
             bool noRepeat = true;
-            HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.Control, noRepeat, OnBack);
-            HotkeyManager.Current.AddOrReplace("Forward", Key.Right, ModifierKeys.Control, noRepeat, OnForward);
-            HotkeyManager.Current.AddOrReplace("Reset", Key.Down, ModifierKeys.Control, noRepeat, OnReset);
-            HotkeyManager.Current.AddOrReplace("Info", Key.Up, ModifierKeys.Control, noRepeat, OnInfo);
+            HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.None, noRepeat, OnBack);
+            HotkeyManager.Current.AddOrReplace("Forward", Key.Right, ModifierKeys.None, noRepeat, OnForward);
+            HotkeyManager.Current.AddOrReplace("Reset", Key.Down, ModifierKeys.None, noRepeat, OnReset);
+            HotkeyManager.Current.AddOrReplace("Info", Key.Up, ModifierKeys.None, noRepeat, OnInfo);
 
             // Launch Minecraft
             GetOrLaunchMinecraft();
