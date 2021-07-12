@@ -13,6 +13,7 @@ using JuliusSweetland.OptiKey.Native.Common.Structs;
 using Microsoft.Win32;
 using JuliusSweetland.OptiKey.Properties;
 using System.IO;
+using System.Reflection;
 
 namespace JuliusSweetland.OptiKey.Static
 {
@@ -82,6 +83,12 @@ namespace JuliusSweetland.OptiKey.Static
         public static string OperatingSystemBitness
         {
             get { return Environment.Is64BitOperatingSystem ? "64-Bit" : "32-Bit"; }
+        }
+
+        public static string AppRunningDirectory
+        {
+            get { Assembly asm = Assembly.GetExecutingAssembly();
+                  return Path.GetDirectoryName(asm.Location); }
         }
 
         public static string AppDataDirectoryName { get; set; } = @"OptiKey\OptiKey";

@@ -25,7 +25,7 @@ using System.Windows.Threading;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
-    class DemoState
+    public class DemoState
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -35,8 +35,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private OnboardingViewModel onboardVM;
         private DispatcherTimer keyDebounceTimer;
 
-        private readonly String enabledKeyboard  = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
-        private readonly String disabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museumDisabled.xml";
+        public static readonly String enabledKeyboard  = Path.Combine(DiagnosticInfo.AppRunningDirectory, @"Resources\EyeMineKeyboards\EyeTracker\museum.xml");
+        public static readonly String disabledKeyboard = Path.Combine(DiagnosticInfo.AppRunningDirectory, @"Resources\EyeMineKeyboards\EyeTracker\museumDisabled.xml");
 
         enum Stage
         {
@@ -497,7 +497,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 if (mainViewModel != null)
                 {
-                    String keyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museumDisabled.xml";
+                    String keyboard = disabledKeyboard;
                     mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(keyboard));
                 }
             }
@@ -508,7 +508,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 ResetMinecraftWorldFile();
 
                 // back keyboard to disabled 
-                string enabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
                 mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.BackFromKeyboard));
             }
             else if (i == 2)
