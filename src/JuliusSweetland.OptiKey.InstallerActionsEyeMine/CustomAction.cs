@@ -403,6 +403,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             // Create separate directory for EyeMineV2 files (if not already)
             string eyemineGameDir = Path.Combine(minecraftPath, "EyeMineExhibition");
             bool alreadyInstalled = Directory.Exists(eyemineGameDir);
+            session.Log($"Already installed??: {alreadyInstalled}");
+
             if (!alreadyInstalled)
             {
                 session.Log("Creating directories, fixing up profile");
