@@ -22,7 +22,7 @@
    <KeyGroup Name="All" CompletionTimes="2000" BackgroundColor="Transparent" Opacity=".5"/>
     <Content>
         <DynamicKey>
-            <Symbol>ApplicationIcon</Symbol>
+            
         </DynamicKey> 
     </Content>
 </Keyboard>
