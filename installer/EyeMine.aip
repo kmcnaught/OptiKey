@@ -46,7 +46,7 @@
     <ROW Directory="DynamicKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="DYNAMI~1|DynamicKeyboards"/>
     <ROW Directory="EyeMineKeyboards_1_Dir" Directory_Parent="EyeMineV2_Dir" DefaultDir="KEYBOA~1|Keyboards:EYEMIN~1|EyeMineKeyboards"/>
     <ROW Directory="EyeMineKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="EYEMIN~1|EyeMineKeyboards"/>
-    <ROW Directory="EyeMineV2_Dir" Directory_Parent="SpecialEffect_Dir" DefaultDir="EYEMIN~1|EyeMineV2"/>
+    <ROW Directory="EyeMineV2_Dir" Directory_Parent="SpecialEffect_Dir" DefaultDir="EYEMIN~2|EyeMineV2-museum"/>
     <ROW Directory="EyeTracker_1_Dir" Directory_Parent="EyeMineKeyboards_Dir" DefaultDir="EYETRA~1|EyeTracker"/>
     <ROW Directory="EyeTracker_Dir" Directory_Parent="EyeMineKeyboards_1_Dir" DefaultDir="EYETRA~1|EyeTracker"/>
     <ROW Directory="Fonts_Dir" Directory_Parent="Resources_Dir" DefaultDir="Fonts"/>
