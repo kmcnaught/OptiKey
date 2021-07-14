@@ -381,6 +381,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         public static bool UpdateForgeConfig(Session session)
         {
             session.Log("UpdateForgeConfig");
+            session.Log("looking for profiles at");
+            session.Log(launcherProfiles);
 
             // Check launcher_profiles file exists
             if (!File.Exists(launcherProfiles))
