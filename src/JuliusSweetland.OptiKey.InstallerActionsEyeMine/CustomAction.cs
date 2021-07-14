@@ -23,14 +23,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         static CustomActionsEyeMine()
         {
             // Set up directory names
+
             appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-
-            // For a 'kiosk' demo we run in non-privileged user account, but installer must use elevated admin
-            // permissions, so Environment refers to the Admin user, not the guest user. 
-            // Our user name is known in advance so we hardcode this hack
-            string userName = "EyeMine";
-            appDataPath = appDataPath.Replace(Environment.UserName, userName);
-
             minecraftPath = Path.Combine(appDataPath, ".minecraft");
             versionsPath = Path.Combine(minecraftPath, "versions");
             forgePath = Path.Combine(versionsPath, forgeVersion);
