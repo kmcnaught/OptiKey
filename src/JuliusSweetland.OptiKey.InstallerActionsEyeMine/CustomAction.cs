@@ -405,7 +405,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             bool alreadyInstalled = Directory.Exists(eyemineGameDir);
             session.Log($"Already installed??: {alreadyInstalled}");
 
-            if (!alreadyInstalled)
+            if (true) // FIXME: add profile if not already there?
             {
                 session.Log("Creating directories, fixing up profile");
 
