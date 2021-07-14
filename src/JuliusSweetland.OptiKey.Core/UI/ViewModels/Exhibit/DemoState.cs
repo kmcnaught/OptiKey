@@ -230,6 +230,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             onboardVM = new OnboardingViewModel();
             onboardWindow = new OnboardingWindow();
             onboardWindow.DataContext = onboardVM;
+            onboardWindow.Closed += (s, e) => { Application.Current.Shutdown(); };
             onboardWindow.Show();            
         }
 
