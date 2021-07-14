@@ -29,7 +29,7 @@
 
         <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
                    VerticalAlignment="Bottom" HorizontalAlignment="Center"  
-                   Text="Play Minecraft with your eyes!" 
+                   Text="(this screen needs designing :)" 
                    FontSize="16" FontFamily="Verdana" 
                    Foreground="AntiqueWhite"
                    TextWrapping="Wrap" TextAlignment="Center" Padding="2">

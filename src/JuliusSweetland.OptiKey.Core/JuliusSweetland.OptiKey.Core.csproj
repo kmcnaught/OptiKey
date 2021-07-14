@@ -538,8 +538,14 @@
     <Compile Include="UI\Utilities\ColorConversions.cs" />
     <Compile Include="UI\ViewModels\Exhibit\PostCalibViewModel.cs" />
     <Compile Include="UI\Views\Exhibit\Commands.cs" />
+    <Compile Include="UI\Views\Exhibit\EyeGauge2.xaml.cs">
+      <DependentUpon>EyeGauge2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Exhibit\InfoScreen.xaml.cs">
       <DependentUpon>InfoScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\IntroScreen2.xaml.cs">
+      <DependentUpon>IntroScreen2.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Exhibit\ResetScreen.xaml.cs">
       <DependentUpon>ResetScreen.xaml</DependentUpon>
@@ -964,6 +970,37 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
+    <Resource Include="UI\Views\Exhibit\Resources\screenshot.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\Becky EyeMine GamesRoomCrop.JPG" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\chevron-back.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\chevron-forward.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\background--minecraft-dark.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\background--minecraft.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\button--blue.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\button--green.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\button--red.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\button--yellow.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\chevons--reverse--blue.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\chevons--reverse--green.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\chevons--reverse--red.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\chevons--reverse--yellow.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\icon--attack.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\icon--block.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\icon--eyemine.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\icon--fly.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\icon--mine.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\icon--walk.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\ingame--info.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\ingame--reset.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\label--back.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\label--continue.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\label--eyes--away.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\label--eyes--closer.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\label--eyes.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\label--get-ready.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\label--position.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\label--start.png" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\logo--eyemine.png" />
     <Resource Include="UI\Views\Exhibit\Resources\Becky EyeMine Front.png" />
     <Resource Include="UI\Views\Exhibit\Resources\Becky EyeMine GamesRoom.JPG" />
     <Resource Include="UI\Views\Exhibit\Resources\Gabey EyeMine Back.png" />
@@ -1404,7 +1441,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Exhibit\EyeGauge2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Exhibit\InfoScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\IntroScreen2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

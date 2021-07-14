@@ -25,7 +25,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             // Add available pages
             PageViewModels.Add(new IntroViewModel());
-            PageViewModels.Add(new FaceViewModel());
+            //PageViewModels.Add(new FaceViewModel());
             PageViewModels.Add(new TobiiViewModel());
             PageViewModels.Add(new PostCalibViewModel());
 
