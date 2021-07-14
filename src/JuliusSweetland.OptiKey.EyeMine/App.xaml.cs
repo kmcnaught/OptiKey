@@ -21,6 +21,7 @@ using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
+using JuliusSweetland.OptiKey.UI.ViewModels.Exhibit;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
 using log4net.Core;
@@ -198,9 +199,8 @@ namespace JuliusSweetland.OptiKey.EyeMine
                     mainViewModel.AttachErrorNotifyingServiceHandlers();
                     mainViewModel.AttachInputServiceEventHandlers();
 
-                    // Set up keyboard
-                    string disabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museumDisabled.xml";
-                    mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(disabledKeyboard));
+                    // Set up keyboard                    
+                    mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(DemoState.DisabledKeyboard));
                 };
 
                 mainWindow.AddOnMainViewLoadedAction(postMainViewLoaded);

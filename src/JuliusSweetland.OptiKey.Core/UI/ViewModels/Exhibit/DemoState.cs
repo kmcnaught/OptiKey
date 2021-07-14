@@ -25,7 +25,7 @@ using System.Windows.Threading;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
-    class DemoState
+    public class DemoState
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -34,9 +34,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private MainViewModel mainViewModel;
         private OnboardingViewModel onboardVM;
         private DispatcherTimer keyDebounceTimer;
-
-        private readonly String enabledKeyboard  = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
-        private readonly String disabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museumDisabled.xml";
 
         enum Stage
         {
@@ -80,8 +77,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             keyDebounceTimer.Tick += AllowKeyPress;
             keyDebounceTimer.Interval = new TimeSpan(0, 0, 0, 0, debounceMs);           
             
-        }   
-        
+        }
+
+        public static string EnabledKeyboard
+        {
+            get
+            {
+                var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Keyboards");
+                return Path.Combine(applicationDataPath, @"EyeTracker\museum.xml");
+            }
+        }
+
+        public static string DisabledKeyboard
+        {
+            get
+            {
+                var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Keyboards");
+                return Path.Combine(applicationDataPath, @"EyeTracker\museumDisabled.xml");
+            }
+        }
+
         private void GetOrLaunchMinecraft()
         {
             //Settings.Default.MinecraftCommand = "";
@@ -249,11 +264,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 stage == Stage.ONBOARDING_NO_KEYBOARD)
 
             {
-                ChangeKeyboardIfRequired(disabledKeyboard);
+                ChangeKeyboardIfRequired(DisabledKeyboard);
             }
             else
             {
-                ChangeKeyboardIfRequired(enabledKeyboard);
+                ChangeKeyboardIfRequired(EnabledKeyboard);
             }
         }
 
@@ -498,7 +513,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 if (mainViewModel != null)
                 {
-                    String keyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museumDisabled.xml";
+                    String keyboard = DisabledKeyboard;
                     mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(keyboard));
                 }
             }
@@ -509,7 +524,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 ResetMinecraftWorldFile();
 
                 // back keyboard to disabled 
-                string enabledKeyboard = @"C:\Users\Kirsty\AppData\Roaming\SpecialEffect\EyeMineV2\Keyboards\EyeTracker\museum.xml";
                 mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.BackFromKeyboard));
             }
             else if (i == 2)
