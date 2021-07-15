@@ -24,23 +24,14 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     <Window.ContextMenu>
         <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}"
                      FlowDirection="{Binding Source={x:Static resx:Settings.Default}, Path=UiLanguageFlowDirection}">
-            <MenuItem Header="{x:Static resx:Resources.MANAGEMENT_CONSOLE}" 
-                      Command="{Binding ManagementWindowRequestCommand}">
-                <MenuItem.Icon>
-                    <Image Source="..\..\Resources\Icons\Management.ico" />
-                </MenuItem.Icon>
+            <MenuItem Header="Capture minecraft process" 
+                      Command="{Binding CaptureMinecraftCommand}">
             </MenuItem>
-            <MenuItem Header="{x:Static resx:Resources.TOGGLE_MANUAL_MODE}" 
-                      Command="{Binding ToggleManualModeCommand}">
-                <MenuItem.Icon>
-                    <Image Source="..\..\Resources\Icons\ManualMode.ico" />
-                </MenuItem.Icon>
+            <MenuItem Header="Set up kiosk" 
+                      Command="{Binding SetKioskCommand}">
             </MenuItem>
-            <MenuItem Header="{x:Static resx:Resources.BACK_TITLE_CASE}" 
-                      Command="{Binding BackCommand}">
-                <MenuItem.Icon>
-                    <Image Source="..\..\Resources\Icons\Back.ico" />
-                </MenuItem.Icon>
+            <MenuItem Header="Unset kiosk" 
+                      Command="{Binding UnsetKioskCommand}">
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.RESTART}" 
                       Command="{Binding RestartCommand}">
@@ -54,6 +45,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <Image Source="..\..\Resources\Icons\Quit.ico" />
                 </MenuItem.Icon>
             </MenuItem>
+            
         </ContextMenu>
     </Window.ContextMenu>
 

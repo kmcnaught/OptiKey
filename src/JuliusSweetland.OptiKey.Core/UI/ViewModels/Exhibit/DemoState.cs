@@ -105,37 +105,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (String.IsNullOrEmpty(Settings.Default.MinecraftCommand))
             {
                 // Grab Minecraft command (first time)
-                foreach (Process p in Process.GetProcesses())
-                {
-                    if (p.ProcessName.ToLower().Contains("javaw"))
-                    {
-                        string cmd = p.GetCommandLine();
-                        if (cmd.Contains(".minecraft") && cmd.Contains("EyeMineExhibit"))
-                        {
-                            // Launcher creates temporary bin dir, we want to make a copy for reuse
-                            Regex regex = new Regex(@"-Djava.library.path=(.*.minecraft\\bin\\)([0-9a-f\-]*)");
-                            Match match = regex.Match(cmd);
-                            if (match.Groups.Count >= 3)
-                            {
-                                String tempDir = match.Groups[1].Value + match.Groups[2].Value;
-                                String newDir = match.Groups[1].Value + "EyeMineExhibit";
-                                DirectoryCopy(tempDir, newDir, true, true);
-
-                                cmd = cmd.Replace(tempDir, newDir);
-
-                                // Save command for next time
-                                minecraftProcess = p;
-                                Settings.Default.MinecraftCommand = cmd;
-                                Settings.Default.Save();
-                            }
-                            else
-                            {
-                                Log.ErrorFormat("Couldn't recognise bin directory in minecraft command: {0}", cmd);
-                            }
-
-                        }
-                    }
-                }
+                minecraftProcess = CaptureMinecraftProcess();
 
                 if (minecraftProcess == null)
                 {
@@ -151,9 +121,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     // Set up shell launcher
                     if (Environment.UserName.Contains("EyeMine"))
                     {
-                        RegistryKey Key = Registry.CurrentUser;
-                        Key = Key.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\", true);
-                        Key.SetValue("Shell", System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+                        SetAsShellApp(true);
 
                         if (MessageBox.Show("Saving Minecraft instance...\n\n EyeMine can now launch Minecraft itself. Please log out then back in again",
                          "Capturing Minecraft instance ... ",
@@ -201,7 +169,58 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     minecraftProcess.CloseOnApplicationExit(Log, "Minecraft");
                 }
             }
+        }
 
+        public static Process CaptureMinecraftProcess()
+        {
+            Process capturedProcess = null;
+            foreach (Process p in Process.GetProcesses())
+            {
+                if (p.ProcessName.ToLower().Contains("javaw"))
+                {
+                    string cmd = p.GetCommandLine();
+                    if (cmd.Contains(".minecraft") && cmd.Contains("EyeMineExhibit"))
+                    {
+                        // Launcher creates temporary bin dir, we want to make a copy for reuse
+                        Regex regex = new Regex(@"-Djava.library.path=(.*.minecraft\\bin\\)([0-9a-f\-]*)");
+                        Match match = regex.Match(cmd);
+                        if (match.Groups.Count >= 3)
+                        {
+                            String tempDir = match.Groups[1].Value + match.Groups[2].Value;
+                            String newDir = match.Groups[1].Value + "EyeMineExhibit";
+                            DirectoryCopy(tempDir, newDir, true, true);
+
+                            cmd = cmd.Replace(tempDir, newDir);
+
+                            // Save command for next time
+                            capturedProcess = p;
+                            Settings.Default.MinecraftCommand = cmd;
+                            Settings.Default.Save();
+                        }
+                        else
+                        {
+                            Log.ErrorFormat("Couldn't recognise bin directory in minecraft command: {0}", cmd);
+                        }
+                    }
+                }
+            }
+
+            return capturedProcess;
+        }
+
+        public static void SetAsShellApp(bool useAsShell)
+        {
+            RegistryKey Key = Registry.CurrentUser;
+            Key = Key.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\", true);
+
+            if (useAsShell)
+            {
+                Key.SetValue("Shell", System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            }
+            else
+            {
+                Key.SetValue("Shell", "");
+            }
         }
 
         private void TimerTick(object sender, EventArgs e)
@@ -349,6 +368,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 {
                     stage = Stage.IN_MINECRAFT;
                     onboardVM.Reset();
+                    ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
+                    FocusWindow(minecraftProcess);
+                    Thread.Sleep(50);
+                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Return));
                 }
             }
 

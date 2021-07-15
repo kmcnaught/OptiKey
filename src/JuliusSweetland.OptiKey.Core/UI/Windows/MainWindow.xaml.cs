@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -39,6 +40,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private readonly ICommand backCommand;
         private readonly ICommand quitCommand;
         private readonly ICommand restartCommand;
+        private readonly ICommand setKioskCommand;
+        private readonly ICommand unsetKioskCommand;
+        private readonly ICommand captureMinecraftCommand;
         private readonly List<ICommand> demoCommands;
 
         private DemoState demoState;
@@ -86,6 +90,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             quitCommand = new DelegateCommand(Quit);
             backCommand = new DelegateCommand(Back);
             restartCommand = new DelegateCommand(Restart);
+            setKioskCommand = new DelegateCommand(() => { DemoState.SetAsShellApp(true); });
+            unsetKioskCommand = new DelegateCommand(() => { DemoState.SetAsShellApp(false); });
+            captureMinecraftCommand = new DelegateCommand(CaptureMinecraft);
 
             //Setup key binding (Alt+M and Shift+Alt+M) to open settings
             InputBindings.Add(new KeyBinding
@@ -172,6 +179,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         public ICommand QuitCommand { get { return quitCommand; } }
         public ICommand BackCommand { get { return backCommand; } }
         public ICommand RestartCommand { get { return restartCommand; } }
+        public ICommand SetKioskCommand { get { return setKioskCommand; } }
+        public ICommand UnsetKioskCommand { get { return unsetKioskCommand; } }
 
         public static readonly DependencyProperty BackgroundColourOverrideProperty =
             DependencyProperty.Register("BackgroundColourOverride", typeof(Brush), typeof(MainWindow), new PropertyMetadata(default(Brush)));
@@ -252,6 +261,24 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             {
                 demoState.DebugShortcut(i);
             }
+        }
+
+        private void CaptureMinecraft()
+        {
+            Process p = DemoState.CaptureMinecraftProcess();
+            if (p == null)
+            {
+                MessageBox.Show("Could not find valid Minecraft instance. \n\nPlease run Minecraft Launcher, select the \"EyeMineExhibition\" profile and click PLAY to launch");
+            }
+            else
+            {
+                if (MessageBox.Show("Successfully captured Minecraft process.\nPlease close Minecraft.\nEyeMine will now restart and launch it's own copy of Minecraft.",
+                         "Capturing Minecraft instance ... ",
+                         MessageBoxButton.OK) == MessageBoxResult.OK)
+                {
+                    OptiKeyApp.RestartApp();
+                }
+            }           
         }
 
         private void ToggleManualMode()
