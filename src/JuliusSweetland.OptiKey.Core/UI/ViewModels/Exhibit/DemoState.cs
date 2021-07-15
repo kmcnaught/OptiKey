@@ -361,6 +361,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (keyDebounceTimer.IsEnabled) { return; }
             keyDebounceTimer.Start();
 
+            // Don't go forward while calibrating
+            // TODO: for more robustness, keep track of calibration request and
+            // identify any other configuring times, e.g. eye tracker reconnecting
+            if (IsTobiiCalibrating())
+            {
+                // Press Enter to hasten process
+                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Return));
+            }
+
             if (stage != Stage.IN_MINECRAFT)
             {
                 bool stillOnboarding = onboardVM.NextPage();
@@ -378,10 +387,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             UpdateForState(stage);                    
         }
 
+        private bool IsTobiiCalibrating()
+        {
+            // FIXME: what happens if Tobii fails here?
+            return onboardVM.WaitingForCalibration;
+            //return Process.GetProcessesByName("Tobii.EyeX.Configuration").Length > 0;
+        }
+
         private void OnBack(object sender, NHotkey.HotkeyEventArgs e)
         {
             if (keyDebounceTimer.IsEnabled) { return; }
             keyDebounceTimer.Start();
+
+            if (IsTobiiCalibrating())
+            {
+                // Press Esc to exit
+                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Escape));
+            }
 
             if (stage == Stage.TEMP_SCREEN)
             {

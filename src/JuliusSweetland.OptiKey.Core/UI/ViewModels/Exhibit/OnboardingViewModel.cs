@@ -21,13 +21,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         #endregion
 
+        private PostCalibViewModel postCalibViewModel;
+
         public OnboardingViewModel()
         {
             // Add available pages
             PageViewModels.Add(new IntroViewModel());
             //PageViewModels.Add(new FaceViewModel());
             PageViewModels.Add(new TobiiViewModel());
-            PageViewModels.Add(new PostCalibViewModel());
+            postCalibViewModel = new PostCalibViewModel();
+            PageViewModels.Add(postCalibViewModel);
 
             // Set starting page
             SetPage(0);
@@ -80,6 +83,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 return PageViewModels.Count;
             }
+        }
+
+        private bool waitingForCalibration = true;
+        public bool WaitingForCalibration
+        {
+            get { return postCalibViewModel.WaitingForCalibration; }            
         }
 
         #endregion
