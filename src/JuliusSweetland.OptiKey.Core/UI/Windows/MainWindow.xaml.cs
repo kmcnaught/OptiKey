@@ -181,6 +181,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         public ICommand RestartCommand { get { return restartCommand; } }
         public ICommand SetKioskCommand { get { return setKioskCommand; } }
         public ICommand UnsetKioskCommand { get { return unsetKioskCommand; } }
+        public ICommand CaptureMinecraftCommand { get { return captureMinecraftCommand; } }        
 
         public static readonly DependencyProperty BackgroundColourOverrideProperty =
             DependencyProperty.Register("BackgroundColourOverride", typeof(Brush), typeof(MainWindow), new PropertyMetadata(default(Brush)));
