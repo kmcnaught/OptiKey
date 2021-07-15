@@ -179,6 +179,9 @@ namespace JuliusSweetland.OptiKey.Extensions
                 case FunctionKeys.Escape:
                     return VirtualKeyCode.ESCAPE;
 
+                case FunctionKeys.Return:
+                    return VirtualKeyCode.RETURN;
+
                 default:
                     return null;
             }
