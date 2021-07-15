@@ -35,6 +35,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private OnboardingViewModel onboardVM;
         private DispatcherTimer keyDebounceTimer;
 
+        private static Process ghostProcess;
+        private static ProcessStartInfo ghostStartInfo;
+
         enum Stage
         {
             IDLE,
@@ -64,9 +67,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             stage = Stage.IDLE;
             UpdateForState(stage);
 
+            // Set up for ghost
+            ghostStartInfo = new ProcessStartInfo(@"C:\Program Files (x86)\Tobii\Tobii EyeX Interaction\GazeNative8.exe");
+            ghostStartInfo.UseShellExecute = true;
+            ghostStartInfo.CreateNoWindow = true;
+            ghostStartInfo.CloseOnApplicationExit(Log, "Tobii Gaze Overlay");
 
             // Poll regularly to ensure Minecraft doesn't steal focus at inappropriate time
-            
+
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += TimerTick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
@@ -77,6 +85,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             keyDebounceTimer.Tick += AllowKeyPress;
             keyDebounceTimer.Interval = new TimeSpan(0, 0, 0, 0, debounceMs);           
             
+        }
+
+        public static void SetGhostVisible(bool visible)
+        {
+            if (visible && ghostProcess == null)
+            {
+                ghostProcess = Process.Start(ghostStartInfo);
+            }
+            else if (!visible && ghostProcess != null)
+            {
+                ghostProcess.CloseMainWindow();
+                ghostProcess = null;
+            }
         }
 
         public static string EnabledKeyboard
@@ -243,6 +264,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             UpdateMinecraftFocusForState(stage);
             UpdateOptiKeyFocusForState(stage);
             UpdateKeyboardForState(stage);
+            UpdateGhostForState(stage);
+        }
+
+        void UpdateGhostForState(Stage stage)
+        {
+            if (stage == Stage.IN_MINECRAFT || stage == Stage.ONBOARDING_WITH_KEYBOARD)
+            {
+                SetGhostVisible(true);
+            }
+            else
+            {
+                SetGhostVisible(false);
+            }
         }
 
         void UpdateMinecraftFocusForState(Stage stage)

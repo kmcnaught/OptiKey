@@ -37,6 +37,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             else
             {
                 waitingForCalibration = true;
+                DemoState.SetGhostVisible(true);
             }
             RaisePropertyChanged("WaitingForCalibration");
         }
