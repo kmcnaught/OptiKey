@@ -71,7 +71,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             ghostStartInfo = new ProcessStartInfo(@"C:\Program Files (x86)\Tobii\Tobii EyeX Interaction\GazeNative8.exe");
             ghostStartInfo.UseShellExecute = true;
             ghostStartInfo.CreateNoWindow = true;
-            ghostStartInfo.CloseOnApplicationExit(Log, "Tobii Gaze Overlay");
 
             // Poll regularly to ensure Minecraft doesn't steal focus at inappropriate time
 
@@ -92,6 +91,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (visible && ghostProcess == null)
             {
                 ghostProcess = Process.Start(ghostStartInfo);
+                ghostProcess.CloseOnApplicationExit(Log, "Tobii Gaze Overlay");
             }
             else if (!visible && ghostProcess != null)
             {
@@ -173,6 +173,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     string javapath1 = @"C:\Program Files (x86)\Minecraft Launcher\runtime\jre-legacy\windows-x64\jre-legacy\bin\javaw.exe";
 
                     // args need to come from a previous run of Minecraft with valid credentials
+                    //FIXME: remove unused dupe
                     String cmdTextFile = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\minecraftCommand.txt";
                     string minecraftArgs1 = File.ReadAllText(cmdTextFile);
 
