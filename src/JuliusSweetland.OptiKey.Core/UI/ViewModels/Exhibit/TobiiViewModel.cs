@@ -27,6 +27,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             SetInitTime();
 
+            DemoState.SetGhostVisible(false);
+
             CanGoBackward = true;
             CanGoForward = false;
 
