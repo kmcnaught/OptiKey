@@ -2,7 +2,7 @@ version:922
 mouseSensitivity:-0.05
 fov:0.0
 gamma:1.0
-renderDistance:8
+renderDistance:12
 guiScale:3
 particles:0
 anaglyph3d:false
@@ -16,7 +16,7 @@ chatOpacity:1.0
 snooperEnabled:false
 fullscreen:false
 advancedItemTooltips:false
-pauseOnLostFocus:true
+pauseOnLostFocus:false
 touchscreen:false
 chatHeightFocused:1.0
 chatHeightUnfocused:0.44366196
