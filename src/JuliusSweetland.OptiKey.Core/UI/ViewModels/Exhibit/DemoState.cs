@@ -413,10 +413,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     stage = Stage.IN_MINECRAFT;
                     onboardVM.Reset();
                     ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
-                    FocusWindow(minecraftProcess);
-                    Thread.Sleep(50);
-                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Return));
+                    FocusWindow(minecraftProcess);                    
                 }
+            }
+            if (stage == Stage.IN_MINECRAFT)
+            {
+                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Return));                
             }
 
             UpdateForState(stage);                    
