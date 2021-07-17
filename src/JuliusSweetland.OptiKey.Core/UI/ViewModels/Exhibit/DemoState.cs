@@ -582,10 +582,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             string installedSavesDir = Path.Combine(installedPath, @"ModInstaller\saves");
             string minecraftSavesDir = Path.Combine(applicationDataPath, @".minecraft\EyeMineExhibition\saves");
             string worldName = "Tutorial";
+            // Make two copies we can switch between
             DirectoryCopy(Path.Combine(installedSavesDir, worldName),
                 Path.Combine(minecraftSavesDir, worldName),
                 true,
                 true);
+            DirectoryCopy(Path.Combine(installedSavesDir, worldName),
+               Path.Combine(minecraftSavesDir, worldName + "2"),
+               true,
+               true);
+
 
         }
 
