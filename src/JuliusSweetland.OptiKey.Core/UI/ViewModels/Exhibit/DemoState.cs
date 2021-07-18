@@ -261,10 +261,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         void UpdateForState(Stage stage)
         {
             prevStage = this.stage;
-            this.stage = stage;
-            UpdateMinecraftFocusForState(stage);
-            UpdateOptiKeyFocusForState(stage);
+            this.stage = stage;                        
             UpdateKeyboardForState(stage);
+            UpdateOptiKeyFocusForState(stage);
+            UpdateMinecraftFocusForState(stage);
             UpdateGhostForState(stage);
         }
 
