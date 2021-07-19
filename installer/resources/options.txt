@@ -28,3 +28,4 @@ attackIndicator:1
 realmsNotifications:true
 enableWeakAttacks:true
 autoJump:true
+tutorialStep:none
