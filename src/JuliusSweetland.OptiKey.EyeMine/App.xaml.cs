@@ -393,8 +393,8 @@ namespace JuliusSweetland.OptiKey.EyeMine
         {
             var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Keyboards");
 
-            // If directory doesn't exist, assume that this is the first run. So, move dynamic keyboards from installation package to target path
-            if (!Directory.Exists(applicationDataPath))
+            // HACK: for smithsonian, always copy over regardless to be safe
+            if (true) //!Directory.Exists(applicationDataPath))
             {
                 Directory.CreateDirectory(applicationDataPath);
                 String baseSourceDir = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\EyeMineKeyboards";
