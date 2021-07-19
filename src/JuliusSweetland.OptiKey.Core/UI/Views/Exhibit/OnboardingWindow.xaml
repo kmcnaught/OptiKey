@@ -35,6 +35,20 @@
         </DataTemplate>
     </Window.Resources>
 
+    <Window.ContextMenu>
+        <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+            <MenuItem Header="Capture minecraft process" 
+                      Command="{Binding CaptureMinecraftCommand}">
+            </MenuItem>
+            <MenuItem Header="Set up kiosk" 
+                      Command="{Binding SetKioskCommand}">
+            </MenuItem>
+            <MenuItem Header="Unset kiosk" 
+                      Command="{Binding UnsetKioskCommand}">
+            </MenuItem>
+        </ContextMenu>
+    </Window.ContextMenu>
+
     <Grid>
         <ContentControl Content="{Binding CurrentPageViewModel}" Margin="-10,0,10,0" />
         <!--<Rectangle x:Name="foregroundFade" Fill="Black"></Rectangle>-->
