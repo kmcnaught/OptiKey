@@ -54,6 +54,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             this.mainViewModel = mainViewModel;
 
+            ResetMinecraftWorldFile();
+
             LaunchOnboarding();
 
             bool noRepeat = true;
