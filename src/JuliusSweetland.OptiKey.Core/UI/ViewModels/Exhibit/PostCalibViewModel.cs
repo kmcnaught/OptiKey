@@ -23,39 +23,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
             // Sign up for "tracking status changed" event - this is triggered at end of calibration 
             // (regardless of success or failure..)            
-            TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
-            TobiiEyeXPointService.EyeXHost.LaunchGuestCalibration();
+            //TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
+            //TobiiEyeXPointService.EyeXHost.LaunchGuestCalibration();
             //TODO: should we preempt this by setting 'waitingForCalibration' preemptively?
-        }
-
-        private void handleTobiiChange(object sender, EngineStateValue<EyeTrackingDeviceStatus> status)
-        {
-            if (status.Value == EyeTrackingDeviceStatus.Tracking)
-            {
-                waitingForCalibration = false;
-            }
-            else
-            {
-                waitingForCalibration = true;
-                DemoState.SetGhostVisible(true);
-            }
-            RaisePropertyChanged("WaitingForCalibration");
         }
 
         public override void TearDown()
         {            
-            waitingForCalibration = false;
-            RaisePropertyChanged("WaitingForCalibration");
-
-            TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged -= handleTobiiChange;
-        }
-
-
-        private bool waitingForCalibration = true;
-        public bool WaitingForCalibration
-        {
-            get { return waitingForCalibration; }
-            set { SetProperty(ref waitingForCalibration, value); }
         }
     }
 }

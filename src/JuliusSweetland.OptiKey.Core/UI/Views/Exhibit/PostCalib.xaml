@@ -22,7 +22,7 @@
 
         <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"
                    VerticalAlignment="Center" HorizontalAlignment="Center"  
-                   Text="Calibration complete!" 
+                   Text="Eye tracking enabled!" 
                    FontSize="28" FontFamily="Verdana" FontWeight="Bold"
                    Foreground="AntiqueWhite"
                    TextWrapping="Wrap" TextAlignment="Center" Padding="2">
@@ -77,15 +77,6 @@
             </TextBlock>
         </Grid>
 
-
-        <!-- Overlay for launching calib -->
-        <Grid Grid.ColumnSpan="4" Grid.RowSpan="4" Visibility="{Binding WaitingForCalibration, Converter={StaticResource BooleanToVisibilityConverter}}">
-            <Rectangle Fill="Black" ></Rectangle>
-            <TextBlock Text="Launching calibration process..." 
-                        VerticalAlignment="Center" HorizontalAlignment="Center"                                                     
-                        FontSize="24" FontFamily="Verdana" 
-                        Foreground="AntiqueWhite"></TextBlock>
-        </Grid>
     </Grid>
 
 </UserControl>

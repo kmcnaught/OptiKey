@@ -45,7 +45,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private readonly ICommand captureMinecraftCommand;
         private readonly List<ICommand> demoCommands;
 
-        private DemoState demoState;
+        private Demo demoState;
 
         public MainWindow(
             IAudioService audioService,
@@ -90,8 +90,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             quitCommand = new DelegateCommand(Quit);
             backCommand = new DelegateCommand(Back);
             restartCommand = new DelegateCommand(Restart);
-            setKioskCommand = new DelegateCommand(() => { DemoState.SetAsShellApp(true); });
-            unsetKioskCommand = new DelegateCommand(() => { DemoState.SetAsShellApp(false); });
+            setKioskCommand = new DelegateCommand(() => { Demo.SetAsShellApp(true); });
+            unsetKioskCommand = new DelegateCommand(() => { Demo.SetAsShellApp(false); });
             captureMinecraftCommand = new DelegateCommand(CaptureMinecraft);
 
             //Setup key binding (Alt+M and Shift+Alt+M) to open settings
@@ -141,7 +141,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             AddOnMainViewLoadedAction(() =>
             {
                 var mainViewModel = MainView.DataContext as MainViewModel;
-                this.demoState = new DemoState(mainViewModel);
+                this.demoState = new Demo(mainViewModel);
             });
 
         }
@@ -266,7 +266,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
         private void CaptureMinecraft()
         {
-            Process p = DemoState.CaptureMinecraftProcess();
+            Process p = Demo.CaptureMinecraftProcess();
             if (p == null)
             {
                 MessageBox.Show("Could not find valid Minecraft instance. \n\nPlease run Minecraft Launcher, select the \"EyeMineExhibition\" profile and click PLAY to launch");

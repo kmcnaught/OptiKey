@@ -437,8 +437,10 @@
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\DemoState.cs" />
+    <Compile Include="UI\ViewModels\DemoState.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\Demo.cs" />
     <Compile Include="UI\ViewModels\Exhibit\FaceViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\WaitCalibViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\ResetViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\InfoViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\IntroViewModel.cs" />
@@ -546,6 +548,9 @@
     </Compile>
     <Compile Include="UI\Views\Exhibit\IntroScreen2.xaml.cs">
       <DependentUpon>IntroScreen2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\WaitCalib.xaml.cs">
+      <DependentUpon>WaitCalib.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Exhibit\ResetScreen.xaml.cs">
       <DependentUpon>ResetScreen.xaml</DependentUpon>
@@ -1450,6 +1455,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Exhibit\IntroScreen2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\WaitCalib.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

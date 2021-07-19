@@ -30,6 +30,9 @@
         <DataTemplate DataType="{x:Type vms:ResetViewModel}">
             <local:ResetScreen />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:WaitCalibViewModel}">
+            <local:WaitCalib />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>

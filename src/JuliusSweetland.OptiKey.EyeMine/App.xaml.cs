@@ -200,7 +200,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
                     mainViewModel.AttachInputServiceEventHandlers();
 
                     // Set up keyboard                    
-                    mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(DemoState.DisabledKeyboard));
+                    mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(Demo.DisabledKeyboard));
                 };
 
                 mainWindow.AddOnMainViewLoadedAction(postMainViewLoaded);

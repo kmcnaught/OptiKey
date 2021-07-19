@@ -1,15 +1,37 @@
-﻿using Prism.Mvvm;
+﻿using EyeXFramework;
+using JuliusSweetland.OptiKey.Services;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Tobii.EyeX.Framework;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
     class OnboardingViewModel : BindableBase
     {
+
+        public enum OnboardState
+        {
+            WELCOME,
+            EYES,
+            WAIT_CALIB,
+            POST_CALIB,
+            IN_MINECRAFT
+        }
+
+        public enum TempState
+        {
+            NONE,
+            INFO,
+            RESET
+        }
+
+        public OnboardState mainState;
+        public TempState tempState;
 
         #region Fields
 
@@ -21,150 +43,190 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         #endregion
 
+        private IntroViewModel introViewModel;
+        private TobiiViewModel tobiiViewModel;
+        private WaitCalibViewModel waitCalibViewModel;
         private PostCalibViewModel postCalibViewModel;
+        private InfoViewModel infoViewModel;
+        private ResetViewModel resetViewModel;
 
         public OnboardingViewModel()
         {
-            // Add available pages
-            PageViewModels.Add(new IntroViewModel());
-            //PageViewModels.Add(new FaceViewModel());
-            PageViewModels.Add(new TobiiViewModel());
+            // Create view models
+            introViewModel = new IntroViewModel();
+            tobiiViewModel = new TobiiViewModel();
+            waitCalibViewModel = new WaitCalibViewModel();
             postCalibViewModel = new PostCalibViewModel();
-            PageViewModels.Add(postCalibViewModel);
+            infoViewModel = new InfoViewModel();
+            resetViewModel = new ResetViewModel();
 
-            // Set starting page
-            SetPage(0);
-            //CurrentPageViewModel = PageViewModels[_pageNumber];
+            // Register for Tobii events
+            TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
+
+            // Initial state
+            tempState = TempState.NONE;
+            mainState = OnboardState.WELCOME;
+        }
+
+        //FIXME: set up tear down?
+
+        public void SetState(OnboardState state) {
+            this.mainState = state;
+            RaisePropertyChanged("CurrentPageViewModel");
+        }
+
+        public void SetTempState(TempState state) {
+            this.tempState = state;
+            RaisePropertyChanged("CurrentPageViewModel");
         }
 
         #region Properties         
-
-        public List<PageViewModel> PageViewModels
-        {
-            get
-            {
-                if (_pageViewModels == null)
-                    _pageViewModels = new List<PageViewModel>();
-
-                return _pageViewModels;
-            }
-        }
 
         public PageViewModel CurrentPageViewModel
         {
             get
             {
-                if (tempPageViewModel!=null)
-                {
-                    return tempPageViewModel;
+                switch (tempState) {
+                    case TempState.RESET:
+                        return resetViewModel;
+                    case TempState.INFO:
+                        return infoViewModel;
+                    case TempState.NONE:
+                        switch (mainState) {
+                            case OnboardState.WELCOME:
+                                return introViewModel;
+                            case OnboardState.EYES:
+                                return tobiiViewModel;
+                            case OnboardState.WAIT_CALIB:
+                                return waitCalibViewModel;
+                            case OnboardState.POST_CALIB:
+                                return postCalibViewModel;                                
+                        }
+                        break;
                 }
-                else
-                {
-                    return PageViewModels[_pageNumber];
-                }                
+                //TODO: blank page?
+                return introViewModel;
             }            
-        }
-
-        public int PageNumber
-        {
-            get
-            {
-                return _pageNumber;
-            }
-            set
-            {
-                SetProperty(ref _pageNumber, value);
-            }
-        }
-
-        public int NumPages
-        {
-            get
-            {
-                return PageViewModels.Count;
-            }
-        }
-
-        private bool waitingForCalibration = true;
-        public bool WaitingForCalibration
-        {
-            get { return postCalibViewModel.WaitingForCalibration; }            
         }
 
         #endregion
 
         #region Methods
 
+        public void Info()
+        {
+            if (tempState == TempState.INFO)
+            {
+                SetTempState(TempState.NONE);
+            }
+            else
+            {
+                // TODO: think about precedence of reset / info
+                SetTempState(TempState.INFO);
+            }
+        }
+
         public void Reset()
         {
-            SetPage(0);
-        }
-
-        public bool NextPage()
-        {
-            int i = _pageNumber+1;
-            if (i < PageViewModels.Count)
+            if (tempState == TempState.RESET)
             {
-                SetPage(i, true);
-                return true;
+                //DO the reset?!
+                SetTempState(TempState.NONE);
+                SetState(OnboardState.WELCOME);
             }
             else
             {
-                return false;
+                // TODO: think about precedence of reset / info
+                SetTempState(TempState.RESET);
             }
         }
 
-        public bool PrevPage()
-        {
-            int i = _pageNumber-1;
-            if (i >= 0)
-            {
-                SetPage(i);
-                return true;
+
+        public void Next()
+        {   
+            switch (tempState) {
+                case TempState.INFO:
+                    SetTempState(TempState.NONE);
+                    break;
+                case TempState.RESET:
+                //TODO: should we use reset->reset or reset->next ? prefer different keys to prevent misclicks? or simpler to encourage resets?                    
+                //TODO: who is responsible for the actual resetting action?
+                    SetTempState(TempState.NONE);
+                    break;
+                case TempState.NONE:
+
+                    switch (mainState)
+                    {
+                        case OnboardState.WELCOME:
+                            SetState(OnboardState.EYES);
+                            break;
+                        case OnboardState.EYES:
+                            TobiiEyeXPointService.EyeXHost.LaunchGuestCalibration();
+                            SetState(OnboardState.WAIT_CALIB);                    
+                            break;
+                        case OnboardState.WAIT_CALIB:
+                            SetState(OnboardState.POST_CALIB);
+                            break;
+                        case OnboardState.POST_CALIB:
+                            SetState(OnboardState.IN_MINECRAFT);
+                            break;
+                    }
+                    break;
             }
-            else
+        }
+
+        private void handleTobiiChange(object sender, EngineStateValue<EyeTrackingDeviceStatus> status)
+        {
+            if (mainState == OnboardState.WAIT_CALIB &&
+                status.Value == EyeTrackingDeviceStatus.Tracking)
             {
-                return false;
+                SetState(OnboardState.POST_CALIB);
+                Demo.SetGhostVisible(true);
             }            
         }
 
-        private void SetPage(int i, bool teardownCurrent=false)
+        public void Back()
         {
-            tempPageViewModel = null;
-
-            if (teardownCurrent) //TOO: distinguish between "stuff to do on finishing page" and "stuff to do whenever closed" e.g. prev vs next
-            {
-                // cleanly leave current page
-                PageViewModels[_pageNumber].TearDown();
-            }
-
-            // set up new page
-            _pageNumber = i;
-            PageViewModels[_pageNumber].SetUp();
-
-            RaisePropertyChanged("CurrentPageViewModel");                        
+            switch (tempState) {
+                case TempState.INFO:
+                    SetTempState(TempState.NONE);
+                    break;
+                case TempState.RESET:
+                    SetTempState(TempState.NONE);
+                    break;
+                case TempState.NONE:
+                    switch (mainState)
+                    {
+                        case OnboardState.IN_MINECRAFT:
+                            SetState(OnboardState.POST_CALIB);
+                            break;
+                        case OnboardState.WAIT_CALIB:                            
+                        case OnboardState.POST_CALIB:
+                            SetState(OnboardState.EYES);                    
+                            break;
+                        case OnboardState.EYES:
+                            SetState(OnboardState.WELCOME);
+                            break;
+                    }
+                    break;
+            }            
         }
 
-        public void ShowOneOffPage(PageViewModel viewModel)
-        {
-            tempPageViewModel = viewModel;
-            RaisePropertyChanged("CurrentPageViewModel");
-        }
+        // FIXME: do we need the setup/teardown stuff?
+        //private void SetPageViewModel(PageViewModel pageVM, bool teardownCurrent)
+        //{            
+        //    if (teardownCurrent) //TOO: distinguish between "stuff to do on finishing page" and "stuff to do whenever closed" e.g. prev vs next
+        //    {
+        //        // cleanly leave current page
+        //        CurrentPageViewModel.TearDown();
+        //    }
 
-        public void Resume()
-        {
-            tempPageViewModel = null;
-            RaisePropertyChanged("CurrentPageViewModel");
-        }
+        //    // set up new page      
+        //    pageVM.SetUp();      
+        //    CurrentPageViewModel = pageVM;
 
-        /*private void ChangeViewModel(IPageViewModel viewModel)
-        {
-            if (!PageViewModels.Contains(viewModel))
-                PageViewModels.Add(viewModel);
-
-            CurrentPageViewModel = PageViewModels
-                .FirstOrDefault(vm => vm == viewModel);
-        }*/
+        //    RaisePropertyChanged("CurrentPageViewModel");                        
+        //}
 
         #endregion
     }

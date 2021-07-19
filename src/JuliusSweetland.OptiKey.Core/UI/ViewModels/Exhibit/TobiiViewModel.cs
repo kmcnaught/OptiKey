@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using EyeXFramework;
 using JuliusSweetland.OptiKey.Services;
@@ -14,7 +15,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
     {
         public TobiiViewModel()
         {
-            
+            SetUp();
         }
                 
         private static EyePositionDataStream _eyePositionDataStream;
@@ -26,8 +27,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         public override void SetUp()
         {
             SetInitTime();
-
-            DemoState.SetGhostVisible(false);
 
             CanGoBackward = true;
             CanGoForward = false;

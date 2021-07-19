@@ -25,7 +25,7 @@ using System.Windows.Threading;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
-    public class DemoState
+    public class Demo
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -37,20 +37,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private static Process ghostProcess;
         private static ProcessStartInfo ghostStartInfo;
-
-        enum Stage
+        
+        enum HelperState
         {
-            IDLE,
-            ONBOARDING_NO_KEYBOARD,
-            ONBOARDING_WITH_KEYBOARD,
-            TEMP_SCREEN,
-            IN_MINECRAFT
+            FIRST_SETUP,
+            RESETTING,
+            NO_USER,
+            ERROR
         }
 
-        private Stage stage;
-        private Stage prevStage;
+        private HelperState helperState;
 
-        public DemoState(MainViewModel mainViewModel)
+        public Demo(MainViewModel mainViewModel)
         {
             this.mainViewModel = mainViewModel;
 
@@ -66,8 +64,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
             // Launch Minecraft
             GetOrLaunchMinecraft();
-            stage = Stage.IDLE;
-            UpdateForState(stage);
+            UpdateForState();
 
             // Set up for ghost
             ghostStartInfo = new ProcessStartInfo(@"C:\Program Files (x86)\Tobii\Tobii EyeX Interaction\GazeNative8.exe");
@@ -99,6 +96,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 ghostProcess.CloseMainWindow();
                 ghostProcess = null;
+
+                // TODO: close any other matching processes in case orphaned?
             }
         }
 
@@ -249,9 +248,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void TimerTick(object sender, EventArgs e)
         {
-            if (stage != Stage.TEMP_SCREEN)
+            if (onboardVM.tempState == OnboardingViewModel.TempState.NONE)
             {
-                UpdateOptiKeyFocusForState(stage);
+                UpdateOptiKeyFocusForState();
             }
         }
 
@@ -260,20 +259,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             keyDebounceTimer.Stop();
         }
 
-        void UpdateForState(Stage stage)
-        {
-            prevStage = this.stage;
-            this.stage = stage;                        
-            UpdateKeyboardForState(stage);
-            UpdateOptiKeyFocusForState(stage);
-            UpdateMinecraftFocusForState(stage);
-            UpdateGhostForState(stage);
+        void UpdateForState()
+        {                             
+            UpdateKeyboardForState();
+            UpdateOptiKeyFocusForState();
+            UpdateMinecraftFocusForState();
+            UpdateGhostForState();
         }
 
-        void UpdateGhostForState(Stage stage)
+        void UpdateGhostForState()
         {
-            if (stage == Stage.IN_MINECRAFT || stage == Stage.ONBOARDING_WITH_KEYBOARD)
-            {
+            if (onboardVM.tempState == OnboardingViewModel.TempState.NONE &&
+                (onboardVM.mainState == OnboardingViewModel.OnboardState.POST_CALIB ||
+                 onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT))
+            { 
                 SetGhostVisible(true);
             }
             else
@@ -282,17 +281,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
-        void UpdateMinecraftFocusForState(Stage stage)
+        void UpdateMinecraftFocusForState()
         {
             if (minecraftProcess == null) { return; }
 
-            if (stage == Stage.IN_MINECRAFT)
-            {
+            if (onboardVM.tempState == OnboardingViewModel.TempState.NONE &&
+                 onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT) {
+            
                 ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
                 FocusWindow(minecraftProcess);
             }
             else {
                 ShowWindow(minecraftProcess, PInvoke.SW_SHOWMINNOACTIVE);
+                
             }
         }
 
@@ -305,26 +306,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             onboardWindow.Show();            
         }
 
-        void UpdateOptiKeyFocusForState(Stage stage)
+        void UpdateOptiKeyFocusForState()
         {
-            if (stage != Stage.IN_MINECRAFT)
+            if (onboardVM.mainState != OnboardingViewModel.OnboardState.IN_MINECRAFT)
             {
                 onboardWindow.Activate();
+                onboardWindow.Focus();
                 //mainWindow.Focus();
             }
         }
 
-        void UpdateKeyboardForState(Stage stage)
+        void UpdateKeyboardForState()
         {
-            if (stage == Stage.IDLE ||
-                stage == Stage.ONBOARDING_NO_KEYBOARD)
-
+            if (onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT &&
+                onboardVM.tempState == OnboardingViewModel.TempState.NONE)
             {
-                ChangeKeyboardIfRequired(DisabledKeyboard);
+                ChangeKeyboardIfRequired(EnabledKeyboard);
             }
             else
             {
-                ChangeKeyboardIfRequired(EnabledKeyboard);
+                ChangeKeyboardIfRequired(DisabledKeyboard);
             }
         }
 
@@ -347,56 +348,42 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (keyDebounceTimer.IsEnabled) { return; }
             keyDebounceTimer.Start();
 
-            if (onboardVM.CurrentPageViewModel is InfoViewModel)
-            {
-                onboardVM.Resume();
-                UpdateForState(prevStage);
-            }
-            else
-            {
-                onboardVM.ShowOneOffPage(new InfoViewModel());
-                UpdateForState(Stage.TEMP_SCREEN);
-            }
+            onboardVM.Info();
         }
 
         private void OnReset(object sender, NHotkey.HotkeyEventArgs e)
         {
             if (keyDebounceTimer.IsEnabled) { return;  }
             keyDebounceTimer.Start();
-            if (onboardVM.CurrentPageViewModel is ResetViewModel)
-            {
-                //bool needResetMinecraft = stage == Stage.IN_MINECRAFT;
-                if (stage == Stage.IN_MINECRAFT || 
-                    (stage == Stage.TEMP_SCREEN && prevStage == Stage.IN_MINECRAFT) )
-                {
-                    ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
-                    FocusWindow(minecraftProcess);
-                    Thread.Sleep(50);
-                    // Send shortcut to M/C to unload world
-                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F8));
-                    Thread.Sleep(50);
-                    // Reset world files
-                    ResetMinecraftWorldFile();
-                    Thread.Sleep(50);
-                    // Send shortcut to M/C to reload
-                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F9));
-                    Thread.Sleep(50);
-                }
 
-                onboardVM.Reset();
-                stage = Stage.IDLE;
-                UpdateForState(stage);                
+            if (onboardVM.tempState == OnboardingViewModel.TempState.RESET &&
+                onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT)
+            {
+                // Perform the reset 
+                ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
+                FocusWindow(minecraftProcess);
+                Thread.Sleep(50);
+                // Send shortcut to M/C to unload world
+                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F8));
+                Thread.Sleep(50);
+                // Reset world files
+                ResetMinecraftWorldFile();
+                Thread.Sleep(50);
+                // Send shortcut to M/C to reload
+                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F9));
+                Thread.Sleep(50);                
             }
-            else {
-                onboardVM.ShowOneOffPage(new ResetViewModel());
-                UpdateForState(Stage.TEMP_SCREEN);
-            }
+
+            // updates state appropriately
+            onboardVM.Reset();
+            UpdateForState();
         }
 
         private void OnForward(object sender, NHotkey.HotkeyEventArgs e)
         {
             if (keyDebounceTimer.IsEnabled) { return; }
             keyDebounceTimer.Start();
+            
 
             // Don't go forward while calibrating
             // TODO: for more robustness, keep track of calibration request and
@@ -406,30 +393,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 // Press Enter to hasten process
                 mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Return));
             }
-
-            if (stage != Stage.IN_MINECRAFT)
+            else
             {
-                bool stillOnboarding = onboardVM.NextPage();
-                if (!stillOnboarding)
+                // In minecraft, turn into keypress to start demo (if it hasn't managed to start automatically)
+                if (onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT)
                 {
-                    stage = Stage.IN_MINECRAFT;
-                    onboardVM.Reset();
-                    ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
-                    FocusWindow(minecraftProcess);                    
+                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Return));
                 }
-            }
-            if (stage == Stage.IN_MINECRAFT)
-            {
-                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Return));                
-            }
 
-            UpdateForState(stage);                    
+                // Pass request down
+                onboardVM.Next();
+                UpdateForState();
+            }          
         }
 
         private bool IsTobiiCalibrating()
         {
             // FIXME: what happens if Tobii fails here?
-            return onboardVM.WaitingForCalibration;
+            return onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB;
             //return Process.GetProcessesByName("Tobii.EyeX.Configuration").Length > 0;
         }
 
@@ -444,16 +425,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Escape));
             }
 
-            if (stage == Stage.TEMP_SCREEN)
-            {
-                onboardVM.Resume();
-                UpdateForState(prevStage);
-            }
-            else if (stage != Stage.IN_MINECRAFT)
-            {
-                onboardVM.PrevPage();
-            }
-            UpdateForState(stage);
+            onboardVM.Back();
         }
 
         //private void OnboardWindowClosed(object sender, EventArgs e)
