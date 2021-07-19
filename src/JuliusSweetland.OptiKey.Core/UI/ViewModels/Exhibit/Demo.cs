@@ -191,6 +191,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     minecraftProcess = Process.Start(new ProcessStartInfo(javaPath, minecraftArgs));
                     minecraftProcess.CloseOnApplicationExit(Log, "Minecraft");
                 }
+
+                if (Environment.UserName.Contains("EyeMine"))
+                {
+                    SetAsShellApp(true);
+                }
+
             }
         }
 
