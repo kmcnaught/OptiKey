@@ -359,22 +359,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (onboardVM.tempState == OnboardingViewModel.TempState.RESET &&
                 onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT)
             {
-                // Perform the reset 
+                // Reset world files (this will silently fail on the 'open' one but we'll swap to the fresh one)
+                ResetMinecraftWorldFile();
+
+                // Tell Minecraft to reset 
                 ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
                 FocusWindow(minecraftProcess);
-                Thread.Sleep(50);
-                // Send shortcut to M/C to unload world
-                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F8));
-                Thread.Sleep(50);
-                // Reset world files
-                ResetMinecraftWorldFile();
-                Thread.Sleep(50);
-                // Send shortcut to M/C to reload
-                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F9));
-                Thread.Sleep(50);                
+                Thread.Sleep(100);                
+                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F9));                                
             }
 
-            // updates state appropriately
+            // update state appropriately
             onboardVM.Reset();
             UpdateForState();
         }
