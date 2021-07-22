@@ -13,6 +13,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
         public IntroScreen2()
         {
             InitializeComponent();            
-        }        
+        }
+
+        private void ButtonInfo_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

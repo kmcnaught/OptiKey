@@ -4,79 +4,66 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
+        xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
         mc:Ignorable="d"
-        d:DesignWidth="1280" d:DesignHeight="720"
+        Width="1920" Height="1080"
         Background="Black">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="1*" />
-        </Grid.RowDefinitions>
-
-        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"  
-                   Text="Eye tracking enabled!" 
-                   FontSize="28" FontFamily="Verdana" FontWeight="Bold"
-                   Foreground="AntiqueWhite"
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
-        </TextBlock>
-
-        <TextBlock Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4"
-                   VerticalAlignment="Top" HorizontalAlignment="Center"  
-                   Text="Look around the screen. The on-screen bubble shows where the computer thinks you are looking." 
-                   FontSize="22" FontFamily="Verdana" 
-                   Foreground="AntiqueWhite"
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
-        </TextBlock>
-
-        <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="OR" Foreground="White"
-                                      FontSize="20" FontFamily="Verdana" 
-                   Visibility="Hidden"
-                                      VerticalAlignment="Center" HorizontalAlignment="Center"  ></TextBlock>
         
-        <Grid Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
-              Visibility="{Binding CanGoForward, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="51*"/>
-                <RowDefinition Height="49*"/>
-            </Grid.RowDefinitions>
+        <userControls:ExhibitBackground></userControls:ExhibitBackground>
 
-            <Rectangle x:Name="rectangle"
-                Fill="DarkCyan" Stroke="Black" RadiusX="20" RadiusY="20"
-                Width="350" Height="60" Margin="25,20" Grid.RowSpan="2"/>
-            <TextBlock                 
-                   VerticalAlignment="Center" HorizontalAlignment="Center"  
-                   Text="Press the green button to start EyeMine!" 
-                                Width="250"
+        <Grid Width="500" Height="200" VerticalAlignment="Top" Margin="340">
 
-                   FontSize="20" FontFamily="Verdana" 
-                   Foreground="AntiqueWhite"                                      
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2" Margin="75,24,75,23" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            
+            <Ellipse Grid.Column="0" 
+            Width="130"
+            Height="130"
+            Stroke="#06CB79"
+            StrokeThickness="7"/>
+           
+            <TextBlock Grid.Column="0" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center"                     
+                   FontSize="80" FontFamily="Verdana" FontWeight="Regular"
+                   Foreground="#06CB79"
+                   >
+                ✔
             </TextBlock>
+
+            <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Column="1"
+                >
+                <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">
+                Eye tracking enabled!
+                </TextBlock>
+            </Border>
+
         </Grid>
 
-        <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
-              Visibility="{Binding CanGoBackward, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
-            <Rectangle x:Name="rectangle2"
-                Fill="DarkGoldenrod" Stroke="Black" RadiusX="20" RadiusY="20"
-                Width="350" Height="60"/>
-            <TextBlock                 
-                   VerticalAlignment="Center" HorizontalAlignment="Center"  
-                   Text="Press the yellow button to calibrate again" 
-                Width="250"
-                   FontSize="20" FontFamily="Verdana" 
-                   Foreground="AntiqueWhite"                                      
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
+
+
+        <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                Grid.Row="1" Margin="400" Width="800"
+                >
+            <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">
+                As you look around the screen, the bubbles will show where the computer thinks you are looking
             </TextBlock>
-        </Grid>
+        </Border>
+
+        <userControls:ButtonBack></userControls:ButtonBack>
+        <userControls:ButtonNext></userControls:ButtonNext>
 
     </Grid>
 

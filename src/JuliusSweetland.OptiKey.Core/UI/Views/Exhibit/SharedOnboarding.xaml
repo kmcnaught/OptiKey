@@ -1,0 +1,46 @@
+﻿<Window x:Class="JuliusSweetland.OptiKey.UI.Views.Exhibit.SharedOnboarding"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit"
+        xmlns:vms="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Exhibit"        
+        WindowStartupLocation="CenterOwner"
+        WindowState="Maximized"
+        mc:Ignorable="d"
+        Width="1920" Height="1080"
+        Title=""
+        Background="Black">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <ContentControl Content="{Binding CurrentPageViewModel}" />
+
+
+        <Image Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2"
+               
+               Source="Resources/images/button--green.png"
+               Width="75"
+               VerticalAlignment="Center"
+               />
+
+        <Grid Grid.Column="3" Grid.Row="3"
+              Margin="5"
+              VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Rectangle 
+                    Fill="White" Width="100" Height="50" RadiusX="5" RadiusY="5"
+                       VerticalAlignment="Center" HorizontalAlignment="Center">
+            </Rectangle>
+            <TextBlock 
+                   Text="NEXT" 
+                   FontSize="22" FontFamily="Verdana" FontWeight="DemiBold"
+                   Foreground="Black" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="2"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">
+            </TextBlock>
+        </Grid>
+    </Grid>
+</Window>

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit"
+        xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
         xmlns:vms="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Exhibit"        
         WindowStartupLocation="CenterOwner"
         WindowState="Maximized"
@@ -50,8 +51,7 @@
         </ContextMenu>
     </Window.ContextMenu>
 
-    <Grid>
-        <ContentControl Content="{Binding CurrentPageViewModel}" Margin="-10,0,10,0" />
-        <!--<Rectangle x:Name="foregroundFade" Fill="Black"></Rectangle>-->
-    </Grid>
+    <Viewbox Stretch="Uniform">
+        <ContentControl Content="{Binding CurrentPageViewModel}" />
+    </Viewbox>
 </Window>
