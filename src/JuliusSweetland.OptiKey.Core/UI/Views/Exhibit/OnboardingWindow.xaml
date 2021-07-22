@@ -8,6 +8,7 @@
         WindowStartupLocation="CenterOwner"
         WindowState="Maximized"
         mc:Ignorable="d"
+        d:DesignWidth="1280" d:DesignHeight="720"
         Title=""
         Background="Black">
     <!-- This will display each page of the onboarding workflow -->
