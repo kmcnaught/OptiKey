@@ -62,9 +62,34 @@
             </TextBlock>
         </Border>
 
-        <userControls:ButtonBack></userControls:ButtonBack>
-        <userControls:ButtonNext></userControls:ButtonNext>
 
+
+        <Grid Width="300" Height="200" 
+              HorizontalAlignment="Left" 
+              VerticalAlignment="Bottom"
+              Margin="20,30"
+              >
+            <Image Source="Resources/images/button--blue.png" Width="100"></Image>
+            <Rectangle RadiusX="5" RadiusY="5" Fill="White" Width="230" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <TextBlock FontFamily="Roboto" FontWeight="Medium" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,1" >
+                <Run FontWeight="Bold">BACK</Run>
+            <Run> to setup</Run>
+            </TextBlock>
+        </Grid>
+        
+        <Grid Width="300" Height="200" 
+              HorizontalAlignment="Right" 
+              VerticalAlignment="Bottom"
+              Margin="20,30"
+              >
+            <Image Source="Resources/images/button--green.png" Width="100"></Image>
+            <Rectangle RadiusX="5" RadiusY="5" Fill="White" Width="215" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <TextBlock FontFamily="Roboto" FontWeight="Medium" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,1" >
+            <Run FontWeight="Bold">NEXT</Run>
+            <Run> to play</Run>
+            </TextBlock>
+        </Grid>
+        
     </Grid>
 
 </UserControl>

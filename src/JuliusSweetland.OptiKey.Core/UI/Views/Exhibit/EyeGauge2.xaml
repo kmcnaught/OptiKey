@@ -120,20 +120,22 @@
         </Grid>
 
 
-        <Image x:Name="arrowFurther"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="1" Visibility="Hidden"
+        <Image x:Name="arrowFurther"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="1" Visibility="Hidden"
                Margin="20,0,20,20" Stretch="None"
                VerticalAlignment="Bottom"
                Opacity="50"
                Source="Resources/images/chevron-back.png"/>
 
-        <Image x:Name="arrowCloser"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="1" Visibility="Hidden"
+        <Image x:Name="arrowCloser"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="1" Visibility="Hidden"
                Margin="20,0,20,20" Stretch="None"
                VerticalAlignment="Bottom"
                Opacity="50"
                Source="Resources/images/chevron-forward.png"/>
 
-        <userControls:ButtonBack Grid.RowSpan="4" Grid.ColumnSpan="4"></userControls:ButtonBack>
-        <userControls:ButtonNext Grid.RowSpan="4" Grid.ColumnSpan="4"></userControls:ButtonNext>
+        <userControls:ButtonBack Grid.RowSpan="4" Grid.ColumnSpan="4" ></userControls:ButtonBack>
+        <userControls:ButtonNext Grid.RowSpan="4" Grid.ColumnSpan="4"
+                                               Visibility="{Binding CanGoForward, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
+</userControls:ButtonNext>
 
     </Grid>
 
