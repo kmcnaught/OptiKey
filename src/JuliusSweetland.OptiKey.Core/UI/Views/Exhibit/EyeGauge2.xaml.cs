@@ -106,9 +106,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
             // if both eyes gone, update label
             if (!viewModel.leftEye.visible && !viewModel.rightEye.visible)
             {
-                Random rnd = new Random();
-                int rndInt = rnd.Next(1, 5);
-
+                labelNotVisible.Visibility = Visibility.Visible;                
+            }
+            else
+            {
+                labelNotVisible.Visibility = Visibility.Hidden;
             }
 
             // TODO: add "are you there? cannot see you"..?

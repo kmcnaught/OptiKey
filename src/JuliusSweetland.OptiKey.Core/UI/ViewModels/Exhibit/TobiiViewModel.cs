@@ -47,11 +47,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                     (float)eyePosition.RightEyeNormalized.Z);
 
                     TimeSpan timeSpan = DateTime.Now - initTime;
-                    canGoForward = IsGoodEnough();
+                    canGoForward = isGoodEnough = CalculateIsGoodEnough();
 
                     // TODO: some filtering!
                     //FIXME: this might only gets updated if there's an eye visible?? 
                     RaisePropertyChanged("CanGoForward");
+                    RaisePropertyChanged("IsGoodEnough");
 
                     this.UpdateVisibility();
 
@@ -60,6 +61,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
                     // Update traffic-light colours of eyes and border
                     this.UpdateColour();
+
+                    RaisePropertyChanged("IsGoodEnough");
+
                 };
             }
         }
@@ -69,7 +73,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             
         }
 
-        private bool IsGoodEnough()
+        protected bool isGoodEnough = false;
+        public bool IsGoodEnough
+        {
+            get { return isGoodEnough; }
+            set { SetProperty(ref isGoodEnough, value); }
+        }
+
+
+        private bool CalculateIsGoodEnough()
         {
             // allow user to progress if either:
             // (a) both eyes are visible, and 'okay'

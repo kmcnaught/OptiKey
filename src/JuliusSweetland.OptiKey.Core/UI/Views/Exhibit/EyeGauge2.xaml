@@ -78,7 +78,7 @@
 
 
         <Border x:Name="labelNotVisible"  Visibility="Hidden" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-                Margin="30" Grid.Column="1" Grid.Row="3">
+                Margin="-75" Grid.Column="1" Grid.Row="1">
             <TextBlock            
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
