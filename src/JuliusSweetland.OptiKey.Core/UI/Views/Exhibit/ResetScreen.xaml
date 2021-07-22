@@ -3,54 +3,68 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
+        xmlns:userControls ="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
         mc:Ignorable="d"
-        d:DesignWidth="1280" d:DesignHeight="720"
+        Width="1920" Height="1080"
         Background="Black">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="1*" />
-        </Grid.RowDefinitions>
-        
 
-        <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
-                   VerticalAlignment="Bottom" HorizontalAlignment="Center"  
-                   Text="Are you sure you want to reset demo experience?" 
-                   FontSize="16" FontFamily="Verdana" 
-                   Foreground="AntiqueWhite"
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
-        </TextBlock>
+        <userControls:ExhibitBackground></userControls:ExhibitBackground>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"  
-                   Text="You should reset the demo for every new user" 
-                   FontSize="16" FontFamily="Verdana" 
-                   Foreground="AntiqueWhite"
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
-        </TextBlock>
+        <Grid  Height="500" VerticalAlignment="Top" Margin="300">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Ellipse Grid.Row="0" 
+                Width="200"
+                Height="200"
+                Stroke="Orange"
+                StrokeThickness="10"/>
+
+            <TextBlock Grid.Row="0" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center"                     
+                   FontSize="130" FontFamily="Verdana" FontWeight="Regular"
+                   Foreground="Orange"
+                   >
+                ?
+            </TextBlock>
+
+            <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5"
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Row="1"
+                >
+                <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">                 
+                    <Run>Reset demo? Press</Run>
+              <Run Foreground="Red">RESET</Run>
+              <Run> to confirm</Run>
+                </TextBlock>
+            </Border>
 
 
-        <Rectangle x:Name="rectangle" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"
-                Fill="DarkRed" Stroke="Black" RadiusX="10" RadiusY="10"
-                Width="400" Height="35"/>
-        
-        <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"  
-                   Text="Press the red button to start new demo" 
-                   FontSize="20" FontFamily="Verdana" 
-                   Foreground="AntiqueWhite"                                      
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
-            
-        </TextBlock>
+            <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Row="2" Width="800"
+                >
+                <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                   VerticalAlignment="Center" HorizontalAlignment="Center">
+                We recommend each new user starts
+from the beginning to set up for their eyes
+                </TextBlock>
+            </Border>
+        </Grid>
+        <userControls:ButtonBack></userControls:ButtonBack>
+        <userControls:ButtonReset></userControls:ButtonReset>
 
     </Grid>
 

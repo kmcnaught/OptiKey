@@ -4,65 +4,110 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
+        xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
         mc:Ignorable="d"
-        d:DesignWidth="1280" d:DesignHeight="720"
+        Width="1920" Height="1080"
         Background="Black">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-        </Grid.RowDefinitions>
-        <Image Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
-               Margin="5"
-               Source="Resources/EyeMine_Logo_Trans.png"
-               Width="750"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
-                   VerticalAlignment="Bottom" HorizontalAlignment="Center"  
-                   Text="(this screen needs designing :)" 
-                   FontSize="16" FontFamily="Verdana" 
-                   Foreground="AntiqueWhite"
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
-        </TextBlock>
+        <userControls:ExhibitBackground></userControls:ExhibitBackground>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"  Width="400"
-                   Text="EyeMine was built by SpecialEffect to allow disabled gamers to play Minecraft using only their eyes" 
-                   FontSize="16" FontFamily="Verdana" 
-                   Foreground="AntiqueWhite"
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
-        </TextBlock>
+        <Grid Height="650" VerticalAlignment="Center">
 
-        <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"  Width="400"
-                   Text="This demo lets you experience an introductory version of EyeMine.
-                   
-                   Follow the onscreen instructions to calibrate the eye tracker to your eyes before playing. " 
-                   FontSize="16" FontFamily="Verdana" 
-                   Foreground="AntiqueWhite"
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
-        </TextBlock>
-        <Rectangle x:Name="rectangle" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4"
-                Fill="LightYellow" Stroke="Black" RadiusX="10" RadiusY="10"
-                Width="500" Height="35"/>
-        
-        <TextBlock Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"  
-                   Text="Press the yellow button to return to the demo" 
-                   FontSize="20" FontFamily="Verdana" 
-                   Foreground="DarkOliveGreen"                                      
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Height="500" Width="5" Grid.Column="1"
+                       Fill="White" 
+                       RadiusX="2"
+                       RadiusY="2"/>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Row="0" Grid.ColumnSpan="2" Width="800">
+                    <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Run>EyeMine was built by SpecialEffect to allow disabled gamers to play Minecraft using</Run>
+                        <Run FontWeight="Bold">only their eyes</Run>
+                    </TextBlock>
+                </Border>
+                
+                <Image Source="Resources/Gabey EyeMine Front.png" Grid.Row="1" Grid.Column="1"/>
+                <Image Source="Resources/Becky EyeMine GamesRoomCrop.JPG" Grid.Row="1" Grid.Column="0"/>
+
+                 <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Row="2" Grid.ColumnSpan="2" Width="800">
+                    <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                For this demo, switches are used during initial setup before playing with eyes only
+                    </TextBlock>
+                </Border>
+                
+            </Grid>
             
-        </TextBlock>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Row="1" Width="800">
+                    <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">
+                        This exhibit lets you play a limited version of EyeMine
+                    </TextBlock>
+                </Border>
+
+                <Image Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
+               Width="1000"
+               Source="Resources/images/demoScreenshot.PNG"/>
+
+                <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Row="2" Width="800">
+                    <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">
+Each new user should reset the demo to set things up for their eyes
+                    </TextBlock>
+                </Border>
+
+            </Grid>
+        </Grid>
+
+
+        <userControls:ButtonBack></userControls:ButtonBack>
+        <userControls:ButtonReset></userControls:ButtonReset>
 
     </Grid>
 
