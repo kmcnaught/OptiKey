@@ -35,6 +35,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private MainViewModel mainViewModel;
         private OnboardingViewModel onboardVM;
         private DispatcherTimer keyDebounceTimer;
+        private bool minecraftHasLoaded = false;
 
         private static Process ghostProcess;
         private static ProcessStartInfo ghostStartInfo;
@@ -189,7 +190,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     };
                     minecraftWatcher.MinecraftLoaded += (s, e) =>
                     {
-                        ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
+                        if (!minecraftHasLoaded)
+                        {
+                            // First time we briefly maximise the window to avoid jump glitch later
+                            ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
+                            ShowWindow(minecraftProcess, PInvoke.SW_SHOWMINNOACTIVE);
+                            minecraftHasLoaded = true;
+                        }
                         onboardVM.SetLoadingComplete();
                     };
                 }
