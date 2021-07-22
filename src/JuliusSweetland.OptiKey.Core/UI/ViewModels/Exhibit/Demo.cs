@@ -31,6 +31,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private OnboardingWindow onboardWindow;
         private Process minecraftProcess;
+        private MinecraftWatcher minecraftWatcher;
         private MainViewModel mainViewModel;
         private OnboardingViewModel onboardVM;
         private DispatcherTimer keyDebounceTimer;
@@ -190,6 +191,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
                     minecraftProcess = Process.Start(new ProcessStartInfo(javaPath, minecraftArgs));
                     minecraftProcess.CloseOnApplicationExit(Log, "Minecraft");
+
+                    minecraftWatcher = new MinecraftWatcher(minecraftProcess);
+                    minecraftWatcher.MinecraftCrashed += (s, e) =>
+                    {
+                        Console.WriteLine("CRASHED");
+                    };
+                    minecraftWatcher.MinecraftLoaded += (s, e) =>
+                    {
+                        Console.WriteLine("Loaded");
+                    };
                 }
 
                 if (Environment.UserName.Contains("EyeMine"))

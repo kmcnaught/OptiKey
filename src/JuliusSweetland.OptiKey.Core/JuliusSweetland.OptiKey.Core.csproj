@@ -440,6 +440,7 @@
     <Compile Include="UI\ViewModels\DemoState.cs" />
     <Compile Include="UI\ViewModels\Exhibit\Demo.cs" />
     <Compile Include="UI\ViewModels\Exhibit\FaceViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\MinecraftWatcher.cs" />
     <Compile Include="UI\ViewModels\Exhibit\WaitCalibViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\ResetViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\InfoViewModel.cs" />
