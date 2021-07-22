@@ -161,8 +161,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                             SetState(OnboardState.EYES);
                             break;
                         case OnboardState.EYES:
-                            TobiiEyeXPointService.EyeXHost.LaunchGuestCalibration();
-                            SetState(OnboardState.WAIT_CALIB);                    
+                            if (tobiiViewModel.CanGoForward)
+                            {
+                                TobiiEyeXPointService.EyeXHost.LaunchGuestCalibration();
+                                SetState(OnboardState.WAIT_CALIB);
+                            }
                             break;
                         case OnboardState.WAIT_CALIB:
                             SetState(OnboardState.POST_CALIB);
