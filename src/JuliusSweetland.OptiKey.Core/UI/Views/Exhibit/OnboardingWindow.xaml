@@ -35,6 +35,15 @@
         <DataTemplate DataType="{x:Type vms:WaitCalibViewModel}">
             <local:WaitCalib />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:ErrorViewModel}">
+            <local:ErrorScreen />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:LoadingViewModel}">
+            <local:LoadingScreen />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:EyesLostViewModel}">
+            <local:EyeGaugeMidDemo />
+        </DataTemplate>
     </Window.Resources>
 
     <Window.ContextMenu>

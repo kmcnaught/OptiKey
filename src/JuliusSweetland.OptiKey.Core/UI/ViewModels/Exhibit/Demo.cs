@@ -39,16 +39,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private static Process ghostProcess;
         private static ProcessStartInfo ghostStartInfo;
         
-        enum HelperState
-        {
-            FIRST_SETUP,
-            RESETTING,
-            NO_USER,
-            ERROR
-        }
-
-        private HelperState helperState;
-
         public Demo(MainViewModel mainViewModel)
         {
             this.mainViewModel = mainViewModel;
@@ -195,11 +185,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     minecraftWatcher = new MinecraftWatcher(minecraftProcess);
                     minecraftWatcher.MinecraftCrashed += (s, e) =>
                     {
-                        Console.WriteLine("CRASHED");
+                        onboardVM.SetUnrecoverableError();
                     };
                     minecraftWatcher.MinecraftLoaded += (s, e) =>
                     {
-                        Console.WriteLine("Loaded");
+                        ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
+                        onboardVM.SetLoadingComplete();
                     };
                 }
 
@@ -335,7 +326,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         void UpdateKeyboardForState()
         {
-            if (onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT &&
+            //FIXME: if in minecraft + no user do we want other keyboard? for e.g. temporary lost tracking
+            if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING &&
+                onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT &&
                 onboardVM.tempState == OnboardingViewModel.TempState.NONE)
             {
                 ChangeKeyboardIfRequired(EnabledKeyboard);
@@ -365,7 +358,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (keyDebounceTimer.IsEnabled) { return; }
             keyDebounceTimer.Start();
 
-            onboardVM.Info();
+            if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING)
+            {
+                onboardVM.Info();
+            }
         }
 
         private void OnReset(object sender, NHotkey.HotkeyEventArgs e)
@@ -373,50 +369,56 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (keyDebounceTimer.IsEnabled) { return;  }
             keyDebounceTimer.Start();
 
-            if (onboardVM.tempState == OnboardingViewModel.TempState.RESET &&
-                onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT)
+            if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
+                onboardVM.demoState == OnboardingViewModel.DemoState.NO_USER)
             {
-                // Reset world files (this will silently fail on the 'open' one but we'll swap to the fresh one)
-                ResetMinecraftWorldFile();
+                if (onboardVM.tempState == OnboardingViewModel.TempState.RESET &&
+                    onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT)
+                {
+                    // Reset world files (this will silently fail on the 'open' one but we'll swap to the fresh one)
+                    ResetMinecraftWorldFile();
 
-                // Tell Minecraft to reset 
-                ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
-                FocusWindow(minecraftProcess);
-                Thread.Sleep(100);                
-                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F9));                                
+                    // Tell Minecraft to reset 
+                    ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
+                    FocusWindow(minecraftProcess);
+                    Thread.Sleep(100);
+                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F9));
+                }
+
+                // update state appropriately
+                onboardVM.Reset();
+                UpdateForState();
             }
-
-            // update state appropriately
-            onboardVM.Reset();
-            UpdateForState();
         }
 
         private void OnForward(object sender, NHotkey.HotkeyEventArgs e)
         {
             if (keyDebounceTimer.IsEnabled) { return; }
             keyDebounceTimer.Start();
-            
 
-            // Don't go forward while calibrating
-            // TODO: for more robustness, keep track of calibration request and
-            // identify any other configuring times, e.g. eye tracker reconnecting
-            if (IsTobiiCalibrating())
+            if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING)
             {
-                // Press Enter to hasten process
-                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Return));
-            }
-            else
-            {
-                // In minecraft, turn into keypress to start demo (if it hasn't managed to start automatically)
-                if (onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT)
+                // Don't go forward while calibrating
+                // TODO: for more robustness, keep track of calibration request and
+                // identify any other configuring times, e.g. eye tracker reconnecting
+                if (IsTobiiCalibrating())
                 {
+                    // Press Enter to hasten process
                     mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Return));
                 }
+                else
+                {
+                    // In minecraft, turn into keypress to start demo (if it hasn't managed to start automatically)
+                    if (onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT)
+                    {
+                        mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Return));
+                    }
 
-                // Pass request down
-                onboardVM.Next();
-                UpdateForState();
-            }          
+                    // Pass request down
+                    onboardVM.Next();
+                    UpdateForState();
+                }
+            }
         }
 
         private bool IsTobiiCalibrating()
@@ -437,7 +439,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Escape));
             }
 
-            onboardVM.Back();
+            if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING)
+            {
+                onboardVM.Back();
+            }
         }
 
         //private void OnboardWindowClosed(object sender, EventArgs e)

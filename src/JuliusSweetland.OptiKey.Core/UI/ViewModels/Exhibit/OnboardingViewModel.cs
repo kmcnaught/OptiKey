@@ -30,6 +30,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             RESET
         }
 
+        public enum DemoState
+        {
+            FIRST_SETUP,
+            RESETTING,
+            NO_USER,
+            ERROR,
+            RUNNING
+        }
+
+        public DemoState demoState = DemoState.FIRST_SETUP;
         public OnboardState mainState;
         public TempState tempState;        
 
@@ -39,6 +49,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private PostCalibViewModel postCalibViewModel;
         private InfoViewModel infoViewModel;
         private ResetViewModel resetViewModel;
+        private LoadingViewModel loadingViewModel;
+        private ErrorViewModel errorViewModel;
+        private EyesLostViewModel eyesLostViewModel;
 
         public OnboardingViewModel()
         {
@@ -49,6 +62,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             postCalibViewModel = new PostCalibViewModel();
             infoViewModel = new InfoViewModel();
             resetViewModel = new ResetViewModel();
+            loadingViewModel = new LoadingViewModel();
+            errorViewModel = new ErrorViewModel();
+            eyesLostViewModel = new EyesLostViewModel();
 
             // Register for Tobii events
             TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
@@ -70,27 +86,58 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             RaisePropertyChanged("CurrentPageViewModel");
         }
 
+        public void SetUnrecoverableError()
+        {
+            this.demoState = DemoState.ERROR;
+            errorViewModel.StartRestartCountdown();
+            RaisePropertyChanged("CurrentPageViewModel");
+        }
+
+        public void SetLoadingComplete()
+        {
+            if (demoState == DemoState.FIRST_SETUP ||
+                demoState == DemoState.RESETTING) {
+
+                demoState = DemoState.RUNNING;
+                RaisePropertyChanged("CurrentPageViewModel");
+            }
+        }
+
         #region Properties         
 
         public PageViewModel CurrentPageViewModel
         {
             get
             {
-                switch (tempState) {
-                    case TempState.RESET:
-                        return resetViewModel;
-                    case TempState.INFO:
-                        return infoViewModel;
-                    case TempState.NONE:
-                        switch (mainState) {
-                            case OnboardState.WELCOME:
-                                return introViewModel;
-                            case OnboardState.EYES:
-                                return tobiiViewModel;
-                            case OnboardState.WAIT_CALIB:
-                                return waitCalibViewModel;
-                            case OnboardState.POST_CALIB:
-                                return postCalibViewModel;                                
+                switch (demoState)
+                {
+                    case DemoState.ERROR:
+                        return errorViewModel;
+                    case DemoState.FIRST_SETUP:
+                    case DemoState.RESETTING:
+                        return loadingViewModel;
+                    case DemoState.NO_USER:
+                        return eyesLostViewModel;
+                    case DemoState.RUNNING:
+                        switch (tempState)
+                        {
+                            case TempState.RESET:
+                                return resetViewModel;
+                            case TempState.INFO:
+                                return infoViewModel;
+                            case TempState.NONE:
+                                switch (mainState)
+                                {
+                                    case OnboardState.WELCOME:
+                                        return introViewModel;
+                                    case OnboardState.EYES:
+                                        return tobiiViewModel;
+                                    case OnboardState.WAIT_CALIB:
+                                        return waitCalibViewModel;
+                                    case OnboardState.POST_CALIB:
+                                        return postCalibViewModel;
+                                }
+                                break;
                         }
                         break;
                 }
@@ -134,6 +181,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public void Next()
         {   
+            if (demoState != DemoState.RUNNING) 
+            {
+                return;
+            }
+
             switch (tempState) {
                 case TempState.INFO:
                     SetTempState(TempState.NONE);
