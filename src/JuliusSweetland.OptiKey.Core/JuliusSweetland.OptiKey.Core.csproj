@@ -437,10 +437,12 @@
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
-    <Compile Include="UI\ViewModels\DemoState.cs" />
     <Compile Include="UI\ViewModels\Exhibit\Demo.cs" />
     <Compile Include="UI\ViewModels\Exhibit\FaceViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\ErrorViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\EyesLostViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\MinecraftWatcher.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\LoadingViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\WaitCalibViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\ResetViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\InfoViewModel.cs" />
@@ -541,6 +543,12 @@
     <Compile Include="UI\Utilities\ColorConversions.cs" />
     <Compile Include="UI\ViewModels\Exhibit\PostCalibViewModel.cs" />
     <Compile Include="UI\Views\Exhibit\Commands.cs" />
+    <Compile Include="UI\Views\Exhibit\EyeGaugeMidDemo.xaml.cs">
+      <DependentUpon>EyeGaugeMidDemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\LoadingScreen.xaml.cs">
+      <DependentUpon>LoadingScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Exhibit\EyeGauge2.xaml.cs">
       <DependentUpon>EyeGauge2.xaml</DependentUpon>
     </Compile>
@@ -549,6 +557,9 @@
     </Compile>
     <Compile Include="UI\Views\Exhibit\IntroScreen2.xaml.cs">
       <DependentUpon>IntroScreen2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\ErrorScreen.xaml.cs">
+      <DependentUpon>ErrorScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Exhibit\SharedOnboarding.xaml.cs">
       <DependentUpon>SharedOnboarding.xaml</DependentUpon>
@@ -1466,6 +1477,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Exhibit\EyeGaugeMidDemo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\LoadingScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Exhibit\EyeGauge2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1475,6 +1494,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Exhibit\IntroScreen2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\ErrorScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
