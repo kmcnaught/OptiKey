@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls.ExhibitBackground"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+             mc:Ignorable="d" 
+             Width="1920" Height="1080">
+    <Grid>
+        <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="3"
+               Margin="5" Stretch="UniformToFill"
+               Source="../Resources/screenshot.png"/>
+
+        <Rectangle x:Name="rectangle2"
+                   Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="3"
+                Fill="Black" Opacity="0.6"/>
+
+        <Image Width="450"
+               VerticalAlignment="Top"
+               Source="../Resources/EyeMine_Logo_Trans.png"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="0"
+                   VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="150"
+                   Text="Play Minecraft with your eyes!" 
+                   FontSize="36" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="White"
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
+        </TextBlock>
+
+
+    </Grid>
+</UserControl>

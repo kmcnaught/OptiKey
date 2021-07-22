@@ -549,6 +549,24 @@
     <Compile Include="UI\Views\Exhibit\IntroScreen2.xaml.cs">
       <DependentUpon>IntroScreen2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Exhibit\SharedOnboarding.xaml.cs">
+      <DependentUpon>SharedOnboarding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\UserControls\ButtonInfo.xaml.cs">
+      <DependentUpon>ButtonInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\UserControls\ButtonBack.xaml.cs">
+      <DependentUpon>ButtonBack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\UserControls\ButtonReset.xaml.cs">
+      <DependentUpon>ButtonReset.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\UserControls\ButtonNext.xaml.cs">
+      <DependentUpon>ButtonNext.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\UserControls\ExhibitBackground.xaml.cs">
+      <DependentUpon>ExhibitBackground.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Exhibit\WaitCalib.xaml.cs">
       <DependentUpon>WaitCalib.xaml</DependentUpon>
     </Compile>
@@ -1457,6 +1475,30 @@
     <Page Include="UI\Views\Exhibit\IntroScreen2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\SharedOnboarding.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\UserControls\ButtonInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\UserControls\ButtonBack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Exhibit\UserControls\ButtonReset.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\UserControls\ButtonNext.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Exhibit\UserControls\ExhibitBackground.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Exhibit\WaitCalib.xaml">
       <Generator>MSBuild:Compile</Generator>
