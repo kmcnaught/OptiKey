@@ -31,17 +31,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         }
 
         public OnboardState mainState;
-        public TempState tempState;
-
-        #region Fields
-
-        //private PageViewModel _currentPageViewModel;
-        private List<PageViewModel> _pageViewModels;
-        private int _pageNumber;
-
-        private PageViewModel tempPageViewModel;
-
-        #endregion
+        public TempState tempState;        
 
         private IntroViewModel introViewModel;
         private TobiiViewModel tobiiViewModel;
