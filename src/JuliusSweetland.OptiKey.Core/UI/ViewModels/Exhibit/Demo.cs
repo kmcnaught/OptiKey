@@ -203,12 +203,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                         onboardVM.SetLoadingComplete();
                     };
                 }
-
-                if (Environment.UserName.Contains("EyeMine"))
-                {
-                    SetAsShellApp(true);
-                }
-
             }
         }
 
