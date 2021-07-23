@@ -34,7 +34,9 @@ namespace JuliusSweetland.OptiKey.Services
         {
             KalmanFilterSupported = true;
             EyeXHost = new EyeXHost();
-            StartHost();
+            Log.Info("Starting the EyeX Host");
+            bool success = StartHost();
+            Log.Info(success);
 
             //Disconnect (deactivate) from the EyeXHost on shutdown - otherwise the process can hang
             Application.Current.Exit += (sender, args) =>
