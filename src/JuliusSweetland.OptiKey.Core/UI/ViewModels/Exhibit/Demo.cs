@@ -64,7 +64,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             String ghostFilename = @"C:\Program Files (x86)\Tobii\Tobii EyeX Interaction\GazeNative8.exe";
             if (!File.Exists(ghostFilename))
             {
-                ghostFilename = @"C:\Program Files\Tobii\Tobii EyeX Interaction\GazeNative8.exe";
+                ghostFilename = @"C:\Program Files\Tobii\Tobii EyeX\GazeNative8.exe";
             }
             if (!File.Exists(ghostFilename))
             {
