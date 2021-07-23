@@ -11,12 +11,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public float yPos;
         public float zPos;
         public int nMissing = 0;
+        public DateTime lastSeen;
         
         public void Update(bool visible, float x, float y, float z)
         {
             if (visible)
             {
                 this.visible = true;
+                lastSeen = DateTime.Now;
                 nMissing = 0;
             }
             else

@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Windows.Threading;
 using EyeXFramework;
 using JuliusSweetland.OptiKey.Services;
 using Prism.Mvvm;
@@ -13,6 +14,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
     public class TobiiViewModel : PageViewModel
     {
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
+        public bool handleAutoRestart = false;
+
         public TobiiViewModel()
         {
             SetUp();
@@ -56,6 +61,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
                     this.UpdateVisibility();
 
+                    this.UpdateLostTracking();
+
                     // Update eye sizes, which are relative to UI scale and z distance
                     this.UpdateSize();
 
@@ -66,6 +73,53 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
                 };
             }
+        }
+
+        public void SetAutoRestart(bool b)
+        {
+            handleAutoRestart = b;
+        }
+
+        private void StartRestartCountdown()
+        {
+            dispatcherTimer.Tick += Restart;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 30);
+            dispatcherTimer.Start();
+        }
+
+        private void StopRestartCountdown()
+        {
+            dispatcherTimer.Tick -= Restart;
+            dispatcherTimer.Stop();
+        }
+
+        private void Restart(object sender, EventArgs e)
+        {
+            StopRestartCountdown();
+            OptiKeyApp.RestartApp();
+        }
+
+        private void UpdateLostTracking()
+        {
+            DateTime now = DateTime.Now;
+            int maxSecs = 5;
+            TimeSpan maxTimeSpan = new TimeSpan(0, 0, maxSecs);
+            lostTracking = (now.Subtract(leftEye.lastSeen) > maxTimeSpan &&
+                now.Subtract(rightEye.lastSeen) > maxTimeSpan);
+
+            if (handleAutoRestart)
+            {
+                if (lostTracking)
+                {
+                    StartRestartCountdown();
+                }
+                else
+                {
+                    StopRestartCountdown();
+                }
+            }
+
+            RaisePropertyChanged("LostTracking");
         }
 
         public override void TearDown()
@@ -80,6 +134,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             set { SetProperty(ref isGoodEnough, value); }
         }
 
+        protected bool lostTracking = false;
+        public bool LostTracking
+        {
+            get { UpdateLostTracking();  return lostTracking; }
+            set { SetProperty(ref lostTracking, value); }
+        }
 
         private bool CalculateIsGoodEnough()
         {

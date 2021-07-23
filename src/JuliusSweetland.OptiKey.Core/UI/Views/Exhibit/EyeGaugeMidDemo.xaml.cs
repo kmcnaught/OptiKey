@@ -26,7 +26,17 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
         {
 
             // TODO: Avoid reaching into VM!!
-            TobiiViewModel viewModel = (TobiiViewModel)this.DataContext;
+
+            // I am here. this.DataContext is null
+            //   i basically need to use same tobii VM in two views
+            // also htis popped up when it shouldn't have - when I was not yet in minnecraft...'
+
+            object ctx = this.DataContext;
+
+            EyesLostViewModel viewModelParent = (EyesLostViewModel)this.DataContext;
+            //TobiiViewModel viewModelTobii = (TobiiViewModel)this.DataContext;
+            if (viewModelParent == null) { return; }
+            TobiiViewModel viewModel = viewModelParent.GetTobiiVM();
             if (viewModel == null) { return;  }
 
             float scaleX = (float)trackBox.Width;
@@ -41,6 +51,15 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
             Canvas.SetLeft(followRectangle2, locationR.X);
             Canvas.SetTop(followRectangle2, locationR.Y);
 
+            // set visibility etc  (these are done with binding in main tobii view model)
+            followRectangle1.Visibility = viewModel.LeftEyeVisible ? Visibility.Visible : Visibility.Hidden;            
+            followRectangle1.Width = followRectangle1.Height = viewModel.LeftEyeSize;
+            followRectangle1.RadiusX = followRectangle1.RadiusY = viewModel.LeftEyeSize;
+
+            followRectangle2.Visibility = viewModel.RightEyeVisible ? Visibility.Visible : Visibility.Hidden;
+            followRectangle2.Width = followRectangle2.Height = viewModel.RightEyeSize;
+            followRectangle2.RadiusX = followRectangle2.RadiusY = viewModel.RightEyeSize;
+            
             // set colour based on Z            
             double lightness = 0.5;
             double saturation = 0.75;
@@ -57,32 +76,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
 
             animatedBrush1.Color = ColorConversions.HlsToRgb(hueLeft, lightness, saturation);
             animatedBrush2.Color = ColorConversions.HlsToRgb(hueRight, lightness, saturation);
-
-            // Show labels if outside ideal area
-            // TODO: animate show/hide
-            if ((viewModel.leftEye.visible && viewModel.leftEye.zPos > 0.85) ||
-                (viewModel.rightEye.visible && viewModel.rightEye.zPos > 0.85))
-            {
-                arrowCloser.Visibility = Visibility.Visible;
-                labelCloser.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                arrowCloser.Visibility = Visibility.Hidden;
-                labelCloser.Visibility = Visibility.Hidden;
-            }
-
-            if (viewModel.leftEye.zPos < 0.15 || viewModel.rightEye.zPos < 0.15)
-            {
-                arrowFurther.Visibility = Visibility.Visible;
-                labelFurther.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                arrowFurther.Visibility = Visibility.Hidden;
-                labelFurther.Visibility = Visibility.Hidden;
-            }
-
+            
             // Set up traffic-light border:
             // RED: cannot see eyes
             // GREEN: in good spot

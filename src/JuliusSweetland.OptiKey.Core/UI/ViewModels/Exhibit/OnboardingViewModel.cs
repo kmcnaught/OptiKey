@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Threading;
 using Tobii.EyeX.Framework;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
@@ -53,6 +54,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private ErrorViewModel errorViewModel;
         private EyesLostViewModel eyesLostViewModel;
 
+        private DispatcherTimer tobiiTimer = new DispatcherTimer();
+
         public OnboardingViewModel()
         {
             // Create view models
@@ -64,17 +67,52 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             resetViewModel = new ResetViewModel();
             loadingViewModel = new LoadingViewModel();
             errorViewModel = new ErrorViewModel();
-            eyesLostViewModel = new EyesLostViewModel();
+            eyesLostViewModel = new EyesLostViewModel(tobiiViewModel);
+            eyesLostViewModel.RequireAutoReset += AutoReset;
 
             // Register for Tobii events
             TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
+            tobiiTimer.Tick += TobiiTick;
+            tobiiTimer.Interval = new TimeSpan(0, 0, 1);
+            tobiiTimer.Start();
 
             // Initial state
             tempState = TempState.NONE;
             mainState = OnboardState.WELCOME;
         }
 
+        private void AutoReset(object sender, EventArgs e)
+        {
+            OptiKeyApp.RestartApp();
+        }
+
         //FIXME: set up tear down?
+
+        private void TobiiTick(object sender, EventArgs e)
+        {
+            // handle going in / out of 'no user' state
+            //fixme: is it possible to be forced out of this state and leave things running?
+            // would that matter?
+            if (demoState == DemoState.NO_USER) 
+            {
+                if (eyesLostViewModel.CanDismiss)
+                {
+                    demoState = DemoState.RUNNING;
+                    eyesLostViewModel.Stop();
+                }
+            }
+            else if (demoState == DemoState.RUNNING && 
+                tempState == TempState.NONE &&
+                mainState == OnboardState.IN_MINECRAFT)
+            {
+                if (tobiiViewModel.LostTracking)
+                {
+                    demoState = DemoState.NO_USER;
+                    eyesLostViewModel.Start();
+                }
+            }
+            RaisePropertyChanged("CurrentPageViewModel");
+        }
 
         public void SetState(OnboardState state) {
             this.mainState = state;
@@ -170,6 +208,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 //DO the reset?!
                 SetTempState(TempState.NONE);
                 SetState(OnboardState.WELCOME);
+                tobiiViewModel.SetAutoRestart(false);
             }
             else
             {
@@ -214,6 +253,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                             break;
                         case OnboardState.POST_CALIB:
                             SetState(OnboardState.IN_MINECRAFT);
+                            tobiiViewModel.SetAutoRestart(true);
                             break;
                     }
                     break;
