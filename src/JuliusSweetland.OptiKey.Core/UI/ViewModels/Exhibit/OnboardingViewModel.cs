@@ -10,6 +10,8 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using Tobii.EyeX.Framework;
 using JuliusSweetland.OptiKey.UI.Windows;
+using Prism.Commands;
+using System.Windows;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
@@ -40,6 +42,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             ERROR,
             RUNNING
         }
+        private readonly ICommand setKioskCommand;
+        private readonly ICommand unsetKioskCommand;
+        private readonly ICommand captureMinecraftCommand;
+        private readonly ICommand restartCommand;
+
+        public ICommand SetKioskCommand { get { return setKioskCommand; } }
+        public ICommand UnsetKioskCommand { get { return unsetKioskCommand; } }
+        public ICommand CaptureMinecraftCommand { get { return captureMinecraftCommand; } }
+        public ICommand RestartCommand { get { return restartCommand; } }
 
         public DemoState demoState = DemoState.FIRST_SETUP;
         public OnboardState mainState;
@@ -59,6 +70,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public OnboardingViewModel()
         {
+            setKioskCommand = new DelegateCommand(() => {
+                Demo.SetAsShellApp(true);
+                MessageBox.Show("Shell app setup complete. Please restart PC to see changes");
+            });
+            unsetKioskCommand = new DelegateCommand(() => {
+                Demo.SetAsShellApp(false);
+                MessageBox.Show("Shell app disabled. Please restart PC to see changes");
+            });
+            //captureMinecraftCommand = new DelegateCommand(CaptureMinecraft);
+            restartCommand = new DelegateCommand(() => {
+                MessageBox.Show("Restart all programs?");
+                MainWindow.RestartEverything();
+            });
+            captureMinecraftCommand = new DelegateCommand(CaptureMinecraft);
+
             // Create view models
             introViewModel = new IntroViewModel();
             tobiiViewModel = new TobiiViewModel();
@@ -80,6 +106,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             // Initial state
             tempState = TempState.NONE;
             mainState = OnboardState.WELCOME;
+        }
+
+        private void CaptureMinecraft()
+        {
+            Process p = Demo.CaptureMinecraftProcess();
+            if (p == null)
+            {
+                MessageBox.Show("Could not find valid Minecraft instance. \n\nPlease run Minecraft Launcher, select the \"EyeMineExhibition\" profile and click PLAY to launch");
+            }
+            else
+            {
+                if (MessageBox.Show("Successfully captured Minecraft process.\nPlease close Minecraft.\nEyeMine will now restart and launch it's own copy of Minecraft.",
+                         "Capturing Minecraft instance ... ",
+                         MessageBoxButton.OK) == MessageBoxResult.OK)
+                {
+                    MainWindow.RestartEverything();
+                }
+            }
         }
 
         private void AutoReset(object sender, EventArgs e)
