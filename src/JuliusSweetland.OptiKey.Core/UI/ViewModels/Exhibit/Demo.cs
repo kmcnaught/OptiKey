@@ -345,8 +345,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (minecraftProcess == null) { return; }
 
             if (onboardVM.tempState == OnboardingViewModel.TempState.NONE &&
-                 onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT) {
-            
+                onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING &&
+                onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT) {            
                 ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
                 FocusWindow(minecraftProcess);
             }
@@ -367,7 +367,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         void UpdateOptiKeyFocusForState()
         {
-            if (onboardVM.mainState != OnboardingViewModel.OnboardState.IN_MINECRAFT)
+            if (onboardVM.tempState != OnboardingViewModel.TempState.NONE &&
+                onboardVM.demoState != OnboardingViewModel.DemoState.RUNNING &&
+                onboardVM.mainState != OnboardingViewModel.OnboardState.IN_MINECRAFT)
             {
                 onboardWindow.Activate();
                 onboardWindow.Focus();
