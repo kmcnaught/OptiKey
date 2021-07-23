@@ -157,6 +157,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
             else
             {
+                // Close any processes orphaned by previous runs
+                CloseProcesses();
 
                 // Launch Minecraft
 
@@ -209,7 +211,39 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
-        public static Process CaptureMinecraftProcess()
+        public static void CloseProcesses()
+        {
+            // on startup, close any orphaned minecraft or ghost processes            
+            foreach (Process p in Process.GetProcesses())
+            {
+                if (p.ProcessName.ToLower().Contains("javaw"))
+                {
+                    string cmd = p.GetCommandLine();
+                    if (cmd.Contains(".minecraft") && cmd.Contains("EyeMineExhibit"))
+                    {
+                        KillProcess(p, 1000);
+                    }
+                }
+                else if (p.ProcessName.Contains("GazeNative8"))
+                {
+                    KillProcess(p, 1000);
+                }
+            }
+        }
+
+        private static void KillProcess(Process p, int waitTimeoutMs)
+        {
+            bool success = p.CloseMainWindow();
+            if (success)
+            {
+                success = p.WaitForExit(waitTimeoutMs);
+            }
+            if (!success) {
+                p.Kill();
+            }
+        }
+
+                    public static Process CaptureMinecraftProcess()
         {
             Process capturedProcess = null;
             foreach (Process p in Process.GetProcesses())
