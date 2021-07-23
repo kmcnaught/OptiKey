@@ -2,6 +2,7 @@
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Native;
+using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
@@ -440,6 +441,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             if (keyDebounceTimer.IsEnabled) { return; }
             keyDebounceTimer.Start();
+
+            IPointSource pointSource = mainViewModel.InputService.PointSource;
+            if (pointSource != null)
+            {
+                TobiiEyeXPointService tobiiService = (TobiiEyeXPointService)pointSource;
+                if (tobiiService != null)
+                {
+                    Log.Info("Starting the EyeX Host");
+                    bool success = tobiiService.StartHost();
+                    Log.Info(success);
+                }
+            }
 
             if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING)
             {
