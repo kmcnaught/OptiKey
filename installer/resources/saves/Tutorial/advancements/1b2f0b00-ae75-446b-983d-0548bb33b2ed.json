@@ -413,6 +413,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/food/mushroom_stew": {
+    "criteria": {
+      "has_brown_mushroom": "2021-07-20 08:27:57 +0100"
+    },
+    "done": true
+  },
   "minecraft:recipes/food/cooked_rabbit_from_smoking": {
     "criteria": {
       "has_rabbit": "2021-07-06 11:54:42 +0100"
@@ -884,6 +890,12 @@
   "minecraft:adventure/root": {
     "criteria": {
       "killed_something": "2021-06-02 11:27:24 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/bowl": {
+    "criteria": {
+      "has_brown_mushroom": "2021-07-20 08:27:57 +0100"
     },
     "done": true
   },
