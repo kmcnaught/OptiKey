@@ -60,7 +60,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             UpdateForState();
 
             // Set up for ghost
-            ghostStartInfo = new ProcessStartInfo(@"C:\Program Files (x86)\Tobii\Tobii EyeX Interaction\GazeNative8.exe");
+            // May be in one of two places
+            String ghostFilename = @"C:\Program Files (x86)\Tobii\Tobii EyeX Interaction\GazeNative8.exe";
+            if (!File.Exists(ghostFilename))
+            {
+                ghostFilename = @"C:\Program Files\Tobii\Tobii EyeX Interaction\GazeNative8.exe";
+            }
+            if (!File.Exists(ghostFilename))
+            {
+                MessageBox.Show("Error finding GazeNative app for overlay");
+            }
+
+            ghostStartInfo = new ProcessStartInfo(ghostFilename);
             ghostStartInfo.UseShellExecute = true;
             ghostStartInfo.CreateNoWindow = true;
 
