@@ -84,6 +84,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         private bool SetupEyeXStreams()
         {
+            DisposeEyeXStreams(); // no-op if not setup
+
             Log.Info("Checking the state of the Tobii service...");
 
             if (firstConnectAttempt == zeroTime)
