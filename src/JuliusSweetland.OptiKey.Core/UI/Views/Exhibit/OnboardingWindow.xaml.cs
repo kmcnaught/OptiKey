@@ -39,10 +39,18 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
         {
             InitializeComponent();
 
-            setKioskCommand = new DelegateCommand(() => { Demo.SetAsShellApp(true); });
-            unsetKioskCommand = new DelegateCommand(() => { Demo.SetAsShellApp(false); });
+            setKioskCommand = new DelegateCommand(() => {
+                Demo.SetAsShellApp(true);
+                MessageBox.Show("Shell app setup complete. Please restart PC to see changes");
+            });
+            unsetKioskCommand = new DelegateCommand(() => { Demo.SetAsShellApp(false);
+                MessageBox.Show("Shell app disabled. Please restart PC to see changes");
+            });
             captureMinecraftCommand = new DelegateCommand(CaptureMinecraft);
-            restartCommand = new DelegateCommand(() => { MainWindow.RestartEverything(); });
+            restartCommand = new DelegateCommand(() => {
+                MessageBox.Show("Restart all programs?");
+                MainWindow.RestartEverything();
+            });
 
         }
 
