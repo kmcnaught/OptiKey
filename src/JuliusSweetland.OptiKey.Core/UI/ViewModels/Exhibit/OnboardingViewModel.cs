@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Threading;
 using Tobii.EyeX.Framework;
+using JuliusSweetland.OptiKey.UI.Windows;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
@@ -83,7 +84,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void AutoReset(object sender, EventArgs e)
         {
-            OptiKeyApp.RestartApp();
+            MainWindow.RestartEverything();
         }
 
         //FIXME: set up tear down?

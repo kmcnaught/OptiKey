@@ -277,7 +277,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                          "Capturing Minecraft instance ... ",
                          MessageBoxButton.OK) == MessageBoxResult.OK)
                 {
-                    OptiKeyApp.RestartApp();
+                    MainWindow.RestartEverything();
                 }
             }           
         }
@@ -329,9 +329,14 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             if (MessageBox.Show(Properties.Resources.REFRESH_MESSAGE, Properties.Resources.RESTART, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                OptiKeyApp.RestartApp();
-                Application.Current.Shutdown();
+                MainWindow.RestartEverything();
             }
+        }
+
+        public static void RestartEverything()
+        {
+            OptiKeyApp.RestartApp();
+            Application.Current.Shutdown();
         }
     }
 }

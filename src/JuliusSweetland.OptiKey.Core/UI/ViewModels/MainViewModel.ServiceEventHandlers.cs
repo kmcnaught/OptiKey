@@ -17,6 +17,7 @@ using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.Services.Translation;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
+using JuliusSweetland.OptiKey.UI.Windows;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -2242,8 +2243,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         () =>
                         {
                             Settings.Default.CleanShutdown = true;
-                            OptiKeyApp.RestartApp();
-                            Application.Current.Shutdown();
+                            MainWindow.RestartEverything();
                         },
                         () => { Keyboard = keyboardBeforeQuit; });
                     break;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Threading;
 using EyeXFramework;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.UI.Windows;
 using Prism.Mvvm;
 
 using Tobii.EyeX.Client;
@@ -96,7 +97,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private void Restart(object sender, EventArgs e)
         {
             StopRestartCountdown();
-            OptiKeyApp.RestartApp();
+            MainWindow.RestartEverything();
         }
 
         private void UpdateLostTracking()

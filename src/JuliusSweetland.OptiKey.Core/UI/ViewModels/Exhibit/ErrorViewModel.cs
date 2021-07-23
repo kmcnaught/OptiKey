@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using JuliusSweetland.OptiKey.UI.Windows;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
@@ -28,7 +29,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private void Restart(object sender, EventArgs e)
         {
             dispatcherTimer.Tick -= Restart;
-            OptiKeyApp.RestartApp();
+            MainWindow.RestartEverything();
         }
 
         public override void SetUp()

@@ -14,6 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using JuliusSweetland.OptiKey.UI.Windows;
+
 
 namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
 {
@@ -53,7 +55,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
                          "Capturing Minecraft instance ... ",
                          MessageBoxButton.OK) == MessageBoxResult.OK)
                 {
-                    OptiKeyApp.RestartApp();
+                    MainWindow.RestartEverything();
                 }
             }
         }

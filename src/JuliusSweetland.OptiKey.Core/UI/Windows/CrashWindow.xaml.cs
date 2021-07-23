@@ -27,7 +27,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                     {
                         Settings.Default.CleanShutdown = false;
                         Settings.Default.Save();
-                        OptiKeyApp.RestartApp();
+                        MainWindow.RestartEverything();
                     }
                 };
                 dt.Start();
