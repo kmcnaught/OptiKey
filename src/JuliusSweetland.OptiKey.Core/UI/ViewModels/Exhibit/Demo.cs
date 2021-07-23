@@ -282,8 +282,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public static void SetAsShellApp(bool useAsShell)
         {
+            Log.Info($"SetAsShellApp? {useAsShell}");
+
             RegistryKey Key = Registry.CurrentUser;
             Key = Key.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\", true);
+
+            Log.Info($"Registry Key: {Key.ToString()}");
 
             if (useAsShell)
             {
