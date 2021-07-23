@@ -28,10 +28,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
         private readonly ICommand setKioskCommand;
         private readonly ICommand unsetKioskCommand;
         private readonly ICommand captureMinecraftCommand;
+        private readonly ICommand restartCommand;
 
         public ICommand SetKioskCommand { get { return setKioskCommand; } }
         public ICommand UnsetKioskCommand { get { return unsetKioskCommand; } }
         public ICommand CaptureMinecraftCommand { get { return captureMinecraftCommand; } }
+        public ICommand RestartCommand { get { return restartCommand; } }
 
         public OnboardingWindow()
         {
@@ -40,6 +42,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
             setKioskCommand = new DelegateCommand(() => { Demo.SetAsShellApp(true); });
             unsetKioskCommand = new DelegateCommand(() => { Demo.SetAsShellApp(false); });
             captureMinecraftCommand = new DelegateCommand(CaptureMinecraft);
+            restartCommand = new DelegateCommand(() => { MainWindow.RestartEverything(); });
+
         }
 
         private void CaptureMinecraft()
