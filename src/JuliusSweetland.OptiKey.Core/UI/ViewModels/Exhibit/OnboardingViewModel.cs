@@ -12,6 +12,7 @@ using Tobii.EyeX.Framework;
 using JuliusSweetland.OptiKey.UI.Windows;
 using Prism.Commands;
 using System.Windows;
+using System.Diagnostics;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
