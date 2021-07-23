@@ -72,7 +72,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
                 labelCloser.Visibility = Visibility.Hidden;
             }
 
-            if (viewModel.leftEye.zPos < 0.15 || viewModel.rightEye.zPos < 0.15)
+            if (viewModel.leftEye.visible && viewModel.leftEye.zPos < 0.15 ||
+                viewModel.rightEye.visible && viewModel.rightEye.zPos < 0.15)
             {
                 arrowFurther.Visibility = Visibility.Visible;
                 labelFurther.Visibility = Visibility.Visible;
