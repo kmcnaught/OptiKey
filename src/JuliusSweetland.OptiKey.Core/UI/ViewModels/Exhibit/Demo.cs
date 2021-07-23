@@ -436,17 +436,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (keyDebounceTimer.IsEnabled) { return; }
             keyDebounceTimer.Start();
 
-            IPointSource pointSource = mainViewModel.InputService.PointSource;
-            if (pointSource != null)
-            {
-                TobiiEyeXPointService tobiiService = (TobiiEyeXPointService)pointSource;
-                if (tobiiService != null)
-                {
-                    Log.Info("Starting the EyeX Host");
-                    bool success = tobiiService.StartHost();
-                    Log.Info(success);
-                }
-            }
+            //IPointSource pointSource = mainViewModel.InputService.PointSource;
+            //if (pointSource != null)
+            //{
+            //    TobiiEyeXPointService tobiiService = (TobiiEyeXPointService)pointSource;
+            //    if (tobiiService != null)
+            //    {
+            //        Log.Info("Starting the EyeX Host");
+            //        bool success = tobiiService.StartHost();
+            //        Log.Info(success);
+            //    }
+            //}
 
             if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING)
             {
