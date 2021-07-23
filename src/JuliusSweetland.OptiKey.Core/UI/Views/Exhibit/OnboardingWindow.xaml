@@ -12,6 +12,29 @@
         d:DesignWidth="1280" d:DesignHeight="720"
         Title=""
         Background="Black">
+
+    <Window.ContextMenu>
+        <ContextMenu >
+            <MenuItem Header="Capture minecraft process" 
+                      CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"
+                      Command="{Binding CaptureMinecraftCommand}">
+            </MenuItem>
+            <MenuItem Header="Set up kiosk" 
+                      CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"
+                      Command="{Binding SetKioskCommand}">
+            </MenuItem>
+            <MenuItem Header="Unset kiosk" 
+                      CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"
+                      Command="{Binding UnsetKioskCommand}">
+            </MenuItem>
+            <MenuItem Header="Restart" 
+                      CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"
+                      Command="{Binding RestartCommand}">
+            </MenuItem>
+        </ContextMenu>
+    </Window.ContextMenu>
+
+    
     <!-- This will display each page of the onboarding workflow -->
     <Window.Resources>
         <DataTemplate DataType="{x:Type vms:FaceViewModel}">
@@ -45,21 +68,7 @@
             <local:EyeGaugeMidDemo />
         </DataTemplate>
     </Window.Resources>
-
-    <Window.ContextMenu>
-        <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
-            <MenuItem Header="Capture minecraft process" 
-                      Command="{Binding CaptureMinecraftCommand}">
-            </MenuItem>
-            <MenuItem Header="Set up kiosk" 
-                      Command="{Binding SetKioskCommand}">
-            </MenuItem>
-            <MenuItem Header="Unset kiosk" 
-                      Command="{Binding UnsetKioskCommand}">
-            </MenuItem>
-        </ContextMenu>
-    </Window.ContextMenu>
-
+    
     <Viewbox Stretch="Uniform">
         <ContentControl Content="{Binding CurrentPageViewModel}" />
     </Viewbox>
