@@ -13,7 +13,7 @@
 
         <Rectangle x:Name="rectangle2"
                    Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="3"
-                Fill="Black" Opacity="0.6"/>
+                Fill="Black" Opacity="0.7"/>
 
         <Image Width="450"
                VerticalAlignment="Top"
