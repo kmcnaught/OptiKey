@@ -26,8 +26,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         bool waitingForAutoReset = false;
 
-        public event EventHandler RequireAutoReset;
-        public event EventHandler RequireDismiss;
+        public event EventHandler RequireAutoReset = delegate {};
+        public event EventHandler RequireDismiss = delegate { };
 
         public EyesLostViewModel(TobiiViewModel vm) 
         {
