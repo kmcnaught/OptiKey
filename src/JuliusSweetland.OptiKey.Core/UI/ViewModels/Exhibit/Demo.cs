@@ -367,8 +367,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         void UpdateOptiKeyFocusForState()
         {
-            if (onboardVM.tempState != OnboardingViewModel.TempState.NONE &&
-                onboardVM.demoState != OnboardingViewModel.DemoState.RUNNING &&
+            if (onboardVM.tempState != OnboardingViewModel.TempState.NONE ||
+                onboardVM.demoState != OnboardingViewModel.DemoState.RUNNING ||
                 onboardVM.mainState != OnboardingViewModel.OnboardState.IN_MINECRAFT)
             {
                 onboardWindow.Activate();
