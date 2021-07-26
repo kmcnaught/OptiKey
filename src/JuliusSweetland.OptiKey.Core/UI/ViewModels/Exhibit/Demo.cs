@@ -63,16 +63,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
             // Set up for ghost
             // May be in one of two places
-            String ghostFilename = @"C:\Program Files (x86)\Tobii\Tobii EyeX Interaction\GazeNative8.exe";
-            if (!File.Exists(ghostFilename))
-            {
-                ghostFilename = @"C:\Program Files\Tobii\Tobii EyeX\GazeNative8.exe";
-            }
-            if (!File.Exists(ghostFilename))
-            {
-                MessageBox.Show("Error finding GazeNative app for overlay");
-            }
-
+            String ghostFilename = FindGazeNative();                       
             ghostStartInfo = new ProcessStartInfo(ghostFilename);
             ghostStartInfo.UseShellExecute = true;
             ghostStartInfo.CreateNoWindow = true;
@@ -93,6 +84,44 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             keyDebounceTimer.Tick += AllowKeyPress;
             keyDebounceTimer.Interval = new TimeSpan(0, 0, 0, 0, debounceMs);           
             
+        }
+
+        private string FindGazeNative()
+        {
+            string exeName = "GazeNative8.exe";
+            string exeFullPath = null;
+            string errorMsg = "GazeNative8.exe not found";
+            try
+            {
+                string dir1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Tobii");
+                string dir2 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Tobii");
+
+                List<string> foundFiles = new List<string>();
+                if (Directory.Exists(dir1))
+                {
+                    foundFiles.AddRange(Directory.GetFiles(dir1, exeName, SearchOption.AllDirectories));
+                }
+                if (Directory.Exists(dir2))
+                {
+                    foundFiles.AddRange(Directory.GetFiles(dir2, exeName, SearchOption.AllDirectories));
+                }
+
+                if (foundFiles.Count >=0)
+                {
+                    exeFullPath = foundFiles[0];
+                }                
+            }
+            catch (Exception e) {
+                errorMsg = e.ToString();
+            }
+            
+            if (String.IsNullOrEmpty(exeFullPath))
+            {
+                MessageBox.Show("Error finding GazeNative app for overlay\n\n" + errorMsg);
+                Application.Current.Shutdown();
+            }
+
+            return exeFullPath;
         }
 
         public static void SetGhostVisible(bool visible)
