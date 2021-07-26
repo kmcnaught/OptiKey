@@ -390,6 +390,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             onboardWindow.Closed += (s, e) => { Application.Current.Shutdown(); };
             onboardWindow.Show();
             onboardVM.StateChanged += (s,e) => UpdateForState();
+            onboardVM.RequireAutoReset += (s, e) => AutoReset();
         }
 
         void UpdateOptiKeyFocusForState()
@@ -407,7 +408,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         void UpdateKeyboardForState()
         {
             //FIXME: if in minecraft + no user do we want other keyboard? for e.g. temporary lost tracking
-            if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING &&
+            if ((onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
+                 onboardVM.demoState == OnboardingViewModel.DemoState.NO_USER) &&
                 onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT &&
                 onboardVM.tempState == OnboardingViewModel.TempState.NONE)
             {
@@ -444,6 +446,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
+        private void AutoReset()
+        {
+            this.PerformResetDemo();            
+            onboardVM.Reset();           
+            UpdateForState();
+        }
+
+        private void PerformResetDemo()
+        {
+            // Reset world files (this will silently fail on the 'open' one but we'll swap to the fresh one)
+            ResetMinecraftWorldFile();
+
+            // Tell Minecraft to reset 
+            ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
+            FocusWindow(minecraftProcess);
+            Thread.Sleep(100);
+            mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F9));
+        }
+
         private void OnReset(object sender, NHotkey.HotkeyEventArgs e)
         {
             if (keyDebounceTimer.IsEnabled) { return;  }
@@ -455,14 +476,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 if (onboardVM.tempState == OnboardingViewModel.TempState.RESET &&
                     onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT)
                 {
-                    // Reset world files (this will silently fail on the 'open' one but we'll swap to the fresh one)
-                    ResetMinecraftWorldFile();
-
-                    // Tell Minecraft to reset 
-                    ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
-                    FocusWindow(minecraftProcess);
-                    Thread.Sleep(100);
-                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F9));
+                    this.PerformResetDemo();
                 }
 
                 // update state appropriately

@@ -72,8 +72,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (!vm.LostTracking && timeEyesAppeared != timeZero)
             {
                 //FIXME: this doesn't account for multiple instances of eyes briefly reappearing
-                canDismiss = canReset ? DateTime.Now.Subtract(timeEyesAppeared) > timeBeforeDismissLate :
-                                        DateTime.Now.Subtract(timeEyesAppeared) > timeBeforeDismissEarly;
+                canDismiss = canReset ? DateTime.Now.Subtract(timeEyesAppeared) < timeBeforeDismissLate :
+                                        DateTime.Now.Subtract(timeEyesAppeared) < timeBeforeDismissEarly;
             }
 
             RaisePropertyChanged("CanReset");

@@ -69,6 +69,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private DispatcherTimer tobiiTimer = new DispatcherTimer();
 
+        public event EventHandler RequireAutoReset = delegate { };
+
+
         public event EventHandler StateChanged;
 
         public OnboardingViewModel()
@@ -98,7 +101,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             loadingViewModel = new LoadingViewModel();
             errorViewModel = new ErrorViewModel();
             eyesLostViewModel = new EyesLostViewModel(tobiiViewModel);
-            eyesLostViewModel.RequireAutoReset += AutoReset;
+            eyesLostViewModel.RequireAutoReset += (s, e) => { this.RequireAutoReset(eyesLostViewModel, null); };
 
             // Register for Tobii events
             TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
@@ -127,11 +130,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     MainWindow.RestartEverything();
                 }
             }
-        }
-
-        private void AutoReset(object sender, EventArgs e)
-        {
-            MainWindow.RestartEverything();
         }
 
         //FIXME: set up tear down?
@@ -163,6 +161,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     StateChanged(this, null);
                 }
             }
+        }
+
+        public void SetState(DemoState state)
+        {
+            this.demoState = state;
+            RaisePropertyChanged("CurrentPageViewModel");
+            StateChanged(this, null);
         }
 
         public void SetState(OnboardState state) {
@@ -263,6 +268,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 //DO the reset?!
                 SetTempState(TempState.NONE);
                 SetState(OnboardState.WELCOME);
+                SetState(DemoState.RUNNING);
                 tobiiViewModel.SetAutoRestart(false);
             }
             else
