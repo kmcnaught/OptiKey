@@ -88,6 +88,10 @@
             </Canvas>
         </Viewbox>
 
+        <userControls:ButtonBack Grid.RowSpan="4" Grid.ColumnSpan="4"
+            Visibility="{Binding CanGoBack, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
+        </userControls:ButtonBack>
+
         <userControls:ButtonReset Grid.RowSpan="4" Grid.ColumnSpan="4"
             Visibility="{Binding CanReset, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
         </userControls:ButtonReset>
