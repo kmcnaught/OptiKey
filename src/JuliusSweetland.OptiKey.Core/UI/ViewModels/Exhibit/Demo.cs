@@ -39,6 +39,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private DispatcherTimer keyDebounceTimer;
         private DispatcherTimer minecraftLoadingTimer;
+        private DispatcherTimer focusTimer = new DispatcherTimer();
 
         private static Process ghostProcess;
         private static ProcessStartInfo ghostStartInfo;
@@ -83,6 +84,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             keyDebounceTimer.Tick += AllowKeyPress;
             keyDebounceTimer.Interval = new TimeSpan(0, 0, 0, 0, debounceMs);           
             
+            // slight hack: poll to ensure correct focus at all times 
+            // (state machine _should_ handle this but there are some corner cases not handled)
+            focusTimer.Tick += (object sender, EventArgs e) =>
+            {
+                UpdateForState();
+            };
+            focusTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            focusTimer.Start();
         }
 
         private string FindGazeNative()
