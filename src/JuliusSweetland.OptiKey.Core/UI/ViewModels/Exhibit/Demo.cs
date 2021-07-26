@@ -388,7 +388,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             onboardWindow = new OnboardingWindow();
             onboardWindow.DataContext = onboardVM;
             onboardWindow.Closed += (s, e) => { Application.Current.Shutdown(); };
-            onboardWindow.Show();            
+            onboardWindow.Show();
+            onboardVM.StateChanged += (s,e) => UpdateForState();
         }
 
         void UpdateOptiKeyFocusForState()

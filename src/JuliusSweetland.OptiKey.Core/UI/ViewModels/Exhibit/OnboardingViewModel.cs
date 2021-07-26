@@ -69,6 +69,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private DispatcherTimer tobiiTimer = new DispatcherTimer();
 
+        public event EventHandler StateChanged;
+
         public OnboardingViewModel()
         {
             setKioskCommand = new DelegateCommand(() => {
@@ -158,16 +160,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 }
             }
             RaisePropertyChanged("CurrentPageViewModel");
+            StateChanged(this, null);
         }
 
         public void SetState(OnboardState state) {
             this.mainState = state;
             RaisePropertyChanged("CurrentPageViewModel");
+            StateChanged(this, null);
         }
 
         public void SetTempState(TempState state) {
             this.tempState = state;
             RaisePropertyChanged("CurrentPageViewModel");
+            StateChanged(this, null);
         }
 
         public void SetUnrecoverableError()
@@ -175,6 +180,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             this.demoState = DemoState.ERROR;
             errorViewModel.StartRestartCountdown();
             RaisePropertyChanged("CurrentPageViewModel");
+            StateChanged(this, null);
         }
 
         public void SetLoadingComplete()
@@ -184,6 +190,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
                 demoState = DemoState.RUNNING;
                 RaisePropertyChanged("CurrentPageViewModel");
+                StateChanged(this, null);
             }
         }
 
