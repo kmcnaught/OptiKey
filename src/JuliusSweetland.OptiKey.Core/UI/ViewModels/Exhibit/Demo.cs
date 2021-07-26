@@ -107,16 +107,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 List<string> foundFiles = new List<string>();
                 if (Directory.Exists(dir1))
                 {
+                    Log.Info($"Looking in {dir1} for GazeNative exe");
                     foundFiles.AddRange(Directory.GetFiles(dir1, exeName, SearchOption.AllDirectories));
                 }
                 if (Directory.Exists(dir2))
                 {
+                    Log.Info($"Looking in {dir2} for GazeNative exe");
                     foundFiles.AddRange(Directory.GetFiles(dir2, exeName, SearchOption.AllDirectories));
                 }
 
                 if (foundFiles.Count > 0)
                 {
+                    Log.Info("Found file:");                    
                     exeFullPath = foundFiles[0];
+                    Log.Info(exeFullPath);
                 }                
             }
             catch (Exception e) {
