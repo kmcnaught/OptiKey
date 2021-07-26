@@ -130,6 +130,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (String.IsNullOrEmpty(exeFullPath))
             {
                 MessageBox.Show("Error finding GazeNative app for overlay\n\n" + errorMsg);
+                LogManager.Flush(5000);
                 Application.Current.Shutdown();
             }
 
