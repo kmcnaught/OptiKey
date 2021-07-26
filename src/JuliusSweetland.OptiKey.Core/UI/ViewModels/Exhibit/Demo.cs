@@ -114,7 +114,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     foundFiles.AddRange(Directory.GetFiles(dir2, exeName, SearchOption.AllDirectories));
                 }
 
-                if (foundFiles.Count >=0)
+                if (foundFiles.Count > 0)
                 {
                     exeFullPath = foundFiles[0];
                 }                
