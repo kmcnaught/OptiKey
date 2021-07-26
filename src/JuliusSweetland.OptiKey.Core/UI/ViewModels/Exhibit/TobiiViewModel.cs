@@ -103,7 +103,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private void UpdateLostTracking()
         {
             DateTime now = DateTime.Now;
-            int maxSecs = 5;
+            int maxSecs = 3;
             TimeSpan maxTimeSpan = new TimeSpan(0, 0, maxSecs);
             lostTracking = (now.Subtract(leftEye.lastSeen) > maxTimeSpan &&
                 now.Subtract(rightEye.lastSeen) > maxTimeSpan);
