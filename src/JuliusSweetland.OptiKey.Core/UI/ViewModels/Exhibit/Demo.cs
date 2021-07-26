@@ -35,8 +35,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private MinecraftWatcher minecraftWatcher;
         private MainViewModel mainViewModel;
         private OnboardingViewModel onboardVM;
-        private DispatcherTimer keyDebounceTimer;
         private bool minecraftHasLoaded = false;
+
+        private DispatcherTimer keyDebounceTimer;
+        private DispatcherTimer minecraftLoadingTimer;
 
         private static Process ghostProcess;
         private static ProcessStartInfo ghostStartInfo;
@@ -76,11 +78,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             ghostStartInfo.CreateNoWindow = true;
 
             // Poll regularly to ensure Minecraft doesn't steal focus at inappropriate time
-
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += TimerTick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
-            dispatcherTimer.Start();
+            // This is important during initial M/C loading where it forces focus
+            minecraftLoadingTimer = new DispatcherTimer();
+            minecraftLoadingTimer.Tick += (object sender, EventArgs e) =>
+            {
+                UpdateOptiKeyFocusForState();
+                minecraftLoadingTimer.Stop();
+            };
+            minecraftLoadingTimer.Interval = new TimeSpan(0, 0, 0, 500);
+            minecraftLoadingTimer.Start();
 
             int debounceMs = 500;
             keyDebounceTimer = new DispatcherTimer();
@@ -249,7 +255,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
-                    public static Process CaptureMinecraftProcess()
+        public static Process CaptureMinecraftProcess()
         {
             Process capturedProcess = null;
             foreach (Process p in Process.GetProcesses())
@@ -303,15 +309,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 Key.SetValue("Shell", "");
             }
-        }
-
-        private void TimerTick(object sender, EventArgs e)
-        {
-            if (onboardVM.tempState == OnboardingViewModel.TempState.NONE)
-            {
-                UpdateOptiKeyFocusForState();
-            }
-        }
+        }        
 
         private void AllowKeyPress(object sender, EventArgs e)
         {
@@ -352,7 +350,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
             else {
                 ShowWindow(minecraftProcess, PInvoke.SW_SHOWMINNOACTIVE);
-                
             }
         }
 
