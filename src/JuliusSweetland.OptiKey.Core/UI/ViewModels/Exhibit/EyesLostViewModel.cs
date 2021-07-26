@@ -70,15 +70,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             shouldAutoReset = vm.LostTracking && DateTime.Now.Subtract(timeWindowAppeared) > timeBeforeResetAuto;
 
             if (!vm.LostTracking && timeEyesAppeared != timeZero)
-            {
-                //FIXME: this doesn't account for multiple instances of eyes briefly reappearing
-                canDismiss = canReset ? DateTime.Now.Subtract(timeEyesAppeared) < timeBeforeDismissLate :
-                                        DateTime.Now.Subtract(timeEyesAppeared) < timeBeforeDismissEarly;
+            {                
+                canDismiss = !canReset && DateTime.Now.Subtract(timeEyesAppeared) < timeBeforeDismissEarly;
             }
+
+            canGoBack = canReset && !vm.LostTracking;
 
             RaisePropertyChanged("CanReset");
             RaisePropertyChanged("ShouldAutoReset");
-            RaisePropertyChanged("CanReset");
+            RaisePropertyChanged("CanGoBack");
 
             if (shouldAutoReset && !waitingForAutoReset)
             {
@@ -91,6 +91,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {            
             resetTimer.Tick -= TimerTick;
             resetTimer.Stop();
+
+            canGoBack = false;
+            shouldAutoReset = false;
+            canReset = false;
+            waitingForAutoReset = false;
+
+            RaisePropertyChanged("CanReset");
+            RaisePropertyChanged("ShouldAutoReset");
+            RaisePropertyChanged("CanGoBack");
+
         }
 
         public override void SetUp()
@@ -112,7 +122,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         protected bool canReset = false;
         public bool CanReset
         {
-            get { return canReset; }                        
+            get { return canReset; }
+        }
+
+        protected bool canGoBack = false;
+        public bool CanGoBack
+        {
+            get { return canGoBack; }
         }
 
         protected bool shouldAutoReset = false;

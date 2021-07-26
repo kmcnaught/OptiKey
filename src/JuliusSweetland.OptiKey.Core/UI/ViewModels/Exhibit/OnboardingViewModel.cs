@@ -215,7 +215,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     case DemoState.RESETTING:
                         return loadingViewModel;
                     case DemoState.NO_USER:
-                        return eyesLostViewModel;
+                        if (tempState == TempState.RESET)
+                        {
+                            return resetViewModel;
+                        }
+                        else if (tempState == TempState.INFO)
+                        {
+                            return infoViewModel;
+                        }
+                        else
+                        {
+                            return eyesLostViewModel;
+                        }
                     case DemoState.RUNNING:
                         switch (tempState)
                         {
@@ -333,29 +344,46 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public void Back()
         {
-            switch (tempState) {
-                case TempState.INFO:
-                    SetTempState(TempState.NONE);
+            switch (demoState)
+            {
+                case DemoState.ERROR:                   
+                case DemoState.FIRST_SETUP:                    
+                case DemoState.RESETTING:
                     break;
-                case TempState.RESET:
-                    SetTempState(TempState.NONE);
+                case DemoState.NO_USER:
+                    if (!tobiiViewModel.LostTracking) {
+                        SetState(DemoState.RUNNING);
+                        eyesLostViewModel.Stop();
+                    }
                     break;
-                case TempState.NONE:
-                    switch (mainState)
+                case DemoState.RUNNING:
+                    switch (tempState)
                     {
-                        case OnboardState.IN_MINECRAFT:
-                            SetState(OnboardState.POST_CALIB);
+                        case TempState.INFO:
+                            SetTempState(TempState.NONE);
                             break;
-                        case OnboardState.WAIT_CALIB:                            
-                        case OnboardState.POST_CALIB:
-                            SetState(OnboardState.EYES);                    
+                        case TempState.RESET:
+                            SetTempState(TempState.NONE);
                             break;
-                        case OnboardState.EYES:
-                            SetState(OnboardState.WELCOME);
+                        case TempState.NONE:
+                            switch (mainState)
+                            {
+                                case OnboardState.IN_MINECRAFT:
+                                    //FIXME: do we want to allow this transition?
+                                    //SetState(OnboardState.POST_CALIB);
+                                    break;
+                                case OnboardState.WAIT_CALIB:
+                                case OnboardState.POST_CALIB:
+                                    SetState(OnboardState.EYES);
+                                    break;
+                                case OnboardState.EYES:
+                                    SetState(OnboardState.WELCOME);
+                                    break;
+                            }
                             break;
                     }
                     break;
-            }            
+            }
         }
 
         // FIXME: do we need the setup/teardown stuff?

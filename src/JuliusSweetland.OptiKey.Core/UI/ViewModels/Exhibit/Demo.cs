@@ -552,9 +552,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 // Press Esc to exit
                 mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Escape));
+                return;
             }
 
-            if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING)
+            if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
+                onboardVM.demoState == OnboardingViewModel.DemoState.NO_USER)
             {
                 onboardVM.Back();
             }
