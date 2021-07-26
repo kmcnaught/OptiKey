@@ -74,9 +74,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             minecraftLoadingTimer.Tick += (object sender, EventArgs e) =>
             {
                 UpdateOptiKeyFocusForState();
-                minecraftLoadingTimer.Stop();
             };
-            minecraftLoadingTimer.Interval = new TimeSpan(0, 0, 0, 500);
+            minecraftLoadingTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
             minecraftLoadingTimer.Start();
 
             int debounceMs = 500;
@@ -245,6 +244,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                             ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
                             ShowWindow(minecraftProcess, PInvoke.SW_SHOWMINNOACTIVE);
                             minecraftHasLoaded = true;
+                            minecraftLoadingTimer.Stop();
                         }
                         onboardVM.SetLoadingComplete();
                     };
