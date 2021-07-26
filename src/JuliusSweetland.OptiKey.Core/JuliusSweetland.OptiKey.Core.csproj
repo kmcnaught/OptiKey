@@ -441,6 +441,7 @@
     <Compile Include="UI\ViewModels\Exhibit\FaceViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\ErrorViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\EyesLostViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\TobiiWatcher.cs" />
     <Compile Include="UI\ViewModels\Exhibit\MinecraftWatcher.cs" />
     <Compile Include="UI\ViewModels\Exhibit\LoadingViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\WaitCalibViewModel.cs" />
