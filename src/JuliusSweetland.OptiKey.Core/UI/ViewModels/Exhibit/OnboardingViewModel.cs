@@ -147,6 +147,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 {
                     demoState = DemoState.RUNNING;
                     eyesLostViewModel.Stop();
+                    RaisePropertyChanged("CurrentPageViewModel");
+                    StateChanged(this, null);
                 }
             }
             else if (demoState == DemoState.RUNNING && 
@@ -157,10 +159,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 {
                     demoState = DemoState.NO_USER;
                     eyesLostViewModel.Start();
+                    RaisePropertyChanged("CurrentPageViewModel");
+                    StateChanged(this, null);
                 }
             }
-            RaisePropertyChanged("CurrentPageViewModel");
-            StateChanged(this, null);
         }
 
         public void SetState(OnboardState state) {
