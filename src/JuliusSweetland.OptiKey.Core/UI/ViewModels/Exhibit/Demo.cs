@@ -423,19 +423,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void ChangeKeyboardIfRequired(string keyboardFileName)
         {
-            if (keyboardFileName.Contains("enabled"))
-            {
-                Settings.Default.MainWindowState = WindowStates.Docked;
-                Settings.Default.MainWindowPreviousState = WindowStates.Docked;
-                Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = 30;                
-
-                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.MouseKeyboard));
-            }
-            else
-            {
-                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.MenuKeyboard));
-            }
-            /*IKeyboard currentKeyboard = mainViewModel.Keyboard;
+            IKeyboard currentKeyboard = mainViewModel.Keyboard;
             if (mainViewModel.Keyboard is DynamicKeyboard)
             {
                 DynamicKeyboard dynamicKeyboard = (DynamicKeyboard)mainViewModel.Keyboard;
@@ -444,7 +432,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     return;
                 }
             }
-            mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(keyboardFileName));*/
+            mainViewModel.ProcessChangeKeyboardKeyValue(new ChangeKeyboardKeyValue(keyboardFileName));
         }
 
         private void OnInfo(object sender, NHotkey.HotkeyEventArgs e)
