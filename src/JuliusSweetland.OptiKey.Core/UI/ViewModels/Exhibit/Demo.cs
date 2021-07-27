@@ -392,6 +392,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         void UpdateOptiKeyFocusForState()
         {
+            // Make sure height fits alongside keyboard
+            int height = (int)Graphics.PrimaryScreenHeightInPixels;
+            if (ShowEyeMineKeyboard())
+            {
+                double dockHeight = mainViewModel.MainWindowManipulationService.GetFullDockThicknessAsPercentageOfScreen();
+                double minecraftHeight = 100 - dockHeight;
+
+                height -= (int)(height * minecraftHeight / 100);
+            }
+            onboardWindow.Height = height;
+
             if (onboardVM.tempState != OnboardingViewModel.TempState.NONE ||
                 onboardVM.demoState != OnboardingViewModel.DemoState.RUNNING ||
                 onboardVM.mainState != OnboardingViewModel.OnboardState.IN_MINECRAFT)
@@ -402,13 +413,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
+        private bool ShowEyeMineKeyboard()
+        {
+            return (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
+                 onboardVM.demoState == OnboardingViewModel.DemoState.NO_USER) &&
+                onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT &&
+                onboardVM.tempState == OnboardingViewModel.TempState.NONE;
+        }
+
         void UpdateKeyboardForState()
         {
             //FIXME: if in minecraft + no user do we want other keyboard? for e.g. temporary lost tracking
-            if ((onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
-                 onboardVM.demoState == OnboardingViewModel.DemoState.NO_USER) &&
-                onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT &&
-                onboardVM.tempState == OnboardingViewModel.TempState.NONE)
+            if (ShowEyeMineKeyboard())
             {
                 ChangeKeyboardIfRequired(EnabledKeyboard);
             }
