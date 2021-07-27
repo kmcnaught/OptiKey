@@ -363,7 +363,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             double h = Graphics.PrimaryScreenHeightInPixels;
             double w = Graphics.PrimaryScreenWidthInPixels;
 
-            double dockHeight = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
+            double dockHeight = mainViewModel.MainWindowManipulationService.GetFullDockThicknessAsPercentageOfScreen();
             double minecraftHeight = 100 - dockHeight;
             int border = 30;
 

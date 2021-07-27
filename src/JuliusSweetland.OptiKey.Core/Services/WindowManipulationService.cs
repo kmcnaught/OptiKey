@@ -66,6 +66,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         private delegate void ApplySizeAndPositionDelegate(Rect rect);
 
+        public double GetFullDockThicknessAsPercentageOfScreen()
+        {
+            return getFullDockThicknessAsPercentageOfScreen();
+        }
+
         #endregion
 
         #region Ctor

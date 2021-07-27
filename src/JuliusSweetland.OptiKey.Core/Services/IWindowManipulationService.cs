@@ -24,6 +24,7 @@ namespace JuliusSweetland.OptiKey.Services
         void Minimise();
         void Move(MoveToDirections direction, double? amountInPx);
         void PersistSizeAndPosition();
+        double GetFullDockThicknessAsPercentageOfScreen();
         void ResizeDockToCollapsed();
         void ResizeDockToFull();
         void Restore();
