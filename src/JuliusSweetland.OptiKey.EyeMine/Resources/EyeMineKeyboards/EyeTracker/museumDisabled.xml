@@ -4,11 +4,11 @@
    <WindowState>Floating</WindowState>
    <Position>Bottom</Position>
    <Width>50%</Width>
-   <Height>20%</Height>
+   <Height>25%</Height>
     <!-- NOTE: Change VerticalOffset to *slightly less* than Height if you want it out of sight entirely,
     e.g. Height="20%" VerticalOffset="19.5%"
     (it might break if offset is greater than or equal to height)-->
-   <VerticalOffset>19.5%</VerticalOffset>
+   <VerticalOffset>24.5%</VerticalOffset>
     <SymbolMargin>10</SymbolMargin>
     <BorderThickness>0,0,0,0</BorderThickness>
    <BackgroundColor>Transparent</BackgroundColor>
