@@ -49,8 +49,8 @@
                     </TextBlock>
                 </Border>
                 
-                <Image Source="Resources/Gabey EyeMine Front.png" Grid.Row="1" Grid.Column="1"/>
-                <Image Source="Resources/Becky EyeMine GamesRoomCrop.JPG" Grid.Row="1" Grid.Column="0"/>
+                <Image Source="Resources/Gabey EyeMine Front.png" Grid.Row="1" Grid.Column="1" Margin="-30,0,0,0" />
+                <Image Source="Resources/Becky EyeMine GamesRoomCrop.JPG" Grid.Row="1" Grid.Column="0" Margin="30,0,0,0" />
 
                  <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
                 Grid.Row="2" Grid.ColumnSpan="2" Width="800">
@@ -68,7 +68,7 @@
             
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="2.6*"></RowDefinition>
                     <RowDefinition Height="1*"></RowDefinition>
                     <RowDefinition Height="1*"></RowDefinition>
                 </Grid.RowDefinitions>
