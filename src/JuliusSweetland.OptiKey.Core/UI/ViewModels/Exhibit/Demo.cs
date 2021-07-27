@@ -363,6 +363,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT) {            
                 ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
                 FocusWindow(minecraftProcess);
+                mainViewModel.MainWindowManipulationService.ResizeDockToFull();
             }
             else {
                 ShowWindow(minecraftProcess, PInvoke.SW_SHOWMINNOACTIVE);
