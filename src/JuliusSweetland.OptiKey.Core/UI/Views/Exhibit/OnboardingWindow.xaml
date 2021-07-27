@@ -14,7 +14,7 @@
         Background="Black">
 
     <Window.ContextMenu>
-        <ContextMenu >
+        <ContextMenu  IsOpen="{Binding IsContextMenuOpen, Mode=TwoWay}">
             <MenuItem Header="Capture minecraft process" 
                       CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"
                       Command="{Binding CaptureMinecraftCommand}">

@@ -386,6 +386,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
+        bool isContextMenuOpen = false;
+        public bool IsContextMenuOpen
+        {
+            get
+            {
+                return isContextMenuOpen;
+            }
+            set
+            {
+                isContextMenuOpen = value;
+            }
+        }
+
         // FIXME: do we need the setup/teardown stuff?
         //private void SetPageViewModel(PageViewModel pageVM, bool teardownCurrent)
         //{            

@@ -83,7 +83,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             minecraftLoadingTimer = new DispatcherTimer();
             minecraftLoadingTimer.Tick += (object sender, EventArgs e) =>
             {
-                UpdateOptiKeyFocusForState();
+                if (!onboardVM.IsContextMenuOpen)
+                {
+                    UpdateOptiKeyFocusForState();
+                }
             };
             minecraftLoadingTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
             minecraftLoadingTimer.Start();
@@ -97,7 +100,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             // (state machine _should_ handle this but there are some corner cases not handled)
             focusTimer.Tick += (object sender, EventArgs e) =>
             {
-                UpdateForState();
+                if (!onboardVM.IsContextMenuOpen)
+                {
+                    UpdateForState();
+                }
             };
             focusTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
             focusTimer.Start();
