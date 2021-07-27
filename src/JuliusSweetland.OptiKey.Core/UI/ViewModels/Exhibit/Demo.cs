@@ -364,13 +364,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             double w = Graphics.PrimaryScreenWidthInPixels;
 
             double dockHeight = mainViewModel.MainWindowManipulationService.GetFullDockThicknessAsPercentageOfScreen();
-            double minecraftHeight = 100 - dockHeight;
-            int border = 30;
+            double minecraftHeight = 100 - dockHeight;           
 
-            Native.Common.Structs.RECT rect = new Native.Common.Structs.RECT(0, 0, (int)w, (int)(h * minecraftHeight / 100) - border - 3);
+            Native.Common.Structs.RECT rect = new Native.Common.Structs.RECT(0, 0, (int)w, (int)(h * minecraftHeight / 100));
             
-            //Native.Common.Structs.RECT rect = new Native.Common.Structs.RECT(10, 10, 200, 200);
-
             if (onboardVM.tempState == OnboardingViewModel.TempState.NONE &&
                 onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING &&
                 onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT) {            
