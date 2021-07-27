@@ -17,12 +17,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.DirectoryServices;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using static JuliusSweetland.OptiKey.Native.PInvoke;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
@@ -358,12 +360,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             if (minecraftProcess == null) { return; }
 
+            double h = Graphics.PrimaryScreenHeightInPixels;
+            double w = Graphics.PrimaryScreenWidthInPixels;
+
+            double dockHeight = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
+            double minecraftHeight = 100 - dockHeight;
+            int border = 30;
+
+            Native.Common.Structs.RECT rect = new Native.Common.Structs.RECT(0, 0, (int)w, (int)(h * minecraftHeight / 100) - border - 3);
+            
+            //Native.Common.Structs.RECT rect = new Native.Common.Structs.RECT(10, 10, 200, 200);
+
             if (onboardVM.tempState == OnboardingViewModel.TempState.NONE &&
                 onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING &&
                 onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT) {            
-                ShowWindow(minecraftProcess, PInvoke.SW_SHOWMAXIMIZED);
-                FocusWindow(minecraftProcess);
-                mainViewModel.MainWindowManipulationService.ResizeDockToFull();
+                ShowWindow(minecraftProcess, PInvoke.SW_SHOWNORMAL, rect);
+                FocusWindow(minecraftProcess);                
             }
             else {
                 ShowWindow(minecraftProcess, PInvoke.SW_SHOWMINNOACTIVE);
@@ -566,6 +578,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         //    UpdateForState(stage);
         //}
 
+        public static void ShowWindow(Process process, int SHOW_INT, Native.Common.Structs.RECT rect)
+        {
+            if (process == null) { return; }            
+            IDictionary<IntPtr, string> windows = List_Windows_By_PID(process.Id);
+
+            foreach (KeyValuePair<IntPtr, string> pair in windows)
+            {
+                WINDOWPLACEMENT placement = WINDOWPLACEMENT.Default;
+                placement.Length = Marshal.SizeOf(placement);
+                GetWindowPlacement(pair.Key, ref placement);
+
+                placement.NormalPosition = rect;
+                placement.Length = Marshal.SizeOf(placement);
+                
+                bool b2 = PInvoke.SetWindowPlacement(pair.Key, ref placement);
+                bool b = PInvoke.ShowWindow(pair.Key, SHOW_INT);                                
+            }
+        }
 
         public static void ShowWindow(Process process, int SHOW_INT)
         {
@@ -601,7 +631,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 var placement = new PInvoke.WINDOWPLACEMENT();
                 PInvoke.GetWindowPlacement(pair.Key, ref placement);
 
-                if (placement.showCmd == PInvoke.SW_SHOWMINIMIZED)
+                if (placement.ShowCmd == PInvoke.SW_SHOWMINIMIZED)
                 {
                     //if minimized, show maximized
                     PInvoke.ShowWindowAsync(pair.Key, PInvoke.SW_SHOWMAXIMIZED);
