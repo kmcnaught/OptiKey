@@ -13,6 +13,7 @@ using JuliusSweetland.OptiKey.UI.Windows;
 using Prism.Commands;
 using System.Windows;
 using System.Diagnostics;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
@@ -41,6 +42,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             RESETTING,
             NO_USER,
             ERROR,
+            TIMED_OUT,
             RUNNING
         }
         private readonly ICommand setKioskCommand;
@@ -70,6 +72,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private ForcedResetViewModel forcedResetViewModel;
 
         private DispatcherTimer tobiiTimer = new DispatcherTimer();
+        private DispatcherTimer ingameTimer = new DispatcherTimer();
+        private DispatcherTimer forceResetTimer = new DispatcherTimer();
 
         public event EventHandler RequireAutoReset = delegate { };
 
@@ -113,9 +117,31 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             tobiiTimer.Interval = new TimeSpan(0, 0, 1);
             tobiiTimer.Start();
 
+            // This timer will enforce in-game time limit
+            ingameTimer.Interval = new TimeSpan(0, 0, 30); //TODO: settings
+            ingameTimer.Tick += IngameTimer_Tick;
+
+            forceResetTimer.Interval = new TimeSpan(0, Settings.Default.IngameTimeoutMinutes, 0);
+            forceResetTimer.Tick += ForceResetTimer_Tick;
+
             // Initial state
             tempState = TempState.NONE;
             mainState = OnboardState.WELCOME;
+        }
+
+        private void ForceResetTimer_Tick(object sender, EventArgs e)
+        {
+            RequireAutoReset(this, null);
+            forceResetTimer.Stop();
+        }
+
+        private void IngameTimer_Tick(object sender, EventArgs e)
+        {
+            this.demoState = DemoState.TIMED_OUT;
+            this.ingameTimer.Stop();
+            this.forceResetTimer.Start();
+            RaisePropertyChanged("CurrentPageViewModel");
+            StateChanged(this, null);
         }
 
         private void CaptureMinecraft()
@@ -215,6 +241,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 {
                     case DemoState.ERROR:
                         return errorViewModel;
+                    case DemoState.TIMED_OUT:
+                        return forcedResetViewModel;
                     case DemoState.FIRST_SETUP:
                     case DemoState.RESETTING:
                         return loadingViewModel;
@@ -291,7 +319,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         // this is the entry point for the reset BUTTON, not a generic "reset" method
         public void Reset()
         {
-            if (tempState == TempState.RESET)
+            if (tempState == TempState.RESET ||
+                demoState == DemoState.TIMED_OUT)
             {
                 ResetViewModel();
             }
@@ -339,6 +368,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                         case OnboardState.POST_CALIB:
                             SetState(OnboardState.IN_MINECRAFT);
                             tobiiViewModel.SetAutoRestart(true);
+                            ingameTimer.Start();
                             break;
                     }
                     break;
@@ -384,6 +414,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                 case OnboardState.IN_MINECRAFT:
                                     //FIXME: do we want to allow this transition?
                                     //SetState(OnboardState.POST_CALIB);
+                                    //ingameTimer.Stop();
                                     break;
                                 case OnboardState.WAIT_CALIB:
                                 case OnboardState.POST_CALIB:
