@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="JuliusSweetland.OptiKey.UI.Views.Exhibit.ForcedResetScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:userControls ="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        mc:Ignorable="d"
+        Width="1920" Height="1080"
+        Background="Black">
+
+    <Grid>
+
+        <userControls:ExhibitBackground></userControls:ExhibitBackground>
+
+        <Grid  Height="500" VerticalAlignment="Top" Margin="300">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="1" Margin="40" Source="Resources\logo-specialeffect.png"/>
+
+            <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5"
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Row="2"
+                >
+                <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">                 
+                    <Run>New user? Press</Run>
+              <Run Foreground="Red">RESET</Run>
+              <Run> to begin</Run>
+                </TextBlock>
+            </Border>
+
+
+            <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Row="0"
+                >
+                <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                   VerticalAlignment="Center" HorizontalAlignment="Center">
+                Thank you for playing!
+                </TextBlock>
+            </Border>
+        </Grid>
+
+        <userControls:ButtonReset></userControls:ButtonReset>
+
+    </Grid>
+
+</UserControl>

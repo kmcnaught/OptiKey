@@ -437,10 +437,12 @@
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\ForcedResetViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\Demo.cs" />
     <Compile Include="UI\ViewModels\Exhibit\FaceViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\ErrorViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\EyesLostViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\BlankViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\TobiiWatcher.cs" />
     <Compile Include="UI\ViewModels\Exhibit\MinecraftWatcher.cs" />
     <Compile Include="UI\ViewModels\Exhibit\LoadingViewModel.cs" />
@@ -562,6 +564,9 @@
     <Compile Include="UI\Views\Exhibit\ErrorScreen.xaml.cs">
       <DependentUpon>ErrorScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Exhibit\ForcedResetScreen.xaml.cs">
+      <DependentUpon>ForcedResetScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Exhibit\SharedOnboarding.xaml.cs">
       <DependentUpon>SharedOnboarding.xaml</DependentUpon>
     </Compile>
@@ -579,6 +584,9 @@
     </Compile>
     <Compile Include="UI\Views\Exhibit\UserControls\ExhibitBackground.xaml.cs">
       <DependentUpon>ExhibitBackground.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\BlankScreen.xaml.cs">
+      <DependentUpon>BlankScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Exhibit\WaitCalib.xaml.cs">
       <DependentUpon>WaitCalib.xaml</DependentUpon>
@@ -1006,6 +1014,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
+    <Resource Include="UI\Views\Exhibit\Resources\logo-specialeffect.png" />
     <Resource Include="UI\Views\Exhibit\Resources\images\demoScreenshot.PNG" />
     <Resource Include="UI\Views\Exhibit\Resources\screenshot.png" />
     <Resource Include="UI\Views\Exhibit\Resources\Becky EyeMine GamesRoomCrop.JPG" />
@@ -1502,6 +1511,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Exhibit\ForcedResetScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Exhibit\SharedOnboarding.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1525,6 +1538,10 @@
     <Page Include="UI\Views\Exhibit\UserControls\ExhibitBackground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Exhibit\BlankScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Exhibit\WaitCalib.xaml">
       <Generator>MSBuild:Compile</Generator>

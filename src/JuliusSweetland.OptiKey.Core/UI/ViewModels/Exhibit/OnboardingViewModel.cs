@@ -66,6 +66,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private LoadingViewModel loadingViewModel;
         private ErrorViewModel errorViewModel;
         private EyesLostViewModel eyesLostViewModel;
+        private BlankViewModel blankViewModel;
+        private ForcedResetViewModel forcedResetViewModel;
 
         private DispatcherTimer tobiiTimer = new DispatcherTimer();
 
@@ -102,6 +104,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             errorViewModel = new ErrorViewModel();
             eyesLostViewModel = new EyesLostViewModel(tobiiViewModel);
             eyesLostViewModel.RequireAutoReset += (s, e) => { this.RequireAutoReset(eyesLostViewModel, null); };
+            blankViewModel = new BlankViewModel();
+            forcedResetViewModel = new ForcedResetViewModel();
 
             // Register for Tobii events
             TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
@@ -245,6 +249,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                         return waitCalibViewModel;
                                     case OnboardState.POST_CALIB:
                                         return postCalibViewModel;
+                                    case OnboardState.IN_MINECRAFT:
+                                        return blankViewModel;
                                 }
                                 break;
                         }

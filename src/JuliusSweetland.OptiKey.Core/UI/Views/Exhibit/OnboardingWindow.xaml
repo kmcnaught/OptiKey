@@ -67,6 +67,12 @@
         <DataTemplate DataType="{x:Type vms:EyesLostViewModel}">
             <local:EyeGaugeMidDemo />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:BlankViewModel}">
+            <local:BlankScreen />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:ForcedResetViewModel}">
+            <local:ForcedResetScreen />
+        </DataTemplate>
     </Window.Resources>
     
     <Viewbox Stretch="Uniform">
