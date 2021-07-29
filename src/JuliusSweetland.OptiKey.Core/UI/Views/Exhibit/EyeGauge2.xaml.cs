@@ -116,5 +116,10 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
 
             // TODO: add "are you there? cannot see you"..?
         }
+
+        private void ButtonNext_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

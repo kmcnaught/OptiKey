@@ -134,7 +134,7 @@
 
         <userControls:ButtonBack Grid.RowSpan="4" Grid.ColumnSpan="4" ></userControls:ButtonBack>
         <userControls:ButtonNext Grid.RowSpan="4" Grid.ColumnSpan="4"
-                                               Visibility="{Binding CanGoForward, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
+                                               Visibility="{Binding CanGoForward, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" Loaded="ButtonNext_Loaded">
 </userControls:ButtonNext>
 
     </Grid>
