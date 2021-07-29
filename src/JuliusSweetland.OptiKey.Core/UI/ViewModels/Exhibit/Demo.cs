@@ -462,7 +462,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private void AutoReset()
         {
             this.PerformResetDemo();            
-            onboardVM.Reset();           
+            onboardVM.ResetViewModel();           
             UpdateForState();
         }
 
