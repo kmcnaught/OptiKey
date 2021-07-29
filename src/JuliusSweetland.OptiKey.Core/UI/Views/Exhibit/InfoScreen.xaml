@@ -109,6 +109,25 @@ Each new user should reset the demo to set things up for their eyes
         <userControls:ButtonBack></userControls:ButtonBack>
         <userControls:ButtonReset></userControls:ButtonReset>
 
+        <Grid Height="125"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Foreground="White" Grid.Row="0" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center">
+                EyeMine is open-source software based on OptiKey by Julius Sweetland</TextBlock>
+            <TextBlock Foreground="White" Grid.Row="1" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center">
+                EyeMine was developed by Kirsty McNaught for SpecialEffect</TextBlock>
+            <TextBlock Foreground="White" Grid.Row="2" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center">
+                The demo minecraft world was built by Alex Pelling</TextBlock>
+            <TextBlock Foreground="White" Grid.Row="3" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center">
+                www.specialeffect.org.uk/eyemine</TextBlock>
+        </Grid>
+        
     </Grid>
 
 </UserControl>

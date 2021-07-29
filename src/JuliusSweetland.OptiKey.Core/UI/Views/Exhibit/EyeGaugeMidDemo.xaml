@@ -61,7 +61,7 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">
-              If no eyes are seen, demo will reset shortly...
+              Demo will reset shortly...
             </TextBlock>
         </Border>
 
