@@ -320,7 +320,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         public void Reset()
         {
             if (tempState == TempState.RESET ||
-                demoState == DemoState.TIMED_OUT)
+                demoState == DemoState.TIMED_OUT ||
+                demoState == DemoState.NO_USER)
             {
                 ResetViewModel();
             }
