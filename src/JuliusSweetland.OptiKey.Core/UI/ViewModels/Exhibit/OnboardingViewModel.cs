@@ -118,10 +118,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             tobiiTimer.Start();
 
             // This timer will enforce in-game time limit
-            ingameTimer.Interval = new TimeSpan(0, 0, 30); //TODO: settings
+            ingameTimer.Interval = new TimeSpan(0, Settings.Default.IngameTimeoutMinutes, 0); 
             ingameTimer.Tick += IngameTimer_Tick;
 
-            forceResetTimer.Interval = new TimeSpan(0, Settings.Default.IngameTimeoutMinutes, 0);
+            forceResetTimer.Interval = new TimeSpan(0, 15, 0);
             forceResetTimer.Tick += ForceResetTimer_Tick;
 
             // Initial state
