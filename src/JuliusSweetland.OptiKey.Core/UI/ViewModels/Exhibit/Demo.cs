@@ -540,7 +540,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (IsTobiiCalibrating())
             {
                 // Press Esc to exit
+                // NB: depending on timing this might not catch the calibrating process
                 mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Escape));
+                onboardVM.SetState(OnboardingViewModel.OnboardState.EYES);
                 return;
             }
 
