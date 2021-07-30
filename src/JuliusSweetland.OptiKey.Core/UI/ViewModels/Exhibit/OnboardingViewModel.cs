@@ -319,11 +319,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         // this is the entry point for the reset BUTTON, not a generic "reset" method
         public void Reset()
         {
+            if (mainState == OnboardState.WAIT_CALIB)
+            {
+                return;
+            }
+
+            if (mainState == OnboardingViewModel.OnboardState.WAIT_CALIB)
+            {
+                return;
+            }
+
             if (tempState == TempState.RESET ||
                 demoState == DemoState.TIMED_OUT ||
                 demoState == DemoState.NO_USER)
             {
                 ResetViewModel();
+                RequireAutoReset(this, null); // pass back up to Demo.cs                
             }
             else
             {
@@ -341,13 +352,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
 
             switch (tempState) {
-                case TempState.INFO:
-                    SetTempState(TempState.NONE);
+                case TempState.INFO:                    
                     break;
                 case TempState.RESET:
                 //TODO: should we use reset->reset or reset->next ? prefer different keys to prevent misclicks? or simpler to encourage resets?                    
-                //TODO: who is responsible for the actual resetting action?
-                    SetTempState(TempState.NONE);
+                //TODO: who is responsible for the actual resetting action?                
                     break;
                 case TempState.NONE:
 
@@ -363,8 +372,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                 SetState(OnboardState.WAIT_CALIB);
                             }
                             break;
-                        case OnboardState.WAIT_CALIB:
-                            SetState(OnboardState.POST_CALIB);
+                        case OnboardState.WAIT_CALIB:                            
                             break;
                         case OnboardState.POST_CALIB:
                             SetState(OnboardState.IN_MINECRAFT);
@@ -391,7 +399,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             switch (demoState)
             {
                 case DemoState.ERROR:                   
-                case DemoState.FIRST_SETUP:                    
+                case DemoState.FIRST_SETUP:
+                case DemoState.TIMED_OUT:
                 case DemoState.RESETTING:
                     break;
                 case DemoState.NO_USER:
@@ -418,6 +427,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                     //ingameTimer.Stop();
                                     break;
                                 case OnboardState.WAIT_CALIB:
+                                    //NB: we can't be sure we exited the calibration ok...
                                 case OnboardState.POST_CALIB:
                                     SetState(OnboardState.EYES);
                                     break;

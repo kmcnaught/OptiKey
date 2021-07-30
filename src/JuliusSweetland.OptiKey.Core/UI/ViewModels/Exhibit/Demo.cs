@@ -453,7 +453,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (keyDebounceTimer.IsEnabled) { return; }
             keyDebounceTimer.Start();
 
-            if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING)
+            if ((onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
+                 onboardVM.demoState == OnboardingViewModel.DemoState.TIMED_OUT) &&
+                 onboardVM.mainState != OnboardingViewModel.OnboardState.WAIT_CALIB)
             {
                 onboardVM.Info();
             }
@@ -484,14 +486,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             keyDebounceTimer.Start();
 
             if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
-                onboardVM.demoState == OnboardingViewModel.DemoState.NO_USER)
+                onboardVM.demoState == OnboardingViewModel.DemoState.NO_USER ||
+                onboardVM.demoState == OnboardingViewModel.DemoState.TIMED_OUT)
             {
-                if (onboardVM.tempState == OnboardingViewModel.TempState.RESET &&
-                    onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT)
-                {
-                    this.PerformResetDemo();
-                }
-
                 // update state appropriately
                 onboardVM.Reset();
                 UpdateForState();
@@ -502,18 +499,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             if (keyDebounceTimer.IsEnabled) { return; }
             keyDebounceTimer.Start();
-
-            //IPointSource pointSource = mainViewModel.InputService.PointSource;
-            //if (pointSource != null)
-            //{
-            //    TobiiEyeXPointService tobiiService = (TobiiEyeXPointService)pointSource;
-            //    if (tobiiService != null)
-            //    {
-            //        Log.Info("Starting the EyeX Host");
-            //        bool success = tobiiService.StartHost();
-            //        Log.Info(success);
-            //    }
-            //}
 
             if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING)
             {
