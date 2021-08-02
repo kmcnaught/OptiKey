@@ -6,6 +6,7 @@ using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
+using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using JuliusSweetland.OptiKey.UI.Views.Exhibit;
@@ -39,7 +40,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private OnboardingViewModel onboardVM;
         private bool minecraftHasLoaded = false;
 
-        private DispatcherTimer keyDebounceTimer;
         private DispatcherTimer minecraftLoadingTimer;
         private DispatcherTimer focusTimer = new DispatcherTimer();
 
@@ -55,10 +55,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             LaunchOnboarding();
 
             bool noRepeat = true;
-            HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.None, noRepeat, OnBack);
-            HotkeyManager.Current.AddOrReplace("Forward", Key.Right, ModifierKeys.None, noRepeat, OnForward);
-            HotkeyManager.Current.AddOrReplace("Reset", Key.Down, ModifierKeys.None, noRepeat, OnReset);
-            HotkeyManager.Current.AddOrReplace("Info", Key.Up, ModifierKeys.None, noRepeat, OnInfo);
+            HotkeyManager.Current.AddOrReplace("Back", Key.Left, ModifierKeys.None, noRepeat, DebouncedAction.CreateDebouncedAction(OnBack, 500));
+            HotkeyManager.Current.AddOrReplace("Forward", Key.Right, ModifierKeys.None, noRepeat, DebouncedAction.CreateDebouncedAction(OnForward, 500));
+            HotkeyManager.Current.AddOrReplace("Reset", Key.Down, ModifierKeys.None, noRepeat, DebouncedAction.CreateDebouncedAction(OnReset, 500));
+            HotkeyManager.Current.AddOrReplace("Info", Key.Up, ModifierKeys.None, noRepeat, DebouncedAction.CreateDebouncedAction(OnInfo, 500));
 
             // Launch Minecraft
             GetOrLaunchMinecraft();
@@ -91,12 +91,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 }
             };
             minecraftLoadingTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
-            minecraftLoadingTimer.Start();
-
-            int debounceMs = 500;
-            keyDebounceTimer = new DispatcherTimer();
-            keyDebounceTimer.Tick += AllowKeyPress;
-            keyDebounceTimer.Interval = new TimeSpan(0, 0, 0, 0, debounceMs);           
+            minecraftLoadingTimer.Start();            
             
             // slight hack: poll to ensure correct focus at all times 
             // (state machine _should_ handle this but there are some corner cases not handled)
@@ -329,11 +324,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }        
 
-        private void AllowKeyPress(object sender, EventArgs e)
-        {
-            keyDebounceTimer.Stop();
-        }
-
         void UpdateForState()
         {                             
             UpdateKeyboardForState();
@@ -450,9 +440,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void OnInfo(object sender, NHotkey.HotkeyEventArgs e)
         {
-            if (keyDebounceTimer.IsEnabled) { return; }
-            keyDebounceTimer.Start();
-
             if ((onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
                  onboardVM.demoState == OnboardingViewModel.DemoState.TIMED_OUT) &&
                  onboardVM.mainState != OnboardingViewModel.OnboardState.WAIT_CALIB)
@@ -482,9 +469,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void OnReset(object sender, NHotkey.HotkeyEventArgs e)
         {
-            if (keyDebounceTimer.IsEnabled) { return;  }
-            keyDebounceTimer.Start();
-
             if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
                 onboardVM.demoState == OnboardingViewModel.DemoState.NO_USER ||
                 onboardVM.demoState == OnboardingViewModel.DemoState.TIMED_OUT)
@@ -497,9 +481,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void OnForward(object sender, NHotkey.HotkeyEventArgs e)
         {
-            if (keyDebounceTimer.IsEnabled) { return; }
-            keyDebounceTimer.Start();
-
             if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING)
             {
                 // Don't go forward while calibrating
@@ -534,9 +515,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void OnBack(object sender, NHotkey.HotkeyEventArgs e)
         {
-            if (keyDebounceTimer.IsEnabled) { return; }
-            keyDebounceTimer.Start();
-
             if (IsTobiiCalibrating())
             {
                 // Press Esc to exit
