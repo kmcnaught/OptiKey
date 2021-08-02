@@ -97,7 +97,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 if (!onboardVM.IsContextMenuOpen)
                 {
-                    UpdateForState();
+                    // We don't take focus away from calibration, otherwise we can't send key presses there
+                    if (onboardVM.mainState != OnboardingViewModel.OnboardState.WAIT_CALIB)
+                    {   
+                        UpdateForState();
+                    }
                 }
             };
             focusTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
