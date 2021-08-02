@@ -284,8 +284,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                         }
                         break;
                 }
-                //TODO: blank page?
-                return introViewModel;
+                
+                return blankViewModel;
             }            
         }
 
