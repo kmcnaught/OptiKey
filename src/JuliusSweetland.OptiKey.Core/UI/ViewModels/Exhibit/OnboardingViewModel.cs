@@ -296,7 +296,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                         }
                         break;
                 }
-                
+                if (vm != eyesLostViewModel)
+                {
+                    eyesLostViewModel.Stop();
+                }
                 return vm;
             }            
         }
