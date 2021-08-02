@@ -237,55 +237,67 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             get
             {
+                PageViewModel vm = blankViewModel;
                 switch (demoState)
                 {
                     case DemoState.ERROR:
-                        return errorViewModel;
+                        vm = errorViewModel;
+                        break;
                     case DemoState.TIMED_OUT:
-                        return forcedResetViewModel;
+                        vm = forcedResetViewModel;
+                        break;
                     case DemoState.FIRST_SETUP:
                     case DemoState.RESETTING:
-                        return loadingViewModel;
+                        vm = loadingViewModel;
+                        break;
                     case DemoState.NO_USER:
                         if (tempState == TempState.RESET)
                         {
-                            return resetViewModel;
+                            vm = resetViewModel;
                         }
                         else if (tempState == TempState.INFO)
                         {
-                            return infoViewModel;
+                            vm = infoViewModel;
                         }
                         else
                         {
-                            return eyesLostViewModel;
+                            vm = eyesLostViewModel;
                         }
+                        break;
                     case DemoState.RUNNING:
                         switch (tempState)
                         {
                             case TempState.RESET:
-                                return resetViewModel;
+                                vm = resetViewModel;
+                                break;
                             case TempState.INFO:
-                                return infoViewModel;
+                                vm = infoViewModel;
+                                break;
                             case TempState.NONE:
                                 switch (mainState)
                                 {
                                     case OnboardState.WELCOME:
-                                        return introViewModel;
+                                        vm = introViewModel;
+                                        break;
                                     case OnboardState.EYES:
-                                        return tobiiViewModel;
+                                        vm = tobiiViewModel;
+                                        break;
                                     case OnboardState.WAIT_CALIB:
-                                        return waitCalibViewModel;
+                                        vm = waitCalibViewModel;
+                                        break;
                                     case OnboardState.POST_CALIB:
-                                        return postCalibViewModel;
+                                        vm = postCalibViewModel;
+                                        break;
                                     case OnboardState.IN_MINECRAFT:
-                                        return blankViewModel;
+                                        vm = blankViewModel;
+                                        break;
                                 }
                                 break;
                         }
                         break;
                 }
                 
-                return blankViewModel;
+                return vm;
             }            
         }
 
