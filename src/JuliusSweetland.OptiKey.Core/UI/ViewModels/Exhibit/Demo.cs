@@ -2,7 +2,6 @@
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Native;
-using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
@@ -16,7 +15,6 @@ using NHotkey.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.DirectoryServices;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
