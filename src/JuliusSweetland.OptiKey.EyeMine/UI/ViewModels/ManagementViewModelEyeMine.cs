@@ -267,6 +267,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             try
             {
+                Log.Info("ManagementViewModel.SaveAndRestart");
+                LogManager.Flush(500);
                 OptiKeyApp.RestartApp();
             }
             catch { } //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.
