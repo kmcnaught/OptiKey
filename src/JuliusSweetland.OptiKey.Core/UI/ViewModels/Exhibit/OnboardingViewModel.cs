@@ -336,6 +336,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             if (mainState == OnboardState.WAIT_CALIB)
             {
+                //or press ESC?
                 return;
             }
 
