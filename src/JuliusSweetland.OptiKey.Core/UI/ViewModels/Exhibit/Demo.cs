@@ -40,6 +40,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private DispatcherTimer minecraftLoadingTimer;
         private DispatcherTimer focusTimer = new DispatcherTimer();
+        private DispatcherTimer idleTimer = new DispatcherTimer();
 
         private static Process ghostProcess;
         private static ProcessStartInfo ghostStartInfo;
@@ -106,7 +107,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             };
             focusTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
             focusTimer.Start();
-     
+
+            idleTimer.Tick += (object sender, EventArgs e) => { CheckIdle(); };
+            idleTimer.Interval = new TimeSpan(0, 0, 5);
+            idleTimer.Start();
+
         }
 
         public static void SetGhostVisible(bool visible)
@@ -328,9 +333,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private OnboardingViewModel.OnboardState lastState = OnboardingViewModel.OnboardState.WELCOME;
         private DateTime lastStateChangeTime = DateTime.Now;
-
-        void UpdateForState()
-        {                  
+        
+        void CheckIdle()
+        {
             if (onboardVM.mainState != lastState)
             {
                 lastStateChangeTime = DateTime.Now;
@@ -342,16 +347,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             TimeSpan idleTimeSpanCalibration = TimeSpan.FromMinutes(3); // TODO: test this, see how long is reasonable
             if (onboardVM.mainState != OnboardingViewModel.OnboardState.IN_MINECRAFT)
             {
-                if ((DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpanCalibration &&
-                    onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB) ||
-                    (DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpan &&
-                    onboardVM.mainState != OnboardingViewModel.OnboardState.WAIT_CALIB))
+                if (onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB &&
+                    DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpanCalibration)
+                {
+                    // Press Esc to exit
+                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Escape));
+                    AutoReset();
+                    return;
+                }
+                else if (
+                    DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpan)
                 {
                     AutoReset();
                     return;
                 }
             }
+        }
 
+        void UpdateForState()
+        {               
             UpdateKeyboardForState();
             UpdateOptiKeyFocusForState();
             UpdateMinecraftFocusForState();
