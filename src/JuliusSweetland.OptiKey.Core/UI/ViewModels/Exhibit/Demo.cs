@@ -476,6 +476,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void AutoReset()
         {
+            Log.Info("Auto Reset");
             this.PerformResetDemo();            
             onboardVM.ResetViewModel();           
             UpdateForState();
