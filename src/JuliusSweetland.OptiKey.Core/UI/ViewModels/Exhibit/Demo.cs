@@ -326,8 +326,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }        
 
+        private OnboardingViewModel.OnboardState lastState = OnboardingViewModel.OnboardState.WELCOME;
+        private DateTime lastStateChangeTime = DateTime.Now;
+
         void UpdateForState()
-        {                             
+        {                  
+            if (onboardVM.mainState != lastState)
+            {
+                lastStateChangeTime = DateTime.Now;
+                lastState = onboardVM.mainState;
+            }
+
+            // Check for idle, reset if necessary
+            TimeSpan idleTimeSpan = TimeSpan.FromMinutes(1.5);
+            TimeSpan idleTimeSpanCalibration = TimeSpan.FromMinutes(3); // TODO: test this, see how long is reasonable
+            if (onboardVM.mainState != OnboardingViewModel.OnboardState.IN_MINECRAFT)
+            {
+                if ((DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpanCalibration &&
+                    onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB) ||
+                    (DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpan &&
+                    onboardVM.mainState != OnboardingViewModel.OnboardState.WAIT_CALIB))
+                {
+                    AutoReset();
+                    return;
+                }
+            }
+
             UpdateKeyboardForState();
             UpdateOptiKeyFocusForState();
             UpdateMinecraftFocusForState();
