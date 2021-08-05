@@ -444,6 +444,7 @@
     <Compile Include="UI\ViewModels\Exhibit\ErrorViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\EyesLostViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\BlankViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\ResettingViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\TobiiWatcher.cs" />
     <Compile Include="UI\ViewModels\Exhibit\MinecraftWatcher.cs" />
     <Compile Include="UI\ViewModels\Exhibit\LoadingViewModel.cs" />
@@ -549,6 +550,9 @@
     <Compile Include="UI\Views\Exhibit\Commands.cs" />
     <Compile Include="UI\Views\Exhibit\EyeGaugeMidDemo.xaml.cs">
       <DependentUpon>EyeGaugeMidDemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\ResettingScreen.xaml.cs">
+      <DependentUpon>ResettingScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Exhibit\LoadingScreen.xaml.cs">
       <DependentUpon>LoadingScreen.xaml</DependentUpon>
@@ -1489,6 +1493,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Exhibit\EyeGaugeMidDemo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\ResettingScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

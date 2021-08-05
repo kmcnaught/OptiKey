@@ -70,6 +70,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private EyesLostViewModel eyesLostViewModel;
         private BlankViewModel blankViewModel;
         private ForcedResetViewModel forcedResetViewModel;
+        private ResettingViewModel resettingViewModel;
 
         private DispatcherTimer tobiiTimer = new DispatcherTimer();
         private DispatcherTimer ingameTimer = new DispatcherTimer();
@@ -110,6 +111,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             eyesLostViewModel.RequireAutoReset += (s, e) => { this.RequireAutoReset(eyesLostViewModel, null); };
             blankViewModel = new BlankViewModel();
             forcedResetViewModel = new ForcedResetViewModel();
+            resettingViewModel = new ResettingViewModel();
 
             // Register for Tobii events
             TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
@@ -247,8 +249,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                         vm = forcedResetViewModel;
                         break;
                     case DemoState.FIRST_SETUP:
-                    case DemoState.RESETTING:
                         vm = loadingViewModel;
+                        break;
+                    case DemoState.RESETTING:
+                        vm = resettingViewModel;
                         break;
                     case DemoState.NO_USER:
                         if (tempState == TempState.RESET)
