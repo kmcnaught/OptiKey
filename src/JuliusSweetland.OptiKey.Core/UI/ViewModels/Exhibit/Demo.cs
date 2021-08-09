@@ -522,6 +522,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             FocusWindow(minecraftProcess);
             Thread.Sleep(100);
             mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.F9));
+            Thread.Sleep(100);
+
         }
 
         private void OnReset(object sender, NHotkey.HotkeyEventArgs e)
