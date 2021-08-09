@@ -129,8 +129,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 ghostProcess.CloseMainWindow();
                 ghostProcess = null;
-
-                // TODO: close any other matching processes in case orphaned?
             }
         }
 
@@ -568,18 +566,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private bool IsTobiiCalibrating()
         {
-            // FIXME: what happens if Tobii fails here?
-            return onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB;
-            //return Process.GetProcessesByName("Tobii.EyeX.Configuration").Length > 0;
+            return onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB || Process.GetProcessesByName("Tobii.EyeX.Configuration").Length > 0;
+        }
+
+        public static void TryCloseTobiiCalibration()
+        {
+            Process[] processes = Process.GetProcessesByName("Tobii.EyeX.Configuration");
+            if (processes.Length > 0)
+            {
+                Process tobiiProcess = processes[0];
+
+                // Try focussing and pressing Esc first?
+                //                FocusWindow(tobiiProcess);
+
+                int timeoutSeconds = 10;
+                KillProcess(tobiiProcess, timeoutSeconds*1000);
+            }
         }
 
         private void OnBack(object sender, NHotkey.HotkeyEventArgs e)
         {
             if (IsTobiiCalibrating())
             {
-                // Press Esc to exit
-                // NB: depending on timing this might not catch the calibrating process
-                mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Escape));
+                TryCloseTobiiCalibration();
+
                 onboardVM.SetState(OnboardingViewModel.OnboardState.EYES);
                 return;
             }

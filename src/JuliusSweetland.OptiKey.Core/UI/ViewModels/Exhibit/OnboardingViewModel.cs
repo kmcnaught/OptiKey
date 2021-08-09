@@ -347,14 +347,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             if (mainState == OnboardState.WAIT_CALIB)
             {
-                //or press ESC?
+                // We don't offer confirmation in this context since we can't get focus over calibration
+                Demo.TryCloseTobiiCalibration();
+                StartResetViewModel();
+                RequireAutoReset(this, null); // pass back up to Demo.cs      
                 return;
-            }
-
-            if (mainState == OnboardingViewModel.OnboardState.WAIT_CALIB)
-            {
-                return;
-            }
+            }            
 
             if (tempState == TempState.RESET ||
                 demoState == DemoState.TIMED_OUT ||
@@ -454,7 +452,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                     //ingameTimer.Stop();
                                     break;
                                 case OnboardState.WAIT_CALIB:
-                                    //NB: we can't be sure we exited the calibration ok...
+                                    Demo.TryCloseTobiiCalibration();
+                                    SetState(OnboardState.EYES);
+                                    break;
                                 case OnboardState.POST_CALIB:
                                     SetState(OnboardState.EYES);
                                     break;
