@@ -41,6 +41,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private DispatcherTimer minecraftLoadingTimer;
         private DispatcherTimer focusTimer = new DispatcherTimer();
         private DispatcherTimer idleTimer = new DispatcherTimer();
+        private DispatcherTimer resetPageTimer = new DispatcherTimer();
 
         private static Process ghostProcess;
         private static ProcessStartInfo ghostStartInfo;
@@ -111,6 +112,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             idleTimer.Tick += (object sender, EventArgs e) => { CheckIdle(); };
             idleTimer.Interval = new TimeSpan(0, 0, 5);
             idleTimer.Start();
+             
+            resetPageTimer.Interval = new TimeSpan(0, 0, 3);
+            resetPageTimer.Tick += (s, e) => { CompleteAutoReset(); };
 
         }
 
@@ -342,6 +346,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 lastState = onboardVM.mainState;
             }
 
+            if (onboardVM.mainState == OnboardingViewModel.OnboardState.WELCOME)
+            {
+                return;
+            }
+
             // Check for idle, reset if necessary
             TimeSpan idleTimeSpan = TimeSpan.FromMinutes(1.5);
             TimeSpan idleTimeSpanCalibration = TimeSpan.FromMinutes(3); // TODO: test this, see how long is reasonable
@@ -351,14 +360,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpanCalibration)
                 {
                     // Press Esc to exit
+                    // TODO: kill calibration process?
                     mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Escape));
-                    AutoReset();
+                    StartAutoReset();
                     return;
                 }
                 else if (
                     DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpan)
                 {
-                    AutoReset();
+                    StartAutoReset();
                     return;
                 }
             }
@@ -417,7 +427,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             onboardWindow.Closed += (s, e) => { Application.Current.Shutdown(); };
             onboardWindow.Show();
             onboardVM.StateChanged += (s,e) => UpdateForState();
-            onboardVM.RequireAutoReset += (s, e) => AutoReset();
+            onboardVM.RequireAutoReset += (s, e) => StartAutoReset();
         }
 
         void UpdateOptiKeyFocusForState()
@@ -488,11 +498,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
-        private void AutoReset()
+        private void StartAutoReset()
         {
-            Log.Info("Auto Reset");
-            this.PerformResetDemo();            
-            onboardVM.ResetViewModel();           
+            Log.Info("Auto Reset");            
+            this.PerformResetDemo();             
+            onboardVM.StartResetViewModel();           
+            UpdateForState();
+            resetPageTimer.Start();
+        }
+
+        private void CompleteAutoReset()
+        {
+            resetPageTimer.Stop();
+            this.PerformResetDemo();
+            onboardVM.CompleteResetViewModel();
             UpdateForState();
         }
 

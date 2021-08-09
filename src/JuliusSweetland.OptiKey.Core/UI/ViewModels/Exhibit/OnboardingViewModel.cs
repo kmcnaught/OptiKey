@@ -325,14 +325,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
-        public void ResetViewModel()
+        public void StartResetViewModel()
         {
             //DO the reset?!
             SetTempState(TempState.NONE);
             SetState(OnboardState.WELCOME);
-            SetState(DemoState.RUNNING);
+            SetState(DemoState.RESETTING);
             tobiiViewModel.SetAutoRestart(false);
             ingameTimer.Stop();
+        }
+
+        public void CompleteResetViewModel()
+        {        
+            SetTempState(TempState.NONE);
+            SetState(OnboardState.WELCOME);
+            SetState(DemoState.RUNNING);            
         }
 
         // this is the entry point for the reset BUTTON, not a generic "reset" method
@@ -353,7 +360,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 demoState == DemoState.TIMED_OUT ||
                 demoState == DemoState.NO_USER)
             {
-                ResetViewModel();
+                StartResetViewModel();
                 RequireAutoReset(this, null); // pass back up to Demo.cs                
             }
             else

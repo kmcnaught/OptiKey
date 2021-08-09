@@ -73,6 +73,9 @@
         <DataTemplate DataType="{x:Type vms:ForcedResetViewModel}">
             <local:ForcedResetScreen />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:ResettingViewModel}">
+            <local:ResettingScreen />
+        </DataTemplate>
     </Window.Resources>
     
     <Viewbox Stretch="Uniform">
