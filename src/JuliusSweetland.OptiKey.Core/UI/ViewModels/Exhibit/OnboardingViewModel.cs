@@ -328,6 +328,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         public void StartResetViewModel()
         {
             //DO the reset?!
+            Demo.TryCloseTobiiCalibration();
             SetTempState(TempState.NONE);
             SetState(OnboardState.WELCOME);
             SetState(DemoState.RESETTING);

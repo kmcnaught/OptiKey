@@ -356,10 +356,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 if (onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB &&
                     DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpanCalibration)
-                {
-                    // Press Esc to exit
-                    // TODO: kill calibration process?
-                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Escape));
+                {                    
                     StartAutoReset();
                     return;
                 }
@@ -515,6 +512,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void PerformResetDemo()
         {
+            TryCloseTobiiCalibration();
+
             // Reset world files (this will silently fail on the 'open' one but we'll swap to the fresh one)
             ResetMinecraftWorldFile();
 
