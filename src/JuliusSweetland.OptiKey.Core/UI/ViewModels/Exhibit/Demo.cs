@@ -273,7 +273,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 success = p.WaitForExit(waitTimeoutMs);
             }
             if (!success) {
-                p.Kill();
+                try
+                {
+                    p.Kill();
+                }
+                catch (Exception e)
+                {                    
+                    Log.Error("Exception killing process");
+                    Log.Error(e.ToString());
+                }
             }
         }
 
