@@ -77,7 +77,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private DispatcherTimer forceResetTimer = new DispatcherTimer();
 
         public event EventHandler RequireAutoReset = delegate { };
-
+        public event EventHandler RequireCloseCalibration = delegate { };
 
         public event EventHandler StateChanged;
 
@@ -328,7 +328,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         public void StartResetViewModel()
         {
             //DO the reset?!
-            Demo.TryCloseTobiiCalibration();
+            RequireCloseCalibration(this, null);
             SetTempState(TempState.NONE);
             SetState(OnboardState.WELCOME);
             SetState(DemoState.RESETTING);
@@ -345,11 +345,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         // this is the entry point for the reset BUTTON, not a generic "reset" method
         public void Reset()
-        {
+        {            
+            RequireCloseCalibration(this, null);
+
             if (mainState == OnboardState.WAIT_CALIB)
             {
                 // We don't offer confirmation in this context since we can't get focus over calibration
-                Demo.TryCloseTobiiCalibration();
                 StartResetViewModel();
                 RequireAutoReset(this, null); // pass back up to Demo.cs      
                 return;
@@ -453,7 +454,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                     //ingameTimer.Stop();
                                     break;
                                 case OnboardState.WAIT_CALIB:
-                                    Demo.TryCloseTobiiCalibration();
+                                    RequireCloseCalibration(this, null);
                                     SetState(OnboardState.EYES);
                                     break;
                                 case OnboardState.POST_CALIB:

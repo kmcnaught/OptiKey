@@ -265,7 +265,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
-        private static void KillProcess(Process p, int waitTimeoutMs)
+        private static bool KillProcess(Process p, int waitTimeoutMs)
         {
             bool success = p.CloseMainWindow();
             if (success)
@@ -276,6 +276,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 try
                 {
                     p.Kill();
+                    success = true;
                 }
                 catch (Exception e)
                 {                    
@@ -283,6 +284,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     Log.Error(e.ToString());
                 }
             }
+            return success;
         }
 
         public static Process CaptureMinecraftProcess()
@@ -431,6 +433,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             onboardWindow.Show();
             onboardVM.StateChanged += (s,e) => UpdateForState();
             onboardVM.RequireAutoReset += (s, e) => StartAutoReset();
+            onboardVM.RequireCloseCalibration += (s, e) => TryCloseTobiiCalibration();
         }
 
         void UpdateOptiKeyFocusForState()
@@ -578,7 +581,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             return onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB || Process.GetProcessesByName("Tobii.EyeX.Configuration").Length > 0;
         }
 
-        public static void TryCloseTobiiCalibration()
+        public void TryCloseTobiiCalibration()
         {
             Process[] processes = Process.GetProcessesByName("Tobii.EyeX.Configuration");
             if (processes.Length > 0)
@@ -589,7 +592,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 //                FocusWindow(tobiiProcess);
 
                 int timeoutSeconds = 10;
-                KillProcess(tobiiProcess, timeoutSeconds*1000);
+                bool success = KillProcess(tobiiProcess, timeoutSeconds*1000);
+                if (!success)
+                {
+                    FocusWindow(tobiiProcess);
+                    mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Escape));
+                }
             }
         }
 
