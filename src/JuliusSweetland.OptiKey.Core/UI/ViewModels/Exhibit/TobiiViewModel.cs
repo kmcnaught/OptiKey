@@ -75,50 +75,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 };
             }
         }
-
-        public void SetAutoRestart(bool b)
-        {
-            handleAutoRestart = b;
-        }
-
-        private void StartRestartCountdown()
-        {
-            dispatcherTimer.Tick += Restart;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 30);
-            dispatcherTimer.Start();
-        }
-
-        private void StopRestartCountdown()
-        {
-            dispatcherTimer.Tick -= Restart;
-            dispatcherTimer.Stop();
-        }
-
-        private void Restart(object sender, EventArgs e)
-        {
-            StopRestartCountdown();
-            MainWindow.RestartEverything();
-        }
-
+        
         private void UpdateLostTracking()
         {
             DateTime now = DateTime.Now;
             int maxSecs = 3;
             TimeSpan maxTimeSpan = new TimeSpan(0, 0, maxSecs);
             lostTracking = (now.Subtract(leftEye.lastSeen) > maxTimeSpan &&
-                now.Subtract(rightEye.lastSeen) > maxTimeSpan);
-
-            if (handleAutoRestart)
-            {
-                if (lostTracking)
-                {
-                    StartRestartCountdown();
-                }
-                else
-                {
-                    StopRestartCountdown();
-                }
-            }
+                now.Subtract(rightEye.lastSeen) > maxTimeSpan);            
 
             RaisePropertyChanged("LostTracking");
         }
