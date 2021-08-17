@@ -336,7 +336,6 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         public static void RestartEverything()
         {
             Log.Info("RestartEverything called");
-            Log.Info(System.Environment.StackTrace);
             LogManager.Flush(500);
 
             OptiKeyApp.RestartApp();
