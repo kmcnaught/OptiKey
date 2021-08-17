@@ -27,6 +27,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                     {
                         Settings.Default.CleanShutdown = false;
                         Settings.Default.Save();
+                        //fixme don't do crash window??
                         MainWindow.RestartEverything();
                     }
                 };
