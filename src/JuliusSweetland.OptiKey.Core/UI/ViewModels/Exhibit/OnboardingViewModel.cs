@@ -331,8 +331,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             RequireCloseCalibration(this, null);
             SetTempState(TempState.NONE);
             SetState(OnboardState.WELCOME);
-            SetState(DemoState.RESETTING);
-            tobiiViewModel.SetAutoRestart(false);
+            SetState(DemoState.RESETTING);            
             ingameTimer.Stop();
         }
 
@@ -403,7 +402,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                             break;
                         case OnboardState.POST_CALIB:
                             SetState(OnboardState.IN_MINECRAFT);
-                            tobiiViewModel.SetAutoRestart(true);
                             ingameTimer.Start();
                             break;
                     }
