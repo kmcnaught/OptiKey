@@ -123,7 +123,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             ingameTimer.Interval = new TimeSpan(0, Settings.Default.IngameTimeoutMinutes, 0); 
             ingameTimer.Tick += IngameTimer_Tick;
 
-            forceResetTimer.Interval = new TimeSpan(0, 15, 0);
+            forceResetTimer.Interval = new TimeSpan(0, 0, 15);
             forceResetTimer.Tick += ForceResetTimer_Tick;
 
             // Initial state
