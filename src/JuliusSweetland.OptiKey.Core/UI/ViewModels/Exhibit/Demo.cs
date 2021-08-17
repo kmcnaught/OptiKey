@@ -334,8 +334,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             Log.Info($"Registry Key: {Key.ToString()}");
 
             if (useAsShell)
-            {
-                Key.SetValue("Shell", System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            {   
+                // We use the adjacent service rather than launching this app directly
+                FileInfo fileInfo = new FileInfo(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);                
+                Key.SetValue("Shell", Path.Combine(fileInfo.Directory.ToString(), "EyeMineService.exe"));
             }
             else
             {
