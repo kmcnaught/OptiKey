@@ -49,7 +49,7 @@
             </TextBlock>
         </Border>
 
-        <Border x:Name="labelCloser" Visibility="Hidden" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+        <Border x:Name="labelCloser" Visibility="Visible" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Bottom" HorizontalAlignment="Center"
                 Margin="-75" Grid.Column="1" Grid.Row="1">
             <TextBlock            
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
@@ -61,6 +61,8 @@
               <Run>to the screen</Run>
             </TextBlock>
         </Border>
+
+
 
 
         <Border x:Name="labelFurther"  Visibility="Hidden" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Bottom" HorizontalAlignment="Center"
@@ -120,7 +122,7 @@
         </Grid>
 
 
-        <Image x:Name="arrowFurther"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="1" Visibility="Hidden"
+        <Image x:Name="arrowFurther"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="1" Visibility="Visible"
                Margin="20,0,20,20" Stretch="None"
                VerticalAlignment="Bottom"
                Opacity="50"
@@ -132,10 +134,22 @@
                Opacity="50"
                Source="Resources/images/chevron-forward.png"/>
 
+        <Border x:Name="labelPressNext" Visibility="Visible" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                Margin="25" Grid.Column="1" Grid.Row="1">
+            <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">
+              <Run>Press</Run>
+              <Run FontWeight="Bold">NEXT</Run>
+              <Run>when you are ready</Run>
+            </TextBlock>
+        </Border>
+
         <userControls:ButtonBack Grid.RowSpan="4" Grid.ColumnSpan="4" ></userControls:ButtonBack>
         <userControls:ButtonNext Grid.RowSpan="4" Grid.ColumnSpan="4"
-                                               Visibility="{Binding CanGoForward, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" Loaded="ButtonNext_Loaded">
-</userControls:ButtonNext>
+                                               Visibility="{Binding CanGoForward, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"></userControls:ButtonNext>
 
     </Grid>
 

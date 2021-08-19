@@ -88,6 +88,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
             // RED: cannot see eyes
             // GREEN: in good spot
             // ORANGE: can improve
+            labelPressNext.Visibility = Visibility.Hidden;
             if (!viewModel.leftEye.visible && !viewModel.rightEye.visible)
             {
                 trackBorder.BorderBrush = Brushes.Red;
@@ -98,6 +99,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
                 viewModel.rightEye.zPos > 0.15)
             {
                 trackBorder.BorderBrush = Brushes.Green;
+                labelPressNext.Visibility = Visibility.Visible;
             }
             else
             {
