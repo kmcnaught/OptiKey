@@ -34,7 +34,22 @@
             </TextBlock>
         </Border>
 
-        <Border Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" 
+        <Border x:Name="labelVisibleInstructions" BorderThickness="5" BorderBrush="White" Background="White" 
+                CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Margin="30"
+                Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3">
+            <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">
+              <Run>The colored dots show</Run>
+              <Run FontWeight="Bold">your eyes,</Run>
+              <Run> make sure they are centered</Run>
+            </TextBlock>
+        </Border>
+
+        <Border  x:Name="labelNotVisibleInstructions" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" 
                 CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
                 Margin="30"
                 Grid.Column="1" Grid.Row="3">
@@ -43,9 +58,8 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">
-              <Run>The colored dots show</Run>
-              <Run FontWeight="Bold">your eyes,</Run>
-              <Run> make sure they are visible</Run>
+              <Run>Colored dots will show</Run>
+              <Run FontWeight="Bold">your eyes</Run>
             </TextBlock>
         </Border>
 
@@ -91,7 +105,11 @@
 
         <Viewbox Grid.Column="1" Grid.Row="1"  Grid.ColumnSpan="2" >
             <Canvas Background="DarkGray" Width="300" Height="200" x:Name="trackBox">
-                <Border x:Name="trackBorder"  Width="300" Height="200" Background="Transparent" BorderBrush="Green" BorderThickness="5"></Border>
+                <Border x:Name="trackBorder"  Width="300" Height="200" Background="Transparent" BorderThickness="5">
+                    <Border.BorderBrush>
+                        <SolidColorBrush x:Name="animatedBrushBorder" />
+                    </Border.BorderBrush>
+                </Border>
                 <!--<Label HorizontalAlignment="Center">These are your eyes</Label> -->
                 <Rectangle x:Name="followRectangle1"
                            Visibility="{Binding LeftEyeVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
@@ -101,6 +119,7 @@
                     <Rectangle.Fill>
                         <SolidColorBrush x:Name="animatedBrush1" />
                     </Rectangle.Fill>
+                    
                 </Rectangle>
                 <Rectangle x:Name="followRectangle2" 
                            Visibility="{Binding RightEyeVisible, Converter={StaticResource BooleanToVisibilityConverter}}"

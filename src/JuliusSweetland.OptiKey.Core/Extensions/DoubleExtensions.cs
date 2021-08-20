@@ -19,5 +19,10 @@ namespace JuliusSweetland.OptiKey.Extensions
         {
             return Math.Min(Math.Max(value, lowerLimit), upperLimit);
         }
+
+        public static double UpdateIIR(this double value, double newValue, double alpha)
+        {
+            return alpha * newValue + (1.0 - alpha) * value;
+        }
     }
 }

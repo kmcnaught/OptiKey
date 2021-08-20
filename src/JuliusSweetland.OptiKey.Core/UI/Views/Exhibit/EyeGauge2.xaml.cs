@@ -3,9 +3,9 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Exhibit;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
+using JuliusSweetland.OptiKey.Extensions;
+using System.Windows.Threading;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
 {
@@ -18,16 +18,35 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
         {
             InitializeComponent();
             
-            CompositionTarget.Rendering += UpdateRectangle;            
+            CompositionTarget.Rendering += UpdateRectangle;
 
+            pressNextTimer.Interval = new TimeSpan(0, 0, 8);
+            pressNextTimer.Tick += PressNextTimer_Tick;
         }
+
+        private void PressNextTimer_Tick(object sender, EventArgs e)
+        {
+            pressNextTimer.Stop();
+        }
+
+        DispatcherTimer pressNextTimer = new DispatcherTimer();
+
+        // Keep track of continous measure of 'goodness'
+        private double filteredGoodnessLeft = 0;
+        private double filteredGoodnessRight = 0;
+
+        // Keep track of binary states, smooshed to [0, 1] allow non-immediate feedback
+        private double filteredTooClose = 0;
+        private double filteredTooFar = 0;
+        private double filteredNotVisible = 0;
+        private double filteredAllowNextHint = 0;
 
         private void UpdateRectangle(object sender, EventArgs e)
         {
 
             // TODO: Avoid reaching into VM!!
             TobiiViewModel viewModel = (TobiiViewModel)this.DataContext;
-            if (viewModel == null) { return;  }
+            if (viewModel == null) { return;  }                       
 
             float scaleX = (float)trackBox.Width;
             float scaleY = (float)trackBox.Height;
@@ -49,79 +68,97 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
             double leftEyeZdiff = viewModel.leftEye.zPos - 0.5;
             double rightEyeZdiff = viewModel.rightEye.zPos - 0.5;
 
-            // green when Zdiff ~= 0, to red when Zdiff ~0.5;
-            double hueLeft = 120.0f * (1.0 - Math.Abs(leftEyeZdiff));
-            double hueRight = 120.0f * (1.0 - Math.Abs(rightEyeZdiff));
+            double currentGoodnessLeft = 1.0 - 2*(1.0 - Math.Abs(leftEyeZdiff)); // [0, 1]
+            double currentGoodnessRight = 1.0 - 2*(1.0 - Math.Abs(rightEyeZdiff)); // [0, 1]
 
-            // FIXME: poss non-linear scaling
+            if (!viewModel.leftEye.visible) { currentGoodnessLeft = 0.0; }
+            if (!viewModel.rightEye.visible) { currentGoodnessRight = 0.0; }
+
+            // Update 'goodness' metric, filtered for smooth changes
+            double alpha = 0.01;
+            filteredGoodnessLeft = filteredGoodnessLeft.UpdateIIR(currentGoodnessLeft, alpha);
+            filteredGoodnessRight= filteredGoodnessRight.UpdateIIR(currentGoodnessRight, alpha);
+            double filteredGoodnessBest = Math.Max(filteredGoodnessLeft, filteredGoodnessRight);
+
+            // Update some binary states, also filtered for smooth changes            
+            // NOT VISIBLE
+            alpha = (viewModel.leftEye.visible || viewModel.leftEye.visible) ? 0.1 : 0.01; // go into 'not visible' state slowly, recover quickly
+            double currentNotVisible = !viewModel.leftEye.visible && !viewModel.leftEye.visible ? 1.0 : 0.0;
+            filteredNotVisible = filteredNotVisible.UpdateIIR(currentNotVisible, alpha); 
+
+            // TOO CLOSE / FAR            
+            alpha = 0.05;
+            double tooClose = (viewModel.leftEye.visible && viewModel.leftEye.zPos < 0.15 ||
+                               viewModel.rightEye.visible && viewModel.rightEye.zPos < 0.15) ?
+                            1.0 : 0.0;
+            double tooFar = (viewModel.leftEye.visible && viewModel.leftEye.zPos > 0.85) ||
+                            (viewModel.rightEye.visible && viewModel.rightEye.zPos > 0.85) ?
+                            1.0 : 0.0;
+
+            filteredTooClose = filteredTooClose.UpdateIIR(tooClose, alpha);
+            filteredTooFar = filteredTooFar.UpdateIIR(tooFar, alpha);
+
+            bool goodCurrently = (currentNotVisible < 1.0 && tooClose < 1.0 && tooFar < 1.0);            
+            // fades in more slowly than out
+            filteredAllowNextHint = filteredAllowNextHint.UpdateIIR(goodCurrently ? 1.0 : 0.0, goodCurrently ? 0.0025 : 0.05);
+
+            // Traffic light colours for eyes and border    
+            // green when goodness ~= 1, to red when goodness -> 0
+            double hueLeft = 60.0f * (1.0f - filteredGoodnessLeft);
+            double hueRight = 60.0f * (1.0f - filteredGoodnessRight);
+            double hueBest = 60.0f * (1.0f - filteredGoodnessBest);
 
             animatedBrush1.Color = ColorConversions.HlsToRgb(hueLeft, lightness, saturation);
             animatedBrush2.Color = ColorConversions.HlsToRgb(hueRight, lightness, saturation);
+            animatedBrushBorder.Color = ColorConversions.HlsToRgb(hueBest, lightness, saturation);
 
-            // Show labels if outside ideal area
-            // TODO: animate show/hide
-            if ((viewModel.leftEye.visible && viewModel.leftEye.zPos > 0.85) ||
-                (viewModel.rightEye.visible && viewModel.rightEye.zPos > 0.85))
-            {
-                arrowCloser.Visibility = Visibility.Visible;
-                labelCloser.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                arrowCloser.Visibility = Visibility.Hidden;
-                labelCloser.Visibility = Visibility.Hidden;
-            }
-
-            if (viewModel.leftEye.visible && viewModel.leftEye.zPos < 0.15 ||
-                viewModel.rightEye.visible && viewModel.rightEye.zPos < 0.15)
-            {
-                arrowFurther.Visibility = Visibility.Visible;
-                labelFurther.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                arrowFurther.Visibility = Visibility.Hidden;
-                labelFurther.Visibility = Visibility.Hidden;
-            }
-
-            // Set up traffic-light border:
-            // RED: cannot see eyes
-            // GREEN: in good spot
-            // ORANGE: can improve
+            // Show/hide labels for discrete states
+            arrowCloser.Visibility = Visibility.Hidden;
+            labelCloser.Visibility = Visibility.Hidden;
+            arrowFurther.Visibility = Visibility.Hidden;
+            labelFurther.Visibility = Visibility.Hidden;
+            labelNotVisible.Visibility = Visibility.Hidden;
+            labelNotVisibleInstructions.Visibility = Visibility.Hidden;
+            labelVisibleInstructions.Visibility = Visibility.Hidden;
             labelPressNext.Visibility = Visibility.Hidden;
-            if (!viewModel.leftEye.visible && !viewModel.rightEye.visible)
+
+            if (filteredNotVisible > 0.7)
             {
-                trackBorder.BorderBrush = Brushes.Red;
-            }
-            else if (viewModel.leftEye.zPos < 0.85 &&
-                viewModel.rightEye.zPos < 0.85 &&
-                viewModel.leftEye.zPos > 0.15 &&
-                viewModel.rightEye.zPos > 0.15)
-            {
-                trackBorder.BorderBrush = Brushes.Green;
-                labelPressNext.Visibility = Visibility.Visible;
+                labelNotVisible.Visibility = Visibility.Visible;
+                labelNotVisible.Opacity = filteredNotVisible * filteredNotVisible;
+                labelNotVisibleInstructions.Visibility = Visibility.Visible;
+                labelNotVisibleInstructions.Opacity = filteredNotVisible * filteredNotVisible;
+                labelPressNext.Visibility = Visibility.Hidden;
             }
             else
             {
-                trackBorder.BorderBrush = Brushes.Orange;
+                labelVisibleInstructions.Visibility = Visibility.Visible;
+                labelVisibleInstructions.Opacity = 1.0 - filteredNotVisible * filteredNotVisible;
+                if (filteredTooFar > 0.5)
+                {
+                    arrowCloser.Visibility = Visibility.Visible;
+                    labelCloser.Visibility = Visibility.Visible;
+                    arrowCloser.Opacity = filteredTooFar;
+                    labelCloser.Opacity = filteredTooFar;
+                    pressNextTimer.Stop();
+                }
+                else if (filteredTooClose > 0.5)
+                {
+                    arrowFurther.Visibility = Visibility.Visible;
+                    labelFurther.Visibility = Visibility.Visible;
+                    arrowFurther.Opacity = filteredTooClose;
+                    labelFurther.Opacity = filteredTooClose;
+                    pressNextTimer.Stop();
+                }
+                else
+                {
+                    if (filteredAllowNextHint > 0.5)
+                    {
+                        labelPressNext.Visibility = Visibility.Visible;
+                        labelPressNext.Opacity = filteredAllowNextHint;
+                    }
+                }
             }
-
-            // if both eyes gone, update label
-            if (!viewModel.leftEye.visible && !viewModel.rightEye.visible)
-            {
-                labelNotVisible.Visibility = Visibility.Visible;                
-            }
-            else
-            {
-                labelNotVisible.Visibility = Visibility.Hidden;
-            }
-
-            // TODO: add "are you there? cannot see you"..?
-        }
-
-        private void ButtonNext_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }        
     }
 }
