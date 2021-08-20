@@ -15,8 +15,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
     class TobiiWatcher
     {
         public event EventHandler EyesNotVisible = delegate { };
+
         public event EventHandler<EyeTrackingDeviceStatus> EnteredErrorState = delegate { };
         public event EventHandler EnteredTrackingState = delegate { };
+        public event EventHandler RecoveredErrorState = delegate { };
+
+        private EyeTrackingDeviceStatus lastStatus = 0; // i.e. not valid yet
+        private bool inErrorState = false; // keep track of this to spot recovery
 
         public TobiiWatcher()
         {
@@ -24,32 +29,49 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
         }
 
+        public EyeTrackingDeviceStatus GetCurrentState()
+        {
+            return lastStatus;
+        }
+
+        private bool IsErrorState(EyeTrackingDeviceStatus state)
+        {
+            switch (state)
+            {
+                case EyeTrackingDeviceStatus.NotAvailable:
+                case EyeTrackingDeviceStatus.UnknownError:
+                case EyeTrackingDeviceStatus.ConnectionError:
+                case EyeTrackingDeviceStatus.InvalidConfiguration:
+                    return true;                    
+                default:
+                    return false;
+            }
+        }
+
         private void handleTobiiChange(object sender, EngineStateValue<EyeTrackingDeviceStatus> status)
         {
             if (status.IsValid)
             {
-                //can be 0: invalid at first and on shutdown, not sure if this happens at other times
-                switch (status.Value)
+                EyeTrackingDeviceStatus newStatus = status.Value;
+                if (newStatus != lastStatus)
                 {
-                    case 0:
-                        break;
-                    case EyeTrackingDeviceStatus.Initializing:
-                        break;
-                    case EyeTrackingDeviceStatus.Tracking:
+                    bool nowInErrorState = IsErrorState(newStatus);
+
+                    if (newStatus == EyeTrackingDeviceStatus.Tracking)
+                    {
                         EnteredTrackingState(this, null);
-                        break;
-                    case EyeTrackingDeviceStatus.TrackingPaused:
-                        break;
-                    case EyeTrackingDeviceStatus.Configuring:
-                        break;
-                    case EyeTrackingDeviceStatus.NotAvailable:
-                    case EyeTrackingDeviceStatus.UnknownError:
-                    case EyeTrackingDeviceStatus.ConnectionError:
-                    case EyeTrackingDeviceStatus.InvalidConfiguration:
+                        if (inErrorState)
+                        {
+                            RecoveredErrorState(this, null);
+                            inErrorState = false;
+                        }
+                    }
+                    else if (IsErrorState(newStatus)) { 
                         EnteredErrorState(this, status.Value);
-                        break;
-                    case EyeTrackingDeviceStatus.DeviceNotConnected:
-                        break;
+                        inErrorState = true;
+                    }
+
+                    lastStatus = newStatus;
                 }
             }
         }

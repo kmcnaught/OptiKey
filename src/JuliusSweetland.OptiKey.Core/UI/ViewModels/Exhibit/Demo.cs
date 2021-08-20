@@ -34,6 +34,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private OnboardingWindow onboardWindow;
         private Process minecraftProcess;
         private MinecraftWatcher minecraftWatcher;
+        private TobiiWatcher tobiiWatcher;
         private MainViewModel mainViewModel;
         private OnboardingViewModel onboardVM;
         private bool minecraftHasLoaded = false;
@@ -241,8 +242,28 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                         }
                         onboardVM.SetLoadingComplete();
                     };
+
+                    tobiiWatcher = new TobiiWatcher();
+                    tobiiWatcher.EnteredErrorState += TobiiWatcher_EnteredErrorState;
+                    tobiiWatcher.EnteredTrackingState += TobiiWatcher_EnteredTrackingState;
+                    tobiiWatcher.RecoveredErrorState += TobiiWatcher_RecoveredErrorState;
                 }
             }
+        }
+
+        private void TobiiWatcher_RecoveredErrorState(object sender, EventArgs e)
+        {
+            Log.Info("TobiiWatcher_RecoveredErrorState");
+        }
+
+        private void TobiiWatcher_EnteredTrackingState(object sender, EventArgs e)
+        {
+            Log.Info("TobiiWatcher_EnteredTrackingState");
+        }
+
+        private void TobiiWatcher_EnteredErrorState(object sender, Tobii.EyeX.Framework.EyeTrackingDeviceStatus e)
+        {
+            Log.Info("TobiiWatcher_EnteredErrorState");
         }
 
         public static void CloseProcesses()
