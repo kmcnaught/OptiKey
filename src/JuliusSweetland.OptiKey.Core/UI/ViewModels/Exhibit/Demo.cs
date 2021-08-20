@@ -201,6 +201,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
             else
             {
+                // Always ensure shell app (might have been undone for installing new version)
+                SetAsShellApp(true);
+
                 // Close any processes orphaned by previous runs
                 CloseProcesses();
 
