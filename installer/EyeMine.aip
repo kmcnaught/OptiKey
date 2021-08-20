@@ -530,7 +530,7 @@
     <ROW File="r.2.3.mca" Component_="r.1.1.mca_7" FileName="R-2-3~1.MCA|r.-2.-3.mca" Attributes="0" SourcePath="resources\saves\Tutorial\region\r.-2.-3.mca" SelfReg="false"/>
     <ROW File="r.0.3.mca" Component_="r.1.1.mca_7" FileName="R0-3~1.MCA|r.0.-3.mca" Attributes="0" SourcePath="resources\saves\Tutorial\region\r.0.-3.mca" SelfReg="false"/>
     <ROW File="r.1.3.mca_1" Component_="r.1.1.mca_7" FileName="R1-3~1.MCA|r.1.-3.mca" Attributes="0" SourcePath="resources\saves\Tutorial\region\r.1.-3.mca" SelfReg="false"/>
-    <ROW File="eyemineexhibit1.0.56.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~2.JAR|eyemine-exhibit-1.0.56.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-exhibit-1.0.56.jar" SelfReg="false"/>
+    <ROW File="eyemineexhibit1.0.58.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~1.JAR|eyemine-exhibit-1.0.58.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-exhibit-1.0.58.jar" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
