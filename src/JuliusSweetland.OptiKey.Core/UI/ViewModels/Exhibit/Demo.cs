@@ -376,7 +376,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {   
                 // We use the adjacent service rather than launching this app directly
                 FileInfo fileInfo = new FileInfo(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);                
-                Key.SetValue("Shell", Path.Combine(fileInfo.Directory.ToString(), "EyeMineService.exe"));
+                Key.SetValue("Shell", Path.Combine(fileInfo.Directory.ToString(), "EyeMineLauncher.exe"));
             }
             else
             {
