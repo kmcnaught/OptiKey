@@ -46,7 +46,7 @@
     <ROW Directory="EyeMineKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="EYEMIN~1|EyeMineKeyboards"/>
     <ROW Directory="EyeTracker_1_Dir" Directory_Parent="EyeMineKeyboards_Dir" DefaultDir="EYETRA~1|EyeTracker"/>
     <ROW Directory="Fonts_Dir" Directory_Parent="Resources_Dir" DefaultDir="Fonts"/>
-    <ROW Directory="LauncherRelease" Directory_Parent="APPDIR" DefaultDir="LAUNCH~1|LauncherRelease"/>
+    <ROW Directory="LauncherRelease" Directory_Parent="APPDIR" DefaultDir=".:LAUNCH~1|LauncherRelease"/>
     <ROW Directory="ModInstaller_Dir" Directory_Parent="APPDIR" DefaultDir="MODINS~1|ModInstaller"/>
     <ROW Directory="Mouse_1_Dir" Directory_Parent="EyeMineKeyboards_Dir" DefaultDir="Mouse"/>
     <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="PROGRA~1|ProgramMenuFolder" IsPseudoRoot="1"/>
