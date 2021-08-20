@@ -308,6 +308,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }            
         }
 
+        public void TobiiRecovery()
+        {
+            //TODO
+        }
+
+        public void TobiiError(Tobii.EyeX.Framework.EyeTrackingDeviceStatus lastTobiiErrorStatus)
+        {
+            //TODO
+        }
+
         #endregion
 
         #region Methods
