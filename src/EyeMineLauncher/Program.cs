@@ -38,7 +38,7 @@ namespace EyeMineLauncher
         {
             Console.WriteLine($"{ DateTime.Now }: Launching EyeMine");
 #if DEBUG
-            string filename = @"..\..\..\JuliusSweetland.OptiKey.EyeMine\bin\Debug\EyeMineExhibition.exe";
+            string exeName = @"..\..\..\JuliusSweetland.OptiKey.EyeMine\bin\Debug\EyeMineExhibition.exe";
 #else
             FileInfo fileInfo = new FileInfo(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
             string exeName = Path.Combine(fileInfo.Directory.ToString(), "EyeMineExhibition.exe");            
