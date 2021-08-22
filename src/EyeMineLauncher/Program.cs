@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -14,30 +15,45 @@ namespace EyeMineLauncher
         private static Process process = null;
 
         static void Main(string[] args)
-        {
-            LaunchEyeMine();
+        {            
 
             // Keep polling to ensure EyeMine running
             for (; ; )
             {
                 Thread.Sleep(pollTimeSeconds * 1000);
 
-                if (process.HasExited)
+                if (process == null || process.HasExited)
                 {
-                    LaunchEyeMine();
+                    bool success = LaunchEyeMine();
+                    if (!success)
+                    {
+                        Console.ReadLine();
+                        break;
+                    }
                 }
             }
         }
 
-        private static void LaunchEyeMine()
+        private static bool LaunchEyeMine()
         {
             Console.WriteLine($"{ DateTime.Now }: Launching EyeMine");
 #if DEBUG
             string filename = @"..\..\..\JuliusSweetland.OptiKey.EyeMine\bin\Debug\EyeMineExhibition.exe";
 #else
-            string filename = "EyeMineExhibition.exe";
+            FileInfo fileInfo = new FileInfo(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            string exeName = Path.Combine(fileInfo.Directory.ToString(), "EyeMineExhibition.exe");            
 #endif
-            process = Process.Start(filename);
+            Console.WriteLine($"Launching {exeName}");
+            try
+            {
+                process = Process.Start(exeName);
+                return true;
+            }
+            catch (Exception e) {
+                Console.WriteLine("Error launching application\n");
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
 
     }
