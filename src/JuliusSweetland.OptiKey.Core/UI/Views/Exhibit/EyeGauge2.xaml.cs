@@ -54,22 +54,17 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
             var locationL = new Point(scaleX * viewModel.leftEye.xPos, scaleY * viewModel.leftEye.yPos);
             var locationR = new Point(scaleX * viewModel.rightEye.xPos, scaleY * viewModel.rightEye.yPos);
 
-            // set new position
+            // set new position of eye circles
             Canvas.SetLeft(followRectangle1, locationL.X);
             Canvas.SetTop(followRectangle1, locationL.Y);
             Canvas.SetLeft(followRectangle2, locationR.X);
             Canvas.SetTop(followRectangle2, locationR.Y);
 
-            // set colour based on Z            
-            double lightness = 0.5;
-            double saturation = 0.75;
-
-            // hue: 0=red, yellow, green=120, 180=teal, blue, purple, pink, red=360
+            // assess 'goodness' based on Z distances
             double leftEyeZdiff = viewModel.leftEye.zPos - 0.5;
             double rightEyeZdiff = viewModel.rightEye.zPos - 0.5;
-
-            double currentGoodnessLeft = 1.0 - 2*(1.0 - Math.Abs(leftEyeZdiff)); // [0, 1]
-            double currentGoodnessRight = 1.0 - 2*(1.0 - Math.Abs(rightEyeZdiff)); // [0, 1]
+            double currentGoodnessLeft = 1.0 - 2*Math.Abs(leftEyeZdiff); // [0, 1]
+            double currentGoodnessRight = 1.0 - 2*Math.Abs(rightEyeZdiff); // [0, 1]
 
             if (!viewModel.leftEye.visible) { currentGoodnessLeft = 0.0; }
             if (!viewModel.rightEye.visible) { currentGoodnessRight = 0.0; }
@@ -102,12 +97,15 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
             // fades in more slowly than out
             filteredAllowNextHint = filteredAllowNextHint.UpdateIIR(goodCurrently ? 1.0 : 0.0, goodCurrently ? 0.0025 : 0.05);
 
-            // Traffic light colours for eyes and border    
+            // Traffic light colours for eyes and border                
             // green when goodness ~= 1, to red when goodness -> 0
-            double hueLeft = 60.0f * (1.0f - filteredGoodnessLeft);
-            double hueRight = 60.0f * (1.0f - filteredGoodnessRight);
-            double hueBest = 60.0f * (1.0f - filteredGoodnessBest);
+            // hue: 0=red, yellow, green=120, 180=teal, blue, purple, pink, red=360
+            double hueLeft = 120.0f * filteredGoodnessLeft;
+            double hueRight = 120.0f * filteredGoodnessRight;
+            double hueBest = 120.0f * filteredGoodnessBest;
 
+            double lightness = 0.5;
+            double saturation = 0.75;
             animatedBrush1.Color = ColorConversions.HlsToRgb(hueLeft, lightness, saturation);
             animatedBrush2.Color = ColorConversions.HlsToRgb(hueRight, lightness, saturation);
             animatedBrushBorder.Color = ColorConversions.HlsToRgb(hueBest, lightness, saturation);
