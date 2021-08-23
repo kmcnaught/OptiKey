@@ -129,6 +129,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             // Initial state
             tempState = TempState.NONE;
             mainState = OnboardState.WELCOME;
+#if DEBUG
+            demoState = DemoState.RUNNING; // skip wait for minecraft, so can test other things sooner
+#endif
         }
 
         private void ForceResetTimer_Tick(object sender, EventArgs e)
