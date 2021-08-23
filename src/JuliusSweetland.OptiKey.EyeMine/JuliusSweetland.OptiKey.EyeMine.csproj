@@ -1010,7 +1010,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rd /s /q $(TargetDir)\Resources\Plugins\
-rd /s /q $(TargetDir)\Resources\Presage\</PostBuildEvent>
+rd /s /q $(TargetDir)\Resources\Presage\
+if $(ConfigurationName) == Debug (
+  xcopy "$(TargetDir)..\..\..\..\installer\resources\saves" $(TargetDir)ModInstaller\saves\ /i /s /y
+)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>"C:\Program Files\Git\bin\git.exe" rev-parse --short HEAD &gt; "$(ProjectDir)\version.txt"
