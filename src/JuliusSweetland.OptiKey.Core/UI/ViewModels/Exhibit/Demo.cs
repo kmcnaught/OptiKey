@@ -181,7 +181,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     {
                         SetAsShellApp(true);
 
-                        if (MessageBox.Show("Saving Minecraft instance...\n\n EyeMine can now launch Minecraft itself. Please log out then back in again",
+                        if (MessageBox.Show("Saving Minecraft instance...\n\n EyeMine can now launch Minecraft itself. Please restart the PC.",
                          "Capturing Minecraft instance ... ",
                          MessageBoxButton.OK) == MessageBoxResult.OK)
                         {
