@@ -70,7 +70,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
             if (!viewModel.rightEye.visible) { currentGoodnessRight = 0.0; }
 
             // Update 'goodness' metric, filtered for smooth changes
-            double alpha = 0.01;
+            double alpha = 0.02;
             filteredGoodnessLeft = filteredGoodnessLeft.UpdateIIR(currentGoodnessLeft, alpha);
             filteredGoodnessRight= filteredGoodnessRight.UpdateIIR(currentGoodnessRight, alpha);
             double filteredGoodnessBest = Math.Max(filteredGoodnessLeft, filteredGoodnessRight);
