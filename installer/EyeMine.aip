@@ -15,10 +15,10 @@
     <ROW Property="Manufacturer" Value="SpecialEffect"/>
     <ROW Property="MsiLogging" MultiBuildValue="DefaultBuild:vp"/>
     <ROW Property="NUMBER_OF_SAVES" Value="0"/>
-    <ROW Property="ProductCode" Value="1033:{12E09556-A56D-4608-A125-98780596003F} 2057:{12E09556-A56D-4608-A125-98780596003F} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{4A8EB384-F757-4CBA-A147-69A5CA730541} 2057:{4A8EB384-F757-4CBA-A147-69A5CA730541} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="EyeMineExhibit"/>
-    <ROW Property="ProductVersion" Value="1.0.65" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.66" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="TOBII_SUPPORTED" Value="false"/>
     <ROW Property="UpgradeCode" Value="{C8BBFF0F-259E-4C6F-AF07-D49175424142}"/>
@@ -217,7 +217,7 @@
     <ROW Component="data_3" ComponentId="{62DB3EBC-B809-4FAE-A0A3-444532873472}" Directory_="data_4_Dir" Attributes="0"/>
     <ROW Component="datapacks" ComponentId="{74E5D8F3-BDAA-474C-AD39-7913D839DACB}" Directory_="datapacks_Dir" Attributes="0"/>
     <ROW Component="drain.nbt" ComponentId="{41B26FAD-4619-4110-B89F-87F2D45FFA44}" Directory_="structures_1_Dir" Attributes="0" KeyPath="drain.nbt" Type="0"/>
-    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemineexhibit1.0.65.jar" Type="0"/>
+    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemineexhibit1.0.66.jar" Type="0"/>
     <ROW Component="eyemine2.0.12.jar" ComponentId="{B42179B6-D266-4B7F-ACB5-A2D839801563}" Directory_="ModInstaller_Dir" Attributes="0" KeyPath="eyemineclientmouse.toml" Type="0"/>
     <ROW Component="forgeserver.toml_2" ComponentId="{FCFDBE80-BD5E-445B-A3CF-2BA92FAC0E9E}" Directory_="serverconfig_2_Dir" Attributes="0" KeyPath="forgeserver.toml_2" Type="0"/>
     <ROW Component="icon.png_2" ComponentId="{476A0802-7C70-4FB6-82F9-8AEF9AB20E41}" Directory_="Tutorial_Dir" Attributes="0" KeyPath="icon.png_2" Type="0"/>
@@ -509,7 +509,7 @@
     <ROW File="EyeMineLauncher.exe" Component_="EyeMineLauncher.exe" FileName="EYEMIN~1.EXE|EyeMineLauncher.exe" Attributes="0" SourcePath="..\src\EyeMineLauncher\bin\Release\EyeMineLauncher.exe" SelfReg="false" DigSign="true"/>
     <ROW File="EyeMineLauncher.exe.config" Component_="EyeMineLauncher.exe.config" FileName="EYEMIN~1.CON|EyeMineLauncher.exe.config" Attributes="0" SourcePath="..\src\EyeMineLauncher\bin\Release\EyeMineLauncher.exe.config" SelfReg="false"/>
     <ROW File="EyeMineLauncher.pdb" Component_="EyeMineLauncher.exe" FileName="EYEMIN~1.PDB|EyeMineLauncher.pdb" Attributes="0" SourcePath="..\src\EyeMineLauncher\bin\Release\EyeMineLauncher.pdb" SelfReg="false"/>
-    <ROW File="eyemineexhibit1.0.65.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~2.JAR|eyemine-exhibit-1.0.65.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-exhibit-1.0.65.jar" SelfReg="false"/>
+    <ROW File="eyemineexhibit1.0.66.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~1.JAR|eyemine-exhibit-1.0.66.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-exhibit-1.0.66.jar" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
