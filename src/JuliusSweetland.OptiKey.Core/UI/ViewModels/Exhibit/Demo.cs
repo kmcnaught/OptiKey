@@ -474,7 +474,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             onboardWindow = new OnboardingWindow();
             onboardWindow.DataContext = onboardVM;
             onboardWindow.Closed += (s, e) => { Application.Current.Shutdown(); };
+            
+            onboardWindow.Height = (int)Graphics.PrimaryScreenHeightInPixels; 
+            onboardWindow.Width = (int)Graphics.PrimaryScreenWidthInPixels; 
+            onboardWindow.Left = 0;
+            onboardWindow.Top = 0;
             onboardWindow.Show();
+
             onboardVM.StateChanged += (s,e) => UpdateForState();
             onboardVM.RequireAutoReset += (s, e) => StartAutoReset();
             onboardVM.RequireCloseCalibration += (s, e) => TryCloseTobiiCalibration();
@@ -484,6 +490,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             // Make sure height fits alongside keyboard
             int height = (int)Graphics.PrimaryScreenHeightInPixels;
+            int width = (int)Graphics.PrimaryScreenWidthInPixels;
             if (ShowEyeMineKeyboard())
             {
                 double dockHeight = mainViewModel.MainWindowManipulationService.GetFullDockThicknessAsPercentageOfScreen();

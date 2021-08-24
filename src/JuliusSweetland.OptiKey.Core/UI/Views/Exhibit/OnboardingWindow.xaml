@@ -7,7 +7,7 @@
         xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
         xmlns:vms="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Exhibit"        
         WindowStartupLocation="CenterOwner"
-        WindowState="Maximized"
+        WindowState="Normal"
         mc:Ignorable="d"
         d:DesignWidth="1280" d:DesignHeight="720"
         Title=""
