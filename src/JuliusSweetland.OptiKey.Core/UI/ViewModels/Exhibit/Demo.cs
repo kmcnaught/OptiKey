@@ -496,7 +496,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 double dockHeight = mainViewModel.MainWindowManipulationService.GetFullDockThicknessAsPercentageOfScreen();
                 double minecraftHeight = 100 - dockHeight;
 
-                height -= (int)(height * minecraftHeight / 100);
+                height = (int)(height * minecraftHeight / 100);
             }
             onboardWindow.Height = height;
 
