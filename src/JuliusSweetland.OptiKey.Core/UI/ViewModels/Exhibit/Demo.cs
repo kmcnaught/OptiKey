@@ -436,6 +436,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
         }
 
+        void RaiseToast(string title, string content)
+        {
+            mainViewModel.RaiseToastNotification(
+                   title,
+                   content,
+                   NotificationTypes.Normal,
+                   () => { });
+        }
+
         void UpdateMinecraftFocusForState()
         {
             if (minecraftProcess == null) { return; }
@@ -478,6 +487,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             onboardVM.StateChanged += (s,e) => UpdateForState();
             onboardVM.RequireAutoReset += (s, e) => StartAutoReset();
             onboardVM.RequireCloseCalibration += (s, e) => TryCloseTobiiCalibration();
+            onboardVM.TimeoutWarning += (s, e) => RaiseToast("One minute remaining", "You've been great!");
         }
 
         void UpdateOptiKeyFocusForState()

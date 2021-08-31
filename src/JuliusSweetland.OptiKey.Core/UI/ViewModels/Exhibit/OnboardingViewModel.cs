@@ -73,11 +73,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private ResettingViewModel resettingViewModel;
 
         private DispatcherTimer tobiiTimer = new DispatcherTimer();
-        private DispatcherTimer ingameTimer = new DispatcherTimer();
+        private DispatcherTimer ingameTimeoutTimer = new DispatcherTimer();
+        private DispatcherTimer ingameWarningTimer = new DispatcherTimer();
         private DispatcherTimer forceResetTimer = new DispatcherTimer();
 
         public event EventHandler RequireAutoReset = delegate { };
         public event EventHandler RequireCloseCalibration = delegate { };
+        public event EventHandler TimeoutWarning = delegate { };
 
         public event EventHandler StateChanged;
 
@@ -120,8 +122,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             tobiiTimer.Start();
 
             // This timer will enforce in-game time limit
-            ingameTimer.Interval = new TimeSpan(0, Settings.Default.IngameTimeoutMinutes, 0); 
-            ingameTimer.Tick += IngameTimer_Tick;
+            ingameTimeoutTimer.Interval = new TimeSpan(0, Settings.Default.IngameTimeoutMinutes, 0);
+            ingameTimeoutTimer.Tick += IngameTimeout_Tick;
+
+            ingameWarningTimer.Interval = new TimeSpan(0, Settings.Default.IngameTimeoutMinutes - 1, 0);
+            ingameWarningTimer.Tick += IngameTimerWarning_Tick;
 
             forceResetTimer.Interval = new TimeSpan(0, 0, 15);
             forceResetTimer.Tick += ForceResetTimer_Tick;
@@ -140,13 +145,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             forceResetTimer.Stop();
         }
 
-        private void IngameTimer_Tick(object sender, EventArgs e)
+        private void IngameTimeout_Tick(object sender, EventArgs e)
         {
             this.demoState = DemoState.TIMED_OUT;
-            this.ingameTimer.Stop();
+            this.ingameTimeoutTimer.Stop();
             this.forceResetTimer.Start();
             RaisePropertyChanged("CurrentPageViewModel");
             StateChanged(this, null);
+        }
+
+        private void IngameTimerWarning_Tick(object sender, EventArgs e)
+        {
+            this.ingameWarningTimer.Stop();
+            TimeoutWarning(this, null);
         }
 
         private void CaptureMinecraft()
@@ -345,7 +356,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             SetTempState(TempState.NONE);
             SetState(OnboardState.WELCOME);
             SetState(DemoState.RESETTING);            
-            ingameTimer.Stop();
+            ingameTimeoutTimer.Stop();
         }
 
         public void CompleteResetViewModel()
@@ -415,7 +426,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                             break;
                         case OnboardState.POST_CALIB:
                             SetState(OnboardState.IN_MINECRAFT);
-                            ingameTimer.Start();
+                            ingameTimeoutTimer.Start();
                             break;
                     }
                     break;
