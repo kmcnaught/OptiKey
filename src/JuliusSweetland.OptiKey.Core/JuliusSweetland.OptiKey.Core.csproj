@@ -1139,9 +1139,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="UI\Views\Exhibit\Resources\EyeMine_Logo_Trans.png" />
-    <Content Include="Resources\minecraftCommand.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\Presage\database.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
