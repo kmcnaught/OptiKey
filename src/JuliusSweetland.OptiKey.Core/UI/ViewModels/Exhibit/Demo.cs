@@ -106,6 +106,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     {   
                         UpdateForState();
                     }
+                    if (onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB) {
+                        Log.Info("Current running processes:");
+                        foreach (Process p in Process.GetProcesses())
+                        {
+                            Log.Info(p.ProcessName);
+                        }
+                    }
                 }
             };
             focusTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
