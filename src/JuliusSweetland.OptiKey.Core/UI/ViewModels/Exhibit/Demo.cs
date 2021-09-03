@@ -654,9 +654,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 Process tobiiProcess = processes[0];
 
-                // Try focussing and pressing Esc first?
-                //                FocusWindow(tobiiProcess);
-
                 int timeoutSeconds = 10;
                 bool success = KillProcess(tobiiProcess, timeoutSeconds*1000);
                 if (!success)
