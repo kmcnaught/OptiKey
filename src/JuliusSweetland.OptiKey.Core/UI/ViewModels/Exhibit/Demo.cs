@@ -633,7 +633,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private bool IsTobiiCalibrating()
         {
-            return onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB || Process.GetProcessesByName("Tobii.EyeX.Configuration").Length > 0;
+            foreach (Process p in System.Diagnostics.Process.GetProcesses())
+            {
+                // depending on exact tobii install the process name could be subtly different
+                // e.g. Tobii.EyeX.Configuration vs Tobii.Core.Config
+                string lowerName = p.ProcessName.ToLower();
+                if (lowerName.Contains("tobii") && lowerName.Contains("config"))
+                {
+                    return true;
+                }
+            }
+
+            return onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB;
         }
 
         public void TryCloseTobiiCalibration()
