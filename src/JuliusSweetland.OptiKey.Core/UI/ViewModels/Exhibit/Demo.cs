@@ -640,27 +640,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private bool IsTobiiCalibrating()
         {
+            return GetTobiiCalibProcess() != null || onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB;
+        }
+
+        private Process GetTobiiCalibProcess()
+        {
             foreach (Process p in System.Diagnostics.Process.GetProcesses())
             {
                 // depending on exact tobii install the process name could be subtly different
-                // e.g. Tobii.EyeX.Configuration vs Tobii.Core.Config
+                // e.g. Tobii.EyeX.Configuration vs Tobii.Core.Config vs Tobii.Configuration
                 string lowerName = p.ProcessName.ToLower();
                 if (lowerName.Contains("tobii") && lowerName.Contains("config"))
                 {
-                    return true;
+                    return p;
                 }
             }
 
-            return onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB;
+            return null;
         }
 
         public void TryCloseTobiiCalibration()
         {
-            Process[] processes = Process.GetProcessesByName("Tobii.EyeX.Configuration");
-            if (processes.Length > 0)
-            {
-                Process tobiiProcess = processes[0];
-
+            Process tobiiProcess = GetTobiiCalibProcess();
+            if (tobiiProcess != null) { 
                 int timeoutSeconds = 10;
                 bool success = KillProcess(tobiiProcess, timeoutSeconds*1000);
                 if (!success)
