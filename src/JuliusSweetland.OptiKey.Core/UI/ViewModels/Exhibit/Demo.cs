@@ -448,7 +448,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         void UpdateMinecraftFocusForState()
         {
             if (minecraftProcess == null) { return; }
+#if DEBUG
             return;
+#endif
 
             double h = Graphics.PrimaryScreenHeightInPixels;
             double w = Graphics.PrimaryScreenWidthInPixels;
@@ -502,7 +504,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
             onboardWindow.Height = height;
 
+#if DEBUG
             return;
+#endif
 
             if (onboardVM.tempState != OnboardingViewModel.TempState.NONE ||
                 onboardVM.demoState != OnboardingViewModel.DemoState.RUNNING ||
