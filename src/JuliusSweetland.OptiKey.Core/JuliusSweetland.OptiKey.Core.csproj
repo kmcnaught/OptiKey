@@ -548,6 +548,12 @@
     <Compile Include="UI\Utilities\ColorConversions.cs" />
     <Compile Include="UI\ViewModels\Exhibit\PostCalibViewModel.cs" />
     <Compile Include="UI\Views\Exhibit\Commands.cs" />
+    <Compile Include="UI\Views\Exhibit\CalibrationErrorScreen.xaml.cs">
+      <DependentUpon>CalibrationErrorScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Exhibit\EyeTrackerErrorScreen.xaml.cs">
+      <DependentUpon>EyeTrackerErrorScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Exhibit\EyeGaugeMidDemo.xaml.cs">
       <DependentUpon>EyeGaugeMidDemo.xaml</DependentUpon>
     </Compile>
@@ -1486,6 +1492,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Controls\CK20Page.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\CalibrationErrorScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\EyeTrackerErrorScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
