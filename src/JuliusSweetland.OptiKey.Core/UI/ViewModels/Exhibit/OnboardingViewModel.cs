@@ -127,8 +127,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
             ingameWarningTimer.Interval = new TimeSpan(0, Settings.Default.IngameTimeoutMinutes - 1, 0);
             ingameWarningTimer.Tick += IngameTimerWarning_Tick;
-
-            forceResetTimer.Interval = new TimeSpan(0, 0, 15);
+            
+            forceResetTimer.Interval = new TimeSpan(0, 0, 45);
             forceResetTimer.Tick += ForceResetTimer_Tick;
 
             // Initial state
