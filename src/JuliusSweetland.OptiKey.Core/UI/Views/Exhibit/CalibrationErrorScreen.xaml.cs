@@ -6,11 +6,11 @@ using System.Windows.Media.Animation;
 namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
 {
     /// <summary>
-    /// Interaction logic for LoadingScreen.xaml
+    /// Interaction logic for CalibrationErrorScreen.xaml
     /// </summary>
-    public partial class ErrorScreen : UserControl
+    public partial class CalibrationErrorScreen : UserControl
     {
-        public ErrorScreen()
+        public CalibrationErrorScreen()
         {
             InitializeComponent();            
         }        

@@ -8,9 +8,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
     /// <summary>
     /// Interaction logic for LoadingScreen.xaml
     /// </summary>
-    public partial class ErrorScreen : UserControl
+    public partial class EyeTrackerErrorScreen : UserControl
     {
-        public ErrorScreen()
+        public EyeTrackerErrorScreen()
         {
             InitializeComponent();            
         }        
