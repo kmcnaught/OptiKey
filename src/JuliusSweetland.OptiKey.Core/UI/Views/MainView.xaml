@@ -74,7 +74,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <controls:MagnifyPopup IsHitTestVisible="False" Placement="Absolute" AllowsTransparency="True" />
         
         <controls:ToastNotificationPopup x:Name="ToastNotificationPopup"
-            Placement="AbsolutePoint"  AllowsTransparency="True" IsOpen="False">
+            Placement="AbsolutePoint"  AllowsTransparency="True" IsOpen="{Binding IsToastOpen, Mode=TwoWay}>
             <controls:ToastNotification RenderTransformOrigin="0,1">
                 <controls:ToastNotification.RenderTransform>
                     <ScaleTransform ScaleY="1" />

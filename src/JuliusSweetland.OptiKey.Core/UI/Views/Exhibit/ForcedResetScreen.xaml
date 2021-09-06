@@ -12,19 +12,21 @@
 
         <userControls:ExhibitBackground></userControls:ExhibitBackground>
 
-        <Grid  Height="500" VerticalAlignment="Top" Margin="300">
+        <Grid  Height="750" VerticalAlignment="Top" Margin="300, 275, 300, 50">
 
             <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition Height="2*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Image Grid.Row="1" Margin="40" Source="Resources\logo-specialeffect.png"/>
+            <Image Grid.Row="3" Margin="40" Source="Resources\logo-specialeffect.png"/>
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5"
                 VerticalAlignment="Center" HorizontalAlignment="Center"
-                Grid.Row="2"
+                Grid.Row="4"
                 >
                 <TextBlock            
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
@@ -46,12 +48,36 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                    VerticalAlignment="Center" HorizontalAlignment="Center">
-                Thank you for playing!
+                Thank you!
                 </TextBlock>
             </Border>
-        </Grid>
 
+            <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Row="1"
+                >
+                <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="You have been playing a "/><Run Text="special "/><Run Text="version of EyeMine "/><Run Text="adapted "/><Run Text="for Smithsonian FUTURES"/></TextBlock>
+            </Border>
+
+            <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Row="2"
+                >
+                <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                   VerticalAlignment="Center" HorizontalAlignment="Center" Width="1104"><Run Text="EyeMine users across the world "/><Run Text="are "/><Run Text="exploring, building and socialising within Minecraft using a more advanced version of the software"/></TextBlock>
+            </Border>
+        </Grid>
         <userControls:ButtonReset></userControls:ButtonReset>
+
+        
+        <Image Source="Resources/Gabey EyeMine Front.png" Margin="1291,658,122,205" />
+        <Image Source="Resources/Becky EyeMine GamesRoomCrop.JPG" Grid.Column="0" Margin="122,658,1350,205" />
+
 
     </Grid>
 
