@@ -124,6 +124,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public IWindowManipulationService MainWindowManipulationService { get { return mainWindowManipulationService; } }
 
+        bool isToastOpen = false;
+        public bool IsToastOpen
+        {
+            get
+            {
+                return isToastOpen;
+            }
+            set
+            {
+                isToastOpen = value;
+            }
+        }
 
         private IKeyboard keyboard;
         public IKeyboard Keyboard

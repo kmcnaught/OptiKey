@@ -99,7 +99,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             // (state machine _should_ handle this but there are some corner cases not handled)
             focusTimer.Tick += (object sender, EventArgs e) =>
             {
-                if (!onboardVM.IsContextMenuOpen)
+                if (!onboardVM.IsContextMenuOpen && !mainViewModel.IsToastOpen)
                 {
                     // We don't take focus away from calibration, otherwise we can't send key presses there
                     if (onboardVM.mainState != OnboardingViewModel.OnboardState.WAIT_CALIB)
