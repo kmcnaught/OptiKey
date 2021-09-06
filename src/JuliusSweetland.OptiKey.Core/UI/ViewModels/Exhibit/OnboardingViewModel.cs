@@ -357,6 +357,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             SetState(OnboardState.WELCOME);
             SetState(DemoState.RESETTING);            
             ingameTimeoutTimer.Stop();
+            ingameWarningTimer.Stop();
         }
 
         public void CompleteResetViewModel()
@@ -427,6 +428,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                         case OnboardState.POST_CALIB:
                             SetState(OnboardState.IN_MINECRAFT);
                             ingameTimeoutTimer.Start();
+                            ingameWarningTimer.Start();
                             break;
                     }
                     break;
