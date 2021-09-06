@@ -24,6 +24,18 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">
+              EyeMine uses eye control in Minecraft to help disabled gamers to play the game
+                </TextBlock>
+            </Border>
+        </Grid>
+
+        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="50">
+            <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center">
               <Run>Press the </Run>
               <Run Foreground="Green">NEXT</Run>
               <Run> button below the screen to get started</Run>
