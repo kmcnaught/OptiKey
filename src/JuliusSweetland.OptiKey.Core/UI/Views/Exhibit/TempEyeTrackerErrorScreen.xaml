@@ -136,7 +136,7 @@
 
         <userControls:ExhibitBackground></userControls:ExhibitBackground>
 
-        <Grid  Height="600" VerticalAlignment="Top" Margin="300">
+        <Grid  Height="600" VerticalAlignment="Top" Margin="300,300,300,100">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -145,11 +145,11 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Control Grid.Row="0" Grid.Column="0" Width ="100" Height="100" Style="{StaticResource BusyAnimationStyle}"/>
+            <Control Grid.Row="3" Grid.Column="0" Width ="100" Height="100" Style="{StaticResource BusyAnimationStyle}"/>
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5"
                 VerticalAlignment="Center" HorizontalAlignment="Center"
-                Grid.Row="1"
+                Grid.Row="0"
                 >
                 <TextBlock            
                    FontSize="48" FontFamily="Roboto" FontWeight="Regular"
