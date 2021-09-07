@@ -41,7 +41,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             FIRST_SETUP,
             RESETTING,
             NO_USER,
-            ERROR,
+            ERROR_MC_CRASH,
             TIMED_OUT,
             RUNNING
         }
@@ -230,7 +230,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public void SetUnrecoverableError()
         {
-            this.demoState = DemoState.ERROR;
+            this.demoState = DemoState.ERROR_MC_CRASH;
             errorViewModel.StartRestartCountdown();
             RaisePropertyChanged("CurrentPageViewModel");
             StateChanged(this, null);
@@ -256,7 +256,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 PageViewModel vm = blankViewModel;
                 switch (demoState)
                 {
-                    case DemoState.ERROR:
+                    case DemoState.ERROR_MC_CRASH:
                         vm = errorViewModel;
                         break;
                     case DemoState.TIMED_OUT:
@@ -449,7 +449,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             switch (demoState)
             {
-                case DemoState.ERROR:                   
+                case DemoState.ERROR_MC_CRASH:                   
                 case DemoState.FIRST_SETUP:
                 case DemoState.TIMED_OUT:
                 case DemoState.RESETTING:
