@@ -136,7 +136,7 @@
 
         <userControls:ExhibitBackground></userControls:ExhibitBackground>
 
-        <Grid  Height="600" VerticalAlignment="Top" Margin="300">
+        <Grid  Height="600" VerticalAlignment="Top" Margin="300,300,300,100">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -184,6 +184,20 @@
                     There is a problem with the eyetracker. Please inform a member of museum staff.
                 </TextBlock>
             </Border>
+
+
+            <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Row="3" 
+                >
+                <TextBlock            
+                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" 
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"  
+                   Text="{Binding Path=ErrorString, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            </Border>
+
 
         </Grid>
         

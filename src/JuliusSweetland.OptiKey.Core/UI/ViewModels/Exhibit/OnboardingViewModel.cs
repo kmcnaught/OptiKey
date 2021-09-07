@@ -377,6 +377,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 {
                     // We use dispatcher to run this on UI thread rather than the thread the eye tracker notified us on
                     eyeTrackerErrorTimer.Start();
+                    eyeTrackerErrorViewModel.ErrorString = "Error code: " + lastTobiiErrorStatus.ToString();
                     SetTempState(TempState.TEMP_ERROR_EYETRACKER);
                 });
             }

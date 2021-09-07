@@ -23,5 +23,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         public override void TearDown()
         {
         }
+
+        protected string errorString = "";
+        public string ErrorString
+        {
+            get { return errorString; }
+            set
+            {
+                errorString = value;
+                RaisePropertyChanged("ErrorString");
+            }
+        }
     }
 }
