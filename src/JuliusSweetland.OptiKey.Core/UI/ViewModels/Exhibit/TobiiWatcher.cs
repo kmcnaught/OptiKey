@@ -24,15 +24,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private EyeTrackingDeviceStatus lastStatus = 0; // i.e. not valid yet
         private bool inErrorState = false; // keep track of this to spot recovery
 
+        DispatcherTimer pollTimer = new DispatcherTimer();
+
         public TobiiWatcher()
         {
             // Register for Tobii events
             TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
-        }
+
+            // Poll once after initial setup in case state never changes
+            pollTimer.Interval = TimeSpan.FromSeconds(30);
+            pollTimer.Tick += (s, e) => { this.handleTobiiChange(null, TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatus); };
+            pollTimer.Start();
+        }        
 
         public EyeTrackingDeviceStatus GetCurrentState()
         {
             return lastStatus;
+        }
+
+        public bool IsInErrorState()
+        {
+            return inErrorState;
         }
 
         private bool IsErrorState(EyeTrackingDeviceStatus state)
