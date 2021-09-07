@@ -543,6 +543,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             if ((onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
                  onboardVM.demoState == OnboardingViewModel.DemoState.TIMED_OUT) &&
+                 onboardVM.demoState != OnboardingViewModel.DemoState.PERM_ERROR_EYETRACKER &&
+                 onboardVM.tempState != OnboardingViewModel.TempState.TEMP_ERROR_EYETRACKER &&
                  onboardVM.mainState != OnboardingViewModel.OnboardState.WAIT_CALIB)
             {
                 onboardVM.Info();
@@ -584,9 +586,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void OnReset(object sender, NHotkey.HotkeyEventArgs e)
         {
-            if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
+            if ((onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING ||
                 onboardVM.demoState == OnboardingViewModel.DemoState.NO_USER ||
-                onboardVM.demoState == OnboardingViewModel.DemoState.TIMED_OUT)
+                onboardVM.demoState == OnboardingViewModel.DemoState.TIMED_OUT) &&
+                 onboardVM.demoState != OnboardingViewModel.DemoState.PERM_ERROR_EYETRACKER &&
+                 onboardVM.tempState != OnboardingViewModel.TempState.TEMP_ERROR_EYETRACKER)
             {
                 // update state appropriately
                 onboardVM.Reset();
