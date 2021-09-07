@@ -144,7 +144,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             forceResetTimer.Tick += ForceResetTimer_Tick;
 
             // go to unrecoverable error screen if eye tracker error up for too long
-            eyeTrackerErrorTimer.Interval = new TimeSpan(0, 0, 45);
+            eyeTrackerErrorTimer.Interval = new TimeSpan(0, 0, 30);
             eyeTrackerErrorTimer.Tick += EyeTrackerErrorTimer_Tick;
 
             // Initial state
