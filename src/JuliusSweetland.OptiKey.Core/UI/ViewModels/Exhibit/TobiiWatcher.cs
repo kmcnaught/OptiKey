@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using Tobii.EyeX.Framework;
@@ -38,6 +39,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             switch (state)
             {
+                case EyeTrackingDeviceStatus.DeviceNotConnected:
                 case EyeTrackingDeviceStatus.NotAvailable:
                 case EyeTrackingDeviceStatus.UnknownError:
                 case EyeTrackingDeviceStatus.ConnectionError:
@@ -62,13 +64,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                         EnteredTrackingState(this, null);
                         if (inErrorState)
                         {
-                            RecoveredErrorState(this, null);
                             inErrorState = false;
+                            RecoveredErrorState(this, null);
+                            
                         }
                     }
-                    else if (IsErrorState(newStatus)) { 
-                        EnteredErrorState(this, status.Value);
+                    else if (IsErrorState(newStatus)) {
                         inErrorState = true;
+                        EnteredErrorState(this, status.Value);
+                      
                     }
 
                     lastStatus = newStatus;

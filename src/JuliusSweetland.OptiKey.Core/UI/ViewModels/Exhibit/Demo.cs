@@ -43,7 +43,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private DispatcherTimer focusTimer = new DispatcherTimer();
         private DispatcherTimer idleTimer = new DispatcherTimer();
         private DispatcherTimer resetPageTimer = new DispatcherTimer();
-        private DispatcherTimer tobiiErrorTimer = new DispatcherTimer();
 
         private static Process ghostProcess;
         private static ProcessStartInfo ghostStartInfo;
@@ -117,9 +116,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
              
             resetPageTimer.Interval = new TimeSpan(0, 0, 3);
             resetPageTimer.Tick += (s, e) => { CompleteAutoReset(); };
-
-            tobiiErrorTimer.Interval = new TimeSpan(0, 1, 0);
-            tobiiErrorTimer.Tick += (s, e) => { OnTobiiErrorTimerTick(); };
 
         }
 
@@ -253,8 +249,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         }
 
         private void TobiiWatcher_RecoveredErrorState(object sender, EventArgs e)
-        {
-            tobiiErrorTimer.Stop();
+        {            
             onboardVM.TobiiRecovery();
         }
 
@@ -263,19 +258,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             Settings.Default.TobiiErrorCount = 0;
         }
 
-        Tobii.EyeX.Framework.EyeTrackingDeviceStatus lastTobiiErrorStatus;
-
         private void TobiiWatcher_EnteredErrorState(object sender, Tobii.EyeX.Framework.EyeTrackingDeviceStatus e)
         {
             Settings.Default.TobiiErrorCount++;
-
-            lastTobiiErrorStatus = e;
-            tobiiErrorTimer.Start();
-        }
-
-        private void OnTobiiErrorTimerTick()
-        {
-            onboardVM.TobiiError(lastTobiiErrorStatus);
+            onboardVM.TobiiError(e);
         }
 
         public static void CloseProcesses()

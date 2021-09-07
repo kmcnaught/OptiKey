@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="JuliusSweetland.OptiKey.UI.Views.Exhibit.EyeTrackerErrorScreen"
+﻿<UserControl x:Class="JuliusSweetland.OptiKey.UI.Views.Exhibit.TempEyeTrackerErrorScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -145,19 +145,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Ellipse Grid.Row="0" 
-                Width="200"
-                Height="200"
-                Stroke="Red"
-                StrokeThickness="10"/>
-
-            <TextBlock Grid.Row="0" 
-                   VerticalAlignment="Center" HorizontalAlignment="Center"                     
-                   FontSize="130" FontFamily="Verdana" FontWeight="Regular"
-                   Foreground="Red"
-                   >
-                X
-            </TextBlock>
+            <Control Grid.Row="0" Grid.Column="0" Width ="100" Height="100" Style="{StaticResource BusyAnimationStyle}"/>
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5"
                 VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -168,7 +156,7 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">                 
-                    Sorry, this exhibit is temporarily out of order
+                    Sorry, there is a problem with the eye tracker
                 </TextBlock>
             </Border>
 
@@ -181,10 +169,12 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                    VerticalAlignment="Center" HorizontalAlignment="Center">
-                    There is a problem with the eyetracker. Please inform a member of museum staff.
+                    Attempting to reconnect...
                 </TextBlock>
             </Border>
 
+           
+            
         </Grid>
         
     </Grid>

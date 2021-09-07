@@ -76,6 +76,12 @@
         <DataTemplate DataType="{x:Type vms:ResettingViewModel}">
             <local:ResettingScreen />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:EyeTrackerErrorViewModel}">
+            <local:EyeTrackerErrorScreen/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:TempEyeTrackerErrorViewModel}">
+            <local:TempEyeTrackerErrorScreen />
+        </DataTemplate>
     </Window.Resources>
     
     <Viewbox Stretch="Uniform">

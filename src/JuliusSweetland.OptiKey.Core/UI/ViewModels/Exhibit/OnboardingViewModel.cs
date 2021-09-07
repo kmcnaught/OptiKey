@@ -14,6 +14,7 @@ using Prism.Commands;
 using System.Windows;
 using System.Diagnostics;
 using JuliusSweetland.OptiKey.Properties;
+using System.Threading;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
@@ -33,7 +34,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             NONE,
             INFO,
-            RESET
+            RESET,
+            TEMP_ERROR_EYETRACKER
         }
 
         public enum DemoState
@@ -41,7 +43,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             FIRST_SETUP,
             RESETTING,
             NO_USER,
-            ERROR_MC_CRASH,
+            ERROR_MC_CRASH,            
+            PERM_ERROR_EYETRACKER,
             TIMED_OUT,
             RUNNING
         }
@@ -71,11 +74,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private BlankViewModel blankViewModel;
         private ForcedResetViewModel forcedResetViewModel;
         private ResettingViewModel resettingViewModel;
+        private TempEyeTrackerErrorViewModel tempEyeTrackerErrorViewModel;
+        private EyeTrackerErrorViewModel eyeTrackerErrorViewModel;
 
         private DispatcherTimer tobiiTimer = new DispatcherTimer();
         private DispatcherTimer ingameTimeoutTimer = new DispatcherTimer();
         private DispatcherTimer ingameWarningTimer = new DispatcherTimer();
         private DispatcherTimer forceResetTimer = new DispatcherTimer();
+        private DispatcherTimer eyeTrackerErrorTimer = new DispatcherTimer();
 
         public event EventHandler RequireAutoReset = delegate { };
         public event EventHandler RequireCloseCalibration = delegate { };
@@ -114,22 +120,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             blankViewModel = new BlankViewModel();
             forcedResetViewModel = new ForcedResetViewModel();
             resettingViewModel = new ResettingViewModel();
+            tempEyeTrackerErrorViewModel = new TempEyeTrackerErrorViewModel();
+            eyeTrackerErrorViewModel = new EyeTrackerErrorViewModel();
 
             // Register for Tobii events
             TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
+
+            // Timer checks for eye visibility
             tobiiTimer.Tick += TobiiTick;
             tobiiTimer.Interval = new TimeSpan(0, 0, 1);
-            tobiiTimer.Start();
+            tobiiTimer.Start();            
 
-            // This timer will enforce in-game time limit
+            // overall demo timelimit
             ingameTimeoutTimer.Interval = new TimeSpan(0, Settings.Default.IngameTimeoutMinutes, 0);
             ingameTimeoutTimer.Tick += IngameTimeout_Tick;
 
+            // "1 minute remaining" warning
             ingameWarningTimer.Interval = new TimeSpan(0, Settings.Default.IngameTimeoutMinutes - 1, 0);
             ingameWarningTimer.Tick += IngameTimerWarning_Tick;
-            
+                       
+            // forcefully reset from end page
             forceResetTimer.Interval = new TimeSpan(0, 0, 45);
             forceResetTimer.Tick += ForceResetTimer_Tick;
+
+            // go to unrecoverable error screen if eye tracker error up for too long
+            eyeTrackerErrorTimer.Interval = new TimeSpan(0, 0, 45);
+            eyeTrackerErrorTimer.Tick += EyeTrackerErrorTimer_Tick;
 
             // Initial state
             tempState = TempState.NONE;
@@ -137,6 +153,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 #if DEBUG
             demoState = DemoState.RUNNING; // skip wait for minecraft, so can test other things sooner
 #endif
+        }
+
+        private void EyeTrackerErrorTimer_Tick(object sender, EventArgs e)
+        {
+            eyeTrackerErrorTimer.Stop();
+            SetState(DemoState.PERM_ERROR_EYETRACKER);
+            SetTempState(TempState.NONE);
         }
 
         private void ForceResetTimer_Tick(object sender, EventArgs e)
@@ -254,65 +277,76 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             get
             {
                 PageViewModel vm = blankViewModel;
-                switch (demoState)
+
+                if (tempState == TempState.TEMP_ERROR_EYETRACKER)
                 {
-                    case DemoState.ERROR_MC_CRASH:
-                        vm = errorViewModel;
-                        break;
-                    case DemoState.TIMED_OUT:
-                        vm = forcedResetViewModel;
-                        break;
-                    case DemoState.FIRST_SETUP:
-                        vm = loadingViewModel;
-                        break;
-                    case DemoState.RESETTING:
-                        vm = resettingViewModel;
-                        break;
-                    case DemoState.NO_USER:
-                        if (tempState == TempState.RESET)
-                        {
-                            vm = resetViewModel;
-                        }
-                        else if (tempState == TempState.INFO)
-                        {
-                            vm = infoViewModel;
-                        }
-                        else
-                        {
-                            vm = eyesLostViewModel;
-                        }
-                        break;
-                    case DemoState.RUNNING:
-                        switch (tempState)
-                        {
-                            case TempState.RESET:
+                    vm = tempEyeTrackerErrorViewModel;
+                }
+                else
+                {
+                    switch (demoState)
+                    {
+                        case DemoState.ERROR_MC_CRASH:
+                            vm = errorViewModel;
+                            break;
+                        case DemoState.TIMED_OUT:
+                            vm = forcedResetViewModel;
+                            break;
+                        case DemoState.FIRST_SETUP:
+                            vm = loadingViewModel;
+                            break;
+                        case DemoState.RESETTING:
+                            vm = resettingViewModel;
+                            break;
+                        case DemoState.NO_USER:
+                            if (tempState == TempState.RESET)
+                            {
                                 vm = resetViewModel;
-                                break;
-                            case TempState.INFO:
+                            }
+                            else if (tempState == TempState.INFO)
+                            {
                                 vm = infoViewModel;
-                                break;
-                            case TempState.NONE:
-                                switch (mainState)
-                                {
-                                    case OnboardState.WELCOME:
-                                        vm = introViewModel;
-                                        break;
-                                    case OnboardState.EYES:
-                                        vm = tobiiViewModel;
-                                        break;
-                                    case OnboardState.WAIT_CALIB:
-                                        vm = waitCalibViewModel;
-                                        break;
-                                    case OnboardState.POST_CALIB:
-                                        vm = postCalibViewModel;
-                                        break;
-                                    case OnboardState.IN_MINECRAFT:
-                                        vm = blankViewModel;
-                                        break;
-                                }
-                                break;
-                        }
-                        break;
+                            }
+                            else
+                            {
+                                vm = eyesLostViewModel;
+                            }
+                            break;
+                        case DemoState.PERM_ERROR_EYETRACKER:
+                            vm = eyeTrackerErrorViewModel;
+                            break;
+                        case DemoState.RUNNING:
+                            switch (tempState)
+                            {
+                                case TempState.RESET:
+                                    vm = resetViewModel;
+                                    break;
+                                case TempState.INFO:
+                                    vm = infoViewModel;
+                                    break;
+                                case TempState.NONE:
+                                    switch (mainState)
+                                    {
+                                        case OnboardState.WELCOME:
+                                            vm = introViewModel;
+                                            break;
+                                        case OnboardState.EYES:
+                                            vm = tobiiViewModel;
+                                            break;
+                                        case OnboardState.WAIT_CALIB:
+                                            vm = waitCalibViewModel;
+                                            break;
+                                        case OnboardState.POST_CALIB:
+                                            vm = postCalibViewModel;
+                                            break;
+                                        case OnboardState.IN_MINECRAFT:
+                                            vm = blankViewModel;
+                                            break;
+                                    }
+                                    break;
+                            }
+                            break;
+                    }
                 }
                 if (vm != eyesLostViewModel)
                 {
@@ -324,12 +358,28 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public void TobiiRecovery()
         {
-            //TODO
+            if (tempState == TempState.TEMP_ERROR_EYETRACKER)
+            {
+                System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                {  
+                    // We use dispatcher to run this on UI thread rather than the thread the eye tracker notified us on
+                    eyeTrackerErrorTimer.Stop();
+                    SetTempState(TempState.NONE);
+                });
+            } 
         }
 
         public void TobiiError(Tobii.EyeX.Framework.EyeTrackingDeviceStatus lastTobiiErrorStatus)
         {
-            //TODO
+            if (tempState != TempState.TEMP_ERROR_EYETRACKER)
+            {
+                System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                {
+                    // We use dispatcher to run this on UI thread rather than the thread the eye tracker notified us on
+                    eyeTrackerErrorTimer.Start();
+                    SetTempState(TempState.TEMP_ERROR_EYETRACKER);
+                });
+            }
         }
 
         #endregion
