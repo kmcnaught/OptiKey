@@ -383,17 +383,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             // Check for idle, reset if necessary
             TimeSpan idleTimeSpan = TimeSpan.FromMinutes(1.5);
             //TODO: longer on eye gauge page?
-            TimeSpan idleTimeSpanCalibration = TimeSpan.FromMinutes(3); // TODO: test this, see how long is reasonable
-            if (onboardVM.mainState != OnboardingViewModel.OnboardState.IN_MINECRAFT)
+            TimeSpan idleTimeSpanCalibTimeout = TimeSpan.FromSeconds(30);
+            if (onboardVM.mainState != OnboardingViewModel.OnboardState.IN_MINECRAFT &&
+                onboardVM.mainState != OnboardingViewModel.OnboardState.WAIT_CALIB //(we have separate timeout for this)
+                )
             {
-                if (onboardVM.mainState == OnboardingViewModel.OnboardState.WAIT_CALIB &&
-                    DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpanCalibration)
-                {                    
+                if (onboardVM.mainState == OnboardingViewModel.OnboardState.CALIB_TIMEOUT &&
+                        DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpanCalibTimeout) {
                     StartAutoReset();
                     return;
                 }
-                else if (
-                    DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpan)
+                else if (DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpan)
                 {
                     StartAutoReset();
                     return;
