@@ -25,8 +25,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             WELCOME,
             EYES,
-            WAIT_CALIB,
-            CALIB_NOTVISIBLE,
+            WAIT_CALIB,            
             CALIB_TIMEOUT,
             CALIB_SUCCESS,
             IN_MINECRAFT
@@ -77,7 +76,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private ResettingViewModel resettingViewModel = new ResettingViewModel();
         private TempEyeTrackerErrorViewModel tempEyeTrackerErrorViewModel = new TempEyeTrackerErrorViewModel();
         private EyeTrackerErrorViewModel eyeTrackerErrorViewModel = new EyeTrackerErrorViewModel();
-        private CalibNotVisibleViewModel calibNotVisibleViewModel = new CalibNotVisibleViewModel();
         private CalibTimeoutViewModel calibTimeoutViewModel= new CalibTimeoutViewModel();
 
         // View model requires non-static init
@@ -142,7 +140,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             eyeTrackerErrorTimer.Tick += EyeTrackerErrorTimer_Tick;
 
             // time out calibration process in case ends in failure
-            calibrationTimeoutTimer.Interval = TimeSpan.FromMinutes(3); //FIXME: setting?
+            calibrationTimeoutTimer.Interval = TimeSpan.FromMinutes(2); //FIXME: setting?
             calibrationTimeoutTimer.Tick += CalibrationTimeoutTimer_Tick;
 
             // Initial state
@@ -236,15 +234,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     RaisePropertyChanged("CurrentPageViewModel");
                     StateChanged(this, null);
                 }
-            }
-            else if (mainState == OnboardState.WAIT_CALIB)
-            {
-                if (tobiiViewModel.LostTracking)
-                {
-                    RequireCloseCalibration(this, null);
-                    SetState(OnboardState.CALIB_NOTVISIBLE);
-                }
-            }
+            }            
         }
 
         public void SetState(DemoState state)
@@ -353,10 +343,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                             break;
                                         case OnboardState.CALIB_SUCCESS:
                                             vm = postCalibViewModel;
-                                            break;
-                                        case OnboardState.CALIB_NOTVISIBLE:
-                                            vm = calibNotVisibleViewModel;
-                                            break;
+                                            break;                                        
                                         case OnboardState.CALIB_TIMEOUT:
                                             vm = calibTimeoutViewModel;
                                             break;
@@ -424,6 +411,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         public void StartResetViewModel()
         {
             //DO the reset?!
+            calibrationTimeoutTimer.Stop();
             RequireCloseCalibration(this, null);
             SetTempState(TempState.NONE);
             SetState(OnboardState.WELCOME);
@@ -443,6 +431,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         public void Reset()
         {            
             RequireCloseCalibration(this, null);
+            calibrationTimeoutTimer.Stop();
 
             if (mainState == OnboardState.WAIT_CALIB)
             {
@@ -492,6 +481,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                             if (tobiiViewModel.IsGoodEnough)
                             {
                                 TobiiEyeXPointService.EyeXHost.LaunchGuestCalibration();
+                                calibrationTimeoutTimer.Start();
                                 SetState(OnboardState.WAIT_CALIB);
                             }
                             break;
@@ -515,6 +505,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 if (mainState == OnboardState.WAIT_CALIB &&
                 status.Value == EyeTrackingDeviceStatus.Tracking)
                 {
+                    calibrationTimeoutTimer.Stop();
                     SetState(OnboardState.CALIB_SUCCESS);
                     Demo.SetGhostVisible(true);
                 }
@@ -553,9 +544,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                     //SetState(OnboardState.POST_CALIB);
                                     //ingameTimer.Stop();
                                     break;
-                                case OnboardState.WAIT_CALIB:
-                                case OnboardState.CALIB_NOTVISIBLE:
+                                case OnboardState.WAIT_CALIB:                                
                                 case OnboardState.CALIB_TIMEOUT:
+                                    calibrationTimeoutTimer.Stop();
                                     RequireCloseCalibration(this, null);
                                     SetState(OnboardState.EYES);
                                     break;                                
