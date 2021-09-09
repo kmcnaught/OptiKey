@@ -13,13 +13,13 @@
 
         <userControls:ExhibitBackground></userControls:ExhibitBackground>
 
-        <Grid  Height="700" VerticalAlignment="Top" Margin="300, 200, 300, 1">
+        <Grid  Height="700" VerticalAlignment="Top" Margin="100, 200, 100, 1">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.5*"/>
-                <RowDefinition Height="2*"/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
 
             <Ellipse Grid.Row="0" 
@@ -41,7 +41,7 @@
                 Grid.Row="1"
                 >
                 <TextBlock            
-                   FontSize="48" FontFamily="Roboto" FontWeight="Regular"
+                   FontSize="46" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">                 
@@ -53,12 +53,13 @@
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
                 Grid.Row="2" 
                 >
+
                 <TextBlock            
-                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
-                   Foreground="Black" Background="White" 
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                   FontSize="38" FontFamily="Roboto" FontWeight="Regular"
+                   Foreground="Black" Background="White" TextWrapping="WrapWithOverflow"
+                    TextAlignment="Center" Padding="10"
                    VerticalAlignment="Center" HorizontalAlignment="Center">
-                    This may be caused by bad lighting, a reflection on glasses, or the position you are in. Some people's eyes are harder to track and may require a more bespoke setup
+                    Please try again after carefully positioning yourself and the screen.                    
                 </TextBlock>
             </Border>
 
@@ -67,11 +68,20 @@
                 Grid.Row="3" 
                 >
                 <TextBlock            
-                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   FontSize="38" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                   TextWrapping="Wrap" TextAlignment="Left" Padding="10"
+                    LineHeight="60"
                    VerticalAlignment="Center" HorizontalAlignment="Center">
-                    Consider trying again, being careful not to move yourself after beginning the setup 
+                    <Run FontWeight="Bold">Tips:</Run>                                                            
+                    <LineBreak />
+                    <Run> • Make sure your eyes are centred  </Run>
+                    <LineBreak />                    
+                    <Run> • The dots will be green when you are at the best distance </Run>
+                    <LineBreak />
+                    <Run> • Do not step forward once setup has begun</Run>
+                    <LineBreak />                    
+                    <Run> • Keep your head still during setup, just move your eyes</Run>
                 </TextBlock>
             </Border>
 

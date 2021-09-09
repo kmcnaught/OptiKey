@@ -13,7 +13,7 @@
 
         <userControls:ExhibitBackground></userControls:ExhibitBackground>
 
-        <Grid  Height="700" VerticalAlignment="Top" Margin="300, 200, 300, 1">
+        <Grid  Height="700" VerticalAlignment="Top" Margin="100, 200, 100, 1">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.5*"/>
@@ -54,11 +54,13 @@
                 Grid.Row="2" 
                 >
                 <TextBlock            
-                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   FontSize="36" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                    VerticalAlignment="Center" HorizontalAlignment="Center">
-                    This may be caused by bad lighting, a reflection on glasses, or the position you are in. Some people's eyes are harder to track and may require a more bespoke setup
+                    This may be caused by bad lighting, a reflection on glasses, or the position you are in. 
+                    <LineBreak/>
+                    Some people's eyes are harder to track and may require a more bespoke setup
                 </TextBlock>
             </Border>
 
@@ -67,7 +69,7 @@
                 Grid.Row="3" 
                 >
                 <TextBlock            
-                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
+                   FontSize="36" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                    VerticalAlignment="Center" HorizontalAlignment="Center">
