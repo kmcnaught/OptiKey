@@ -438,6 +438,8 @@
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\CalibTimeoutViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\CalibNotVisibleViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\TempEyeTrackerErrorViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\ForcedResetViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\Demo.cs" />
@@ -619,17 +621,11 @@
     <Compile Include="UI\Views\Exhibit\PostCalib.xaml.cs">
       <DependentUpon>PostCalib.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Exhibit\IntroScreen.xaml.cs">
-      <DependentUpon>IntroScreen.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\ViewModels\Exhibit\EyeStatus.cs" />
     <Compile Include="UI\Views\Exhibit\FaceWindow.xaml.cs">
       <DependentUpon>FaceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\ViewModels\Exhibit\TobiiViewModel.cs" />
-    <Compile Include="UI\Views\Exhibit\EyeGauge.xaml.cs">
-      <DependentUpon>EyeGauge.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Views\Keyboards\Catalan\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
@@ -1595,15 +1591,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Exhibit\IntroScreen.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UI\Views\Exhibit\FaceWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Views\Exhibit\EyeGauge.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
