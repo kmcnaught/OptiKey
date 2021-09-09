@@ -549,9 +549,12 @@
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
     <Compile Include="UI\Utilities\ColorConversions.cs" />
     <Compile Include="UI\ViewModels\Exhibit\PostCalibViewModel.cs" />
+    <Compile Include="UI\Views\Exhibit\CalibrationErrorScreenNotVisible.xaml.cs">
+      <DependentUpon>CalibrationErrorScreenNotVisible.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Exhibit\Commands.cs" />
-    <Compile Include="UI\Views\Exhibit\CalibrationErrorScreen.xaml.cs">
-      <DependentUpon>CalibrationErrorScreen.xaml</DependentUpon>
+    <Compile Include="UI\Views\Exhibit\CalibrationErrorScreenTimeout.xaml.cs">
+      <DependentUpon>CalibrationErrorScreenTimeout.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Exhibit\TempEyeTrackerErrorScreen.xaml.cs">
       <DependentUpon>TempEyeTrackerErrorScreen.xaml</DependentUpon>
@@ -1500,7 +1503,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Exhibit\CalibrationErrorScreen.xaml">
+    <Page Include="UI\Views\Exhibit\CalibrationErrorScreenNotVisible.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\CalibrationErrorScreenTimeout.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
