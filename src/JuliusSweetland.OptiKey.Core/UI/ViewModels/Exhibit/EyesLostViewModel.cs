@@ -31,9 +31,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public EyesLostViewModel(TobiiViewModel vm) 
         {
-            this.vm = vm;
-            CanGoBackward = false;
-            CanGoForward = true;           
+            this.vm = vm;            
         }
 
         public TobiiViewModel GetTobiiVM()
@@ -101,16 +99,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             RaisePropertyChanged("ShouldAutoReset");
             RaisePropertyChanged("CanGoBack");
 
-        }
-
-        public override void SetUp()
-        {
-            SetInitTime();
-        }
-
-        public override void TearDown()
-        {
-        }
+        }      
         
         protected bool canDismiss = false;
         public bool CanDismiss

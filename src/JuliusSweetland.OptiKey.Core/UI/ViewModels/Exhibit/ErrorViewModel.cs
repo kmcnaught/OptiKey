@@ -13,13 +13,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
     class ErrorViewModel : PageViewModel
     {
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
-
-        public ErrorViewModel()
-        {
-            CanGoBackward = false;
-            CanGoForward = true;
-        }
-
+        
         public void StartRestartCountdown()
         {
             dispatcherTimer.Tick += Restart;
@@ -31,15 +25,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             dispatcherTimer.Tick -= Restart;
             Application.Current.Shutdown(); // service will restart for us
-        }
-
-        public override void SetUp()
-        {
-            SetInitTime();
-        }
-
-        public override void TearDown()
-        {
         }
     }
 }

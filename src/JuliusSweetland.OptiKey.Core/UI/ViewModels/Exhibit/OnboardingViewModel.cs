@@ -502,7 +502,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                             SetState(OnboardState.EYES);
                             break;
                         case OnboardState.EYES:
-                            if (tobiiViewModel.CanGoForward)
+                            if (tobiiViewModel.IsGoodEnough)
                             {
                                 TobiiEyeXPointService.EyeXHost.LaunchGuestCalibration();
                                 SetState(OnboardState.WAIT_CALIB);
@@ -593,22 +593,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 isContextMenuOpen = value;
             }
         }
-
-        // FIXME: do we need the setup/teardown stuff?
-        //private void SetPageViewModel(PageViewModel pageVM, bool teardownCurrent)
-        //{            
-        //    if (teardownCurrent) //TOO: distinguish between "stuff to do on finishing page" and "stuff to do whenever closed" e.g. prev vs next
-        //    {
-        //        // cleanly leave current page
-        //        CurrentPageViewModel.TearDown();
-        //    }
-
-        //    // set up new page      
-        //    pageVM.SetUp();      
-        //    CurrentPageViewModel = pageVM;
-
-        //    RaisePropertyChanged("CurrentPageViewModel");                        
-        //}
 
         #endregion
     }

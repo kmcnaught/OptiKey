@@ -30,12 +30,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         public EyeStatus leftEye = new EyeStatus();
         public EyeStatus rightEye = new EyeStatus();
 
-        public override void SetUp()
+        public void SetUp()
         {
-            SetInitTime();
-
-            CanGoBackward = true;
-            CanGoForward = false;
 
             if (null == _eyePositionDataStream)
             {
@@ -52,12 +48,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                     (float)eyePosition.RightEyeNormalized.Y,
                                     (float)eyePosition.RightEyeNormalized.Z);
 
-                    TimeSpan timeSpan = DateTime.Now - initTime;
-                    canGoForward = isGoodEnough = CalculateIsGoodEnough();
+                    isGoodEnough = CalculateIsGoodEnough();
 
                     // TODO: some filtering!
-                    //FIXME: this might only gets updated if there's an eye visible?? 
-                    RaisePropertyChanged("CanGoForward");
+                    //FIXME: this might only gets updated if there's an eye visible??                     
                     RaisePropertyChanged("IsGoodEnough");
 
                     this.UpdateVisibility();
@@ -87,11 +81,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             RaisePropertyChanged("LostTracking");
         }
 
-        public override void TearDown()
-        {
-            
-        }
-
         protected bool isGoodEnough = false;
         public bool IsGoodEnough
         {
@@ -104,6 +93,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             get { UpdateLostTracking();  return lostTracking; }
             set { SetProperty(ref lostTracking, value); }
+        }
+
+        protected bool canGoForward = false;
+        public bool CanGoForward
+        {
+            get { return canGoForward; }
+            set { SetProperty(ref canGoForward, value); }
         }
 
         private bool CalculateIsGoodEnough()

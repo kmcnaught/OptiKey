@@ -9,19 +9,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
     class ForcedResetViewModel : PageViewModel
     {
-        public ForcedResetViewModel()
-        {
-            CanGoBackward = false;
-            CanGoForward = true;
-        }
-
-        public override void SetUp()
-        {
-            SetInitTime();
-        }
-
-        public override void TearDown()
-        {
-        }
+        
     }
 }

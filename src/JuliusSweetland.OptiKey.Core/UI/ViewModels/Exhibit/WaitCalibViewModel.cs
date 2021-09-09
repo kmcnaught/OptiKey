@@ -9,19 +9,5 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
     class WaitCalibViewModel : PageViewModel
     {
-        public WaitCalibViewModel()
-        {
-            CanGoBackward = false;
-            CanGoForward = true;
-        }
-
-        public override void SetUp()
-        {
-            SetInitTime();
-        }
-
-        public override void TearDown()
-        {
-        }
     }
 }

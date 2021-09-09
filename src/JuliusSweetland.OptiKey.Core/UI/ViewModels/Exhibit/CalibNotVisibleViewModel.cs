@@ -9,18 +9,5 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
     class CalibNotVisibleViewModel : PageViewModel
     {
-        public CalibNotVisibleViewModel()
-        {
-            CanGoBackward = true;
-            CanGoForward = true;
-        }
-        public override void SetUp()
-        {
-            SetInitTime();
-        }
-
-        public override void TearDown()
-        {
-        }
     }
 }

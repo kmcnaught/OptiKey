@@ -9,19 +9,5 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
     class BlankViewModel : PageViewModel
     {
-        public BlankViewModel()
-        {
-            CanGoBackward = false;
-            CanGoForward = true;
-        }
-
-        public override void SetUp()
-        {
-            SetInitTime();
-        }
-
-        public override void TearDown()
-        {
-        }
     }
 }

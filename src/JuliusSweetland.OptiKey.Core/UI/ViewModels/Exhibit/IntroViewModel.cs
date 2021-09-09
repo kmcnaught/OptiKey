@@ -9,19 +9,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
     class IntroViewModel : PageViewModel
     {
-        public IntroViewModel()
-        {
-            CanGoBackward = false;
-            CanGoForward = true;
-        }
-
-        public override void SetUp()
-        {
-            SetInitTime();
-        }
-
-        public override void TearDown()
-        {
-        }
+       
     }
 }

@@ -9,18 +9,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
     class FaceViewModel : PageViewModel
     {
-        public FaceViewModel()
-        {
-            CanGoBackward = true;
-            CanGoForward = true;
-        }
-        public override void SetUp()
-        {
-            SetInitTime();
-        }
-
-        public override void TearDown()
-        {
-        }
+        
     }
 }
