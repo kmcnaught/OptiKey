@@ -62,24 +62,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public DemoState demoState = DemoState.FIRST_SETUP;
         public OnboardState mainState;
-        public TempState tempState;        
+        public TempState tempState;
 
-        private IntroViewModel introViewModel;
-        private TobiiViewModel tobiiViewModel;
-        private WaitCalibViewModel waitCalibViewModel;
-        private PostCalibViewModel postCalibViewModel;
-        private InfoViewModel infoViewModel;
-        private ResetViewModel resetViewModel;
-        private LoadingViewModel loadingViewModel;
-        private ErrorViewModel errorViewModel;
+        private IntroViewModel introViewModel = new IntroViewModel();
+        private TobiiViewModel tobiiViewModel = new TobiiViewModel();
+        private WaitCalibViewModel waitCalibViewModel = new WaitCalibViewModel();
+        private PostCalibViewModel postCalibViewModel = new PostCalibViewModel();
+        private InfoViewModel infoViewModel = new InfoViewModel();
+        private ResetViewModel resetViewModel = new ResetViewModel();
+        private LoadingViewModel loadingViewModel = new LoadingViewModel();
+        private ErrorViewModel errorViewModel = new ErrorViewModel();
+        private BlankViewModel blankViewModel = new BlankViewModel();
+        private ForcedResetViewModel forcedResetViewModel = new ForcedResetViewModel();
+        private ResettingViewModel resettingViewModel = new ResettingViewModel();
+        private TempEyeTrackerErrorViewModel tempEyeTrackerErrorViewModel = new TempEyeTrackerErrorViewModel();
+        private EyeTrackerErrorViewModel eyeTrackerErrorViewModel = new EyeTrackerErrorViewModel();
+        private CalibNotVisibleViewModel calibNotVisibleViewModel = new CalibNotVisibleViewModel();
+        private CalibTimeoutViewModel calibTimeoutViewModel= new CalibTimeoutViewModel();
+
+        // View model requires non-static init
         private EyesLostViewModel eyesLostViewModel;
-        private BlankViewModel blankViewModel;
-        private ForcedResetViewModel forcedResetViewModel;
-        private ResettingViewModel resettingViewModel;
-        private TempEyeTrackerErrorViewModel tempEyeTrackerErrorViewModel;
-        private EyeTrackerErrorViewModel eyeTrackerErrorViewModel;
-        private CalibNotVisibleViewModel calibNotVisibleViewModel;
-        private CalibTimeoutViewModel calibTimeoutViewModel;
 
         private DispatcherTimer tobiiTimer = new DispatcherTimer();
         private DispatcherTimer ingameTimeoutTimer = new DispatcherTimer();
@@ -111,25 +113,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             });
             captureMinecraftCommand = new DelegateCommand(CaptureMinecraft);
 
-            // Create view models
-            introViewModel = new IntroViewModel();
-            tobiiViewModel = new TobiiViewModel();
-            waitCalibViewModel = new WaitCalibViewModel();
-            postCalibViewModel = new PostCalibViewModel();
-            infoViewModel = new InfoViewModel();
-            resetViewModel = new ResetViewModel();
-            loadingViewModel = new LoadingViewModel();
-            errorViewModel = new ErrorViewModel();
+            // Create any view models that require non-static initialisation
             eyesLostViewModel = new EyesLostViewModel(tobiiViewModel);
             eyesLostViewModel.RequireAutoReset += (s, e) => { this.RequireAutoReset(eyesLostViewModel, null); };
-            blankViewModel = new BlankViewModel();
-            forcedResetViewModel = new ForcedResetViewModel();
-            resettingViewModel = new ResettingViewModel();
-            tempEyeTrackerErrorViewModel = new TempEyeTrackerErrorViewModel();
-            eyeTrackerErrorViewModel = new EyeTrackerErrorViewModel();
-            calibTimeoutViewModel = new CalibTimeoutViewModel();
-            calibNotVisibleViewModel = new CalibNotVisibleViewModel();
-
+            
             // Register for Tobii events
             TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
 
