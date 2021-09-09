@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             WELCOME,
             EYES,
             WAIT_CALIB,
-            POST_CALIB,
+            CALIB_SUCCESS,
             IN_MINECRAFT
         }
 
@@ -336,7 +336,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                         case OnboardState.WAIT_CALIB:
                                             vm = waitCalibViewModel;
                                             break;
-                                        case OnboardState.POST_CALIB:
+                                        case OnboardState.CALIB_SUCCESS:
                                             vm = postCalibViewModel;
                                             break;
                                         case OnboardState.IN_MINECRAFT:
@@ -476,7 +476,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                             break;
                         case OnboardState.WAIT_CALIB:                            
                             break;
-                        case OnboardState.POST_CALIB:
+                        case OnboardState.CALIB_SUCCESS:
                             SetState(OnboardState.IN_MINECRAFT);
                             ingameTimeoutTimer.Start();
                             ingameWarningTimer.Start();
@@ -491,7 +491,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (mainState == OnboardState.WAIT_CALIB &&
                 status.Value == EyeTrackingDeviceStatus.Tracking)
             {
-                SetState(OnboardState.POST_CALIB);
+                SetState(OnboardState.CALIB_SUCCESS);
                 Demo.SetGhostVisible(true);
             }            
         }
@@ -532,7 +532,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                     RequireCloseCalibration(this, null);
                                     SetState(OnboardState.EYES);
                                     break;
-                                case OnboardState.POST_CALIB:
+                                case OnboardState.CALIB_SUCCESS:
                                     SetState(OnboardState.EYES);
                                     break;
                                 case OnboardState.EYES:

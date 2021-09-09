@@ -412,7 +412,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         void UpdateGhostForState()
         {
             if (onboardVM.tempState == OnboardingViewModel.TempState.NONE &&
-                (onboardVM.mainState == OnboardingViewModel.OnboardState.POST_CALIB ||
+                (onboardVM.mainState == OnboardingViewModel.OnboardState.CALIB_SUCCESS ||
                  onboardVM.mainState == OnboardingViewModel.OnboardState.IN_MINECRAFT))
             { 
                 SetGhostVisible(true);
