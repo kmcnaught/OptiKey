@@ -509,12 +509,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void handleTobiiChange(object sender, EngineStateValue<EyeTrackingDeviceStatus> status)
         {
-            if (mainState == OnboardState.WAIT_CALIB &&
-                status.Value == EyeTrackingDeviceStatus.Tracking)
+            System.Windows.Application.Current.Dispatcher.Invoke(() =>
             {
-                SetState(OnboardState.CALIB_SUCCESS);
-                Demo.SetGhostVisible(true);
-            }            
+                // We use dispatcher to run this on UI thread rather than the thread the eye tracker notified us on
+                if (mainState == OnboardState.WAIT_CALIB &&
+                status.Value == EyeTrackingDeviceStatus.Tracking)
+                {
+                    SetState(OnboardState.CALIB_SUCCESS);
+                    Demo.SetGhostVisible(true);
+                }
+            });
         }
 
         public void Back()
