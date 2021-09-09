@@ -82,6 +82,12 @@
         <DataTemplate DataType="{x:Type vms:TempEyeTrackerErrorViewModel}">
             <local:TempEyeTrackerErrorScreen />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:CalibNotVisibleViewModel}">
+            <local:CalibrationErrorScreenNotVisible />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:CalibTimeoutViewModel}">
+            <local:CalibrationErrorScreenTimeout />
+        </DataTemplate>
     </Window.Resources>
     
     <Viewbox Stretch="Uniform">

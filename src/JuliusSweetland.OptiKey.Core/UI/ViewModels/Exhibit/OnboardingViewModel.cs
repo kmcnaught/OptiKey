@@ -26,6 +26,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             WELCOME,
             EYES,
             WAIT_CALIB,
+            CALIB_NOTVISIBLE,
+            CALIB_TIMEOUT,
             CALIB_SUCCESS,
             IN_MINECRAFT
         }
@@ -76,12 +78,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private ResettingViewModel resettingViewModel;
         private TempEyeTrackerErrorViewModel tempEyeTrackerErrorViewModel;
         private EyeTrackerErrorViewModel eyeTrackerErrorViewModel;
+        private CalibNotVisibleViewModel calibNotVisibleViewModel;
+        private CalibTimeoutViewModel calibTimeoutViewModel;
 
         private DispatcherTimer tobiiTimer = new DispatcherTimer();
         private DispatcherTimer ingameTimeoutTimer = new DispatcherTimer();
         private DispatcherTimer ingameWarningTimer = new DispatcherTimer();
         private DispatcherTimer forceResetTimer = new DispatcherTimer();
         private DispatcherTimer eyeTrackerErrorTimer = new DispatcherTimer();
+        private DispatcherTimer calibrationTimeoutTimer = new DispatcherTimer();
 
         public event EventHandler RequireAutoReset = delegate { };
         public event EventHandler RequireCloseCalibration = delegate { };
@@ -122,6 +127,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             resettingViewModel = new ResettingViewModel();
             tempEyeTrackerErrorViewModel = new TempEyeTrackerErrorViewModel();
             eyeTrackerErrorViewModel = new EyeTrackerErrorViewModel();
+            calibTimeoutViewModel = new CalibTimeoutViewModel();
+            calibNotVisibleViewModel = new CalibNotVisibleViewModel();
 
             // Register for Tobii events
             TobiiEyeXPointService.EyeXHost.EyeTrackingDeviceStatusChanged += handleTobiiChange;
@@ -147,12 +154,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             eyeTrackerErrorTimer.Interval = new TimeSpan(0, 0, 30);
             eyeTrackerErrorTimer.Tick += EyeTrackerErrorTimer_Tick;
 
+            // time out calibration process in case ends in failure
+            calibrationTimeoutTimer.Interval = TimeSpan.FromMinutes(3); //FIXME: setting?
+            calibrationTimeoutTimer.Tick += CalibrationTimeoutTimer_Tick;
+
             // Initial state
             tempState = TempState.NONE;
             mainState = OnboardState.WELCOME;
 #if DEBUG
             demoState = DemoState.RUNNING; // skip wait for minecraft, so can test other things sooner
 #endif
+        }
+
+        private void CalibrationTimeoutTimer_Tick(object sender, EventArgs e)
+        {
+            calibrationTimeoutTimer.Stop();
+            RequireCloseCalibration(this, null);
+            if (mainState == OnboardState.WAIT_CALIB) {
+                SetState(OnboardState.CALIB_TIMEOUT);
+            }            
         }
 
         private void EyeTrackerErrorTimer_Tick(object sender, EventArgs e)
@@ -228,6 +248,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     eyesLostViewModel.Start();
                     RaisePropertyChanged("CurrentPageViewModel");
                     StateChanged(this, null);
+                }
+            }
+            else if (mainState == OnboardState.WAIT_CALIB)
+            {
+                if (tobiiViewModel.LostTracking)
+                {
+                    RequireCloseCalibration(this, null);
+                    SetState(OnboardState.CALIB_NOTVISIBLE);
                 }
             }
         }
@@ -338,6 +366,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                             break;
                                         case OnboardState.CALIB_SUCCESS:
                                             vm = postCalibViewModel;
+                                            break;
+                                        case OnboardState.CALIB_NOTVISIBLE:
+                                            vm = calibNotVisibleViewModel;
+                                            break;
+                                        case OnboardState.CALIB_TIMEOUT:
+                                            vm = calibTimeoutViewModel;
                                             break;
                                         case OnboardState.IN_MINECRAFT:
                                             vm = blankViewModel;
@@ -529,9 +563,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                                     //ingameTimer.Stop();
                                     break;
                                 case OnboardState.WAIT_CALIB:
+                                case OnboardState.CALIB_NOTVISIBLE:
+                                case OnboardState.CALIB_TIMEOUT:
                                     RequireCloseCalibration(this, null);
                                     SetState(OnboardState.EYES);
-                                    break;
+                                    break;                                
                                 case OnboardState.CALIB_SUCCESS:
                                     SetState(OnboardState.EYES);
                                     break;
