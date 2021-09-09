@@ -18,7 +18,7 @@ using System.Threading;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
-    class OnboardingViewModel : BindableBase
+    class OnboardingViewModel : PageViewModel
     {
 
         public enum OnboardState

@@ -438,24 +438,13 @@
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\CalibTimeoutViewModel.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\CalibNotVisibleViewModel.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\TempEyeTrackerErrorViewModel.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\ForcedResetViewModel.cs" />
+    <Compile Include="UI\ViewModels\Exhibit\SimplePageViewModels.cs" />
     <Compile Include="UI\ViewModels\Exhibit\Demo.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\FaceViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\ErrorViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\EyesLostViewModel.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\BlankViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\EyeTrackerErrorViewModel.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\ResettingViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\TobiiWatcher.cs" />
     <Compile Include="UI\ViewModels\Exhibit\MinecraftWatcher.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\LoadingViewModel.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\WaitCalibViewModel.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\ResetViewModel.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\InfoViewModel.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\IntroViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\IPageViewModel.cs" />
     <Compile Include="UI\ViewModels\Exhibit\OnboardingViewModel.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha3.cs" />
@@ -550,7 +539,6 @@
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
     <Compile Include="UI\Utilities\ColorConversions.cs" />
-    <Compile Include="UI\ViewModels\Exhibit\PostCalibViewModel.cs" />
     <Compile Include="UI\Views\Exhibit\CalibrationErrorScreenNotVisible.xaml.cs">
       <DependentUpon>CalibrationErrorScreenNotVisible.xaml</DependentUpon>
     </Compile>
