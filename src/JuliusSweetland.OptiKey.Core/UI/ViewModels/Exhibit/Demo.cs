@@ -478,7 +478,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             onboardVM.StateChanged += (s,e) => UpdateForState();
             onboardVM.RequireAutoReset += (s, e) => StartAutoReset();
             onboardVM.RequireCloseCalibration += (s, e) => TryCloseTobiiCalibration();
-            onboardVM.TimeoutWarning += (s, e) => RaiseToast("One minute remaining", "You've been great!");
+            onboardVM.TimeoutWarning += (s, e) => RaiseToast("One minute remaining", "You're doing great!");
+
         }
 
         void UpdateOptiKeyFocusForState()
