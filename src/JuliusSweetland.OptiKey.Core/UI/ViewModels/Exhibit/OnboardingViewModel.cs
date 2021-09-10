@@ -140,7 +140,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             eyeTrackerErrorTimer.Tick += EyeTrackerErrorTimer_Tick;
 
             // time out calibration process in case ends in failure
-            calibrationTimeoutTimer.Interval = TimeSpan.FromMinutes(2); //FIXME: setting?
+            calibrationTimeoutTimer.Interval = TimeSpan.FromMinutes(1.5); //FIXME: setting?
             calibrationTimeoutTimer.Tick += CalibrationTimeoutTimer_Tick;
 
             // Initial state
