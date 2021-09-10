@@ -132,7 +132,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             ingameWarningTimer.Tick += IngameTimerWarning_Tick;
                        
             // forcefully reset from end page
-            forceResetTimer.Interval = new TimeSpan(0, 0, 45);
+            forceResetTimer.Interval = new TimeSpan(0, 0, 35);
             forceResetTimer.Tick += ForceResetTimer_Tick;
 
             // go to unrecoverable error screen if eye tracker error up for too long
