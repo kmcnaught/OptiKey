@@ -380,23 +380,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 return;
             }
 
-            // Check for idle, reset if necessary
-            TimeSpan idleTimeSpan = TimeSpan.FromMinutes(1.5);
-            //TODO: longer on eye gauge page?
-            TimeSpan idleTimeSpanCalibTimeout = TimeSpan.FromSeconds(30);
-            if (onboardVM.mainState != OnboardingViewModel.OnboardState.IN_MINECRAFT &&
-                onboardVM.mainState != OnboardingViewModel.OnboardState.WAIT_CALIB //(we have separate timeout for this)
-                )
+            if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING)
             {
-                if (onboardVM.mainState == OnboardingViewModel.OnboardState.CALIB_TIMEOUT &&
-                        DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpanCalibTimeout) {
-                    StartAutoReset();
-                    return;
-                }
-                else if (DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpan)
+                // Check for idle, reset if necessary
+                TimeSpan idleTimeSpan = TimeSpan.FromMinutes(1.5);
+                //TODO: longer on eye gauge page?
+                TimeSpan idleTimeSpanCalibTimeout = TimeSpan.FromSeconds(30);
+                if (onboardVM.mainState != OnboardingViewModel.OnboardState.IN_MINECRAFT &&
+                    onboardVM.mainState != OnboardingViewModel.OnboardState.WAIT_CALIB //(we have separate timeout for this)                    
+                    )
                 {
-                    StartAutoReset();
-                    return;
+                    if (onboardVM.mainState == OnboardingViewModel.OnboardState.CALIB_TIMEOUT &&
+                            DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpanCalibTimeout)
+                    {
+                        StartAutoReset();
+                        return;
+                    }
+                    else if (DateTime.Now.Subtract(lastStateChangeTime) > idleTimeSpan)
+                    {
+                        StartAutoReset();
+                        return;
+                    }
                 }
             }
         }
