@@ -380,6 +380,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 return;
             }
 
+            if (!onboardVM.LostTracking())
+            {
+                return;
+            }
+
             if (onboardVM.demoState == OnboardingViewModel.DemoState.RUNNING)
             {
                 // Check for idle, reset if necessary

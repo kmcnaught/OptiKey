@@ -237,6 +237,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }            
         }
 
+        public bool LostTracking()
+        {
+            return tobiiViewModel.LostTracking;
+        }
+
         public void SetState(DemoState state)
         {
             this.demoState = state;
