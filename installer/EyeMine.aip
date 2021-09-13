@@ -38,6 +38,7 @@
     <ROW Directory="CommuniKate_Dir" Directory_Parent="Resources_Dir" DefaultDir="COMMUN~1|CommuniKate"/>
     <ROW Directory="DIM1_2_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="DIM-1"/>
     <ROW Directory="DIM1_3_Dir" Directory_Parent="Tutorial_Dir" DefaultDir="DIM1"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
     <ROW Directory="Dictionaries_Dir" Directory_Parent="Release_Dir" DefaultDir="DICTIO~1|Dictionaries"/>
     <ROW Directory="DynamicKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="DYNAMI~1|DynamicKeyboards"/>
     <ROW Directory="EyeMineKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="EYEMIN~1|EyeMineKeyboards"/>
@@ -1159,6 +1160,10 @@
     <ROW Registry="AI_ExePath" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Value="[AI_SETUPEXEPATH]" Component_="AI_ExePath"/>
     <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="EyeMineExhibition" Directory_="SpecialEffect_1_Dir" Name="EYEMIN~1|EyeMineExhibition" Component_="EyeMineExhibition.exe" Target="[#EyeMineExhibition.exe]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
+    <ROW Shortcut="EyeMineExhibition_1" Directory_="DesktopFolder" Name="EYEMIN~1|EyeMineExhibition" Component_="EyeMineExhibition.exe" Target="[#EyeMineExhibition.exe]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiTextStyleComponent">
     <ROW TextStyle="DlgFont10" FaceName="Tahoma" Size="10" Color="0" StyleBits="0"/>
