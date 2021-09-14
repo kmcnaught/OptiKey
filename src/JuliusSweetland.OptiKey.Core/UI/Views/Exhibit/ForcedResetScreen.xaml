@@ -12,10 +12,10 @@
 
         <userControls:ExhibitBackground></userControls:ExhibitBackground>
 
-        <Grid  Height="750" VerticalAlignment="Top" Margin="300, 275, 300, 50">
+        <Grid  Height="750" VerticalAlignment="Top" Margin="200, 275, 200, 50">
 
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="0"/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition Height="2*"/>
@@ -41,25 +41,13 @@
 
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
-                Grid.Row="0"
-                >
-                <TextBlock            
-                   FontSize="32" FontFamily="Roboto" FontWeight="Regular"
-                   Foreground="Black" Background="White" 
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-                Thank you!
-                </TextBlock>
-            </Border>
-
-            <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
                 Grid.Row="1"
                 >
                 <TextBlock            
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="You have been playing a "/><Run Text="special "/><Run Text="version of EyeMine "/><Run Text="adapted "/><Run Text="for Smithsonian FUTURES"/></TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="Thank you! You have been playing a "/><Run Text="special "/><Run Text="version of EyeMine "/><Run Text="adapted "/><Run Text="for Smithsonian FUTURES"/></TextBlock>
             </Border>
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -74,9 +62,9 @@
         </Grid>
         <userControls:ButtonReset></userControls:ButtonReset>
 
-        
-        <Image Source="Resources/Gabey EyeMine Front.png" Margin="1291,658,122,205" />
-        <Image Source="Resources/Becky EyeMine GamesRoomCrop.JPG" Grid.Column="0" Margin="122,658,1350,205" />
+
+        <Image Source="Resources/Gabey EyeMine Front.png" Margin="1291,610,122,253" />
+        <Image Source="Resources/Becky EyeMine GamesRoomCrop.JPG" Grid.Column="0" Margin="122,610,1350,253" />
 
 
     </Grid>
