@@ -43,8 +43,8 @@
             </Border>
         </Grid>
         
-        <userControls:ButtonNext Grid.ColumnSpan="4"  Grid.RowSpan="3"></userControls:ButtonNext>
-        <userControls:ButtonInfo Grid.ColumnSpan="4"  Grid.RowSpan="3" Loaded="ButtonInfo_Loaded"></userControls:ButtonInfo>
+        <!--<userControls:ButtonNext Grid.ColumnSpan="4"  Grid.RowSpan="3"></userControls:ButtonNext>
+        <userControls:ButtonInfo Grid.ColumnSpan="4"  Grid.RowSpan="3" Loaded="ButtonInfo_Loaded"></userControls:ButtonInfo>-->
 
     </Grid>
 
