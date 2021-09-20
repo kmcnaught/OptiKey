@@ -60,7 +60,7 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center">
                     This may be caused by bad lighting, a reflection on glasses, or the position you are in. 
                     <LineBreak/>
-                    Some people's eyes are harder to track and may require a more bespoke setup
+                    Some people's eyes are harder to track and may require a more individualized setup
                 </TextBlock>
             </Border>
 
