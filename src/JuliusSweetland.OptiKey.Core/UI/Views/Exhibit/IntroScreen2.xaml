@@ -24,7 +24,7 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">
-              EyeMine uses eye control in Minecraft to help disabled gamers to play the game
+              EyeMine uses eye control in Minecraft to help gamers with disabilities to play the game
                 </TextBlock>
             </Border>
         </Grid>

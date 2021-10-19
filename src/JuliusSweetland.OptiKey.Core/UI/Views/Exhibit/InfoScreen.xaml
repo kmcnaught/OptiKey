@@ -42,9 +42,9 @@
                     <TextBlock            
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="10"
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="6, 10, 6, 10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Run>EyeMine was built by SpecialEffect to allow disabled gamers to play Minecraft using</Run>
+                        <Run>EyeMine was built by SpecialEffect to allow gamers with disabilities to play Minecraft using</Run>
                         <Run FontWeight="Bold">only their eyes</Run>
                     </TextBlock>
                 </Border>
