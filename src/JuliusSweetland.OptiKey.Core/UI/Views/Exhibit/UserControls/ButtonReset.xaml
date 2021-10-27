@@ -14,6 +14,8 @@
               Margin="20,30"
               >
             <Image Source="../Resources/images/button--black.png" Width="100"></Image>
+            <Image Source="../Resources/images/button--outline.png" Width="94"></Image>
+            <Image Source="../Resources/images/button--outline.png" Width="102"></Image>
             <Rectangle RadiusX="5" RadiusY="5" Fill="White" Width="100" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
             <TextBlock FontFamily="Roboto" FontWeight="Medium" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,1" >RESET</TextBlock>
         </Grid>
