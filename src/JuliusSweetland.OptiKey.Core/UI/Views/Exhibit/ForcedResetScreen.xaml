@@ -33,9 +33,9 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">                 
-                    <Run>New user? Press</Run>
-              <Run Foreground="Red">RESET</Run>
-              <Run> to begin</Run>
+                    <Run>New user? Press the</Run>
+              <Run>RESET</Run>
+              <Run>button below the screen to begin</Run>
                 </TextBlock>
             </Border>
 

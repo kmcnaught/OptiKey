@@ -47,7 +47,9 @@
                 Visibility="{Binding CanReset, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">
               <Run>To set up for a new user, press</Run>
-                <Run Foreground="Red">RESET</Run>
+                <Run>RESET</Run>
+                <Run>below the screen</Run>
+
             </TextBlock>
         </Border>
 

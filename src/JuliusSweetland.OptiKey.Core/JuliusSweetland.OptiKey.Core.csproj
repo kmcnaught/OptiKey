@@ -1017,6 +1017,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
+    <Resource Include="UI\Views\Exhibit\Resources\images\button--black.png" />
     <Resource Include="UI\Views\Exhibit\Resources\logo-specialeffect.png" />
     <Resource Include="UI\Views\Exhibit\Resources\images\demoScreenshot.PNG" />
     <Resource Include="UI\Views\Exhibit\Resources\screenshot.png" />
