@@ -1593,8 +1593,8 @@
     <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="1"/>
     <ROW Dialog_="MinecraftRunningDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="StopProcessMinecraft" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="2"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="AI_DATA_SETTER_6" Condition="AI_INSTALL AND AI_PROCESS_STATE=&quot;Running&quot;" Ordering="1"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="StopProcessMinecraftOldLauncher" Condition="AI_INSTALL " Ordering="7"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="AI_DATA_SETTER_6" Condition="AI_INSTALL " Ordering="6"/>
     <ROW Dialog_="NewDialog_1" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="EyeTrackerDlg" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG = &quot;1&quot; )" Ordering="18"/>
@@ -1604,7 +1604,7 @@
     <ROW Dialog_="EyeTrackerDlg" Control_="Back" Event="NewDialog" Argument="MinecraftRunningDlg" Condition="AI_INSTALL AND ( SHOW_MC_RUNNING_DLG = &quot;1&quot; )" Ordering="13"/>
     <ROW Dialog_="MinecraftSavesDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="8"/>
     <ROW Dialog_="ForgeInstallationReqdDlg" Control_="Back" Event="NewDialog" Argument="MinecraftInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_MC_INST_REQD_DLG = &quot;1&quot; )" Ordering="5"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="11"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerDlg" Condition="AI_INSTALL AND ( SHOW_EYETRACKER_DLG = &quot;1&quot; )" Ordering="14"/>
     <ROW Dialog_="MinecraftRunningDlg" Control_="Back" Event="NewDialog" Argument="ForgeInstallationReqdDlg" Condition="AI_INSTALL AND ( SHOW_FORGE_INST_REQD_DLG = &quot;1&quot; )" Ordering="3"/>
     <ROW Dialog_="Temp_Logic" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="Temp_Logic" Control_="FIRST_MOD_INSTALL" Event="[SHOW_MC_INST_REQD_DLG]" Argument="1" Condition="AI_INSTALL" Ordering="0"/>
@@ -1664,10 +1664,10 @@
     <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="13"/>
     <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="14"/>
     <ROW Dialog_="MinecraftInstallationReqdDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="15"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="4"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="5"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="6"/>
-    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogTobiiDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_TOBII_DLG = &quot;1&quot; )" Ordering="11"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="12"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="13"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="10"/>
     <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="InputInfoDialogMouseDlg" Condition="AI_INSTALL AND ( SHOW_CURSORINFO_OTHER_DLG = &quot;1&quot; )" Ordering="15"/>
     <ROW Dialog_="InputInfoDialogTobiiDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot; )" Ordering="14"/>
     <ROW Dialog_="InputInfoDialogMouseDlg" Control_="Back" Event="NewDialog" Argument="MinecraftSavesDlg" Condition="AI_INSTALL AND ( SHOW_MC_SAVES_DLG = &quot;1&quot;)" Ordering="14"/>
@@ -1692,6 +1692,8 @@
     <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_RemoveTempFiles" Condition="1" Ordering="102"/>
     <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_RemoveTempFiles" Condition="1" Ordering="101"/>
     <ROW Dialog_="EyeTrackerDlg" Control_="EyeTrackerDlgDialogInitializer" Event="[EYETRACKERRADIOGROUP_PROP]" Argument="[EYETRACKER_SELECTED]" Condition="0" Ordering="0"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="StopProcessMinecraftNewLauncher" Condition="AI_INSTALL" Ordering="9"/>
+    <ROW Dialog_="MinecraftRunningDlg" Control_="Next" Event="DoAction" Argument="AI_DATA_SETTER_9" Condition="AI_INSTALL" Ordering="8"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
@@ -1714,6 +1716,8 @@
     <ROW Action="AI_DATA_SETTER_5" Type="51" Source="CustomActionData" Target="MinecraftLauncher.exe"/>
     <ROW Action="AI_DATA_SETTER_6" Type="51" Source="CustomActionData" Target="MinecraftLauncher.exe"/>
     <ROW Action="AI_DATA_SETTER_7" Type="51" Source="AI_RemoveAllTempFiles" Target="[AI_TEMP_FILE_ROLLBACK_INFO]"/>
+    <ROW Action="AI_DATA_SETTER_8" Type="51" Source="CustomActionData" Target="Minecraft.exe"/>
+    <ROW Action="AI_DATA_SETTER_9" Type="51" Source="CustomActionData" Target="Minecraft.exe"/>
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
     <ROW Action="AI_DeleteCadLzma" Type="51" Source="AI_DeleteLzma" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DeleteLzma" Type="1025" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
@@ -1743,7 +1747,8 @@
     <ROW Action="AI_XmlRollback" Type="11521" Source="xmlCfg.dll" Target="OnXmlRollback" WithoutSeq="true"/>
     <ROW Action="AI_XmlUninstall" Type="1" Source="xmlCfg.dll" Target="OnXmlUninstall" AdditionalSeq="AI_DATA_SETTER_4"/>
     <ROW Action="CopySaves" Type="1553" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dll" Target="CopySaves" AdditionalSeq="AI_DATA_SETTER_2"/>
-    <ROW Action="DetectProcessMinecraft" Type="1" Source="aicustact.dll" Target="DetectProcess" Options="3" AdditionalSeq="AI_DATA_SETTER_5"/>
+    <ROW Action="DetectProcessNewLauncher" Type="1" Source="aicustact.dll" Target="DetectProcess" Options="3" AdditionalSeq="AI_DATA_SETTER_8"/>
+    <ROW Action="DetectProcessOldLauncher" Type="1" Source="aicustact.dll" Target="DetectProcess" Options="3" AdditionalSeq="AI_DATA_SETTER_5"/>
     <ROW Action="EyeMineProperties" Type="1" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dl_1" Target="EyeMineProperties"/>
     <ROW Action="EyeTrackerComboSelected" Type="6" Source="PopulateComboboxes.vbs" Target="EyeTrackerSelected" WithoutSeq="true"/>
     <ROW Action="GetMinecraftSaves" Type="1" Source="JuliusSweetland.OptiKey.InstallerActionsEyeMine.CA.dl_1" Target="GetMinecraftSaves"/>
@@ -1765,8 +1770,11 @@
     <ROW Action="SetPropertyFontStretch" Type="51" Source="SELECTED_FONTSTRETCH" Target="&quot;Condensed&quot;"/>
     <ROW Action="SetPropertyFontWeight" Type="51" Source="SELECTED_FONTWEIGHT" Target="Light"/>
     <ROW Action="SetPropertyLanguageSelected" Type="51" Source="LANGUAGE_SELECTED" Target="EnglishUK"/>
+    <ROW Action="SetPropertyNewLauncherRunning" Type="51" Source="MINECRAFT_NEW_LAUNCHER_STATE" Target="[AI_PROCESS_STATE]"/>
+    <ROW Action="SetPropertyOldLauncherRunning" Type="51" Source="MINECRAFT_OLD_LAUNCHER_STATE" Target="[AI_PROCESS_STATE]"/>
     <ROW Action="SetUpNewLine" Type="38" Target="Script Text" TargetUnformatted="Session.Property(&quot;NEWLINE&quot;) = vbLf"/>
-    <ROW Action="StopProcessMinecraft" Type="1" Source="aicustact.dll" Target="StopProcess" WithoutSeq="true" Options="1" AdditionalSeq="AI_DATA_SETTER_6"/>
+    <ROW Action="StopProcessMinecraftNewLauncher" Type="65" Source="aicustact.dll" Target="StopProcess" WithoutSeq="true" Options="1" AdditionalSeq="AI_DATA_SETTER_9"/>
+    <ROW Action="StopProcessMinecraftOldLauncher" Type="65" Source="aicustact.dll" Target="StopProcess" WithoutSeq="true" Options="1" AdditionalSeq="AI_DATA_SETTER_6"/>
     <ROW Action="UninstallPreviousVersions" Type="1" Source="aicustact.dll" Target="UninstallPreviousVersions" Options="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
@@ -1953,15 +1961,15 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="64"/>
-    <ROW Action="AI_DpiContentScale" Sequence="63"/>
-    <ROW Action="AI_EnableDebugLog" Sequence="62"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="68"/>
+    <ROW Action="AI_DpiContentScale" Sequence="67"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="66"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
     <ROW Action="OptiKeyProperties" Sequence="57"/>
     <ROW Action="UninstallPreviousVersions" Condition="( NOT Installed )" Sequence="201"/>
-    <ROW Action="EyeMineProperties" Sequence="61"/>
+    <ROW Action="EyeMineProperties" Sequence="65"/>
     <ROW Action="GetMinecraftSaves" Condition="( NOT Installed )" Sequence="58"/>
     <ROW Action="SetPropertyEyeTrackerSelected" Sequence="52"/>
     <ROW Action="SetPropertyFontStretch" Sequence="53"/>
@@ -1969,9 +1977,13 @@
     <ROW Action="SetPropertyFontFamily" Sequence="56"/>
     <ROW Action="SetPropertyFontWeight" Sequence="55"/>
     <ROW Action="SetUpNewLine" Sequence="51"/>
-    <ROW Action="DetectProcessMinecraft" Sequence="60"/>
+    <ROW Action="DetectProcessOldLauncher" Sequence="60"/>
     <ROW Action="AI_DATA_SETTER_5" Sequence="59"/>
     <ROW Action="AI_ExtractTempFiles" Sequence="1001"/>
+    <ROW Action="SetPropertyOldLauncherRunning" Sequence="61"/>
+    <ROW Action="DetectProcessNewLauncher" Sequence="63"/>
+    <ROW Action="AI_DATA_SETTER_8" Sequence="62"/>
+    <ROW Action="SetPropertyNewLauncherRunning" Sequence="64"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>

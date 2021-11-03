@@ -77,7 +77,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         {
             // Set up show_.._dialog properties based on everything else we've computed so far
             session["SHOW_MC_INST_REQD_DLG"] = bool_to_number_string(session["MINECRAFT_INSTALLED"] == "false");
-            session["SHOW_MC_RUNNING_DLG"] = bool_to_number_string(session["AI_PROCESS_STATE"] == "Running");
+            session["SHOW_MC_RUNNING_DLG"] = bool_to_number_string(session["MINECRAFT_OLD_LAUNCHER_STATE"] == "Running" ||
+                                                                   session["MINECRAFT_NEW_LAUNCHER_STATE"] == "Running");
             session["SHOW_FORGE_INST_REQD_DLG"] = bool_to_number_string(session["FORGE_INSTALLED"] == "false");
             session["SHOW_EYETRACKER_DLG"] = bool_to_number_string(session["FIRST_MOD_INSTALL"] == "true");
 
