@@ -16,7 +16,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
         private static string forgeVersion = "1.14.4-forge-28.2.0";
         private static string forgeVersionOld = "1.11.2-forge1.11.2-13.20.0.2228";
-        private static string launcherProfiles = "launcher_profiles.json";
+        private static string launcherProfilesClassic = "launcher_profiles.json";
+        private static string launcherProfilesWin10 = "launcher_profiles_microsoft_store.json";
 
         private static string appDataPath, minecraftPath, versionsPath, forgePath;
 
@@ -28,7 +29,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             minecraftPath = Path.Combine(appDataPath, ".minecraft");
             versionsPath = Path.Combine(minecraftPath, "versions");
             forgePath = Path.Combine(versionsPath, forgeVersion);
-            launcherProfiles = Path.Combine(minecraftPath, launcherProfiles);
+            launcherProfilesClassic = Path.Combine(minecraftPath, launcherProfilesClassic);
+            launcherProfilesWin10 = Path.Combine(minecraftPath, launcherProfilesWin10);
 
         }
 
@@ -265,10 +267,14 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             
             // First time we'll do some forge config-poking
             // This will also ensure all paths have been created
-            bool alreadyInstalled = false;
+            string eyemineGameDir = Path.Combine(minecraftPath, "EyeMineV2");
+            bool alreadyInstalled = Directory.Exists(eyemineGameDir);
             try
             {
-                alreadyInstalled = UpdateForgeConfig(session);
+                // There are two possible places for config for classic launcher + Win 10 launcher
+                // Try both - update if found
+                SetUpMinecraftDirsAndUpdateForgeConfig(session, launcherProfilesClassic);
+                SetUpMinecraftDirsAndUpdateForgeConfig(session, launcherProfilesClassic);
             }
             catch (Exception e)
             {
@@ -278,8 +284,6 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             session.Log("alreadyInstalled? "+ alreadyInstalled);
 
             // Copy files for mod install
-
-            string eyemineGameDir = Path.Combine(minecraftPath, "EyeMineV2");
             string modDir = Path.Combine(eyemineGameDir, "mods");
             string configDir = Path.Combine(eyemineGameDir, "config");
             string rootDir = ".."; // AI runs this from a temporary subdir in the Program Files directory. 
@@ -339,25 +343,33 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
                             if (GetRegistryBool(regKey)) // already installed
                             {
-                                session.Log("already installed previously");
+                                session.Log("already installed previously according to registry");
                             }
                             else
                             {
-                                // Copy folder to new location
-                                try
-                                {
-                                    session.Log($"Copying {dir} to saves dir");
+                                var sourceDir = Path.Combine(installedSavesDir, dir);
+                                var destDir = Path.Combine(minecraftSavesDir, dir);
 
-                                    utils.DirectoryCopy(Path.Combine(installedSavesDir, dir),
-                                                        Path.Combine(minecraftSavesDir, dir), 
-                                                        true);
-                                    SetRegistryBool(regKey); // mark as installed
-                                }
-                                catch (Exception e)
+                                if (Directory.Exists(destDir))
                                 {
-                                    session.Log("Error copying files");
-                                    session.Log(e.ToString());
-                                    return ActionResult.Failure;
+                                    session.Log("destination folder already present");
+                                }
+                                else
+                                {
+                                    // Copy folder to new location
+                                    try
+                                    {
+                                        session.Log($"Copying {dir} to saves dir");
+
+                                        utils.DirectoryCopy(sourceDir, destDir, true);
+                                        SetRegistryBool(regKey); // mark as installed
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        session.Log("Error copying files");
+                                        session.Log(e.ToString());
+                                        return ActionResult.Failure;
+                                    }
                                 }
                             }
                         }
@@ -421,23 +433,24 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             return ActionResult.Success;
 
         }
-
-        public static bool UpdateForgeConfig(Session session)
+        
+        public static void SetUpMinecraftDirsAndUpdateForgeConfig(Session session, string filename)
         {
             session.Log("UpdateForgeConfig");
 
             // Check launcher_profiles file exists
-            if (!File.Exists(launcherProfiles))
+            if (!File.Exists(filename))
             {
-                throw new FileNotFoundException("Could not find launcher profiles: " + launcherProfiles);
+                session.Log("Could not find launcher profiles: " + filename);
+                return false;            
             }
 
             // Backup current file
-            string launcherProfilesBackup = utils.GetBackupName(launcherProfiles);
-            File.Copy(launcherProfiles, launcherProfilesBackup, true);
+            string launcherProfilesBackup = utils.GetBackupName(filename);
+            File.Copy(filename, launcherProfilesBackup, true);
 
             // Read JSON
-            string json = File.ReadAllText(launcherProfiles);
+            string json = File.ReadAllText(filename);
             dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
 
             // We'll take existing list of profiles and create new list, so we control the order
@@ -457,8 +470,12 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 Directory.CreateDirectory(Path.Combine(eyemineGameDir, "saves"));
                 Directory.CreateDirectory(Path.Combine(eyemineGameDir, "config"));
 
-                // Add new profile for EyeMineV2
-                // We hardcode a UUID (ugh) to get alphabetical-order-priority
+            }
+
+            // Add new profile for EyeMineV2 (if not already there)
+            // We hardcode a UUID (ugh) to get alphabetical-order-priority
+            if (!newProfiles.ContainsKey(eyemineGameDir))
+            {
                 string eyeMineUuid = "00000000055c4050a3461d644eca8b8f"; ;
 
                 // We'll put "lastUsed" to current time to get recent-use-priority
@@ -520,9 +537,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             string output =
                 Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
 
-            File.WriteAllText(launcherProfiles, output);
+            File.WriteAllText(filename, output);
             
-            return alreadyInstalled;
         }
 
         [CustomAction]
