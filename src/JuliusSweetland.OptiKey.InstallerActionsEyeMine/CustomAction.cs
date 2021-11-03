@@ -274,7 +274,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 // There are two possible places for config for classic launcher + Win 10 launcher
                 // Try both - update if found
                 SetUpMinecraftDirsAndUpdateForgeConfig(session, launcherProfilesClassic);
-                SetUpMinecraftDirsAndUpdateForgeConfig(session, launcherProfilesClassic);
+                SetUpMinecraftDirsAndUpdateForgeConfig(session, launcherProfilesWin10);
             }
             catch (Exception e)
             {
@@ -442,7 +442,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             if (!File.Exists(filename))
             {
                 session.Log("Could not find launcher profiles: " + filename);
-                return false;            
+                return;            
             }
 
             // Backup current file
