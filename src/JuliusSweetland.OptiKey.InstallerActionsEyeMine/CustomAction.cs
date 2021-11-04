@@ -493,6 +493,27 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                     new JProperty("lastUsed", nowString));
             }
 
+            // Add a dummy "lastUsed" time on forge-1.14.4 profile if it exists
+            // (otherwise the launcher auto-updates the empty lastUsed time)
+            
+            // Check if there's already an entry for this version
+            foreach (var profile in origProfiles.Values)
+            {
+                if (utils.HasProperty(profile, "lastVersionId") &&
+                    profile["lastVersionId"] == forgeVersion)
+                {
+                    session.Log("Found existing Forge 1.14.4 profile");                    
+
+                    DateTime oneHourAgo = DateTime.Now - TimeSpan.FromHours(1);
+                    var lastUsedString = String.Format("{0:s}Z", oneHourAgo);
+
+                    if (!utils.HasProperty(profile, "lastUsed"))
+                    {
+                        profile["lastUsed"] = lastUsedString;
+                    }
+                }
+            }                
+
             // Add old entry for classic if forge-1.11.2 exists. 
             // (on the first install it often gets overwritten by forge install)
             if (!alreadyInstalled)
