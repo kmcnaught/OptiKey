@@ -7,6 +7,7 @@ namespace JuliusSweetland.OptiKey.Enums
         Alienware17,
         GazeTracker,
         IrisbondDuo,
+        IrisbondHiru,
         MousePosition,
         SteelseriesSentry,
         TheEyeTribe,
@@ -31,6 +32,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case PointsSources.Alienware17: return Resources.ALIENWARE_17;
                 case PointsSources.GazeTracker: return Resources.GAZE_TRACKER;
                 case PointsSources.IrisbondDuo: return Resources.IRISBOND_DUO;
+                case PointsSources.IrisbondHiru: return Resources.IRISBOND_HIRU;
                 case PointsSources.MousePosition: return Resources.MOUSE_POSITION;
                 case PointsSources.SteelseriesSentry: return Resources.STEELSERIES_SENTRY;
                 case PointsSources.TheEyeTribe: return Resources.THE_EYE_TRIBE;
@@ -56,6 +58,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case PointsSources.Alienware17: return Resources.ALIENWARE_17_INFO;
                 case PointsSources.GazeTracker: return Resources.GAZE_TRACKER_INFO;
                 case PointsSources.IrisbondDuo: return Resources.IRISBOND_DUO_INFO;
+                case PointsSources.IrisbondHiru: return Resources.IRISBOND_HIRU_INFO;
                 case PointsSources.MousePosition: return Resources.MOUSE_POSITION_INFO;
                 case PointsSources.SteelseriesSentry: return Resources.TOBII_EYEX_INFO;
                 case PointsSources.TheEyeTribe: return "";
