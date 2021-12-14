@@ -782,6 +782,12 @@ namespace JuliusSweetland.OptiKey
                         pointSource);
                     break;
 
+                case TriggerSources.GamepadButtonDownUps:
+                    keySelectionTriggerSource = new GamepadButtonDownUpSource(
+                        Settings.Default.KeySelectionTriggerGamepadButtonDownUpButton,
+                        pointSource);
+                    break;
+
                 default:
                     throw new ArgumentException(
                         "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart OptiKey.");
@@ -809,6 +815,12 @@ namespace JuliusSweetland.OptiKey
                 case TriggerSources.MouseButtonDownUps:
                     pointSelectionTriggerSource = new MouseButtonDownUpSource(
                         Settings.Default.PointSelectionTriggerMouseDownUpButton,
+                        pointSource);
+                    break;
+
+                case TriggerSources.GamepadButtonDownUps:
+                    pointSelectionTriggerSource = new GamepadButtonDownUpSource(
+                        Settings.Default.PointSelectionTriggerGamepadButtonDownUpButton,
                         pointSource);
                     break;
 
@@ -883,6 +895,10 @@ namespace JuliusSweetland.OptiKey
                     case TriggerSources.MouseButtonDownUps:
                         keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerMouseDownUpButton));
                         break;
+
+                    case TriggerSources.GamepadButtonDownUps:
+                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerGamepadButtonDownUpButton));
+                        break;                        
                 }
 
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.KEY_SELECTION_TRIGGER_DESCRIPTION, keySelectionSb));
@@ -901,6 +917,10 @@ namespace JuliusSweetland.OptiKey
 
                     case TriggerSources.MouseButtonDownUps:
                         pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerMouseDownUpButton));
+                        break;
+
+                    case TriggerSources.GamepadButtonDownUps:
+                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerGamepadButtonDownUpButton));
                         break;
                 }
 

@@ -6,7 +6,8 @@ namespace JuliusSweetland.OptiKey.Enums
     {
         Fixations,
         KeyboardKeyDownsUps,
-        MouseButtonDownUps
+        MouseButtonDownUps,
+        GamepadButtonDownUps
     }
 
     public static partial class EnumExtensions
@@ -18,6 +19,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case TriggerSources.Fixations: return Resources.FIXATIONS_DWELL;
                 case TriggerSources.KeyboardKeyDownsUps: return Resources.KEYBOARD_KEY;
                 case TriggerSources.MouseButtonDownUps: return Resources.MOUSE_BUTTON;
+                case TriggerSources.GamepadButtonDownUps: return Resources.GAMEPAD_BUTTON;
             }
 
             return triggerSources.ToString();

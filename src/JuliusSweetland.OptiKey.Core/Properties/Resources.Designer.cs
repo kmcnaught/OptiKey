@@ -3386,6 +3386,17 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Key selection keyboard key:.
+        /// </summary>
+        public static string KEY_SELECTION_GAMEPAD_BUTTON_LABEL
+        {
+            get
+            {
+                return ResourceManager.GetString("KEY_SELECTION_GAMEPAD_BUTTON_LABEL", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Key selection mouse button:.
         /// </summary>
         public static string KEY_SELECTION_MOUSE_BUTTON_LABEL
@@ -5609,6 +5620,17 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("POINT_SELECTION_KEYBOARD_KEY_LABEL", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Point selection keyboard key:.
+        /// </summary>
+        public static string POINT_SELECTION_GAMEPAD_BUTTON_LABEL
+        {
+            get
+            {
+                return ResourceManager.GetString("POINT_SELECTION_GAMEPAD_BUTTON_LABEL", resourceCulture);
             }
         }
 
@@ -7944,6 +7966,17 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("YESNO", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to YES/NO.
+        /// </summary>
+        public static string GAMEPAD_BUTTON
+        {
+            get
+            {
+                return ResourceManager.GetString("GAMEPAD_BUTTON", resourceCulture);
             }
         }
     }

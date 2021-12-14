@@ -2,6 +2,7 @@
 
 using JuliusSweetland.OptiKey.Enums;
 using log4net;
+using SharpDX.XInput;
 
 namespace JuliusSweetland.OptiKey.Properties {
 
@@ -40,6 +41,22 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["KeySelectionTriggerKeyboardKeyDownUpKey"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("A")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public GamepadButtonFlags KeySelectionTriggerGamepadButtonDownUpButton
+        {
+            get
+            {
+                return ((GamepadButtonFlags)(this["KeySelectionTriggerGamepadButtonDownUpButton"]));
+            }
+            set
+            {
+                this["KeySelectionTriggerGamepadButtonDownUpButton"] = value;
             }
         }
 
@@ -906,6 +923,24 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["PointSelectionTriggerMouseDownUpButton"] = value;
             }
         }
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("A")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public GamepadButtonFlags PointSelectionTriggerGamepadButtonDownUpButton
+        {
+            get
+            {
+                return ((GamepadButtonFlags)(this["PointSelectionTriggerGamepadButtonDownUpButton"]));
+            }
+            set
+            {
+                this["PointSelectionTriggerGamepadButtonDownUpButton"] = value;
+            }
+        }
+
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
