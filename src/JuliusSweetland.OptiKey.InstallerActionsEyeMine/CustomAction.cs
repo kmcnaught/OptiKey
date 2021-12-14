@@ -14,7 +14,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
     public class CustomActionsEyeMine
     {
 
-        private static string forgeVersion = "1.14.4-forge-28.2.0";
+        private static string forgeVersion = "1.14.4-forge-28.2.26";
         private static string forgeVersionOld = "1.11.2-forge1.11.2-13.20.0.2228";
         private static string launcherProfilesClassic = "launcher_profiles.json";
         private static string launcherProfilesWin10 = "launcher_profiles_microsoft_store.json";
