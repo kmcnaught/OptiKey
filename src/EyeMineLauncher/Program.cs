@@ -16,6 +16,7 @@ namespace EyeMineLauncher
 
         static void Main(string[] args)
         {            
+            bool success = LaunchEyeMine();
 
             // Keep polling to ensure EyeMine running
             for (; ; )
@@ -24,14 +25,27 @@ namespace EyeMineLauncher
 
                 if (process == null || process.HasExited)
                 {
-                    bool success = LaunchEyeMine();
+                    Console.WriteLine("App has been closed, will relaunch in 10 seconds");
+                    SleepWithFeedback(10);
+
+                    success = LaunchEyeMine();
                     if (!success)
                     {
-                        Console.ReadLine();
-                        break;
+                        Console.WriteLine("Error launching process, will try again in 30 seconds");
+                        SleepWithFeedback(30);                        
                     }
                 }
             }
+        }
+
+        private static void SleepWithFeedback(int seconds)
+        {
+            for (int i = 0; i < seconds; i++)
+            {
+                Console.Write(".");
+                Thread.Sleep(1000);
+            }
+            Console.Write("\n");
         }
 
         private static bool LaunchEyeMine()
