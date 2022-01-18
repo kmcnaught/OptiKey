@@ -91,7 +91,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             backCommand = new DelegateCommand(Back);
             restartCommand = new DelegateCommand(Restart);
             setKioskCommand = new DelegateCommand(() => { Demo.SetAsShellApp(true); });
-            unsetKioskCommand = new DelegateCommand(() => { Demo.SetAsShellApp(false); });
+            unsetKioskCommand = new DelegateCommand(() => { Demo.SetAsShellApp(false); Demo.QuitLauncher(); }); // we need to quit launcher otherwise auto-restart kicks in
             captureMinecraftCommand = new DelegateCommand(CaptureMinecraft);
 
             //Setup key binding (Alt+M and Shift+Alt+M) to open settings

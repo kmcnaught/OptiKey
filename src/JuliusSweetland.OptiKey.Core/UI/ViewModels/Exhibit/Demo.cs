@@ -344,6 +344,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             return capturedProcess;
         }
 
+        public static void QuitLauncher()
+        {
+            Process p = Process.GetProcessesByName("EyeMineLauncher").FirstOrDefault();
+            if (p != null)
+            {
+                KillProcess(p, 1000);
+            }
+        }
+
         public static void SetAsShellApp(bool useAsShell)
         {
             Log.Info($"SetAsShellApp? {useAsShell}");
