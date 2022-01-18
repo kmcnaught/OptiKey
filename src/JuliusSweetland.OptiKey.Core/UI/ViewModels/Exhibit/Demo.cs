@@ -87,7 +87,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             minecraftLoadingTimer = new DispatcherTimer();
             minecraftLoadingTimer.Tick += (object sender, EventArgs e) =>
             {
-                if (!onboardVM.IsContextMenuOpen)
+                if (!onboardVM.IsContextMenuOpen && !TaskManagerProcessIsRunning())
                 {
                     UpdateOptiKeyFocusForState();
                 }
