@@ -36,18 +36,19 @@ namespace UnsetKiosk
 
                             string path = $"Computer\\HKEY_USERS\\{sidString}\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon";
 
-                            var names = Registry.Users.GetSubKeyNames();
-                            foreach (var name in names)
-                            {
-                                Console.WriteLine(name);
-                            }
 
-                            //OurKey = OurKey.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\", true);
-
-                            //SetValueWithLogging(OurKey, "Shell", "", RegistryValueKind.String);
+                            RegistryKey OurKey = Registry.Users.CreateSubKey(sidString);
+                            OurKey = OurKey.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\", true);
+                            SetValueWithLogging(OurKey, "Shell", "", RegistryValueKind.String);                            
 
                             Console.WriteLine("\nFinished, press Enter to continue....");
-                            Console.ReadLine();                            
+                            Console.ReadLine();
+
+
+                            Console.WriteLine("\nPlease restart PC to see changes");
+                            Console.WriteLine("\n(press Enter to quit)");
+                            Console.ReadLine();
+
                         }
                     }
                 }
