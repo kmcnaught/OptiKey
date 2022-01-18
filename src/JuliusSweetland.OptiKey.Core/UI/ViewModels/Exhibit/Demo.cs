@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -98,7 +99,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             // (state machine _should_ handle this but there are some corner cases not handled)
             focusTimer.Tick += (object sender, EventArgs e) =>
             {
-                if (!onboardVM.IsContextMenuOpen && !mainViewModel.IsToastOpen)
+                if (!onboardVM.IsContextMenuOpen && !mainViewModel.IsToastOpen && !TaskManagerProcessIsRunning())
                 {
                     // We don't take focus away from calibration, otherwise we can't send key presses there
                     if (onboardVM.mainState != OnboardingViewModel.OnboardState.WAIT_CALIB)
@@ -669,6 +670,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     mainViewModel.HandleFunctionKeySelectionResult(new KeyValue(FunctionKeys.Escape));
                 }
             }
+        }
+
+        private static bool TaskManagerProcessIsRunning()
+        {
+            return Process.GetProcesses().Where(p => p.ProcessName.ToLower().Equals("taskmgr")).Count() > 0;
         }
 
         private void OnBack(object sender, NHotkey.HotkeyEventArgs e)
