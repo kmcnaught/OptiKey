@@ -198,6 +198,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
             else
             {
+                // Force refresh of minecraft config dir (fml.toml is getting corrupted for some reason)
+                DeleteMinecraftConfig();
+
                 // Always ensure shell app (might have been undone for installing new version)
                 SetAsShellApp(true);
 
@@ -245,6 +248,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     tobiiWatcher.EnteredErrorState += TobiiWatcher_EnteredErrorState;
                     tobiiWatcher.EnteredTrackingState += TobiiWatcher_EnteredTrackingState;
                     tobiiWatcher.RecoveredErrorState += TobiiWatcher_RecoveredErrorState;
+                }
+            }
+        }
+
+        private void DeleteMinecraftConfig()
+        {
+            var  appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);            
+            var minecraftPath = Path.Combine(appDataPath, ".minecraft");
+            var configPath = Path.Combine(minecraftPath, "EyeMineExhibition", "config");
+            if (Directory.Exists(configPath))
+            {
+                try
+                {
+                    Directory.Delete(configPath);
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat("Error deleting config folder: {0}", configPath);
+                    Log.Error(e.ToString());
                 }
             }
         }
