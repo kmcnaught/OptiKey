@@ -198,8 +198,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
             else
             {
+                Console.WriteLine("Launching Minecraft...");
+
                 // Force refresh of minecraft config dir (fml.toml is getting corrupted for some reason)
-                DeleteMinecraftConfig();
+                // 01/02/22: We've replaced this with resetting to known good state via the launcher console app
+                //DeleteMinecraftConfig();
 
                 // Always ensure shell app (might have been undone for installing new version)
                 SetAsShellApp(true);
@@ -229,10 +232,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     minecraftWatcher = new MinecraftWatcher(minecraftProcess);
                     minecraftWatcher.MinecraftCrashed += (s, e) =>
                     {
+                        Console.WriteLine("Minecraft has crashed");
                         onboardVM.SetUnrecoverableError();
                     };
                     minecraftWatcher.MinecraftLoaded += (s, e) =>
                     {
+                        Console.WriteLine("Minecraft has finished loading");
                         if (!minecraftHasLoaded)
                         {
                             // First time we briefly maximise the window to avoid jump glitch later
@@ -273,22 +278,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void TobiiWatcher_RecoveredErrorState(object sender, EventArgs e)
         {            
+            Console.WriteLine("Tobii: recovered");
             onboardVM.TobiiRecovery();
         }
 
         private void TobiiWatcher_EnteredTrackingState(object sender, EventArgs e)
         {
+            Console.WriteLine("Tobii: tracking");
             Settings.Default.TobiiErrorCount = 0;
         }
 
         private void TobiiWatcher_EnteredErrorState(object sender, Tobii.EyeX.Framework.EyeTrackingDeviceStatus e)
         {
+            Console.WriteLine("Tobii: error");            
             Settings.Default.TobiiErrorCount++;
             onboardVM.TobiiError(e);
         }
 
         public static void CloseProcesses()
         {
+            Console.WriteLine("Closing processes...");
             // on startup, close any orphaned minecraft or ghost processes            
             foreach (Process p in Process.GetProcesses())
             {
@@ -321,7 +330,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     success = true;
                 }
                 catch (Exception e)
-                {                    
+                {
+                    Console.WriteLine($"Error: Exception killing process");
                     Log.Error("Exception killing process");
                     Log.Error(e.ToString());
                 }
@@ -357,6 +367,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                         }
                         else
                         {
+                            Console.WriteLine($"Error: Couldn't recognise bin directory in minecraft command: {cmd}");
                             Log.ErrorFormat("Couldn't recognise bin directory in minecraft command: {0}", cmd);
                         }
                     }
@@ -864,6 +875,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void ResetMinecraftWorldFile()
         {
+            Console.WriteLine("Resetting Minecraft data");
+
             //fixme: delete first?
             string applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string installedPath = AppContext.BaseDirectory;
