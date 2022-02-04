@@ -20,12 +20,16 @@ namespace EyeMineLauncher
         static void Main(string[] args)
         {
             ResetConfigFiles();
+            Console.Out.Flush();
+            Console.ReadLine();
+            return;
 
-            ClearCrashLogs(3);
+            KeepMostRecent(crashLogsPath, crashLogsCount);            
 
             while (true)
             {
-                // Synchronise - won't return until app closed
+                // Synchronous - won't return until app closed
+                ResetConfigFiles();           
                 long exitCode = LaunchEyeMine();
 
                 if (exitCode == 0)
@@ -58,6 +62,8 @@ namespace EyeMineLauncher
             string exeName = Path.Combine(fileInfo.Directory.ToString(), "EyeMineExhibition.exe");            
 #endif
             Console.WriteLine($"Launching {exeName}");
+            Console.Out.Flush();
+
             try
             {
                 // from https://stackoverflow.com/a/9730455
@@ -120,7 +126,7 @@ namespace EyeMineLauncher
         {
             try
             {
-                ClearCrashLogs(crashLogsCount);
+                KeepMostRecent(crashLogsPath, crashLogsCount);                
             }
             catch
             {
@@ -130,19 +136,20 @@ namespace EyeMineLauncher
             System.IO.File.WriteAllText(Path.Combine(crashLogsPath, filename), stringBuilder.ToString());
 
         }
-
-        private static void ClearCrashLogs(int numToKeep)
+        
+        private static void KeepMostRecent(string directoryName, int numToKeep)
         {
-            DirectoryInfo info = new DirectoryInfo(crashLogsPath);
+            DirectoryInfo info = new DirectoryInfo(directoryName);
             var files = info.GetFiles().OrderBy(p => p.CreationTime);
             int numToDelete = files.Count() - numToKeep;
 
-            var filenamesToDelete = files.Take(numToDelete).Select(f => f.FullName);            
+            var filenamesToDelete = files.Take(numToDelete).Select(f => f.FullName);
             foreach (var filename in filenamesToDelete)
             {
-                File.Delete(filename);                
+                File.Delete(filename);
             }
         }
+
 
         private static void ResetConfigFiles()
         {
@@ -174,7 +181,35 @@ namespace EyeMineLauncher
 
             // Optikey config - this can get corrupted. We need a backup so we can recover the minecraft command
             {
+
                 string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
+                string logsDir = Path.Combine(optikeyDir, @"Optikey\Logs");
+                string savedLogsDir = Path.Combine(applicationDataPath, @"SpecialEffectLogs");
+
+                try
+                {
+                    if (!Directory.Exists(savedLogsDir))
+                    {
+                        Directory.CreateDirectory(savedLogsDir);
+                    }
+
+                    // Move logs out first - renaming by date created             
+                    var dir = new DirectoryInfo(logsDir);
+                    Console.WriteLine("Creation time");
+                    foreach (FileInfo file in dir.GetFiles())
+                    {
+                        string newName = String.Format("EyeMine-{0:yyyy-MM-dd--HH-mm-ss}.log", file.LastWriteTime);
+                        File.Copy(file.FullName, Path.Combine(savedLogsDir, newName), true);
+                    }
+
+                    // Only keep a maximum number of log files
+                    KeepMostRecent(savedLogsDir, 100);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error backing up EyeMine logs");
+                }
+                
                 string optikeyBackup = Path.Combine(applicationDataPath, @"SpecialEffect.zip");
                 if (File.Exists(optikeyBackup))
                 {
@@ -183,8 +218,7 @@ namespace EyeMineLauncher
                         bool recursive = true;
                         Directory.Delete(optikeyDir, recursive);
                         ZipFile.ExtractToDirectory(optikeyBackup, optikeyDir);
-                        Console.WriteLine($"Resetting config folder: {optikeyDir}");
-
+                        Console.WriteLine($"Resetting config folder: {optikeyDir}");                   
                     }
                     catch (Exception e)
                     {
