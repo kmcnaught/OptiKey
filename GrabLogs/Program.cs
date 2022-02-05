@@ -27,7 +27,7 @@ namespace GrabLogs
             // This is expected to be run on the admin account, so we force the username back to EyeMine
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);            
             string userName = "EyeMine";
-            //appData = appData.Replace(Environment.UserName, userName);
+            appData = appData.Replace(Environment.UserName, userName);
 
             string minecraftDir = Path.Combine(appData, @".minecraft");
             string minecraftSubdir = Path.Combine(minecraftDir, @"EyeMineExhibition");
