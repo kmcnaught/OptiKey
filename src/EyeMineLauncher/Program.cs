@@ -21,8 +21,7 @@ namespace EyeMineLauncher
         {
             ResetConfigFiles();
             Console.Out.Flush();
-            Console.ReadLine();
-            return;
+            Console.ReadLine();            
 
             KeepMostRecent(crashLogsPath, crashLogsCount);            
 
@@ -174,6 +173,7 @@ namespace EyeMineLauncher
                     catch (Exception e)
                     {
                         Console.WriteLine($"Exception resetting config folder: {configDir}");
+                        Console.WriteLine("");
                         Console.WriteLine(e.ToString());
                     }
                 }
@@ -194,8 +194,7 @@ namespace EyeMineLauncher
                     }
 
                     // Move logs out first - renaming by date created             
-                    var dir = new DirectoryInfo(logsDir);
-                    Console.WriteLine("Creation time");
+                    var dir = new DirectoryInfo(logsDir);                    
                     foreach (FileInfo file in dir.GetFiles())
                     {
                         string newName = String.Format("EyeMine-{0:yyyy-MM-dd--HH-mm-ss}.log", file.LastWriteTime);
@@ -208,6 +207,8 @@ namespace EyeMineLauncher
                 catch (Exception e)
                 {
                     Console.WriteLine("Error backing up EyeMine logs");
+                    Console.WriteLine("");
+                    Console.WriteLine(e.ToString());
                 }
                 
                 string optikeyBackup = Path.Combine(applicationDataPath, @"SpecialEffect.zip");
@@ -222,7 +223,8 @@ namespace EyeMineLauncher
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine($"Exception resetting config folder: {optikeyDir}");
+                        Console.WriteLine($"Exception resetting config folder: {optikeyDir}");                        
+                        Console.WriteLine("");
                         Console.WriteLine(e.ToString());
                     }
                 }
