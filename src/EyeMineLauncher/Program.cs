@@ -20,8 +20,7 @@ namespace EyeMineLauncher
         static void Main(string[] args)
         {
             ResetConfigFiles();
-            Console.Out.Flush();
-            Console.ReadLine();            
+            Console.Out.Flush();                 
 
             KeepMostRecent(crashLogsPath, crashLogsCount);            
 
@@ -179,11 +178,10 @@ namespace EyeMineLauncher
                 }
             }
 
-            // Optikey config - this can get corrupted. We need a backup so we can recover the minecraft command
             {
 
                 string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
-                string logsDir = Path.Combine(optikeyDir, @"Optikey\Logs");
+                string logsDir = Path.Combine(optikeyDir, @"EyeMineV2\Logs");
                 string savedLogsDir = Path.Combine(applicationDataPath, @"SpecialEffectLogs");
 
                 try
@@ -210,7 +208,8 @@ namespace EyeMineLauncher
                     Console.WriteLine("");
                     Console.WriteLine(e.ToString());
                 }
-                
+
+                // Optikey config - this can get corrupted. We need a backup so we can recover the minecraft command
                 string optikeyBackup = Path.Combine(applicationDataPath, @"SpecialEffect.zip");
                 if (File.Exists(optikeyBackup))
                 {
