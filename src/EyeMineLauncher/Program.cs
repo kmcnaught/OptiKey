@@ -165,7 +165,10 @@ namespace EyeMineLauncher
                     try
                     {
                         bool recursive = true;
-                        Directory.Delete(configDir, recursive);
+                        if (Directory.Exists(configDir))
+                        {
+                            Directory.Delete(configDir, recursive);
+                        }
                         ZipFile.ExtractToDirectory(configBackup, configDir);
                         Console.WriteLine($"Resetting config folder: {configDir}");
                     }
@@ -216,7 +219,10 @@ namespace EyeMineLauncher
                     try
                     {
                         bool recursive = true;
-                        Directory.Delete(optikeyDir, recursive);
+                        if (Directory.Exists(optikeyDir))
+                        {
+                            Directory.Delete(optikeyDir, recursive);
+                        }
                         ZipFile.ExtractToDirectory(optikeyBackup, optikeyDir);
                         Console.WriteLine($"Resetting config folder: {optikeyDir}");                   
                     }
