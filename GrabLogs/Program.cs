@@ -40,8 +40,8 @@ namespace GrabLogs
             string minecraftLogsDir = Path.Combine(minecraftSubdir, "logs");
             directories.Add(minecraftLogsDir);
 
-            string launcherLogDir = Path.Combine(minecraftDir, "launcher_log.txt");
-            files.Add(launcherLogDir);
+            //string launcherLogDir = Path.Combine(minecraftDir, "launcher_log.txt");
+            //files.Add(launcherLogDir);
 
             // These are from our launcher
             string crashLogsPath = @"C:\CrashDumps\";
