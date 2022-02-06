@@ -169,6 +169,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void ForceResetTimer_Tick(object sender, EventArgs e)
         {
+            Console.WriteLine("Demo complete/timed out");
             RequireAutoReset(this, null);
             forceResetTimer.Stop();
         }
@@ -434,7 +435,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         // this is the entry point for the reset BUTTON, not a generic "reset" method
         public void Reset()
-        {            
+        {
+            
             RequireCloseCalibration(this, null);
             calibrationTimeoutTimer.Stop();
 
@@ -450,6 +452,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 demoState == DemoState.TIMED_OUT ||
                 demoState == DemoState.NO_USER)
             {
+                Console.WriteLine("User-requested reset");
                 StartResetViewModel();
                 RequireAutoReset(this, null); // pass back up to Demo.cs                
             }
@@ -496,6 +499,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                             SetState(OnboardState.IN_MINECRAFT);
                             ingameTimeoutTimer.Start();
                             ingameWarningTimer.Start();
+                            Console.WriteLine("Starting minecraft tutorial");
                             break;
                     }
                     break;
