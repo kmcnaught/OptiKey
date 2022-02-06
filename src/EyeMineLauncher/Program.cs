@@ -46,7 +46,7 @@ namespace EyeMineLauncher
 
         private static void Log(string msg)
         {
-            Console.Write(msg);
+            Console.WriteLine(msg);
             Console.Out.Flush();
             
             using (StreamWriter sw = File.AppendText(launcherLog))
