@@ -14,11 +14,15 @@ namespace EyeMineLauncher
     {
 
         private static string crashLogsPath = @"C:\CrashDumps\";
+        private static string launcherLog;
         private static int crashLogsCount = 3;
-
-
+        
         static void Main(string[] args)
         {
+            //TODO: delete old launcher logs
+            string filename = string.Format("launcher-{0:yyyy-MM-dd_hh-mm-ss}.txt", DateTime.Now);
+            launcherLog = Path.Combine(crashLogsPath, filename);
+
             ResetConfigFiles();
             Console.Out.Flush();                 
 
@@ -32,11 +36,30 @@ namespace EyeMineLauncher
 
                 if (exitCode == 0)
                 {
-                    Console.WriteLine("App has been closed, will relaunch in 10 seconds");
+                    Log("App has been closed, will relaunch in 10 seconds");
                 }
                 Console.Write("About to launch");
                 Console.Out.Flush();
                 SleepWithFeedback(10);
+            }
+        }
+
+        private static void Log(string msg)
+        {
+            Console.Write(msg);
+            Console.Out.Flush();
+            
+            using (StreamWriter sw = File.AppendText(launcherLog))
+            {
+                try
+                {
+                    sw.WriteLine(msg);
+                }
+                catch (Exception e)
+                {
+                    Log("Error logging to file\n");
+                    Log(e.Message);                    
+                }
             }
         }
 
@@ -52,14 +75,14 @@ namespace EyeMineLauncher
 
         private static long LaunchEyeMine()
         {
-            Console.WriteLine($"{ DateTime.Now }: Launching EyeMine");
+            Log($"{ DateTime.Now }: Launching EyeMine");
 #if DEBUG
             string exeName = @"..\..\..\JuliusSweetland.OptiKey.EyeMine\bin\Debug\EyeMineExhibition.exe";            
 #else
             FileInfo fileInfo = new FileInfo(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
             string exeName = Path.Combine(fileInfo.Directory.ToString(), "EyeMineExhibition.exe");            
 #endif
-            Console.WriteLine($"Launching {exeName}");
+            Log($"Launching {exeName}");
             Console.Out.Flush();
 
             try
@@ -88,7 +111,7 @@ namespace EyeMineLauncher
                 (
                     delegate (object sender, DataReceivedEventArgs e)
                     {
-                        Console.WriteLine(e.Data);
+                        Log(e.Data);
                         // append the new data to the data already read-in
                         outputBuilder.Append(e.Data);
                         outputBuilder.Append("\n");
@@ -104,18 +127,18 @@ namespace EyeMineLauncher
                 process.WaitForExit();
                 process.CancelOutputRead();
 
-                Console.WriteLine($"Exit code: {process.ExitCode}");
+                Log($"Exit code: {process.ExitCode}");
                 if (process.ExitCode < 0)
                 {
-                    Console.WriteLine("App has exited unexpectedly, saving crash log now");
+                    Log("App has exited unexpectedly, saving crash log now");
                     SaveCrashLog(outputBuilder);
                 }                
 
                 return process.ExitCode;
             }
             catch (Exception e) {
-                Console.WriteLine("Error launching application\n");
-                Console.WriteLine(e.Message);
+                Log("Error launching application\n");
+                Log(e.Message);
                 return -1;
             }            
         }
@@ -128,7 +151,7 @@ namespace EyeMineLauncher
             }
             catch
             {
-                Console.WriteLine("Unable to delete old crash logs");
+                Log("Unable to delete old crash logs");
             }
             string filename = string.Format("crash-{0:yyyy-MM-dd_hh-mm-ss}.txt", DateTime.Now);
             System.IO.File.WriteAllText(Path.Combine(crashLogsPath, filename), stringBuilder.ToString());
@@ -170,13 +193,13 @@ namespace EyeMineLauncher
                             Directory.Delete(configDir, recursive);
                         }
                         ZipFile.ExtractToDirectory(configBackup, configDir);
-                        Console.WriteLine($"Resetting config folder: {configDir}");
+                        Log($"Resetting config folder: {configDir}");
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine($"Exception resetting config folder: {configDir}");
-                        Console.WriteLine("");
-                        Console.WriteLine(e.ToString());
+                        Log($"Exception resetting config folder: {configDir}");
+                        Log("");
+                        Log(e.ToString());
                     }
                 }
             }
@@ -207,9 +230,9 @@ namespace EyeMineLauncher
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Error backing up EyeMine logs");
-                    Console.WriteLine("");
-                    Console.WriteLine(e.ToString());
+                    Log("Error backing up EyeMine logs");
+                    Log("");
+                    Log(e.ToString());
                 }
 
                 // Optikey config - this can get corrupted. We need a backup so we can recover the minecraft command
@@ -224,13 +247,13 @@ namespace EyeMineLauncher
                             Directory.Delete(optikeyDir, recursive);
                         }
                         ZipFile.ExtractToDirectory(optikeyBackup, optikeyDir);
-                        Console.WriteLine($"Resetting config folder: {optikeyDir}");                   
+                        Log($"Resetting config folder: {optikeyDir}");                   
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine($"Exception resetting config folder: {optikeyDir}");                        
-                        Console.WriteLine("");
-                        Console.WriteLine(e.ToString());
+                        Log($"Exception resetting config folder: {optikeyDir}");                        
+                        Log("");
+                        Log(e.ToString());
                     }
                 }
             }
