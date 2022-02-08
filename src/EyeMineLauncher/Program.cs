@@ -171,6 +171,25 @@ namespace EyeMineLauncher
             }
         }
 
+        private static void ReplaceDirectoryFromZip(string zipName, string destDir)
+        {
+            
+            // Generate temporary folder name so we can unzip into TMP and roll back if necessary
+            string tmpDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+
+            // Try unzipping
+            // (may throw)
+            ZipFile.ExtractToDirectory(zipName, tmpDir);
+
+            // If that was successful, we can continue with deleting original folder             
+            if (Directory.Exists(destDir))
+            {
+                Directory.Delete(destDir, recursive: true);
+            }
+
+            // If that was successful, replace with extracted directory
+            Directory.Move(tmpDir, destDir);
+        }
 
         private static void ResetConfigFiles()
         {
@@ -187,12 +206,7 @@ namespace EyeMineLauncher
                 {
                     try
                     {
-                        bool recursive = true;
-                        if (Directory.Exists(configDir))
-                        {
-                            Directory.Delete(configDir, recursive);
-                        }
-                        ZipFile.ExtractToDirectory(configBackup, configDir);
+                        ReplaceDirectoryFromZip(configBackup, configDir);
                         Log($"Resetting config folder: {configDir}");
                     }
                     catch (Exception e)
@@ -241,12 +255,7 @@ namespace EyeMineLauncher
                 {
                     try
                     {
-                        bool recursive = true;
-                        if (Directory.Exists(optikeyDir))
-                        {
-                            Directory.Delete(optikeyDir, recursive);
-                        }
-                        ZipFile.ExtractToDirectory(optikeyBackup, optikeyDir);
+                        ReplaceDirectoryFromZip(optikeyBackup, optikeyDir);
                         Log($"Resetting config folder: {optikeyDir}");                   
                     }
                     catch (Exception e)
