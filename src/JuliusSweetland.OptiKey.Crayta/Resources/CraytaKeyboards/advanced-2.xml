@@ -1,0 +1,123 @@
+<Keyboard>
+  <Name>Advanced-2</Name>
+  <SymbolMargin>10</SymbolMargin>   
+  <BackgroundColor>Transparent</BackgroundColor>
+  <Height>100%</Height>
+  <Position>Top</Position>   
+  <Width>100%</Width>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <BorderColor>Transparent</BorderColor>
+  <WindowState>Floating</WindowState>
+  <HideFromKeyboardMenu>true</HideFromKeyboardMenu>
+  <Grid>
+    <Rows>10</Rows>
+    <Cols>12</Cols>
+  </Grid>
+  <Content>    
+    <DynamicKey Row="0" Col="7">
+      <Label>Toggle\nadvanced</Label>
+      <KeyDown>Tab</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>Tab</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="8">
+      <Label>Toggle\ncontrols</Label>
+      <ChangeKeyboard BackReturnsHere="False">advanced-1</ChangeKeyboard>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="9">      
+      <Label>Back</Label>
+      <Action>BackFromKeyboard</Action>    
+      <Symbol>BackIcon</Symbol>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="2">
+      <Label>Precision\nTank</Label>
+      <Action Payload="0.5">LegacyJoystick</Action>  
+    </DynamicKey>
+    <DynamicKey Row="1" Col="3">
+      <Label>Tank\ncontrols</Label>
+      <Action>LegacyJoystick</Action>  
+    </DynamicKey>
+    <DynamicKey Row="1" Col="4">
+      <Label>Move</Label>
+      <Action>LeftJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="7">
+      <Label>Look</Label>
+      <Action>RightJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="8">
+      <Label>Walk</Label>      
+      <KeyToggle PauseWhenLookingAtAnyKey="true">XBoxLeftThumb|Forward|1.0</KeyToggle>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="9">
+      <Label>Precision\nLook</Label>
+      <Action Payload="0.5">RightJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="1">
+      <Label>Slow\nwalk</Label>
+      <KeyToggle PauseWhenLookingAtAnyKey="true">XBoxLeftThumb|Forward|0.5</KeyToggle>   
+    </DynamicKey>    
+    <DynamicKey Row="9" Col="0">
+      <Label>brush\nsize --</Label>
+      <Action>MouseScrollToBottom</Action>
+      <Action>undefined</Action>
+    </DynamicKey>
+    <DynamicKey Row="8" Col="3">
+      <Label>Left click</Label>
+      <Action>MouseMoveAndLeftClick</Action>
+      <Symbol>MouseLeftClickIcon</Symbol>
+    </DynamicKey>
+    <DynamicKey Row="8" Col="8">
+      <Label>Right click</Label>
+      <Action>MouseMoveAndRightClick</Action>
+      <Symbol>MouseRightClickIcon</Symbol>
+    </DynamicKey>      
+    <DynamicKey Row="8" Col="9">
+      <Label>Drag (live)</Label>
+      <Action>MouseDragLive</Action>
+      <Symbol>MouseDragIcon</Symbol>
+    </DynamicKey> 
+    <DynamicKey Row="9" Col="1">
+      <Label>brush\nsize++</Label>
+      <Action>MouseScrollToTop</Action>
+    </DynamicKey>    
+    <DynamicKey Row="9" Col="2">
+      <Label>Toggle\nLibrary</Label>
+      <KeyDown>l</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>l</KeyUp>
+    </DynamicKey>      
+    <DynamicKey Row="9" Col="3">
+      <Label>Middle\nclick</Label>
+      <Action>MouseMoveAndMiddleClick</Action>
+      <Symbol>MouseMiddleClickIcon</Symbol>
+    </DynamicKey>
+    <DynamicKey Row="9" Col="8">
+      <Label>Mouse drag</Label>
+      <Action>MouseDrag</Action>
+      <Symbol>MouseDragIcon</Symbol>
+    </DynamicKey>
+    <DynamicKey Row="9" Col="9">
+      <Label>Toggle\nproperties</Label>
+      <KeyDown>t</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>t</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="9" Col="10">
+      <Label>Undo</Label>
+      <KeyDown>LeftCtrl</KeyDown>
+      <KeyDown>z</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>z</KeyUp>
+      <KeyUp>LeftCtrl</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="9" Col="11">
+      <Label>Redo</Label>
+      <KeyDown>LeftCtrl</KeyDown>
+      <KeyDown>y</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>y</KeyUp>
+      <KeyUp>LeftCtrl</KeyUp>
+    </DynamicKey>
+  </Content>
+</Keyboard>

@@ -1,0 +1,94 @@
+<Keyboard>
+  <Name>Advanced\nediting</Name>
+  <SymbolMargin>10</SymbolMargin>   
+  <BackgroundColor>Transparent</BackgroundColor>
+  <Height>100%</Height>
+  <Position>Top</Position>   
+  <Width>100%</Width>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <BorderColor>Transparent</BorderColor>
+  <WindowState>Floating</WindowState>
+  <VerticalOffset>0</VerticalOffset>
+  <Grid>
+    <Rows>10</Rows>
+    <Cols>12</Cols>
+  </Grid>
+  <Content>
+    <DynamicKey Row="0" Col="7">
+      <Label>Toggle\nadvanced\nmode</Label>
+      <KeyDown>Tab</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>Tab</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="8">
+      <Label>Toggle\ncontrols</Label>
+      <ChangeKeyboard BackReturnsHere="False">advanced-2</ChangeKeyboard>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="9">      
+      <Label>Back</Label>
+      <Action>BackFromKeyboard</Action>
+      <Symbol>BackIcon</Symbol>    
+    </DynamicKey>
+    <DynamicKey Row="1" Col="6">
+      <Symbol>AlphaIcon</Symbol>
+      <ChangeKeyboard BackReturnsHere="True">Coding</ChangeKeyboard>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="7">
+      <Action>MouseMagnifier</Action>    
+      <Label>Magnifier</Label>
+      <Symbol>MouseMagnifierIcon</Symbol>  
+    </DynamicKey>
+    <DynamicKey Row="1" Col="8">
+      <Label>Save\nFile</Label>
+      <KeyDown>LeftCtrl</KeyDown>
+      <KeyDown>s</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>s</KeyUp>
+      <KeyUp>LeftCtrl</KeyUp>
+    </DynamicKey>
+<!-- not working - crayta doesn't pick up double clicks
+    <DynamicKey Row="7" Col="3">
+      <Label>Left double click</Label>
+      <Action>MouseMoveAndLeftDoubleClick</Action>            
+    </DynamicKey> -->
+
+    <DynamicKey Row="8" Col="9">
+      <Label>Drag (live)</Label>
+      <Action>MouseDragLive</Action>
+      <Symbol>MouseDragIcon</Symbol>
+    </DynamicKey> 
+
+    <DynamicKey Row="8" Col="3">
+      <Label>Left click</Label>
+      <Action>MouseMoveAndLeftClick</Action>
+      <Symbol>MouseLeftClickIcon</Symbol>
+    </DynamicKey>
+    <DynamicKey Row="8" Col="8">
+      <Label>Right click</Label>
+      <Action>MouseMoveAndRightClick</Action>
+      <Symbol>MouseRightClickIcon</Symbol>
+    </DynamicKey>    
+    <DynamicKey Row="9" Col="2">
+      <Label>Toggle\nLibrary</Label>
+      <KeyDown>l</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>l</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="9" Col="3">
+      <Label>Left middle\nclick</Label>
+      <Action>MouseMoveAndMiddleClick</Action>
+      <Symbol>MouseMiddleClickIcon</Symbol>
+    </DynamicKey>
+    <DynamicKey Row="9" Col="8">
+      <Label>Mouse drag</Label>
+      <Action>MouseDrag</Action>
+      <Symbol>MouseDragIcon</Symbol>
+    </DynamicKey>
+    <DynamicKey Row="9" Col="9">
+      <Label>Toggle\nproperties</Label>
+      <KeyDown>t</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>t</KeyUp>
+    </DynamicKey> -->
+  </Content>
+</Keyboard>

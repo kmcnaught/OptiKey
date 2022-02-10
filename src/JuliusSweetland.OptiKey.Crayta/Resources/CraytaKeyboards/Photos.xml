@@ -1,0 +1,67 @@
+<Keyboard>
+   <Name>Photos</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <Height>80%</Height>
+   <Position>Top</Position>
+   <BorderThickness>20,20,20,20</BorderThickness>
+   <Width>80%</Width>
+   <HorizontalOffset>3.8%</HorizontalOffset>
+   <VerticalOffset>2.8%</VerticalOffset>
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>
+   <WindowState>Floating</WindowState>
+  <Grid>
+    <Rows>7</Rows>
+    <Cols>10</Cols>
+  </Grid>
+  <Content>
+    <DynamicKey Row="0" Col="1">
+       <Label>Precision\nTank</Label>
+      <Action Payload="0.5">LegacyJoystick</Action>        
+    </DynamicKey>
+    <DynamicKey Row="0" Col="2">
+      <Label>Tank\ncontrols</Label>
+      <Action>LegacyJoystick</Action>      
+    </DynamicKey>
+    <DynamicKey Row="0" Col="3">
+      <Label>Move</Label>
+      <Action>LeftJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="5">
+      <Label>Look</Label>
+      <Action>RightJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="6">
+      <Label>Walk</Label>      
+      <KeyToggle PauseWhenLookingAtAnyKey="true">XBoxLeftThumb|Forward|1.0</KeyToggle>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="7">
+      <Label>Precision\nlook</Label>      
+      <Action Payload="0.5">RightJoystick</Action>
+    </DynamicKey>    
+
+
+    <DynamicKey Row="0" Col="9">
+      <Symbol>BackIcon</Symbol>
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+
+    <DynamicKey Row="1" Col="9">
+      <Label>Photo\nmode</Label>
+      <Text>p</Text>
+    </DynamicKey>
+    
+    <DynamicKey Row="4" Col="9">      
+      <Label>More...</Label>
+      <ChangeKeyboard BackReturnsHere="True">Photos_MORE</ChangeKeyboard>
+    </DynamicKey>
+    <DynamicKey Row="6" Col="4">
+      <Label>Ⓧ</Label>
+      <KeyDown>XboxX</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxX</KeyUp>
+    </DynamicKey>
+    
+  </Content>
+</Keyboard>
