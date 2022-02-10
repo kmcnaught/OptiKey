@@ -314,6 +314,9 @@
     <Content Include="Resources\CraytaKeyboards\Actions.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\CraytaKeyboards\advanced-1.xml" />
+    <Resource Include="Resources\CraytaKeyboards\advanced-2.xml" />
+    <Resource Include="Resources\CraytaKeyboards\coding.xml" />
     <Content Include="Resources\CraytaKeyboards\crayta_edit.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -371,6 +374,8 @@
     <Content Include="Resources\CraytaKeyboards\MainMenu.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\CraytaKeyboards\Photos.xml" />
+    <Resource Include="Resources\CraytaKeyboards\Photos_MORE.xml" />
     <EmbeddedResource Include="version.txt" />
     <SplashScreen Include="Resources\Icons\CraytaSplash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
