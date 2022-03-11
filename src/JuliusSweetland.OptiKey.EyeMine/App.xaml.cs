@@ -385,12 +385,22 @@ namespace JuliusSweetland.OptiKey.EyeMine
             return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', separator));
         }
 
+        private static int GetNumberOfFiles(string directoryName)
+        {
+            int numFiles = 0;
+            foreach (string file in Directory.GetFiles(directoryName, "*", SearchOption.AllDirectories))
+            {
+                numFiles++;
+            }
+            return numFiles;
+        }
         protected new static string GetDefaultUserKeyboardFolder()
         {
             var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Keyboards");
 
             // If directory doesn't exist, assume that this is the first run. So, move dynamic keyboards from installation package to target path
-            if (!Directory.Exists(applicationDataPath))
+            // It's also possible for the directories to exist, but no files - this may happen if you've done an uninstall
+            if (!Directory.Exists(applicationDataPath) || GetNumberOfFiles(applicationDataPath) == 0)
             {
                 Directory.CreateDirectory(applicationDataPath);
                 String baseSourceDir = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\EyeMineKeyboards";
