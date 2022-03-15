@@ -14,6 +14,30 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 {
     public class InstallerUtils
     {
+
+        internal static string bool_to_number_string(bool b)
+        {
+            return b ? "1" : "0";
+        }
+
+        internal static string[] FindAllModFiles(string baseDir)
+        {
+            return Directory.GetFiles(baseDir, "eyemine*.jar");
+        }
+
+        internal static string FindModFile(string baseDir)
+        {
+            string[] files = FindAllModFiles(baseDir);
+            if (files.Length > 0)
+            {
+                return files.First();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs, bool allowOverwrite = false)
         {
             // Get the subdirectories for the specified directory.

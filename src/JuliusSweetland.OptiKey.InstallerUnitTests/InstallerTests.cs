@@ -28,16 +28,28 @@ namespace JuliusSweetland.OptiKey.UnitTests
             Console.WriteLine(System.DateTime.Now);
 
             Console.WriteLine("");
-            Console.WriteLine(CustomActionsEyeMine.GetRegistryBool("a"));
-            Console.WriteLine(CustomActionsEyeMine.GetRegistryBool("b"));
+            Console.WriteLine(RegistryUtils.GetRegistryBool("a"));
+            Console.WriteLine(RegistryUtils.GetRegistryBool("b"));
 
-            CustomActionsEyeMine.SetRegistryBool("a");
-            CustomActionsEyeMine.SetRegistryBool("b");
+            RegistryUtils.SetRegistryBool("a");
+            RegistryUtils.SetRegistryBool("b");
 
             Console.WriteLine("");
-            Console.WriteLine(CustomActionsEyeMine.GetRegistryBool("a"));
-            Console.WriteLine(CustomActionsEyeMine.GetRegistryBool("b"));            
+            Console.WriteLine(RegistryUtils.GetRegistryBool("a"));
+            Console.WriteLine(RegistryUtils.GetRegistryBool("b"));            
             
+        }
+
+        [Test]
+        public void TestRegistryBool()
+        {
+            RegistryUtils.SetRegistryBool("woop");
+        }
+
+        [Test]
+        public void TestRegistryStrings1()
+        {
+            RegistryUtils.SetRegistryString("wibble", "wobble");
         }
 
         [Test]

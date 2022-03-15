@@ -1711,8 +1711,8 @@
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DATA_SETTER" Type="51" Source="CustomActionData" Target="[AI_SETUPEXEPATH]"/>
-    <ROW Action="AI_DATA_SETTER_1" Type="51" Source="InstallMod" Target="[EYETRACKER_SELECTED]"/>
-    <ROW Action="AI_DATA_SETTER_2" Type="51" Source="CopySaves" Target="[CHECKLIST_SAVES]"/>
+    <ROW Action="AI_DATA_SETTER_1" Type="51" Source="InstallMod" Target="[EYETRACKER_SELECTED]|[TARGET_APPDATA_FOLDER]"/>
+    <ROW Action="AI_DATA_SETTER_2" Type="51" Source="CopySaves" Target="[CHECKLIST_SAVES]|[TARGET_APPDATA_FOLDER]"/>
     <ROW Action="AI_DATA_SETTER_3" Type="51" Source="CustomActionData" Target="[~]"/>
     <ROW Action="AI_DATA_SETTER_4" Type="51" Source="CustomActionData" Target="[~]"/>
     <ROW Action="AI_DATA_SETTER_5" Type="51" Source="CustomActionData" Target="MinecraftLauncher.exe"/>
@@ -1774,6 +1774,7 @@
     <ROW Action="SetPropertyLanguageSelected" Type="51" Source="LANGUAGE_SELECTED" Target="EnglishUK"/>
     <ROW Action="SetPropertyNewLauncherRunning" Type="51" Source="MINECRAFT_NEW_LAUNCHER_STATE" Target="[AI_PROCESS_STATE]"/>
     <ROW Action="SetPropertyOldLauncherRunning" Type="51" Source="MINECRAFT_OLD_LAUNCHER_STATE" Target="[AI_PROCESS_STATE]"/>
+    <ROW Action="SetPropertyTargetAppDataFolder" Type="51" Source="TARGET_APPDATA_FOLDER" Target=" "/>
     <ROW Action="SetUpNewLine" Type="38" Target="Script Text" TargetUnformatted="Session.Property(&quot;NEWLINE&quot;) = vbLf"/>
     <ROW Action="StopProcessMinecraftNewLauncher" Type="65" Source="aicustact.dll" Target="StopProcess" WithoutSeq="true" Options="1" AdditionalSeq="AI_DATA_SETTER_9"/>
     <ROW Action="StopProcessMinecraftOldLauncher" Type="65" Source="aicustact.dll" Target="StopProcess" WithoutSeq="true" Options="1" AdditionalSeq="AI_DATA_SETTER_6"/>
@@ -1964,29 +1965,30 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="68"/>
-    <ROW Action="AI_DpiContentScale" Sequence="67"/>
-    <ROW Action="AI_EnableDebugLog" Sequence="66"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="60"/>
+    <ROW Action="AI_DpiContentScale" Sequence="59"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="58"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
-    <ROW Action="OptiKeyProperties" Sequence="57"/>
     <ROW Action="UninstallPreviousVersions" Condition="( NOT Installed )" Sequence="201"/>
-    <ROW Action="EyeMineProperties" Sequence="65"/>
-    <ROW Action="GetMinecraftSaves" Condition="( NOT Installed )" Sequence="58"/>
     <ROW Action="SetPropertyEyeTrackerSelected" Sequence="52"/>
-    <ROW Action="SetPropertyFontStretch" Sequence="53"/>
-    <ROW Action="SetPropertyLanguageSelected" Sequence="54"/>
-    <ROW Action="SetPropertyFontFamily" Sequence="56"/>
-    <ROW Action="SetPropertyFontWeight" Sequence="55"/>
+    <ROW Action="SetPropertyFontStretch" Sequence="54"/>
+    <ROW Action="SetPropertyLanguageSelected" Sequence="55"/>
+    <ROW Action="SetPropertyFontFamily" Sequence="57"/>
+    <ROW Action="SetPropertyFontWeight" Sequence="56"/>
     <ROW Action="SetUpNewLine" Sequence="51"/>
-    <ROW Action="DetectProcessOldLauncher" Sequence="60"/>
-    <ROW Action="AI_DATA_SETTER_5" Sequence="59"/>
     <ROW Action="AI_ExtractTempFiles" Sequence="1001"/>
-    <ROW Action="SetPropertyOldLauncherRunning" Sequence="61"/>
-    <ROW Action="DetectProcessNewLauncher" Sequence="63"/>
-    <ROW Action="AI_DATA_SETTER_8" Sequence="62"/>
-    <ROW Action="SetPropertyNewLauncherRunning" Sequence="64"/>
+    <ROW Action="EyeMineProperties" Sequence="1292"/>
+    <ROW Action="OptiKeyProperties" Sequence="1291"/>
+    <ROW Action="GetMinecraftSaves" Condition="( NOT Installed )" Sequence="1293"/>
+    <ROW Action="DetectProcessOldLauncher" Sequence="1282"/>
+    <ROW Action="AI_DATA_SETTER_5" Sequence="1281"/>
+    <ROW Action="DetectProcessNewLauncher" Sequence="1285"/>
+    <ROW Action="AI_DATA_SETTER_8" Sequence="1284"/>
+    <ROW Action="SetPropertyOldLauncherRunning" Sequence="1283"/>
+    <ROW Action="SetPropertyNewLauncherRunning" Sequence="1286"/>
+    <ROW Action="SetPropertyTargetAppDataFolder" Sequence="53"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>

@@ -69,8 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomAction.cs" />
+    <Compile Include="InstallationPaths.cs" />
     <Compile Include="InstallerUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistryUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CustomAction.config" />
