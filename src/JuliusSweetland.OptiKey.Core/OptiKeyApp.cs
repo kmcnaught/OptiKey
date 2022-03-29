@@ -26,7 +26,6 @@ using log4net;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
-using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using Octokit;
 using presage;
 using Application = System.Windows.Application;
@@ -91,9 +90,8 @@ namespace JuliusSweetland.OptiKey
         // Previously in core OptiKey ctr, now called by derived classes after setting up Settings class
         protected void Initialise(bool useNBug=true)
         {
-            //Setup unhandled exception handling and NBug
-            if (useNBug)
-                AttachUnhandledExceptionHandlers();
+            //Setup unhandled exception handling 
+            AttachUnhandledExceptionHandlers();
 
             //Log startup diagnostic info
             Log.Info("STARTING UP.");
@@ -558,8 +556,15 @@ namespace JuliusSweetland.OptiKey
 
         #region Attach Unhandled Exception Handlers
 
+        // Make sure exceptions get logged, and a crash message appears
         protected static void AttachUnhandledExceptionHandlers()
         {
+            // Make sure unhandled exceptions get logged
+            Current.DispatcherUnhandledException += (sender, args) => Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) => Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
+            TaskScheduler.UnobservedTaskException += (sender, args) => Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
+
+            // Create crash dump via NBug
 #if !DEBUG
             Application.Current.DispatcherUnhandledException += NBug.Handler.DispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += NBug.Handler.UnhandledException;
@@ -587,23 +592,30 @@ namespace JuliusSweetland.OptiKey
 
             NBug.Settings.CustomUIEvent += (sender, args) =>
             {
-                var crashWindow = new CrashWindow
+                //Shortcut exceptions caused by a failure to send a previous crash report to prevent a crash loop
+                if(args.Exception.Message.Contains("An exception occurred while submitting bug report with Mail"))
                 {
-                    Topmost = true,
-                    ShowActivated = true
-                };
-                crashWindow.ShowDialog();
+                    args.Result = new UIDialogResult(ExecutionFlow.ContinueExecution, SendReport.DoNotSend);
+                    return;
+                }
 
-                //The crash report has not been created yet - the UIDialogResult SendReport param determines what happens next
-                args.Result = new UIDialogResult(ExecutionFlow.BreakExecution, SendReport.Send);
+                Application.Current.Dispatcher.Invoke((Action)delegate 
+                {
+                    var crashWindow = new CrashWindow
+                    {
+                        Topmost = true,
+                        ShowActivated = true
+                    };
+                    crashWindow.ShowDialog();
+
+                    //The crash report has not been created yet - the UIDialogResult SendReport param determines what happens next
+                    args.Result = new UIDialogResult(ExecutionFlow.BreakExecution, SendReport.Send);
+                });
             };
 
             NBug.Settings.InternalLogWritten += (logMessage, category) => Log.DebugFormat("NBUG:{0} - {1}", category, logMessage);
 #endif
 
-            Current.DispatcherUnhandledException += (sender, args) => Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
-            AppDomain.CurrentDomain.UnhandledException += (sender, args) => Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
-            TaskScheduler.UnobservedTaskException += (sender, args) => Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
         }
 
         #endregion
