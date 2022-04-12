@@ -92,9 +92,10 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             {
                 supported = utils.IsTobiiSupported();
             }
-            catch
+            catch (Exception e)
             {
-                return ActionResult.Failure;
+                session.Log("Exception querying Tobii support");
+                session.Log(e.ToString());
             }
 
             session["TOBII_SUPPORTED"] = supported.ToString().ToLower();
