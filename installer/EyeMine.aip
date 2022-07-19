@@ -12,6 +12,7 @@
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="ARPPRODUCTICON" Value="EyeMineV2.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
+    <ROW Property="ExtractFilesFirst" Value="1"/>
     <ROW Property="FIRST_MOD_INSTALL" Value="false"/>
     <ROW Property="FORGE_INSTALLED" Value="false"/>
     <ROW Property="LAUNCHER_RUNNING" Value="false"/>
