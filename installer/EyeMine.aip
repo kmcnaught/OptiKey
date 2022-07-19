@@ -1997,7 +1997,7 @@
     <ROW Action="AI_ResolveKnownFolders" Sequence="60"/>
     <ROW Action="AI_DpiContentScale" Sequence="59"/>
     <ROW Action="AI_EnableDebugLog" Sequence="58"/>
-    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="98"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
     <ROW Action="UninstallPreviousVersions" Condition="( NOT Installed )" Sequence="201"/>
@@ -2008,9 +2008,8 @@
     <ROW Action="SetPropertyFontWeight" Sequence="56"/>
     <ROW Action="SetUpNewLine" Sequence="51"/>
     <ROW Action="AI_ExtractTempFiles" Sequence="1001"/>
-    <ROW Action="EyeMineProperties" Sequence="1292"/>
     <ROW Action="OptiKeyProperties" Sequence="1291"/>
-    <ROW Action="GetMinecraftSaves" Condition="( NOT Installed )" Sequence="1293"/>
+    <ROW Action="GetMinecraftSaves" Condition="( NOT Installed )" Sequence="1292"/>
     <ROW Action="DetectProcessOldLauncher" Sequence="1282"/>
     <ROW Action="AI_DATA_SETTER_5" Sequence="1281"/>
     <ROW Action="DetectProcessNewLauncher" Sequence="1285"/>
@@ -2023,6 +2022,7 @@
     <ROW Action="AI_InstallPrerequisite" Sequence="1299"/>
     <ROW Action="AI_InstallPostPrerequisite" Sequence="1301"/>
     <ROW Action="AI_CleanPrereq" Sequence="1302"/>
+    <ROW Action="EyeMineProperties" Sequence="99"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
