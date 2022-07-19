@@ -422,15 +422,20 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
         }
         
-        public static void SetUpMinecraftDirsAndUpdateForgeConfig(Session session, string filename)
+        public static bool SetUpMinecraftDirsAndUpdateForgeConfig(Session session, string filename)
         {
             session.Log("UpdateForgeConfig");
 
             // Check launcher_profiles file exists
-            if (!File.Exists(filename))
+            if (File.Exists(filename))
+            {
+                session.Log("Found launcher profiles: " + filename);
+                session.Log("Setting up minecraft directories and updating forge config");
+            }
+            else
             {
                 session.Log("Could not find launcher profiles: " + filename);
-                return;            
+                return false;
             }
 
             // Backup current file
@@ -546,7 +551,8 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
 
             File.WriteAllText(filename, output);
-            
+
+            return true;
         }
 
         private static void CreateDirectory(Session session, string dirName)
