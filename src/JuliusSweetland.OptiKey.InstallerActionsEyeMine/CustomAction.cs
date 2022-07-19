@@ -452,10 +452,10 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 session.Log("Creating directories, fixing up profile");
 
                 // Create directories (our installer needs it to exist so it can copy mod over)
-                Directory.CreateDirectory(installationPath.eyemineGameDir);
-                Directory.CreateDirectory(Path.Combine(installationPath.eyemineGameDir, "mods"));
-                Directory.CreateDirectory(Path.Combine(installationPath.eyemineGameDir, "saves"));
-                Directory.CreateDirectory(Path.Combine(installationPath.eyemineGameDir, "config"));
+                CreateDirectory(session, installationPath.eyemineGameDir);
+                CreateDirectory(session, Path.Combine(installationPath.eyemineGameDir, "mods"));
+                CreateDirectory(session, Path.Combine(installationPath.eyemineGameDir, "saves"));
+                CreateDirectory(session, Path.Combine(installationPath.eyemineGameDir, "config"));
 
             }
 
@@ -547,6 +547,12 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
             File.WriteAllText(filename, output);
             
+        }
+
+        private static void CreateDirectory(Session session, string dirName)
+        {
+            session.Log($"Creating directory {dirName}");
+            Directory.CreateDirectory(dirName);
         }
 
         [CustomAction]
