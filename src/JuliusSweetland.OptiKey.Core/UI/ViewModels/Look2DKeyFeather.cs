@@ -75,28 +75,64 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         }
 
+        private int pressTimeMs = 100;
+
         #endregion
-        private void UpdateKey(DirectionKeys key, bool active)
+
+        private void PressKey(DirectionKeys key)
         {
+            keyboardOutputService.PressKey(keyMappings[key], KeyPressKeyValue.KeyPressType.Press);
+            keyDownStates[key] = true;
+            keyDownUpTimes[key] = Time.HighResolutionUtcNow;
+        }
+
+        private void ReleaseKey(DirectionKeys key, bool stillActive)
+        {
+            keyboardOutputService.PressKey(keyMappings[key], KeyPressKeyValue.KeyPressType.Release);
+            keyDownStates[key] = false;
+            if (stillActive)
+                keyDownUpTimes[key] = Time.HighResolutionUtcNow;
+            else
+                keyDownUpTimes[key] = DateTime.MaxValue;
+        }
+
+        private void UpdateKey(DirectionKeys key, bool active, float amount)
+        {
+            pressTimeMs = 10;
             DateTime now = Time.HighResolutionUtcNow;
+            int pauseTimeMs = (int)((1.0 - amount) * 100);
             if (active)
             {
                 if (keyDownUpTimes[key] < now)
                 {
-                    // already pressed, no-op
+                    // already pressed (or paused), recompute feathering
+                    TimeSpan delta = now - keyDownUpTimes[key];
+                    if (keyDownStates[key]) // being held down - for pressTimeMs
+                    {
+                        if (delta.TotalMilliseconds > pressTimeMs)
+                        {
+                            ReleaseKey(key, true);
+                        }
+                    }
+                    else
+                    { 
+                        // Pause between presses
+                        if (delta.TotalMilliseconds > pauseTimeMs)
+                        {
+                            PressKey(key);
+                        }
+                    }
                 }
                 else
                 {
-                    keyboardOutputService.PressKey(keyMappings[key], KeyPressKeyValue.KeyPressType.Press);
-                    keyDownUpTimes[key] = now;
+                    PressKey(key);
                 }
             }
             else
             {
-                if (keyDownUpTimes[key] < now) // was pressed
+                if (keyDownUpTimes[key] < now) // was pressed, need to release
                 {
-                    keyboardOutputService.PressKey(keyMappings[key], KeyPressKeyValue.KeyPressType.Release);
-                    keyDownUpTimes[key] = DateTime.MaxValue;
+                    ReleaseKey(key, false);
                 }
             }
         }
@@ -112,10 +148,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             bool keyUpActive = y < -eps;
             bool keyDownActive = y > eps;
 
-            UpdateKey(DirectionKeys.Left, keyLeftActive);
-            UpdateKey(DirectionKeys.Right, keyRightActive);
-            UpdateKey(DirectionKeys.Up, keyUpActive);
-            UpdateKey(DirectionKeys.Down, keyDownActive);            
+            x = Math.Abs(x);
+            y = Math.Abs(y);
+
+            UpdateKey(DirectionKeys.Left, keyLeftActive, x);
+            UpdateKey(DirectionKeys.Right, keyRightActive, x);
+            UpdateKey(DirectionKeys.Up, keyUpActive, y);
+            UpdateKey(DirectionKeys.Down, keyDownActive, y);            
         }
 
     }
