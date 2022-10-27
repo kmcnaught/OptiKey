@@ -1302,6 +1302,32 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             return false;
+        }        
+
+        private static string VKCodeToUnicode(char character)
+        {
+            System.Text.StringBuilder sbString = new System.Text.StringBuilder();
+
+            //Get keyboard layout of currently focused window
+            IntPtr hWnd = PInvoke.GetForegroundWindow();
+            int lpdwProcessId;
+            int winThreadProcId = PInvoke.GetWindowThreadProcessId(hWnd, out lpdwProcessId);
+            IntPtr keyboardLayout = PInvoke.GetKeyboardLayout(winThreadProcId);
+
+            //Attempt to lookup virtual key code (and modifier states)
+            var vkKeyScan = PInvoke.VkKeyScanEx(character, keyboardLayout);
+            if (vkKeyScan != -1)
+            {
+                byte[] bKeyState = new byte[256];
+                bool bKeyStateStatus = PInvoke.GetKeyboardState(bKeyState);
+                if (!bKeyStateStatus)
+                    return "";
+                uint lScanCode = PInvoke.MapVirtualKey((uint)vkKeyScan, 0);
+                IntPtr HKL = PInvoke.GetKeyboardLayout(0);
+
+                PInvoke.ToUnicodeEx((uint)vkKeyScan, lScanCode, bKeyState, sbString, (int)5, (uint)0, HKL);
+            }
+            return sbString.ToString();
         }
 
         private string ApplyModifierKeys(string textToModify)
@@ -1317,18 +1343,29 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (!string.IsNullOrEmpty(textToModify))
             {
-                if (keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
-                {
-                    var modifiedText = textToModify.FirstCharToUpper();
-                    Log.DebugFormat("LeftShift is on so modifying '{0}' to '{1}.", textToModify, modifiedText);
-                    return modifiedText;
-                }
 
-                if (keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown)
+                // For a single character, apply modifiers using ToUnicodeEx
+                char[] characters = textToModify.ToCharArray();
+                if (characters.Length == 1)
                 {
-                    var modifiedText = textToModify.ToUpper(Settings.Default.KeyboardAndDictionaryLanguage.ToCultureInfo());
-                    Log.DebugFormat("LeftShift is locked so modifying '{0}' to '{1}.", textToModify, modifiedText);
-                    return modifiedText;
+                    return VKCodeToUnicode(characters[0]);
+                }
+                else
+                {
+                    // Applies to multi key selection - use appropriate auto-capitalisation
+                    if (keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
+                    {
+                        var modifiedText = textToModify.FirstCharToUpper();
+                        Log.DebugFormat("LeftShift is on so modifying '{0}' to '{1}.", textToModify, modifiedText);
+                        return modifiedText;
+                    }
+
+                    if (keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown)
+                    {
+                        var modifiedText = textToModify.ToUpper(Settings.Default.KeyboardAndDictionaryLanguage.ToCultureInfo());
+                        Log.DebugFormat("LeftShift is locked so modifying '{0}' to '{1}.", textToModify, modifiedText);
+                        return modifiedText;
+                    }
                 }
             }
 
