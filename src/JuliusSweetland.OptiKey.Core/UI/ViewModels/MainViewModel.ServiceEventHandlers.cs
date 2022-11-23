@@ -159,10 +159,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 catch (Exception ex)
                 {
                     Log.Error("Exception caught by inputServiceSelectionResultHandler", ex);
-
+                    inputService.RequestSuspend();
                     RaiseToastNotification(OptiKey.Properties.Resources.ERROR_TITLE,
                         OptiKey.Properties.Resources.ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT,
-                        NotificationTypes.Error, () => { });
+                        NotificationTypes.Error, () => {
+                            inputService.RequestResume();
+                        });
                 }
             };
 
@@ -2803,6 +2805,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 Log.Error("Error running plugin.", exception);
                 while (exception.InnerException != null) exception = exception.InnerException;
+                inputService.RequestSuspend();
                 if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
                 {
                     audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
