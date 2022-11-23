@@ -315,18 +315,26 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 MainGrid.ColumnDefinitions.RemoveRange(0, MainGrid.ColumnDefinitions.Count);
             if (MainGrid.RowDefinitions.Count > 0)
                 MainGrid.RowDefinitions.RemoveRange(0, MainGrid.RowDefinitions.Count);
+
             AddRowsToGrid(4);
             AddColsToGrid(4);
 
             // Top middle two cells are main error message
             {
-                var newKey = new Key {Text = heading};
+                var newKey = new Key {
+                    Text = heading,
+                    DisabledForegroundColourOverride = Brushes.White
+                };
                 PlaceKeyInPosition(newKey, 0, 1, 1, 2);
+                
             }
 
             // Middle row is detailed error message
             {
-                var newKey = new Key {Text = content};
+                var newKey = new Key {
+                    Text = content,
+                    DisabledForegroundColourOverride = Brushes.White
+                };
                 PlaceKeyInPosition(newKey, 1, 0, 2, 4);
             }
 
@@ -358,6 +366,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 var newKey = new Key();
                 PlaceKeyInPosition(newKey, 3, 1, 1, 2);
             }
+
+            // Set as default floating window size, i.e. pretty large
+            // This ensures the error message and keys are a reasonable size!            
+            windowManipulationService.OverridePersistedState(false, "Floating",
+                    "Top", "", "60%", "60%", "0", "0"); // Empty strings will allow defaults to be used instead
+            
         }
 
         private void DynamicItemError(XmlDynamicItem dynamicItem)
@@ -377,7 +391,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     ? " at row " + dynamicItem.Row + " column " + dynamicItem.Col
                     : " having width " + dynamicItem.Width + " and height " + dynamicItem.Height;
 
-            SetupErrorLayout("Invalid keyboard file", line1 + line2 + line3);
+            SetupErrorLayout("Invalid keyboard file", line1 + "\n" + line2 + "\n" + line3);
         }
         
         private bool ListContainsWidth(List<int> list, int col, int width)
