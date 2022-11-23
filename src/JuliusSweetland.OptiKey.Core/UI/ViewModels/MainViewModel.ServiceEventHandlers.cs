@@ -54,24 +54,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 UpdateLookToScroll(CurrentPositionPoint);
             };
 
-            inputServiceSelectionProgressHandler = (o, progress) =>
+            inputServiceSelectionProgressHandler = (o, tuple) =>
             {
-                if (progress.Item1 == null
-                    && progress.Item2 == 0)
+                var mode = tuple.Item1;
+                var pointAndKV = tuple.Item2;
+                var progress = tuple.Item3;
+
+                if (pointAndKV == null
+                    && progress == 0)
                 {
                     ResetSelectionProgress(); //Reset all keys
                 }
-                else if (progress.Item1 != null)
+                else if (pointAndKV != null)
                 {
-                    if (SelectionMode == SelectionModes.Key
-                        && progress.Item1.KeyValue != null)
+                    if (mode == SelectionModes.Key)
                     {
-                        keyStateService.KeySelectionProgress[progress.Item1.KeyValue] =
-                            new NotifyingProxy<double>(progress.Item2);
+                        keyStateService.KeySelectionProgress[pointAndKV.KeyValue] =
+                            new NotifyingProxy<double>(progress);
                     }
-                    else if (SelectionMode == SelectionModes.Point)
+                    if (mode == SelectionModes.Point)
                     {
-                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Point, progress.Item2);
+                        PointSelectionProgress = new Tuple<Point, double>(pointAndKV.Point, progress);
                     }
                 }
             };
@@ -79,11 +82,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             inputServiceSelectionHandler = (o, value) =>
             {
                 Log.Info("Selection event received from InputService.");
+                var mode = value.Item1;
+                var point = value.Item2.Point;
+                var keyValue = value.Item2.KeyValue;
 
                 SelectionResultPoints = null; //Clear captured points from previous SelectionResult event
 
-                if (SelectionMode == SelectionModes.Key
-                    && value.KeyValue != null)
+                if (keyValue != null)
                 {
                     if (!capturingStateManager.CapturingMultiKeySelection)
                     {
@@ -92,20 +97,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     if (KeySelection != null)
                     {
-                        Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", value.KeyValue);
-                        KeySelection(this, value.KeyValue);
+                        Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", keyValue);
+                        KeySelection(this, keyValue);
                     }
                 }
-                else if (SelectionMode == SelectionModes.Point)
+                if (mode == SelectionModes.Point)
                 {
                     if (PointSelection != null)
                     {
-                        PointSelection(this, value.Point);
+                        PointSelection(this, point);
 
                         if (nextPointSelectionAction != null)
                         {
-                            Log.InfoFormat("Executing nextPointSelectionAction delegate with point '{0}'", value.Point);
-                            nextPointSelectionAction(value.Point);
+                            Log.InfoFormat("Executing nextPointSelectionAction delegate with point '{0}'", point);
+                            nextPointSelectionAction(point);
                         }
                     }
                 }
@@ -117,13 +122,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 try
                 {
-                    var points = tuple.Item1;
-                    var singleKeyValue = tuple.Item2;
-                    var multiKeySelection = tuple.Item3;
+                    var mode = tuple.Item1;
+                    var points = tuple.Item2;
+                    var singleKeyValue = tuple.Item3;
+                    var multiKeySelection = tuple.Item4;
 
                     SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
 
-                    if (SelectionMode == SelectionModes.Key && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
+                    if ((singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                     {
                         //DynamicKeys can have a list of Commands and perform multiple actions
                         if (singleKeyValue != null && singleKeyValue.Commands != null && singleKeyValue.Commands.Any())
@@ -145,7 +151,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             KeySelectionResult(singleKeyValue, multiKeySelection);
                         }
                     }
-                    else if (SelectionMode == SelectionModes.Point)
+                    if (SelectionMode == SelectionModes.Point)
                     {
                         //SelectionResult event has no real meaning when dealing with point selection
                     }

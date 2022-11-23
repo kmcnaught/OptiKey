@@ -21,13 +21,14 @@ namespace JuliusSweetland.OptiKey.Services
 
         private IDisposable pointsPerSecondSubscription;
         private IDisposable currentPositionSubscription;
-        private IDisposable selectionProgressSubscription;
         private IDisposable eyeGestureTriggerSubscription;
-        private IDisposable selectionTriggerSubscription;
         private IDisposable multiKeySelectionSubscription;
         private CancellationTokenSource mapToDictionaryMatchesCancellationTokenSource;
 
-        private ITriggerSource selectionTriggerSource;
+
+        private List<ITriggerSource> activeSelectionTriggerSources;
+        private List<IDisposable> activeSelectionTriggerSubscriptions;
+        private List<IDisposable> activeSelectionProgressSubscriptions;
 
         private TriggerSignal? startMultiKeySelectionTriggerSignal;
         private TriggerSignal? stopMultiKeySelectionTriggerSignal;
@@ -71,33 +72,53 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Create Selection Progress Subscription
 
+        private void SetupSelectionSources(SelectionModes mode)
+        {
+            activeSelectionTriggerSources = new List<ITriggerSource>();
+
+            // Key selection is always active
+            activeSelectionTriggerSources.Add(keySelectionTriggerSource);
+
+            // Point selection only active if there is a mouse action underway
+            if (mode == SelectionModes.Point) // TODO rename vars here to be clearer
+                activeSelectionTriggerSources.Add(pointSelectionTriggerSource);
+        }
+
         private void CreateSelectionProgressSubscription(SelectionModes mode)
         {
             Log.DebugFormat("Creating subscription to {0} SelectionTriggerSource for progress info.", SelectionMode);
-
-            ITriggerSource selectionTriggerSource = null;
-
-            switch (mode)
+            
+            if (eyeGestureTriggerSource != null && eyeGestureTriggerSubscription == null)
             {
-                case SelectionModes.Key:
-                    selectionTriggerSource = keySelectionTriggerSource;
-                    break;
-
-                case SelectionModes.Point:
-                    selectionTriggerSource = pointSelectionTriggerSource;
-                    break;
+                eyeGestureTriggerSubscription = eyeGestureTriggerSource.Sequence
+                    .ObserveOnDispatcher()
+                    .Subscribe(ProcessGestureTrigger);
             }
 
-            if (selectionTriggerSource != null)
+            //FIXME does it matter that we do this twice? in consecutive methods
+            SetupSelectionSources(mode);
+
+            // FIXME do we need to do anythign else here to clean up?                          
+            activeSelectionProgressSubscriptions.RemoveAll(s => true);
+
+
+            foreach (ITriggerSource source in activeSelectionTriggerSources)
             {
-                selectionProgressSubscription = selectionTriggerSource.Sequence
+                //FIXME: we don't seem to dispose of these
+                activeSelectionProgressSubscriptions.Add(source.Sequence
                     .Where(ts => ts.Progress != null)
                     .DistinctUntilChanged()
                     .ObserveOnDispatcher()
                     .Subscribe(ts =>
                     {
-                        PublishSelectionProgress(new Tuple<PointAndKeyValue, double>(ts.PointAndKeyValue, ts.Progress.Value));
-                    });
+                        if (source == keySelectionTriggerSource)
+                        // fixme - this needs to be split point vs key
+                            PublishSelectionProgress(new Tuple<SelectionModes, PointAndKeyValue, double>(
+                                SelectionModes.Key, ts.PointAndKeyValue, ts.Progress.Value));
+                        else if (source == pointSelectionTriggerSource)
+                            PublishSelectionProgress(new Tuple<SelectionModes, PointAndKeyValue, double>(
+                                SelectionModes.Point, ts.PointAndKeyValue, ts.Progress.Value));
+                    }));                
             }
         }
 
@@ -108,34 +129,38 @@ namespace JuliusSweetland.OptiKey.Services
         private void CreateSelectionSubscriptions(SelectionModes mode)
         {
             Log.DebugFormat("Creating subscription to {0} SelectionTriggerSource for selections & results.", SelectionMode);
-
-            switch (mode)
-            {
-                case SelectionModes.Key:
-                    selectionTriggerSource = keySelectionTriggerSource;
-                    break;
-
-                case SelectionModes.Point:
-                    selectionTriggerSource = pointSelectionTriggerSource;
-                    break;
-            }
-
+           
             if (eyeGestureTriggerSource != null && eyeGestureTriggerSubscription == null)
             {
                 eyeGestureTriggerSubscription = eyeGestureTriggerSource.Sequence
                     .ObserveOnDispatcher()
-                    .Subscribe(ProcessSelectionTrigger);
+                    .Subscribe(ProcessGestureTrigger);
             }
 
-            if (selectionTriggerSource != null)
-            {
-                selectionTriggerSubscription = selectionTriggerSource.Sequence
+            SetupSelectionSources(mode);
+
+            // FIXME: surely we dispose them here first? Or does it happen automatically when dropped from list?
+            foreach (IDisposable sub in activeSelectionTriggerSubscriptions)           
+                sub.Dispose();
+            activeSelectionTriggerSubscriptions.RemoveAll(s => true);
+
+            // Always subscribe to key selection triggers
+            activeSelectionTriggerSubscriptions.Add(keySelectionTriggerSource.Sequence
+                    .Where(ts => ts.Signal != null)
                     .ObserveOnDispatcher()
-                    .Subscribe(ProcessSelectionTrigger);
-            }
+                    .Subscribe(ProcessKeySelectionTrigger));
+
+            if (mode == SelectionModes.Point)
+            {
+                activeSelectionTriggerSubscriptions.Add(pointSelectionTriggerSource.Sequence
+                    .Where(ts => ts.Signal != null)
+                    .ObserveOnDispatcher()
+                    .Subscribe(ProcessPointSelectionTrigger));
+
+            }            
         }
 
-        private async void ProcessSelectionTrigger(TriggerSignal triggerSignal)
+        private async void ProcessKeySelectionTrigger(TriggerSignal triggerSignal)
         {
             if (triggerSignal.Signal >= 1
                 && !CapturingMultiKeySelection)
@@ -143,82 +168,73 @@ namespace JuliusSweetland.OptiKey.Services
                 //We are not currently capturing a multikey selection and have received a high (start) trigger signal
                 if (triggerSignal.PointAndKeyValue != null)
                 {
-                    Log.Debug("Selection trigger signal (with relevent PointAndKeyValue) detected.");
-
-                    if (SelectionMode == SelectionModes.Key)
+                    Log.Debug("Key selection trigger signal (with relevant PointAndKeyValue) detected.");
+                    
+                    if (triggerSignal.PointAndKeyValue.KeyValue != null
+                        && (keyStateService.KeyEnabledStates == null || keyStateService.KeyEnabledStates[triggerSignal.PointAndKeyValue.KeyValue]))
                     {
-                        if (triggerSignal.PointAndKeyValue.KeyValue != null
-                            && (keyStateService.KeyEnabledStates == null || keyStateService.KeyEnabledStates[triggerSignal.PointAndKeyValue.KeyValue]))
+                        Log.Debug("Selection mode is KEY and the key on which the trigger occurred is enabled.");
+
+                        if (MultiKeySelectionSupported
+                            && keyStateService.KeyEnabledStates[KeyValues.MultiKeySelectionIsOnKey] //It is possible for MultiKeySelectionIsOnKey to be down/locked down even though it is disabled - check for this
+                            && keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown()
+                            && triggerSignal.PointAndKeyValue.KeyValue != null
+                            && KeyValues.MultiKeySelectionKeys.Contains(triggerSignal.PointAndKeyValue.KeyValue)
+                            && !KeyValues.CombiningKeys.Any(key => keyStateService.KeyDownStates[key].Value.IsDownOrLockedDown())) //Do not start if any combining ("dead") keys are down
                         {
-                            Log.Debug("Selection mode is KEY and the key on which the trigger occurred is enabled.");
+                            Log.Debug("Multi-key selection is currently enabled and the key on which the trigger occurred is a letter. Publishing the selection and beginning a new multi-key selection capture.");
 
-                            if (MultiKeySelectionSupported
-                                && keyStateService.KeyEnabledStates[KeyValues.MultiKeySelectionIsOnKey] //It is possible for MultiKeySelectionIsOnKey to be down/locked down even though it is disabled - check for this
-                                && keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown()
-                                && triggerSignal.PointAndKeyValue.KeyValue != null
-                                && KeyValues.MultiKeySelectionKeys.Contains(triggerSignal.PointAndKeyValue.KeyValue)
-                                && !KeyValues.CombiningKeys.Any(key => keyStateService.KeyDownStates[key].Value.IsDownOrLockedDown())) //Do not start if any combining ("dead") keys are down
-                            {
-                                Log.Debug("Multi-key selection is currently enabled and the key on which the trigger occurred is a letter. Publishing the selection and beginning a new multi-key selection capture.");
+                            //Multi-key selection is allowed and the trigger occurred on a letter - start a capture
+                            startMultiKeySelectionTriggerSignal = triggerSignal;
+                            stopMultiKeySelectionTriggerSignal = null;
 
-                                //Multi-key selection is allowed and the trigger occurred on a letter - start a capture
-                                startMultiKeySelectionTriggerSignal = triggerSignal;
-                                stopMultiKeySelectionTriggerSignal = null;
+                            CapturingMultiKeySelection = true;
 
-                                CapturingMultiKeySelection = true;
+                            PublishSelection(SelectionModes.Key, triggerSignal.PointAndKeyValue);
 
-                                PublishSelection(triggerSignal.PointAndKeyValue);
+                            //Set the key's IsHighlighted property in order to show the green border
+                            keyStateService.KeyHighlightStates[triggerSignal.PointAndKeyValue.KeyValue].Value = true;
 
-                                //Set the key's IsHighlighted property in order to show the green border
-                                keyStateService.KeyHighlightStates[triggerSignal.PointAndKeyValue.KeyValue].Value = true;
-                                
-                                multiKeySelectionSubscription =
-                                    CreateMultiKeySelectionSubscription()
-                                        .ObserveOnDispatcher()
-                                        .Subscribe(
-                                            async pointsAndKeyValues => await ProcessMultiKeySelectionResult(pointsAndKeyValues, triggerSignal),
-                                            (exception =>
-                                            {
-                                                PublishError(this, exception);
+                            multiKeySelectionSubscription =
+                                CreateMultiKeySelectionSubscription()
+                                    .ObserveOnDispatcher()
+                                    .Subscribe(
+                                        async pointsAndKeyValues => await ProcessMultiKeySelectionResult(pointsAndKeyValues, triggerSignal),
+                                        (exception =>
+                                        {
+                                            PublishError(this, exception);
 
-                                                stopMultiKeySelectionTriggerSignal = null;
-                                                CapturingMultiKeySelection = false;
-                                            }),
-                                            () =>
-                                            {
-                                                Log.Debug("Multi-key selection capture has completed.");
+                                            stopMultiKeySelectionTriggerSignal = null;
+                                            CapturingMultiKeySelection = false;
+                                        }),
+                                        () =>
+                                        {
+                                            Log.Debug("Multi-key selection capture has completed.");
 
-                                                stopMultiKeySelectionTriggerSignal = null;
-                                                CapturingMultiKeySelection = false;
+                                            stopMultiKeySelectionTriggerSignal = null;
+                                            CapturingMultiKeySelection = false;
 
-                                                //Set the key's IsHighlighted to false in order to remove the green border
-                                                keyStateService.KeyHighlightStates[triggerSignal.PointAndKeyValue.KeyValue].Value = false;
-                                            });
-                            }
-                            else
-                            {
-                                PublishSelection(triggerSignal.PointAndKeyValue);
-
-                                await Task.Delay(20); //Add a short delay to give time for the selection animation 
-
-                                PublishSelectionResult(new Tuple<List<Point>, KeyValue, List<string>>(
-                                    new List<Point> { triggerSignal.PointAndKeyValue.Point },
-                                    triggerSignal.PointAndKeyValue.KeyValue,
-                                    null));
-                            }
+                                            //Set the key's IsHighlighted to false in order to remove the green border
+                                            keyStateService.KeyHighlightStates[triggerSignal.PointAndKeyValue.KeyValue].Value = false;
+                                        });
                         }
                         else
                         {
-                            Log.Debug("Selection mode is KEY, but the trigger occurred away from a key or over a disabled key.");
+                            PublishSelection(SelectionModes.Key, triggerSignal.PointAndKeyValue);
+
+                            await Task.Delay(20); //Add a short delay to give time for the selection animation 
+
+                            PublishSelectionResult(new Tuple<SelectionModes, List<Point>, KeyValue, List<string>>(
+                                SelectionModes.Key,
+                                new List<Point> { triggerSignal.PointAndKeyValue.Point },
+                                triggerSignal.PointAndKeyValue.KeyValue,
+                                null));
                         }
                     }
-                    else if (SelectionMode == SelectionModes.Point)
+                    else
                     {
-                        PublishSelection(triggerSignal.PointAndKeyValue);
-
-                        PublishSelectionResult(new Tuple<List<Point>, KeyValue, List<string>>(
-                            new List<Point> { triggerSignal.PointAndKeyValue.Point }, null, null));
-                    }
+                        Log.Debug("Selection mode is KEY, but the trigger occurred away from a key or over a disabled key.");
+                    }                    
                 }
                 else
                 {
@@ -239,7 +255,8 @@ namespace JuliusSweetland.OptiKey.Services
                     || (triggerSignal.Signal <= -1 && Settings.Default.MultiKeySelectionTriggerStopSignal == TriggerStopSignals.NextLow))
                 {
                     //If we are using a fixation trigger source then the stop signal must occur on a letter
-                    if (!(selectionTriggerSource is IFixationTriggerSource)
+                    //FIXME: not sure this is right, we need to know which source sent the trigger
+                    if (!(activeSelectionTriggerSubscriptions.Any((s) => s is KeyFixationSource))
                         || (triggerSignal.PointAndKeyValue != null && triggerSignal.PointAndKeyValue.StringIsLetter))
                     {
                         Log.Debug("Trigger signal to stop the current multi-key selection capture detected.");
@@ -248,6 +265,87 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                 }
             }
+        }
+        private void ProcessPointSelectionTrigger(TriggerSignal triggerSignal)
+        {
+            //FIXME: Is it okay to permit a point selection when a multikey selection is underway?  We need to test if this results
+            // in undefined behaviour or poor UX
+            // In vanilla OK keyboards it's unlikely to happen as keys get disabled while multikey selection in progress
+            if (triggerSignal.Signal >= 1)
+            {
+                if (triggerSignal.PointAndKeyValue != null)
+                {
+                    Log.Debug("Point selection trigger signal (with relevant PointAndKeyValue) detected.");
+                   
+                    PublishSelection(SelectionModes.Point, triggerSignal.PointAndKeyValue);
+
+                    PublishSelectionResult(new Tuple<SelectionModes, List<Point>, KeyValue, List<string>>(
+                        SelectionModes.Key,
+                        new List<Point> { triggerSignal.PointAndKeyValue.Point }, null, null));
+                    
+                }
+                else
+                {
+                    Log.Error("TriggerSignal.Signal==1, but TriggerSignal.PointAndKeyValue is null. "
+                            + "Discarding trigger as point source is down, or producing stale points. "
+                            + "Publishing error instead.");
+
+                    if (!Settings.Default.SuppressTriggerWithoutPositionError)
+                    {
+                        PublishError(this, new ApplicationException(Resources.TRIGGER_WITHOUT_POSITION_ERROR));
+                    }
+                }
+            }            
+        }
+
+        private async void ProcessGestureTrigger(TriggerSignal triggerSignal)
+        { 
+            // TODO: Consider what states we might want gestures to *not* trigger in
+            // e.g. should it be allowed in "Point selection" mode? I don't think it would have been processed previously,
+            // but if we are allowing continuous / repeat mouse actions then it is probably important gestures can come through too.
+            // Do we want to allow a gesture to trigger a disabled key? 
+            if (CapturingMultiKeySelection)
+                return;
+
+            if (triggerSignal.Signal >= 1)            
+            {
+                if (triggerSignal.PointAndKeyValue != null)
+                {
+                    Log.Debug("Gesture trigger signal (with relevant PointAndKeyValue) detected.");
+
+                    {
+                        if (triggerSignal.PointAndKeyValue.KeyValue != null
+                            && (keyStateService.KeyEnabledStates == null || keyStateService.KeyEnabledStates[triggerSignal.PointAndKeyValue.KeyValue]))
+                        {                            
+                            PublishSelection(SelectionModes.Gesture, triggerSignal.PointAndKeyValue);
+
+                            await Task.Delay(20); //Add a short delay to give time for the selection animation 
+
+                            PublishSelectionResult(new Tuple<SelectionModes, List<Point>, KeyValue, List<string>>(
+                                SelectionModes.Gesture, 
+                                new List<Point> { triggerSignal.PointAndKeyValue.Point },
+                                triggerSignal.PointAndKeyValue.KeyValue,
+                                null));
+                            
+                        }
+                        else
+                        {
+                            Log.Debug("Selection mode is KEY, but the trigger occurred away from a key or over a disabled key.");
+                        }
+                    }                    
+                }
+                else
+                {
+                    Log.Error("TriggerSignal.Signal==1, but TriggerSignal.PointAndKeyValue is null. "
+                            + "Discarding trigger as point source is down, or producing stale points. "
+                            + "Publishing error instead.");
+
+                    if (!Settings.Default.SuppressTriggerWithoutPositionError)
+                    {
+                        PublishError(this, new ApplicationException(Resources.TRIGGER_WITHOUT_POSITION_ERROR));
+                    }
+                }
+            }            
         }
 
         private IObservable<IList<Timestamped<PointAndKeyValue>>> CreateMultiKeySelectionSubscription()
@@ -338,7 +436,8 @@ namespace JuliusSweetland.OptiKey.Services
                         reliableFirstLetter != null ? "IS" : "IS NOT");
 
                     //If we are using a fixation trigger and the stop trigger has occurred on a letter then it is reliable - use it
-                    string reliableLastLetter = selectionTriggerSource is IFixationTriggerSource
+                    //FIXME: not the right logic 
+                    string reliableLastLetter = activeSelectionTriggerSources.Any((s) => s is KeyFixationSource)
                         && stopMultiKeySelectionTriggerSignal != null
                         && stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue != null
                         && stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.StringIsLetter
@@ -354,7 +453,7 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Log.Debug("Publishing selection event on last letter of multi-key selection capture.");
 
-                        PublishSelection(stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue);
+                        PublishSelection(SelectionModes.Key, stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue);
                     }
 
                     //Why am I wrapping this call in a Task.Run? Internally the MapCaptureToEntries method uses PLINQ which also blocks the UI thread - this frees it up.
@@ -379,7 +478,8 @@ namespace JuliusSweetland.OptiKey.Services
                             audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                         }
 
-                        PublishSelectionResult(result);
+                        PublishSelectionResult(new Tuple<SelectionModes, List<Point>, KeyValue, List<string>>(
+                            SelectionModes.Key, result.Item1, result.Item2, result.Item3));
                     }
                 }
             }
@@ -402,11 +502,14 @@ namespace JuliusSweetland.OptiKey.Services
                 eyeGestureTriggerSubscription.Dispose();
                 eyeGestureTriggerSubscription = null;
             }
-            if (selectionTriggerSubscription != null)
-            {
-                selectionTriggerSubscription.Dispose();
-                selectionTriggerSubscription = null;
-            }
+
+            foreach (IDisposable sub in activeSelectionTriggerSubscriptions)
+                sub.Dispose();
+
+            foreach (IDisposable sub in activeSelectionProgressSubscriptions)
+                sub.Dispose();
+
+            activeSelectionTriggerSources.RemoveAll(s => true);
 
             if (multiKeySelectionSubscription != null)
             {
