@@ -112,6 +112,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Log.InfoFormat("Executing nextPointSelectionAction delegate with point '{0}'", point);
                             nextPointSelectionAction(point);
                         }
+                        else
+                        {
+                            Log.Error($"Point selection occurred without a pending action");
+                        }
                     }
                 }
             };
