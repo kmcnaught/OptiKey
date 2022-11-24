@@ -665,6 +665,47 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
+        private void InitialiseLeftClickAtNextPoint()
+        {
+            // Start a click action
+            Action resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+            SetupFinalClickAction(finalPoint =>
+            {
+                if (finalPoint != null)
+                {
+                    Action<Point> simulateClick = fp =>
+                    {
+                        Log.InfoFormat("Performing mouse left click at point ({0},{1}).", fp.X, fp.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
+                        audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                        mouseOutputService.MoveAndLeftClick(fp, true);
+                        reinstateModifiers();
+                    };
+                    lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
+                    ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
+                    simulateClick(finalPoint.Value);
+                }
+
+                ResetAndCleanupAfterMouseAction();
+                resumeLookToScroll();
+
+                // Repeat if this key is locked, other release the key
+                if (keyStateService.KeyDownStates[KeyValues.MouseMoveAndLeftClickKey].Value == KeyDownStates.LockedDown)
+                {
+                    InitialiseLeftClickAtNextPoint();
+                }
+                else
+                {
+                    keyStateService.KeyDownStates[KeyValues.MouseMoveAndLeftClickKey].Value = KeyDownStates.Up;
+                }
+            }, false);
+        }
+
         private async void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
         {
             if (Keyboard is Minimised && singleKeyValue.FunctionKey.Value == FunctionKeys.Minimise)
@@ -1537,35 +1578,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         lastMouseActionStateManager.LastMouseAction = null;
                     }
                     break;
-
+                     
                 case FunctionKeys.MouseMoveAndLeftClick:
                     Log.Info("Mouse move and left click selected.");
-                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
-                    SetupFinalClickAction(finalPoint =>
-                    {
-                        if (finalPoint != null)
-                        {
-                            Action<Point> simulateClick = fp =>
-                            {
-                                Log.InfoFormat("Performing mouse left click at point ({0},{1}).", fp.X, fp.Y);
-                                Action reinstateModifiers = () => { };
-                                if (keyStateService.SimulateKeyStrokes
-                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
-                                {
-                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
-                                }
-                                audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                                mouseOutputService.MoveAndLeftClick(fp, true);
-                                reinstateModifiers();
-                            };
-                            lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
-                            ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
-                            simulateClick(finalPoint.Value);
-                        }
 
-                        ResetAndCleanupAfterMouseAction();
-                        resumeLookToScroll();
-                    });
+
+
+                    switch (keyStateService.KeyDownStates[KeyValues.MouseMoveAndLeftClickKey].Value)
+                    {
+                        case KeyDownStates.Up:
+                            //The key has just been released - cancel pending event                            
+                            ResetAndCleanupAfterMouseAction();                            
+                            break;
+
+                        case KeyDownStates.LockedDown:
+                            // The key has been locked, cancel the pending event and start a new one
+                            ResetAndCleanupAfterMouseAction();
+                            InitialiseLeftClickAtNextPoint();
+                            break;
+
+                        case KeyDownStates.Down:
+                            InitialiseLeftClickAtNextPoint();
+                            break;
+                    }
                     break;
 
                 case FunctionKeys.MouseMoveAndLeftDoubleClick:

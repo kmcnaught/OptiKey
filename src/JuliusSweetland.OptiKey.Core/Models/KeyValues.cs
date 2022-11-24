@@ -447,6 +447,7 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftCtrlKey,
                     LeftShiftKey,
                     LeftWinKey,
+                    MouseMoveAndLeftClickKey,
                     MouseMagnifierKey,
                     MultiKeySelectionIsOnKey
                 };
@@ -489,8 +490,9 @@ namespace JuliusSweetland.OptiKey.Models
                     MouseMagneticCursorKey,
                     MouseMagnifierKey,
                     MouseMiddleDownUpKey,
+                    MouseMoveAndLeftClickKey,
                     MouseRightDownUpKey,
-                    MultiKeySelectionIsOnKey,
+                    MultiKeySelectionIsOnKey,                            
                     SleepKey
                 };
 
