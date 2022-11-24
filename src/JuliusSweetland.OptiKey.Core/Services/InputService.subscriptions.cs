@@ -280,7 +280,7 @@ namespace JuliusSweetland.OptiKey.Services
                     PublishSelection(SelectionModes.Point, triggerSignal.PointAndKeyValue);
 
                     PublishSelectionResult(new Tuple<SelectionModes, List<Point>, KeyValue, List<string>>(
-                        SelectionModes.Key,
+                        SelectionModes.Point,
                         new List<Point> { triggerSignal.PointAndKeyValue.Point }, null, null));
                     
                 }
