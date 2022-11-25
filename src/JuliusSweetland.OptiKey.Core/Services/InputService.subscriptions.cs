@@ -113,11 +113,11 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         if (source == keySelectionTriggerSource)
                         // fixme - this needs to be split point vs key
-                            PublishSelectionProgress(new Tuple<SelectionModes, PointAndKeyValue, double>(
-                                SelectionModes.Key, ts.PointAndKeyValue, ts.Progress.Value));
+                            PublishSelectionProgress(new Tuple<TriggerTypes, PointAndKeyValue, double>(
+                                TriggerTypes.Key, ts.PointAndKeyValue, ts.Progress.Value));
                         else if (source == pointSelectionTriggerSource)
-                            PublishSelectionProgress(new Tuple<SelectionModes, PointAndKeyValue, double>(
-                                SelectionModes.Point, ts.PointAndKeyValue, ts.Progress.Value));
+                            PublishSelectionProgress(new Tuple<TriggerTypes, PointAndKeyValue, double>(
+                                TriggerTypes.Point, ts.PointAndKeyValue, ts.Progress.Value));
                     }));                
             }
         }
@@ -190,7 +190,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                             CapturingMultiKeySelection = true;
 
-                            PublishSelection(SelectionModes.Key, triggerSignal.PointAndKeyValue);
+                            PublishSelection(TriggerTypes.Key, triggerSignal.PointAndKeyValue);
 
                             //Set the key's IsHighlighted property in order to show the green border
                             keyStateService.KeyHighlightStates[triggerSignal.PointAndKeyValue.KeyValue].Value = true;
@@ -220,12 +220,12 @@ namespace JuliusSweetland.OptiKey.Services
                         }
                         else
                         {
-                            PublishSelection(SelectionModes.Key, triggerSignal.PointAndKeyValue);
+                            PublishSelection(TriggerTypes.Key, triggerSignal.PointAndKeyValue);
 
                             await Task.Delay(20); //Add a short delay to give time for the selection animation 
 
-                            PublishSelectionResult(new Tuple<SelectionModes, List<Point>, KeyValue, List<string>>(
-                                SelectionModes.Key,
+                            PublishSelectionResult(new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                                TriggerTypes.Key,
                                 new List<Point> { triggerSignal.PointAndKeyValue.Point },
                                 triggerSignal.PointAndKeyValue.KeyValue,
                                 null));
@@ -277,10 +277,10 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Log.Debug("Point selection trigger signal (with relevant PointAndKeyValue) detected.");
                    
-                    PublishSelection(SelectionModes.Point, triggerSignal.PointAndKeyValue);
+                    PublishSelection(TriggerTypes.Point, triggerSignal.PointAndKeyValue);
 
-                    PublishSelectionResult(new Tuple<SelectionModes, List<Point>, KeyValue, List<string>>(
-                        SelectionModes.Point,
+                    PublishSelectionResult(new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                        TriggerTypes.Point,
                         new List<Point> { triggerSignal.PointAndKeyValue.Point }, null, null));
                     
                 }
@@ -317,12 +317,12 @@ namespace JuliusSweetland.OptiKey.Services
                         if (triggerSignal.PointAndKeyValue.KeyValue != null
                             && (keyStateService.KeyEnabledStates == null || keyStateService.KeyEnabledStates[triggerSignal.PointAndKeyValue.KeyValue]))
                         {                            
-                            PublishSelection(SelectionModes.Gesture, triggerSignal.PointAndKeyValue);
+                            PublishSelection(TriggerTypes.Gesture, triggerSignal.PointAndKeyValue);
 
                             await Task.Delay(20); //Add a short delay to give time for the selection animation 
 
-                            PublishSelectionResult(new Tuple<SelectionModes, List<Point>, KeyValue, List<string>>(
-                                SelectionModes.Gesture, 
+                            PublishSelectionResult(new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                                TriggerTypes.Gesture, 
                                 new List<Point> { triggerSignal.PointAndKeyValue.Point },
                                 triggerSignal.PointAndKeyValue.KeyValue,
                                 null));
@@ -453,7 +453,7 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Log.Debug("Publishing selection event on last letter of multi-key selection capture.");
 
-                        PublishSelection(SelectionModes.Key, stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue);
+                        PublishSelection(TriggerTypes.Key, stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue);
                     }
 
                     //Why am I wrapping this call in a Task.Run? Internally the MapCaptureToEntries method uses PLINQ which also blocks the UI thread - this frees it up.
@@ -478,8 +478,8 @@ namespace JuliusSweetland.OptiKey.Services
                             audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                         }
 
-                        PublishSelectionResult(new Tuple<SelectionModes, List<Point>, KeyValue, List<string>>(
-                            SelectionModes.Key, result.Item1, result.Item2, result.Item3));
+                        PublishSelectionResult(new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                            TriggerTypes.Key, result.Item1, result.Item2, result.Item3));
                     }
                 }
             }

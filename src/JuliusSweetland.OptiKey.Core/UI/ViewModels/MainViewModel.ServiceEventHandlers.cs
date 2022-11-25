@@ -56,7 +56,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputServiceSelectionProgressHandler = (o, tuple) =>
             {
-                var mode = tuple.Item1;
+                var type = tuple.Item1;
                 var pointAndKV = tuple.Item2;
                 var progress = tuple.Item3;
 
@@ -67,12 +67,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else if (pointAndKV != null)
                 {
-                    if (mode == SelectionModes.Key)
+                    if (type == TriggerTypes.Key)
                     {
                         keyStateService.KeySelectionProgress[pointAndKV.KeyValue] =
                             new NotifyingProxy<double>(progress);
                     }
-                    if (mode == SelectionModes.Point)
+                    if (type == TriggerTypes.Point)
                     {
                         PointSelectionProgress = new Tuple<Point, double>(pointAndKV.Point, progress);
                     }
@@ -82,7 +82,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             inputServiceSelectionHandler = (o, value) =>
             {
                 Log.Info("Selection event received from InputService.");
-                var mode = value.Item1;
+                var type = value.Item1;
                 var point = value.Item2.Point;
                 var keyValue = value.Item2.KeyValue;
 
@@ -101,7 +101,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         KeySelection(this, keyValue);
                     }
                 }
-                if (mode == SelectionModes.Point)
+                if (type == TriggerTypes.Point)
                 {
                     if (PointSelection != null)
                     {
@@ -126,7 +126,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 try
                 {
-                    var mode = tuple.Item1;
+                    var type = tuple.Item1;
                     var points = tuple.Item2;
                     var singleKeyValue = tuple.Item3;
                     var multiKeySelection = tuple.Item4;

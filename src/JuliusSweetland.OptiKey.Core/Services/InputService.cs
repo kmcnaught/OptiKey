@@ -32,9 +32,9 @@ namespace JuliusSweetland.OptiKey.Services
 
         private event EventHandler<int> pointsPerSecondEvent;
         private event EventHandler<Tuple<Point, KeyValue>> currentPositionEvent;
-        private event EventHandler<Tuple<SelectionModes, PointAndKeyValue, double>> selectionProgressEvent;
-        private event EventHandler<Tuple<SelectionModes, PointAndKeyValue>> selectionEvent;
-        private event EventHandler<Tuple<SelectionModes, List<Point>, KeyValue, List<string>>> selectionResultEvent;
+        private event EventHandler<Tuple<TriggerTypes, PointAndKeyValue, double>> selectionProgressEvent;
+        private event EventHandler<Tuple<TriggerTypes, PointAndKeyValue>> selectionEvent;
+        private event EventHandler<Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>> selectionResultEvent;
 
         #endregion
 
@@ -242,7 +242,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Selection Progress
 
-        public event EventHandler<Tuple<SelectionModes, PointAndKeyValue, double>> SelectionProgress
+        public event EventHandler<Tuple<TriggerTypes, PointAndKeyValue, double>> SelectionProgress
         {
             add
             {
@@ -282,7 +282,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Selection
 
-        public event EventHandler<Tuple<SelectionModes, PointAndKeyValue>> Selection
+        public event EventHandler<Tuple<TriggerTypes, PointAndKeyValue>> Selection
         {
             add
             {
@@ -318,7 +318,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Selection Result
 
-        public event EventHandler<Tuple<SelectionModes, List<Point>, KeyValue, List<string>>> SelectionResult
+        public event EventHandler<Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>> SelectionResult
         {
             add
             {
@@ -388,7 +388,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Selection Progress
 
-        private void PublishSelectionProgress(Tuple<SelectionModes, PointAndKeyValue, double> selectionProgress)
+        private void PublishSelectionProgress(Tuple<TriggerTypes, PointAndKeyValue, double> selectionProgress)
         {
             if (selectionProgressEvent != null)
             {
@@ -406,12 +406,12 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Selection
 
-        private void PublishSelection(SelectionModes mode, PointAndKeyValue selection)
+        private void PublishSelection(TriggerTypes mode, PointAndKeyValue selection)
         {
             if (selectionEvent != null)
             {
                 Log.DebugFormat("Publishing Selection event with PointAndKeyValue:{0}", selection);                
-                selectionEvent(this, new Tuple<SelectionModes, PointAndKeyValue>(mode, selection));
+                selectionEvent(this, new Tuple<TriggerTypes, PointAndKeyValue>(mode, selection));
             }
         }
 
@@ -419,7 +419,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Selection Result
 
-        private void PublishSelectionResult(Tuple<SelectionModes, List<Point>, KeyValue, List<string>> selectionResult)
+        private void PublishSelectionResult(Tuple<TriggerTypes, List<Point>, KeyValue, List<string>> selectionResult)
         {
             if (selectionResultEvent != null)
             {

@@ -46,9 +46,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private EventHandler<int> inputServicePointsPerSecondHandler;
         private EventHandler<Tuple<Point, KeyValue>> inputServiceCurrentPositionHandler;
-        private EventHandler<Tuple<SelectionModes, PointAndKeyValue, double>> inputServiceSelectionProgressHandler;
-        private EventHandler<Tuple<SelectionModes, PointAndKeyValue>> inputServiceSelectionHandler;
-        private EventHandler<Tuple<SelectionModes, List<Point>, KeyValue, List<string>>> inputServiceSelectionResultHandler;
+        private EventHandler<Tuple<TriggerTypes, PointAndKeyValue, double>> inputServiceSelectionProgressHandler;
+        private EventHandler<Tuple<TriggerTypes, PointAndKeyValue>> inputServiceSelectionHandler;
+        private EventHandler<Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>> inputServiceSelectionResultHandler;
         private SelectionModes selectionMode;
         private Point currentPositionPoint;
         private KeyValue currentPositionKey;
