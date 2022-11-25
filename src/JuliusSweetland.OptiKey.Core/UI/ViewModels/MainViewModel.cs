@@ -97,7 +97,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.errorNotifyingServices = errorNotifyingServices;
 
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
-            SelectionMode = SelectionModes.Key;
+            SelectionMode = SelectionModes.Keys;
 
             this.translationService = new TranslationService(new HttpClient());
 

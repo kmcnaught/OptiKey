@@ -155,7 +155,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             KeySelectionResult(singleKeyValue, multiKeySelection);
                         }
                     }
-                    if (SelectionMode == SelectionModes.Point)
+                    if (SelectionMode == SelectionModes.SinglePoint)
                     {
                         //SelectionResult event has no real meaning when dealing with point selection
                     }
@@ -1403,7 +1403,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         else
                         {
                             //Reset and clean up if we are not continuing to 2nd point
-                            SelectionMode = SelectionModes.Key;
+                            SelectionMode = SelectionModes.Keys;
                             nextPointSelectionAction = null;
                             ShowCursor = false;
                             if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value == KeyDownStates.Down)
@@ -2456,13 +2456,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
-            SelectionMode = SelectionModes.Point;
+            SelectionMode = SelectionModes.SinglePoint;
             ShowCursor = true;
         }
 
         private void ResetAndCleanupAfterMouseAction()
         {
-            SelectionMode = SelectionModes.Key;
+            SelectionMode = SelectionModes.Keys;
             nextPointSelectionAction = null;
             ShowCursor = false;
             MagnifyAtPoint = null;

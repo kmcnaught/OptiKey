@@ -61,7 +61,7 @@ namespace JuliusSweetland.OptiKey.Services
                 .Where(tp => tp.Value != null)
                 .Select(tp => new Tuple<Point, KeyValue>(
                     tp.Value.Point,
-                    SelectionMode == SelectionModes.Key 
+                    SelectionMode == SelectionModes.Keys 
                         ? tp.Value.KeyValue 
                         : null))
                 .ObserveOnDispatcher() //Subscribe on UI thread
@@ -80,7 +80,7 @@ namespace JuliusSweetland.OptiKey.Services
             activeSelectionTriggerSources.Add(keySelectionTriggerSource);
 
             // Point selection only active if there is a mouse action underway
-            if (mode == SelectionModes.Point) // TODO rename vars here to be clearer
+            if (mode == SelectionModes.SinglePoint) // TODO rename vars here to be clearer
                 activeSelectionTriggerSources.Add(pointSelectionTriggerSource);
         }
 
@@ -150,7 +150,7 @@ namespace JuliusSweetland.OptiKey.Services
                     .ObserveOnDispatcher()
                     .Subscribe(ProcessKeySelectionTrigger));
 
-            if (mode == SelectionModes.Point)
+            if (mode == SelectionModes.SinglePoint)
             {
                 activeSelectionTriggerSubscriptions.Add(pointSelectionTriggerSource.Sequence
                     .Where(ts => ts.Signal != null)
