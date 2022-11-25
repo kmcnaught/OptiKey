@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Services
         IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get; }
         IPointSource PointSource { get; set; }
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }
-        SelectionModes SelectionMode { set; }
+        SelectionModes SelectionMode { get;  set; }
         bool MultiKeySelectionSupported { set; }
 
         void RequestSuspend();

@@ -63,6 +63,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
+        private KeyValue keyValueForCurrentPointAction;
 
         #endregion
 

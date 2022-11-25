@@ -69,11 +69,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     if (type == TriggerTypes.Key)
                     {
+                        // During a single point event, only allow key selection for the associated key (so you can lock it down)
+                        if (SelectionMode == SelectionModes.SinglePoint &&
+                            pointAndKV.KeyValue != keyValueForCurrentPointAction)
+                            return;                        
+                            
                         keyStateService.KeySelectionProgress[pointAndKV.KeyValue] =
                             new NotifyingProxy<double>(progress);
                     }
                     if (type == TriggerTypes.Point)
                     {
+                        // During a point selection event, ignore points over the current point action (so we can easily select it again 
+                        // without conflict)
+                        if (pointAndKV.KeyValue == keyValueForCurrentPointAction)
+                            return;
                         PointSelectionProgress = new Tuple<Point, double>(pointAndKV.Point, progress);
                     }
                 }
@@ -86,6 +95,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 var point = value.Item2.Point;
                 var keyValue = value.Item2.KeyValue;
 
+                // During a single point event, only allow key selection for the associated key (so you can lock it down)
+                if (type == TriggerTypes.Key &&
+                    SelectionMode == SelectionModes.SinglePoint &&
+                    keyValue != keyValueForCurrentPointAction)
+                {
+                    return;
+                }
+                
                 SelectionResultPoints = null; //Clear captured points from previous SelectionResult event
 
                 if (keyValue != null)
@@ -130,6 +147,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     var points = tuple.Item2;
                     var singleKeyValue = tuple.Item3;
                     var multiKeySelection = tuple.Item4;
+
+                    // During a single point event, only allow key selection for the associated key (so you can lock it down)
+                    if (type == TriggerTypes.Key &&
+                        SelectionMode == SelectionModes.SinglePoint &&
+                        singleKeyValue != keyValueForCurrentPointAction)
+                    {
+                        return;
+                    }
 
                     SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
 
@@ -665,10 +690,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void InitialiseLeftClickAtNextPoint()
+        private void InitialiseLeftClickAtNextPoint(bool finalClickInSeries)
         {
             // Start a click action
-            Action resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+            Action resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();            
             SetupFinalClickAction(finalPoint =>
             {
                 if (finalPoint != null)
@@ -697,13 +722,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 // Repeat if this key is locked, other release the key
                 if (keyStateService.KeyDownStates[KeyValues.MouseMoveAndLeftClickKey].Value == KeyDownStates.LockedDown)
                 {
-                    InitialiseLeftClickAtNextPoint();
+                    SelectionMode = SelectionModes.ContinuousPoints; // this gets reset by Cleanup method
+                    InitialiseLeftClickAtNextPoint(false);
                 }
                 else
                 {
                     keyStateService.KeyDownStates[KeyValues.MouseMoveAndLeftClickKey].Value = KeyDownStates.Up;
                 }
-            }, false);
+            }, finalClickInSeries);
         }
 
         private async void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
@@ -1581,24 +1607,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                      
                 case FunctionKeys.MouseMoveAndLeftClick:
                     Log.Info("Mouse move and left click selected.");
-
-
+                    keyValueForCurrentPointAction = singleKeyValue;
 
                     switch (keyStateService.KeyDownStates[KeyValues.MouseMoveAndLeftClickKey].Value)
                     {
                         case KeyDownStates.Up:
-                            //The key has just been released - cancel pending event                            
+                            //The key has just been released - cancel pending event
+                            SelectionMode = SelectionModes.Keys;
                             ResetAndCleanupAfterMouseAction();                            
                             break;
 
                         case KeyDownStates.LockedDown:
                             // The key has been locked, cancel the pending event and start a new one
                             ResetAndCleanupAfterMouseAction();
-                            InitialiseLeftClickAtNextPoint();
+                            SelectionMode = SelectionModes.ContinuousPoints;
+                            InitialiseLeftClickAtNextPoint(false);
                             break;
 
                         case KeyDownStates.Down:
-                            InitialiseLeftClickAtNextPoint();
+                            SelectionMode = SelectionModes.SinglePoint;
+                            InitialiseLeftClickAtNextPoint(true);
                             break;
                     }
                     break;
@@ -2456,7 +2484,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
-            SelectionMode = SelectionModes.SinglePoint;
+            if (finalClickInSeries)
+            {
+                SelectionMode = SelectionModes.SinglePoint;
+            }
+            else
+            {
+                // TODO: check if this is still appropriate for multi-click actions in looktoscroll
+                SelectionMode = SelectionModes.ContinuousPoints;
+            }
             ShowCursor = true;
         }
 

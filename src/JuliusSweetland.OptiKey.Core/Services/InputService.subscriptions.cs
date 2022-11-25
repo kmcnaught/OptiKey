@@ -60,10 +60,7 @@ namespace JuliusSweetland.OptiKey.Services
             currentPositionSubscription = pointSource.Sequence
                 .Where(tp => tp.Value != null)
                 .Select(tp => new Tuple<Point, KeyValue>(
-                    tp.Value.Point,
-                    SelectionMode == SelectionModes.Keys 
-                        ? tp.Value.KeyValue 
-                        : null))
+                    tp.Value.Point, tp.Value.KeyValue))
                 .ObserveOnDispatcher() //Subscribe on UI thread
                 .Subscribe(PublishCurrentPosition);
         }
@@ -76,11 +73,12 @@ namespace JuliusSweetland.OptiKey.Services
         {
             activeSelectionTriggerSources = new List<ITriggerSource>();
 
-            // Key selection is always active
+            // Key selection is always enabled, but in the case of single point selection we will only allow
+            // the current "mouse action" key to be selected, to allow for locking. 
             activeSelectionTriggerSources.Add(keySelectionTriggerSource);
 
-            // Point selection only active if there is a mouse action underway
-            if (mode == SelectionModes.SinglePoint) // TODO rename vars here to be clearer
+            // Point selection active if any mouse actions underway
+            if (mode == SelectionModes.SinglePoint || mode == SelectionModes.ContinuousPoints) 
                 activeSelectionTriggerSources.Add(pointSelectionTriggerSource);
         }
 
@@ -96,29 +94,40 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             //FIXME does it matter that we do this twice? in consecutive methods
+            //FIXME move to different part of pipeline
             SetupSelectionSources(mode);
 
-            // FIXME do we need to do anythign else here to clean up?                          
+            // FIXME do we need to do anything else here to clean up?                          
             activeSelectionProgressSubscriptions.RemoveAll(s => true);
 
-
+            // FIXME split into separate vars
             foreach (ITriggerSource source in activeSelectionTriggerSources)
             {
                 //FIXME: we don't seem to dispose of these
-                activeSelectionProgressSubscriptions.Add(source.Sequence
-                    .Where(ts => ts.Progress != null)
-                    .DistinctUntilChanged()
-                    .ObserveOnDispatcher()
-                    .Subscribe(ts =>
-                    {
-                        if (source == keySelectionTriggerSource)
-                        // fixme - this needs to be split point vs key
+                if (source == keySelectionTriggerSource)
+                {
+                    activeSelectionProgressSubscriptions.Add(source.Sequence
+                        .Where(ts => ts.Progress != null)
+                        .DistinctUntilChanged()
+                        .ObserveOnDispatcher()
+                        .Subscribe(ts =>
+                        {
                             PublishSelectionProgress(new Tuple<TriggerTypes, PointAndKeyValue, double>(
                                 TriggerTypes.Key, ts.PointAndKeyValue, ts.Progress.Value));
-                        else if (source == pointSelectionTriggerSource)
+                        }));
+                }
+                else if (source == pointSelectionTriggerSource)
+                {
+                    activeSelectionProgressSubscriptions.Add(source.Sequence
+                        .Where(ts => ts.Progress != null)
+                        .DistinctUntilChanged()
+                        .ObserveOnDispatcher()
+                        .Subscribe(ts =>
+                        {
                             PublishSelectionProgress(new Tuple<TriggerTypes, PointAndKeyValue, double>(
                                 TriggerTypes.Point, ts.PointAndKeyValue, ts.Progress.Value));
-                    }));                
+                        }));
+                }
             }
         }
 
@@ -144,20 +153,20 @@ namespace JuliusSweetland.OptiKey.Services
                 sub.Dispose();
             activeSelectionTriggerSubscriptions.RemoveAll(s => true);
 
-            // Always subscribe to key selection triggers
+            // Key selection is always enabled, but in the case of single point selection we will only allow
+            // the current "mouse action" key to be selected, to allow for locking. 
             activeSelectionTriggerSubscriptions.Add(keySelectionTriggerSource.Sequence
-                    .Where(ts => ts.Signal != null)
-                    .ObserveOnDispatcher()
-                    .Subscribe(ProcessKeySelectionTrigger));
+                .Where(ts => ts.Signal != null)
+                .ObserveOnDispatcher()
+                .Subscribe(ProcessKeySelectionTrigger));
 
-            if (mode == SelectionModes.SinglePoint)
-            {
+            // Point selection active if any mouse actions underway
+            if (mode == SelectionModes.SinglePoint || mode == SelectionModes.ContinuousPoints)
                 activeSelectionTriggerSubscriptions.Add(pointSelectionTriggerSource.Sequence
-                    .Where(ts => ts.Signal != null)
-                    .ObserveOnDispatcher()
-                    .Subscribe(ProcessPointSelectionTrigger));
+                   .Where(ts => ts.Signal != null)
+                   .ObserveOnDispatcher()
+                   .Subscribe(ProcessPointSelectionTrigger));
 
-            }            
         }
 
         private async void ProcessKeySelectionTrigger(TriggerSignal triggerSignal)
