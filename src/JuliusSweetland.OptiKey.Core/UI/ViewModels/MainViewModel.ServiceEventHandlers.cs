@@ -407,18 +407,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'",
                 singleKeyValue.String.ToPrintableString(), singleKeyValue.FunctionKey);
 
-            // Inject previous keyvalue if asked to repeat
-            if (singleKeyValue.FunctionKey != null &&
-                singleKeyValue.FunctionKey == FunctionKeys.RepeatLastKeyAction &&
-                SelectionMode == SelectionModes.Keys)
-            {        
-                // We could consider allowing this to repeat the last mouse action, or
-                // to repeat the original mouse-related key, but we're not sure how useful
-                // it would be
-                if (!lastMouseActionStateManager.LastMouseActionExists)
-                    singleKeyValue = lastKeyValueExecuted;
-            }
-
             keyStateService.ProgressKeyDownState(singleKeyValue);
 
             if (!string.IsNullOrEmpty(singleKeyValue.String)
