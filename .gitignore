@@ -9,6 +9,7 @@
 *.user
 *.sln.docstates
 .vs
+**.orig
 
 # Release deployment, including certificates, etc
 deployment/
@@ -173,3 +174,4 @@ src/JuliusSweetland.OptiKey.InstallerTranslations/InstallerStrings.cs
 src/JuliusSweetland.OptiKey.EyeMine/version.txt
 src/JuliusSweetland.OptiKey.Crayta/version.txt
 src/JuliusSweetland.OptiKey.Crayta
+.vscode

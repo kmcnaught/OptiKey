@@ -1,4 +1,4 @@
-// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.Models;
 using System.Windows.Controls;
@@ -34,14 +34,14 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         #endregion
 
-        public DynamicKeyboardSelector(int pageIndex, string keyboardsPath=null)
+        public DynamicKeyboardSelector(int pageIndex, string keyboardsPath = null)
         {
             InitializeComponent();
             this.pageIndex = pageIndex;
 
             // Populate model
             folder = new DynamicKeyboardFolder(keyboardsPath);
-            
+
             // Setup grid
             for (int i = 0; i < this.mRows; i++)
             {
@@ -71,7 +71,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.BACK;
                 newKey.Value = KeyValues.BackFromKeyboardKey;
                 this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
-            }
+            }            
 
             // Sleep key for bottom left
             {
