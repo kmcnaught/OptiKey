@@ -374,7 +374,7 @@ namespace JuliusSweetland.OptiKey
                         if (persistedState)
                             Log.DebugFormat("Getting MainWindowState from settings with value '{0}'", Settings.Default.MainWindowState);
                         else
-                            Log.DebugFormat("Getting tempWindowState with value '{0}'", Settings.Default.MainWindowState);
+                            Log.DebugFormat("Getting tempWindowState with value '{0}'", tempWindowState);
                     }
                     if (persistedState)
                         return Settings.Default.MainWindowState;
@@ -1167,6 +1167,7 @@ namespace JuliusSweetland.OptiKey
             if (string.IsNullOrEmpty(Settings.Default.DynamicKeyboardsLocation))
             {
                 // First time we set to APPDATA location, user may move through settings later
+                // FIXME: test this works okay
                 Settings.Default.DynamicKeyboardsLocation = CopyResourcesFirstTime("Keyboards");
             }
         } 

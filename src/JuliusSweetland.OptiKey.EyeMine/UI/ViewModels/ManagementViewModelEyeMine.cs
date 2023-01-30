@@ -7,6 +7,7 @@ using JuliusSweetland.OptiKey.Properties;
 using EyeMineResources = JuliusSweetland.OptiKey.EyeMine.Properties.Resources;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
+using JuliusSweetland.OptiKey.InstallerActionsEyeMine;
 using log4net;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
@@ -14,7 +15,6 @@ using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management;
-using JuliusSweetland.OptiKey.InstallerActionsEyeMine;
 using EyeXFramework;
 using Tobii.EyeX.Client;
 
@@ -38,7 +38,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             //Instantiate child VMs
             DictionaryViewModel = new DictionaryViewModel(dictionaryService);
-            OtherViewModel = new OtherViewModel();
             PointingAndSelectingViewModel = new PointingAndSelectingViewModelEyeMine();
             SoundsViewModel = new SoundsViewModel(audioService);
             VisualsViewModel = new VisualsViewModelEyeMine(windowManipulationService);
@@ -85,7 +84,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             get
             {
                 return DictionaryViewModel.ChangesRequireRestart
-                    || OtherViewModel.ChangesRequireRestart
                     || PointingAndSelectingViewModel.ChangesRequireRestart
                     || SoundsViewModel.ChangesRequireRestart
                     || VisualsViewModel.ChangesRequireRestart
@@ -96,7 +94,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         }
 
         public DictionaryViewModel DictionaryViewModel { get; private set; }
-        public OtherViewModel OtherViewModel { get; private set; }
         public PointingAndSelectingViewModelEyeMine PointingAndSelectingViewModel { get; private set; }
         public SoundsViewModel SoundsViewModel { get; private set; }
         public VisualsViewModelEyeMine VisualsViewModel { get; protected set; }
@@ -219,7 +216,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         protected void ApplyChanges()
         {
             DictionaryViewModel.ApplyChanges();
-            OtherViewModel.ApplyChanges();
             PointingAndSelectingViewModel.ApplyChanges();
             SoundsViewModel.ApplyChanges();
             VisualsViewModel.ApplyChanges();

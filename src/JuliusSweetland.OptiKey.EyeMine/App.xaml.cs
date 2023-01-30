@@ -1,40 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Observables.PointSources;
-using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using JuliusSweetland.OptiKey.EyeMine.Properties;
 using JuliusSweetland.OptiKey.Services;
-using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
-using log4net;
-using log4net.Core;
-using log4net.Repository.Hierarchy;
-using Microsoft.Win32;
 using Octokit;
-using presage;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using WindowsRecipes.TaskbarSingleInstance;
 using JuliusSweetland.OptiKey.EyeMine.Enums;
-using JuliusSweetland.OptiKey.EyeMine.UI.Windows;
+using System.Windows.Input;
 using Prism.Commands;
-using Application = System.Windows.Application;
+using JuliusSweetland.OptiKey.EyeMine.UI.Windows;
 
 namespace JuliusSweetland.OptiKey.EyeMine
 {
@@ -44,20 +31,21 @@ namespace JuliusSweetland.OptiKey.EyeMine
     public partial class App : OptiKeyApp
     {
         private static SplashScreen splashScreen;
+        private string startKeyboardOverride = null;
 
+        // These are used for injecting our own version of the management window
         private ICommand managementWindowRequestCommand;
+        private ManagementWindowEyeMine managementWindow;
 
         private IKeyStateService keyStateService;
         private IAudioService audioService;
         private IDictionaryService dictionaryService;
-        private IWindowManipulationService mainWindowManipulationService;
-
-        // Handle to management window whilst open
-        private ManagementWindowEyeMine managementWindow;
+        private IWindowManipulationService mainWindowManipulationService;       
+        
 
         #region Main
         [STAThread]
-        public static void Main()
+        public static void Main(string[] args)
         {
             // Setup derived settings class
             Settings.Initialise();
@@ -65,11 +53,10 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
             Action runApp = () =>
             {
-
                 splashScreen = new SplashScreen("/Resources/Icons/EyeMineSplash.png");
                 splashScreen.Show(false);
 
-                var application = new App();
+                var application = new App(args);
                 application.InitializeComponent();
                 application.Run();
             };
@@ -91,10 +78,24 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
         #region Ctor
 
-        public App()
+        public App(string[] args)
         {
+            // Parse command-line args, 
+
+            if (args.Length > 0)
+            {
+                // Allow entry straight into specified dynamic keyboard(s)
+                // keyboardArg may be:
+                // - single XML file to load
+                // - folder containing XML files                
+
+                startKeyboardOverride = args[0];
+            }
+
             // Core setup for all OptiKey apps
-            Initialise(false);
+            Initialise();
+
+            // (Setup specific to this app happens in App_OnStartup)
         }
 
         #endregion
@@ -144,6 +145,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
                     }
                 };
 
+                // This ensures files are copied over first time - we will later pick a sub-directory
                 ValidateDynamicKeyboardLocationEyeMine();
 
                 //Create services
@@ -188,7 +190,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService,
-                    errorNotifyingServices);
+                    errorNotifyingServices, startKeyboardOverride);
 
                 mainWindow.SetMainViewModel(mainViewModel);
 
@@ -204,11 +206,16 @@ namespace JuliusSweetland.OptiKey.EyeMine
                 //Show the main window
                 mainWindow.Show();
 
-                if (Settings.Default.LookToScrollEnabled && Settings.Default.LookToScrollShowOverlayWindow)
+                if (Settings.Default.LookToScrollEnabled && 
+                    (Settings.Default.LookToScrollOverlayBoundsThickness > 0
+                    || Settings.Default.LookToScrollOverlayDeadzoneThickness > 0) )
                 {
                     // Create the overlay window, but don't show it yet. It'll make itself visible when the conditions are right.
                     new LookToScrollOverlayWindow(mainViewModel);
                 }
+
+                if (Settings.Default.GazeIndicatorStyle != GazeIndicatorStyles.None)
+                    new OverlayWindow(mainViewModel);
 
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
                 EventHandler sizeAndPositionInitialised = null;
@@ -223,7 +230,6 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
                     inputService.RequestResume(); //Start the input service
 
-                    //FIXME: Reinstate an update check for the EyeMine repo. (need to think about V2 vs classic)
                     await CheckForUpdatesEyeMine(inputService, audioService, mainViewModel);
                 };
 
@@ -235,6 +241,12 @@ namespace JuliusSweetland.OptiKey.EyeMine
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised += sizeAndPositionInitialised;
                 }
+
+                Current.Exit += (o, args) =>
+                {
+                    mainWindowManipulationService.PersistSizeAndPosition();
+                    Settings.Default.Save();
+                };
             }
             catch (Exception ex)
             {
@@ -242,21 +254,17 @@ namespace JuliusSweetland.OptiKey.EyeMine
                 throw;
             }
 
-            // Set up any mocks to replace core UIs etc
-            // use reflection to inject a mock instance
+            // Here we can inject any UIs that we wish to replace core UIs with, so that we keep our UIs out of the core lib.
             managementWindowRequestCommand = new DelegateCommand(RequestManagementWindow);
 
+            // use reflection to inject 
             typeof(MainWindow)
                 .GetField("managementWindowRequestCommand", BindingFlags.Instance | BindingFlags.NonPublic)
                 .SetValue(MainWindow, managementWindowRequestCommand);
 
 
         }
-
-        public static string GetBuiltInKeyboardsFolder()
-        {
-            return OptiKeyApp.GetDefaultUserKeyboardFolder();
-        }
+        #endregion                
 
         public static string GetKeyboardsFolderForInputSource()
         {
@@ -394,7 +402,8 @@ namespace JuliusSweetland.OptiKey.EyeMine
             }
             return numFiles;
         }
-        protected new static string GetDefaultUserKeyboardFolder()
+
+        public static string GetDefaultUserKeyboardFolder()
         {
             var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Keyboards");
 
@@ -430,8 +439,8 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
         private void RequestManagementWindow()
         {
-            Log.Info("RequestManagementWindow called.");
-            
+            Log.Info("RequestManagementWindow called (EyeMine version).");
+
             var restoreModifierStates = keyStateService.ReleaseModifiers(Log);
 
             if (managementWindow == null)
@@ -457,8 +466,6 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
             Log.Info("RequestManagementWindow complete.");
         }
-        #endregion
-
 
         #region Show Splash Screen 
         // We have a slightly more stripped down splash compared to the core optikey apps

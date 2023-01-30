@@ -174,7 +174,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
             }
             else
             {
-                openFileDialog.InitialDirectory = App.GetBuiltInKeyboardsFolder();
+                openFileDialog.InitialDirectory = App.GetDefaultUserKeyboardFolder();
             }
 
             if (openFileDialog.ShowDialog() == true)
