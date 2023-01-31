@@ -25,3 +25,7 @@ All the code comprising EyeMine is GPL3 licensed and contributions are welcome.
 Licensed under the GNU GENERAL PUBLIC LICENSE (Version 3, 29th June 2007)
 
 EyeMine is a fork of the excellent [Optikey project](https://github.com/OptiKey/OptiKey) and uses the third-party libraries described in [ThirdPartyLicenses.md](ThirdPartyLicenses.md)
+
+## Authors
+EyeMine is written by [Kirsty McNaught](https://github.com/kmcnaught/), with the eye gaze interface based on [OptiKey](https://github.com/OptiKey/OptiKey) by [Julius Sweetland](https://github.com/JuliusSweetland). Mod upgrades have been contributed by [mrbysco](https://github.com/mrbysco)
+
