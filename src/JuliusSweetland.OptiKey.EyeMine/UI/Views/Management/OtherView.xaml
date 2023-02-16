@@ -25,6 +25,8 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL}" 
@@ -37,20 +39,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <CheckBox Grid.Row="1" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding CheckForUpdates, Mode=TwoWay}" />
-                <CheckBox Grid.Row="4" Grid.Column="1" 
-                          VerticalAlignment="Center"
-                          IsChecked="{Binding SuppressModifierKeysWhenInMouseKeyboard, Mode=TwoWay}">
-                    <CheckBox.Style>
-                        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                            <Setter Property="Visibility" Value="Collapsed" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding SuppressModifierKeysForAllMouseActions}" Value="False">
-                                    <Setter Property="Visibility" Value="Visible" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </CheckBox.Style>
-                </CheckBox>
+
                 <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="5" Grid.Column="1" 
@@ -61,6 +50,12 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <CheckBox Grid.Row="6" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding Debug, Mode=TwoWay}" />
+
+                <TextBlock Grid.Row="7" Grid.Column="0" Text="Allow switch activations to repeat last action" 
+                           VerticalAlignment="Center" Margin="5" />
+                <CheckBox Grid.Row="7" Grid.Column="1" 
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding AllowRepeatKeyActionsAwayFromKey, Mode=TwoWay}" />
             </Grid>
         </GroupBox>
     </ScrollViewer>

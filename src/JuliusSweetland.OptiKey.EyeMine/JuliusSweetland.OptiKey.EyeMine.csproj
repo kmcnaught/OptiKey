@@ -203,6 +203,7 @@
     <Compile Include="UI\ValueConverters\StringOrEmptyLabel.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModelEyeMine.cs" />
     <Compile Include="UI\ViewModels\Management\AboutViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\PointingAndSelectingViewModelEyeMine.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModelEyeMine.cs" />
     <Compile Include="UI\Views\ManagementView.xaml.cs">
