@@ -3,7 +3,7 @@
   <BorderThickness>0,0,0,0</BorderThickness>
   <Grid>
     <Rows>1</Rows>
-    <Cols>9</Cols>
+    <Cols>10</Cols>
   </Grid>
   <Height>15%</Height>
   <Content>
@@ -13,12 +13,16 @@
       <Symbol>MouseMagnifierIcon</Symbol>  
     </DynamicKey>
     <DynamicKey>
-      <KeyToggle>Shift</KeyToggle>    
+      <KeyToggle>LeftShift</KeyToggle>    
       <Label>Shift</Label>
     </DynamicKey>
     <DynamicKey>
-      <KeyToggle>Ctrl</KeyToggle>    
+      <KeyToggle>LeftCtrl</KeyToggle>    
       <Label>Ctrl</Label>
+    </DynamicKey>
+    <DynamicKey>
+      <KeyToggle>LeftAlt</KeyToggle>
+      <Label>Alt</Label>
     </DynamicKey>
     <DynamicKey>
       <Label>Left\nclick</Label>
