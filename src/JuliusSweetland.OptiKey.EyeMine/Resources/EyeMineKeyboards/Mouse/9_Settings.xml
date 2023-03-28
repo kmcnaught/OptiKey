@@ -20,7 +20,7 @@
 
     <DynamicKey Row="1" Col="0" Height="2" AutoScaleToOneKeyHeight="false">
       <Symbol>MinecraftLookWithCursor</Symbol>
-      <Action>MouseMagneticCursor</Action>
+      <Text>y</Text>
       <Label>Look\nwith\nGaze</Label> 
     </DynamicKey>
     <DynamicKey Row="3" Col="0" Height="2" AutoScaleToOneKeyHeight="false">
