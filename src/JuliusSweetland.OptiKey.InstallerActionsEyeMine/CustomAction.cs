@@ -187,8 +187,14 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
 
         public static bool UpdateModConfig(bool useMouseEmulation)
         {
-            
-            string configDir = Path.Combine(installationPath.eyemineGameDir, "config");
+            // When we call this from the installer, we have saved the appdata folder into the InstallationPath
+            // object since we had to make sure we were querying the actual user and not the elevated admin user
+            // When we call this from the app itself, we go straight to the current user's appdata folder
+            string eyemineGameDir = installationPath.eyemineGameDir;            
+            if (eyemineGameDir == null)
+                eyemineGameDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            string configDir = Path.Combine(eyemineGameDir, "config");
             string configFile = Path.Combine(configDir, "eyemine-client.toml");
 
             if (!File.Exists(configFile))
