@@ -192,7 +192,7 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
             // When we call this from the app itself, we go straight to the current user's appdata folder
             string eyemineGameDir = installationPath.eyemineGameDir;            
             if (eyemineGameDir == null)
-                eyemineGameDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                eyemineGameDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
 
             string configDir = Path.Combine(eyemineGameDir, "config");
             string configFile = Path.Combine(configDir, "eyemine-client.toml");
