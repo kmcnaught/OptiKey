@@ -39,6 +39,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MouseUpSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseUpSoundFile, MouseUpSoundVolume));
             MouseDoubleClickSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseDoubleClickSoundFile, MouseDoubleClickSoundVolume));
             MouseScrollSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseScrollSoundFile, MouseScrollSoundVolume));
+            RepeatSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(RepeatSoundFile, RepeatSoundVolume));
 
             this.OnPropertyChanges(svm => svm.MaryTTSEnabled).Subscribe(_ =>
             {
@@ -286,6 +287,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref attentionSoundFile, value); }
         }
 
+        private int repeatSoundVolume;
+        public int RepeatSoundVolume
+        {
+            get { return repeatSoundVolume; }
+            set { SetProperty(ref repeatSoundVolume, value); }
+        }
+
+        private string repeatSoundFile;
+        public string RepeatSoundFile
+        {
+            get { return repeatSoundFile; }
+            set { SetProperty(ref repeatSoundFile, value); }
+        }
+        
         private string multiKeySelectionCaptureStartSoundFile;
         public string MultiKeySelectionCaptureStartSoundFile
         {
@@ -404,6 +419,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public DelegateCommand MouseUpSoundPlayCommand { get; private set; }
         public DelegateCommand MouseDoubleClickSoundPlayCommand { get; private set; }
         public DelegateCommand MouseScrollSoundPlayCommand { get; private set; }
+        public DelegateCommand RepeatSoundPlayCommand { get; private set; }
         
         #endregion
         
@@ -441,6 +457,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MouseDoubleClickSoundVolume = Settings.Default.MouseDoubleClickSoundVolume;
             MouseScrollSoundFile = Settings.Default.MouseScrollSoundFile;
             MouseScrollSoundVolume = Settings.Default.MouseScrollSoundVolume;
+            RepeatSoundFile = Settings.Default.RepeatSoundFile;
+            RepeatSoundVolume = Settings.Default.RepeatSoundVolume;
         }
 
         public void ApplyChanges()
@@ -477,6 +495,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MouseDoubleClickSoundVolume = MouseDoubleClickSoundVolume;
             Settings.Default.MouseScrollSoundFile = MouseScrollSoundFile;
             Settings.Default.MouseScrollSoundVolume = MouseScrollSoundVolume;
+            Settings.Default.RepeatSoundFile = RepeatSoundFile;
+            Settings.Default.RepeatSoundVolume = RepeatSoundVolume;
         }
 
         private void ValidateMaryTTSVoiceSettings()

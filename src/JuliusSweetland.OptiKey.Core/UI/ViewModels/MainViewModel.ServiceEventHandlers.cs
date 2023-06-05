@@ -198,11 +198,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
 
+                    bool isRepeat = false;
+
                     if ((singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                     {
                         // Inject previous keyvalue if asked to repeat
-                        if (singleKeyValue.FunctionKey != null &&
+                        if (singleKeyValue != null &&
+                            singleKeyValue.FunctionKey != null &&
                             singleKeyValue.FunctionKey == FunctionKeys.RepeatLastKeyAction &&
+                            lastKeyValueExecuted != null &&
                             SelectionMode == SelectionModes.Keys)
                         {
                             bool preventRepeat = false;
@@ -212,23 +216,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 var singlePoint = points[0]; 
                                 if (singlePoint.X < 0 || singlePoint.Y < 0 || 
-                                    singlePoint.X > Graphics.VirtualScreenWidthInPixels || 
-                                    singlePoint.Y > Graphics.VirtualScreenHeightInPixels)
+                                    singlePoint.X > Graphics.PrimaryScreenWidthInPixels || 
+                                    singlePoint.Y > Graphics.PrimaryScreenHeightInPixels)
                                 {
                                     preventRepeat = true;
                                 }
                             }
                             
                             // Certain keys built in keys are removed from repeats. 
-                            if (lastKeyValueExecuted != null &&
-                                lastKeyValueExecuted.FunctionKey.HasValue &&
+                            if (lastKeyValueExecuted.FunctionKey.HasValue &&
                                 KeyValues.FunctionKeysWhichShouldntBeRepeated.Contains(lastKeyValueExecuted.FunctionKey.Value))
                             {
                                 preventRepeat = true;
                             }
 
                             // Prevent dynamic key that contains any of these forbidden functions, or a "Change Keyboard" command
-                            if (lastKeyValueExecuted != null && lastKeyValueExecuted.Commands != null && lastKeyValueExecuted.Commands.Any())
+                            if (lastKeyValueExecuted.Commands != null && lastKeyValueExecuted.Commands.Any())
                             {
                                 foreach (var command in lastKeyValueExecuted.Commands)
                                 {
@@ -247,7 +250,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 singleKeyValue = null;
                             }
                             else {
-                                singleKeyValue = lastKeyValueExecuted;
+                                isRepeat = true;
+                                if (lastMouseActionStateManager.LastMouseActionExists &&
+                                    lastKeyValueExecuted.FunctionKey.HasValue &&
+                                    KeyValues.FunctionKeysForRepeatableActions.Contains(lastKeyValueExecuted.FunctionKey.Value))
+                                {
+                                    singleKeyValue = KeyValues.RepeatLastMouseActionKey;
+                                }
+                                else
+                                {
+                                    singleKeyValue = lastKeyValueExecuted;
+                                }
 
                                 // re-instate last key states so output is equivalent
                                 foreach (KeyValue key in lastKeyDownStates.Keys)
@@ -268,7 +281,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         // Play 'key' sound
                         if (type == TriggerTypes.Key && singleKeyValue != null && !capturingStateManager.CapturingMultiKeySelection)
                         {
-                            audioService.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume);
+                            if (isRepeat)
+                                audioService.PlaySound(Settings.Default.RepeatSoundFile, Settings.Default.RepeatSoundVolume);
+                            else 
+                                audioService.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume);
                         }
 
                         //DynamicKeys can have a list of Commands and perform multiple actions
@@ -1581,6 +1597,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         }
 
                                         ResetAndCleanupAfterMouseAction();
+                                        SelectionMode = SelectionModes.Keys;
                                         resumeLookToScroll();
                                     };
 
@@ -1918,6 +1935,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     };
                     performScroll(currentPoint);
                     ResetAndCleanupAfterMouseAction();
+                    SelectionMode = SelectionModes.Keys;
 
                     break;
 
@@ -1941,6 +1959,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     };
                     performScrollDown(currentPointScroll);
                     ResetAndCleanupAfterMouseAction();
+                    SelectionMode = SelectionModes.Keys;
 
                     break;
 

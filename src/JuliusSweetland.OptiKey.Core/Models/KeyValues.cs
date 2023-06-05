@@ -675,6 +675,41 @@ namespace JuliusSweetland.OptiKey.Models
             }
         }
 
+
+        public static List<FunctionKeys> FunctionKeysForRepeatableActions
+        {
+            get
+            {
+                var keys = new List<FunctionKeys>
+                {
+                    FunctionKeys.MouseDrag,
+                    FunctionKeys.MouseKeyboard,
+                    FunctionKeys.MouseLeftClick,
+                    FunctionKeys.MouseLeftDoubleClick,
+                    FunctionKeys.MouseLeftDownUp,
+                    FunctionKeys.MouseMiddleClick,
+                    FunctionKeys.MouseMiddleDownUp,
+                    FunctionKeys.MouseMoveAmountInPixels,
+                    FunctionKeys.MouseMoveAndLeftClick,
+                    FunctionKeys.MouseMoveAndLeftDoubleClick,
+                    FunctionKeys.MouseMoveAndMiddleClick,
+                    FunctionKeys.MouseMoveAndRightClick,
+                    FunctionKeys.MouseMoveTo,
+                    FunctionKeys.MouseMoveToBottom,
+                    FunctionKeys.MouseMoveToLeft,
+                    FunctionKeys.MouseMoveToRight,
+                    FunctionKeys.MouseMoveToTop,
+                    FunctionKeys.MouseMoveAndScrollToBottom,
+                    FunctionKeys.MouseMoveAndScrollToLeft,
+                    FunctionKeys.MouseMoveAndScrollToRight,
+                    FunctionKeys.MouseMoveAndScrollToTop,
+                    FunctionKeys.MouseRightClick,
+                    FunctionKeys.MouseRightDownUp,
+                };
+                return keys;
+            }
+        }
+
         public static List<FunctionKeys> FunctionKeysWhichShouldntBeRepeated
         {
             get
@@ -753,30 +788,7 @@ namespace JuliusSweetland.OptiKey.Models
                     FunctionKeys.MenuKeyboard,
                     FunctionKeys.Minimise,
                     FunctionKeys.More,
-                    FunctionKeys.MouseDrag,
-                    FunctionKeys.MouseKeyboard,
-                    FunctionKeys.MouseLeftClick,
-                    FunctionKeys.MouseLeftDoubleClick,
-                    FunctionKeys.MouseLeftDownUp,
-                    FunctionKeys.MouseMiddleClick,
-                    FunctionKeys.MouseMiddleDownUp,
-                    FunctionKeys.MouseMoveAmountInPixels,
-                    FunctionKeys.MouseMoveAndLeftClick,
-                    FunctionKeys.MouseMoveAndLeftDoubleClick,
-                    FunctionKeys.MouseMoveAndMiddleClick,
-                    FunctionKeys.MouseMoveAndRightClick,
-                    FunctionKeys.MouseMoveTo,
-                    FunctionKeys.MouseMoveToBottom,
-                    FunctionKeys.MouseMoveToLeft,
-                    FunctionKeys.MouseMoveToRight,
-                    FunctionKeys.MouseMoveToTop,
-                    FunctionKeys.MouseRightClick,
-                    FunctionKeys.MouseRightDownUp,
                     FunctionKeys.MouseScrollAmountInClicks,
-                    FunctionKeys.MouseMoveAndScrollToBottom,
-                    FunctionKeys.MouseMoveAndScrollToLeft,
-                    FunctionKeys.MouseMoveAndScrollToRight,
-                    FunctionKeys.MouseMoveAndScrollToTop,
                     FunctionKeys.MouseMagnifier,
                     FunctionKeys.MoveAndResizeAdjustmentAmount,
                     FunctionKeys.MoveToBottom,
