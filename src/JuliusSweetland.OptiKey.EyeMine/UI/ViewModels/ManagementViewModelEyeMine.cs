@@ -245,8 +245,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void UpdateMinecraftConfig()
         {
+            Log.Info("UpdateMinecraftConfig");
             bool useMouseEmulation = Settings.Default.PointsSource == PointsSources.MousePosition;
             bool success = CustomActionsEyeMine.UpdateModConfig(useMouseEmulation);
+            Log.Info($"Updated minecraft config: useMouseEmulation={ useMouseEmulation } success={ success }");
         }
 
         private void SaveAndRestart()
