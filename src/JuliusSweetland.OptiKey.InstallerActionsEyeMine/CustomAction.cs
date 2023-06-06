@@ -180,8 +180,13 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         {
             installationPath = new InstallationPaths(session["AppDataFolder"]);
 
+            session.Log("Checking for EyeMine directory");
+            session.Log(installationPath.eyemineGameDir);
             bool alreadyExists = EyeMineDirAlreadyExists();
+            session.Log("alreadyExists? " + alreadyExists);
             session["FIRST_MOD_INSTALL"] = (!alreadyExists).ToString().ToLowerInvariant();
+            session.Log("FIRST_MOD_INSTALL = "+(!alreadyExists).ToString().ToLowerInvariant());
+
             return ActionResult.Success;
         }
 
