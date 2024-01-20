@@ -47,7 +47,7 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="Thank you! You have been playing a "/><Run Text="special "/><Run Text="version of EyeMine "/><Run Text="adapted "/><Run Text="for Smithsonian FUTURES"/></TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="Thank you! You have been playing a "/><Run Text="special "/><Run Text="version of EyeMine "/><Run Text="adapted "/><Run Text="for The NVM"/></TextBlock>
             </Border>
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
