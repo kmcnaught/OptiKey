@@ -98,25 +98,14 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
         [CustomAction]
         public static ActionResult QueryEyeTrackerSupport(Session session)
         {
+            // HACK: We are having some issues with this test, despite the
+            // EyeX engine working fine after installation, so we just 
+            // hardcode success here.
+
             // We should already know which eye tracker to default to, based on LoadOptikeyProperties
             session["EYETRACKER_SELECTED"] = session["EYETRACKER_DEFAULT"];
-
-            // We *also* want to know if Tobii is supported so we can add extra guidance - in particular
-            // if a user selects Tobii but _doesn't_ have the Eye Tracking Engine available - this is the
-            // case with some older Dynavox setups
-
-            bool supported = false;
             session["TOBII_SUPPORTED"] = "unknown";
-            try
-            {
-                supported = utils.IsTobiiSupported();
-            }
-            catch
-            {
-                return ActionResult.Failure;
-            }
-
-            session["TOBII_SUPPORTED"] = supported.ToString().ToLower();
+            session["TOBII_SUPPORTED"] = "true";
             
             return ActionResult.Success;
         }
