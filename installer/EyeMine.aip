@@ -956,6 +956,7 @@
     <ROW Action="SetPropertyFontStretch" Type="51" Source="SELECTED_FONTSTRETCH" Target="&quot;Condensed&quot;"/>
     <ROW Action="SetPropertyFontWeight" Type="51" Source="SELECTED_FONTWEIGHT" Target="Light"/>
     <ROW Action="SetPropertyLanguageSelected" Type="51" Source="LANGUAGE_SELECTED" Target="EnglishUK"/>
+    <ROW Action="SetPropertyTobiiSupported" Type="38" Target="Session.Property(&quot;NEWLINE&quot;) = vbLf" TargetUnformatted="Session.Property(&quot;TOBII_SUPPORTED&quot;) = &quot;true&quot;"/>
     <ROW Action="SetUpNewLine" Type="38" Target="Script Text" TargetUnformatted="Session.Property(&quot;NEWLINE&quot;) = vbLf"/>
     <ROW Action="StopProcessMinecraft" Type="1" Source="aicustact.dll" Target="StopProcess" WithoutSeq="true" Options="1" AdditionalSeq="AI_DATA_SETTER_6"/>
     <ROW Action="UninstallPreviousVersions" Type="1" Source="aicustact.dll" Target="UninstallPreviousVersions" Options="1"/>
@@ -1138,25 +1139,26 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="64"/>
-    <ROW Action="AI_DpiContentScale" Sequence="63"/>
-    <ROW Action="AI_EnableDebugLog" Sequence="62"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="65"/>
+    <ROW Action="AI_DpiContentScale" Sequence="64"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="63"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
-    <ROW Action="OptiKeyProperties" Sequence="57"/>
+    <ROW Action="OptiKeyProperties" Sequence="58"/>
     <ROW Action="UninstallPreviousVersions" Condition="( NOT Installed )" Sequence="201"/>
-    <ROW Action="EyeMineProperties" Sequence="61"/>
-    <ROW Action="GetMinecraftSaves" Condition="( NOT Installed )" Sequence="58"/>
-    <ROW Action="SetPropertyEyeTrackerSelected" Sequence="52"/>
-    <ROW Action="SetPropertyFontStretch" Sequence="53"/>
-    <ROW Action="SetPropertyLanguageSelected" Sequence="54"/>
-    <ROW Action="SetPropertyFontFamily" Sequence="56"/>
-    <ROW Action="SetPropertyFontWeight" Sequence="55"/>
+    <ROW Action="EyeMineProperties" Sequence="62"/>
+    <ROW Action="GetMinecraftSaves" Condition="( NOT Installed )" Sequence="59"/>
+    <ROW Action="SetPropertyEyeTrackerSelected" Sequence="53"/>
+    <ROW Action="SetPropertyFontStretch" Sequence="54"/>
+    <ROW Action="SetPropertyLanguageSelected" Sequence="55"/>
+    <ROW Action="SetPropertyFontFamily" Sequence="57"/>
+    <ROW Action="SetPropertyFontWeight" Sequence="56"/>
     <ROW Action="SetUpNewLine" Sequence="51"/>
-    <ROW Action="DetectProcessMinecraft" Sequence="60"/>
-    <ROW Action="AI_DATA_SETTER_5" Sequence="59"/>
+    <ROW Action="DetectProcessMinecraft" Sequence="61"/>
+    <ROW Action="AI_DATA_SETTER_5" Sequence="60"/>
     <ROW Action="AI_ExtractTempFiles" Sequence="1001"/>
+    <ROW Action="SetPropertyTobiiSupported" Sequence="52"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>

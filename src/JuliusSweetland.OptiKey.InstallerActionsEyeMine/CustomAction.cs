@@ -54,11 +54,11 @@ namespace JuliusSweetland.OptiKey.InstallerActionsEyeMine
                 session.Log("Error checking for Forge install");
                 return ActionResult.Failure;
             }
-            /*if (QueryEyeTrackerSupport(session) != success)
+            if (QueryEyeTrackerSupport(session) != success)
             {
                 session.Log("Error checking for eyetracker support");
                 return ActionResult.Failure;
-            }*/
+            }
             if (CheckIfEyeMineModAlreadyInstalled(session) != success)
             {
                 session.Log("Error checking for existing mod installation");
