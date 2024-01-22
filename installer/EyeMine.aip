@@ -17,10 +17,10 @@
     <ROW Property="Manufacturer" Value="SpecialEffect"/>
     <ROW Property="MsiLogging" MultiBuildValue="DefaultBuild:vp"/>
     <ROW Property="NUMBER_OF_SAVES" Value="0"/>
-    <ROW Property="ProductCode" Value="1033:{3B85C1D2-D9B3-4FF1-86BC-F3543E75F85B} 2057:{3B85C1D2-D9B3-4FF1-86BC-F3543E75F85B} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{64286414-8B1E-4C7C-9095-9826B43E82EC} 2057:{64286414-8B1E-4C7C-9095-9826B43E82EC} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="EyeMineExhibit"/>
-    <ROW Property="ProductVersion" Value="2.0.5"/>
+    <ROW Property="ProductVersion" Value="2.0.6"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="TOBII_SUPPORTED" Value="false"/>
@@ -49,6 +49,7 @@
     <ROW Directory="Fonts_Dir" Directory_Parent="Resources_Dir" DefaultDir="Fonts"/>
     <ROW Directory="GrabLogsRelease_Dir" Directory_Parent="APPDIR" DefaultDir="GrabLogs:GRABLO~1|GrabLogsRelease"/>
     <ROW Directory="LauncherRelease" Directory_Parent="APPDIR" DefaultDir=".:LAUNCH~1|LauncherRelease"/>
+    <ROW Directory="Lib_Dir" Directory_Parent="LauncherRelease" DefaultDir="Lib"/>
     <ROW Directory="ModInstaller_Dir" Directory_Parent="APPDIR" DefaultDir="MODINS~1|ModInstaller"/>
     <ROW Directory="Mouse_Dir" Directory_Parent="EyeMineKeyboards_Dir" DefaultDir="Mouse"/>
     <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="PROGRA~1|ProgramMenuFolder" IsPseudoRoot="1"/>
@@ -208,6 +209,7 @@
     <ROW Component="Tobii.EyeX.Client.Net20.dll_1" ComponentId="{29312988-64DB-4DA6-9AE6-FF0B839056B8}" Directory_="Release_1_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.Net20.dll_1"/>
     <ROW Component="Tobii.EyeX.Client.dll" ComponentId="{8B12CF44-ED10-4B13-94F5-73507A620211}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.dll"/>
     <ROW Component="Tobii.EyeX.Client.dll_1" ComponentId="{96B7ED5B-BB60-4BB1-970D-EFCFB9C54B13}" Directory_="Release_1_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.dll_1"/>
+    <ROW Component="UIA_Browser.ahk" ComponentId="{42D9D263-FC2F-4D75-A7BB-A404389625C4}" Directory_="Lib_Dir" Attributes="0" KeyPath="UIA_Browser.ahk" Type="0"/>
     <ROW Component="WPFMediaKit.dll" ComponentId="{C3CC3CB3-4B32-4993-A229-A177A4345BBD}" Directory_="Release_Dir" Attributes="0" KeyPath="WPFMediaKit.dll"/>
     <ROW Component="WindowsInput.dll" ComponentId="{699E2D0D-419A-4CBA-ADDE-7D547185B2AE}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsInput.dll"/>
     <ROW Component="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" ComponentId="{1F5F30AB-831F-42DC-9518-729B6A81CA11}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
@@ -522,6 +524,9 @@
     <ROW File="EyeMineLauncher.pdb" Component_="EyeMineLauncher.exe" FileName="EYEMIN~1.PDB|EyeMineLauncher.pdb" Attributes="0" SourcePath="..\src\EyeMineLauncher\bin\Release\EyeMineLauncher.pdb" SelfReg="false"/>
     <ROW File="Ghost_Toggle.ahk" Component_="EyeMineLauncher.exe.config" FileName="GHOST_~1.AHK|Ghost_Toggle.ahk" Attributes="0" SourcePath="..\src\EyeMineLauncher\bin\Release\Ghost_Toggle.ahk" SelfReg="false"/>
     <ROW File="eyemineexhibit2.0.6.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~2.JAR|eyemine-exhibit-2.0.6.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-exhibit-2.0.6.jar" SelfReg="false"/>
+    <ROW File="UIA_Browser.ahk" Component_="UIA_Browser.ahk" FileName="UIA_BR~1.AHK|UIA_Browser.ahk" Attributes="0" SourcePath="..\src\EyeMineLauncher\bin\Release\Lib\UIA_Browser.ahk" SelfReg="false"/>
+    <ROW File="UIA_Constants.ahk" Component_="UIA_Browser.ahk" FileName="UIA_CO~1.AHK|UIA_Constants.ahk" Attributes="0" SourcePath="..\src\EyeMineLauncher\bin\Release\Lib\UIA_Constants.ahk" SelfReg="false"/>
+    <ROW File="UIA_Interface.ahk" Component_="UIA_Browser.ahk" FileName="UIA_IN~1.AHK|UIA_Interface.ahk" Attributes="0" SourcePath="..\src\EyeMineLauncher\bin\Release\Lib\UIA_Interface.ahk" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -1101,6 +1106,7 @@
     <ROW Feature_="MainFeature" Component_="Tobii.EyeX.Client.Net20.dll_1"/>
     <ROW Feature_="MainFeature" Component_="EyeMineLauncher.exe"/>
     <ROW Feature_="MainFeature" Component_="EyeMineLauncher.exe.config"/>
+    <ROW Feature_="MainFeature" Component_="UIA_Browser.ahk"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="EyeMineV2exhibit.exe" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\EyeMineV2exhibit.ico" Index="0"/>
