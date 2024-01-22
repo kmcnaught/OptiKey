@@ -68,14 +68,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
             // Set up for ghost
             // May be in one of two places
-            String ghostFilename = @"C:\Program Files (x86)\Tobii\Tobii EyeX Interaction\GazeNative8.exe";
-            if (!File.Exists(ghostFilename))
-            {
-                ghostFilename = @"C:\Program Files\Tobii\Tobii EyeX\GazeNative8.exe";
-            }
-            if (!File.Exists(ghostFilename))
-            {
-                MessageBox.Show("Error finding GazeNative app for overlay");
+            String ghostFilename = FindGhostFilename();
+            if (String.IsNullOrEmpty(ghostFilename))
+            {                
+                MessageBox.Show("Error finding overlay app, please install Tobii Ghost");
             }
 
             ghostStartInfo = new ProcessStartInfo(ghostFilename);
@@ -118,6 +114,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             resetPageTimer.Interval = new TimeSpan(0, 0, 3);
             resetPageTimer.Tick += (s, e) => { CompleteAutoReset(); };
 
+        }
+
+        private string FindGhostFilename()
+        {
+            string appDataLocal = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            List<string> locations = new List<string>() {
+                @"C:\Program Files (x86)\Tobii\",
+                @"C:\Program Files\Tobii\",
+                Path.Combine(appDataLocal, "TobiiGhost"),
+                Path.Combine(appDataLocal, "Tobii"),
+                Path.Combine(appDataLocal, "TobiiAB")
+            };
+            List<string> filenames = new List<string>() {
+                "GazeNative8.exe",    // old version in Program Files
+                "PreviewOverlay.exe", // new version in Local AppData
+                //"SSOverlay.exe"
+            };
+
+            foreach (var location in locations)
+            {
+                foreach (var filename in filenames)
+                {
+                    var files = Directory.GetFiles(location, filename, SearchOption.AllDirectories);
+                    foreach (var file in files)
+                    {
+                        Log.Info($"Found Ghost EXE: {file}");
+                        return file;
+                    }
+                }
+            }
+            return null;
         }
 
         public static void SetGhostVisible(bool visible)
@@ -309,7 +336,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                         KillProcess(p, 1000);
                     }
                 }
-                else if (p.ProcessName.Contains("GazeNative8"))
+                else if (p.ProcessName.Contains("GazeNative8") ||
+                         p.ProcessName.Contains("SSOverlay.exe") || 
+                         p.ProcessName.Contains("PreviewOverlay.exe") 
+                    )
                 {
                     KillProcess(p, 1000);
                 }
