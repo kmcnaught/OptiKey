@@ -279,9 +279,10 @@ namespace EyeMineLauncher
         private static void LogExes()
         {
             // Log info for tobii binaries
+            var appDataLocal = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var paths = new[] {
-                @"C:\Users\Kirsty\AppData\Local\Tobii",
-                @"C:\Users\Kirsty\AppData\Local\TobiiGhost",
+                Path.Combine(appDataLocal,"Tobii"),
+                Path.Combine(appDataLocal,"TobiiGhost"),
                 @"C:\Program Files (x86)\Tobii",
                 @"C:\Program Files\Tobii"
             };
