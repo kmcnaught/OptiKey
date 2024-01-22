@@ -136,14 +136,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 foreach (var filename in filenames)
                 {
-                    var files = Directory.GetFiles(location, filename, SearchOption.AllDirectories);
-                    foreach (var file in files)
+                    try
                     {
-                        Log.Info($"Found Ghost EXE: {file}");
-                        return file;
+                        var files = Directory.GetFiles(location, filename, SearchOption.AllDirectories);
+                        foreach (var file in files)
+                        {
+                            Log.Info($"Found Ghost EXE: {file}");
+                            return file;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Debug($"{e.GetType()} : {e.Message}");
                     }
                 }
             }
+
             return null;
         }
 
