@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,17 +16,24 @@ namespace EyeMineLauncher
 
         private static string crashLogsPath = @"C:\CrashDumps\";
         private static string launcherLog;
-        private static int crashLogsCount = 3;
+        private static int crashLogsCount = 1000;
         
         static void Main(string[] args)
         {
-            //TODO: delete old launcher logs
+            // TODO: delete old launcher logs
             string filename = string.Format("launcher-{0:yyyy-MM-dd_hh-mm-ss}.txt", DateTime.Now);
             launcherLog = Path.Combine(crashLogsPath, filename);
+
+            // Log tobii binaries info
+            LogExes();
+
+            // Launch AHK to turn Ghost on
+
 
             ResetConfigFiles();
             Console.Out.Flush();                 
 
+            // TODO: make sure keeping some older ones including when it was working?
             KeepMostRecent(crashLogsPath, crashLogsCount);            
 
             while (true)
@@ -43,7 +51,7 @@ namespace EyeMineLauncher
                 SleepWithFeedback(10);
             }
         }
-
+        
         private static void Log(string msg)
         {
             Console.WriteLine(msg);
@@ -267,5 +275,89 @@ namespace EyeMineLauncher
                 }
             }
         }
+
+        private static void LogExes()
+        {
+            // Log info for tobii binaries
+            var paths = new[] {
+                @"C:\Users\Kirsty\AppData\Local\Tobii",
+                @"C:\Users\Kirsty\AppData\Local\TobiiGhost",
+                @"C:\Program Files (x86)\Tobii",
+                @"C:\Program Files\Tobii"
+            };
+            foreach (var path in paths)
+            {
+                Log(path);
+                WalkFileSystem(path, 0);
+            }
+        }
+
+        private static void WalkFileSystem(string path, int level)
+        {
+            if (!Directory.Exists(path))
+            {
+                Log("Directory does not exist: " + path);
+                return;
+            }
+
+            string indent = new string(' ', level * 2);
+
+            bool hasSomeAncestorExes = Directory.GetFiles(path, "*.exe", SearchOption.AllDirectories).Length > 0;
+
+            if (hasSomeAncestorExes)
+            {
+                Log($"{indent}{new DirectoryInfo(path).Name}");
+
+                foreach (var directory in Directory.GetDirectories(path))
+                {
+                    WalkFileSystem(directory, level + 1);
+                }
+
+                foreach (var file in Directory.GetFiles(path, "*.exe"))
+                {
+                    string hash = GetFileHash(file);
+                    DateTime lastWriteTime = File.GetLastWriteTime(file);
+                    Log($"{indent}  {Path.GetFileName(file)} - {hash} - Last edited: {lastWriteTime}");
+                }
+            }
+        }
+
+        private static string GetFileHash(string filePath)
+        {
+            using (var hashAlgorithm = SHA256.Create())
+            using (var stream = File.OpenRead(filePath))
+            {
+                var hash = hashAlgorithm.ComputeHash(stream);
+                return BitConverter.ToString(hash, 0, 8).Replace("-", string.Empty);
+            }
+        }
+
+        private static void LaunchAHK()
+        {
+            string exeName = @"Ghost_Toggle.ahk";
+
+            Log($"Launching {exeName}");
+            Console.Out.Flush();
+
+            try
+            {
+                // from https://stackoverflow.com/a/9730455
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = exeName;
+
+                Process process = new Process();
+                process.StartInfo = startInfo;
+                process.Start();
+                process.WaitForExit();
+
+                Log("AHK exited with exit code: " + process.ExitCode);
+            }
+            catch (Exception e)
+            {
+                Log("Error launching AHK\n");
+                Log(e.Message);
+            }
+        }
     }
 }
+
