@@ -337,8 +337,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     }
                 }
                 else if (p.ProcessName.Contains("GazeNative8") ||
-                         p.ProcessName.Contains("SSOverlay.exe") || 
-                         p.ProcessName.Contains("PreviewOverlay.exe") 
+                         p.ProcessName.Contains("SSOverlay") || 
+                         p.ProcessName.Contains("PreviewOverlay") 
                     )
                 {
                     KillProcess(p, 1000);
