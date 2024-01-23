@@ -339,7 +339,11 @@ namespace EyeMineLauncher
 
         private static void LaunchAHK()
         {
-            string exeName = @"Ghost_Toggle.ahk";
+            // Ideally we'd have a relative path here. 
+            // It works fine when running manually, but in kiosk mode
+            // it seems the launcher EXE is run from a different location
+            // so i'm just going to hardcode this path here.
+            string exeName = @"C:\Program Files (x86)\SpecialEffect\EyeMineExhibit\Ghost_Toggle.ahk";
 
             Log($"Launching {exeName}");
             Console.Out.Flush();
