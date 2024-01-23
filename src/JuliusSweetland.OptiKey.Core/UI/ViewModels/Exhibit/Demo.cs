@@ -164,43 +164,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
             else if (!visible && ghostProcess != null)
             {
-                TryKillProcess(ghostProcess);
                 ghostProcess = null;
+
+                // for some reason, the ghostProcess reports as
+                // exited, but another orphaned ghost process does
+                // persist, so we kill any we find
+                CloseGhostProcesses();                
             }
         }
-
-        private static void TryKillProcess(Process p,  int timeout=1000)
-        {
-            if (p == null)
-                return;
-
-            if (p.HasExited)
-                return;
-
-            string name="";
-            try
-            {
-                name = p.ProcessName;
-                p.CloseMainWindow();
-                p.WaitForExit(timeout);
-            }
-            catch (Exception e)
-            {
-                Log.Info($"Exception quitting process {name}");
-                Log.Info($"{e.GetType()} : {e.Message}");
-                try
-                {
-                    Log.Info("trying again with Kill");
-                    p.Kill();
-                }
-                catch (Exception)
-                {
-                    Log.Info("Exception using kill");
-                    Log.Info($"{e.GetType()} : {e.Message}");
-                }
-            }
-        }
-
+        
         public static string EnabledKeyboard
         {
             get
@@ -362,10 +334,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             onboardVM.TobiiError(e);
         }
 
-        public static void CloseProcesses()
+        private static void CloseMinecraftProcess()
         {
-            Console.WriteLine("Closing processes...");
-            // on startup, close any orphaned minecraft or ghost processes            
             foreach (Process p in Process.GetProcesses())
             {
                 if (p.ProcessName.ToLower().Contains("javaw"))
@@ -376,14 +346,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                         KillProcess(p, 1000);
                     }
                 }
-                else if (p.ProcessName.Contains("GazeNative8") ||
-                         p.ProcessName.Contains("SSOverlay") || 
-                         p.ProcessName.Contains("PreviewOverlay") 
+            }
+        }
+
+        private static void CloseGhostProcesses()
+        {
+            foreach (Process p in Process.GetProcesses())
+            {
+                if (p.ProcessName.Contains("GazeNative8") ||
+                         p.ProcessName.Contains("SSOverlay") ||
+                         p.ProcessName.Contains("PreviewOverlay")
                     )
                 {
                     KillProcess(p, 1000);
                 }
             }
+        }
+
+        public static void CloseProcesses()
+        {
+            Console.WriteLine("Closing processes...");
+            // on startup, close any orphaned minecraft or ghost processes            
+            CloseMinecraftProcess();
+            CloseGhostProcesses();
         }
 
         private static bool KillProcess(Process p, int waitTimeoutMs)
