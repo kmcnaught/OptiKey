@@ -174,9 +174,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             if (p == null)
                 return;
 
-            string name = p.ProcessName;
+            if (p.HasExited)
+                return;
+
+            string name="";
             try
             {
+                name = p.ProcessName;
                 p.CloseMainWindow();
                 p.WaitForExit(timeout);
             }
