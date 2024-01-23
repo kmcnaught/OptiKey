@@ -25,10 +25,14 @@ namespace EyeMineLauncher
             launcherLog = Path.Combine(crashLogsPath, filename);
 
             // Log tobii binaries info
+            Log("Logging Tobii binary information");
             LogExes();
+            Console.Out.Flush();
 
             // Launch AHK to turn Ghost on
-
+            Log("Launching Ghost via AHK");
+            LaunchAHK();
+            Console.Out.Flush();
 
             ResetConfigFiles();
             Console.Out.Flush();                 
