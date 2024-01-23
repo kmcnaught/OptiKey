@@ -147,7 +147,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     }
                     catch (Exception e)
                     {
-                        Log.Debug($"{e.GetType()} : {e.Message}");
+                        Log.Info($"{e.GetType()} : {e.Message}");
                     }
                 }
             }
@@ -164,8 +164,36 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             }
             else if (!visible && ghostProcess != null)
             {
-                ghostProcess.CloseMainWindow();
+                TryKillProcess(ghostProcess);
                 ghostProcess = null;
+            }
+        }
+
+        private static void TryKillProcess(Process p,  int timeout=1000)
+        {
+            if (p == null)
+                return;
+
+            string name = p.ProcessName;
+            try
+            {
+                p.CloseMainWindow();
+                p.WaitForExit(timeout);
+            }
+            catch (Exception e)
+            {
+                Log.Info($"Exception quitting process {name}");
+                Log.Info($"{e.GetType()} : {e.Message}");
+                try
+                {
+                    Log.Info("trying again with Kill");
+                    p.Kill();
+                }
+                catch (Exception)
+                {
+                    Log.Info("Exception using kill");
+                    Log.Info($"{e.GetType()} : {e.Message}");
+                }
             }
         }
 
