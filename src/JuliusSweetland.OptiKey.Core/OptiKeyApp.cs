@@ -554,72 +554,45 @@ namespace JuliusSweetland.OptiKey
         }
 
         #endregion
-
-        #region Attach Unhandled Exception Handlers
-
+        
+        #region AttachUnhandledExceptionHandlers
         // Make sure exceptions get logged, and a crash message appears
         protected static void AttachUnhandledExceptionHandlers()
         {
-            // Make sure unhandled exceptions get logged
-            Current.DispatcherUnhandledException += (sender, args) => Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
-            AppDomain.CurrentDomain.UnhandledException += (sender, args) => Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
-            TaskScheduler.UnobservedTaskException += (sender, args) => Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
-
-            // Create crash dump via NBug
+            Action CloseLogsAndShowCrashWindow = () =>
+            {
 #if !DEBUG
-            Application.Current.DispatcherUnhandledException += NBug.Handler.DispatcherUnhandledException;
-            AppDomain.CurrentDomain.UnhandledException += NBug.Handler.UnhandledException;
-            TaskScheduler.UnobservedTaskException += NBug.Handler.UnobservedTaskException;
+                LogManager.Flush(1000);
+                LogManager.Shutdown();
 
-            NBug.Settings.ProcessingException += (exception, report) =>
-            {
-                //Add latest log file contents as custom info in the error report
-                var rootAppender = ((Hierarchy)LogManager.GetRepository())
-                    .Root.Appenders.OfType<FileAppender>()
-                    .FirstOrDefault();
-
-                if (rootAppender != null)
+                Application.Current.Dispatcher.Invoke((Action)delegate
                 {
-                    using (var fs = new FileStream(rootAppender.File, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                    {
-                        using (var sr = new StreamReader(fs, Encoding.Default))
-                        {
-                            var logFileText = sr.ReadToEnd();
-                            report.CustomInfo = logFileText;
-                        }
-                    }
-                }
-            };
-
-            NBug.Settings.CustomUIEvent += (sender, args) =>
-            {
-                //Shortcut exceptions caused by a failure to send a previous crash report to prevent a crash loop
-                if(args.Exception.Message.Contains("An exception occurred while submitting bug report with Mail"))
-                {
-                    args.Result = new UIDialogResult(ExecutionFlow.ContinueExecution, SendReport.DoNotSend);
-                    return;
-                }
-
-                Application.Current.Dispatcher.Invoke((Action)delegate 
-                {
-                    var crashWindow = new CrashWindow
-                    {
-                        Topmost = true,
-                        ShowActivated = true
-                    };
-                    crashWindow.ShowDialog();
-
-                    //The crash report has not been created yet - the UIDialogResult SendReport param determines what happens next
-                    args.Result = new UIDialogResult(ExecutionFlow.BreakExecution, SendReport.Send);
+                    CrashWindow crashWindow = CrashWindow.Instance;
+                    if (!crashWindow.IsVisible)
+                        crashWindow.ShowDialog();
                 });
+#endif
             };
 
-            NBug.Settings.InternalLogWritten += (logMessage, category) => Log.DebugFormat("NBUG:{0} - {1}", category, logMessage);
-#endif
-
+            Current.DispatcherUnhandledException += (sender, args) =>
+            {
+                Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
+                CloseLogsAndShowCrashWindow();
+            };
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+            {
+                Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
+                CloseLogsAndShowCrashWindow();
+            };
+            TaskScheduler.UnobservedTaskException += (sender, args) =>
+            {
+                Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
+                CloseLogsAndShowCrashWindow();
+            };
         }
 
-        #endregion
+#endregion
+
 
         #region Handle Corrupt Settings
 
