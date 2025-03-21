@@ -140,7 +140,7 @@ namespace EyeMineLauncher
                 process.CancelOutputRead();
 
                 Log($"Exit code: {process.ExitCode}");
-                if (process.ExitCode < 0)
+                if (process.ExitCode != 0)
                 {
                     Log("App has exited unexpectedly, saving crash log now");
                     SaveCrashLog(outputBuilder);
@@ -149,7 +149,7 @@ namespace EyeMineLauncher
                 return process.ExitCode;
             }
             catch (Exception e) {
-                Log("Error launching application\n");
+                Log("Exception launching application\n");
                 Log(e.Message);
                 return -1;
             }            
