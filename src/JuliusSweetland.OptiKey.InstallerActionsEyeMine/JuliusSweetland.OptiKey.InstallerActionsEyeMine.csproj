@@ -50,7 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EyeXFramework">
-      <HintPath>..\..\..\..\Users\Kirsty\source\repos\TestTobiiInstall\TestTobiiInstall\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
+      <HintPath>..\..\ext\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -64,7 +64,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Tobii.EyeX.Client.Net20">
-      <HintPath>..\..\..\..\Users\Kirsty\source\repos\TestTobiiInstall\TestTobiiInstall\TobiiEyeXSdk\Tobii.EyeX.Client.Net20.dll</HintPath>
+      <HintPath>..\..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.Net20.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
