@@ -104,6 +104,7 @@ namespace JuliusSweetland.OptiKey
             Current.Exit += (o, args) =>
             {
                 Log.Info("PERSISTING USER SETTINGS AND SHUTTING DOWN.");
+                LogManager.Flush(1000);
                 Settings.Default.Save();
             };
 
