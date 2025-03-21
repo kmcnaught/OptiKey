@@ -231,34 +231,40 @@ namespace EyeMineLauncher
             }
 
             {
-
+                // Back up the contents of Optikey's log dir, into a separate directory where everything 
+                // gets time-stamped. 
                 string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
                 string logsDir = Path.Combine(optikeyDir, @"EyeMineV2\Logs");
                 string savedLogsDir = Path.Combine(applicationDataPath, @"SpecialEffectLogs");
 
-                try
+                if (Directory.Exists(logsDir))
                 {
-                    if (!Directory.Exists(savedLogsDir))
+                    try
                     {
-                        Directory.CreateDirectory(savedLogsDir);
-                    }
+                        if (!Directory.Exists(savedLogsDir))
+                        {
+                            Directory.CreateDirectory(savedLogsDir);
+                        }
 
-                    // Move logs out first - renaming by date created             
-                    var dir = new DirectoryInfo(logsDir);                    
-                    foreach (FileInfo file in dir.GetFiles())
+                        // Move logs out first - renaming by date created             
+                        var dir = new DirectoryInfo(logsDir);
+                        foreach (FileInfo file in dir.GetFiles())
+                        {
+                            string newName = String.Format("EyeMine-{0:yyyy-MM-dd--HH-mm-ss}.log", file.LastWriteTime);
+                            File.Copy(file.FullName, Path.Combine(savedLogsDir, newName), true);
+                        }
+
+                        // Only keep a maximum number of log files
+                        KeepMostRecent(savedLogsDir, 1000);
+
+                        //TODO: consider 
+                    }
+                    catch (Exception e)
                     {
-                        string newName = String.Format("EyeMine-{0:yyyy-MM-dd--HH-mm-ss}.log", file.LastWriteTime);
-                        File.Copy(file.FullName, Path.Combine(savedLogsDir, newName), true);
+                        Log("Error backing up EyeMine logs");
+                        Log("");
+                        Log(e.ToString());
                     }
-
-                    // Only keep a maximum number of log files
-                    KeepMostRecent(savedLogsDir, 100);
-                }
-                catch (Exception e)
-                {
-                    Log("Error backing up EyeMine logs");
-                    Log("");
-                    Log(e.ToString());
                 }
 
                 // Optikey config - this can get corrupted. We need a backup so we can recover the minecraft command
