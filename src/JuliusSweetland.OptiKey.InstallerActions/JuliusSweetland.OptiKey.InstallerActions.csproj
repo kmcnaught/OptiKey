@@ -51,7 +51,7 @@
   <ItemGroup>
     <Reference Include="EyeXFramework, Version=1.4.451.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Users\Kirsty\source\repos\TestTobiiInstall\TestTobiiInstall\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
+      <HintPath>..\..\ext\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -63,7 +63,7 @@
     </Reference>
     <Reference Include="Tobii.EyeX.Client.Net20, Version=1.4.451.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Users\Kirsty\source\repos\TestTobiiInstall\TestTobiiInstall\TobiiEyeXSdk\Tobii.EyeX.Client.Net20.dll</HintPath>
+      <HintPath>..\..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.Net20.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
