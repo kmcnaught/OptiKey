@@ -47,7 +47,7 @@ def safeExit():
 #    safeProcess("git reset --hard head")
 
 def update_assembly_version(filename):
-    pattern = re.compile("\[assembly:\s*AssemblyVersion\(\"(\d*).(\d*).(\d*)\"\)\]")
+    pattern = re.compile(r"\[assembly:\s*AssemblyVersion\(\"(\d*).(\d*).(\d*)\"\)\]")
     
     new_version = None
     for line in fileinput.input(filename, inplace=True):
@@ -89,7 +89,7 @@ version_file = 'src/JuliusSweetland.OptiKey.EyeMine/Properties/AssemblyInfo.cs'
 new_version = update_assembly_version(version_file)
 
 # Update the version reported in the AI installer project
-installer_file = "installer\EyeMine.aip"
+installer_file = "installer/EyeMine.aip"
 update_installer_version(installer_file, new_version)
 
 # Commit changes
