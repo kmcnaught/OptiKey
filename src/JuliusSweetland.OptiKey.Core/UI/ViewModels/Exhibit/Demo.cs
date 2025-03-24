@@ -280,7 +280,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     }
 
                     Log.Info($"Java path: {javaPath}");
-                    Log.Info($"Java path: {minecraftArgs}");
+                    Log.Info($"Args: {minecraftArgs}");
 
                     // Fix mid-argument whitespace
                     //FIXME: make this generic? it's when there's explicit double quotes, so e.g.
