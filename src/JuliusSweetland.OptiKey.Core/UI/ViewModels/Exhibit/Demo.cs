@@ -165,6 +165,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             else if (!visible && ghostProcess != null)
             {
                 ghostProcess = null;
+                ghostProcess = null;
 
                 // for some reason, the ghostProcess reports as
                 // exited, but another orphaned ghost process does
@@ -254,18 +255,61 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 String fullCmd = Settings.Default.MinecraftCommand;
                 if (!String.IsNullOrEmpty(fullCmd))
                 {
-                    string javapath1 = @"C:\Program Files (x86)\Minecraft Launcher\runtime\jre-legacy\windows-x64\jre-legacy\bin\javaw.exe";                   
+                    Log.Info($"Full command: {fullCmd}");
 
-                    string[] parts = fullCmd.SplitAtEndOfSubstring("javaw.exe\"");
-                    string javaPath = parts[0];
-                    string minecraftArgs = parts[1].TrimStart();
+                    // java path may be quoted, in which case we take the quotes. 
+                    string javaPath = "";
+                    string minecraftArgs = "";
+                    string[] parts;
+                    if (fullCmd.Contains("javaw.exe\""))
+                    {
+                        parts = fullCmd.SplitAtEndOfSubstring("javaw.exe\"");
+                        javaPath = parts[0];
+                        minecraftArgs = parts[1].TrimStart();
+                    }
+                    else if (fullCmd.Contains("javaw.exe")) { 
+                        parts = fullCmd.SplitAtEndOfSubstring("javaw.exe");
+                        javaPath = parts[0];
+                        minecraftArgs = parts[1].TrimStart();
+                    }
+                    else
+                    {
+                        Log.Error("Cannot parse minecraft command"); //TODO: what do we do then?
+                        onboardVM.SetUnrecoverableError();
+                        return;
+                    }
+
+                    Log.Info($"Java path: {javaPath}");
+                    Log.Info($"Java path: {minecraftArgs}");
 
                     // Fix mid-argument whitespace
+                    //FIXME: make this generic? it's when there's explicit double quotes, so e.g.
+                    // \".* .*\" or something
                     string find = "Windows 10";
                     string replace = "Windows\\ 10";
                     minecraftArgs = minecraftArgs.Replace(find, replace);
+                    find = "Windows 11"; // just in case this changes.. ! currently is "Windows 10" even on Windows 11
+                    replace = "Windows\\ 11";
+                    minecraftArgs = minecraftArgs.Replace(find, replace);
 
-                    minecraftProcess = Process.Start(new ProcessStartInfo(javaPath, minecraftArgs));
+                    try
+                    {
+                        minecraftProcess = Process.Start(new ProcessStartInfo(javaPath, minecraftArgs));
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error($"Failed to start Minecraft process: {ex.Message}");
+                        onboardVM.SetUnrecoverableError();
+                        return;
+                    }
+
+                    if (minecraftProcess == null)
+                    {
+                        Log.Error("Minecraft process is null");
+                        onboardVM.SetUnrecoverableError();
+                        return;
+                    }
+                    
                     minecraftProcess.CloseOnApplicationExit(Log, "Minecraft");
 
                     minecraftWatcher = new MinecraftWatcher(minecraftProcess);
@@ -273,7 +317,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     {
                         Console.WriteLine("Minecraft has crashed");
                         onboardVM.SetUnrecoverableError();
-                    };
+                        return;
+                    };                    
+                    
                     minecraftWatcher.MinecraftLoaded += (s, e) =>
                     {
                         Console.WriteLine("Minecraft has finished loading");
@@ -329,7 +375,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         private void TobiiWatcher_EnteredErrorState(object sender, Tobii.EyeX.Framework.EyeTrackingDeviceStatus e)
         {
-            Console.WriteLine("Tobii: error");            
+            Console.WriteLine($"Tobii: error status {e}");            
             Settings.Default.TobiiErrorCount++;
             onboardVM.TobiiError(e);
         }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Threading;
 using JuliusSweetland.OptiKey.UI.Windows;
 using System.Windows;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
@@ -24,6 +25,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private void Restart(object sender, EventArgs e)
         {
             dispatcherTimer.Tick -= Restart;
+            LogManager.Flush(1000);
             Application.Current.Shutdown(); // service will restart for us
         }
     }

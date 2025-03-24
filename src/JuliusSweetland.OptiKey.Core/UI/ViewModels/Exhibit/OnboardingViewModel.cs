@@ -15,6 +15,7 @@ using System.Windows;
 using System.Diagnostics;
 using JuliusSweetland.OptiKey.Properties;
 using System.Threading;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 {
@@ -266,6 +267,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         {
             this.demoState = DemoState.ERROR_MC_CRASH;
             errorViewModel.StartRestartCountdown();
+            LogManager.Flush(1000);
             RaisePropertyChanged("CurrentPageViewModel");
             StateChanged(this, null);
         }
@@ -385,6 +387,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public void TobiiError(Tobii.EyeX.Framework.EyeTrackingDeviceStatus lastTobiiErrorStatus)
         {
+            LogManager.Flush(1000);
             if (tempState != TempState.TEMP_ERROR_EYETRACKER)
             {
                 System.Windows.Application.Current.Dispatcher.Invoke(() =>
