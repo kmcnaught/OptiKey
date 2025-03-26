@@ -58,13 +58,11 @@ namespace EyeMineLauncher
                 // Back logs from last time - avoid local overwriting strategies               
                 string applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
-                string optikeyLogsDir = Path.Combine(optikeyDir, @"EyeMineV2\Logs");
                 string minecraftDir = Path.Combine(applicationDataPath, @".minecraft");
-                string minecraftLogsDir = Path.Combine(minecraftDir, @"EyeMineExhibition\logs");
 
-                BackupLogs(optikeyLogsDir, allLogsPath, "Optikey");
-                BackupLogs(minecraftLogsDir, allLogsPath, "Minecraft");
-
+                BackupLogs(Path.Combine(optikeyDir, @"EyeMineV2\Logs"), allLogsPath, "Optikey");                
+                BackupLogs(Path.Combine(minecraftDir, @"EyeMineExhibition\logs"), allLogsPath, "MinecraftLog");
+                BackupLogs(Path.Combine(minecraftDir, @"EyeMineExhibition\crash-reports"), allLogsPath, "MinecraftCrash");
 
                 // Synchronous - won't return until app closed
                 ResetConfigFiles();           
@@ -252,16 +250,17 @@ namespace EyeMineLauncher
                 {
                     // Move logs out first - renaming by date created             
                     var dir = new DirectoryInfo(origLogDir);
+                    var dest = Path.Combine(newLogDir, name);
                     foreach (FileInfo file in dir.GetFiles())
                     {
                         string newName = String.Format("{0}-{1:yyyy-MM-dd--HH-mm-ss}.log", name, file.LastWriteTime);
-                        File.Copy(file.FullName, Path.Combine(newLogDir, newName), true); //fixme
+                        File.Copy(file.FullName, dest, true); 
                     }
 
                     // Only keep a maximum number of log files
                     KeepMostRecent(newLogDir, 1000);
 
-                    Log($"backed up logs from {origLogDir}");
+                    Log($"backed up logs from {origLogDir} to {dest}");
                     //TODO: consider exponential decay to keep hold of old files
                 }
                 catch (Exception e)
