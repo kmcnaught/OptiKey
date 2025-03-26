@@ -145,6 +145,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                             return file;
                         }
                     }
+                    catch (DirectoryNotFoundException e)
+                    { 
+                        // noop - we don't expect all dirs to exist
+                    }
                     catch (Exception e)
                     {
                         Log.Info($"{e.GetType()} : {e.Message}");
@@ -389,7 +393,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     string cmd = p.GetCommandLine();
                     if (cmd.Contains(".minecraft") && cmd.Contains("EyeMineExhibit"))
                     {
-                        KillProcess(p, 1000);
+                        KillProcess(p, 1000, "minecraft");
                     }
                 }
             }
@@ -404,7 +408,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                          p.ProcessName.Contains("PreviewOverlay")
                     )
                 {
-                    KillProcess(p, 1000);
+                    KillProcess(p, 1000, "ghost");
                 }
             }
         }
@@ -417,7 +421,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             CloseGhostProcesses();
         }
 
-        private static bool KillProcess(Process p, int waitTimeoutMs)
+        private static bool KillProcess(Process p, int waitTimeoutMs, string name)
         {
             bool success = p.CloseMainWindow();
             if (success)
@@ -432,8 +436,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Error: Exception killing process");
-                    Log.Error("Exception killing process");
+                    Console.WriteLine($"Exception killing process ({name})");
+                    Log.Error($"Exception killing process ({name})");
                     Log.Error(e.ToString());
                 }
             }
@@ -483,7 +487,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             Process p = Process.GetProcessesByName("EyeMineLauncher").FirstOrDefault();
             if (p != null)
             {
-                KillProcess(p, 1000);
+                KillProcess(p, 1000, "launcher");
             }
         }
 

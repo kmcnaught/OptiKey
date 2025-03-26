@@ -218,7 +218,7 @@ namespace JuliusSweetland.OptiKey.Services
         private void EyeXHost_EyeTrackingDeviceStatusChanged(object sender, EngineStateValue<EyeTrackingDeviceStatus> e)
         {
             Log.InfoFormat("Tobii EyeX tracking device status changed to {0} (IsValid={1})", e, e.IsValid);
-            Console.WriteLine(e.Value);
+            
             //can be 0: invalid at first and on shutdown, not sure if this happens at other times
             switch(e.Value)
             {
