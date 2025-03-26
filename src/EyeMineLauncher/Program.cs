@@ -14,15 +14,25 @@ namespace EyeMineLauncher
     class Program
     {
 
-        private static string crashLogsPath = @"C:\CrashDumps\";
+        private static string allLogsPath = @"C:\EyeMineLogs\";
         private static string launcherLog;
-        private static int crashLogsCount = 1000;
+        private static int numLogsToKeep = 1000;
         
+        private static void EnsureExists(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+        }
+
         static void Main(string[] args)
         {
-            // TODO: delete old launcher logs
-            string filename = string.Format("launcher-{0:yyyy-MM-dd_hh-mm-ss}.txt", DateTime.Now);
-            launcherLog = Path.Combine(crashLogsPath, filename);
+            EnsureExists(allLogsPath);
+
+            // TODO: delete old launcher logs? this is currently done later with KeepMostRecentInSubDirectories
+            string launcherLogDir = Path.Combine(allLogsPath, "Launcher");
+            launcherLog = Path.Combine(launcherLogDir, string.Format("launcher-{0:yyyy-MM-dd_hh-mm-ss}.txt", DateTime.Now));
 
             // Log tobii binaries info
             Log("Logging Tobii binary information");
@@ -35,10 +45,12 @@ namespace EyeMineLauncher
             Console.Out.Flush();
 
             ResetConfigFiles();
-            Console.Out.Flush();                 
+            Console.Out.Flush();
 
             // TODO: make sure keeping some older ones including when it was working?
-            KeepMostRecent(crashLogsPath, crashLogsCount);            
+            // FIXME: this 'keep most recent' is generally also called when moving log files, we might not
+            // need to do it here?
+            KeepMostRecentInSubDirectories(allLogsPath, numLogsToKeep);            
 
             while (true)
             {
@@ -53,6 +65,18 @@ namespace EyeMineLauncher
                 Console.Write("About to launch");
                 Console.Out.Flush();
                 SleepWithFeedback(10);
+
+                // Copy all logs to one place, avoid local overwriting strategies
+                string applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string savedLogsDir = Path.Combine(applicationDataPath, @"SpecialEffectLogs");
+                string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
+                string optikeyLogsDir = Path.Combine(optikeyDir, @"EyeMineV2\Logs");
+                string minecraftDir = Path.Combine(applicationDataPath, @".minecraft");
+                string minecraftLogsDir = Path.Combine(minecraftDir, @"EyeMineExhibition\logs");
+                
+                BackupLogs(optikeyLogsDir, Path.Combine(savedLogsDir, "Optikey"));
+                BackupLogs(minecraftLogsDir, Path.Combine(savedLogsDir, "minecraft"));
+
             }
         }
         
@@ -156,20 +180,31 @@ namespace EyeMineLauncher
         }
 
         private static void SaveCrashLog(StringBuilder stringBuilder)
-        {
+        {  
+            string logsDir = Path.Combine(allLogsPath, "Crashes");
+
             try
             {
-                KeepMostRecent(crashLogsPath, crashLogsCount);                
+                KeepMostRecent(logsDir, numLogsToKeep); //probably redundant as we also call KeepMostRecentInSubDirectories
             }
             catch
             {
                 Log("Unable to delete old crash logs");
             }
+
             string filename = string.Format("crash-{0:yyyy-MM-dd_hh-mm-ss}.txt", DateTime.Now);
-            System.IO.File.WriteAllText(Path.Combine(crashLogsPath, filename), stringBuilder.ToString());
+            System.IO.File.WriteAllText(Path.Combine(logsDir, filename), stringBuilder.ToString());
 
         }
         
+        private static void KeepMostRecentInSubDirectories(string directoryName, int numToKeep)
+        {
+            foreach (string subDirectory in Directory.GetDirectories(directoryName))
+            {
+                KeepMostRecent(subDirectory, numToKeep);
+            }
+        }
+
         private static void KeepMostRecent(string directoryName, int numToKeep)
         {
             DirectoryInfo info = new DirectoryInfo(directoryName);
@@ -203,6 +238,38 @@ namespace EyeMineLauncher
             Directory.Move(tmpDir, destDir);
         }
 
+        // // Back up the contents a log dir, 
+        // into a separate directory where everything gets time-stamped. 
+        private static void BackupLogs(string origLogDir, string newLogDir)
+        {
+            if (Directory.Exists(origLogDir))
+            {
+                try
+                {
+                    EnsureExists(newLogDir);
+
+                    // Move logs out first - renaming by date created             
+                    var dir = new DirectoryInfo(origLogDir);
+                    foreach (FileInfo file in dir.GetFiles())
+                    {
+                        string newName = String.Format("EyeMine-{0:yyyy-MM-dd--HH-mm-ss}.log", file.LastWriteTime);
+                        File.Copy(file.FullName, Path.Combine(newLogDir, newName), true);
+                    }
+
+                    // Only keep a maximum number of log files
+                    KeepMostRecent(newLogDir, 1000);
+
+                    //TODO: consider exponential decay to keep hold of old files
+                }
+                catch (Exception e)
+                {
+                    Log($"Error backing up logs from {origLogDir}");
+                    Log("");
+                    Log(e.ToString());
+                }
+            }
+        }
+
         private static void ResetConfigFiles()
         {
             // If there are backup config files available, restore those - this helps us to 
@@ -230,44 +297,9 @@ namespace EyeMineLauncher
                 }
             }
 
-            {
-                // Back up the contents of Optikey's log dir, into a separate directory where everything 
-                // gets time-stamped. 
-                string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
-                string logsDir = Path.Combine(optikeyDir, @"EyeMineV2\Logs");
-                string savedLogsDir = Path.Combine(applicationDataPath, @"SpecialEffectLogs");
-
-                if (Directory.Exists(logsDir))
-                {
-                    try
-                    {
-                        if (!Directory.Exists(savedLogsDir))
-                        {
-                            Directory.CreateDirectory(savedLogsDir);
-                        }
-
-                        // Move logs out first - renaming by date created             
-                        var dir = new DirectoryInfo(logsDir);
-                        foreach (FileInfo file in dir.GetFiles())
-                        {
-                            string newName = String.Format("EyeMine-{0:yyyy-MM-dd--HH-mm-ss}.log", file.LastWriteTime);
-                            File.Copy(file.FullName, Path.Combine(savedLogsDir, newName), true);
-                        }
-
-                        // Only keep a maximum number of log files
-                        KeepMostRecent(savedLogsDir, 1000);
-
-                        //TODO: consider 
-                    }
-                    catch (Exception e)
-                    {
-                        Log("Error backing up EyeMine logs");
-                        Log("");
-                        Log(e.ToString());
-                    }
-                }
-
+            {                
                 // Optikey config - this can get corrupted. We need a backup so we can recover the minecraft command
+                string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
                 string optikeyBackup = Path.Combine(applicationDataPath, @"SpecialEffect.zip");
                 if (File.Exists(optikeyBackup))
                 {
