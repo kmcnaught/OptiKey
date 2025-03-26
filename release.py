@@ -55,11 +55,10 @@ if not safeProcess(build):
     safeExit()
 
 # Build installer 
-installer_file = "installer\EyeMine.aip"
+installer_file = r"installer\EyeMine.aip"
 if not safeProcess("AdvancedInstaller.com /rebuild {}".format(installer_file)):
     print("Failed building installer")
     safeExit()
-
 
 # Discard local changes to InstallerStrings (these are a build artefact)
 if not safeProcess("git checkout src/JuliusSweetland.OptiKey.InstallerActions/InstallerStrings.cs"):
