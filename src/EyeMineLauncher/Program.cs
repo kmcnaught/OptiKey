@@ -57,14 +57,13 @@ namespace EyeMineLauncher
             {
                 // Back logs from last time - avoid local overwriting strategies               
                 string applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string savedLogsDir = Path.Combine(applicationDataPath, @"SpecialEffectLogs");
                 string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
                 string optikeyLogsDir = Path.Combine(optikeyDir, @"EyeMineV2\Logs");
                 string minecraftDir = Path.Combine(applicationDataPath, @".minecraft");
                 string minecraftLogsDir = Path.Combine(minecraftDir, @"EyeMineExhibition\logs");
 
-                BackupLogs(optikeyLogsDir, Path.Combine(savedLogsDir, "Optikey"));
-                BackupLogs(minecraftLogsDir, Path.Combine(savedLogsDir, "minecraft"));
+                BackupLogs(optikeyLogsDir, allLogsPath, "Optikey");
+                BackupLogs(minecraftLogsDir, allLogsPath, "Minecraft");
 
 
                 // Synchronous - won't return until app closed
@@ -242,21 +241,21 @@ namespace EyeMineLauncher
 
         // // Back up the contents a log dir, 
         // into a separate directory where everything gets time-stamped. 
-        private static void BackupLogs(string origLogDir, string newLogDir)
+        private static void BackupLogs(string origLogDir, string newLogDir, string name)
         {
+            newLogDir = Path.Combine(newLogDir, name);
             EnsureExists(newLogDir);
 
             if (Directory.Exists(origLogDir))
             {
                 try
                 {
-
                     // Move logs out first - renaming by date created             
                     var dir = new DirectoryInfo(origLogDir);
                     foreach (FileInfo file in dir.GetFiles())
                     {
-                        string newName = String.Format("EyeMine-{0:yyyy-MM-dd--HH-mm-ss}.log", file.LastWriteTime);
-                        File.Copy(file.FullName, Path.Combine(newLogDir, newName), true);
+                        string newName = String.Format("{0}-{1:yyyy-MM-dd--HH-mm-ss}.log", name, file.LastWriteTime);
+                        File.Copy(file.FullName, Path.Combine(newLogDir, newName), true); //fixme
                     }
 
                     // Only keep a maximum number of log files
