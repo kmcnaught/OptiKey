@@ -55,6 +55,18 @@ namespace EyeMineLauncher
 
             while (true)
             {
+                // Back logs from last time - avoid local overwriting strategies               
+                string applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string savedLogsDir = Path.Combine(applicationDataPath, @"SpecialEffectLogs");
+                string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
+                string optikeyLogsDir = Path.Combine(optikeyDir, @"EyeMineV2\Logs");
+                string minecraftDir = Path.Combine(applicationDataPath, @".minecraft");
+                string minecraftLogsDir = Path.Combine(minecraftDir, @"EyeMineExhibition\logs");
+
+                BackupLogs(optikeyLogsDir, Path.Combine(savedLogsDir, "Optikey"));
+                BackupLogs(minecraftLogsDir, Path.Combine(savedLogsDir, "minecraft"));
+
+
                 // Synchronous - won't return until app closed
                 ResetConfigFiles();           
                 long exitCode = LaunchEyeMine();
@@ -65,18 +77,7 @@ namespace EyeMineLauncher
                 }
                 Console.Write("About to launch");
                 Console.Out.Flush();
-                SleepWithFeedback(10);
-
-                // Copy all logs to one place, avoid local overwriting strategies
-                string applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string savedLogsDir = Path.Combine(applicationDataPath, @"SpecialEffectLogs");
-                string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
-                string optikeyLogsDir = Path.Combine(optikeyDir, @"EyeMineV2\Logs");
-                string minecraftDir = Path.Combine(applicationDataPath, @".minecraft");
-                string minecraftLogsDir = Path.Combine(minecraftDir, @"EyeMineExhibition\logs");
-                
-                BackupLogs(optikeyLogsDir, Path.Combine(savedLogsDir, "Optikey"));
-                BackupLogs(minecraftLogsDir, Path.Combine(savedLogsDir, "minecraft"));
+                SleepWithFeedback(10);                
 
             }
         }
@@ -243,11 +244,12 @@ namespace EyeMineLauncher
         // into a separate directory where everything gets time-stamped. 
         private static void BackupLogs(string origLogDir, string newLogDir)
         {
+            EnsureExists(newLogDir);
+
             if (Directory.Exists(origLogDir))
             {
                 try
                 {
-                    EnsureExists(newLogDir);
 
                     // Move logs out first - renaming by date created             
                     var dir = new DirectoryInfo(origLogDir);
@@ -260,6 +262,7 @@ namespace EyeMineLauncher
                     // Only keep a maximum number of log files
                     KeepMostRecent(newLogDir, 1000);
 
+                    Log($"backed up logs from {origLogDir}");
                     //TODO: consider exponential decay to keep hold of old files
                 }
                 catch (Exception e)
@@ -268,6 +271,11 @@ namespace EyeMineLauncher
                     Log("");
                     Log(e.ToString());
                 }
+            }
+            else
+            {
+                Log($"Error backing up logs from {origLogDir}");
+                Log("directory doesn't exist");
             }
         }
 
