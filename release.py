@@ -29,7 +29,7 @@ def safeExit():
 #    safeProcess("git reset --hard head")
 
 def get_version(filename):
-    pattern = re.compile("\[assembly:\s*AssemblyVersion\(\"(\d*.\d*.\d*)\"\)\]")
+    pattern = re.compile(r"\[assembly:\s*AssemblyVersion\(\"(\d*.\d*.\d*)\"\)\]")
 
     for line in fileinput.input(filename):
         if re.search(pattern, line): 
