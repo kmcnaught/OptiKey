@@ -298,7 +298,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
                     try
                     {
-                        minecraftProcess = Process.Start(new ProcessStartInfo(javaPath, minecraftArgs));
+                        string applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                        string minecraftDir = Path.Combine(applicationDataPath, @".minecraft\EyeMineExhibition\");
+
+                        ProcessStartInfo startInfo = new ProcessStartInfo(javaPath, minecraftArgs)
+                        {
+                            WorkingDirectory = minecraftDir,
+                        };
+                        minecraftProcess = Process.Start(startInfo);
                     }
                     catch (Exception ex)
                     {
