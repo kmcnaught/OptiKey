@@ -810,7 +810,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             Process tobiiProcess = GetTobiiCalibProcess();
             if (tobiiProcess != null) { 
                 int timeoutSeconds = 10;
-                bool success = KillProcess(tobiiProcess, timeoutSeconds*1000);
+                bool success = KillProcess(tobiiProcess, timeoutSeconds*1000, "tobii calibration");
                 if (!success)
                 {
                     FocusWindow(tobiiProcess);
