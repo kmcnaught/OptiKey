@@ -250,7 +250,6 @@ namespace EyeMineLauncher
                 {
                     // Move logs out first - renaming by date created             
                     var dir = new DirectoryInfo(origLogDir);
-                    var dest = Path.Combine(newLogDir, name);
                     foreach (FileInfo file in dir.GetFiles())
                     {
                         string extension = file.Extension;
@@ -259,12 +258,15 @@ namespace EyeMineLauncher
                         // Create a new name with a timestamp, preserving the original extension
                         string newName = String.Format("{0}-{1:yyyy-MM-dd--HH-mm-ss}{2}", fileNameWithoutExtension, file.LastWriteTime, extension);
                         string destFilePath = Path.Combine(newLogDir, newName);
+
+                        Log($"{file.FullName} to {destFilePath}");
+                        File.Copy(file.FullName, destFilePath, true);
                     }
 
                     // Only keep a maximum number of log files
                     KeepMostRecent(newLogDir, 1000);
 
-                    Log($"backed up logs from {origLogDir} to {dest}");
+                    Log($"backed up logs from {origLogDir} to {newLogDir}");
                     //TODO: consider exponential decay to keep hold of old files
                 }
                 catch (Exception e)
