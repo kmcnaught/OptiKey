@@ -25,10 +25,58 @@ namespace EyeMineLauncher
                 Directory.CreateDirectory(path);
             }
         }
+       
+        #region Event handling and cleanup
+        static void OnExit(object sender, ConsoleCancelEventArgs e)
+        {
+            Log("Cleanup on Ctrl+C or close window.");
+            ManageLogBackups();
+
+            // Set this to true to prevent the process from terminating immediately
+            e.Cancel = true;
+        }
+
+        static void OnProcessExit(object sender, EventArgs e)
+        {
+            Log("Cleanup on process exit.");
+            ManageLogBackups();
+        }
+        static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Log("Cleanup on unhandled exception.");
+
+            // Log the exception details
+            Exception ex = (Exception)e.ExceptionObject;
+            Log("Unhandled exception: " + ex.Message);
+            
+            ManageLogBackups();
+
+        }
+
+        #endregion
+
+
+        static void ManageLogBackups()
+        {
+            // Back logs from last time - avoid local overwriting strategies               
+            string applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
+            string minecraftDir = Path.Combine(applicationDataPath, @".minecraft");
+
+            BackupLogs(Path.Combine(optikeyDir, @"EyeMineV2\Logs"), allLogsPath, "Optikey");
+            BackupLogs(Path.Combine(minecraftDir, @"EyeMineExhibition\logs"), allLogsPath, "MinecraftLog");
+            BackupLogs(Path.Combine(minecraftDir, @"EyeMineExhibition\crash-reports"), allLogsPath, "MinecraftCrash");
+
+        }
 
         static void Main(string[] args)
         {
             EnsureExists(allLogsPath);
+
+            // Hook up the events for cleanup
+            Console.CancelKeyPress += new ConsoleCancelEventHandler(OnExit);
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(OnUnhandledException);
 
             // TODO: delete old launcher logs? this is currently done later with KeepMostRecentInSubDirectories
             string launcherLogDir = Path.Combine(allLogsPath, "Launcher");
@@ -55,14 +103,7 @@ namespace EyeMineLauncher
 
             while (true)
             {
-                // Back logs from last time - avoid local overwriting strategies               
-                string applicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string optikeyDir = Path.Combine(applicationDataPath, @"SpecialEffect");
-                string minecraftDir = Path.Combine(applicationDataPath, @".minecraft");
-
-                BackupLogs(Path.Combine(optikeyDir, @"EyeMineV2\Logs"), allLogsPath, "Optikey");                
-                BackupLogs(Path.Combine(minecraftDir, @"EyeMineExhibition\logs"), allLogsPath, "MinecraftLog");
-                BackupLogs(Path.Combine(minecraftDir, @"EyeMineExhibition\crash-reports"), allLogsPath, "MinecraftCrash");
+                ManageLogBackups();
 
                 // Synchronous - won't return until app closed
                 ResetConfigFiles();           
