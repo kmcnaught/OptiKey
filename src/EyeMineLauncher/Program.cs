@@ -293,15 +293,19 @@ namespace EyeMineLauncher
                     var dir = new DirectoryInfo(origLogDir);
                     foreach (FileInfo file in dir.GetFiles())
                     {
+                        
                         string extension = file.Extension;
-                        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file.Name);
+                        if (extension != ".gz")
+                        { // ignore existing duped backups from minecraft
+                            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file.Name);
 
-                        // Create a new name with a timestamp, preserving the original extension
-                        string newName = String.Format("{0}-{1:yyyy-MM-dd--HH-mm-ss}{2}", fileNameWithoutExtension, file.LastWriteTime, extension);
-                        string destFilePath = Path.Combine(newLogDir, newName);
+                            // Create a new name with a timestamp, preserving the original extension
+                            string newName = String.Format("{0}-{1:yyyy-MM-dd--HH-mm-ss}{2}", fileNameWithoutExtension, file.LastWriteTime, extension);
+                            string destFilePath = Path.Combine(newLogDir, newName);
 
-                        Log($"{file.FullName} to {destFilePath}");
-                        File.Copy(file.FullName, destFilePath, true);
+                            Log($"{file.FullName} to {destFilePath}");
+                            File.Copy(file.FullName, destFilePath, true);
+                        }
                     }
 
                     // Only keep a maximum number of log files
