@@ -253,8 +253,12 @@ namespace EyeMineLauncher
                     var dest = Path.Combine(newLogDir, name);
                     foreach (FileInfo file in dir.GetFiles())
                     {
-                        string newName = String.Format("{0}-{1:yyyy-MM-dd--HH-mm-ss}.log", name, file.LastWriteTime);
-                        File.Copy(file.FullName, dest, true); 
+                        string extension = file.Extension;
+                        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file.Name);
+
+                        // Create a new name with a timestamp, preserving the original extension
+                        string newName = String.Format("{0}-{1:yyyy-MM-dd--HH-mm-ss}{2}", fileNameWithoutExtension, file.LastWriteTime, extension);
+                        string destFilePath = Path.Combine(newLogDir, newName);
                     }
 
                     // Only keep a maximum number of log files
