@@ -81,7 +81,7 @@ namespace EyeMineLauncher
             // TODO: delete old launcher logs? this is currently done later with KeepMostRecentInSubDirectories
             string launcherLogDir = Path.Combine(allLogsPath, "Launcher");
             EnsureExists(launcherLogDir);
-            launcherLog = Path.Combine(launcherLogDir, string.Format("launcher-{0:yyyy-MM-dd_hh-mm-ss}.txt", DateTime.Now));
+            launcherLog = Path.Combine(launcherLogDir, string.Format("launcher-{0:yyyy-MM-dd_HH-mm-ss}.txt", DateTime.Now));
 
             // Log tobii binaries info
             Log("Logging Tobii binary information");
