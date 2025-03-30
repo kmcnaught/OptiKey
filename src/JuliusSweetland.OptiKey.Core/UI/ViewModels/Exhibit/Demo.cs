@@ -400,7 +400,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                     string cmd = p.GetCommandLine();
                     if (cmd.Contains(".minecraft") && cmd.Contains("EyeMineExhibit"))
                     {
-                        KillProcess(p, 1000, "minecraft");
+                        KillProcess(p, 1000, true, "minecraft");
                     }
                 }
             }
@@ -415,7 +415,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                          p.ProcessName.Contains("PreviewOverlay")
                     )
                 {
-                    KillProcess(p, 1000, "ghost");
+                    KillProcess(p, 1000, false, "ghost");
                 }
             }
         }
@@ -428,14 +428,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             CloseGhostProcesses();
         }
 
-        private static bool KillProcess(Process p, int waitTimeoutMs, string name)
+        private static bool KillProcess(Process p, int waitTimeoutMs=1000, bool tryMainWindow=true, string name="")
         {
-            bool success = p.CloseMainWindow();
+            bool success = false;
+            
+            if (tryMainWindow)
+                success = p.CloseMainWindow();
+
             if (success)
             {
                 success = p.WaitForExit(waitTimeoutMs);
             }
-            if (!success) {
+            else {
                 try
                 {
                     p.Kill();
@@ -494,7 +498,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             Process p = Process.GetProcessesByName("EyeMineLauncher").FirstOrDefault();
             if (p != null)
             {
-                KillProcess(p, 1000, "launcher");
+                KillProcess(p, 1000, true, "launcher");
             }
         }
 
@@ -817,7 +821,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             Process tobiiProcess = GetTobiiCalibProcess();
             if (tobiiProcess != null) { 
                 int timeoutSeconds = 10;
-                bool success = KillProcess(tobiiProcess, timeoutSeconds*1000, "tobii calibration");
+                bool success = KillProcess(tobiiProcess, timeoutSeconds*1000, true, "tobii calibration");
                 if (!success)
                 {
                     FocusWindow(tobiiProcess);
