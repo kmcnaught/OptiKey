@@ -36,7 +36,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         private readonly TimeSpan incompleteFixationTtl;
         private readonly ConcurrentDictionary<KeyValue, long> incompleteFixationProgress;
         private readonly ConcurrentDictionary<KeyValue, IDisposable> incompleteFixationTimeouts;
-        
+        DateTimeOffset? lastFixationEndTime = null; // Track when the last fixation ended
+
         private IPointSource pointSource;
         private IObservable<TriggerSignal> sequence;
 
@@ -98,6 +99,9 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         DateTimeOffset fixationStart = DateTimeOffset.MinValue;
                         PointAndKeyValue fixationCentrePointAndKeyValue = null;
                         KeyValue lastKeyValue = null;
+                        DateTimeOffset? lastFixationEndTime = null; 
+                        TimeSpan refractoryPeriod = TimeSpan.FromMilliseconds(850);
+
                         int keystroke = 1;
                         
                         Action disposeAllSubscriptions = null;
@@ -112,11 +116,22 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             {
                                 Timestamped<PointAndKeyValue> latestPointAndKeyValue = tps.Last(); //Store latest timeStampedPointAndKeyValue
 
-                                //if the latest key is not the same as the last key press then reset values
+                                // Check if the last key value has changed
                                 if (lastKeyValue != null && !lastKeyValue.Equals(latestPointAndKeyValue.Value.KeyValue))
                                 {
                                     keystroke = 1;
                                     lastKeyValue = null;
+                                    lastFixationEndTime = null; // Reset if key changed
+                                }
+
+                                // Check if we can start a new fixation
+                                if (lastFixationEndTime.HasValue && 
+                                    lastKeyValue == latestPointAndKeyValue.Value.KeyValue &&
+                                    DateTimeOffset.Now - lastFixationEndTime.Value < refractoryPeriod)
+                                {
+                                    // Refractory period has not expired, do not allow new fixation
+                                    fixationStart = latestPointAndKeyValue.Timestamp; // reset start time until refractory over
+                                    return;
                                 }
 
                                 if (fixationCentrePointAndKeyValue == null
@@ -265,6 +280,9 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             lockOnStart = null;
 
                                             observer.OnNext(new TriggerSignal(null, 0, null));
+
+                                            // If fixation is completed, update the last fixation end time
+                                            lastFixationEndTime = DateTimeOffset.Now; // Update the timestamp
                                             return;
                                         }
                                     }
