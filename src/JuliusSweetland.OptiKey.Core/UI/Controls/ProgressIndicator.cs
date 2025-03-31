@@ -58,6 +58,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void Render()
         {
+            MaxValue = 1.04; // fudge factor because people often look away at last minute before finished
             var angle = Settings.Default.ProgressIndicatorBehaviour == ProgressIndicatorBehaviours.FillPie ? (Value / MaxValue) * 360 : 360;
 
             var sizeFactor = 1d;
