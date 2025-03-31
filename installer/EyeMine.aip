@@ -18,10 +18,10 @@
     <ROW Property="Manufacturer" Value="SpecialEffect"/>
     <ROW Property="MsiLogging" MultiBuildValue="DefaultBuild:vp"/>
     <ROW Property="NUMBER_OF_SAVES" Value="0"/>
-    <ROW Property="ProductCode" Value="1033:{A92699FC-D714-4B8C-96DE-47C574B64AAF} 2057:{A92699FC-D714-4B8C-96DE-47C574B64AAF} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{5313C73F-0EE4-4689-B839-09BFA48301FE} 2057:{5313C73F-0EE4-4689-B839-09BFA48301FE} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="EyeMineExhibit"/>
-    <ROW Property="ProductVersion" Value="2.1.17"/>
+    <ROW Property="ProductVersion" Value="2.1.18"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="TOBII_SUPPORTED" Value="false"/>
     <ROW Property="UpgradeCode" Value="{C8BBFF0F-259E-4C6F-AF07-D49175424142}"/>
@@ -225,7 +225,7 @@
     <ROW Component="data_1" ComponentId="{BAA581C3-69A6-457A-A3A4-DF5550711BF8}" Directory_="data_1_Dir" Attributes="0"/>
     <ROW Component="datapacks" ComponentId="{F6EE03F7-0B26-483A-9705-5A5798C8BF5A}" Directory_="datapacks_Dir" Attributes="0"/>
     <ROW Component="drain.nbt" ComponentId="{41B26FAD-4619-4110-B89F-87F2D45FFA44}" Directory_="structures_1_Dir" Attributes="0" KeyPath="drain.nbt" Type="0"/>
-    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemineexhibit2.1.17.jar" Type="0"/>
+    <ROW Component="eyemine1.14.4.jar" ComponentId="{61388323-2DF1-43BD-86BC-8C54E1A1076F}" Directory_="libs_Dir" Attributes="0" KeyPath="eyemineexhibit2.1.18.jar" Type="0"/>
     <ROW Component="eyemine2.0.12.jar" ComponentId="{B42179B6-D266-4B7F-ACB5-A2D839801563}" Directory_="ModInstaller_Dir" Attributes="0" KeyPath="eyemineclientmouse.toml" Type="0"/>
     <ROW Component="forgeserver.toml_2" ComponentId="{FCFDBE80-BD5E-445B-A3CF-2BA92FAC0E9E}" Directory_="serverconfig_2_Dir" Attributes="0" KeyPath="forgeserver.toml_2" Type="0"/>
     <ROW Component="icon.png_2" ComponentId="{476A0802-7C70-4FB6-82F9-8AEF9AB20E41}" Directory_="Tutorial_Dir" Attributes="0" KeyPath="icon.png_2" Type="0"/>
@@ -525,7 +525,7 @@
     <ROW File="UIA_Browser.ahk" Component_="UIA_Browser.ahk" FileName="UIA_BR~1.AHK|UIA_Browser.ahk" Attributes="0" SourcePath="..\src\EyeMineLauncher\bin\Release\Lib\UIA_Browser.ahk" SelfReg="false"/>
     <ROW File="UIA_Constants.ahk" Component_="UIA_Browser.ahk" FileName="UIA_CO~1.AHK|UIA_Constants.ahk" Attributes="0" SourcePath="..\src\EyeMineLauncher\bin\Release\Lib\UIA_Constants.ahk" SelfReg="false"/>
     <ROW File="UIA_Interface.ahk" Component_="UIA_Browser.ahk" FileName="UIA_IN~1.AHK|UIA_Interface.ahk" Attributes="0" SourcePath="..\src\EyeMineLauncher\bin\Release\Lib\UIA_Interface.ahk" SelfReg="false"/>
-    <ROW File="eyemineexhibit2.1.17.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~2.JAR|eyemine-exhibit-2.1.17.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-exhibit-2.1.17.jar" SelfReg="false"/>
+    <ROW File="eyemineexhibit2.1.18.jar" Component_="eyemine1.14.4.jar" FileName="EYEMIN~1.JAR|eyemine-exhibit-2.1.18.jar" Attributes="0" SourcePath="..\..\mods\build\libs\eyemine-exhibit-2.1.18.jar" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
