@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
@@ -99,8 +100,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         DateTimeOffset fixationStart = DateTimeOffset.MinValue;
                         PointAndKeyValue fixationCentrePointAndKeyValue = null;
                         KeyValue lastKeyValue = null;
-                        DateTimeOffset? lastFixationEndTime = null; 
-                        TimeSpan refractoryPeriod = TimeSpan.FromMilliseconds(850);
+                        DateTimeOffset? lastFixationEndTime = null;
+                        TimeSpan refractoryPeriod = Settings.Default.KeySelectionTriggerFixationKeyRefractoryTime;
 
                         int keystroke = 1;
                         
@@ -129,8 +130,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                     lastKeyValue == latestPointAndKeyValue.Value.KeyValue &&
                                     DateTimeOffset.Now - lastFixationEndTime.Value < refractoryPeriod)
                                 {
-                                    // Refractory period has not expired, do not allow new fixation
-                                    fixationStart = latestPointAndKeyValue.Timestamp; // reset start time until refractory over
+                                    // Refractory period has not expired, delay starting a new fixation
+                                    fixationStart = latestPointAndKeyValue.Timestamp; 
                                     return;
                                 }
 
