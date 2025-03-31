@@ -37,7 +37,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         private readonly TimeSpan incompleteFixationTtl;
         private readonly ConcurrentDictionary<KeyValue, long> incompleteFixationProgress;
         private readonly ConcurrentDictionary<KeyValue, IDisposable> incompleteFixationTimeouts;
-        DateTimeOffset? lastFixationEndTime = null; // Track when the last fixation ended
 
         private IPointSource pointSource;
         private IObservable<TriggerSignal> sequence;
