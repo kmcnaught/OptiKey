@@ -121,7 +121,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                 {
                                     keystroke = 1;
                                     lastKeyValue = null;
-                                    lastFixationEndTime = null; // Reset if key changed
                                 }
 
                                 // Check if we can start a new fixation
