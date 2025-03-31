@@ -122,6 +122,9 @@ namespace EyeMineLauncher
         
         private static void Log(string msg)
         {
+            string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string timestampedMessage = $"[{timestamp}] {msg}";
+
             Console.WriteLine(msg);
             Console.Out.Flush();
             
@@ -129,7 +132,7 @@ namespace EyeMineLauncher
             {
                 try
                 {
-                    sw.WriteLine(msg);
+                    sw.WriteLine(timestampedMessage);
                 }
                 catch (Exception e)
                 {
