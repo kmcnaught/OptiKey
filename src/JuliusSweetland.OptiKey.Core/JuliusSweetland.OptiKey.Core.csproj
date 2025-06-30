@@ -610,9 +610,6 @@
       <DependentUpon>PostCalib.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\ViewModels\Exhibit\EyeStatus.cs" />
-    <Compile Include="UI\Views\Exhibit\FaceWindow.xaml.cs">
-      <DependentUpon>FaceWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\ViewModels\Exhibit\TobiiViewModel.cs" />
     <Compile Include="UI\Views\Keyboards\Catalan\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
@@ -1576,10 +1573,6 @@
     <Page Include="UI\Views\Exhibit\PostCalib.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Exhibit\FaceWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Catalan\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>

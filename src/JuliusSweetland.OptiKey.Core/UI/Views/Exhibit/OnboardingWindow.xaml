@@ -37,9 +37,6 @@
     
     <!-- This will display each page of the onboarding workflow -->
     <Window.Resources>
-        <DataTemplate DataType="{x:Type vms:FaceViewModel}">
-            <local:FaceWindow />
-        </DataTemplate>
         <DataTemplate DataType="{x:Type vms:IntroViewModel}">
             <local:IntroScreen2 />
         </DataTemplate>
