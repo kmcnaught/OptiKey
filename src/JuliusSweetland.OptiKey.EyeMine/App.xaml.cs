@@ -62,6 +62,11 @@ namespace JuliusSweetland.OptiKey.EyeMine
         {
             // Setup derived settings class
             Settings.Initialise();
+            
+            //HACK FOR TESTING
+            Settings.Default.UiLanguage = Languages.SpanishSpain;
+
+
             String appName = "EyeMineV2";
 
             Action runApp = () =>
