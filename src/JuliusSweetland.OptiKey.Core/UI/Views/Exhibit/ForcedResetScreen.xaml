@@ -32,11 +32,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">                 
-                    <Run>New user? Press the</Run>
-              <Run>RESET</Run>
-              <Run>button below the screen to begin</Run>
-                </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_FORCED_RESET_NEW_USER_MESSAGE}"/>
             </Border>
 
 
@@ -47,7 +44,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="Thank you! You have been playing a "/><Run Text="special "/><Run Text="version of EyeMine "/><Run Text="adapted "/><Run Text="for interactive exhibits"/></TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_FORCED_RESET_THANK_YOU_MESSAGE}"/>
             </Border>
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -57,7 +55,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                   VerticalAlignment="Center" HorizontalAlignment="Center" Width="1104"><Run Text="EyeMine users across the world "/><Run Text="are "/><Run Text="exploring, building and socializing within Minecraft using a more advanced version of the software"/></TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center" Width="1104"
+                   Text="{x:Static resx:Resources.EXHIBIT_FORCED_RESET_WORLD_USERS_MESSAGE}"/>
             </Border>
         </Grid>
         <userControls:ButtonReset></userControls:ButtonReset>

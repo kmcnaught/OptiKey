@@ -44,10 +44,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="6, 10, 6, 10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Run Text="{x:Static resx:Resources.EXHIBIT_INFO_BUILT_BY_MESSAGE}"/>
-                        <Run FontWeight="Bold" Text="{x:Static resx:Resources.EXHIBIT_INFO_EYES_ONLY}"/>
-                    </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_INFO_BUILT_BY_FULL_MESSAGE}"/>
                 </Border>
                 
                 <Image Source="Resources/Gabey EyeMine Front.png" Grid.Row="1" Grid.Column="1" Margin="-30,0,0,0" />

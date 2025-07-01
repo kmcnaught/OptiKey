@@ -13,6 +13,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Exhibit
         public ForcedResetScreen()
         {
             InitializeComponent();            
-        }        
+        }
+
     }
 }

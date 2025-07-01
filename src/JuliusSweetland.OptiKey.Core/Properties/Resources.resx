@@ -2618,4 +2618,28 @@ from the beginning to set up for their eyes</value>
   <data name="EXHIBIT_SHARED_NEXT" xml:space="preserve">
     <value>NEXT</value>
   </data>
+  <data name="EXHIBIT_RESET_FULL_MESSAGE" xml:space="preserve">
+    <value>Reset demo? Press RESET to confirm</value>
+  </data>
+  <data name="EXHIBIT_FORCED_RESET_NEW_USER_MESSAGE" xml:space="preserve">
+    <value>New user? Press the RESET button below the screen to begin</value>
+  </data>
+  <data name="EXHIBIT_FORCED_RESET_THANK_YOU_MESSAGE" xml:space="preserve">
+    <value>Thank you! You have been playing a special version of EyeMine adapted for interactive exhibits</value>
+  </data>
+  <data name="EXHIBIT_FORCED_RESET_WORLD_USERS_MESSAGE" xml:space="preserve">
+    <value>EyeMine users across the world are exploring, building and socializing within Minecraft using a more advanced version of the software</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_BACK_FULL_MESSAGE" xml:space="preserve">
+    <value>{bold}BACK{/bold} to setup</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_NEXT_FULL_MESSAGE" xml:space="preserve">
+    <value>{bold}NEXT{/bold} to play</value>
+  </data>
+  <data name="EXHIBIT_INTRO_BUTTON_FULL_MESSAGE" xml:space="preserve">
+    <value>Press the {highlight}NEXT{/highlight} button below the screen to get started</value>
+  </data>
+  <data name="EXHIBIT_INFO_BUILT_BY_FULL_MESSAGE" xml:space="preserve">
+    <value>EyeMine was built by SpecialEffect to allow gamers with disabilities to play Minecraft using {bold}only their eyes{/bold}</value>
+  </data>
 </root>

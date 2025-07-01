@@ -35,11 +35,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-              <Run Text="{x:Static resx:Resources.EXHIBIT_INTRO_PRESS_THE}"/>
-              <Run Foreground="Green" Text="{x:Static resx:Resources.EXHIBIT_INTRO_NEXT}"/>
-              <Run Text="{x:Static resx:Resources.EXHIBIT_INTRO_BUTTON_MESSAGE}"/>
-                </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_INTRO_BUTTON_FULL_MESSAGE}"/>
             </Border>
         </Grid>
         
