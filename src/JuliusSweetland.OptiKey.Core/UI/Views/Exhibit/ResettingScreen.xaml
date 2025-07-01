@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:userControls ="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
         Width="1920" Height="1080"
         Background="Black">
@@ -154,7 +155,7 @@
                    FontSize="48" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="Resetting "/><Run Text="EyeMine demo..."/></TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="{x:Static resx:Resources.EXHIBIT_RESETTING_MESSAGE}"/><Run Text="{x:Static resx:Resources.EXHIBIT_RESETTING_DEMO}"/></TextBlock>
             </Border>
 
 
@@ -165,9 +166,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-                    Please wait
-                </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_PLEASE_WAIT}"/>
             </Border>
 
             <Control Grid.Row="0" Grid.Column="0" Width ="200" Height="200" Style="{StaticResource BusyAnimationStyle}"/>

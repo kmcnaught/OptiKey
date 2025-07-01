@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
         xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
         Width="1920" Height="1080"
         Background="Black">
@@ -44,8 +45,8 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="6, 10, 6, 10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Run>EyeMine was built by SpecialEffect to allow gamers with disabilities to play Minecraft using</Run>
-                        <Run FontWeight="Bold">only their eyes</Run>
+                        <Run Text="{x:Static resx:Resources.EXHIBIT_INFO_BUILT_BY_MESSAGE}"/>
+                        <Run FontWeight="Bold" Text="{x:Static resx:Resources.EXHIBIT_INFO_EYES_ONLY}"/>
                     </TextBlock>
                 </Border>
                 
@@ -58,10 +59,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-
-                For this demo, switches are used during initial setup before playing with eyes only
-                    </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_INFO_SWITCHES_MESSAGE}"/>
                 </Border>
                 
             </Grid>
@@ -82,9 +81,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-                        This exhibit lets you play a limited version of EyeMine
-                    </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_INFO_LIMITED_VERSION}"/>
                 </Border>
 
                 <Image Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
@@ -97,9 +95,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-Each new user should reset the demo to set things up for their eyes
-                    </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_INFO_RESET_MESSAGE}"/>
                 </Border>
 
             </Grid>
@@ -118,14 +115,14 @@ Each new user should reset the demo to set things up for their eyes
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Foreground="White" Grid.Row="0" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center">
-                EyeMine is open-source software based on OptiKey by Julius Sweetland</TextBlock>
-            <TextBlock Foreground="White" Grid.Row="1" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center">
-                EyeMine was developed by Kirsty McNaught for SpecialEffect</TextBlock>
-            <TextBlock Foreground="White" Grid.Row="2" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center">
-                The demo minecraft world was built by Alex Pelling</TextBlock>
-            <TextBlock Foreground="White" Grid.Row="3" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center">
-                www.specialeffect.org.uk/eyemine</TextBlock>
+            <TextBlock Foreground="White" Grid.Row="0" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center"
+                       Text="{x:Static resx:Resources.EXHIBIT_INFO_OPENSOURCE_MESSAGE}"/>
+            <TextBlock Foreground="White" Grid.Row="1" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center"
+                       Text="{x:Static resx:Resources.EXHIBIT_INFO_DEVELOPED_BY}"/>
+            <TextBlock Foreground="White" Grid.Row="2" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center"
+                       Text="{x:Static resx:Resources.EXHIBIT_INFO_WORLD_BUILT_BY}"/>
+            <TextBlock Foreground="White" Grid.Row="3" FontSize="24" FontFamily="Roboto" FontWeight="Regular" HorizontalAlignment="Center"
+                       Text="{x:Static resx:Resources.EXHIBIT_INFO_WEBSITE}"/>
         </Grid>
         
     </Grid>

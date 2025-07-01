@@ -20,7 +20,7 @@ namespace JuliusSweetland.OptiKey.Properties
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources
@@ -1977,6 +1977,392 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("ESC", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, something has gone wrong.
+        /// </summary>
+        public static string EXHIBIT_ERROR_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_ERROR_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to EyeMine will now automatically restart....
+        /// </summary>
+        public static string EXHIBIT_ERROR_RESTART_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_ERROR_RESTART_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to X.
+        /// </summary>
+        public static string EXHIBIT_ERROR_SYMBOL
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_ERROR_SYMBOL", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to EyeMine was built by SpecialEffect to allow gamers with disabilities to play Minecraft using.
+        /// </summary>
+        public static string EXHIBIT_INFO_BUILT_BY_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INFO_BUILT_BY_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to EyeMine was developed by Kirsty McNaught for SpecialEffect.
+        /// </summary>
+        public static string EXHIBIT_INFO_DEVELOPED_BY
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INFO_DEVELOPED_BY", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to only their eyes.
+        /// </summary>
+        public static string EXHIBIT_INFO_EYES_ONLY
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INFO_EYES_ONLY", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to This exhibit lets you play a limited version of EyeMine.
+        /// </summary>
+        public static string EXHIBIT_INFO_LIMITED_VERSION
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INFO_LIMITED_VERSION", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to EyeMine is open-source software based on OptiKey by Julius Sweetland.
+        /// </summary>
+        public static string EXHIBIT_INFO_OPENSOURCE_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INFO_OPENSOURCE_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Each new user should reset the demo to set things up for their eyes.
+        /// </summary>
+        public static string EXHIBIT_INFO_RESET_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INFO_RESET_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to For this demo, switches are used during initial setup before playing with eyes only.
+        /// </summary>
+        public static string EXHIBIT_INFO_SWITCHES_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INFO_SWITCHES_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to www.specialeffect.org.uk/eyemine.
+        /// </summary>
+        public static string EXHIBIT_INFO_WEBSITE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INFO_WEBSITE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The demo minecraft world was built by Alex Pelling.
+        /// </summary>
+        public static string EXHIBIT_INFO_WORLD_BUILT_BY
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INFO_WORLD_BUILT_BY", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to  button below the screen to get started.
+        /// </summary>
+        public static string EXHIBIT_INTRO_BUTTON_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INTRO_BUTTON_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to EyeMine uses eye control in Minecraft to help gamers with disabilities to play the game.
+        /// </summary>
+        public static string EXHIBIT_INTRO_DESCRIPTION
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INTRO_DESCRIPTION", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to NEXT.
+        /// </summary>
+        public static string EXHIBIT_INTRO_NEXT
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INTRO_NEXT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Press the .
+        /// </summary>
+        public static string EXHIBIT_INTRO_PRESS_THE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INTRO_PRESS_THE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Loading EyeMine demo....
+        /// </summary>
+        public static string EXHIBIT_LOADING_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_LOADING_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait.
+        /// </summary>
+        public static string EXHIBIT_PLEASE_WAIT
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_PLEASE_WAIT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to BACK.
+        /// </summary>
+        public static string EXHIBIT_POSTCALIB_BACK
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_POSTCALIB_BACK", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to As you look around the screen, the bubbles will show where the computer thinks you are looking.
+        /// </summary>
+        public static string EXHIBIT_POSTCALIB_BUBBLE_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_POSTCALIB_BUBBLE_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to NEXT.
+        /// </summary>
+        public static string EXHIBIT_POSTCALIB_NEXT
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_POSTCALIB_NEXT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Eye tracking enabled!.
+        /// </summary>
+        public static string EXHIBIT_POSTCALIB_SUCCESS_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_POSTCALIB_SUCCESS_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ✔.
+        /// </summary>
+        public static string EXHIBIT_POSTCALIB_SUCCESS_SYMBOL
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_POSTCALIB_SUCCESS_SYMBOL", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to  to play.
+        /// </summary>
+        public static string EXHIBIT_POSTCALIB_TO_PLAY
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_POSTCALIB_TO_PLAY", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to  to setup.
+        /// </summary>
+        public static string EXHIBIT_POSTCALIB_TO_SETUP
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_POSTCALIB_TO_SETUP", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to RESET.
+        /// </summary>
+        public static string EXHIBIT_RESET_BUTTON
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_RESET_BUTTON", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to  to confirm.
+        /// </summary>
+        public static string EXHIBIT_RESET_CONFIRM
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_RESET_CONFIRM", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Reset demo? Press.
+        /// </summary>
+        public static string EXHIBIT_RESET_QUESTION
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_RESET_QUESTION", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to We recommend each new user starts
+        ///from the beginning to set up for their eyes.
+        /// </summary>
+        public static string EXHIBIT_RESET_RECOMMENDATION
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_RESET_RECOMMENDATION", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ?.
+        /// </summary>
+        public static string EXHIBIT_RESET_SYMBOL
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_RESET_SYMBOL", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to EyeMine demo....
+        /// </summary>
+        public static string EXHIBIT_RESETTING_DEMO
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_RESETTING_DEMO", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Resetting .
+        /// </summary>
+        public static string EXHIBIT_RESETTING_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_RESETTING_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to NEXT.
+        /// </summary>
+        public static string EXHIBIT_SHARED_NEXT
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_SHARED_NEXT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Try to keep your head still.
+        /// </summary>
+        public static string EXHIBIT_WAITCALIB_HEAD_STILL
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_WAITCALIB_HEAD_STILL", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Launching setup, please wait....
+        /// </summary>
+        public static string EXHIBIT_WAITCALIB_LAUNCHING_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_WAITCALIB_LAUNCHING_MESSAGE", resourceCulture);
             }
         }
 

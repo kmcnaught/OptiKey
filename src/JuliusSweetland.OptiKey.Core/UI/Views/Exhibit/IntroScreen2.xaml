@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
         xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
         Width="1920" Height="1080"
         Background="Transparent">
@@ -23,9 +24,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-              EyeMine uses eye control in Minecraft to help gamers with disabilities to play the game
-                </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_INTRO_DESCRIPTION}"/>
             </Border>
         </Grid>
 
@@ -36,9 +36,9 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">
-              <Run>Press the </Run>
-              <Run Foreground="Green">NEXT</Run>
-              <Run> button below the screen to get started</Run>
+              <Run Text="{x:Static resx:Resources.EXHIBIT_INTRO_PRESS_THE}"/>
+              <Run Foreground="Green" Text="{x:Static resx:Resources.EXHIBIT_INTRO_NEXT}"/>
+              <Run Text="{x:Static resx:Resources.EXHIBIT_INTRO_BUTTON_MESSAGE}"/>
                 </TextBlock>
             </Border>
         </Grid>

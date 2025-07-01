@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
         xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
         Width="1920" Height="1080"
         Background="Black">
@@ -30,9 +31,8 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center"                     
                    FontSize="80" FontFamily="Verdana" FontWeight="Regular"
                    Foreground="#06CB79"
-                   >
-                ✔
-            </TextBlock>
+                   Text="{x:Static resx:Resources.EXHIBIT_POSTCALIB_SUCCESS_SYMBOL}"
+                   />
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"
                 Grid.Column="1"
@@ -41,9 +41,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-                Eye tracking enabled!
-                </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_POSTCALIB_SUCCESS_MESSAGE}"/>
             </Border>
 
         </Grid>
@@ -57,9 +56,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-                As you look around the screen, the bubbles will show where the computer thinks you are looking
-            </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_POSTCALIB_BUBBLE_MESSAGE}"/>
         </Border>
 
 
@@ -75,8 +73,8 @@
 
             <Rectangle RadiusX="5" RadiusY="5" Fill="White" Width="230" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
             <TextBlock FontFamily="Roboto" FontWeight="Medium" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,1" >
-                <Run FontWeight="Bold">BACK</Run>
-            <Run> to setup</Run>
+                <Run FontWeight="Bold" Text="{x:Static resx:Resources.EXHIBIT_POSTCALIB_BACK}"/>
+            <Run Text="{x:Static resx:Resources.EXHIBIT_POSTCALIB_TO_SETUP}"/>
             </TextBlock>
         </Grid>
         
@@ -91,8 +89,8 @@
 
             <Rectangle RadiusX="5" RadiusY="5" Fill="White" Width="215" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
             <TextBlock FontFamily="Roboto" FontWeight="Medium" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,1" >
-            <Run FontWeight="Bold">NEXT</Run>
-            <Run> to play</Run>
+            <Run FontWeight="Bold" Text="{x:Static resx:Resources.EXHIBIT_POSTCALIB_NEXT}"/>
+            <Run Text="{x:Static resx:Resources.EXHIBIT_POSTCALIB_TO_PLAY}"/>
             </TextBlock>
         </Grid>
         

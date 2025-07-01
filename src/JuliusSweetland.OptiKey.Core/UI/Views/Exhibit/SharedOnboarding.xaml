@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit"
-        xmlns:vms="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Exhibit"        
+        xmlns:vms="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Exhibit"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"        
         WindowStartupLocation="CenterOwner"
         WindowState="Maximized"
         mc:Ignorable="d"
@@ -35,7 +36,7 @@
                        VerticalAlignment="Center" HorizontalAlignment="Center">
             </Rectangle>
             <TextBlock 
-                   Text="NEXT" 
+                   Text="{x:Static resx:Resources.EXHIBIT_SHARED_NEXT}" 
                    FontSize="22" FontFamily="Verdana" FontWeight="DemiBold"
                    Foreground="Black" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="2"

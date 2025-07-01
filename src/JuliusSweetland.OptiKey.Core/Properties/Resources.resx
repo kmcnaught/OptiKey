@@ -2512,4 +2512,110 @@ Magyar
   <data name="ABOUT" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="EXHIBIT_ERROR_SYMBOL" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="EXHIBIT_ERROR_MESSAGE" xml:space="preserve">
+    <value>Sorry, something has gone wrong</value>
+  </data>
+  <data name="EXHIBIT_ERROR_RESTART_MESSAGE" xml:space="preserve">
+    <value>EyeMine will now automatically restart...</value>
+  </data>
+  <data name="EXHIBIT_INFO_BUILT_BY_MESSAGE" xml:space="preserve">
+    <value>EyeMine was built by SpecialEffect to allow gamers with disabilities to play Minecraft using</value>
+  </data>
+  <data name="EXHIBIT_INFO_EYES_ONLY" xml:space="preserve">
+    <value>only their eyes</value>
+  </data>
+  <data name="EXHIBIT_INFO_SWITCHES_MESSAGE" xml:space="preserve">
+    <value>For this demo, switches are used during initial setup before playing with eyes only</value>
+  </data>
+  <data name="EXHIBIT_INFO_LIMITED_VERSION" xml:space="preserve">
+    <value>This exhibit lets you play a limited version of EyeMine</value>
+  </data>
+  <data name="EXHIBIT_INFO_RESET_MESSAGE" xml:space="preserve">
+    <value>Each new user should reset the demo to set things up for their eyes</value>
+  </data>
+  <data name="EXHIBIT_INFO_OPENSOURCE_MESSAGE" xml:space="preserve">
+    <value>EyeMine is open-source software based on OptiKey by Julius Sweetland</value>
+  </data>
+  <data name="EXHIBIT_INFO_DEVELOPED_BY" xml:space="preserve">
+    <value>EyeMine was developed by Kirsty McNaught for SpecialEffect</value>
+  </data>
+  <data name="EXHIBIT_INFO_WORLD_BUILT_BY" xml:space="preserve">
+    <value>The demo minecraft world was built by Alex Pelling</value>
+  </data>
+  <data name="EXHIBIT_INFO_WEBSITE" xml:space="preserve">
+    <value>www.specialeffect.org.uk/eyemine</value>
+  </data>
+  <data name="EXHIBIT_INTRO_DESCRIPTION" xml:space="preserve">
+    <value>EyeMine uses eye control in Minecraft to help gamers with disabilities to play the game</value>
+  </data>
+  <data name="EXHIBIT_INTRO_PRESS_THE" xml:space="preserve">
+    <value>Press the </value>
+  </data>
+  <data name="EXHIBIT_INTRO_NEXT" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="EXHIBIT_INTRO_BUTTON_MESSAGE" xml:space="preserve">
+    <value> button below the screen to get started</value>
+  </data>
+  <data name="EXHIBIT_LOADING_MESSAGE" xml:space="preserve">
+    <value>Loading EyeMine demo...</value>
+  </data>
+  <data name="EXHIBIT_PLEASE_WAIT" xml:space="preserve">
+    <value>Please wait</value>
+  </data>
+  <data name="EXHIBIT_RESET_SYMBOL" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="EXHIBIT_RESET_QUESTION" xml:space="preserve">
+    <value>Reset demo? Press</value>
+  </data>
+  <data name="EXHIBIT_RESET_BUTTON" xml:space="preserve">
+    <value>RESET</value>
+  </data>
+  <data name="EXHIBIT_RESET_CONFIRM" xml:space="preserve">
+    <value> to confirm</value>
+  </data>
+  <data name="EXHIBIT_RESET_RECOMMENDATION" xml:space="preserve">
+    <value>We recommend each new user starts
+from the beginning to set up for their eyes</value>
+  </data>
+  <data name="EXHIBIT_RESETTING_MESSAGE" xml:space="preserve">
+    <value>Resetting </value>
+  </data>
+  <data name="EXHIBIT_RESETTING_DEMO" xml:space="preserve">
+    <value>EyeMine demo...</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_SUCCESS_SYMBOL" xml:space="preserve">
+    <value>✔</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_SUCCESS_MESSAGE" xml:space="preserve">
+    <value>Eye tracking enabled!</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_BUBBLE_MESSAGE" xml:space="preserve">
+    <value>As you look around the screen, the bubbles will show where the computer thinks you are looking</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_BACK" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_TO_SETUP" xml:space="preserve">
+    <value> to setup</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_NEXT" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_TO_PLAY" xml:space="preserve">
+    <value> to play</value>
+  </data>
+  <data name="EXHIBIT_WAITCALIB_LAUNCHING_MESSAGE" xml:space="preserve">
+    <value>Launching setup, please wait...</value>
+  </data>
+  <data name="EXHIBIT_WAITCALIB_HEAD_STILL" xml:space="preserve">
+    <value>Try to keep your head still</value>
+  </data>
+  <data name="EXHIBIT_SHARED_NEXT" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
 </root>

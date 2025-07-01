@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:userControls ="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
         Width="1920" Height="1080"
         Background="Black">
@@ -30,9 +31,8 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center"                     
                    FontSize="130" FontFamily="Verdana" FontWeight="Regular"
                    Foreground="Orange"
-                   >
-                ?
-            </TextBlock>
+                   Text="{x:Static resx:Resources.EXHIBIT_RESET_SYMBOL}"
+                   />
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5"
                 VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -43,9 +43,9 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center">                 
-                    <Run>Reset demo? Press</Run>
-              <Run>RESET</Run>
-              <Run> to confirm</Run>
+                    <Run Text="{x:Static resx:Resources.EXHIBIT_RESET_QUESTION}"/>
+              <Run Text="{x:Static resx:Resources.EXHIBIT_RESET_BUTTON}"/>
+              <Run Text="{x:Static resx:Resources.EXHIBIT_RESET_CONFIRM}"/>
                 </TextBlock>
             </Border>
 
@@ -57,10 +57,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-                We recommend each new user starts
-from the beginning to set up for their eyes
-                </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_RESET_RECOMMENDATION}"/>
             </Border>
         </Grid>
         <userControls:ButtonBack></userControls:ButtonBack>
