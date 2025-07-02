@@ -433,12 +433,14 @@
     <Compile Include="UI\Controls\CK20Page.xaml.cs">
       <DependentUpon>CK20Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Controls\ExhibitButton.cs" />
     <Compile Include="UI\Controls\KeyboardView.cs" />
     <Compile Include="UI\Utilities\DebouncedAction.cs" />
     <Compile Include="UI\Utilities\FormattedTextHelper.cs" />
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
+    <Compile Include="UI\ValueConverters\StringToColorConverter.cs" />
     <Compile Include="UI\ViewModels\Exhibit\SimplePageViewModels.cs" />
     <Compile Include="UI\ViewModels\Exhibit\Demo.cs" />
     <Compile Include="UI\ViewModels\Exhibit\ErrorViewModel.cs" />
@@ -1016,7 +1018,6 @@
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
     <Resource Include="UI\Views\Exhibit\Resources\images\button--outline.png" />
-    <Resource Include="UI\Views\Exhibit\Resources\images\button--black.png" />
     <Resource Include="UI\Views\Exhibit\Resources\logo-specialeffect.png" />
     <Resource Include="UI\Views\Exhibit\Resources\images\demoScreenshot.PNG" />
     <Resource Include="UI\Views\Exhibit\Resources\screenshot.png" />
@@ -1025,10 +1026,6 @@
     <Resource Include="UI\Views\Exhibit\Resources\images\chevron-forward.png" />
     <Resource Include="UI\Views\Exhibit\Resources\images\background--minecraft-dark.png" />
     <Resource Include="UI\Views\Exhibit\Resources\images\background--minecraft.png" />
-    <Resource Include="UI\Views\Exhibit\Resources\images\button--blue.png" />
-    <Resource Include="UI\Views\Exhibit\Resources\images\button--green.png" />
-    <Resource Include="UI\Views\Exhibit\Resources\images\button--red.png" />
-    <Resource Include="UI\Views\Exhibit\Resources\images\button--yellow.png" />
     <Resource Include="UI\Views\Exhibit\Resources\images\chevons--reverse--blue.png" />
     <Resource Include="UI\Views\Exhibit\Resources\images\chevons--reverse--green.png" />
     <Resource Include="UI\Views\Exhibit\Resources\images\chevons--reverse--red.png" />
@@ -1490,6 +1487,9 @@
     <Page Include="UI\Views\Exhibit\CalibrationErrorScreenTimeout.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Exhibit\Resources\ExhibitButtonStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Exhibit\TempEyeTrackerErrorScreen.xaml">
       <Generator>MSBuild:Compile</Generator>

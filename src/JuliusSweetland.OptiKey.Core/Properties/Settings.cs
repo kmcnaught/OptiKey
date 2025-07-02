@@ -2888,6 +2888,70 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
         }
 
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual string ExhibitBackButtonColor
+        {
+            get
+            {
+                return ((string)(this["ExhibitBackButtonColor"]));
+            }
+            set
+            {
+                this["ExhibitBackButtonColor"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Green")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual string ExhibitNextButtonColor
+        {
+            get
+            {
+                return ((string)(this["ExhibitNextButtonColor"]));
+            }
+            set
+            {
+                this["ExhibitNextButtonColor"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual string ExhibitResetButtonColor
+        {
+            get
+            {
+                return ((string)(this["ExhibitResetButtonColor"]));
+            }
+            set
+            {
+                this["ExhibitResetButtonColor"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yellow")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual string ExhibitInfoButtonColor
+        {
+            get
+            {
+                return ((string)(this["ExhibitInfoButtonColor"]));
+            }
+            set
+            {
+                this["ExhibitInfoButtonColor"] = value;
+            }
+        }
+
         public bool IsOverridden(string propName)
         {
             var propActual = this.GetType().GetProperty(propName);

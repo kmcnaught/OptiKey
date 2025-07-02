@@ -5,25 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
+             xmlns:converters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
+             xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
              mc:Ignorable="d" 
              Width="1920" Height="1080">
+             
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/ExhibitButtonStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:StringToColorConverter x:Key="StringToColorConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-
-
-        <Grid Width="300" Height="200" 
-              HorizontalAlignment="Left" 
-              VerticalAlignment="Bottom"
-              Margin="20,30"
-              >
-            <Image Source="../Resources/images/button--red.png" Width="100"></Image>
-            <Image Source="../Resources/images/button--outline.png" Width="94"></Image>
-            <Image Source="../Resources/images/button--outline.png" Width="102"></Image>
-            
-            <Rectangle RadiusX="5" RadiusY="5" Fill="White" Width="100" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <TextBlock FontFamily="Roboto" FontWeight="Medium" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,1"
-                       Text="{x:Static resx:Resources.EXHIBIT_BUTTON_BACK}"/>
-        </Grid>
-                    
-        
+        <controls:ExhibitButton 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Bottom"
+            Margin="20,30"
+            ButtonColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitBackButtonColor, Converter={StaticResource StringToColorConverter}}"
+            ButtonText="{x:Static resx:Resources.EXHIBIT_BUTTON_BACK}"/>
     </Grid>
 </UserControl>
