@@ -6,9 +6,16 @@
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
         xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
         xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+        xmlns:utilities="clr-namespace:JuliusSweetland.OptiKey.UI.Utilities"
+        xmlns:converters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
+        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
              
         Width="1920" Height="1080">
+
+    <UserControl.Resources>
+        <converters:ColourNameToBrush x:Key="ColourNameToBrush"/>
+    </UserControl.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -46,7 +53,8 @@
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                 Visibility="{Binding CanReset, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                                        VerticalAlignment="Center" HorizontalAlignment="Center"
-                   Text="{x:Static resx:Resources.EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE}"/>
+                   utilities:FormattedTextHelper.FormattedText="{x:Static resx:Resources.EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE}"
+                   utilities:FormattedTextHelper.HighlightColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitResetButtonColor, Converter={StaticResource ColourNameToBrush}}"/>
         </Border>
 
         <Border Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" 

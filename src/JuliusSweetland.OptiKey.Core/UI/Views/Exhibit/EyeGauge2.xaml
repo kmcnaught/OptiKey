@@ -7,8 +7,14 @@
         xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
         xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         xmlns:utilities="clr-namespace:JuliusSweetland.OptiKey.UI.Utilities"
+        xmlns:converters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
+        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
         Width="1920" Height="1080">
+
+    <UserControl.Resources>
+        <converters:ColourNameToBrush x:Key="ColourNameToBrush"/>
+    </UserControl.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -143,7 +149,8 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                    VerticalAlignment="Center" HorizontalAlignment="Center"
-                   utilities:FormattedTextHelper.FormattedText="{x:Static resx:Resources.EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE}" />
+                   utilities:FormattedTextHelper.FormattedText="{x:Static resx:Resources.EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE}"
+                   utilities:FormattedTextHelper.HighlightColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitNextButtonColor, Converter={StaticResource ColourNameToBrush}}" />
         </Border>
 
         <userControls:ButtonBack Grid.RowSpan="4" Grid.ColumnSpan="4" ></userControls:ButtonBack>
