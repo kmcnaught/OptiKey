@@ -20,6 +20,13 @@ namespace JuliusSweetland.OptiKey.UI.Utilities
                 typeof(FormattedTextHelper),
                 new PropertyMetadata(null, OnFormattedTextChanged));
 
+        public static readonly DependencyProperty HighlightColorProperty =
+            DependencyProperty.RegisterAttached(
+                "HighlightColor",
+                typeof(Brush),
+                typeof(FormattedTextHelper),
+                new PropertyMetadata(new SolidColorBrush(Colors.Green), OnFormattedTextChanged));
+
         /// <summary>
         /// Gets the formatted text for the specified TextBlock.
         /// </summary>
@@ -40,10 +47,31 @@ namespace JuliusSweetland.OptiKey.UI.Utilities
             obj.SetValue(FormattedTextProperty, value);
         }
 
+        /// <summary>
+        /// Gets the highlight color for the specified TextBlock.
+        /// </summary>
+        /// <param name="obj">The TextBlock to get the highlight color from.</param>
+        /// <returns>The highlight color brush.</returns>
+        public static Brush GetHighlightColor(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(HighlightColorProperty);
+        }
+
+        /// <summary>
+        /// Sets the highlight color for the specified TextBlock.
+        /// </summary>
+        /// <param name="obj">The TextBlock to set the highlight color on.</param>
+        /// <param name="value">The highlight color brush.</param>
+        public static void SetHighlightColor(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(HighlightColorProperty, value);
+        }
+
         private static void OnFormattedTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is TextBlock textBlock && e.NewValue is string formattedText)
+            if (d is TextBlock textBlock)
             {
+                var formattedText = GetFormattedText(textBlock);
                 textBlock.Inlines.Clear();
                 
                 if (string.IsNullOrEmpty(formattedText))
@@ -82,7 +110,7 @@ namespace JuliusSweetland.OptiKey.UI.Utilities
                         run.FontWeight = FontWeights.Bold;
                         break;
                     case "highlight":
-                        run.Foreground = new SolidColorBrush(Colors.Green);
+                        run.Foreground = GetHighlightColor(textBlock);
                         break;
                 }
 
