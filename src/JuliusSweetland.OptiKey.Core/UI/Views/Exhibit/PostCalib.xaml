@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
         xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
         xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+        xmlns:utilities="clr-namespace:JuliusSweetland.OptiKey.UI.Utilities"
         mc:Ignorable="d"
         Width="1920" Height="1080"
         Background="Black">
@@ -73,7 +74,7 @@
 
             <Rectangle RadiusX="5" RadiusY="5" Fill="White" Width="230" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
             <TextBlock FontFamily="Roboto" FontWeight="Medium" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,1"
-                       Text="{x:Static resx:Resources.EXHIBIT_POSTCALIB_BACK_FULL_MESSAGE}"/>
+                       utilities:FormattedTextHelper.FormattedText="{x:Static resx:Resources.EXHIBIT_POSTCALIB_BACK_FULL_MESSAGE}"/>
         </Grid>
         
         <Grid Width="300" Height="200" 
@@ -87,7 +88,7 @@
 
             <Rectangle RadiusX="5" RadiusY="5" Fill="White" Width="215" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
             <TextBlock FontFamily="Roboto" FontWeight="Medium" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,1"
-                       Text="{x:Static resx:Resources.EXHIBIT_POSTCALIB_NEXT_FULL_MESSAGE}"/>
+                       utilities:FormattedTextHelper.FormattedText="{x:Static resx:Resources.EXHIBIT_POSTCALIB_NEXT_FULL_MESSAGE}"/>
         </Grid>
         
     </Grid>

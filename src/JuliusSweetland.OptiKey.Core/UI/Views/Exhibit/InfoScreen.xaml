@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
         xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
         xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+        xmlns:utilities="clr-namespace:JuliusSweetland.OptiKey.UI.Utilities"
         mc:Ignorable="d"
         Width="1920" Height="1080"
         Background="Black">
@@ -45,7 +46,7 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="6, 10, 6, 10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center"
-                   Text="{x:Static resx:Resources.EXHIBIT_INFO_BUILT_BY_FULL_MESSAGE}"/>
+                   utilities:FormattedTextHelper.FormattedText="{x:Static resx:Resources.EXHIBIT_INFO_BUILT_BY_FULL_MESSAGE}"/>
                 </Border>
                 
                 <Image Source="Resources/Gabey EyeMine Front.png" Grid.Row="1" Grid.Column="1" Margin="-30,0,0,0" />

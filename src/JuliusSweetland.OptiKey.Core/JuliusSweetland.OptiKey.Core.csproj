@@ -435,6 +435,7 @@
     </Compile>
     <Compile Include="UI\Controls\KeyboardView.cs" />
     <Compile Include="UI\Utilities\DebouncedAction.cs" />
+    <Compile Include="UI\Utilities\FormattedTextHelper.cs" />
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
