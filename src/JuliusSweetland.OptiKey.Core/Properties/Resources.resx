@@ -2518,12 +2518,7 @@ Magyar
   <data name="EXHIBIT_ERROR_RESTART_MESSAGE" xml:space="preserve">
     <value>EyeMine will now automatically restart...</value>
   </data>
-  <data name="EXHIBIT_INFO_BUILT_BY_MESSAGE" xml:space="preserve">
-    <value>EyeMine was built by SpecialEffect to allow gamers with disabilities to play Minecraft using</value>
-  </data>
-  <data name="EXHIBIT_INFO_EYES_ONLY" xml:space="preserve">
-    <value>only their eyes</value>
-  </data>
+
   <data name="EXHIBIT_INFO_SWITCHES_MESSAGE" xml:space="preserve">
     <value>For this demo, switches are used during initial setup before playing with eyes only</value>
   </data>
@@ -2548,15 +2543,7 @@ Magyar
   <data name="EXHIBIT_INTRO_DESCRIPTION" xml:space="preserve">
     <value>EyeMine uses eye control in Minecraft to help gamers with disabilities to play the game</value>
   </data>
-  <data name="EXHIBIT_INTRO_PRESS_THE" xml:space="preserve">
-    <value>Press the </value>
-  </data>
-  <data name="EXHIBIT_INTRO_NEXT" xml:space="preserve">
-    <value>NEXT</value>
-  </data>
-  <data name="EXHIBIT_INTRO_BUTTON_MESSAGE" xml:space="preserve">
-    <value> button below the screen to get started</value>
-  </data>
+
   <data name="EXHIBIT_LOADING_MESSAGE" xml:space="preserve">
     <value>Loading EyeMine demo...</value>
   </data>
@@ -2566,15 +2553,7 @@ Magyar
   <data name="EXHIBIT_RESET_SYMBOL" xml:space="preserve">
     <value>?</value>
   </data>
-  <data name="EXHIBIT_RESET_QUESTION" xml:space="preserve">
-    <value>Reset demo? Press</value>
-  </data>
-  <data name="EXHIBIT_RESET_BUTTON" xml:space="preserve">
-    <value>RESET</value>
-  </data>
-  <data name="EXHIBIT_RESET_CONFIRM" xml:space="preserve">
-    <value> to confirm</value>
-  </data>
+
   <data name="EXHIBIT_RESET_RECOMMENDATION" xml:space="preserve">
     <value>We recommend each new user starts
 from the beginning to set up for their eyes</value>
@@ -2591,18 +2570,7 @@ from the beginning to set up for their eyes</value>
   <data name="EXHIBIT_POSTCALIB_BUBBLE_MESSAGE" xml:space="preserve">
     <value>As you look around the screen, the bubbles will show where the computer thinks you are looking</value>
   </data>
-  <data name="EXHIBIT_POSTCALIB_BACK" xml:space="preserve">
-    <value>BACK</value>
-  </data>
-  <data name="EXHIBIT_POSTCALIB_TO_SETUP" xml:space="preserve">
-    <value> to setup</value>
-  </data>
-  <data name="EXHIBIT_POSTCALIB_NEXT" xml:space="preserve">
-    <value>NEXT</value>
-  </data>
-  <data name="EXHIBIT_POSTCALIB_TO_PLAY" xml:space="preserve">
-    <value> to play</value>
-  </data>
+
   <data name="EXHIBIT_WAITCALIB_LAUNCHING_MESSAGE" xml:space="preserve">
     <value>Launching setup, please wait...</value>
   </data>
@@ -2713,16 +2681,5 @@ Some people's eyes are harder to track and may require a more individualized set
   <data name="EXHIBIT_TEMP_EYETRACKER_RECONNECTING_MESSAGE" xml:space="preserve">
     <value>Attempting to reconnect...</value>
   </data>
-  <data name="EXHIBIT_MENU_CAPTURE_MINECRAFT" xml:space="preserve">
-    <value>Capture minecraft process</value>
-  </data>
-  <data name="EXHIBIT_MENU_SET_UP_KIOSK" xml:space="preserve">
-    <value>Set up kiosk</value>
-  </data>
-  <data name="EXHIBIT_MENU_UNSET_KIOSK" xml:space="preserve">
-    <value>Unset kiosk</value>
-  </data>
-  <data name="EXHIBIT_MENU_RESTART" xml:space="preserve">
-    <value>Restart</value>
-  </data>
+
 </root>
