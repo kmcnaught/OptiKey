@@ -817,6 +817,9 @@ Y SÍMBOLOS</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value> Control a través del ordenador y comunicación</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Otros</value>
   </data>
@@ -1580,11 +1583,11 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Suprimir teclas modificadoras para todas las acciones del ratón:</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>¡Calibración exitosa!</value>
-  </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Falló la calibración!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>¡Calibración exitosa!</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>LETRAS 2</value>
@@ -1604,37 +1607,199 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>LENGUAJE</value>
   </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Comunicación sencilla</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Control total del cursor</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Comunicación simbólica</value>
+  </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
     <value>Esto requiere una computadora portátil del juego de Alienware 17, mediante el rastreador ocular de Tobii incorporado.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Esto requiere que el Gaze biblioteca de seguimiento UIT, que es un marco para ojo de código abierto de seguimiento utilizando componentes off-the-shelf, tales como webcams y videocámaras.</value>
+    <value>Esto requiere que el Gaze biblioteca de seguimiento UIT, que es un marco para ojo de código abierto de seguimiento utilizando componentes off-the-shelf, tales como webcams y videocámaras.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Si va a utilizar Optikey con el rastreador ocular Irisbond Duo, por favor asegúrese de que tiene los controladores instalados Irisbond Duo. Estos se pueden descargar desde https://www.irisbond.com/products/downloads.</value>
+    <value>Si va a utilizar Optikey con el rastreador ocular Irisbond Duo, por favor asegúrese de que tiene los controladores instalados Irisbond Duo. Estos se pueden descargar desde https://www.irisbond.com/products/downloads.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>En este modo, Optikey utilizará el cursor del ratón como entrada en lugar de hablar directamente a un seguidor de ojos. Es posible que desee esto si se está probando Optikey a cabo, o si desea utilizarlo con un dispositivo de entrada alternativo, como un ratón de cabeza o cualquier rastreador ocular no en esta lista. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Esta opción funciona con cualquier rastreador ocular de Tobii juego (4C, EyeX, Alienware, Steelseries, etc)</value>
+    <value>En este modo, Optikey utilizará el cursor del ratón como entrada en lugar de hablar directamente a un seguidor de ojos. Es posible que desee esto si se está probando Optikey a cabo, o si desea utilizarlo con un dispositivo de entrada alternativo, como un ratón de cabeza o cualquier rastreador ocular no en esta lista. </value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Para utilizar Optikey con un rastreador ocular de asistencia, ya sea que necesita la nueva versión de Tobii Windows Control, o el motor de Tobii Eye Tracking. Si es necesario utilizar la versión antigua de la aplicación Tobii Windows Control (Tobii Gaze Interaction Software), entonces necesitará para controlar Optikey utilizando la posición del ratón en lugar. </value>
+    <value>Para utilizar Optikey con un rastreador ocular de asistencia, ya sea que necesita la nueva versión de Tobii Windows Control, o el motor de Tobii Eye Tracking. Si es necesario utilizar la versión antigua de la aplicación Tobii Windows Control (Tobii Gaze Interaction Software), entonces necesitará para controlar Optikey utilizando la posición del ratón en lugar. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Esta opción funciona con cualquier rastreador ocular de Tobii juego (4C, EyeX, Alienware, Steelseries, etc)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>La Interacción Visual myGaze sólo se admite si ya ha instalado los controladores de cliente myGaze, que ya no están disponibles para su descarga. Si no ha instalado estos conductores, hay que seleccionar el uso 'posición del ratón' en su lugar, y utilizar Optikey en combinación con la aplicación myGaze EyeMousePlay para mover el cursor.</value>
+    <value>La Interacción Visual myGaze sólo se admite si ya ha instalado los controladores de cliente myGaze, que ya no están disponibles para su descarga. Si no ha instalado estos conductores, hay que seleccionar el uso 'posición del ratón' en su lugar, y utilizar Optikey en combinación con la aplicación myGaze EyeMousePlay para mover el cursor.</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value> Control a través del ordenador y comunicación</value>
+  <data name="EXHIBIT_ERROR_MESSAGE" xml:space="preserve">
+    <value>Lo siento, algo ha salido mal</value>
   </data>
-  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>Comunicación sencilla</value>
+  <data name="EXHIBIT_ERROR_RESTART_MESSAGE" xml:space="preserve">
+    <value>EyeMine se reiniciará automáticamente...</value>
   </data>
-  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>Control total del cursor</value>
+  <data name="EXHIBIT_INFO_SWITCHES_MESSAGE" xml:space="preserve">
+    <value>Para esta demostración, se utilizan interruptores durante la configuración inicial antes de jugar solo con los ojos</value>
   </data>
-  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>Comunicación simbólica</value>
+  <data name="EXHIBIT_INFO_LIMITED_VERSION" xml:space="preserve">
+    <value>Esta exhibición te permite jugar una versión limitada de EyeMine</value>
+  </data>
+  <data name="EXHIBIT_INFO_RESET_MESSAGE" xml:space="preserve">
+    <value>Cada nuevo usuario debe reiniciar la demostración para configurar las cosas para sus ojos</value>
+  </data>
+  <data name="EXHIBIT_INFO_OPENSOURCE_MESSAGE" xml:space="preserve">
+    <value>EyeMine es software de código abierto basado en OptiKey de Julius Sweetland</value>
+  </data>
+  <data name="EXHIBIT_INFO_DEVELOPED_BY" xml:space="preserve">
+    <value>EyeMine fue desarrollado por Kirsty McNaught para SpecialEffect</value>
+  </data>
+  <data name="EXHIBIT_INFO_WORLD_BUILT_BY" xml:space="preserve">
+    <value>El mundo de demostración de Minecraft fue construido por Alex Pelling</value>
+  </data>
+  <data name="EXHIBIT_INFO_WEBSITE" xml:space="preserve">
+    <value>www.specialeffect.org.uk/eyemine</value>
+  </data>
+  <data name="EXHIBIT_INTRO_DESCRIPTION" xml:space="preserve">
+    <value>EyeMine utiliza control ocular en Minecraft para ayudar a jugadores con discapacidades a jugar el juego</value>
+  </data>
+  <data name="EXHIBIT_LOADING_MESSAGE" xml:space="preserve">
+    <value>Cargando demostración de EyeMine...</value>
+  </data>
+  <data name="EXHIBIT_PLEASE_WAIT" xml:space="preserve">
+    <value>Por favor espere</value>
+  </data>
+  <data name="EXHIBIT_RESET_SYMBOL" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="EXHIBIT_RESET_RECOMMENDATION" xml:space="preserve">
+    <value>Recomendamos que cada nuevo usuario comience
+desde el principio para configurar para sus ojos</value>
+  </data>
+  <data name="EXHIBIT_RESETTING_MESSAGE" xml:space="preserve">
+    <value>Reiniciando </value>
+  </data>
+  <data name="EXHIBIT_RESETTING_DEMO" xml:space="preserve">
+    <value>demostración de EyeMine...</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_SUCCESS_MESSAGE" xml:space="preserve">
+    <value>¡Seguimiento ocular activado!</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_BUBBLE_MESSAGE" xml:space="preserve">
+    <value>Mientras miras alrededor de la pantalla, las burbujas mostrarán dónde cree la computadora que estás mirando</value>
+  </data>
+  <data name="EXHIBIT_WAITCALIB_LAUNCHING_MESSAGE" xml:space="preserve">
+    <value>Iniciando configuración, por favor espere...</value>
+  </data>
+  <data name="EXHIBIT_WAITCALIB_HEAD_STILL" xml:space="preserve">
+    <value>Trata de mantener tu cabeza quieta</value>
+  </data>
+  <data name="EXHIBIT_SHARED_NEXT" xml:space="preserve">
+    <value>SIGUIENTE</value>
+  </data>
+  <data name="EXHIBIT_RESET_FULL_MESSAGE" xml:space="preserve">
+    <value>¿Reiniciar demostración? Presiona {highlight}REINICIAR{/highlight} para confirmar</value>
+  </data>
+  <data name="EXHIBIT_FORCED_RESET_NEW_USER_MESSAGE" xml:space="preserve">
+    <value>¿Usuario nuevo? Presiona el botón {highlight}REINICIAR{/highlight} debajo de la pantalla para comenzar</value>
+  </data>
+  <data name="EXHIBIT_FORCED_RESET_THANK_YOU_MESSAGE" xml:space="preserve">
+    <value>¡Gracias! Has estado jugando una versión especial de EyeMine adaptada para exhibiciones interactivas</value>
+  </data>
+  <data name="EXHIBIT_FORCED_RESET_WORLD_USERS_MESSAGE" xml:space="preserve">
+    <value>Los usuarios de EyeMine de todo el mundo están explorando, construyendo y socializando dentro de Minecraft usando una versión más avanzada del software</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_BACK_FULL_MESSAGE" xml:space="preserve">
+    <value>{bold}ATRÁS{/bold} a configuración</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_NEXT_FULL_MESSAGE" xml:space="preserve">
+    <value>{bold}SIGUIENTE{/bold} para jugar</value>
+  </data>
+  <data name="EXHIBIT_INTRO_BUTTON_FULL_MESSAGE" xml:space="preserve">
+    <value>Presiona el botón {highlight}SIGUIENTE{/highlight} debajo de la pantalla para comenzar</value>
+  </data>
+  <data name="EXHIBIT_INFO_BUILT_BY_FULL_MESSAGE" xml:space="preserve">
+    <value>EyeMine fue construido por SpecialEffect para permitir a jugadores con discapacidades jugar Minecraft usando {bold}solo sus ojos{/bold}</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_SETUP_MESSAGE" xml:space="preserve">
+    <value>Vamos a configurar las cosas para ti...</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_EYES_VISIBLE_MESSAGE" xml:space="preserve">
+    <value>Los puntos de colores muestran {bold}tus ojos,{/bold} asegúrate de que estén centrados</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_EYES_WILL_SHOW_MESSAGE" xml:space="preserve">
+    <value>Los puntos de colores mostrarán {bold}tus ojos{/bold}</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_MOVE_CLOSER_MESSAGE" xml:space="preserve">
+    <value>Acércate {bold}MÁS{/bold} a la pantalla</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_MOVE_BACK_MESSAGE" xml:space="preserve">
+    <value>Aléjate {bold}MÁS{/bold} de la pantalla</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_NOT_VISIBLE_MESSAGE" xml:space="preserve">
+    <value>Tus ojos no son visibles, por favor ajusta la pantalla</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE" xml:space="preserve">
+    <value>Presiona {highlight}SIGUIENTE{/highlight} cuando estés listo</value>
+  </data>
+  <data name="EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE" xml:space="preserve">
+    <value>Para configurar para un nuevo usuario, presiona {highlight}REINICIAR{/highlight} debajo de la pantalla</value>
+  </data>
+  <data name="EXHIBIT_GAUGE_ARE_YOU_THERE" xml:space="preserve">
+    <value>¿Estás ahí?</value>
+  </data>
+  <data name="EXHIBIT_GAUGE_RESET_SHORTLY_MESSAGE" xml:space="preserve">
+    <value>La demostración se reiniciará en breve...</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_BACK" xml:space="preserve">
+    <value>ATRÁS</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_NEXT" xml:space="preserve">
+    <value>SIGUIENTE</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_INFO" xml:space="preserve">
+    <value>INFO</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_RESET" xml:space="preserve">
+    <value>REINICIAR</value>
+  </data>
+  <data name="EXHIBIT_BACKGROUND_TAGLINE" xml:space="preserve">
+    <value>¡Juega Minecraft con tus ojos!</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_NOT_VISIBLE_MESSAGE" xml:space="preserve">
+    <value>Lo siento, parece haber un problema con el rastreador ocular viendo tus ojos</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_POSITIONING_MESSAGE" xml:space="preserve">
+    <value>Por favor intenta de nuevo después de posicionarte cuidadosamente y la pantalla.</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_TIPS_MESSAGE" xml:space="preserve">
+    <value>{bold}Consejos:{/bold}
+• Asegúrate de que tus ojos estén centrados
+• Los puntos serán verdes cuando estés a la mejor distancia
+• No te acerques una vez que haya comenzado la configuración
+• Mantén tu cabeza quieta durante la configuración, solo mueve tus ojos</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_TIMEOUT_CAUSES_MESSAGE" xml:space="preserve">
+    <value>Esto puede ser causado por mala iluminación, un reflejo en los lentes, o la posición en la que te encuentras.
+Los ojos de algunas personas son más difíciles de rastrear y pueden requerir una configuración más individualizada</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_TIMEOUT_ADVICE_MESSAGE" xml:space="preserve">
+    <value>Considera intentar de nuevo, teniendo cuidado de no moverte después de comenzar la configuración</value>
+  </data>
+  <data name="EXHIBIT_EYETRACKER_ERROR_OUT_OF_ORDER_MESSAGE" xml:space="preserve">
+    <value>Lo siento, esta exhibición está temporalmente fuera de servicio</value>
+  </data>
+  <data name="EXHIBIT_EYETRACKER_ERROR_INFORM_STAFF_MESSAGE" xml:space="preserve">
+    <value>Hay un problema con el rastreador ocular. Por favor informa a un miembro del personal del museo.</value>
+  </data>
+  <data name="EXHIBIT_TEMP_EYETRACKER_ERROR_MESSAGE" xml:space="preserve">
+    <value>Lo siento, hay un problema con el rastreador ocular</value>
+  </data>
+  <data name="EXHIBIT_TEMP_EYETRACKER_RECONNECTING_MESSAGE" xml:space="preserve">
+    <value>Intentando reconectar...</value>
   </data>
 </root>
