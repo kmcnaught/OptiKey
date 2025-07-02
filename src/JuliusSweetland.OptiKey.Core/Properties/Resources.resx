@@ -2512,9 +2512,6 @@ Magyar
   <data name="ABOUT" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="EXHIBIT_ERROR_SYMBOL" xml:space="preserve">
-    <value>X</value>
-  </data>
   <data name="EXHIBIT_ERROR_MESSAGE" xml:space="preserve">
     <value>Sorry, something has gone wrong</value>
   </data>
@@ -2587,9 +2584,6 @@ from the beginning to set up for their eyes</value>
   </data>
   <data name="EXHIBIT_RESETTING_DEMO" xml:space="preserve">
     <value>EyeMine demo...</value>
-  </data>
-  <data name="EXHIBIT_POSTCALIB_SUCCESS_SYMBOL" xml:space="preserve">
-    <value>✔</value>
   </data>
   <data name="EXHIBIT_POSTCALIB_SUCCESS_MESSAGE" xml:space="preserve">
     <value>Eye tracking enabled!</value>

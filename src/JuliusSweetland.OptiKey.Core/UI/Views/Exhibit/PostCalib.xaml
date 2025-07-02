@@ -28,11 +28,12 @@
             Stroke="#06CB79"
             StrokeThickness="7"/>
            
+            <!--FIXME: tick doesn't seem aligned any more -->
             <TextBlock Grid.Column="0" 
                    VerticalAlignment="Center" HorizontalAlignment="Center"                     
                    FontSize="80" FontFamily="Verdana" FontWeight="Regular"
                    Foreground="#06CB79"
-                   Text="{x:Static resx:Resources.EXHIBIT_POSTCALIB_SUCCESS_SYMBOL}"
+                   Text="✔"
                    />
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"

@@ -156,7 +156,7 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center"                     
                    FontSize="130" FontFamily="Verdana" FontWeight="Regular"
                    Foreground="Red"
-                   Text="{x:Static resx:Resources.EXHIBIT_ERROR_SYMBOL}"
+                   Text="X"
                    />
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5"
