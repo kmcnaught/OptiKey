@@ -2118,17 +2118,6 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to X.
-        /// </summary>
-        public static string EXHIBIT_ERROR_SYMBOL
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_ERROR_SYMBOL", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to The colored dots show {bold}your eyes,{/bold} make sure they are centered.
         /// </summary>
         public static string EXHIBIT_EYEGAUGE_EYES_VISIBLE_MESSAGE
@@ -2184,7 +2173,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Press {bold}NEXT{/bold} when you are ready.
+        ///   Looks up a localized string similar to Press {highlight}NEXT{/highlight} when you are ready.
         /// </summary>
         public static string EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE
         {
@@ -2228,7 +2217,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to New user? Press the RESET button below the screen to begin.
+        ///   Looks up a localized string similar to New user? Press the {highlight}RESET{/highlight} button below the screen to begin.
         /// </summary>
         public static string EXHIBIT_FORCED_RESET_NEW_USER_MESSAGE
         {
@@ -2272,7 +2261,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to To set up for a new user, press RESET below the screen.
+        ///   Looks up a localized string similar to To set up for a new user, press {highlight}RESET{/highlight} below the screen.
         /// </summary>
         public static string EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE
         {
@@ -2305,17 +2294,6 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to EyeMine was built by SpecialEffect to allow gamers with disabilities to play Minecraft using.
-        /// </summary>
-        public static string EXHIBIT_INFO_BUILT_BY_MESSAGE
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_INFO_BUILT_BY_MESSAGE", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to EyeMine was developed by Kirsty McNaught for SpecialEffect.
         /// </summary>
         public static string EXHIBIT_INFO_DEVELOPED_BY
@@ -2323,17 +2301,6 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("EXHIBIT_INFO_DEVELOPED_BY", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to only their eyes.
-        /// </summary>
-        public static string EXHIBIT_INFO_EYES_ONLY
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_INFO_EYES_ONLY", resourceCulture);
             }
         }
 
@@ -2415,17 +2382,6 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to  button below the screen to get started.
-        /// </summary>
-        public static string EXHIBIT_INTRO_BUTTON_MESSAGE
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_INTRO_BUTTON_MESSAGE", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to EyeMine uses eye control in Minecraft to help gamers with disabilities to play the game.
         /// </summary>
         public static string EXHIBIT_INTRO_DESCRIPTION
@@ -2433,28 +2389,6 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("EXHIBIT_INTRO_DESCRIPTION", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to NEXT.
-        /// </summary>
-        public static string EXHIBIT_INTRO_NEXT
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_INTRO_NEXT", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Press the .
-        /// </summary>
-        public static string EXHIBIT_INTRO_PRESS_THE
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_INTRO_PRESS_THE", resourceCulture);
             }
         }
 
@@ -2470,50 +2404,6 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Capture minecraft process.
-        /// </summary>
-        public static string EXHIBIT_MENU_CAPTURE_MINECRAFT
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_MENU_CAPTURE_MINECRAFT", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Restart.
-        /// </summary>
-        public static string EXHIBIT_MENU_RESTART
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_MENU_RESTART", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Set up kiosk.
-        /// </summary>
-        public static string EXHIBIT_MENU_SET_UP_KIOSK
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_MENU_SET_UP_KIOSK", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Unset kiosk.
-        /// </summary>
-        public static string EXHIBIT_MENU_UNSET_KIOSK
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_MENU_UNSET_KIOSK", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Please wait.
         /// </summary>
         public static string EXHIBIT_PLEASE_WAIT
@@ -2521,17 +2411,6 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("EXHIBIT_PLEASE_WAIT", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to BACK.
-        /// </summary>
-        public static string EXHIBIT_POSTCALIB_BACK
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_POSTCALIB_BACK", resourceCulture);
             }
         }
 
@@ -2558,17 +2437,6 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to NEXT.
-        /// </summary>
-        public static string EXHIBIT_POSTCALIB_NEXT
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_POSTCALIB_NEXT", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to {bold}NEXT{/bold} to play.
         /// </summary>
         public static string EXHIBIT_POSTCALIB_NEXT_FULL_MESSAGE
@@ -2591,79 +2459,13 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to ✔.
-        /// </summary>
-        public static string EXHIBIT_POSTCALIB_SUCCESS_SYMBOL
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_POSTCALIB_SUCCESS_SYMBOL", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to  to play.
-        /// </summary>
-        public static string EXHIBIT_POSTCALIB_TO_PLAY
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_POSTCALIB_TO_PLAY", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to  to setup.
-        /// </summary>
-        public static string EXHIBIT_POSTCALIB_TO_SETUP
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_POSTCALIB_TO_SETUP", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to RESET.
-        /// </summary>
-        public static string EXHIBIT_RESET_BUTTON
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_RESET_BUTTON", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to  to confirm.
-        /// </summary>
-        public static string EXHIBIT_RESET_CONFIRM
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_RESET_CONFIRM", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Reset demo? Press RESET to confirm.
+        ///   Looks up a localized string similar to Reset demo? Press {highlight}RESET{/highlight} to confirm.
         /// </summary>
         public static string EXHIBIT_RESET_FULL_MESSAGE
         {
             get
             {
                 return ResourceManager.GetString("EXHIBIT_RESET_FULL_MESSAGE", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Reset demo? Press.
-        /// </summary>
-        public static string EXHIBIT_RESET_QUESTION
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_RESET_QUESTION", resourceCulture);
             }
         }
 
