@@ -2619,10 +2619,10 @@ from the beginning to set up for their eyes</value>
     <value>NEXT</value>
   </data>
   <data name="EXHIBIT_RESET_FULL_MESSAGE" xml:space="preserve">
-    <value>Reset demo? Press RESET to confirm</value>
+    <value>Reset demo? Press {highlight}RESET{/highlight} to confirm</value>
   </data>
   <data name="EXHIBIT_FORCED_RESET_NEW_USER_MESSAGE" xml:space="preserve">
-    <value>New user? Press the RESET button below the screen to begin</value>
+    <value>New user? Press the {highlight}RESET{/highlight} button below the screen to begin</value>
   </data>
   <data name="EXHIBIT_FORCED_RESET_THANK_YOU_MESSAGE" xml:space="preserve">
     <value>Thank you! You have been playing a special version of EyeMine adapted for interactive exhibits</value>
@@ -2661,10 +2661,10 @@ from the beginning to set up for their eyes</value>
     <value>Your eyes are not visible, please adjust the screen</value>
   </data>
   <data name="EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE" xml:space="preserve">
-    <value>Press {bold}NEXT{/bold} when you are ready</value>
+    <value>Press {highlight}NEXT{/highlight} when you are ready</value>
   </data>
   <data name="EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE" xml:space="preserve">
-    <value>To set up for a new user, press RESET below the screen</value>
+    <value>To set up for a new user, press {highlight}RESET{/highlight} below the screen</value>
   </data>
   <data name="EXHIBIT_GAUGE_ARE_YOU_THERE" xml:space="preserve">
     <value>Are you there?</value>
