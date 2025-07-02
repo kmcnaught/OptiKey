@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:userControls ="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
         Width="1920" Height="1080"
         Background="Black">
@@ -44,9 +45,8 @@
                    FontSize="46" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">                 
-                    Sorry, there seems to be a problem with the eye tracker seeing your eyes
-                </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_CALIB_ERROR_NOT_VISIBLE_MESSAGE}"/>
             </Border>
 
 
@@ -58,9 +58,8 @@
                    FontSize="38" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" TextWrapping="WrapWithOverflow"
                     TextAlignment="Center" Padding="10"
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-                    Please try again after carefully positioning yourself and the screen.                    
-                </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_CALIB_ERROR_POSITIONING_MESSAGE}"/>
             </Border>
 
 
@@ -72,17 +71,8 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Left" Padding="10"
                     LineHeight="60"
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Run FontWeight="Bold">Tips:</Run>                                                            
-                    <LineBreak />
-                    <Run> • Make sure your eyes are centred  </Run>
-                    <LineBreak />                    
-                    <Run> • The dots will be green when you are at the best distance </Run>
-                    <LineBreak />
-                    <Run> • Do not step forward once setup has begun</Run>
-                    <LineBreak />                    
-                    <Run> • Keep your head still during setup, just move your eyes</Run>
-                </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_CALIB_ERROR_TIPS_MESSAGE}"/>
             </Border>
 
             

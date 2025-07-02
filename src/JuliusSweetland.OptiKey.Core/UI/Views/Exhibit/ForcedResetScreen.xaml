@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         xmlns:userControls ="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
         mc:Ignorable="d"
         Width="1920" Height="1080"
@@ -10,7 +11,7 @@
 
     <Grid>
 
-        <userControls:ExhibitBackground></userControls:ExhibitBackground>
+        <userControls:ExhibitBackground/>
 
         <Grid  Height="750" VerticalAlignment="Top" Margin="200, 275, 200, 50">
 
@@ -59,7 +60,7 @@
                    Text="{x:Static resx:Resources.EXHIBIT_FORCED_RESET_WORLD_USERS_MESSAGE}"/>
             </Border>
         </Grid>
-        <userControls:ButtonReset></userControls:ButtonReset>
+        <userControls:ButtonReset/>
 
 
         <Image Source="Resources/Gabey EyeMine Front.png" Margin="1291,610,122,253" />

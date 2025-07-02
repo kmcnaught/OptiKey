@@ -1981,6 +1981,121 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Play Minecraft with your eyes!.
+        /// </summary>
+        public static string EXHIBIT_BACKGROUND_TAGLINE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_BACKGROUND_TAGLINE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to BACK.
+        /// </summary>
+        public static string EXHIBIT_BUTTON_BACK
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_BUTTON_BACK", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to INFO.
+        /// </summary>
+        public static string EXHIBIT_BUTTON_INFO
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_BUTTON_INFO", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to NEXT.
+        /// </summary>
+        public static string EXHIBIT_BUTTON_NEXT
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_BUTTON_NEXT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to RESET.
+        /// </summary>
+        public static string EXHIBIT_BUTTON_RESET
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_BUTTON_RESET", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, there seems to be a problem with the eye tracker seeing your eyes.
+        /// </summary>
+        public static string EXHIBIT_CALIB_ERROR_NOT_VISIBLE_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_CALIB_ERROR_NOT_VISIBLE_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please try again after carefully positioning yourself and the screen..
+        /// </summary>
+        public static string EXHIBIT_CALIB_ERROR_POSITIONING_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_CALIB_ERROR_POSITIONING_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Consider trying again, being careful not to move yourself after beginning the setup.
+        /// </summary>
+        public static string EXHIBIT_CALIB_ERROR_TIMEOUT_ADVICE_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_CALIB_ERROR_TIMEOUT_ADVICE_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to This may be caused by bad lighting, a reflection on glasses, or the position you are in.
+        ///Some people&apos;s eyes are harder to track and may require a more individualized setup.
+        /// </summary>
+        public static string EXHIBIT_CALIB_ERROR_TIMEOUT_CAUSES_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_CALIB_ERROR_TIMEOUT_CAUSES_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {bold}Tips:{/bold}
+        ///• Make sure your eyes are centred
+        ///• The dots will be green when you are at the best distance
+        ///• Do not step forward once setup has begun
+        ///• Keep your head still during setup, just move your eyes.
+        /// </summary>
+        public static string EXHIBIT_CALIB_ERROR_TIPS_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_CALIB_ERROR_TIPS_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Sorry, something has gone wrong.
         /// </summary>
         public static string EXHIBIT_ERROR_MESSAGE
@@ -2010,6 +2125,182 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("EXHIBIT_ERROR_SYMBOL", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The colored dots show {bold}your eyes,{/bold} make sure they are centered.
+        /// </summary>
+        public static string EXHIBIT_EYEGAUGE_EYES_VISIBLE_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_EYEGAUGE_EYES_VISIBLE_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Colored dots will show {bold}your eyes{/bold}.
+        /// </summary>
+        public static string EXHIBIT_EYEGAUGE_EYES_WILL_SHOW_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_EYEGAUGE_EYES_WILL_SHOW_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Move {bold}BACK{/bold} from the screen.
+        /// </summary>
+        public static string EXHIBIT_EYEGAUGE_MOVE_BACK_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_EYEGAUGE_MOVE_BACK_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Move {bold}CLOSER{/bold} to the screen.
+        /// </summary>
+        public static string EXHIBIT_EYEGAUGE_MOVE_CLOSER_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_EYEGAUGE_MOVE_CLOSER_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your eyes are not visible, please adjust the screen.
+        /// </summary>
+        public static string EXHIBIT_EYEGAUGE_NOT_VISIBLE_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_EYEGAUGE_NOT_VISIBLE_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Press {bold}NEXT{/bold} when you are ready.
+        /// </summary>
+        public static string EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s set things up for you....
+        /// </summary>
+        public static string EXHIBIT_EYEGAUGE_SETUP_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_EYEGAUGE_SETUP_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to There is a problem with the eyetracker. Please inform a member of museum staff..
+        /// </summary>
+        public static string EXHIBIT_EYETRACKER_ERROR_INFORM_STAFF_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_EYETRACKER_ERROR_INFORM_STAFF_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, this exhibit is temporarily out of order.
+        /// </summary>
+        public static string EXHIBIT_EYETRACKER_ERROR_OUT_OF_ORDER_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_EYETRACKER_ERROR_OUT_OF_ORDER_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to New user? Press the RESET button below the screen to begin.
+        /// </summary>
+        public static string EXHIBIT_FORCED_RESET_NEW_USER_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_FORCED_RESET_NEW_USER_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you! You have been playing a special version of EyeMine adapted for interactive exhibits.
+        /// </summary>
+        public static string EXHIBIT_FORCED_RESET_THANK_YOU_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_FORCED_RESET_THANK_YOU_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to EyeMine users across the world are exploring, building and socializing within Minecraft using a more advanced version of the software.
+        /// </summary>
+        public static string EXHIBIT_FORCED_RESET_WORLD_USERS_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_FORCED_RESET_WORLD_USERS_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you there?.
+        /// </summary>
+        public static string EXHIBIT_GAUGE_ARE_YOU_THERE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_GAUGE_ARE_YOU_THERE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to To set up for a new user, press RESET below the screen.
+        /// </summary>
+        public static string EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Demo will reset shortly....
+        /// </summary>
+        public static string EXHIBIT_GAUGE_RESET_SHORTLY_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_GAUGE_RESET_SHORTLY_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to EyeMine was built by SpecialEffect to allow gamers with disabilities to play Minecraft using {bold}only their eyes{/bold}.
+        /// </summary>
+        public static string EXHIBIT_INFO_BUILT_BY_FULL_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INFO_BUILT_BY_FULL_MESSAGE", resourceCulture);
             }
         }
 
@@ -2113,6 +2404,17 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Press the {highlight}NEXT{/highlight} button below the screen to get started.
+        /// </summary>
+        public static string EXHIBIT_INTRO_BUTTON_FULL_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_INTRO_BUTTON_FULL_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to  button below the screen to get started.
         /// </summary>
         public static string EXHIBIT_INTRO_BUTTON_MESSAGE
@@ -2168,6 +2470,50 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Capture minecraft process.
+        /// </summary>
+        public static string EXHIBIT_MENU_CAPTURE_MINECRAFT
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_MENU_CAPTURE_MINECRAFT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Restart.
+        /// </summary>
+        public static string EXHIBIT_MENU_RESTART
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_MENU_RESTART", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Set up kiosk.
+        /// </summary>
+        public static string EXHIBIT_MENU_SET_UP_KIOSK
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_MENU_SET_UP_KIOSK", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unset kiosk.
+        /// </summary>
+        public static string EXHIBIT_MENU_UNSET_KIOSK
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_MENU_UNSET_KIOSK", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Please wait.
         /// </summary>
         public static string EXHIBIT_PLEASE_WAIT
@@ -2190,6 +2536,17 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to {bold}BACK{/bold} to setup.
+        /// </summary>
+        public static string EXHIBIT_POSTCALIB_BACK_FULL_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_POSTCALIB_BACK_FULL_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to As you look around the screen, the bubbles will show where the computer thinks you are looking.
         /// </summary>
         public static string EXHIBIT_POSTCALIB_BUBBLE_MESSAGE
@@ -2208,6 +2565,17 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("EXHIBIT_POSTCALIB_NEXT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {bold}NEXT{/bold} to play.
+        /// </summary>
+        public static string EXHIBIT_POSTCALIB_NEXT_FULL_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_POSTCALIB_NEXT_FULL_MESSAGE", resourceCulture);
             }
         }
 
@@ -2278,6 +2646,17 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Reset demo? Press RESET to confirm.
+        /// </summary>
+        public static string EXHIBIT_RESET_FULL_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_RESET_FULL_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Reset demo? Press.
         /// </summary>
         public static string EXHIBIT_RESET_QUESTION
@@ -2341,6 +2720,28 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("EXHIBIT_SHARED_NEXT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, there is a problem with the eye tracker.
+        /// </summary>
+        public static string EXHIBIT_TEMP_EYETRACKER_ERROR_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_TEMP_EYETRACKER_ERROR_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Attempting to reconnect....
+        /// </summary>
+        public static string EXHIBIT_TEMP_EYETRACKER_RECONNECTING_MESSAGE
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_TEMP_EYETRACKER_RECONNECTING_MESSAGE", resourceCulture);
             }
         }
 

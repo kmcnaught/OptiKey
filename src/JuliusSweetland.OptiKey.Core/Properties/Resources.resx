@@ -2642,4 +2642,93 @@ from the beginning to set up for their eyes</value>
   <data name="EXHIBIT_INFO_BUILT_BY_FULL_MESSAGE" xml:space="preserve">
     <value>EyeMine was built by SpecialEffect to allow gamers with disabilities to play Minecraft using {bold}only their eyes{/bold}</value>
   </data>
+  <data name="EXHIBIT_EYEGAUGE_SETUP_MESSAGE" xml:space="preserve">
+    <value>Let's set things up for you...</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_EYES_VISIBLE_MESSAGE" xml:space="preserve">
+    <value>The colored dots show {bold}your eyes,{/bold} make sure they are centered</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_EYES_WILL_SHOW_MESSAGE" xml:space="preserve">
+    <value>Colored dots will show {bold}your eyes{/bold}</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_MOVE_CLOSER_MESSAGE" xml:space="preserve">
+    <value>Move {bold}CLOSER{/bold} to the screen</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_MOVE_BACK_MESSAGE" xml:space="preserve">
+    <value>Move {bold}BACK{/bold} from the screen</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_NOT_VISIBLE_MESSAGE" xml:space="preserve">
+    <value>Your eyes are not visible, please adjust the screen</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE" xml:space="preserve">
+    <value>Press {bold}NEXT{/bold} when you are ready</value>
+  </data>
+  <data name="EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE" xml:space="preserve">
+    <value>To set up for a new user, press RESET below the screen</value>
+  </data>
+  <data name="EXHIBIT_GAUGE_ARE_YOU_THERE" xml:space="preserve">
+    <value>Are you there?</value>
+  </data>
+  <data name="EXHIBIT_GAUGE_RESET_SHORTLY_MESSAGE" xml:space="preserve">
+    <value>Demo will reset shortly...</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_BACK" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_NEXT" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_INFO" xml:space="preserve">
+    <value>INFO</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_RESET" xml:space="preserve">
+    <value>RESET</value>
+  </data>
+  <data name="EXHIBIT_BACKGROUND_TAGLINE" xml:space="preserve">
+    <value>Play Minecraft with your eyes!</value>
+  </data>  
+  <data name="EXHIBIT_CALIB_ERROR_NOT_VISIBLE_MESSAGE" xml:space="preserve">
+    <value>Sorry, there seems to be a problem with the eye tracker seeing your eyes</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_POSITIONING_MESSAGE" xml:space="preserve">
+    <value>Please try again after carefully positioning yourself and the screen.</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_TIPS_MESSAGE" xml:space="preserve">
+    <value>{bold}Tips:{/bold}
+• Make sure your eyes are centred
+• The dots will be green when you are at the best distance
+• Do not step forward once setup has begun
+• Keep your head still during setup, just move your eyes</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_TIMEOUT_CAUSES_MESSAGE" xml:space="preserve">
+    <value>This may be caused by bad lighting, a reflection on glasses, or the position you are in.
+Some people's eyes are harder to track and may require a more individualized setup</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_TIMEOUT_ADVICE_MESSAGE" xml:space="preserve">
+    <value>Consider trying again, being careful not to move yourself after beginning the setup</value>
+  </data>
+  <data name="EXHIBIT_EYETRACKER_ERROR_OUT_OF_ORDER_MESSAGE" xml:space="preserve">
+    <value>Sorry, this exhibit is temporarily out of order</value>
+  </data>
+  <data name="EXHIBIT_EYETRACKER_ERROR_INFORM_STAFF_MESSAGE" xml:space="preserve">
+    <value>There is a problem with the eyetracker. Please inform a member of museum staff.</value>
+  </data>
+  <data name="EXHIBIT_TEMP_EYETRACKER_ERROR_MESSAGE" xml:space="preserve">
+    <value>Sorry, there is a problem with the eye tracker</value>
+  </data>
+  <data name="EXHIBIT_TEMP_EYETRACKER_RECONNECTING_MESSAGE" xml:space="preserve">
+    <value>Attempting to reconnect...</value>
+  </data>
+  <data name="EXHIBIT_MENU_CAPTURE_MINECRAFT" xml:space="preserve">
+    <value>Capture minecraft process</value>
+  </data>
+  <data name="EXHIBIT_MENU_SET_UP_KIOSK" xml:space="preserve">
+    <value>Set up kiosk</value>
+  </data>
+  <data name="EXHIBIT_MENU_UNSET_KIOSK" xml:space="preserve">
+    <value>Unset kiosk</value>
+  </data>
+  <data name="EXHIBIT_MENU_RESTART" xml:space="preserve">
+    <value>Restart</value>
+  </data>
 </root>

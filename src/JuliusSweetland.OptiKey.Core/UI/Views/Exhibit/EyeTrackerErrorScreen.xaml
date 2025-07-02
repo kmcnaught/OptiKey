@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:userControls ="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
         Width="1920" Height="1080"
         Background="Black">
@@ -167,9 +168,8 @@
                    FontSize="48" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">                 
-                    Sorry, this exhibit is temporarily out of order
-                </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_EYETRACKER_ERROR_OUT_OF_ORDER_MESSAGE}"/>
             </Border>
 
 
@@ -180,9 +180,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-                    There is a problem with the eyetracker. Please inform a member of museum staff.
-                </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_EYETRACKER_ERROR_INFORM_STAFF_MESSAGE}"/>
             </Border>
 
 

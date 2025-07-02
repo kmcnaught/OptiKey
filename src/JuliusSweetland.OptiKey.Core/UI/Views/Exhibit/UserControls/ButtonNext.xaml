@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+             xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
              mc:Ignorable="d" 
              Width="1920" Height="1080">
     <Grid>
@@ -18,7 +19,8 @@
             <Image Source="../Resources/images/button--outline.png" Width="102"></Image>
             
             <Rectangle RadiusX="5" RadiusY="5" Fill="White" Width="100" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <TextBlock FontFamily="Roboto" FontWeight="Medium" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,1" >NEXT</TextBlock>
+            <TextBlock FontFamily="Roboto" FontWeight="Medium" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,1"
+                       Text="{x:Static resx:Resources.EXHIBIT_BUTTON_NEXT}"/>
         </Grid>
     </Grid>
 </UserControl>

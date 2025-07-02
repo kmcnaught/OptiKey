@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:userControls ="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
         Width="1920" Height="1080"
         Background="Black">
@@ -44,9 +45,8 @@
                    FontSize="48" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">                 
-                    Sorry, there seems to be a problem with the eye tracker seeing your eyes
-                </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_CALIB_ERROR_NOT_VISIBLE_MESSAGE}"/>
             </Border>
 
 
@@ -57,11 +57,8 @@
                    FontSize="34" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-                    This may be caused by bad lighting, a reflection on glasses, or the position you are in. 
-                    <LineBreak/>
-                    Some people's eyes are harder to track and may require a more individualized setup
-                </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_CALIB_ERROR_TIMEOUT_CAUSES_MESSAGE}"/>
             </Border>
 
 
@@ -72,9 +69,8 @@
                    FontSize="34" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                   VerticalAlignment="Center" HorizontalAlignment="Center">
-                    Consider trying again, being careful not to move yourself after beginning the setup 
-                </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_CALIB_ERROR_TIMEOUT_ADVICE_MESSAGE}"/>
             </Border>
 
             

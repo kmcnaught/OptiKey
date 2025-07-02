@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+             xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
              mc:Ignorable="d" 
              Width="1920" Height="1080">
     <Grid>
@@ -21,11 +22,10 @@
 
         <TextBlock Grid.Column="0" Grid.Row="0"
                    VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="150"
-                   Text="Play Minecraft with your eyes!" 
+                   Text="{x:Static resx:Resources.EXHIBIT_BACKGROUND_TAGLINE}" 
                    FontSize="36" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="White"
-                   TextWrapping="Wrap" TextAlignment="Center" Padding="2">
-        </TextBlock>
+                   TextWrapping="Wrap" TextAlignment="Center" Padding="2"/>
 
 
     </Grid>

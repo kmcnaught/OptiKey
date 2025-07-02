@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
-             xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
         Width="1920" Height="1080">
 
@@ -30,8 +31,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">Let's set things up for you...
-            </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_EYEGAUGE_SETUP_MESSAGE}" />
         </Border>
 
         <Border x:Name="labelVisibleInstructions" BorderThickness="5" BorderBrush="White" Background="White" 
@@ -42,11 +43,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-              <Run>The colored dots show</Run>
-              <Run FontWeight="Bold">your eyes,</Run>
-              <Run> make sure they are centered</Run>
-            </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_EYEGAUGE_EYES_VISIBLE_MESSAGE}" />
         </Border>
 
         <Border  x:Name="labelNotVisibleInstructions" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" 
@@ -57,10 +55,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-              <Run>Colored dots will show</Run>
-              <Run FontWeight="Bold">your eyes</Run>
-            </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_EYEGAUGE_EYES_WILL_SHOW_MESSAGE}" />
         </Border>
 
         <Border x:Name="labelCloser" Visibility="Visible" Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5" VerticalAlignment="Bottom" HorizontalAlignment="Center"
@@ -69,11 +65,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-              <Run>Move</Run>
-              <Run FontWeight="Bold">CLOSER</Run>
-              <Run>to the screen</Run>
-            </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_EYEGAUGE_MOVE_CLOSER_MESSAGE}" />
         </Border>
 
 
@@ -85,11 +78,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-              <Run>Move</Run>
-              <Run FontWeight="Bold">BACK</Run>
-              <Run>from the screen</Run>
-            </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_EYEGAUGE_MOVE_BACK_MESSAGE}" />
         </Border>
 
 
@@ -99,8 +89,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">Your eyes are not visible, please adjust the screen
-            </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_EYEGAUGE_NOT_VISIBLE_MESSAGE}" />
         </Border>
 
         <Viewbox Grid.Column="1" Grid.Row="1"  Grid.ColumnSpan="2" >
@@ -151,11 +141,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-              <Run>Press</Run>
-              <Run FontWeight="Bold">NEXT</Run>
-              <Run>when you are ready</Run>
-            </TextBlock>
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE}" />
         </Border>
 
         <userControls:ButtonBack Grid.RowSpan="4" Grid.ColumnSpan="4" ></userControls:ButtonBack>

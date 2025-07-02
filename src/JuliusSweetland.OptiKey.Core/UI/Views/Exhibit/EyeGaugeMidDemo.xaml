@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
-             xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:userControls="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Exhibit.UserControls"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         mc:Ignorable="d"
              
         Width="1920" Height="1080">
@@ -31,9 +32,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-                Are you there?
-            </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_GAUGE_ARE_YOU_THERE}"/>
         </Border>
 
         <Border Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" 
@@ -45,12 +45,8 @@
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                 Visibility="{Binding CanReset, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-              <Run>To set up for a new user, press</Run>
-                <Run>RESET</Run>
-                <Run>below the screen</Run>
-
-            </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE}"/>
         </Border>
 
         <Border Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" 
@@ -62,9 +58,8 @@
                    FontSize="32" FontFamily="Roboto" FontWeight="Regular"
                    Foreground="Black" Background="White" 
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center">
-              Demo will reset shortly...
-            </TextBlock>
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Text="{x:Static resx:Resources.EXHIBIT_GAUGE_RESET_SHORTLY_MESSAGE}"/>
         </Border>
 
         <Viewbox Grid.Column="1" Grid.Row="1"  Grid.ColumnSpan="2" >
