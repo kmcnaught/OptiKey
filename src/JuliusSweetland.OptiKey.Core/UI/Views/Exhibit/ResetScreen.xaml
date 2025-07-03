@@ -38,7 +38,7 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center"                     
                    FontSize="130" FontFamily="Verdana" FontWeight="Regular"
                    Foreground="Orange"
-                   Text="{x:Static resx:Resources.EXHIBIT_RESET_SYMBOL}"
+                   Text="?"
                    />
 
             <Border BorderThickness="5" BorderBrush="White" Background="White" CornerRadius="5"

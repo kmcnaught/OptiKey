@@ -2550,10 +2550,6 @@ Magyar
   <data name="EXHIBIT_PLEASE_WAIT" xml:space="preserve">
     <value>Please wait</value>
   </data>
-  <data name="EXHIBIT_RESET_SYMBOL" xml:space="preserve">
-    <value>?</value>
-  </data>
-
   <data name="EXHIBIT_RESET_RECOMMENDATION" xml:space="preserve">
     <value>We recommend each new user starts
 from the beginning to set up for their eyes</value>
