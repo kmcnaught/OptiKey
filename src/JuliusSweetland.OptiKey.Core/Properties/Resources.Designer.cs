@@ -2482,17 +2482,6 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to ?.
-        /// </summary>
-        public static string EXHIBIT_RESET_SYMBOL
-        {
-            get
-            {
-                return ResourceManager.GetString("EXHIBIT_RESET_SYMBOL", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to EyeMine demo....
         /// </summary>
         public static string EXHIBIT_RESETTING_DEMO

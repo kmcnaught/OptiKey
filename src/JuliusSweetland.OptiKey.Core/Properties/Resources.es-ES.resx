@@ -1673,9 +1673,6 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   <data name="EXHIBIT_PLEASE_WAIT" xml:space="preserve">
     <value>Por favor espere</value>
   </data>
-  <data name="EXHIBIT_RESET_SYMBOL" xml:space="preserve">
-    <value>?</value>
-  </data>
   <data name="EXHIBIT_RESET_RECOMMENDATION" xml:space="preserve">
     <value>Recomendamos que cada nuevo usuario comience
 desde el principio para configurar para sus ojos</value>
