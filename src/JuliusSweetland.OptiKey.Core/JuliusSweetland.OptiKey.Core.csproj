@@ -472,6 +472,7 @@
     <Compile Include="UI\ValueConverters\CommuniKateCalculateBoarderWidth.cs" />
     <Compile Include="UI\ValueConverters\CommuniKateTwoColoursToForegroundBrush.cs" />
     <Compile Include="UI\ValueConverters\ColourNameToBrush.cs" />
+    <Compile Include="UI\ValueConverters\ContrastEnsureConverter.cs" />
     <Compile Include="UI\ValueConverters\EnabledIfNotOverridden.cs" />
     <Compile Include="UI\ValueConverters\EnumMapper.cs" />
     <Compile Include="UI\ValueConverters\EnumToVisibilityConverter.cs" />
