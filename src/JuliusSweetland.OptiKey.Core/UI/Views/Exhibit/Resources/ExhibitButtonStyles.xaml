@@ -43,7 +43,8 @@
                         </Path>
 
                         <!-- Icon in center of button -->
-                        <TextBlock FontFamily="Segoe UI Symbol" FontSize="48" FontWeight="Bold"
+                        <TextBlock FontFamily="Segoe UI Symbol" FontSize="48" 
+                                  FontWeight="{TemplateBinding ButtonIconWeight}"
                                   HorizontalAlignment="Center" VerticalAlignment="Center" 
                                   Foreground="White" 
 								   Margin="0,-5,0,0"
