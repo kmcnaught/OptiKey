@@ -14,7 +14,7 @@
         Background="Transparent">
     
     <UserControl.Resources>
-        <converters:ColourNameToBrush x:Key="ColourNameToBrush"/>
+        <converters:StringToContrastBrushConverter x:Key="StringToContrastBrushConverter"/>
     </UserControl.Resources>
     
     <Grid>
@@ -45,12 +45,12 @@
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center"
                    utilities:FormattedTextHelper.FormattedText="{x:Static resx:Resources.EXHIBIT_INTRO_BUTTON_FULL_MESSAGE}"
-                   utilities:FormattedTextHelper.HighlightColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitNextButtonColor, Converter={StaticResource ColourNameToBrush}}"/>
+                   utilities:FormattedTextHelper.HighlightColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitNextButtonColor, Converter={StaticResource StringToContrastBrushConverter}}"/>
             </Border>
         </Grid>
-        
-        <!--<userControls:ButtonNext Grid.ColumnSpan="4"  Grid.RowSpan="3"></userControls:ButtonNext>
-        <userControls:ButtonInfo Grid.ColumnSpan="4"  Grid.RowSpan="3" Loaded="ButtonInfo_Loaded"></userControls:ButtonInfo>-->
+
+        <userControls:ButtonReset></userControls:ButtonReset>
+        <userControls:ButtonInfo></userControls:ButtonInfo>
 
     </Grid>
 

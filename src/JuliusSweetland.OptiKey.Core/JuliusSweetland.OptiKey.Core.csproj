@@ -441,6 +441,7 @@
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\StringToColorConverter.cs" />
+    <Compile Include="UI\ValueConverters\StringToContrastBrushConverter.cs" />
     <Compile Include="UI\ViewModels\Exhibit\SimplePageViewModels.cs" />
     <Compile Include="UI\ViewModels\Exhibit\Demo.cs" />
     <Compile Include="UI\ViewModels\Exhibit\ErrorViewModel.cs" />

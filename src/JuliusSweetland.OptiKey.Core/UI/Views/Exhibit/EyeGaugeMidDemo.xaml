@@ -14,7 +14,7 @@
         Width="1920" Height="1080">
 
     <UserControl.Resources>
-        <converters:ColourNameToBrush x:Key="ColourNameToBrush"/>
+        <converters:StringToContrastBrushConverter x:Key="StringToContrastBrushConverter"/>
     </UserControl.Resources>
 
     <Grid>
@@ -54,7 +54,7 @@
                 Visibility="{Binding CanReset, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                                        VerticalAlignment="Center" HorizontalAlignment="Center"
                    utilities:FormattedTextHelper.FormattedText="{x:Static resx:Resources.EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE}"
-                   utilities:FormattedTextHelper.HighlightColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitResetButtonColor, Converter={StaticResource ColourNameToBrush}}"/>
+                   utilities:FormattedTextHelper.HighlightColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitResetButtonColor, Converter={StaticResource StringToContrastBrushConverter}}"/>
         </Border>
 
         <Border Grid.ColumnSpan="2" BorderThickness="5" BorderBrush="White" Background="White" 
