@@ -25,6 +25,7 @@
             VerticalAlignment="Bottom"
             Margin="20,30"
             ButtonColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitNextButtonColor, Converter={StaticResource StringToColorConverter}}"
-            ButtonText="{x:Static resx:Resources.EXHIBIT_BUTTON_NEXT}"/>
+            ButtonText="{x:Static resx:Resources.EXHIBIT_BUTTON_NEXT}"
+            ButtonIcon="→"/>
     </Grid>
 </UserControl>
