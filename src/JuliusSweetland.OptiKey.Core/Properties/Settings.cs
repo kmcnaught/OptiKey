@@ -2890,7 +2890,7 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#3e9dcc")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public virtual string ExhibitBackButtonColor
         {
@@ -2906,7 +2906,7 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Green")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#19ac36")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public virtual string ExhibitNextButtonColor
         {
@@ -2938,7 +2938,7 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Yellow")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#cd0915")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public virtual string ExhibitInfoButtonColor
         {
