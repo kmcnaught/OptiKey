@@ -2952,6 +2952,22 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
         }
 
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual string ExhibitButtonIconColor
+        {
+            get
+            {
+                return ((string)(this["ExhibitButtonIconColor"]));
+            }
+            set
+            {
+                this["ExhibitButtonIconColor"] = value;
+            }
+        }
+
         public bool IsOverridden(string propName)
         {
             var propActual = this.GetType().GetProperty(propName);
