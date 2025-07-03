@@ -42,6 +42,12 @@
                             <Path.StrokeEndLineCap>Round</Path.StrokeEndLineCap>
                         </Path>
 
+                        <!-- Icon in center of button -->
+                        <TextBlock FontFamily="Segoe UI Symbol" FontSize="54" FontWeight="Black"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                  Foreground="White" 
+                                  Text="{TemplateBinding ButtonIcon}"/>
+
 
                         <!-- Text label background -->
                         <Rectangle RadiusX="5" RadiusY="5" Fill="White" Width="100" Height="45" 

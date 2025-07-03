@@ -18,6 +18,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             DependencyProperty.Register("ButtonText", typeof(string), typeof(ExhibitButton),
                 new PropertyMetadata(string.Empty));
 
+        public static readonly DependencyProperty ButtonIconProperty =
+            DependencyProperty.Register("ButtonIcon", typeof(string), typeof(ExhibitButton),
+                new PropertyMetadata(string.Empty));
+
         public Color ButtonColor
         {
             get { return (Color)GetValue(ButtonColorProperty); }
@@ -28,6 +32,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (string)GetValue(ButtonTextProperty); }
             set { SetValue(ButtonTextProperty, value); }
+        }
+
+        public string ButtonIcon
+        {
+            get { return (string)GetValue(ButtonIconProperty); }
+            set { SetValue(ButtonIconProperty, value); }
         }
 
         static ExhibitButton()
