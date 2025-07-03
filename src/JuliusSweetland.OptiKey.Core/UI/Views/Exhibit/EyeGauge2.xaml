@@ -13,7 +13,7 @@
         Width="1920" Height="1080">
 
     <UserControl.Resources>
-        <converters:ColourNameToBrush x:Key="ColourNameToBrush"/>
+        <converters:StringToContrastBrushConverter x:Key="StringToContrastBrushConverter"/>
     </UserControl.Resources>
 
     <Grid>
@@ -150,7 +150,7 @@
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                    VerticalAlignment="Center" HorizontalAlignment="Center"
                    utilities:FormattedTextHelper.FormattedText="{x:Static resx:Resources.EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE}"
-                   utilities:FormattedTextHelper.HighlightColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitNextButtonColor, Converter={StaticResource ColourNameToBrush}}" />
+                   utilities:FormattedTextHelper.HighlightColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitNextButtonColor, Converter={StaticResource StringToContrastBrushConverter}}" />
         </Border>
 
         <userControls:ButtonBack Grid.RowSpan="4" Grid.ColumnSpan="4" ></userControls:ButtonBack>

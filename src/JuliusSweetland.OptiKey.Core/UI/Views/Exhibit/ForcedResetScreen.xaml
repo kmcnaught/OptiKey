@@ -13,7 +13,7 @@
         Background="Black">
 
     <UserControl.Resources>
-        <converters:ColourNameToBrush x:Key="ColourNameToBrush"/>
+        <converters:StringToContrastBrushConverter x:Key="StringToContrastBrushConverter"/>
     </UserControl.Resources>
 
     <Grid>
@@ -42,7 +42,7 @@
                    TextWrapping="Wrap" TextAlignment="Center" Padding="10"
                                        VerticalAlignment="Center" HorizontalAlignment="Center"
                    utilities:FormattedTextHelper.FormattedText="{x:Static resx:Resources.EXHIBIT_FORCED_RESET_NEW_USER_MESSAGE}"
-                   utilities:FormattedTextHelper.HighlightColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitResetButtonColor, Converter={StaticResource ColourNameToBrush}}"/>
+                   utilities:FormattedTextHelper.HighlightColor="{Binding Source={x:Static properties:Settings.Default}, Path=ExhibitResetButtonColor, Converter={StaticResource StringToContrastBrushConverter}}"/>
             </Border>
 
 
