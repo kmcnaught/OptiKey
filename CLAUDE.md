@@ -38,6 +38,56 @@ When creating new C# files in this project, they must be manually added to the `
 - Resources: `Properties/`
 - Exhibit specific view (the main focus of this work):  `UI/Views/Exhibit`
 
+## Creating New App Settings
+
+To add new application settings that users can configure:
+
+### Steps:
+1. Open `src/JuliusSweetland.OptiKey.Core/Properties/Settings.cs`
+2. Find an appropriate location (group similar settings together)
+3. Add the new setting using this pattern:
+
+```csharp
+[global::System.Configuration.UserScopedSettingAttribute()]
+[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+[global::System.Configuration.DefaultSettingValueAttribute("DefaultValue")]
+[global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+public virtual string SettingName
+{
+    get
+    {
+        return ((string)(this["SettingName"]));
+    }
+    set
+    {
+        this["SettingName"] = value;
+    }
+}
+```
+
+### Setting Types:
+- **String settings**: Use `string` type and provide default as string value
+- **Boolean settings**: Use `bool` type and provide "True" or "False" as default
+- **Numeric settings**: Use appropriate type (`int`, `double`, etc.) and provide numeric default
+
+### Usage in XAML:
+```xml
+<!-- Add namespace -->
+xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
+
+<!-- Use in binding -->
+Property="{Binding Source={x:Static properties:Settings.Default}, Path=YourSettingName}"
+
+<!-- For colors, often need converter -->
+Property="{Binding Source={x:Static properties:Settings.Default}, Path=YourColorSetting, Converter={StaticResource ColourNameToBrush}}"
+```
+
+### Example:
+- Setting name: `ExhibitButtonIconColor`
+- Type: `string` (for color names like "White", "Black", etc.)
+- Default: `"White"`
+- Used in: Button icon foreground color
+
 ## TODOs and Future Work
 
 ### Contrast Handling for Highlight Text
@@ -46,3 +96,13 @@ The ContrastEnsureConverter was created but should be applied to {highlight} tex
 **Implementation needed**: 
 - Apply ContrastEnsureConverter to the HighlightColor binding in XAML files that use FormattedTextHelper.FormattedText with {highlight} markup
 - This ensures highlighted text is always visible against white text label backgrounds
+
+## Settings
+### Icon text colour
+Add a setting to allow user to change the colour of the icon text (e.g. right arrow) for buttons (typically they would be black or white depending on button colours). The default should be white. Once you have done this, write instructions in Claude.md about how to create new app settings. 
+
+### Icon text visibility
+Add a bool in the settings for whether to show the text icon on buttons. default true. 
+
+## Logging
+Create a logging system to keep track of how many times we hit each of the states in OnboardState and each time we hit each DemoState. This should be written to a logfile in C:\EyeMineLogs and should be robust to whether or not the file exists or can be written too (i.e. this logging must fail silently)
