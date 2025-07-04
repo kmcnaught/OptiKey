@@ -389,6 +389,7 @@
     <Compile Include="Services\DictionaryService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Services\ExhibitStateLogger.cs" />
     <Compile Include="Services\IAudioService.cs" />
     <Compile Include="Services\IDictionaryService.cs" />
     <Compile Include="Services\InputService.subscriptions.cs" />
