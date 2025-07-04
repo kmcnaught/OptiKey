@@ -2922,7 +2922,7 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#cd0915")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public virtual string ExhibitResetButtonColor
         {
@@ -2938,7 +2938,7 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#cd0915")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public virtual string ExhibitInfoButtonColor
         {
