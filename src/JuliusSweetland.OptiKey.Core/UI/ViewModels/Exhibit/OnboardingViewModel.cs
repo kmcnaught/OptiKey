@@ -97,6 +97,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public OnboardingViewModel()
         {
+            ExhibitStateLogger.LogSessionStart();
+            
             setKioskCommand = new DelegateCommand(() => {
                 Demo.SetAsShellApp(true);
                 MessageBox.Show("Shell app setup complete. Please restart PC to see changes");
@@ -246,19 +248,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
         public void SetState(DemoState state)
         {
+            var oldState = this.demoState;
             this.demoState = state;
+            ExhibitStateLogger.LogDemoStateChange(oldState, state);
             RaisePropertyChanged("CurrentPageViewModel");
             StateChanged(this, null);
         }
 
         public void SetState(OnboardState state) {
+            var oldState = this.mainState;
             this.mainState = state;
+            ExhibitStateLogger.LogOnboardStateChange(oldState, state);
             RaisePropertyChanged("CurrentPageViewModel");
             StateChanged(this, null);
         }
 
         public void SetTempState(TempState state) {
+            var oldState = this.tempState;
             this.tempState = state;
+            ExhibitStateLogger.LogStateChange("TempState", oldState.ToString(), state.ToString());
             RaisePropertyChanged("CurrentPageViewModel");
             StateChanged(this, null);
         }
