@@ -116,17 +116,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
                 MainWindow.RestartEverything();
             });
             swapLanguageCommand = new DelegateCommand(() => {
-                var currentLanguage = Settings.Default.UiLanguage;
-                if (currentLanguage == Languages.EnglishUK)
-                {
-                    Settings.Default.UiLanguage = Languages.JapaneseJapan;
-                }
-                else
-                {
-                    Settings.Default.UiLanguage = Languages.EnglishUK;
-                }
-                Settings.Default.Save();
-                MainWindow.RestartEverything();
+                SwapLanguageRequest();
             });
             captureMinecraftCommand = new DelegateCommand(CaptureMinecraft);
 
@@ -611,6 +601,38 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 isContextMenuOpen = value;
             }
+        }
+
+        private void SwapLanguageRequest()
+        {
+            var currentLanguage = Settings.Default.UiLanguage;
+            var newLanguageName = currentLanguage == Languages.EnglishUK ? "Japanese" : "English";
+            
+            var result = MessageBox.Show(
+                $"Switch to {newLanguageName} and restart EyeMine?", 
+                "Swap Language", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Question);
+                
+            if (result == MessageBoxResult.Yes)
+            {
+                SaveAndRestartWithNewLanguage();
+            }
+        }
+
+        private void SaveAndRestartWithNewLanguage()
+        {
+            var currentLanguage = Settings.Default.UiLanguage;
+            if (currentLanguage == Languages.EnglishUK)
+            {
+                Settings.Default.UiLanguage = Languages.JapaneseJapan;
+            }
+            else
+            {
+                Settings.Default.UiLanguage = Languages.EnglishUK;
+            }
+            Settings.Default.Save();
+            MainWindow.RestartEverything();
         }
 
         #endregion
