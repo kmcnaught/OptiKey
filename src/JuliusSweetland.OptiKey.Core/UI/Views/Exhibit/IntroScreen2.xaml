@@ -49,8 +49,8 @@
             </Border>
         </Grid>
 
-        <userControls:ButtonReset></userControls:ButtonReset>
-        <userControls:ButtonInfo></userControls:ButtonInfo>
+        <!--<userControls:ButtonReset></userControls:ButtonReset>
+        <userControls:ButtonInfo></userControls:ButtonInfo>-->
 
     </Grid>
 
