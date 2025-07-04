@@ -2027,5 +2027,168 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>シンボルを用いた通信</value>
   </data>
+  <data name="EXHIBIT_ERROR_MESSAGE" xml:space="preserve">
+    <value>ごめんね、何かうまくいかなかったみたい</value>
+  </data>
+  <data name="EXHIBIT_ERROR_RESTART_MESSAGE" xml:space="preserve">
+    <value>EyeMineがじどうてきに再起動します...</value>
+  </data>
+  <data name="EXHIBIT_INFO_SWITCHES_MESSAGE" xml:space="preserve">
+    <value>このデモでは、目だけでプレイする前にせっていでスイッチを使います</value>
+  </data>
+  <data name="EXHIBIT_INFO_LIMITED_VERSION" xml:space="preserve">
+    <value>この展示では、EyeMineのかぎられたバージョンがプレイできます</value>
+  </data>
+  <data name="EXHIBIT_INFO_RESET_MESSAGE" xml:space="preserve">
+    <value>新しいユーザーは、自分の目にあわせてせっていするためにデモをリセットしてください</value>
+  </data>
+  <data name="EXHIBIT_INFO_OPENSOURCE_MESSAGE" xml:space="preserve">
+    <value>EyeMineは、Julius SweetlandのOptiKeyをもとにしたオープンソースソフトウェアです</value>
+  </data>
+  <data name="EXHIBIT_INFO_DEVELOPED_BY" xml:space="preserve">
+    <value>EyeMineは、SpecialEffectのためにKirsty McNaughtによって開発されました</value>
+  </data>
+  <data name="EXHIBIT_INFO_WORLD_BUILT_BY" xml:space="preserve">
+    <value>デモのMinecraftワールドは、Alex Pellingによって作られました</value>
+  </data>
+  <data name="EXHIBIT_INFO_WEBSITE" xml:space="preserve">
+    <value>www.specialeffect.org.uk/eyemine</value>
+  </data>
+  <data name="EXHIBIT_INTRO_DESCRIPTION" xml:space="preserve">
+    <value>Test Translation!! EyeMineは、しょうがいのあるゲーマーがMinecraftをプレイできるように目でコントロールするものです</value>
+  </data>
+  <data name="EXHIBIT_LOADING_MESSAGE" xml:space="preserve">
+    <value>EyeMineデモをよみこんでいます...</value>
+  </data>
+  <data name="EXHIBIT_PLEASE_WAIT" xml:space="preserve">
+    <value>しばらくお待ちください</value>
+  </data>
+  <data name="EXHIBIT_RESET_RECOMMENDATION" xml:space="preserve">
+    <value>新しいユーザーは、自分の目に
+あわせてせっていするために
+はじめからスタートすることをおすすめします</value>
+  </data>
+  <data name="EXHIBIT_RESETTING_MESSAGE" xml:space="preserve">
+    <value>リセットちゅう </value>
+  </data>
+  <data name="EXHIBIT_RESETTING_DEMO" xml:space="preserve">
+    <value>EyeMineデモ...</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_SUCCESS_MESSAGE" xml:space="preserve">
+    <value>目のトラッキングができるようになったよ！</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_BUBBLE_MESSAGE" xml:space="preserve">
+    <value>画面のまわりを見ると、シャボン玉がコンピューターがあなたが見ていると思っている場所を見せてくれます</value>
+  </data>
+  <data name="EXHIBIT_WAITCALIB_LAUNCHING_MESSAGE" xml:space="preserve">
+    <value>せっていをはじめています、しばらくお待ちください...</value>
+  </data>
+  <data name="EXHIBIT_WAITCALIB_HEAD_STILL" xml:space="preserve">
+    <value>あたまをじっとしていてください</value>
+  </data>
+  <data name="EXHIBIT_SHARED_NEXT" xml:space="preserve">
+    <value>つぎへ</value>
+  </data>
+  <data name="EXHIBIT_RESET_FULL_MESSAGE" xml:space="preserve">
+    <value>デモをリセットしますか？ {highlight}リセット (↺){/highlight} をおしてかくにんしてください</value>
+  </data>
+  <data name="EXHIBIT_FORCED_RESET_NEW_USER_MESSAGE" xml:space="preserve">
+    <value>新しいユーザーですか？ 画面の下の {highlight}リセット (↺){/highlight} ボタンをおしてはじめてください</value>
+  </data>
+  <data name="EXHIBIT_FORCED_RESET_THANK_YOU_MESSAGE" xml:space="preserve">
+    <value>ありがとう！あなたは展示用にてきごうされた特別なバージョンのEyeMineをプレイしていました</value>
+  </data>
+  <data name="EXHIBIT_FORCED_RESET_WORLD_USERS_MESSAGE" xml:space="preserve">
+    <value>世界中のEyeMineユーザーが、もっと高度なバージョンのソフトウェアを使ってMinecraftの中でたんけん、けんちく、こうりゅうをしています</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_BACK_FULL_MESSAGE" xml:space="preserve">
+    <value>{bold}もどる (🡸){/bold} でせってい</value>
+  </data>
+  <data name="EXHIBIT_POSTCALIB_NEXT_FULL_MESSAGE" xml:space="preserve">
+    <value>{bold}つぎへ (🡺){/bold} でプレイ</value>
+  </data>
+  <data name="EXHIBIT_INTRO_BUTTON_FULL_MESSAGE" xml:space="preserve">
+    <value>Test translation!! 画面の下の {highlight}つぎへ (🡺){/highlight} ボタンをおしてはじめてください</value>
+  </data>
+  <data name="EXHIBIT_INFO_BUILT_BY_FULL_MESSAGE" xml:space="preserve">
+    <value>EyeMineは、しょうがいのあるゲーマーが{bold}目だけ{/bold}でMinecraftをプレイできるようにSpecialEffectによって作られました</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_SETUP_MESSAGE" xml:space="preserve">
+    <value>あなたのためにせっていしましょう...</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_EYES_VISIBLE_MESSAGE" xml:space="preserve">
+    <value>色のついた点が{bold}あなたの目{/bold}をあらわしています、まん中にくるようにしてください</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_EYES_WILL_SHOW_MESSAGE" xml:space="preserve">
+    <value>色のついた点が{bold}あなたの目{/bold}をあらわします</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_MOVE_CLOSER_MESSAGE" xml:space="preserve">
+    <value>画面に{bold}もっとちかく{/bold}なってください</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_MOVE_BACK_MESSAGE" xml:space="preserve">
+    <value>画面から{bold}もっとはなれて{/bold}ください</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_NOT_VISIBLE_MESSAGE" xml:space="preserve">
+    <value>あなたの目が見えません、画面をちょうせいしてください</value>
+  </data>
+  <data name="EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE" xml:space="preserve">
+    <value>じゅんびができたら {highlight}つぎへ (🡺){/highlight} をおしてください</value>
+  </data>
+  <data name="EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE" xml:space="preserve">
+    <value>新しいユーザーのせっていをするために、画面の下の {highlight}リセット (↺){/highlight} をおしてください</value>
+  </data>
+  <data name="EXHIBIT_GAUGE_ARE_YOU_THERE" xml:space="preserve">
+    <value>そこにいますか？</value>
+  </data>
+  <data name="EXHIBIT_GAUGE_RESET_SHORTLY_MESSAGE" xml:space="preserve">
+    <value>デモはもうすぐリセットされます...</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_BACK" xml:space="preserve">
+    <value>もどる</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_NEXT" xml:space="preserve">
+    <value>つぎへ</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_INFO" xml:space="preserve">
+    <value>じょうほう</value>
+  </data>
+  <data name="EXHIBIT_BUTTON_RESET" xml:space="preserve">
+    <value>リセット</value>
+  </data>
+  <data name="EXHIBIT_BACKGROUND_TAGLINE" xml:space="preserve">
+    <value>目でMinecraftをプレイしよう！</value>
+  </data>  
+  <data name="EXHIBIT_CALIB_ERROR_NOT_VISIBLE_MESSAGE" xml:space="preserve">
+    <value>申し訳ありませんが、アイトラッカーがあなたの目を認識できない問題があるようです</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_POSITIONING_MESSAGE" xml:space="preserve">
+    <value>あなたと画面の位置をちゅういぶかく調整してから、もう一度お試しください。</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_TIPS_MESSAGE" xml:space="preserve">
+    <value>{bold}ヒント:{/bold}
+• 目がまん中にくるようにしてください
+• いちばんいい距離にいるとき、点は緑色になります
+• せっていがはじまったら前に出ないでください
+• せっていちゅうは頭をじっとして、目だけを動かしてください</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_TIMEOUT_CAUSES_MESSAGE" xml:space="preserve">
+    <value>これは、照明が悪い、メガネに反射がある、またはあなたがいる位置が原因かもしれません。
+一部の人の目はトラッキングが困難で、より個別的なせっていが必要な場合があります</value>
+  </data>
+  <data name="EXHIBIT_CALIB_ERROR_TIMEOUT_ADVICE_MESSAGE" xml:space="preserve">
+    <value>せっていをはじめた後は動かないようにちゅういして、もう一度試してみてください</value>
+  </data>
+  <data name="EXHIBIT_EYETRACKER_ERROR_OUT_OF_ORDER_MESSAGE" xml:space="preserve">
+    <value>申し訳ありませんが、この展示は一時的に使用できません</value>
+  </data>
+  <data name="EXHIBIT_EYETRACKER_ERROR_INFORM_STAFF_MESSAGE" xml:space="preserve">
+    <value>アイトラッカーに問題があります。博物館のスタッフにお知らせください。</value>
+  </data>
+  <data name="EXHIBIT_TEMP_EYETRACKER_ERROR_MESSAGE" xml:space="preserve">
+    <value>申し訳ありませんが、アイトラッカーに問題があります</value>
+  </data>
+  <data name="EXHIBIT_TEMP_EYETRACKER_RECONNECTING_MESSAGE" xml:space="preserve">
+    <value>再接続をしようとしています...</value>
+  </data>
 
 </root>
