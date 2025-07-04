@@ -14,6 +14,7 @@ using Prism.Commands;
 using System.Windows;
 using System.Diagnostics;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Enums;
 using System.Threading;
 using log4net;
 
@@ -54,11 +55,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
         private readonly ICommand unsetKioskCommand;
         private readonly ICommand captureMinecraftCommand;
         private readonly ICommand restartCommand;
+        private readonly ICommand swapLanguageCommand;
 
         public ICommand SetKioskCommand { get { return setKioskCommand; } }
         public ICommand UnsetKioskCommand { get { return unsetKioskCommand; } }
         public ICommand CaptureMinecraftCommand { get { return captureMinecraftCommand; } }
         public ICommand RestartCommand { get { return restartCommand; } }
+        public ICommand SwapLanguageCommand { get { return swapLanguageCommand; } }
 
         public DemoState demoState = DemoState.FIRST_SETUP;
         public OnboardState mainState;
@@ -111,6 +114,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             restartCommand = new DelegateCommand(() => {
                 MessageBox.Show("Restart all programs?");
                 MainWindow.RestartEverything();
+            });
+            swapLanguageCommand = new DelegateCommand(() => {
+                SwapLanguageRequest();
             });
             captureMinecraftCommand = new DelegateCommand(CaptureMinecraft);
 
@@ -595,6 +601,38 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             {
                 isContextMenuOpen = value;
             }
+        }
+
+        private void SwapLanguageRequest()
+        {
+            var currentLanguage = Settings.Default.UiLanguage;
+            var newLanguageName = currentLanguage == Languages.EnglishUK ? "Japanese" : "English";
+            
+            var result = MessageBox.Show(
+                $"Switch to {newLanguageName} and restart EyeMine?", 
+                "Swap Language", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Question);
+                
+            if (result == MessageBoxResult.Yes)
+            {
+                SaveAndRestartWithNewLanguage();
+            }
+        }
+
+        private void SaveAndRestartWithNewLanguage()
+        {
+            var currentLanguage = Settings.Default.UiLanguage;
+            if (currentLanguage == Languages.EnglishUK)
+            {
+                Settings.Default.UiLanguage = Languages.JapaneseJapan;
+            }
+            else
+            {
+                Settings.Default.UiLanguage = Languages.EnglishUK;
+            }
+            Settings.Default.Save();
+            MainWindow.RestartEverything();
         }
 
         #endregion
