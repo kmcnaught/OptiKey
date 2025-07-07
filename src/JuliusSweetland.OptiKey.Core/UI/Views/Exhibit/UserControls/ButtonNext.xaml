@@ -30,3 +30,5 @@
             ButtonIconWeight="Normal"/>
     </Grid>
 </UserControl>
+
+<!--ButtonIcon="🡒"-->
