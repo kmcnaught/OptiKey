@@ -88,6 +88,40 @@ Property="{Binding Source={x:Static properties:Settings.Default}, Path=YourColor
 - Default: `"White"`
 - Used in: Button icon foreground color
 
+## Logging System
+
+### ExhibitStateLogger
+A logging service that tracks state transitions in the Exhibit interface for analytics and debugging.
+
+**Features:**
+- Logs OnboardState, DemoState, and TempState changes with timestamps
+- Writes to `C:\EyeMineLogs\exhibit_state_log.txt`
+- Silent failure - logging errors don't disrupt the application
+- Thread-safe with lock mechanism
+- Session start/end tracking
+
+**Usage:**
+```csharp
+using JuliusSweetland.OptiKey.Services;
+
+// Log state changes
+ExhibitStateLogger.LogDemoStateChange(oldState, newState);
+ExhibitStateLogger.LogOnboardStateChange(oldState, newState);
+ExhibitStateLogger.LogStateChange("CustomState", oldValue, newValue);
+
+// Log session events  
+ExhibitStateLogger.LogSessionStart();
+ExhibitStateLogger.LogSessionEnd();
+
+// Log state hits
+ExhibitStateLogger.LogStateHit("DemoState", "RUNNING");
+```
+
+**Integration Points:**
+- `OnboardingViewModel.SetState()` methods automatically log all state transitions
+- Session start logged in `OnboardingViewModel` constructor
+- Can be extended to log additional state events as needed
+
 ## TODOs and Future Work
 
 ### Contrast Handling for Highlight Text
