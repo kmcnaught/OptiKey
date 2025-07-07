@@ -1011,7 +1011,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             // Use translated world if available, or fall back
             string origFullPath = Path.Combine(installedSavesDir, origFolderName);
             string langFullPath = Path.Combine(installedSavesDir, langFolderName);
-            string worldPathSrc = File.Exists(langFullPath) ? langFullPath : origFullPath;
+            string worldPathSrc = Directory.Exists(langFullPath) ? langFullPath : origFullPath;
 
             Log.Info($"Looking for world: {langFullPath}");
             Log.Info($"Using world: {worldPathSrc}");
