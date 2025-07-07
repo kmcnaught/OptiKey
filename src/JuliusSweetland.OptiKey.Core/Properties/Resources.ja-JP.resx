@@ -2148,7 +2148,7 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
     <value>そこにいますか？</value>
   </data>
 		<data name="EXHIBIT_GAUGE_RESET_SHORTLY_MESSAGE" xml:space="preserve">
-    <value>デモがリセットされます。</value>
+    <value>デモがまもなくリセットされます。</value>
   </data>
 		<data name="EXHIBIT_BUTTON_BACK" xml:space="preserve">
     <value>もどる</value>
