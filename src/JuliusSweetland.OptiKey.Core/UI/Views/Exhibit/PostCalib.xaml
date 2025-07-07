@@ -41,6 +41,7 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center"                     
                    FontSize="80" FontFamily="Verdana" FontWeight="Regular"
                    Foreground="#06CB79"
+                       Margin="0,-18,0,0"
                    Text="✔"
                    />
 
