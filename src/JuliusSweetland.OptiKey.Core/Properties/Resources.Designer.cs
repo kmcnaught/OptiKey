@@ -302,6 +302,17 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Attack.
+        /// </summary>
+        public static string ATTACK_KEY
+        {
+            get
+            {
+                return ResourceManager.GetString("ATTACK_KEY", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to ATTENTION.
         /// </summary>
         public static string ATTENTION
@@ -2140,7 +2151,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Move {bold}BACK{/bold} from the screen.
+        ///   Looks up a localized string similar to Move {bold}BACK (🡸){/bold} from the screen.
         /// </summary>
         public static string EXHIBIT_EYEGAUGE_MOVE_BACK_MESSAGE
         {
@@ -2173,7 +2184,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Press {highlight}NEXT{/highlight} when you are ready.
+        ///   Looks up a localized string similar to Press {highlight}NEXT (🡺){/highlight} when you are ready.
         /// </summary>
         public static string EXHIBIT_EYEGAUGE_PRESS_NEXT_MESSAGE
         {
@@ -2217,7 +2228,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to New user? Press the {highlight}RESET{/highlight} button below the screen to begin.
+        ///   Looks up a localized string similar to New user? Press the {highlight}RESET (↺){/highlight} button below the screen to begin.
         /// </summary>
         public static string EXHIBIT_FORCED_RESET_NEW_USER_MESSAGE
         {
@@ -2261,7 +2272,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to To set up for a new user, press {highlight}RESET{/highlight} below the screen.
+        ///   Looks up a localized string similar to To set up for a new user, press {highlight}RESET (↺){/highlight} below the screen.
         /// </summary>
         public static string EXHIBIT_GAUGE_NEW_USER_SETUP_MESSAGE
         {
@@ -2371,7 +2382,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Press the {highlight}NEXT{/highlight} button below the screen to get started.
+        ///   Looks up a localized string similar to Press the {highlight}NEXT (🡺){/highlight} button below the screen to get started.
         /// </summary>
         public static string EXHIBIT_INTRO_BUTTON_FULL_MESSAGE
         {
@@ -2415,7 +2426,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to {bold}BACK{/bold} to setup.
+        ///   Looks up a localized string similar to {bold}BACK (🡸){/bold} to setup.
         /// </summary>
         public static string EXHIBIT_POSTCALIB_BACK_FULL_MESSAGE
         {
@@ -2437,7 +2448,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to {bold}NEXT{/bold} to play.
+        ///   Looks up a localized string similar to {bold}NEXT (🡺){/bold} to play.
         /// </summary>
         public static string EXHIBIT_POSTCALIB_NEXT_FULL_MESSAGE
         {
@@ -2459,7 +2470,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Reset demo? Press {highlight}RESET{/highlight} to confirm.
+        ///   Looks up a localized string similar to Reset demo? Press {highlight}RESET (↺){/highlight} to confirm.
         /// </summary>
         public static string EXHIBIT_RESET_FULL_MESSAGE
         {
@@ -3099,6 +3110,17 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("FLOATING_POSITION_LABEL", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Fly.
+        /// </summary>
+        public static string FLY_KEY
+        {
+            get
+            {
+                return ResourceManager.GetString("FLY_KEY", resourceCulture);
             }
         }
 
@@ -5115,6 +5137,17 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Mine.
+        /// </summary>
+        public static string MINE_KEY
+        {
+            get
+            {
+                return ResourceManager.GetString("MINE_KEY", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to MINIMISE.
         /// </summary>
         public static string MINIMISE
@@ -6380,6 +6413,18 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("PHYSICAL_KEYS_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Place
+        ///block.
+        /// </summary>
+        public static string PLACE_BLOCK_KEY
+        {
+            get
+            {
+                return ResourceManager.GetString("PLACE_BLOCK_KEY", resourceCulture);
             }
         }
 
@@ -8714,6 +8759,17 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("VOLUME_LABEL", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Walk.
+        /// </summary>
+        public static string WALK_KEY
+        {
+            get
+            {
+                return ResourceManager.GetString("WALK_KEY", resourceCulture);
             }
         }
 

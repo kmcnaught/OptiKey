@@ -2197,5 +2197,21 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
 		<data name="EXHIBIT_TEMP_EYETRACKER_RECONNECTING_MESSAGE" xml:space="preserve">
     <value>再接続中...</value>
   </data>
+	<data name="FLY_KEY" xml:space="preserve">
+    <value>飛ぶ</value>
+  </data>
+	<data name="MINE_KEY" xml:space="preserve">
+    <value>ほる</value>
+  </data>
+	<data name="ATTACK_KEY" xml:space="preserve">
+    <value>たたく</value>
+  </data>
+	<data name="PLACE_BLOCK_KEY" xml:space="preserve">
+    <value>ブロックを
+おく</value>
+  </data>
+	<data name="WALK_KEY" xml:space="preserve">
+    <value>歩く</value>
+  </data>
 
 	</root>

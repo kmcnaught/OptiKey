@@ -14,27 +14,27 @@
       <DynamicKey>
          <KeyGroup>Debounce</KeyGroup>
          <Symbol>MinecraftAutoFly</Symbol>
-         <Label>Fly</Label>
+         <Label>{Resource:FLY_KEY}</Label>
          <Text>g</Text>
       </DynamicKey>
       <DynamicKey>
       <Text>m</Text>
-      <Label>Mine</Label>
       <Symbol>MinecraftMineContinuous</Symbol>
+      <Label>{Resource:MINE_KEY}</Label>
     </DynamicKey>
       <DynamicKey>
-         <Label>Walk</Label>
          <Symbol>MinecraftWalk</Symbol>
+         <Label>{Resource:WALK_KEY}</Label>
          <Text>h</Text>
       </DynamicKey>      
       <DynamicKey>
          <Text>r</Text>
-         <Label>Attack</Label>
          <Symbol>MinecraftAttackContinuous</Symbol>
+         <Label>{Resource:ATTACK_KEY}</Label>
       </DynamicKey>
       <DynamicKey>
-         <Label>Place\nblock</Label>
          <Symbol>DwellBuild</Symbol>
+         <Label>{Resource:PLACE_BLOCK_KEY}</Label>
          <Action>NumPad3</Action>
       </DynamicKey>
    </Content>

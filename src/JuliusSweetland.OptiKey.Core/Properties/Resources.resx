@@ -2677,5 +2677,22 @@ Some people's eyes are harder to track and may require a more individualized set
   <data name="EXHIBIT_TEMP_EYETRACKER_RECONNECTING_MESSAGE" xml:space="preserve">
     <value>Attempting to reconnect...</value>
   </data>
+	<data name="FLY_KEY" xml:space="preserve">
+    <value>Fly</value>
+  </data>
+	<data name="MINE_KEY" xml:space="preserve">
+    <value>Mine</value>
+  </data>
+	<data name="ATTACK_KEY" xml:space="preserve">
+    <value>Attack</value>
+  </data>
+	<data name="PLACE_BLOCK_KEY" xml:space="preserve">
+    <value>Place
+block</value>
+  </data>
+	<data name="WALK_KEY" xml:space="preserve">
+    <value>Walk</value>
+  </data>
+	
 
 </root>
