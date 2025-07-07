@@ -14,6 +14,7 @@ using Microsoft.Win32;
 using NHotkey.Wpf;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -999,17 +1000,31 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
 
             string installedSavesDir = Path.Combine(installedPath, @"ModInstaller\saves");
             string minecraftSavesDir = Path.Combine(applicationDataPath, @".minecraft\EyeMineExhibition\saves");
-            string worldName = "Tutorial";
+
+
+            string origFolderName = "Tutorial";
+            
+            // Allow translated worlds e.g. "Tutorial-en", "Tutorial-ja"
+            var twoLetterLanguage = Settings.Default.UiLanguage.ToCultureInfo().TwoLetterISOLanguageName;
+            string langFolderName = "Tutorial-" + twoLetterLanguage;
+
+            // Use translated world if available, or fall back
+            string origFullPath = Path.Combine(installedSavesDir, origFolderName);
+            string langFullPath = Path.Combine(installedSavesDir, langFolderName);
+            string worldPathSrc = File.Exists(langFullPath) ? langFullPath : origFullPath;
+
+            Log.Info($"Looking for world: {langFullPath}");
+            Log.Info($"Using world: {worldPathSrc}");
+
             // Make two copies we can switch between
-            DirectoryCopy(Path.Combine(installedSavesDir, worldName),
-                Path.Combine(minecraftSavesDir, worldName),
+            DirectoryCopy(worldPathSrc, 
+                Path.Combine(minecraftSavesDir, origFolderName),
                 true,
                 true);
-            DirectoryCopy(Path.Combine(installedSavesDir, worldName),
-               Path.Combine(minecraftSavesDir, worldName + "2"),
+            DirectoryCopy(worldPathSrc,
+               Path.Combine(minecraftSavesDir, origFolderName + "2"),
                true,
                true);
-
 
         }
 
