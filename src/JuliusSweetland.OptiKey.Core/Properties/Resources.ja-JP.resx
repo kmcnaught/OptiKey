@@ -2124,10 +2124,10 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
     <value>セットアップを始めましょう。</value>
   </data>
 		<data name="EXHIBIT_EYEGAUGE_EYES_VISIBLE_MESSAGE" xml:space="preserve">
-    <value>色つきの点が{bold}あなたの視線{/bold}です。視線（ふりがな：しせん）を中央に合わせてください。</value>
+    <value>色つきの点が{bold}あなたの目{/bold}です。目を中央に合わせてください。</value>
   </data>
 		<data name="EXHIBIT_EYEGAUGE_EYES_WILL_SHOW_MESSAGE" xml:space="preserve">
-    <value>{bold}あなたの視線{/bold}が色つきの点で表示されます。</value>
+    <value>{bold}あなたの目{/bold}が色つきの点で表示されます。</value>
   </data>
 		<data name="EXHIBIT_EYEGAUGE_MOVE_CLOSER_MESSAGE" xml:space="preserve">
     <value>画面にもっと{bold}近づいて{/bold}ください。</value>
