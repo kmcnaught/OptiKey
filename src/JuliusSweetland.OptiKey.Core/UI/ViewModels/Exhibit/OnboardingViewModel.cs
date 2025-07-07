@@ -610,7 +610,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             
             var result = MessageBox.Show(
                 $"Switch to {newLanguageName} and restart EyeMine?", 
-                "Swap Language", 
+                "Swap language", 
                 MessageBoxButton.YesNo, 
                 MessageBoxImage.Question);
                 

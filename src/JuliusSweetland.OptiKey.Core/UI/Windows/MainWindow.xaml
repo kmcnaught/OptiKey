@@ -33,7 +33,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <MenuItem Header="Unset kiosk" 
                       Command="{Binding UnsetKioskCommand}">
             </MenuItem>
-            <MenuItem Header="Swap Language" 
+            <MenuItem Header="Swap language" 
                       Command="{Binding SwapLanguageCommand}">
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.RESTART}" 

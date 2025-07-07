@@ -27,7 +27,7 @@
                       CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"
                       Command="{Binding UnsetKioskCommand}">
             </MenuItem>
-            <MenuItem Header="Swap Language" 
+            <MenuItem Header="Swap language" 
                       CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"
                       Command="{Binding SwapLanguageCommand}">
             </MenuItem>
