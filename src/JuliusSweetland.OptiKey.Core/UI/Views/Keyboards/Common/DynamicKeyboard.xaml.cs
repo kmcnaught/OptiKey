@@ -195,7 +195,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 while (xmlKeyLabel.Contains("{Resource:"))
                 {
                     oldValue = xmlKeyLabel.Substring(xmlKeyLabel.IndexOf("{Resource:"), xmlKeyLabel.IndexOf("}", xmlKeyLabel.IndexOf("{Resource:")) - xmlKeyLabel.IndexOf("{Resource:") + 1);
-                    newValue = Properties.Resources.ResourceManager.GetString(oldValue.Substring(10, oldValue.Length - 11).Trim());
+                    newValue = Properties.Resources.ResourceManager.GetString(oldValue.Substring(10, oldValue.Length - 11).Trim(), Properties.Resources.Culture);
                     xmlKeyLabel = xmlKeyLabel.Replace(oldValue, newValue);
                 }
                 while (xmlKeyLabel.Contains("{Setting:"))
@@ -759,7 +759,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 while (label.Contains("{Resource:"))
                 {
                     vText = label.Substring(label.IndexOf("{Resource:"), label.IndexOf("}", label.IndexOf("{Resource:")) - label.IndexOf("{Resource:") + 1);
-                    vLookup = Properties.Resources.ResourceManager.GetString(vText.Substring(10, vText.Length - 11).Trim());
+                    vLookup = Properties.Resources.ResourceManager.GetString(vText.Substring(10, vText.Length - 11).Trim(), Properties.Resources.Culture);
                     label = label.Replace(vText, vLookup);
                 }
                 while (label.Contains("{Setting:"))
