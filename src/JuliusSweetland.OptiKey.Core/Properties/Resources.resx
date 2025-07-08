@@ -2677,6 +2677,12 @@ Some people's eyes are harder to track and may require a more individualized set
   <data name="EXHIBIT_TEMP_EYETRACKER_RECONNECTING_MESSAGE" xml:space="preserve">
     <value>Attempting to reconnect...</value>
   </data>
+	<data name="EXHIBIT_ONE_MINUTE_REMAINING" xml:space="preserve">
+    <value>One minute remaining...</value>
+  </data>
+	<data name="EXHIBIT_DOING_GREAT" xml:space="preserve">
+    <value>You're doing great!</value>
+  </data>
 	<data name="FLY_KEY" xml:space="preserve">
     <value>Fly</value>
   </data>

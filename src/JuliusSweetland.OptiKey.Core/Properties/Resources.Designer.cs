@@ -2107,6 +2107,17 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to You&apos;re doing great!.
+        /// </summary>
+        public static string EXHIBIT_DOING_GREAT
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_DOING_GREAT", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Sorry, something has gone wrong.
         /// </summary>
         public static string EXHIBIT_ERROR_MESSAGE
@@ -2411,6 +2422,17 @@ namespace JuliusSweetland.OptiKey.Properties
             get
             {
                 return ResourceManager.GetString("EXHIBIT_LOADING_MESSAGE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to One minute remaining....
+        /// </summary>
+        public static string EXHIBIT_ONE_MINUTE_REMAINING
+        {
+            get
+            {
+                return ResourceManager.GetString("EXHIBIT_ONE_MINUTE_REMAINING", resourceCulture);
             }
         }
 

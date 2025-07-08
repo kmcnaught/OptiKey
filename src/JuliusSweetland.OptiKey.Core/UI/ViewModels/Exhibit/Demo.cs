@@ -643,7 +643,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Exhibit
             onboardVM.StateChanged += (s,e) => UpdateForState();
             onboardVM.RequireAutoReset += (s, e) => StartAutoReset();
             onboardVM.RequireCloseCalibration += (s, e) => TryCloseTobiiCalibration();
-            onboardVM.TimeoutWarning += (s, e) => RaiseToast("One minute remaining", "You're doing great!");
+            onboardVM.TimeoutWarning += (s, e) => RaiseToast(Resources.EXHIBIT_ONE_MINUTE_REMAINING, Resources.EXHIBIT_DOING_GREAT);
 
         }
 
