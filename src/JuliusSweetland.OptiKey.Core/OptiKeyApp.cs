@@ -206,7 +206,7 @@ namespace JuliusSweetland.OptiKey
                     string msg = "Invalid Presage installation detected (path(s) missing).\n";
                     msg += $"Must install '{ String.Join("' or '", presageOptions.ToArray()) }'. Changed SuggestionMethod to NGram.";
                     Log.Error(msg);
-                    return true;
+                   // return true;
                 }
 
                 if (presageStartMenuFolder != "presage-0.9.2~beta20150909"
@@ -216,7 +216,7 @@ namespace JuliusSweetland.OptiKey
                     string msg = "Invalid Presage installation detected (valid version not detected).\n";
                     msg += $"Must install '{ String.Join("' or '", presageOptions.ToArray()) }'. Changed SuggestionMethod to NGram.";
                     Log.Error(msg);
-                    return true;
+                   //return true;
                 }
 
                 // On Windows 32 bit, we will only be able to install 32 bit Presage and 32 bit Optikey so don't need to check bitness.
@@ -230,7 +230,7 @@ namespace JuliusSweetland.OptiKey
                     {
                         Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
                         Log.Error("Invalid Presage installation detected (incorrect bitness? Install location is suspect). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
-                        return true;
+                       // return true;
                     }
                 }
 
@@ -238,7 +238,7 @@ namespace JuliusSweetland.OptiKey
                 {
                     Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
                     Log.Error("Invalid Presage installation detected (install directory does not exist). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
-                    return true;
+                   // return true;
                 }
 
                 //2.Ensure the presage db exists at the setting location
