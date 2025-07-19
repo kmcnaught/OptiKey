@@ -485,6 +485,32 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                     goto default;
 
+                case FunctionKeys.Enter:
+                    // Add newline to scratchpad text and publish the key press
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode)
+                    {
+                        ProcessTextWithRime("\n");
+                    }
+                    else
+                    {
+                        ProcessText("\n", true);
+                    }
+                    lastProcessedTextWasSuggestion = false;
+                    break;
+
+                case FunctionKeys.Tab:
+                    // Add tab to scratchpad text and publish the key press
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode)
+                    {
+                        ProcessTextWithRime("\t");
+                    }
+                    else
+                    {
+                        ProcessText("\t", true);
+                    }
+                    lastProcessedTextWasSuggestion = false;
+                    break;
+
                 case FunctionKeys.ToggleCaseOfPreviousCharacter:
                     {
                         var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
@@ -552,9 +578,11 @@ namespace JuliusSweetland.OptiKey.Services
         }
 
         public void ProcessSingleKeyText(string capturedText)
-        {
+        { //1 - captured text is "\n"
             //If the setting to type diacritics after letters is set to true then we want to apply the diacritic as soon as it is typed.
-            //Otherwise suppress it for now (it will be pressed down) and apply it when the next non-combining key is pressed.
+            //Otherwise sup
+            //press it for now (it will be pressed down) and apply it when the next non-combining key is pressed.
+            
             if (!Settings.Default.TypeDiacriticsAfterLetters
                 && KeyValues.CombiningKeys.Any(k => k.String == capturedText))
             {
